@@ -1,11 +1,11 @@
-import DriveId from "../models/sharepoint/DriveId.js";
-import ItemId from "../models/sharepoint/ItemId.js";
-import RangeName from "../models/sharepoint/RangeName.js";
-import RangeResponse from "../models/sharepoint/RangeResponse.js";
-import { RangeValues } from "../models/sharepoint/RangeValues.js";
-import SiteId from "../models/sharepoint/SiteId.js";
-import WorksheetName from "../models/sharepoint/WorksheetName.js";
-import GraphApi from "./GraphApi.js";
+import type DriveId from "../models/sharepoint/DriveId.js";
+import type ItemId from "../models/sharepoint/ItemId.js";
+import type RangeName from "../models/sharepoint/RangeName.js";
+import type RangeResponse from "../models/sharepoint/RangeResponse.js";
+import type { RangeValues } from "../models/sharepoint/RangeValues.js";
+import type SiteId from "../models/sharepoint/SiteId.js";
+import type WorksheetName from "../models/sharepoint/WorksheetName.js";
+import type GraphApi from "./GraphApi.js";
 import { Worksheet } from "./SharepointAccessor.Worksheet.js";
 
 
@@ -18,7 +18,9 @@ export class Workbook {
         Object.freeze(this);
     }
 
-    public openWorksheet(worksheetName: WorksheetName): Worksheet {
+    // Async work to be done here in the future
+    // eslint-disable-next-line @typescript-eslint/require-await
+    public async openWorksheet(worksheetName: WorksheetName): Promise<Worksheet> {
         return new Worksheet(this.siteId, this.driveId, this.itemId, worksheetName, this.graphApi);
     }
 

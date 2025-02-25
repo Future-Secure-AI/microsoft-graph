@@ -1,11 +1,10 @@
-import DriveId from "../models/sharepoint/DriveId.js";
-import ItemId from "../models/sharepoint/ItemId.js";
-import RangeResponse from "../models/sharepoint/RangeResponse.js";
-import { RangeValues } from "../models/sharepoint/RangeValues.js";
-import SiteId from "../models/sharepoint/SiteId.js";
-import WorksheetName from "../models/sharepoint/WorksheetName.js";
-import GraphApi from "./GraphApi.js";
-
+import type DriveId from "../models/sharepoint/DriveId.js";
+import type ItemId from "../models/sharepoint/ItemId.js";
+import type RangeResponse from "../models/sharepoint/RangeResponse.js";
+import type { RangeValues } from "../models/sharepoint/RangeValues.js";
+import type SiteId from "../models/sharepoint/SiteId.js";
+import type WorksheetName from "../models/sharepoint/WorksheetName.js";
+import type GraphApi from "./GraphApi.js";
 
 export class Worksheet {
     public constructor(

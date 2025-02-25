@@ -1,4 +1,4 @@
-import { RangeValues } from "./RangeValues.js";
+import type { RangeValues } from "./RangeValues.js";
 
 export default interface RangeResponse {
     address: string;         // The full address of the range (e.g., "Sheet1!A1:C3")

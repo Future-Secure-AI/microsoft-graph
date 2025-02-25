@@ -1,3 +1,3 @@
-import { CellValue } from "./CellValue.js";
+import type { CellValue } from "./CellValue.js";
 
 export type RangeValues = CellValue[][];

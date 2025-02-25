@@ -7,7 +7,7 @@ export default class AccessTokenGenerator {
     private readonly credential: ClientSecretCredential;
     private lastAccessToken: AccessToken | undefined;
 
-    constructor(
+    public constructor(
         @inject(Configuration)
         public readonly configuration: Configuration,
     ) {

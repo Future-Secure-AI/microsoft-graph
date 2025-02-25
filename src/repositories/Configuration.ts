@@ -8,16 +8,18 @@ export default class Configuration {
     public readonly azureClientSecret: string;
     public readonly scopes = ['https://graph.microsoft.com/.default'];
 
-    constructor() {
-        this.azureTenantId = this.requireString("AZURE_TENANT_ID");
-        this.azureClientId = this.requireString("AZURE_CLIENT_ID");
-        this.azureClientSecret = this.requireString("AZURE_CLIENT_SECRET");
+    public constructor() {
+        this.azureTenantId = Configuration.requireString("AZURE_TENANT_ID");
+        this.azureClientId = Configuration.requireString("AZURE_CLIENT_ID");
+        this.azureClientSecret = Configuration.requireString("AZURE_CLIENT_SECRET");
         Object.freeze(this);
     }
 
-    private requireString(env: string): string {
+    private static requireString(env: string): string {
         const value = process.env[env];
-        if (!value) throw new EnvironmentVariableMissingError(env);
+        // eslint-disable-next-line no-undefined
+        if (value === undefined) throw new EnvironmentVariableMissingError(env);
+        if (value.trim() === "") throw new EnvironmentVariableMissingError(env);
         return value;
     }
 }

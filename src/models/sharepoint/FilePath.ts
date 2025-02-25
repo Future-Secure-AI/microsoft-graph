@@ -1,34 +1,34 @@
 import ValidationError from "../../errors/ValidationError.js";
 
 export default class FilePath {
-    static parse(value: string): FilePath {
+    public static parse(value: string): FilePath {
         ValidationError.throwIf(!FilePath.isValid(value), "FilePath");
         return new FilePath(value);
     }
 
-    static tryParse(value: string): FilePath | undefined {
-        if (!FilePath.isValid(value)) return undefined;
+    public static tryParse(value: string): FilePath | null {
+        if (!FilePath.isValid(value)) return null;
         return new FilePath(value);
     }
 
-    static isValid(value: string): boolean {
+    public static isValid(value: string): boolean {
         if (!value) return false;
         return true;
     }
 
-    private constructor(private readonly value: string) {
+    private constructor(public readonly value: string) {
         Object.freeze(this);
     }
 
-    equals(other: FilePath): boolean {
+    public equals(other: FilePath): boolean {
         return this.value === other.value;
     }
 
-    toString(): string {
+    public toString(): string {
         return this.value;
     }
 
-    toJson(): string {
+    public toJson(): string {
         return JSON.stringify(this.value);
     }
 }

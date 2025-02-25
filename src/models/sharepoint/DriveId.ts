@@ -1,35 +1,36 @@
 import ValidationError from "../../errors/ValidationError.js";
 
-export default class DriveId {
-    static parse(value: string): DriveId {
+export default class DriveId { 
+    public static parse(value: string): DriveId {
         ValidationError.throwIf(!DriveId.isValid(value), "DriveId");
         return new DriveId(value);
     }
 
-    static tryParse(value: string): DriveId | undefined {
-        if (!DriveId.isValid(value)) return undefined;
+    public static tryParse(value: string): DriveId | null {
+        if (!DriveId.isValid(value)) return null;
         return new DriveId(value);
     }
 
-    static isValid(value: string): boolean {
+    public static isValid(value: string): boolean {
         if (!value) return false;
         return true;
     }
 
-    private constructor(private readonly value: string) {
+    private constructor(public readonly value: string) {
         Object.freeze(this);
     }
 
-    equals(other: DriveId): boolean {
+    public equals(other: DriveId): boolean {
         return this.value === other.value;
     }
 
-    toString(): string {
+    public toString(): string {
         return this.value;
     }
 
-    toJson(): string {
+    public toJson(): string {
         return JSON.stringify(this.value);
     }
+
 }
 

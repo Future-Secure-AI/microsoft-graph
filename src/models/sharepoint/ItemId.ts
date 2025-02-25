@@ -1,34 +1,34 @@
 import ValidationError from "../../errors/ValidationError.js";
 
 export default class ItemId {
-    static parse(value: string): ItemId {
+    public static parse(value: string): ItemId {
         ValidationError.throwIf(!ItemId.isValid(value), "ItemId");
         return new ItemId(value);
     }
 
-    static tryParse(value: string): ItemId | undefined {
-        if (!ItemId.isValid(value)) return undefined;
+    public static tryParse(value: string): ItemId | null {
+        if (!ItemId.isValid(value)) return null;
         return new ItemId(value);
     }
 
-    static isValid(value: string): boolean {
+    public static isValid(value: string): boolean {
         if (!value) return false;
         return true;
     }
 
-    private constructor(private readonly value: string) {
+    private constructor(public readonly value: string) {
         Object.freeze(this);
     }
 
-    equals(other: ItemId): boolean {
+    public equals(other: ItemId): boolean {
         return this.value === other.value;
     }
 
-    toString(): string {
+    public toString(): string {
         return this.value;
     }
 
-    toJson(): string {
+    public toJson(): string {
         return JSON.stringify(this.value);
     }
 }

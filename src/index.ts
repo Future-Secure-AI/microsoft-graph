@@ -3,7 +3,7 @@ import SharepointAccessor from "./services/SharepointAccessor.js";
 import SiteId from "./models/sharepoint/SiteId.js";
 import DriveId from "./models/sharepoint/DriveId.js";
 import WorksheetName from "./models/sharepoint/WorksheetName.js";
-import FilePath from "./models/sharepoint/FIlePath.js";
+import FilePath from "./models/sharepoint/FilePath.js";
 
 const container = new Container({ autoBindInjectable: true });
 
