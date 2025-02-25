@@ -1,7 +1,7 @@
 {
   "include": [
     "src/**/*"
-  ],
+, "vitest.config.js"  ],
   "exclude": [
     "node_modules"
   ],

@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "tsx src/index.ts",
-    "dev": "eslint src && tsx watch src/index.ts",
-    "watch": "tsx src/index.ts --watch",
+    "dev": "eslint --cache src && tsx watch src/index.ts",
     "lint": "eslint src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +19,8 @@
     "eslint": "^9.21.0",
     "globals": "^16.0.0",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.25.0"
+    "typescript-eslint": "^8.25.0",
+    "vitest": "^3.0.7"
   },
   "dependencies": {
     "@azure/identity": "^4.7.0",
