@@ -1,10 +1,7 @@
 
 
 ## TODO
-* web server (express)
 * DI (InversifyJS)
-* Exception handling
-* Value Objects
 * eslint
 * docker
 * emit logging?

@@ -17,6 +17,9 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "@azure/identity": "^4.7.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "inversify": "^6.2.2",
     "tsx": "^4.19.3"
   }
 }
