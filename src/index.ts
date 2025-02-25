@@ -6,7 +6,7 @@ import WorksheetName from "./models/sharepoint/WorksheetName.js";
 import FilePath from "./models/sharepoint/FilePath.js";
 import Commentator from "./commentators/Commentator.js";
 import Money from "./models/Money.js";
-import { resolve, resolveMany } from "./dependancyInjection.js";
+import { resolve, resolveMany } from "./DependancyInjection.js";
 
 // MULTIPLE DI EXAMPLE
 // Gets a service that has multiple instances and invokes each one.
