@@ -2,7 +2,7 @@ import ValidationError from "../../errors/ValidationError.js";
 
 export default class FilePath {
     static parse(value: string): FilePath {
-        if (!FilePath.isValid(value)) throw new ValidationError("Invalid FilePath");
+        ValidationError.throwIf(!FilePath.isValid(value), "FilePath");
         return new FilePath(value);
     }
 

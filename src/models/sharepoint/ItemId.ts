@@ -2,10 +2,10 @@ import ValidationError from "../../errors/ValidationError.js";
 
 export default class ItemId {
     static parse(value: string): ItemId {
-        if (!ItemId.isValid(value)) throw new ValidationError("Invalid ItemId");
+        ValidationError.throwIf(!ItemId.isValid(value), "ItemId");
         return new ItemId(value);
     }
-    
+
     static tryParse(value: string): ItemId | undefined {
         if (!ItemId.isValid(value)) return undefined;
         return new ItemId(value);

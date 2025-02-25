@@ -2,7 +2,7 @@ import ValidationError from "../../errors/ValidationError.js";
 
 export default class SiteId {
     static parse(value: string): SiteId {
-        if (!SiteId.isValid(value)) throw new ValidationError("Invalid SiteId");
+        ValidationError.throwIf(!SiteId.isValid(value), "SiteId");
         return new SiteId(value);
     }
 

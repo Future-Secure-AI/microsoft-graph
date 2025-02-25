@@ -2,7 +2,7 @@ import ValidationError from "../../errors/ValidationError.js";
 
 export default class RangeName {
     static parse(value: string): RangeName {
-        if (!RangeName.isValid(value)) throw new ValidationError("Invalid RangeName");
+        ValidationError.throwIf(!RangeName.isValid(value), "RangeName");
         return new RangeName(value);
     }
 

@@ -2,7 +2,7 @@ import ValidationError from "../../errors/ValidationError.js";
 
 export default class DriveId {
     static parse(value: string): DriveId {
-        if (!DriveId.isValid(value)) throw new ValidationError("Invalid DriveId");
+        ValidationError.throwIf(!DriveId.isValid(value), "DriveId");
         return new DriveId(value);
     }
 

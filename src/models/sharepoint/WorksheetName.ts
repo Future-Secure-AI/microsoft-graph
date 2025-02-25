@@ -2,7 +2,7 @@ import ValidationError from "../../errors/ValidationError.js";
 
 export default class WorksheetName {
     static parse(value: string): WorksheetName {
-        if (!WorksheetName.isValid(value)) throw new ValidationError("Invalid WorksheetName");
+        ValidationError.throwIf(!WorksheetName.isValid(value), "WorksheetName");
         return new WorksheetName(value);
     }
 
