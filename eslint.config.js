@@ -24,11 +24,17 @@ export default [
       "no-inline-comments": "off",
       "sort-imports": "off",
       "one-var": "off",
+      "no-magic-numbers": "off",
+      "capitalized-comments": "off",
       "no-console": "warn",
       "@typescript-eslint/max-params": "off",
       "@typescript-eslint/parameter-properties": "off",
       "@typescript-eslint/prefer-readonly-parameter-types": "off",
       "@typescript-eslint/member-ordering": "off",
+      "@typescript-eslint/no-confusing-void-expression": "off",
+      "@typescript-eslint/no-magic-numbers": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      '@typescript-eslint/class-methods-use-this': "off"
     }
   },
 ];

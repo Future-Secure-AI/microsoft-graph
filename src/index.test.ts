@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
 import { expect, test } from 'vitest'
 
 test('Math.sqrt()', () => {

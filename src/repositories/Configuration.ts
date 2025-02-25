@@ -20,7 +20,6 @@ export default class Configuration {
         if (value === null) {
             // eslint-disable-next-line no-console
             console.error(`\x1b[31mEnvironment variable '${env}' missing or empty.\x1b[0m`);
-            // eslint-disable-next-line @typescript-eslint/no-magic-numbers
             process.exit(1);
         }
         return value;
