@@ -19,7 +19,7 @@ export default class AccessTokenGenerator {
             try {
                 this.lastAccessToken = await this.credential.getToken(this.configuration.scopes);
             } catch (error) {
-                throw new Error('Could not obtain an access token.');
+                throw new Error(`Could not obtain an access token. ${error}`);
             }
         }
 
