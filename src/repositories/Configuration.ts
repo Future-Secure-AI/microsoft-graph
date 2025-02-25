@@ -29,11 +29,11 @@ export default class Configuration {
         return value;
     }
 
-    private faultOnFailedBindings() {
-        if (this.failedBinding.length == 0) return;
+    private faultOnFailedBindings(): void {
+        if (this.failedBinding.length === 0) return;
 
         // eslint-disable-next-line no-console
-        console.error(`\x1b[31mEnvironment variable(s) ${this.failedBinding.join(", ")} missing or empty.\x1b[0m`);
+        console.error(`\x1b[31mFATAL: Environment variable(s) ${this.failedBinding.join(", ")} missing or empty.\x1b[0m`);
         process.exit(1);
     }
 }
