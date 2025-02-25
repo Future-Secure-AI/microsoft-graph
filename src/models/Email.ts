@@ -1,4 +1,4 @@
-import { ValidationError } from "../errors/ValidationError.js";
+import ValidationError from "../errors/ValidationError.js";
 
 export default class Email {
     private static readonly EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

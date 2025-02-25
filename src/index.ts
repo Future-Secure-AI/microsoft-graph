@@ -1,8 +1,23 @@
-import Email from "./models/Email.js";
+import { Container } from "inversify";
+import SharepointAccessor from "./services/SharepointAccessor.js";
+import SiteId from "./models/sharepoint/SiteId.js";
+import DriveId from "./models/sharepoint/DriveId.js";
+import WorksheetName from "./models/sharepoint/WorksheetName.js";
+import FilePath from "./models/sharepoint/FIlePath.js";
 
-console.log("Hello world!");
+const container = new Container({ autoBindInjectable: true });
 
+const sharepointAccessor = container.resolve(SharepointAccessor);
 
-const email = Email.parse("someone_somewhere.com");
+const siteId = SiteId.parse("<INSERT-SITE-ID>");
+const driveId = DriveId.parse("<INSERT-DRIVE-ID>");
+const filePath = FilePath.parse("<INSERT-FILE-PATH>");
+const worksheetName = WorksheetName.parse("<INSERT-WORKSHEET-NAME>");
 
-console.log(email.toString())
+const sharepoint = await sharepointAccessor.open(siteId);
+const itemId = await sharepoint.getItemIdForFile(driveId, filePath);
+const workbook = await sharepoint.openWorkbook(driveId, itemId);
+const worksheet = await workbook.openWorksheet(worksheetName);
+const cells = await worksheet.getUsedRangeValues();
+
+console.log(cells);

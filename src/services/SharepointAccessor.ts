@@ -1,5 +1,6 @@
-import { injectable } from "inversify";
+import { inject, injectable } from "inversify";
 import DriveId from "../models/sharepoint/DriveId.js";
+import FilePath from "../models/sharepoint/FIlePath.js";
 import ItemId from "../models/sharepoint/ItemId.js";
 import ItemResponse from "../models/sharepoint/ItemResponse.js";
 import RangeName from "../models/sharepoint/RangeName.js";
@@ -8,11 +9,17 @@ import { RangeValues } from "../models/sharepoint/RangeValues.js";
 import SiteId from "../models/sharepoint/SiteId.js";
 import WorksheetName from "../models/sharepoint/WorksheetName.js";
 import GraphApi from "./GraphApi.js";
-// https://github.com/Future-Secure-AI/fsai_flow/blob/bd8f309578df16a957ba59e034737e158e58d6c4/packages/fsai-utils/src/msgraph/sharepoint_client.ts
+
+
+/*
+* This is a more structure approach to what has been implemented in https://github.com/Future-Secure-AI/fsai_flow/blob/bd8f309578df16a957ba59e034737e158e58d6c4/packages/fsai-utils/src/msgraph/sharepoint_client.ts
+*/
 
 @injectable()
 export default class SharepointAccessor {
-    constructor(private readonly graphApi: GraphApi) {
+    constructor(
+        @inject(GraphApi)
+        private readonly graphApi: GraphApi) {
         Object.freeze(this);
     }
 
@@ -28,7 +35,7 @@ export class SharePoint {
         Object.freeze(this);
     }
 
-    public async getItemIdForFile(driveId: DriveId, filePath: string): Promise<ItemId> {
+    public async getItemIdForFile(driveId: DriveId, filePath: FilePath): Promise<ItemId> {
         const response = await this.graphApi.get<ItemResponse>(["sites", this.siteId.toString(), "drives", driveId.toString(), `root:${filePath}`]);
         return ItemId.parse(response.id);
     }
@@ -37,7 +44,6 @@ export class SharePoint {
         return new Workbook(this.siteId, driveId, itemId, this.graphApi);
     }
 }
-
 
 export class Workbook {
     public constructor(

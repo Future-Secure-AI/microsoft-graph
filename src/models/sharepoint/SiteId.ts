@@ -1,4 +1,4 @@
-import { ValidationError } from "../../errors/ValidationError.js";
+import ValidationError from "../../errors/ValidationError.js";
 
 export default class SiteId {
     static parse(value: string): SiteId {

@@ -1,14 +1,14 @@
 import ValidationError from "../../errors/ValidationError.js";
 
-export default class ItemId {
-    static parse(value: string): ItemId {
-        if (!ItemId.isValid(value)) throw new ValidationError("Invalid ItemId");
-        return new ItemId(value);
+export default class FilePath {
+    static parse(value: string): FilePath {
+        if (!FilePath.isValid(value)) throw new ValidationError("Invalid FilePath");
+        return new FilePath(value);
     }
-    
-    static tryParse(value: string): ItemId | undefined {
-        if (!ItemId.isValid(value)) return undefined;
-        return new ItemId(value);
+
+    static tryParse(value: string): FilePath | undefined {
+        if (!FilePath.isValid(value)) return undefined;
+        return new FilePath(value);
     }
 
     static isValid(value: string): boolean {
@@ -20,7 +20,7 @@ export default class ItemId {
         Object.freeze(this);
     }
 
-    equals(other: ItemId): boolean {
+    equals(other: FilePath): boolean {
         return this.value === other.value;
     }
 
