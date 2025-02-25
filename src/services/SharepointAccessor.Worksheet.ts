@@ -6,7 +6,7 @@ import type SiteId from "../models/sharepoint/SiteId.js";
 import type WorksheetName from "../models/sharepoint/WorksheetName.js";
 import type GraphApi from "./GraphApi.js";
 
-export class Worksheet {
+export default class Worksheet {
     public constructor(
         private readonly siteId: SiteId,
         private readonly driveId: DriveId,

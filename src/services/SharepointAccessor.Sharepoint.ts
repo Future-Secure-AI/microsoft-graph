@@ -4,10 +4,9 @@ import ItemId from "../models/sharepoint/ItemId.js";
 import type ItemResponse from "../models/sharepoint/ItemResponse.js";
 import type SiteId from "../models/sharepoint/SiteId.js";
 import type GraphApi from "./GraphApi.js";
-import { Workbook } from "./SharepointAccessor.Workbook.js";
+import Workbook from "./SharepointAccessor.Workbook.js";
 
-
-export class SharePoint {
+export default class SharePoint {
     public constructor(
         private readonly siteId: SiteId,
         private readonly graphApi: GraphApi) {

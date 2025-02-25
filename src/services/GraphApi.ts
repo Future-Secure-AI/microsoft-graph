@@ -10,18 +10,7 @@ export default class GraphApi {
         @inject(AccessTokenGenerator)
         public readonly accessTokenGenerator: AccessTokenGenerator,
     ) {
-        this.client = Client.init({
-            authProvider: done => {
-                this.accessTokenGenerator.getCurrent() // Do not store the returned access token as it may expire
-                    .then(accessToken => {
-                        done(null, accessToken)
-                    })
-                    .catch((error: unknown) => {
-                        done(error, null);
-                    });
-            }
-        });
-
+        this.client = this.generateClient();
         Object.freeze(this);
     }
 
@@ -35,6 +24,20 @@ export default class GraphApi {
         const normalisedPath = typeof path === "string" ? path : GraphApi.segmentsToPath(path);
         // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         return await this.client.api(normalisedPath).patch(data) as TResponse;
+    }
+
+    private generateClient(): Client {
+        return Client.init({
+            authProvider: done => {
+                this.accessTokenGenerator.getCurrent() // Do not store the returned access token as it may expire
+                    .then(accessToken => {
+                        done(null, accessToken);
+                    })
+                    .catch((error: unknown) => {
+                        done(error, null);
+                    });
+            }
+        });
     }
 
     private static segmentsToPath(segments: string[]): string {

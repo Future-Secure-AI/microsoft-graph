@@ -5,7 +5,7 @@ import Configuration from "../repositories/Configuration.js";
 @injectable()
 export default class AccessTokenGenerator {
     private readonly credential: ClientSecretCredential;
-    private lastAccessToken: AccessToken | undefined;
+    private lastAccessToken: AccessToken | null = null;
 
     public constructor(
         @inject(Configuration)
@@ -15,7 +15,7 @@ export default class AccessTokenGenerator {
     }
 
     public async getCurrent(): Promise<string> {
-        if (!this.lastAccessToken || this.lastAccessToken.expiresOnTimestamp < Date.now())
+        if (this.lastAccessToken === null || this.lastAccessToken.expiresOnTimestamp < Date.now())
             this.lastAccessToken = await this.credential.getToken(this.configuration.azureScopes);
 
         return this.lastAccessToken.token;

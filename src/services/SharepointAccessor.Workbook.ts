@@ -6,10 +6,9 @@ import type { RangeValues } from "../models/sharepoint/RangeValues.js";
 import type SiteId from "../models/sharepoint/SiteId.js";
 import type WorksheetName from "../models/sharepoint/WorksheetName.js";
 import type GraphApi from "./GraphApi.js";
-import { Worksheet } from "./SharepointAccessor.Worksheet.js";
+import Worksheet from "./SharepointAccessor.Worksheet.js";
 
-
-export class Workbook {
+export default class Workbook {
     public constructor(
         private readonly siteId: SiteId,
         private readonly driveId: DriveId,
