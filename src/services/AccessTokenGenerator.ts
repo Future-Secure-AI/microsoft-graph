@@ -15,13 +15,8 @@ export default class AccessTokenGenerator {
     }
 
     public async getCurrent(): Promise<string> {
-        if (!this.lastAccessToken || this.lastAccessToken.expiresOnTimestamp < Date.now()) {
-            try {
-                this.lastAccessToken = await this.credential.getToken(this.configuration.scopes);
-            } catch (error) {
-                throw new Error(`Could not obtain an access token. ${error}`);
-            }
-        }
+        if (!this.lastAccessToken || this.lastAccessToken.expiresOnTimestamp < Date.now())
+            this.lastAccessToken = await this.credential.getToken(this.configuration.scopes);
 
         return this.lastAccessToken.token;
     }
