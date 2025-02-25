@@ -16,7 +16,7 @@ export default class AccessTokenGenerator {
 
     public async getCurrent(): Promise<string> {
         if (!this.lastAccessToken || this.lastAccessToken.expiresOnTimestamp < Date.now())
-            this.lastAccessToken = await this.credential.getToken(this.configuration.scopes);
+            this.lastAccessToken = await this.credential.getToken(this.configuration.azureScopes);
 
         return this.lastAccessToken.token;
     }
