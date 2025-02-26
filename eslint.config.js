@@ -26,6 +26,7 @@ export default [
       "one-var": "off",
       "no-magic-numbers": "off",
       "capitalized-comments": "off",
+      "sort-keys": "off",
       "no-console": "warn",
       "@typescript-eslint/max-params": "off",
       "@typescript-eslint/parameter-properties": "off",
@@ -34,7 +35,10 @@ export default [
       "@typescript-eslint/no-confusing-void-expression": "off",
       "@typescript-eslint/no-magic-numbers": "off",
       "@typescript-eslint/no-unused-vars": "warn",
-      '@typescript-eslint/class-methods-use-this': "off"
+      '@typescript-eslint/class-methods-use-this': "off",
+      '@typescript-eslint/naming-convention': "off",
+      '@typescript-eslint/no-unsafe-type-assertion': "off",
+      "@typescript-eslint/consistent-type-definitions": ["warn", "type"]
     }
   },
 ];
