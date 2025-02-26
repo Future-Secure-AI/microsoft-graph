@@ -14,7 +14,7 @@ export default class SharePoint {
     }
 
     public async getItemIdForFile(driveId: DriveId, filePath: FilePath): Promise<ItemId> {
-        const response = await this.graphApi.get<ItemResponse>(["sites", this.siteId.toString(), "drives", driveId.toString(), `root:${filePath.toString()}`]);
+        const response = await this.graphApi.get<ItemResponse>(`/sites/${encodeURIComponent(this.siteId.toString())}/drives/${encodeURIComponent(driveId.toString())}/root:${filePath.toString()}`); // Not passing in segments as filePath is multiple segments in one
         return ItemId.parse(response.id);
     }
 
