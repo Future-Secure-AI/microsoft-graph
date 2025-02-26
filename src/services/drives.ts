@@ -1,4 +1,4 @@
-import { apiGet } from "./graphApi.js";
+import { apiDelete, apiGet } from "./graphApi.js";
 import type { SiteReference, UserInfo } from "./sites.js";
 
 export type DriveId = string & { __brand: "DriveId" };
@@ -110,3 +110,14 @@ export const listItemChildenByPath = async (drive: DriveReference, path: ItemPat
         value: output,
     };
 }
+
+/**
+ * Delete an item.
+ * https://learn.microsoft.com/en-us/graph/api/driveitem-delete
+ */
+export const deleteItem = async (item: ItemReference): Promise<void> =>
+    apiDelete([
+        "sites", item.site,
+        "drives", item.drive,
+        "items", item.item
+    ]);

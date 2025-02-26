@@ -1,5 +1,5 @@
-import type { ItemReference } from "./drives.js";
-import { apiGet, apiPatch } from "./graphApi.js";
+import { deleteItem, type ItemReference } from "./drives.js";
+import { apiDelete, apiGet, apiPatch } from "./graphApi.js";
 
 export type WorkbookReference = ItemReference;
 export type WorksheetId = string & { __brand: "WorksheetId" };
@@ -35,6 +35,9 @@ export type ListWorksheetResponse = {
     value: WorksheetDefinition[];
 };
 
+export const deleteWorkbook = async (item: WorkbookReference): Promise<void> =>
+    deleteItem(item);
+
 /**
  * Retrieve a list of worksheets in a given workbook.
  * https://learn.microsoft.com/en-us/graph/api/worksheet-list
@@ -46,6 +49,19 @@ export const listWorksheets = async (item: WorkbookReference): Promise<ListWorks
         "items", item.item,
         "workbook",
         "worksheets"
+    ]);
+
+/**
+ * Delete worksheet from a workbook.
+ * https://learn.microsoft.com/en-us/graph/api/worksheet-delete
+ */
+export const deleteWorksheet = async (worksheet: WorksheetReference): Promise<void> =>
+    apiDelete([
+        "sites", worksheet.site,
+        "drives", worksheet.drive,
+        "items", worksheet.item,
+        "workbook",
+        "worksheets", worksheet.worksheet
     ]);
 
 /**
