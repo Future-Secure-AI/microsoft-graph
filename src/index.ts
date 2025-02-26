@@ -1,4 +1,5 @@
-import type { DriveId, DriveReference, ItemId, ItemReference, SiteId, SiteReference } from "./services/sharepoint.js";
+import type { DriveId, DriveReference, ItemId, ItemReference } from "./services/drives.js";
+import type { SiteId, SiteReference } from "./services/sites.js";
 import { getUsedRangeValues, type WorksheetReference, type WorksheetName } from "./services/workbook.js";
 
 const siteId = "<INSERT-SITE-ID>" as SiteId;

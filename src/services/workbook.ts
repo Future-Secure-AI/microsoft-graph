@@ -1,14 +1,14 @@
+import type { ItemReference } from "./drives.js";
 import { apiGet, apiPatch } from "./graphApi.js";
-import type { ItemReference } from "./sharepoint.js";
 
 export type WorkbookReference = ItemReference;
 export type WorksheetId = string & { __brand: "WorksheetId" };
 export type WorksheetName = string & { __brand: "WorksheetName" };
-export type WorksheetReference = ItemReference & { worksheet: WorksheetId | WorksheetName };
+export type WorksheetReference = WorkbookReference & { worksheet: WorksheetId | WorksheetName };
 
 export type RangeId = string & { __brand: "RangeId" };
 export type RangeName = string & { __brand: "RangeName" };
-export type RangeReference = ItemReference & { range: RangeId | RangeName };
+export type RangeReference = WorkbookReference & { range: RangeId | RangeName };
 
 export type CellValue = string | number | boolean | null | Date;
 export type RangeValues = CellValue[][];

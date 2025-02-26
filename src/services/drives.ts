@@ -1,29 +1,12 @@
 import { apiGet } from "./graphApi.js";
-
-export type SiteId = string & { __brand: "SiteId" };
-export type SiteReference = { site: SiteId };
+import type { SiteReference, UserInfo } from "./sites.js";
 
 export type DriveId = string & { __brand: "DriveId" };
 export type DriveReference = SiteReference & { drive: DriveId }
 
 export type ItemId = string & { __brand: "ItemId" };
 export type ItemReference = DriveReference & { item: ItemId };
-
-export type Path = string & { __brand: "Path" };
-
-export type UserInfo = {
-    id: string;
-    displayName: string;
-    email?: string;
-};
-
-export type SiteDefinition = {
-    id: SiteId;
-    name: string;
-    createdDateTime: string; // ISO 8601 date string
-    lastModifiedDateTime: string; // ISO 8601 date string
-    webUrl: string;
-};
+export type ItemPath = string & { __brand: "Path" };
 
 export type DriveDefinition = {
     createdDateTime: string; // ISO 8601 date string
@@ -72,11 +55,6 @@ export type ItemDefinition = {
     webUrl: string;
 };
 
-export type ListSitesReponse = {
-    "@odata.context": string;
-    value: SiteDefinition[];
-};
-
 export type ListDriveResponse = {
     "@odata.context": string;
     value: DriveDefinition[];
@@ -87,24 +65,6 @@ export type ListItemResponse = {
     value: ItemDefinition[];
     "@odata.nextLink"?: string;
 };
-
-/**
- * Search across a SharePoint tenant for sites that match keywords provided.
- * https://learn.microsoft.com/en-us/graph/api/site-search
- */
-export const searchSites = async (search: string): Promise<ListSitesReponse> =>
-    apiGet<ListSitesReponse>([
-        "sites", `search=${search}`
-    ]);
-
-/**
- * Retrieve properties for a site resource.
- * https://learn.microsoft.com/en-us/graph/api/site-get
- */
-export const getSite = async (site: SiteReference): Promise<SiteDefinition> =>
-    apiGet<SiteDefinition>([
-        "sites", site.site
-    ]);
 
 /**
  * Retrieve the list of Drive resources available for a Site.
@@ -120,7 +80,7 @@ export const listDrives = async (site: SiteReference): Promise<ListDriveResponse
  * Retrieve the metadata for an item in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
-export const getItemByPath = async (drive: DriveReference, path: Path): Promise<ItemDefinition> =>
+export const getItemByPath = async (drive: DriveReference, path: ItemPath): Promise<ItemDefinition> =>
     apiGet<ItemDefinition>(
         `/sites/${encodeURIComponent(drive.site)}` +
         `/drives/${encodeURIComponent(drive.drive)}` +
@@ -130,7 +90,7 @@ export const getItemByPath = async (drive: DriveReference, path: Path): Promise<
  * Retrieve the metadata for child items in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-list-children
  */
-export const listItemChildenByPath = async (drive: DriveReference, path: Path): Promise<ListItemResponse> => {
+export const listItemChildenByPath = async (drive: DriveReference, path: ItemPath): Promise<ListItemResponse> => {
     const output: ItemDefinition[] = []
 
     let url: string | undefined = `/sites/${encodeURIComponent(drive.site)}` +
@@ -150,4 +110,3 @@ export const listItemChildenByPath = async (drive: DriveReference, path: Path): 
         value: output,
     };
 }
-
