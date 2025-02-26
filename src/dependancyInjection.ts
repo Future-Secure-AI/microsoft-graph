@@ -7,7 +7,7 @@ import AccessTokenGenerator from "./services/AccessTokenGenerator.js";
 import GraphApi from "./services/GraphApi.js";
 import SharepointAccessor from "./services/SharepointAccessor.js";
 
-const container = new Container(); // Autobind does not use singleton binding or support multi binding so not used
+const container = new Container(); // Autobind not used as it does not use singleton binding or support multi bindings
 container.bind(SharepointAccessor).toSelf().inSingletonScope();
 container.bind(GraphApi).toSelf().inSingletonScope();
 container.bind(AccessTokenGenerator).toSelf().inSingletonScope();
