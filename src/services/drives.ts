@@ -126,14 +126,35 @@ export const deleteItem = async (item: ItemReference): Promise<void> =>
  * Create folder if it doesn't exist, and return the folder.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
  */
-export const createFolder = async (drive: DriveReference, path: ItemPath): Promise<ItemDefinition> => {
-    const payload = {
+export const createFolder = async (drive: DriveReference, path: ItemPath): Promise<ItemDefinition> => apiPost<ItemDefinition>(
+    `/sites/${encodeURIComponent(drive.site)}` +
+    `/drives/${encodeURIComponent(drive.drive)}` +
+    `/root:${path}:/children`,
+    {
         name: path,
         folder: {},
         "@microsoft.graph.conflictBehavior": "rename" // Do nothing if already exists
-    };
+    });
 
-    return apiPost<ItemDefinition>(`/sites/${encodeURIComponent(drive.site)}` +
-        `/drives/${encodeURIComponent(drive.drive)}` +
-        `/root:${path}:/children`, payload);
-}
+/**
+ * Create a copy of an item. 
+ * NOTE: In many cases the copy action is performed asynchronously. The response from the API will only indicate that the copy operation was accepted or rejected.
+ * https://learn.microsoft.com/en-us/graph/api/driveitem-copy
+ */
+export const copyItem = async (srcItem: ItemReference, dstFolder: ItemReference, dstName: string): Promise<void> =>
+    apiPost(
+        [
+            "sites", srcItem.site,
+            "drives", srcItem.drive,
+            "items", srcItem.item,
+            "copy"
+        ],
+        {
+            name: dstName,
+            parentReference: {
+                siteId: dstFolder.site,
+                driveId: dstFolder.drive,
+                id: dstFolder.item
+            }
+        }
+    );
