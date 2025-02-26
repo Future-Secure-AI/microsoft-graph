@@ -25,9 +25,9 @@ export type RangeResponse = {
     values: RangeValues;
 }
 export type WorksheetDefinition = {
-    id: string; // TODO: Use tighter type
-    position: number;
+    id: WorksheetId;
     name: WorksheetName;
+    position: number;
     visibility: string;
 };
 
