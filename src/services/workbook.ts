@@ -1,4 +1,4 @@
-import { get, patch } from "./graphApia.js";
+import { get, patch } from "./graphApi.js";
 import type { ItemReference } from "./sharepoint.js";
 
 export type CellValue = string | number | boolean | null | Date;
