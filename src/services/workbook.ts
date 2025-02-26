@@ -1,4 +1,4 @@
-import { get, patch } from "./graphApi.js";
+import { apiGet, apiPatch } from "./graphApi.js";
 import type { ItemReference } from "./sharepoint.js";
 
 export type WorkbookReference = ItemReference;
@@ -40,7 +40,7 @@ export type ListWorksheetResponse = {
  * https://learn.microsoft.com/en-us/graph/api/worksheet-list
  */
 export const listWorksheets = async (item: WorkbookReference): Promise<ListWorksheetResponse> =>
-    get<ListWorksheetResponse>([
+    apiGet<ListWorksheetResponse>([
         "sites", item.site,
         "drives", item.drive,
         "items", item.item,
@@ -53,7 +53,7 @@ export const listWorksheets = async (item: WorkbookReference): Promise<ListWorks
  * https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */
 export const getUsedRangeValues = async (worksheet: WorksheetReference): Promise<RangeResponse> =>
-    get<RangeResponse>([
+    apiGet<RangeResponse>([
         "sites", worksheet.site,
         "drives", worksheet.drive,
         "items", worksheet.item,
@@ -67,7 +67,7 @@ export const getUsedRangeValues = async (worksheet: WorksheetReference): Promise
  * https://learn.microsoft.com/en-us/graph/api/range-get
  */
 export const getNamedRangeValues = async (range: RangeReference): Promise<RangeResponse> =>
-    get<RangeResponse>([
+    apiGet<RangeResponse>([
         "sites", range.site,
         "drives", range.drive,
         "items", range.item,
@@ -81,7 +81,7 @@ export const getNamedRangeValues = async (range: RangeReference): Promise<RangeR
  * https://learn.microsoft.com/en-us/graph/api/range-update
  */
 export const setNamedRangeValues = async (range: RangeReference, values: RangeValues): Promise<void> =>
-    patch([
+    apiPatch([
         "sites", range.site,
         "drives", range.drive,
         "items", range.item,

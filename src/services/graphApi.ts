@@ -25,12 +25,17 @@ const client = Client.init({
     }
 });
 
-export const get = async<T>(path: string | string[]): Promise<T> => {
+export const apiGet = async<T>(path: string | string[]): Promise<T> => {
     const normalisedPath = typeof path === "string" ? path : segmentsToPath(path);
     return await client.api(normalisedPath).get() as T;
 }
 
-export const patch = async (path: string | string[], data: unknown): Promise<void> => {
+export const apiPatch = async (path: string | string[], data: unknown): Promise<void> => {
     const normalisedPath = typeof path === "string" ? path : segmentsToPath(path);
     await client.api(normalisedPath).patch(data);
+};
+
+export const apiDelete = async (path: string | string[]): Promise<void> => {
+    const normalisedPath = typeof path === "string" ? path : segmentsToPath(path);
+    await client.api(normalisedPath).delete();
 };

@@ -1,4 +1,4 @@
-import { get } from "./graphApi.js";
+import { apiGet } from "./graphApi.js";
 
 export type SiteId = string & { __brand: "SiteId" };
 export type SiteReference = { site: SiteId };
@@ -93,7 +93,7 @@ export type ListItemResponse = {
  * https://learn.microsoft.com/en-us/graph/api/site-search
  */
 export const searchSites = async (search: string): Promise<ListSitesReponse> =>
-    get<ListSitesReponse>([
+    apiGet<ListSitesReponse>([
         "sites", `search=${search}`
     ]);
 
@@ -102,7 +102,7 @@ export const searchSites = async (search: string): Promise<ListSitesReponse> =>
  * https://learn.microsoft.com/en-us/graph/api/site-get
  */
 export const getSite = async (site: SiteReference): Promise<SiteDefinition> =>
-    get<SiteDefinition>([
+    apiGet<SiteDefinition>([
         "sites", site.site
     ]);
 
@@ -110,8 +110,8 @@ export const getSite = async (site: SiteReference): Promise<SiteDefinition> =>
  * Retrieve the list of Drive resources available for a Site.
  * https://learn.microsoft.com/en-us/graph/api/drive-list
  */
-export const listSiteDrives = async (site: SiteReference): Promise<ListDriveResponse> =>
-    get<ListDriveResponse>([
+export const listDrives = async (site: SiteReference): Promise<ListDriveResponse> =>
+    apiGet<ListDriveResponse>([
         "sites", site.site,
         "drives"
     ]);
@@ -121,7 +121,7 @@ export const listSiteDrives = async (site: SiteReference): Promise<ListDriveResp
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
 export const getItemByPath = async (drive: DriveReference, path: Path): Promise<ItemDefinition> =>
-    get<ItemDefinition>(
+    apiGet<ItemDefinition>(
         `/sites/${encodeURIComponent(drive.site)}` +
         `/drives/${encodeURIComponent(drive.drive)}` +
         `/root:${path}`); // `path` not escaped as it contains multiple segments
@@ -140,7 +140,7 @@ export const listItemChildenByPath = async (drive: DriveReference, path: Path): 
     // eslint-disable-next-line no-undefined
     while (url !== undefined) {
         // eslint-disable-next-line no-await-in-loop
-        const response: ListItemResponse = await get<ListItemResponse>(url);
+        const response: ListItemResponse = await apiGet<ListItemResponse>(url);
         url = response["@odata.nextLink"];
         output.push(...response.value);
     }
