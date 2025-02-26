@@ -30,3 +30,5 @@ export const setNamedRangeValues = async (range: RangeReference, values: RangeVa
 
 export const getUsedRangeValues = async (worksheet: WorksheetReference): Promise<RangeResponse> =>
     get<RangeResponse>(["sites", worksheet.siteId, "drives", worksheet.driveId, "items", worksheet.itemId, "workbook", "names", worksheet.worksheetName, "range"]);
+
+// TODO: ...
