@@ -28,6 +28,7 @@ export default [
       "capitalized-comments": "off",
       "sort-keys": "off",
       "no-console": "warn",
+      "no-warning-comments": "warn",
       "@typescript-eslint/max-params": "off",
       "@typescript-eslint/parameter-properties": "off",
       "@typescript-eslint/prefer-readonly-parameter-types": "off",

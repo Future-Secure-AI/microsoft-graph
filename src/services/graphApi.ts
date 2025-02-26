@@ -1,11 +1,13 @@
 import { Client } from "@microsoft/microsoft-graph-client";
 import { getCurrentAccessToken } from "./accessToken.js";
 
+// See https://learn.microsoft.com/en-us/graph/api/overview for more information on the Microsoft Graph API
+
 const segmentsToPath = (segments: string[]): string => {
     if (!segments.length) throw new Error("At least one segment must be provided");
 
     const concatenatedSegments = segments
-        .map(encodeURIComponent)
+        .map(encodeURIComponent) // https://learn.microsoft.com/en-us/graph/onedrive-addressing-driveitems#javascript says to use `escape()`, however it was deprecated and replaced by `encodeURIComponent`
         .join("/");
 
     return `/${concatenatedSegments}`;

@@ -1,6 +1,15 @@
 import { get, patch } from "./graphApi.js";
 import type { ItemReference } from "./sharepoint.js";
 
+export type WorkbookReference = ItemReference;
+export type WorksheetId = string & { __brand: "WorksheetId" };
+export type WorksheetName = string & { __brand: "WorksheetName" };
+export type WorksheetReference = ItemReference & { worksheet: WorksheetId | WorksheetName };
+
+export type RangeId = string & { __brand: "RangeId" };
+export type RangeName = string & { __brand: "RangeName" };
+export type RangeReference = ItemReference & { range: RangeId | RangeName };
+
 export type CellValue = string | number | boolean | null | Date;
 export type RangeValues = CellValue[][];
 export type RangeResponse = {
@@ -15,20 +24,41 @@ export type RangeResponse = {
     rowIndex: number;
     values: RangeValues;
 }
+export type WorksheetDefinition = {
+    id: string; // TODO: Use tighter type
+    position: number;
+    name: WorksheetName;
+    visibility: string;
+};
 
-export type WorksheetName = string & { __brand: "WorksheetName" };
-export type RangeName = string & { __brand: "RangeName" };
+export type ListWorksheetResponse = {
+    value: WorksheetDefinition[];
+};
 
-export type RangeReference = ItemReference & { rangeName: RangeName };
-export type WorksheetReference = ItemReference & { worksheetName: WorksheetName };
+/**
+ * Retrieve a list of worksheets in a given workbook.
+ * https://learn.microsoft.com/en-us/graph/api/worksheet-list
+ */
+export const listWorksheets = async (item: WorkbookReference): Promise<ListWorksheetResponse> =>
+    get<ListWorksheetResponse>(["sites", item.site, "drives", item.drive, "items", item.item, "workbook", "worksheets"]);
 
-export const getNamedRangeValues = async (range: RangeReference): Promise<RangeResponse> =>
-    get<RangeResponse>(["sites", range.siteId, "drives", range.driveId, "items", range.itemId, "workbook", "names", range.rangeName, "range"]);
-
-export const setNamedRangeValues = async (range: RangeReference, values: RangeValues): Promise<void> =>
-    patch(["sites", range.siteId, "drives", range.driveId, "items", range.itemId, "workbook", "names", range.rangeName, "range"], values);
-
+/**
+ * Retrieve the used range of the given worksheet.
+ * https://learn.microsoft.com/en-us/graph/api/range-usedrange
+ */
 export const getUsedRangeValues = async (worksheet: WorksheetReference): Promise<RangeResponse> =>
-    get<RangeResponse>(["sites", worksheet.siteId, "drives", worksheet.driveId, "items", worksheet.itemId, "workbook", "names", worksheet.worksheetName, "range"]);
+    get<RangeResponse>(["sites", worksheet.site, "drives", worksheet.drive, "items", worksheet.item, "workbook", "names", worksheet.worksheet, "range"]);
 
-// TODO: ...
+/**
+ * Retrieve a named range.
+ * https://learn.microsoft.com/en-us/graph/api/range-get
+ */
+export const getNamedRangeValues = async (range: RangeReference): Promise<RangeResponse> =>
+    get<RangeResponse>(["sites", range.site, "drives", range.drive, "items", range.item, "workbook", "names", range.range, "range"]);
+
+/**
+ * Update a named range.
+ * https://learn.microsoft.com/en-us/graph/api/range-update
+ */
+export const setNamedRangeValues = async (range: RangeReference, values: RangeValues): Promise<void> =>
+    patch(["sites", range.site, "drives", range.drive, "items", range.item, "workbook", "names", range.range, "range"], values);
