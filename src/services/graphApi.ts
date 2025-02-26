@@ -30,6 +30,11 @@ export const apiGet = async<T>(path: string | string[]): Promise<T> => {
     return await client.api(normalisedPath).get() as T;
 }
 
+export const apiPost = async<T>(path: string | string[], data: unknown): Promise<T> => {
+    const normalisedPath = typeof path === "string" ? path : segmentsToPath(path);
+    return await client.api(normalisedPath).post(data) as T;
+};
+
 export const apiPatch = async (path: string | string[], data: unknown): Promise<void> => {
     const normalisedPath = typeof path === "string" ? path : segmentsToPath(path);
     await client.api(normalisedPath).patch(data);

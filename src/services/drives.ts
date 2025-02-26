@@ -1,4 +1,4 @@
-import { apiDelete, apiGet } from "./graphApi.js";
+import { apiDelete, apiGet, apiPost } from "./graphApi.js";
 import type { SiteReference, UserInfo } from "./sites.js";
 
 export type DriveId = string & { __brand: "DriveId" };
@@ -121,3 +121,19 @@ export const deleteItem = async (item: ItemReference): Promise<void> =>
         "drives", item.drive,
         "items", item.item
     ]);
+
+/**
+ * Create folder if it doesn't exist, and return the folder.
+ * https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
+ */
+export const createFolder = async (drive: DriveReference, path: ItemPath): Promise<ItemDefinition> => {
+    const payload = {
+        name: path,
+        folder: {},
+        "@microsoft.graph.conflictBehavior": "rename" // Do nothing if already exists
+    };
+
+    return apiPost<ItemDefinition>(`/sites/${encodeURIComponent(drive.site)}` +
+        `/drives/${encodeURIComponent(drive.drive)}` +
+        `/root:${path}:/children`, payload);
+}
