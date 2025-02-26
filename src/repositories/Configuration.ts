@@ -5,14 +5,14 @@ export default class Configuration {
     public readonly azureTenantId: string;
     public readonly azureClientId: string;
     public readonly azureClientSecret: string;
-    public readonly azureScopes: string;
+    public readonly azureScope: string;
     private readonly failedBinding: string[] = [];
 
     public constructor() {
         this.azureTenantId = this.tryBindString("AZURE_TENANT_ID");
         this.azureClientId = this.tryBindString("AZURE_CLIENT_ID");
         this.azureClientSecret = this.tryBindString("AZURE_CLIENT_SECRET");
-        this.azureScopes = this.tryBindString("AZURE_SCOPES", "https://graph.microsoft.com/.default")
+        this.azureScope = this.tryBindString("AZURE_SCOPE", "https://graph.microsoft.com/.default")
 
         this.faultOnFailedBindings();
         Object.freeze(this);
