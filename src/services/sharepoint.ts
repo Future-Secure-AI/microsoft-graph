@@ -93,28 +93,38 @@ export type ListItemResponse = {
  * https://learn.microsoft.com/en-us/graph/api/site-search
  */
 export const searchSites = async (search: string): Promise<ListSitesReponse> =>
-    get<ListSitesReponse>(["sites", `search=${search}`]);
+    get<ListSitesReponse>([
+        "sites", `search=${search}`
+    ]);
 
 /**
  * Retrieve properties for a site resource.
  * https://learn.microsoft.com/en-us/graph/api/site-get
  */
 export const getSite = async (site: SiteReference): Promise<SiteDefinition> =>
-    get<SiteDefinition>(["sites", site.site]);
+    get<SiteDefinition>([
+        "sites", site.site
+    ]);
 
 /**
  * Retrieve the list of Drive resources available for a Site.
  * https://learn.microsoft.com/en-us/graph/api/drive-list
  */
 export const listSiteDrives = async (site: SiteReference): Promise<ListDriveResponse> =>
-    get<ListDriveResponse>(["sites", site.site, "drives"]);
+    get<ListDriveResponse>([
+        "sites", site.site,
+        "drives"
+    ]);
 
 /**
  * Retrieve the metadata for an item in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
 export const getItemByPath = async (drive: DriveReference, path: Path): Promise<ItemDefinition> =>
-    get<ItemDefinition>(`/sites/${encodeURIComponent(drive.site)}/drives/${encodeURIComponent(drive.drive)}/root:${path}`); // `path` not escaped as it contains multiple segments
+    get<ItemDefinition>(
+        `/sites/${encodeURIComponent(drive.site)}` +
+        `/drives/${encodeURIComponent(drive.drive)}` +
+        `/root:${path}`); // `path` not escaped as it contains multiple segments
 
 /**
  * Retrieve the metadata for child items in a drive by file system path.
@@ -123,12 +133,14 @@ export const getItemByPath = async (drive: DriveReference, path: Path): Promise<
 export const listItemChildenByPath = async (drive: DriveReference, path: Path): Promise<ListItemResponse> => {
     const output: ItemDefinition[] = []
 
-    let url: string | undefined = `/sites/${encodeURIComponent(drive.site)}/drives/${encodeURIComponent(drive.drive)}/root:${path}:/children`; // `path` not escaped as it contains multiple segments
+    let url: string | undefined = `/sites/${encodeURIComponent(drive.site)}` +
+        `/drives/${encodeURIComponent(drive.drive)}` +
+        `/root:${path}:/children`; // `path` not escaped as it contains multiple segments
 
     // eslint-disable-next-line no-undefined
     while (url !== undefined) {
         // eslint-disable-next-line no-await-in-loop
-        const response: ListItemResponse = await get<ListItemResponse>(url); 
+        const response: ListItemResponse = await get<ListItemResponse>(url);
         url = response["@odata.nextLink"];
         output.push(...response.value);
     }

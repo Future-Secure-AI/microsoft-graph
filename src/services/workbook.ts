@@ -40,25 +40,52 @@ export type ListWorksheetResponse = {
  * https://learn.microsoft.com/en-us/graph/api/worksheet-list
  */
 export const listWorksheets = async (item: WorkbookReference): Promise<ListWorksheetResponse> =>
-    get<ListWorksheetResponse>(["sites", item.site, "drives", item.drive, "items", item.item, "workbook", "worksheets"]);
+    get<ListWorksheetResponse>([
+        "sites", item.site,
+        "drives", item.drive,
+        "items", item.item,
+        "workbook",
+        "worksheets"
+    ]);
 
 /**
  * Retrieve the used range of the given worksheet.
  * https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */
 export const getUsedRangeValues = async (worksheet: WorksheetReference): Promise<RangeResponse> =>
-    get<RangeResponse>(["sites", worksheet.site, "drives", worksheet.drive, "items", worksheet.item, "workbook", "names", worksheet.worksheet, "range"]);
+    get<RangeResponse>([
+        "sites", worksheet.site,
+        "drives", worksheet.drive,
+        "items", worksheet.item,
+        "workbook",
+        "worksheets", worksheet.worksheet,
+        "range", "usedRange"
+    ]);
 
 /**
  * Retrieve a named range.
  * https://learn.microsoft.com/en-us/graph/api/range-get
  */
 export const getNamedRangeValues = async (range: RangeReference): Promise<RangeResponse> =>
-    get<RangeResponse>(["sites", range.site, "drives", range.drive, "items", range.item, "workbook", "names", range.range, "range"]);
+    get<RangeResponse>([
+        "sites", range.site,
+        "drives", range.drive,
+        "items", range.item,
+        "workbook",
+        "names", range.range,
+        "range"
+    ]);
 
 /**
  * Update a named range.
  * https://learn.microsoft.com/en-us/graph/api/range-update
  */
 export const setNamedRangeValues = async (range: RangeReference, values: RangeValues): Promise<void> =>
-    patch(["sites", range.site, "drives", range.drive, "items", range.item, "workbook", "names", range.range, "range"], values);
+    patch([
+        "sites", range.site,
+        "drives", range.drive,
+        "items", range.item,
+        "workbook",
+        "names", range.range,
+        "range"
+    ], values);
