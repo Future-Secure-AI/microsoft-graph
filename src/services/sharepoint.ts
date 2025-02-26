@@ -1,4 +1,4 @@
-import { get } from "./graphApi.js";
+import { get } from "./graphApia.js";
 
 export type SiteId = string & { __brand: "SiteId" };
 export type DriveId = string & { __brand: "DriveId" };
