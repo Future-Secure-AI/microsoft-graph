@@ -15,13 +15,13 @@ const client = Client.init({
             });
     }
 });
+
 const generatePath = (pathTemplate: string, pathArgs: string[]): string => {
-    if (!pathTemplate.startsWith("/")) {
+    if (!pathTemplate.startsWith("/"))
         throw new BadTemplateError("Path template must start with a slash.");
-    }
 
     let index = 0;
-    return pathTemplate.replace(/\\?\?/ug, (match: string): string => {
+    const result = pathTemplate.replace(/\\?\?/ug, (match: string): string => {
         if (match === "\\?")
             return "?";
 
@@ -32,6 +32,11 @@ const generatePath = (pathTemplate: string, pathArgs: string[]): string => {
 
         return encodeURIComponent(pathArg);
     });
+
+    if (index < pathArgs.length)
+        throw new BadTemplateError("Too many arguments provided for path template.");
+
+    return result;
 };
 
 export const apiGetRaw = async<T>(path: string): Promise<T> =>
