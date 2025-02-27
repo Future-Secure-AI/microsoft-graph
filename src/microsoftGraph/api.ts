@@ -39,26 +39,57 @@ const generatePath = (pathTemplate: string, pathArgs: string[]): string => {
     return result;
 };
 
+/**
+ * Perform a GET request to the Microsoft Graph API with a raw path. PREFER TO USE `apiGet` INSTEAD, as it automatically escapes arguments.
+ */
 export const apiGetRaw = async<T>(path: string): Promise<T> =>
     await client.api(path).get() as T
+
+/**
+ * Perform a GET request to the Microsoft Graph API with an array of path segments. Segments are automatically escaped.
+ */
 export const apiGet = async<T>(pathTemplate: string, pathArgs: string[]): Promise<T> =>
     await apiGetRaw<T>(generatePath(pathTemplate, pathArgs)) as T;
 
+
+/**
+ * Perform a POST request to the Microsoft Graph API with a raw path. PREFER TO USE `apiPost` INSTEAD, as it automatically escapes arguments.
+ */
 export const apiPostRaw = async<T>(path: string, data: unknown): Promise<T> =>
     await client.api(path).post(data) as T
+
+/**
+ * Perform a POST request to the Microsoft Graph API with an array of path segments. Segments are automatically escaped.
+ */
 export const apiPost = async<T>(pathTemplate: string, pathArgs: string[], data: unknown): Promise<T> =>
     await apiPostRaw(generatePath(pathTemplate, pathArgs), data) as T;
 
+
+/**
+ * Perform a PATCH request to the Microsoft Graph API with a raw path. PREFER TO USE `apiPatch` INSTEAD, as it automatically escapes arguments.
+ */
 export const apiPatchRaw = async (path: string, data: unknown): Promise<void> => {
     await client.api(path).patch(data);
 }
+
+/**
+ * Perform a PATCH request to the Microsoft Graph API with an array of path segments. Segments are automatically escaped.
+ */
 export const apiPatch = async (pathTemplate: string, pathArgs: string[], data: unknown): Promise<void> => {
     await apiPatchRaw(generatePath(pathTemplate, pathArgs), data);
 }
 
+
+/**
+ * Perform a DELETE request to the Microsoft Graph API with a raw path. PREFER TO USE `apiDelete` INSTEAD, as it automatically escapes arguments.
+ */
 export const apiDeleteRaw = async (path: string): Promise<void> => {
     await client.api(path).delete();
 }
+
+/**
+ * Perform a DELETE request to the Microsoft Graph API with an array of path segments. Segments are automatically escaped.
+ */
 export const apiDelete = async (pathTemplate: string, pathArgs: string[]): Promise<void> => {
     await apiDeleteRaw(generatePath(pathTemplate, pathArgs));
 }
