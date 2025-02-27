@@ -6,6 +6,10 @@ export type ListWorksheetResponse = {
     value: WorkbookWorksheet[];
 };
 
+/**
+ * Delete an workbook.
+ * https://learn.microsoft.com/en-us/graph/api/driveitem-delete
+ */
 export const deleteWorkbook = async (ref: WorkbookRef): Promise<void> =>
     deleteItem(ref);
 
