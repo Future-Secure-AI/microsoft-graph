@@ -34,22 +34,26 @@ const generatePath = (pathTemplate: string, pathArgs: string[]): string => {
     });
 };
 
-export const apiGet = async<T>(pathTemplate: string, pathArgs: string[]): Promise<T> => {
-    const path = generatePath(pathTemplate, pathArgs);
-    return await client.api(path).get() as T;
-};
+export const apiGetRaw = async<T>(path: string): Promise<T> =>
+    await client.api(path).get() as T
+export const apiGet = async<T>(pathTemplate: string, pathArgs: string[]): Promise<T> =>
+    await apiGetRaw<T>(generatePath(pathTemplate, pathArgs)) as T;
 
-export const apiPost = async<T>(pathTemplate: string, pathArgs: string[], data: unknown): Promise<T> => {
-    const path = generatePath(pathTemplate, pathArgs);
-    return await client.api(path).post(data) as T;
-};
+export const apiPostRaw = async<T>(path: string, data: unknown): Promise<T> =>
+    await client.api(path).post(data) as T
+export const apiPost = async<T>(pathTemplate: string, pathArgs: string[], data: unknown): Promise<T> =>
+    await apiPostRaw(generatePath(pathTemplate, pathArgs), data) as T;
 
-export const apiPatch = async (pathTemplate: string, pathArgs: string[], data: unknown): Promise<void> => {
-    const path = generatePath(pathTemplate, pathArgs);
+export const apiPatchRaw = async (path: string, data: unknown): Promise<void> => {
     await client.api(path).patch(data);
-};
+}
+export const apiPatch = async (pathTemplate: string, pathArgs: string[], data: unknown): Promise<void> => {
+    await apiPatchRaw(generatePath(pathTemplate, pathArgs), data);
+}
 
-export const apiDelete = async (pathTemplate: string, pathArgs: string[]): Promise<void> => {
-    const path = generatePath(pathTemplate, pathArgs);
+export const apiDeleteRaw = async (path: string): Promise<void> => {
     await client.api(path).delete();
-};
+}
+export const apiDelete = async (pathTemplate: string, pathArgs: string[]): Promise<void> => {
+    await apiDeleteRaw(generatePath(pathTemplate, pathArgs));
+}
