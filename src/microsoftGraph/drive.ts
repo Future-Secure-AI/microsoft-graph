@@ -73,7 +73,7 @@ export const createFolder = async (driveRef: DriveRef, folderPath: ItemPath): Pr
  * https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */
 export const copyItem = async (srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFileName: string): Promise<void> =>
-    apiPost("/sites/?/drives/?/items/?/copy", [dstFolderRef.site, dstFolderRef.drive, dstFolderRef.item], {
+    apiPost("/sites/?/drives/?/items/?/copy", [srcFileRef.site, srcFileRef.drive, srcFileRef.item], {
         name: dstFileName,
         parentReference: {
             siteId: dstFolderRef.site,
