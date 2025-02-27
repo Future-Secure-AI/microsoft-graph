@@ -22,7 +22,6 @@ export type WorksheetDefinition = {
     visibility: string;
 };
 
-
 export type RangeResponse = {
     address: string;
     addressLocal: string;

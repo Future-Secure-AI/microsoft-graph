@@ -1,5 +1,5 @@
 import { Client } from "@microsoft/microsoft-graph-client";
-import { getCurrentAccessToken } from "../identity/accessToken.js";
+import { getCurrentAccessToken } from "../azureEntra/accessToken.js";
 
 // See https://learn.microsoft.com/en-us/graph/api/overview for more information on the Microsoft Graph API
 
