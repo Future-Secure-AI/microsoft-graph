@@ -44,7 +44,7 @@ export const listItemChildenByPath = async (driveRef: DriveRef, itemPath: ItemPa
     }
 
     return {
-        "@odata.context": "",
+        "@odata.context": response["@odata.context"],
         value: output,
     };
 }
