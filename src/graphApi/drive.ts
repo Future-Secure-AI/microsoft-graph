@@ -80,22 +80,22 @@ export const listDrives = async (ref: SiteReference): Promise<ListDriveResponse>
  * Retrieve the metadata for an item in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
-export const getItemByPath = async (ref: DriveReference, path: ItemPath): Promise<ItemDefinition> =>
+export const getItemByPath = async (driveRef: DriveReference, itemPath: ItemPath): Promise<ItemDefinition> =>
     apiGet<ItemDefinition>(
-        `/sites/${encodeURIComponent(ref.site)}` +
-        `/drives/${encodeURIComponent(ref.drive)}` +
-        `/root:${path}`); // `path` not escaped as it contains multiple segments
+        `/sites/${encodeURIComponent(driveRef.site)}` +
+        `/drives/${encodeURIComponent(driveRef.drive)}` +
+        `/root:${itemPath}`); // `path` not escaped as it contains multiple segments
 
 /**
  * Retrieve the metadata for child items in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-list-children
  */
-export const listItemChildenByPath = async (ref: DriveReference, path: ItemPath): Promise<ListItemResponse> => {
+export const listItemChildenByPath = async (driveRef: DriveReference, itemPath: ItemPath): Promise<ListItemResponse> => {
     const output: ItemDefinition[] = []
 
-    let url: string | undefined = `/sites/${encodeURIComponent(ref.site)}` +
-        `/drives/${encodeURIComponent(ref.drive)}` +
-        `/root:${path}:/children`; // `path` not escaped as it contains multiple segments
+    let url: string | undefined = `/sites/${encodeURIComponent(driveRef.site)}` +
+        `/drives/${encodeURIComponent(driveRef.drive)}` +
+        `/root:${itemPath}:/children`; // `path` not escaped as it contains multiple segments
 
     // eslint-disable-next-line no-undefined
     while (url !== undefined) {
@@ -126,12 +126,12 @@ export const deleteItem = async (ref: ItemReference): Promise<void> =>
  * Create folder if it doesn't exist, and return the folder.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
  */
-export const createFolder = async (ref: DriveReference, path: ItemPath): Promise<ItemDefinition> => apiPost<ItemDefinition>(
-    `/sites/${encodeURIComponent(ref.site)}` +
-    `/drives/${encodeURIComponent(ref.drive)}` +
-    `/root:${path}:/children`,
+export const createFolder = async (driveRef: DriveReference, folderPath: ItemPath): Promise<ItemDefinition> => apiPost<ItemDefinition>(
+    `/sites/${encodeURIComponent(driveRef.site)}` +
+    `/drives/${encodeURIComponent(driveRef.drive)}` +
+    `/root:${folderPath}:/children`,
     {
-        name: path,
+        name: folderPath,
         folder: {},
         "@microsoft.graph.conflictBehavior": "rename" // Do nothing if already exists
     });
