@@ -1,6 +1,6 @@
-import type { DriveId, DriveReference, ItemId, ItemReference } from "./services/graphApi/drive.js";
-import type { SiteId, SiteReference } from "./services/graphApi/site.js";
-import { getUsedRangeValues, type WorksheetReference, type WorksheetName } from "./services/graphApi/workbook.js";
+import type { DriveId, DriveReference, ItemId, ItemReference } from "./graphApi/drive.js";
+import type { SiteId, SiteReference } from "./graphApi/site.js";
+import { getUsedRangeValues, type WorksheetReference, type WorksheetName } from "./graphApi/workbook.js";
 
 const siteId = "<INSERT-SITE-ID>" as SiteId;
 const driveId = "<INSERT-DRIVE-ID>" as DriveId;
