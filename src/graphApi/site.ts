@@ -35,8 +35,8 @@ export const searchSites = async (search: string): Promise<ListSitesReponse> =>
  * Retrieve properties for a site resource.
  * https://learn.microsoft.com/en-us/graph/api/site-get
  */
-export const getSite = async (site: SiteReference): Promise<SiteDefinition> =>
+export const getSite = async (ref: SiteReference): Promise<SiteDefinition> =>
     apiGet<SiteDefinition>([
-        "sites", site.site
+        "sites", ref.site
     ]);
 

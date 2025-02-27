@@ -70,9 +70,9 @@ export type ListItemResponse = {
  * Retrieve the list of Drive resources available for a Site.
  * https://learn.microsoft.com/en-us/graph/api/drive-list
  */
-export const listDrives = async (site: SiteReference): Promise<ListDriveResponse> =>
+export const listDrives = async (ref: SiteReference): Promise<ListDriveResponse> =>
     apiGet<ListDriveResponse>([
-        "sites", site.site,
+        "sites", ref.site,
         "drives"
     ]);
 
@@ -80,21 +80,21 @@ export const listDrives = async (site: SiteReference): Promise<ListDriveResponse
  * Retrieve the metadata for an item in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
-export const getItemByPath = async (drive: DriveReference, path: ItemPath): Promise<ItemDefinition> =>
+export const getItemByPath = async (ref: DriveReference, path: ItemPath): Promise<ItemDefinition> =>
     apiGet<ItemDefinition>(
-        `/sites/${encodeURIComponent(drive.site)}` +
-        `/drives/${encodeURIComponent(drive.drive)}` +
+        `/sites/${encodeURIComponent(ref.site)}` +
+        `/drives/${encodeURIComponent(ref.drive)}` +
         `/root:${path}`); // `path` not escaped as it contains multiple segments
 
 /**
  * Retrieve the metadata for child items in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-list-children
  */
-export const listItemChildenByPath = async (drive: DriveReference, path: ItemPath): Promise<ListItemResponse> => {
+export const listItemChildenByPath = async (ref: DriveReference, path: ItemPath): Promise<ListItemResponse> => {
     const output: ItemDefinition[] = []
 
-    let url: string | undefined = `/sites/${encodeURIComponent(drive.site)}` +
-        `/drives/${encodeURIComponent(drive.drive)}` +
+    let url: string | undefined = `/sites/${encodeURIComponent(ref.site)}` +
+        `/drives/${encodeURIComponent(ref.drive)}` +
         `/root:${path}:/children`; // `path` not escaped as it contains multiple segments
 
     // eslint-disable-next-line no-undefined
@@ -115,20 +115,20 @@ export const listItemChildenByPath = async (drive: DriveReference, path: ItemPat
  * Delete an item.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-delete
  */
-export const deleteItem = async (item: ItemReference): Promise<void> =>
+export const deleteItem = async (ref: ItemReference): Promise<void> =>
     apiDelete([
-        "sites", item.site,
-        "drives", item.drive,
-        "items", item.item
+        "sites", ref.site,
+        "drives", ref.drive,
+        "items", ref.item
     ]);
 
 /**
  * Create folder if it doesn't exist, and return the folder.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
  */
-export const createFolder = async (drive: DriveReference, path: ItemPath): Promise<ItemDefinition> => apiPost<ItemDefinition>(
-    `/sites/${encodeURIComponent(drive.site)}` +
-    `/drives/${encodeURIComponent(drive.drive)}` +
+export const createFolder = async (ref: DriveReference, path: ItemPath): Promise<ItemDefinition> => apiPost<ItemDefinition>(
+    `/sites/${encodeURIComponent(ref.site)}` +
+    `/drives/${encodeURIComponent(ref.drive)}` +
     `/root:${path}:/children`,
     {
         name: path,
@@ -141,20 +141,20 @@ export const createFolder = async (drive: DriveReference, path: ItemPath): Promi
  * NOTE: In many cases the copy action is performed asynchronously. The response from the API will only indicate that the copy operation was accepted or rejected.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */
-export const copyItem = async (srcItem: ItemReference, dstFolder: ItemReference, dstName: string): Promise<void> =>
+export const copyItem = async (srcFileRef: ItemReference, dstFolderRef: ItemReference, dstFileName: string): Promise<void> =>
     apiPost(
         [
-            "sites", srcItem.site,
-            "drives", srcItem.drive,
-            "items", srcItem.item,
+            "sites", srcFileRef.site,
+            "drives", srcFileRef.drive,
+            "items", srcFileRef.item,
             "copy"
         ],
         {
-            name: dstName,
+            name: dstFileName,
             parentReference: {
-                siteId: dstFolder.site,
-                driveId: dstFolder.drive,
-                id: dstFolder.item
+                siteId: dstFolderRef.site,
+                driveId: dstFolderRef.drive,
+                id: dstFolderRef.item
             }
         }
     );

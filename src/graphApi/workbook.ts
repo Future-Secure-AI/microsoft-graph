@@ -42,18 +42,18 @@ export type ListWorksheetResponse = {
 
 // TODO: Flesh out models
 
-export const deleteWorkbook = async (item: WorkbookReference): Promise<void> =>
-    deleteItem(item);
+export const deleteWorkbook = async (ref: WorkbookReference): Promise<void> =>
+    deleteItem(ref);
 
 /**
  * Retrieve a list of worksheets in a given workbook.
  * https://learn.microsoft.com/en-us/graph/api/worksheet-list
  */
-export const listWorksheets = async (item: WorkbookReference): Promise<ListWorksheetResponse> =>
+export const listWorksheets = async (ref: WorkbookReference): Promise<ListWorksheetResponse> =>
     apiGet<ListWorksheetResponse>([
-        "sites", item.site,
-        "drives", item.drive,
-        "items", item.item,
+        "sites", ref.site,
+        "drives", ref.drive,
+        "items", ref.item,
         "workbook",
         "worksheets"
     ]);
@@ -62,26 +62,26 @@ export const listWorksheets = async (item: WorkbookReference): Promise<ListWorks
  * Delete worksheet from a workbook.
  * https://learn.microsoft.com/en-us/graph/api/worksheet-delete
  */
-export const deleteWorksheet = async (worksheet: WorksheetReference): Promise<void> =>
+export const deleteWorksheet = async (ref: WorksheetReference): Promise<void> =>
     apiDelete([
-        "sites", worksheet.site,
-        "drives", worksheet.drive,
-        "items", worksheet.item,
+        "sites", ref.site,
+        "drives", ref.drive,
+        "items", ref.item,
         "workbook",
-        "worksheets", worksheet.worksheet
+        "worksheets", ref.worksheet
     ]);
 
 /**
  * Retrieve the used range of the given worksheet.
  * https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */
-export const getUsedRangeValues = async (worksheet: WorksheetReference): Promise<RangeResponse> =>
+export const getUsedRangeValues = async (ref: WorksheetReference): Promise<RangeResponse> =>
     apiGet<RangeResponse>([
-        "sites", worksheet.site,
-        "drives", worksheet.drive,
-        "items", worksheet.item,
+        "sites", ref.site,
+        "drives", ref.drive,
+        "items", ref.item,
         "workbook",
-        "worksheets", worksheet.worksheet,
+        "worksheets", ref.worksheet,
         "range", "usedRange"
     ]);
 
@@ -89,13 +89,13 @@ export const getUsedRangeValues = async (worksheet: WorksheetReference): Promise
  * Retrieve a named range.
  * https://learn.microsoft.com/en-us/graph/api/range-get
  */
-export const getNamedRangeValues = async (range: RangeReference): Promise<RangeResponse> =>
+export const getNamedRangeValues = async (ref: RangeReference): Promise<RangeResponse> =>
     apiGet<RangeResponse>([
-        "sites", range.site,
-        "drives", range.drive,
-        "items", range.item,
+        "sites", ref.site,
+        "drives", ref.drive,
+        "items", ref.item,
         "workbook",
-        "names", range.range,
+        "names", ref.range,
         "range"
     ]);
 
@@ -103,12 +103,12 @@ export const getNamedRangeValues = async (range: RangeReference): Promise<RangeR
  * Update a named range.
  * https://learn.microsoft.com/en-us/graph/api/range-update
  */
-export const setNamedRangeValues = async (range: RangeReference, values: RangeValues): Promise<void> =>
+export const setNamedRangeValues = async (ref: RangeReference, values: RangeValues): Promise<void> =>
     apiPatch([
-        "sites", range.site,
-        "drives", range.drive,
-        "items", range.item,
+        "sites", ref.site,
+        "drives", ref.drive,
+        "items", ref.item,
         "workbook",
-        "names", range.range,
+        "names", ref.range,
         "range"
     ], values);
