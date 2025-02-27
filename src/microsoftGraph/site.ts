@@ -11,9 +11,9 @@ export type ListSitesReponse = {
  * https://learn.microsoft.com/en-us/graph/api/site-search
  */
 export const searchSites = async (search: string): Promise<ListSitesReponse> =>
-    apiGet<ListSitesReponse>([
-        `sites?search=${search}`
-    ]);
+    apiGet<ListSitesReponse>(
+        `/sites?search=${encodeURIComponent(search)}`
+    );
 
 /**
  * Retrieve properties for a site resource.
