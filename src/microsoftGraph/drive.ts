@@ -17,20 +17,14 @@ export type ListItemResponse = {
  * https://learn.microsoft.com/en-us/graph/api/drive-list
  */
 export const listDrives = async (ref: SiteRef): Promise<ListDriveResponse> =>
-    apiGet<ListDriveResponse>([
-        "sites", ref.site,
-        "drives"
-    ]);
+    apiGet<ListDriveResponse>("/sites/?/drives", [ref.site]);
 
 /**
  * Retrieve the metadata for an item in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
 export const getItemByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> =>
-    apiGet<DriveItem>(
-        `/sites/${encodeURIComponent(driveRef.site)}` +
-        `/drives/${encodeURIComponent(driveRef.drive)}` +
-        `/root:${itemPath}`); // `path` not escaped as it contains multiple segments
+    apiGet<DriveItem>(`/sites/?/drives/?/root:${itemPath}`, [driveRef.site, driveRef.drive]);
 
 /**
  * Retrieve the metadata for child items in a drive by file system path.
@@ -39,14 +33,14 @@ export const getItemByPath = async (driveRef: DriveRef, itemPath: ItemPath): Pro
 export const listItemChildenByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<ListItemResponse> => {
     const output: DriveItem[] = []
 
-    let url: string | undefined = `/sites/${encodeURIComponent(driveRef.site)}` +
+    let url: string | undefined = `/sites/${encodeURIComponent(driveRef.site)}` + // NOTE: While this approach is effective, it is not clean. Do not replicate this if you can. Tidy this if you have a cleaner approach.
         `/drives/${encodeURIComponent(driveRef.drive)}` +
-        `/root:${itemPath}:/children`; // `path` not escaped as it contains multiple segments
+        `/root:${itemPath}:/children`;
 
     // eslint-disable-next-line no-undefined
     while (url !== undefined) {
         // eslint-disable-next-line no-await-in-loop
-        const response: ListItemResponse = await apiGet<ListItemResponse>(url);
+        const response: ListItemResponse = await apiGet<ListItemResponse>(url, []);
         url = response["@odata.nextLink"];
         output.push(...response.value);
     }
@@ -62,21 +56,14 @@ export const listItemChildenByPath = async (driveRef: DriveRef, itemPath: ItemPa
  * https://learn.microsoft.com/en-us/graph/api/driveitem-delete
  */
 export const deleteItem = async (ref: ItemRef): Promise<void> =>
-    apiDelete([
-        "sites", ref.site,
-        "drives", ref.drive,
-        "items", ref.item
-    ]);
+    apiDelete("/sites /?/drives/?/items/?", [ref.site, ref.drive, ref.item]);
 
 /**
  * Create folder if it doesn't exist, and return the folder.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
  */
-export const createFolder = async (driveRef: DriveRef, folderPath: ItemPath): Promise<DriveItem> => apiPost<DriveItem>(
-    `/sites/${encodeURIComponent(driveRef.site)}` +
-    `/drives/${encodeURIComponent(driveRef.drive)}` +
-    `/root:${folderPath}:/children`,
-    {
+export const createFolder = async (driveRef: DriveRef, folderPath: ItemPath): Promise<DriveItem> =>
+    apiPost<DriveItem>(`/sites/?/drives/?/root:${folderPath}:/children`, [driveRef.site, driveRef.drive], {
         name: folderPath,
         folder: {},
         "@microsoft.graph.conflictBehavior": "rename" // Do nothing if already exists
@@ -88,19 +75,12 @@ export const createFolder = async (driveRef: DriveRef, folderPath: ItemPath): Pr
  * https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */
 export const copyItem = async (srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFileName: string): Promise<void> =>
-    apiPost(
-        [
-            "sites", srcFileRef.site,
-            "drives", srcFileRef.drive,
-            "items", srcFileRef.item,
-            "copy"
-        ],
-        {
-            name: dstFileName,
-            parentReference: {
-                siteId: dstFolderRef.site,
-                driveId: dstFolderRef.drive,
-                id: dstFolderRef.item
-            }
+    apiPost("/sites/?/drives/?/items/?/copy", [dstFolderRef.site, dstFolderRef.drive, dstFolderRef.item], {
+        name: dstFileName,
+        parentReference: {
+            siteId: dstFolderRef.site,
+            driveId: dstFolderRef.drive,
+            id: dstFolderRef.item
         }
+    }
     );

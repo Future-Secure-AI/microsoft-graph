@@ -27,6 +27,7 @@ export default [
       "no-magic-numbers": "off",
       "capitalized-comments": "off",
       "sort-keys": "off",
+      "no-plusplus": "off",
       "no-console": "warn",
       "no-warning-comments": "warn",
       "@typescript-eslint/max-params": "off",
