@@ -12,7 +12,7 @@ export type ListSitesReponse = {
  */
 export const searchSites = async (search: string): Promise<ListSitesReponse> =>
     apiGet<ListSitesReponse>([
-        "sites", `search=${search}`
+        `sites?search=${search}`
     ]);
 
 /**
