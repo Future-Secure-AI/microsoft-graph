@@ -68,8 +68,8 @@ export const createFolder = async (driveRef: DriveRef, folderPath: ItemPath): Pr
     });
 
 /**
- * Create a copy of an item. 
- * NOTE: In many cases the copy action is performed asynchronously. The response from the API will only indicate that the copy operation was accepted or rejected.
+ * Initiate a copy of an item. 
+ * NOTE The response from the API will only indicate that the copy operation was accepted or rejected, as the copy operation is performed asynchronously.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */
 export const copyItem = async (srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFileName: string): Promise<void> =>
