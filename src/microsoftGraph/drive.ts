@@ -1,68 +1,14 @@
 import { apiDelete, apiGet, apiPost } from "./api.js";
-import type { SiteReference, UserInfo } from "./site.js";
-
-export type DriveId = string & { __brand: "DriveId" };
-export type DriveReference = SiteReference & { drive: DriveId }
-
-export type ItemId = string & { __brand: "ItemId" };
-export type ItemReference = DriveReference & { item: ItemId };
-export type ItemPath = string & { __brand: "Path" };
-
-export type DriveDefinition = {
-    createdDateTime: string; // ISO 8601 date string
-    description: string;
-    id: string;
-    lastModifiedDateTime: string; // ISO 8601 date string
-    name: string;
-    webUrl: string;
-    driveType: string;
-    createdBy: {
-        user: UserInfo;
-    };
-    lastModifiedBy: {
-        user: UserInfo;
-    };
-    owner: {
-        user: UserInfo;
-    };
-    quota: {
-        deleted: number;
-        remaining: number;
-        state: string;
-        total: number;
-        used: number;
-    };
-};
-
-export type ItemDefinition = {
-    id: string;
-    lastModifiedBy: {
-        user: UserInfo;
-    };
-    createdBy: {
-        user: UserInfo;
-    };
-    createdDateTime: string; // ISO 8601 date string
-    cTag: string;
-    eTag: string;
-    folder?: {
-        childCount: number;
-    };
-    lastModifiedDateTime: string; // ISO 8601 date string
-    name: string;
-    root?: unknown;
-    size: number;
-    webUrl: string;
-};
+import type { DriveItem, DriveRef, ItemPath, ItemRef, SiteRef } from "./models.js";
 
 export type ListDriveResponse = {
     "@odata.context": string;
-    value: DriveDefinition[];
+    value: DriveItem[];
 };
 
 export type ListItemResponse = {
     "@odata.context": string;
-    value: ItemDefinition[];
+    value: DriveItem[];
     "@odata.nextLink"?: string;
 };
 
@@ -70,7 +16,7 @@ export type ListItemResponse = {
  * Retrieve the list of Drive resources available for a Site.
  * https://learn.microsoft.com/en-us/graph/api/drive-list
  */
-export const listDrives = async (ref: SiteReference): Promise<ListDriveResponse> =>
+export const listDrives = async (ref: SiteRef): Promise<ListDriveResponse> =>
     apiGet<ListDriveResponse>([
         "sites", ref.site,
         "drives"
@@ -80,8 +26,8 @@ export const listDrives = async (ref: SiteReference): Promise<ListDriveResponse>
  * Retrieve the metadata for an item in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
-export const getItemByPath = async (driveRef: DriveReference, itemPath: ItemPath): Promise<ItemDefinition> =>
-    apiGet<ItemDefinition>(
+export const getItemByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> =>
+    apiGet<DriveItem>(
         `/sites/${encodeURIComponent(driveRef.site)}` +
         `/drives/${encodeURIComponent(driveRef.drive)}` +
         `/root:${itemPath}`); // `path` not escaped as it contains multiple segments
@@ -90,8 +36,8 @@ export const getItemByPath = async (driveRef: DriveReference, itemPath: ItemPath
  * Retrieve the metadata for child items in a drive by file system path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-list-children
  */
-export const listItemChildenByPath = async (driveRef: DriveReference, itemPath: ItemPath): Promise<ListItemResponse> => {
-    const output: ItemDefinition[] = []
+export const listItemChildenByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<ListItemResponse> => {
+    const output: DriveItem[] = []
 
     let url: string | undefined = `/sites/${encodeURIComponent(driveRef.site)}` +
         `/drives/${encodeURIComponent(driveRef.drive)}` +
@@ -115,7 +61,7 @@ export const listItemChildenByPath = async (driveRef: DriveReference, itemPath: 
  * Delete an item.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-delete
  */
-export const deleteItem = async (ref: ItemReference): Promise<void> =>
+export const deleteItem = async (ref: ItemRef): Promise<void> =>
     apiDelete([
         "sites", ref.site,
         "drives", ref.drive,
@@ -126,7 +72,7 @@ export const deleteItem = async (ref: ItemReference): Promise<void> =>
  * Create folder if it doesn't exist, and return the folder.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
  */
-export const createFolder = async (driveRef: DriveReference, folderPath: ItemPath): Promise<ItemDefinition> => apiPost<ItemDefinition>(
+export const createFolder = async (driveRef: DriveRef, folderPath: ItemPath): Promise<DriveItem> => apiPost<DriveItem>(
     `/sites/${encodeURIComponent(driveRef.site)}` +
     `/drives/${encodeURIComponent(driveRef.drive)}` +
     `/root:${folderPath}:/children`,
@@ -141,7 +87,7 @@ export const createFolder = async (driveRef: DriveReference, folderPath: ItemPat
  * NOTE: In many cases the copy action is performed asynchronously. The response from the API will only indicate that the copy operation was accepted or rejected.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */
-export const copyItem = async (srcFileRef: ItemReference, dstFolderRef: ItemReference, dstFileName: string): Promise<void> =>
+export const copyItem = async (srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFileName: string): Promise<void> =>
     apiPost(
         [
             "sites", srcFileRef.site,

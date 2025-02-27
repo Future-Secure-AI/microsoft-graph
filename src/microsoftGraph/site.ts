@@ -1,25 +1,9 @@
 import { apiGet } from "./api.js";
-
-export type SiteId = string & { __brand: "SiteId" };
-export type SiteReference = { site: SiteId };
-
-export type UserInfo = {
-    id: string;
-    displayName: string;
-    email?: string;
-};
-
-export type SiteDefinition = {
-    id: SiteId;
-    name: string;
-    createdDateTime: string; // ISO 8601 date string
-    lastModifiedDateTime: string; // ISO 8601 date string
-    webUrl: string;
-};
+import type { Site, SiteRef } from "./models.js";
 
 export type ListSitesReponse = {
     "@odata.context": string;
-    value: SiteDefinition[];
+    value: Site[];
 };
 
 /**
@@ -35,8 +19,8 @@ export const searchSites = async (search: string): Promise<ListSitesReponse> =>
  * Retrieve properties for a site resource.
  * https://learn.microsoft.com/en-us/graph/api/site-get
  */
-export const getSite = async (ref: SiteReference): Promise<SiteDefinition> =>
-    apiGet<SiteDefinition>([
+export const getSite = async (ref: SiteRef): Promise<Site> =>
+    apiGet<Site>([
         "sites", ref.site
     ]);
 
