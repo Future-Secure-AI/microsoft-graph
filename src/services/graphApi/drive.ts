@@ -1,5 +1,5 @@
-import { apiDelete, apiGet, apiPost } from "./graphApi.js";
-import type { SiteReference, UserInfo } from "./sites.js";
+import { apiDelete, apiGet, apiPost } from "./api.js";
+import type { SiteReference, UserInfo } from "./site.js";
 
 export type DriveId = string & { __brand: "DriveId" };
 export type DriveReference = SiteReference & { drive: DriveId }

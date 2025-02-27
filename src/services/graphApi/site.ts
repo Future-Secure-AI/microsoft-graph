@@ -1,4 +1,4 @@
-import { apiGet } from "./graphApi.js";
+import { apiGet } from "./api.js";
 
 export type SiteId = string & { __brand: "SiteId" };
 export type SiteReference = { site: SiteId };

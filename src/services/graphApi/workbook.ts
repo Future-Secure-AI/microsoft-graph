@@ -1,7 +1,8 @@
-import { deleteItem, type ItemReference } from "./drives.js";
-import { apiDelete, apiGet, apiPatch } from "./graphApi.js";
+import { deleteItem, type ItemReference } from "./drive.js";
+import { apiDelete, apiGet, apiPatch } from "./api.js";
 
 export type WorkbookReference = ItemReference;
+
 export type WorksheetId = string & { __brand: "WorksheetId" };
 export type WorksheetName = string & { __brand: "WorksheetName" };
 export type WorksheetReference = WorkbookReference & { worksheet: WorksheetId | WorksheetName };
@@ -11,7 +12,17 @@ export type RangeName = string & { __brand: "RangeName" };
 export type RangeReference = WorkbookReference & { range: RangeId | RangeName };
 
 export type CellValue = string | number | boolean | null | Date;
+
 export type RangeValues = CellValue[][];
+
+export type WorksheetDefinition = {
+    id: WorksheetId;
+    name: WorksheetName;
+    position: number;
+    visibility: string;
+};
+
+
 export type RangeResponse = {
     address: string;
     addressLocal: string;
@@ -24,16 +35,12 @@ export type RangeResponse = {
     rowIndex: number;
     values: RangeValues;
 }
-export type WorksheetDefinition = {
-    id: WorksheetId;
-    name: WorksheetName;
-    position: number;
-    visibility: string;
-};
 
 export type ListWorksheetResponse = {
     value: WorksheetDefinition[];
 };
+
+// TODO: Flesh out models
 
 export const deleteWorkbook = async (item: WorkbookReference): Promise<void> =>
     deleteItem(item);

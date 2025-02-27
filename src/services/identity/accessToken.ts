@@ -1,5 +1,5 @@
 import { type AccessToken as InnerAccessToken, ClientSecretCredential } from "@azure/identity";
-import { azureClientId, azureClientSecret, azureScope, azureTenantId } from "./configuration.js";
+import { azureClientId, azureClientSecret, azureScope, azureTenantId } from "../configuration.js";
 
 export type AccessToken = string & { __brand: "AccessToken" };
 
