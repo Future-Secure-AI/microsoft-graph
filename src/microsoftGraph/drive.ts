@@ -1,4 +1,4 @@
-import { apiDelete, apiGet, apiPost } from "./api.js";
+import { apiDelete, apiGet, apiGetRaw, apiPost } from "./api.js";
 import type { DriveItem, DriveRef, ItemPath, ItemRef, SiteRef } from "./models.js";
 
 export type ListDriveResponse = {
@@ -33,15 +33,13 @@ export const getItemByPath = async (driveRef: DriveRef, itemPath: ItemPath): Pro
 export const listItemChildenByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<ListItemResponse> => {
     const output: DriveItem[] = []
 
-    let url: string | undefined = `/sites/${encodeURIComponent(driveRef.site)}` + // NOTE: While this approach is effective, it is not clean. Do not replicate this if you can. Tidy this if you have a cleaner approach.
-        `/drives/${encodeURIComponent(driveRef.drive)}` +
-        `/root:${itemPath}:/children`;
+    let response = await apiGet<ListItemResponse>(`/sites/?/drives/?/root:${itemPath}:/children`, [driveRef.site, driveRef.drive]);
+    output.push(...response.value);
 
     // eslint-disable-next-line no-undefined
-    while (url !== undefined) {
+    while (response["@odata.nextLink"] !== undefined) {
         // eslint-disable-next-line no-await-in-loop
-        const response: ListItemResponse = await apiGet<ListItemResponse>(url, []);
-        url = response["@odata.nextLink"];
+        response = await apiGetRaw<ListItemResponse>(response["@odata.nextLink"]);
         output.push(...response.value);
     }
 
