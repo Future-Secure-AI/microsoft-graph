@@ -1,7 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
-/* eslint-disable max-lines */
-
 export type DriveId = string & { __brand: "DriveId" };
 export type DriveRef = SiteRef & { drive: DriveId }
 
@@ -26,7 +22,7 @@ export type CellValue = string | number | boolean | null | Date;
 export type RangeValues = CellValue[][];
 
 // -------
-/* 
+/*
  * The following is adapted from https://github.com/microsoftgraph/msgraph-typescript-typings/blob/main/microsoft-graph.d.ts
  *  - `any` replaced with `unknown`
  *  - removed unused `CallRecords`

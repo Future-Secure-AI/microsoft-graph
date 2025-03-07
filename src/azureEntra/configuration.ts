@@ -17,7 +17,6 @@ export const azureClientSecret: string = tryBindString("AZURE_CLIENT_SECRET");
 export const azureScope: string = tryBindString("AZURE_SCOPE", "https://graph.microsoft.com/.default");
 
 if (failedBinding.length > 0) {
-    // eslint-disable-next-line no-console
     console.error(`\x1b[31mFATAL: Environment variable(s) ${failedBinding.join(", ")} missing or empty.\x1b[0m`);
     process.exit(1);
 }

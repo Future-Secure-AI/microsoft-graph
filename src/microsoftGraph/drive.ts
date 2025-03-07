@@ -36,9 +36,7 @@ export const listItemChildenByPath = async (driveRef: DriveRef, itemPath: ItemPa
     let response = await apiGet<ListItemResponse>(`/sites/?/drives/?/root:${itemPath}:/children`, [driveRef.site, driveRef.drive]);
     output.push(...response.value);
 
-    // eslint-disable-next-line no-undefined
     while (response["@odata.nextLink"] !== undefined) {
-        // eslint-disable-next-line no-await-in-loop
         response = await apiGetRaw<ListItemResponse>(response["@odata.nextLink"]);
         output.push(...response.value);
     }
@@ -68,7 +66,7 @@ export const createFolder = async (driveRef: DriveRef, folderPath: ItemPath): Pr
     });
 
 /**
- * Initiate a copy of an item. 
+ * Initiate a copy of an item.
  * NOTE The response from the API will only indicate that the copy operation was accepted or rejected, as the copy operation is performed asynchronously.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */
