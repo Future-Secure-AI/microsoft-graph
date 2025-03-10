@@ -1,3 +1,6 @@
+import type { DriveId, ItemId } from './drive.ts'
+import type { SiteId } from './site.ts';
+
 /* eslint-disable */
 
 /*

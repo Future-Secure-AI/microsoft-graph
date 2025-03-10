@@ -39,27 +39,30 @@ const fixLintDisables = (data: string): string =>
         /\/\/ tslint:disable-next-line: [a-z- ]+\n/g,
         "");
 
-const linkStronglyTypedIds = (data: string): string => data
-    .replace(
-        /export interface Entity\s*{[^}]*id\?: string;/g,
-        "export interface Entity<TId = string> {\n    // The unique identifier for an entity. Read-only.\n    id?: TId;"
-    )
-    .replace(
-        /export interface BaseItem<TId = string> extends Entity<TId>/g,
-        "export interface BaseItem extends Entity"
-    )
-    .replace(
-        "export interface Drive extends BaseItem {",
-        "export interface Drive extends BaseItem<DriveId> {"
-    )
-    .replace(
-        "export interface DriveItem extends BaseItem {",
-        "export interface DriveItem extends BaseItem<ItemId> {"
-    )
-    .replace(
-        "export interface Site extends BaseItem {",
-        "export interface Site extends BaseItem<SiteId> {"
-    )
+const linkStronglyTypedIds = (data: string): string =>
+    "import type { DriveId, ItemId } from './drive.ts'\n" +
+    "import type { SiteId } from './site.ts';\n\n" +
+    data
+        .replace(
+            /export interface Entity\s*{[^}]*id\?: string;/g,
+            "export interface Entity<TId = string> {\n    // The unique identifier for an entity. Read-only.\n    id?: TId;"
+        )
+        .replace(
+            /export interface BaseItem<TId = string> extends Entity<TId>/g,
+            "export interface BaseItem extends Entity"
+        )
+        .replace(
+            "export interface Drive extends BaseItem {",
+            "export interface Drive extends BaseItem<DriveId> {"
+        )
+        .replace(
+            "export interface DriveItem extends BaseItem {",
+            "export interface DriveItem extends BaseItem<ItemId> {"
+        )
+        .replace(
+            "export interface Site extends BaseItem {",
+            "export interface Site extends BaseItem<SiteId> {"
+        )
     ;
 
 let data = await downloadFile(inputUrl);
