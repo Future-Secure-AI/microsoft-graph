@@ -1,5 +1,8 @@
 import { apiGet } from "./api.js";
-import type { Site, SiteRef } from "./models.js";
+import type { Site } from "./models.js";
+
+export type SiteId = string & { __brand: "SiteId" };
+export type SiteRef = { site: SiteId };
 
 export type ListSitesReponse = {
     "@odata.context": string;

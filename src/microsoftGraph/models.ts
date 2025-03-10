@@ -2,29 +2,6 @@
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 /* eslint-disable max-lines */
 
-export type DriveId = string & { __brand: "DriveId" };
-export type DriveRef = SiteRef & { drive: DriveId }
-
-export type ItemId = string & { __brand: "ItemId" };
-export type ItemRef = DriveRef & { item: ItemId };
-export type ItemPath = string & { __brand: "Path" };
-
-export type SiteId = string & { __brand: "SiteId" };
-export type SiteRef = { site: SiteId };
-
-export type WorkbookRef = ItemRef;
-
-export type WorksheetId = string & { __brand: "WorksheetId" };
-export type WorksheetName = string & { __brand: "WorksheetName" };
-export type WorksheetRef = WorkbookRef & { worksheet: WorksheetId | WorksheetName };
-
-export type RangeId = string & { __brand: "RangeId" };
-export type RangeName = string & { __brand: "RangeName" };
-export type RangeRef = WorkbookRef & { range: RangeId | RangeName };
-
-export type CellValue = string | number | boolean | null | Date;
-export type RangeValues = CellValue[][];
-
 // -------
 /* 
  * The following is adapted from https://github.com/microsoftgraph/msgraph-typescript-typings/blob/main/microsoft-graph.d.ts

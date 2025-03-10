@@ -1,6 +1,6 @@
-import type { DriveId, DriveRef, ItemId, ItemRef as DriveItemRef, SiteId, SiteRef, WorksheetName, WorksheetRef as WorkbookWorksheetRef } from "./microsoftGraph/models.js";
-import { getUsedRangeValues } from "./microsoftGraph/workbook.js";
-
+import type { DriveId, DriveRef, ItemId, ItemRef } from "./microsoftGraph/drive.js";
+import type { SiteId, SiteRef } from "./microsoftGraph/site.js";
+import { getUsedRangeValues, type WorksheetName, type WorksheetRef } from "./microsoftGraph/workbook.js";
 
 const siteId = "<INSERT-SITE-ID>" as SiteId;
 const driveId = "<INSERT-DRIVE-ID>" as DriveId;
@@ -14,11 +14,11 @@ const driveReference: DriveRef = {
     ...siteReference,
     drive: driveId
 };
-const itemReference: DriveItemRef = {
+const itemReference: ItemRef = {
     ...driveReference,
     item: itemId
 };
-const worksheetReference: WorkbookWorksheetRef = {
+const worksheetReference: WorksheetRef = {
     ...itemReference,
     worksheet: worksheetName
 };
