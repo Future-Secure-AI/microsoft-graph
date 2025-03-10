@@ -1,6 +1,6 @@
 import { deleteItem, type ItemRef } from "./drive.js";
 import { apiDelete, apiGet, apiPatch } from "./api.js";
-import type { WorkbookRange, WorkbookWorksheet } from "./models.js";
+import type { WorkbookRange, WorkbookWorksheet } from "./models.d.ts";
 
 export type WorkbookRef = ItemRef;
 

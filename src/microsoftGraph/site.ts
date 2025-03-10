@@ -1,5 +1,5 @@
 import { apiGet } from "./api.js";
-import type { Site } from "./models.js";
+import type { Site } from "./models.d.ts";
 
 export type SiteId = string & { __brand: "SiteId" };
 export type SiteRef = { site: SiteId };

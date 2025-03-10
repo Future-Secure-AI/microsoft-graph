@@ -1,5 +1,5 @@
 import { apiDelete, apiGet, apiGetRaw, apiPost } from "./api.js";
-import type { DriveItem } from "./models.js";
+import type { DriveItem } from "./models.d.ts";
 import type { SiteRef } from "./site.js";
 
 export type DriveId = string & { __brand: "DriveId" };
