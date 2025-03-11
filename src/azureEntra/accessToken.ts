@@ -11,7 +11,6 @@ let lastAccessToken: InnerAccessToken | null = null;
  */
 export const getCurrentAccessToken = async (): Promise<AccessToken> => {
     if (lastAccessToken === null || lastAccessToken.expiresOnTimestamp < Date.now())
-        // eslint-disable-next-line require-atomic-updates
         lastAccessToken = await credential.getToken(azureScope);
 
     return lastAccessToken.token as AccessToken;

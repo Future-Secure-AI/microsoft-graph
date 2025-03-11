@@ -26,7 +26,6 @@ const generatePath = (pathTemplate: string, pathArgs: string[]): string => {
             return "?";
 
         const pathArg = pathArgs[index++];
-        // eslint-disable-next-line no-undefined
         if (pathArg === undefined)
             throw new BadTemplateError("Not enough arguments provided for path template.");
 

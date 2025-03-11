@@ -1,0 +1,46 @@
+# Set default behavior to automatically normalize line endings
+* text=auto eol=lf
+
+# Force batch scripts to use CRLF
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+# Force bash scripts to use LF
+*.sh text eol=lf
+
+# Binary files should not be modified
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.eot binary
+*.gz binary
+*.zip binary
+*.7z binary
+*.pdf binary
+
+# Source code
+*.css text diff=css
+*.htm text diff=html
+*.html text diff=html
+*.js text
+*.json text
+*.jsx text
+*.ts text
+*.tsx text
+*.xml text
+*.yaml text
+*.yml text
+
+# Documentation
+*.md text diff=markdown
+*.txt text
+*.sql text
