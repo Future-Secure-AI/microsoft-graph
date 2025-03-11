@@ -34,7 +34,8 @@ const fixAnyDataType = (data: string): string =>
     data.replace(/\bany\b/g, "unknown");
 
 const fixLintDisables = (data: string): string =>
-    "/* eslint-disable */\n\n" +
+    "/* eslint-disable */\n" +
+    "\n" +
     data.replace(
         /\/\/ tslint:disable-next-line: [a-z- ]+\n/g,
         "");

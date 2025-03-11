@@ -15,4 +15,3 @@ export const getCurrentAccessToken = async (): Promise<AccessToken> => {
 
     return lastAccessToken.token as AccessToken;
 }
-

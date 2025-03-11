@@ -6,10 +6,10 @@
 	"scripts": {
 		"start": "tsx src/index.ts",
 		"dev": "biome check --reporter=summary && tsx watch src/index.ts",
-    "watch": "tsx watch src/index.ts",
-		"lint": "biome lint --reporter=gitlab",
+		"watch": "tsx watch src/index.ts",
+		"lint": "biome lint",
 		"test": "vitest",
-    "lint-my-changes": "biome check --changed"
+		"lint-my-changes": "biome check --changed"
 	},
 	"keywords": [],
 	"author": "",

@@ -8,11 +8,20 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "include": ["src/*.ts"],
-    "maxSize": 2097152
+    "include": [
+      "src/*.ts"
+    ],
+    "ignore": [
+      "src/microsoftGraph/models.d.ts"
+    ],
   },
-  "formatter": { "enabled": true, "indentWidth": 2 }, // set size limit to 2MB because of the models.ts file
-  "organizeImports": { "enabled": true },
+  "formatter": {
+    "enabled": true,
+    "indentWidth": 2
+  }, 
+  "organizeImports": {
+    "enabled": false
+  },
   "linter": {
     "enabled": true,
     "rules": {
@@ -68,7 +77,9 @@
         "useValidForDirection": "error",
         "useYield": "error"
       },
-      "security": { "noGlobalEval": "error" },
+      "security": {
+        "noGlobalEval": "error"
+      },
       "style": {
         "noArguments": "error",
         "noCommaOperator": "error",
@@ -78,12 +89,14 @@
         "noNonNullAssertion": "error",
         "noParameterAssign": "error",
         "noParameterProperties": "error",
-        "noRestrictedGlobals": { "level": "error", "options": {} },
+        "noRestrictedGlobals": {
+          "level": "error",
+          "options": {}
+        },
         "noUselessElse": "error",
         "noVar": "error",
         "noYodaExpression": "error",
         "useAsConstAssertion": "error",
-        "useBlockStatements": "error",
         "useCollapsedElseIf": "error",
         "useConsistentArrayType": "error",
         "useConsistentBuiltinInstantiation": "error",
@@ -98,7 +111,9 @@
         "useLiteralEnumMembers": "error",
         "useNamingConvention": {
           "level": "error",
-          "options": { "strictCase": false }
+          "options": {
+            "strictCase": false
+          }
         },
         "useNumericLiterals": "error",
         "useShorthandAssign": "error",
@@ -115,7 +130,6 @@
         "noCompareNegZero": "error",
         "noConfusingLabels": "error",
         "noConfusingVoidType": "error",
-        "noConsole": "error",
         "noControlCharactersInRegex": "error",
         "noDebugger": "error",
         "noDoubleEquals": "error",
@@ -147,13 +161,28 @@
         "useValidTypeof": "error"
       }
     },
-    "include": ["src/*.ts"]
+    "include": [
+      "src/*.ts"
+    ]
   },
-  "javascript": { "globals": ["exports"] },
+  "javascript": {
+    "globals": [
+      "exports"
+    ]
+  },
   "overrides": [
-    { "include": ["**/*.{js,mjs,cjs,ts}"] },
     {
-      "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+      "include": [
+        "**/*.{js,mjs,cjs,ts}"
+      ]
+    },
+    {
+      "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.mts",
+        "**/*.cts"
+      ],
       "linter": {
         "rules": {
           "correctness": {
@@ -186,9 +215,18 @@
         }
       }
     },
-    { "include": ["**/*.{js,mjs,cjs,ts}"] },
     {
-      "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+      "include": [
+        "**/*.{js,mjs,cjs,ts}"
+      ]
+    },
+    {
+      "include": [
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.mts",
+        "**/*.cts"
+      ],
       "linter": {
         "rules": {
           "correctness": {
