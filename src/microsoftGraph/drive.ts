@@ -1,5 +1,13 @@
 import { apiDelete, apiGet, apiGetRaw, apiPost } from "./api.js";
-import type { DriveItem, DriveRef, ItemPath, ItemRef, SiteRef } from "./models.js";
+import type { DriveItem } from "./models.d.ts";
+import type { SiteRef } from "./site.js";
+
+export type DriveId = string & { __brand: "DriveId" };
+export type DriveRef = SiteRef & { drive: DriveId }
+
+export type ItemId = string & { __brand: "ItemId" };
+export type ItemRef = DriveRef & { item: ItemId };
+export type ItemPath = string & { __brand: "Path" };
 
 export type ListDriveResponse = {
     "@odata.context": string;

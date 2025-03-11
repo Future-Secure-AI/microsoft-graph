@@ -1,6 +1,19 @@
-import { deleteItem } from "./drive.js";
+import { deleteItem, type ItemRef } from "./drive.js";
 import { apiDelete, apiGet, apiPatch } from "./api.js";
-import type { RangeRef, RangeValues, WorkbookRange, WorkbookRef, WorkbookWorksheet, WorksheetRef } from "./models.js";
+import type { WorkbookRange, WorkbookWorksheet } from "./models.d.ts";
+
+export type WorkbookRef = ItemRef;
+
+export type WorksheetId = string & { __brand: "WorksheetId" };
+export type WorksheetName = string & { __brand: "WorksheetName" };
+export type WorksheetRef = WorkbookRef & { worksheet: WorksheetId | WorksheetName };
+
+export type RangeId = string & { __brand: "RangeId" };
+export type RangeName = string & { __brand: "RangeName" };
+export type RangeRef = WorkbookRef & { range: RangeId | RangeName };
+
+export type CellValue = string | number | boolean | null | Date;
+export type RangeValues = CellValue[][];
 
 export type ListWorksheetResponse = {
     value: WorkbookWorksheet[];
