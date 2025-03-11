@@ -8,17 +8,14 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "include": [
-      "src/*.ts"
-    ],
-    "ignore": [
-      "src/microsoftGraph/models.d.ts"
-    ],
+    "include": ["src/*.ts"],
+    "ignore": ["src/microsoftGraph/models.d.ts"]
   },
   "formatter": {
     "enabled": true,
+    "indentStyle": "space",
     "indentWidth": 2
-  }, 
+  },
   "organizeImports": {
     "enabled": false
   },
@@ -161,28 +158,17 @@
         "useValidTypeof": "error"
       }
     },
-    "include": [
-      "src/*.ts"
-    ]
+    "include": ["src/*.ts"]
   },
   "javascript": {
-    "globals": [
-      "exports"
-    ]
+    "globals": ["exports"]
   },
   "overrides": [
     {
-      "include": [
-        "**/*.{js,mjs,cjs,ts}"
-      ]
+      "include": ["**/*.{js,mjs,cjs,ts}"]
     },
     {
-      "include": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.mts",
-        "**/*.cts"
-      ],
+      "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
       "linter": {
         "rules": {
           "correctness": {
@@ -216,17 +202,10 @@
       }
     },
     {
-      "include": [
-        "**/*.{js,mjs,cjs,ts}"
-      ]
+      "include": ["**/*.{js,mjs,cjs,ts}"]
     },
     {
-      "include": [
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.mts",
-        "**/*.cts"
-      ],
+      "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
       "linter": {
         "rules": {
           "correctness": {

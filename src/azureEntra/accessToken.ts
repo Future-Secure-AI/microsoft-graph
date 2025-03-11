@@ -1,17 +1,32 @@
-import { type AccessToken as InnerAccessToken, ClientSecretCredential } from "@azure/identity";
-import { azureClientId, azureClientSecret, azureScope, azureTenantId } from "./configuration.js";
+import {
+  type AccessToken as InnerAccessToken,
+  ClientSecretCredential,
+} from "@azure/identity";
+import {
+  azureClientId,
+  azureClientSecret,
+  azureScope,
+  azureTenantId,
+} from "./configuration.js";
 
 export type AccessToken = string & { __brand: "AccessToken" };
 
-const credential = new ClientSecretCredential(azureTenantId, azureClientId, azureClientSecret)
+const credential = new ClientSecretCredential(
+  azureTenantId,
+  azureClientId,
+  azureClientSecret,
+);
 let lastAccessToken: InnerAccessToken | null = null;
 
 /**
  * Get the current access token. Do not store this token as it may expire.
  */
 export const getCurrentAccessToken = async (): Promise<AccessToken> => {
-    if (lastAccessToken === null || lastAccessToken.expiresOnTimestamp < Date.now())
-        lastAccessToken = await credential.getToken(azureScope);
+  if (
+    lastAccessToken === null ||
+    lastAccessToken.expiresOnTimestamp < Date.now()
+  )
+    lastAccessToken = await credential.getToken(azureScope);
 
-    return lastAccessToken.token as AccessToken;
-}
+  return lastAccessToken.token as AccessToken;
+};

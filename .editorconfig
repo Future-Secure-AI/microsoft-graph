@@ -1,4 +1,3 @@
-# root indicates that this is the top-level EditorConfig file
 root = true
 
 [*]
@@ -8,22 +7,9 @@ indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.ts]
-# Ensure TypeScript files follow 2-space indentation
-indent_size = 2
-
-[*.tsx]
-indent_size = 2
-
-[*.json]
-indent_size = 2
-
 [*.md]
 # Keep markdown files readable, don’t trim trailing whitespace (needed for line breaks)
 trim_trailing_whitespace = false
-
-[*.{yml,yaml}]
-indent_size = 2
 
 [Makefile]
 indent_style = tab
