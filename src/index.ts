@@ -1,26 +1,32 @@
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 import type { DriveId, DriveRef, ItemId, ItemRef } from "./microsoftGraph/drive.js";
 import type { SiteId, SiteRef } from "./microsoftGraph/site.js";
 import { getUsedRangeValues, type WorksheetName, type WorksheetRef } from "./microsoftGraph/workbook.js";
 
-const siteId = "<INSERT-SITE-ID>" as SiteId;
-const driveId = "<INSERT-DRIVE-ID>" as DriveId;
-const itemId = "<INSERT-ITEM-ID>" as ItemId;
-const worksheetName = "<INSERT-WORKSHEET-NAME>" as WorksheetName;
+const argv = await yargs(hideBin(process.argv))
+	.options({
+		siteId: { type: "string", demandOption: true, coerce: (v) => v as SiteId },
+		driveId: { type: "string", demandOption: true, coerce: (v) => v as DriveId },
+		itemId: { type: "string", demandOption: true, coerce: (v) => v as ItemId },
+		worksheetName: { type: "string", demandOption: true, coerce: (v) => v as WorksheetName },
+	})
+	.parse();
 
 const siteReference: SiteRef = {
-	site: siteId,
+	site: argv.siteId,
 };
 const driveReference: DriveRef = {
 	...siteReference,
-	drive: driveId,
+	drive: argv.driveId,
 };
 const itemReference: ItemRef = {
 	...driveReference,
-	item: itemId,
+	item: argv.itemId,
 };
 const worksheetReference: WorksheetRef = {
 	...itemReference,
-	worksheet: worksheetName,
+	worksheet: argv.worksheetName,
 };
 const cells = await getUsedRangeValues(worksheetReference);
 
