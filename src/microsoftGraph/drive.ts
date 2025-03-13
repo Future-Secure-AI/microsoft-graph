@@ -1,5 +1,5 @@
 import InvalidArgumentError from "./InvalidArgumentError.js";
-import { apiDelete, apiGet, apiGetRaw, apiPost } from "./api.js";
+import { apiDelete, apiGet, apiPost, client } from "./api.js";
 import type { DriveItem, Site } from "./models.d.ts";
 
 export type Hostname = string & { __brand: "Hostname" };
@@ -74,7 +74,7 @@ export async function listItems(driveRef: DriveRef, itemPath: ItemPath): Promise
 	output.push(...response.value);
 
 	while (response["@odata.nextLink"] !== undefined) {
-		response = await apiGetRaw<ListItemResponse>(response["@odata.nextLink"]);
+		response = (await client.api(response["@odata.nextLink"]).get()) as ListItemResponse;
 		output.push(...response.value);
 	}
 

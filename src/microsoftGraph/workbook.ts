@@ -20,6 +20,7 @@ export type RangeValues = CellValue[][];
 export type ListWorksheetResponse = {
 	value: WorkbookWorksheet[];
 };
+
 /** Create a new workbook in a drive. NOTE: This appears not to be documented in Microsoft Learn. */
 export async function createWorkbook(driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> {
 	return await apiPut<DriveItem>(`/sites/?/drives/?/root:${itemPath}:/content`, [driveRef.site, driveRef.drive], Buffer.from([]));
