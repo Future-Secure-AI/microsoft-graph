@@ -20,66 +20,74 @@ export type RangeValues = CellValue[][];
 export type ListWorksheetResponse = {
 	value: WorkbookWorksheet[];
 };
-
 /**
  * Create a new workbook in a drive.
  * NOTE: This appears not to be documented in Microsoft Learn.
  */
-export const createWorkbook = async (driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> =>
-	apiPut<DriveItem>(`/sites/?/drives/?/root:${itemPath}:/content`, [driveRef.site, driveRef.drive], Buffer.from([]));
+export async function createWorkbook(driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> {
+	return await apiPut<DriveItem>(`/sites/?/drives/?/root:${itemPath}:/content`, [driveRef.site, driveRef.drive], Buffer.from([]));
+}
 
 /**
- * Delete an workbook.
+ * Delete a workbook.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-delete
  */
-export const deleteWorkbook = async (workbookRef: WorkbookRef): Promise<void> =>
-	deleteItem(workbookRef);
+export async function deleteWorkbook(workbookRef: WorkbookRef): Promise<void> {
+	await deleteItem(workbookRef);
+}
 
 /**
  * Retrieve a list of worksheets in a given workbook.
  * https://learn.microsoft.com/en-us/graph/api/worksheet-list
  */
-export const listWorksheets = async (workbookRef: WorkbookRef): Promise<ListWorksheetResponse> =>
-	apiGet<ListWorksheetResponse>("/sites/?/drives/?/items/?/workbook/worksheets", [workbookRef.site, workbookRef.drive, workbookRef.item]);
+export async function listWorksheets(workbookRef: WorkbookRef): Promise<ListWorksheetResponse> {
+	return await apiGet<ListWorksheetResponse>("/sites/?/drives/?/items/?/workbook/worksheets", [workbookRef.site, workbookRef.drive, workbookRef.item]);
+}
 
 /**
  * Create a new worksheet in a given workbook.
  * https://learn.microsoft.com/en-us/graph/api/worksheetcollection-add
  */
-export const createWorksheet = async (workbookRef: WorkbookRef, name: string): Promise<WorkbookWorksheet> =>
-	apiPost<WorkbookWorksheet>("/sites/?/drives/?/items/?/workbook/worksheets/add", [workbookRef.site, workbookRef.drive, workbookRef.item], { name });
+export async function createWorksheet(workbookRef: WorkbookRef, name: string): Promise<WorkbookWorksheet> {
+	return await apiPost<WorkbookWorksheet>("/sites/?/drives/?/items/?/workbook/worksheets/add", [workbookRef.site, workbookRef.drive, workbookRef.item], { name });
+}
 
 /**
- * Update the properties of worksheet object.
+ * Update the properties of a worksheet object.
  * https://learn.microsoft.com/en-us/graph/api/worksheet-update
  */
-export const updateWorksheet = async (ref: WorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden" }): Promise<WorkbookWorksheet> =>
-	apiPatch<WorkbookWorksheet>("/sites/?/drives/?/items/?/workbook/worksheets/?", [ref.site, ref.drive, ref.item, ref.worksheet], updates);
+export async function updateWorksheet(ref: WorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden" }): Promise<WorkbookWorksheet> {
+	return await apiPatch<WorkbookWorksheet>("/sites/?/drives/?/items/?/workbook/worksheets/?", [ref.site, ref.drive, ref.item, ref.worksheet], updates);
+}
 
 /**
- * Delete worksheet from a workbook.
+ * Delete a worksheet from a workbook.
  * https://learn.microsoft.com/en-us/graph/api/worksheet-delete
  */
-export const deleteWorksheet = async (workbookRef: WorksheetRef): Promise<void> =>
-	apiDelete("/sites/?/drives/?/items/?/workbook/worksheets/?", [workbookRef.site, workbookRef.drive, workbookRef.item, workbookRef.worksheet]);
+export async function deleteWorksheet(workbookRef: WorksheetRef): Promise<void> {
+	await apiDelete("/sites/?/drives/?/items/?/workbook/worksheets/?", [workbookRef.site, workbookRef.drive, workbookRef.item, workbookRef.worksheet]);
+}
 
 /**
  * Retrieve the used range of the given worksheet.
  * https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */
-export const getUsedRangeValues = async (workbookRef: WorksheetRef): Promise<WorkbookRange> =>
-	apiGet<WorkbookRange>("/sites/?/drives/?/items/?/workbook/worksheets/?/range/usedRange", [workbookRef.site, workbookRef.drive, workbookRef.item, workbookRef.worksheet]);
+export async function getUsedRangeValues(workbookRef: WorksheetRef): Promise<WorkbookRange> {
+	return await apiGet<WorkbookRange>("/sites/?/drives/?/items/?/workbook/worksheets/?/range/usedRange", [workbookRef.site, workbookRef.drive, workbookRef.item, workbookRef.worksheet]);
+}
 
 /**
  * Retrieve a named range.
  * https://learn.microsoft.com/en-us/graph/api/range-get
  */
-export const getNamedRangeValues = async (rangeRef: RangeRef): Promise<WorkbookRange> =>
-	apiGet<WorkbookRange>("/sites/?/drives/?/items/?/workbook/names/?/range", [rangeRef.site, rangeRef.drive, rangeRef.item, rangeRef.range]);
+export async function getNamedRangeValues(rangeRef: RangeRef): Promise<WorkbookRange> {
+	return await apiGet<WorkbookRange>("/sites/?/drives/?/items/?/workbook/names/?/range", [rangeRef.site, rangeRef.drive, rangeRef.item, rangeRef.range]);
+}
 
 /**
  * Update a named range.
  * https://learn.microsoft.com/en-us/graph/api/range-update
  */
-export const setNamedRangeValues = async (rangeRef: RangeRef, values: RangeValues): Promise<void> =>
-	apiPatch("/sites/?/drives/?/items/?/workbook/names/?/range", [rangeRef.site, rangeRef.drive, rangeRef.item, rangeRef.range], values);
+export async function setNamedRangeValues(rangeRef: RangeRef, values: RangeValues): Promise<void> {
+	await apiPatch("/sites/?/drives/?/items/?/workbook/names/?/range", [rangeRef.site, rangeRef.drive, rangeRef.item, rangeRef.range], values);
+}

@@ -14,7 +14,7 @@ export type Arguments = {
 /*
  * Core logic goes here. But don't call this function directly - use `runNative` or `runCli` instead.
  */
-const run = async (args: Arguments) => {
+async function run(args: Arguments): Promise<void> {
 	//
 	// TODO: Core logic goes here...
 	//
@@ -26,12 +26,12 @@ const run = async (args: Arguments) => {
 	});
 
 	console.info(cells.values);
-};
+}
 
 /*
  * Called by Flowise during normal use.
  */
-export const runNative = async (args: Arguments): Promise<string[]> => {
+export async function runNative(args: Arguments): Promise<string[]> {
 	const info = console.info;
 	const warn = console.warn;
 	const error = console.error;
@@ -53,12 +53,12 @@ export const runNative = async (args: Arguments): Promise<string[]> => {
 
 	await run(args);
 	return messages;
-};
+}
 
 /*
  * Called by CLI during development.
  */
-const runCli = async () => {
+async function runCli(): Promise<void> {
 	const args = await yargs(hideBin(process.argv))
 		.options({
 			siteId: { type: "string", demandOption: true, coerce: (v) => v as SiteId },
@@ -69,7 +69,7 @@ const runCli = async () => {
 		.parse();
 
 	await run(args);
-};
+}
 
 const isCliInvoked = process.argv[1] === fileURLToPath(import.meta.url);
 if (isCliInvoked) await runCli();

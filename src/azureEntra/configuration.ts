@@ -1,6 +1,6 @@
 const missingEnvironmentVariables: string[] = [];
 
-const tryGetEnvironmentVariable = (env: string, fallbackValue: string | null = null): string => {
+export function tryGetEnvironmentVariable(env: string, fallbackValue: string | null = null): string {
 	const value = process.env[env]?.trim() ?? "";
 
 	if (value === "") {
@@ -9,7 +9,7 @@ const tryGetEnvironmentVariable = (env: string, fallbackValue: string | null = n
 	}
 
 	return value;
-};
+}
 
 export const azureTenantId: string = tryGetEnvironmentVariable("AZURE_TENANT_ID");
 export const azureClientId: string = tryGetEnvironmentVariable("AZURE_CLIENT_ID");

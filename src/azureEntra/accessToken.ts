@@ -8,14 +8,15 @@ const credential = new ClientSecretCredential(azureTenantId, azureClientId, azur
 const innerTokenCache: Record<Scope, InnerAccessToken> = {};
 
 /**
- * Get an access token for a given scope. If an unexpred one is cached it will be returned, otherwise requests a new one.
+ * Get an access token for a given scope. If an unexpired one is cached it will be returned, otherwise requests a new one.
  * NOTE: Do not store these tokens as they expire.
  */
-export const getCurrentAccessToken = async (scope: Scope): Promise<AccessToken> => {
+export async function getCurrentAccessToken(scope: Scope): Promise<AccessToken> {
 	let innerToken = innerTokenCache[scope];
 
-	if (!innerToken || innerToken.expiresOnTimestamp < Date.now())
+	if (!innerToken || innerToken.expiresOnTimestamp < Date.now()) {
 		innerTokenCache[scope] = innerToken = await credential.getToken(scope);
+	}
 
 	return innerToken.token as AccessToken;
-};
+}
