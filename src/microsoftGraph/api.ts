@@ -67,16 +67,12 @@ export const apiPut = async <T>(pathTemplate: string, pathArgs: string[], data: 
 /**
  * Perform a PATCH request to the Microsoft Graph API with a raw path. PREFER TO USE `apiPatch` INSTEAD, as it automatically escapes arguments.
  */
-export const apiPatchRaw = async (path: string, data: unknown): Promise<void> => {
-	await client.api(path).patch(data);
-};
+export const apiPatchRaw = async <T>(path: string, data: unknown): Promise<T> => (await client.api(path).patch(data)) as T;
 
 /**
  * Perform a PATCH request to the Microsoft Graph API with an array of path segments. Segments are automatically escaped.
  */
-export const apiPatch = async (pathTemplate: string, pathArgs: string[], data: unknown): Promise<void> => {
-	await apiPatchRaw(generatePath(pathTemplate, pathArgs), data);
-};
+export const apiPatch = async <T>(pathTemplate: string, pathArgs: string[], data: unknown): Promise<T> => await apiPatchRaw<T>(generatePath(pathTemplate, pathArgs), data);
 
 /**
  * Perform a DELETE request to the Microsoft Graph API with a raw path. PREFER TO USE `apiDelete` INSTEAD, as it automatically escapes arguments.
