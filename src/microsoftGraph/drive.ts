@@ -116,15 +116,14 @@ export const copyItem = async (srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFi
  * Get a the site name and item path from a given SharePoint URL.
  * (ie https://lachlandev.sharepoint.com/sites/Nexus-Test/Shared%20Documents/Forms/AllItems.aspx?newTargetListUrl=%2Fsites%2FNexus%2DTest%2FShared%20Documents))
  */
-export const parseUiUrl = (uiUrl: string): { siteName: SiteName, itemPath: ItemPath } => {
-	const url = new URL(uiUrl);
-	if (!url.hostname.endsWith(".sharepoint.com")) throw new InvalidArgumentError("Invalid SharePoint URL. Must end with '.sharepoint.com'.");
+export const parseUiUrl = (uiUrl: URL): { siteName: SiteName; itemPath: ItemPath } => {
+	if (!uiUrl.hostname.endsWith(".sharepoint.com")) throw new InvalidArgumentError("Invalid SharePoint URL. Must end with '.sharepoint.com'.");
 
-	const pathMatch = url.pathname.match(/^\/sites\/([^\/]+)/);
+	const pathMatch = uiUrl.pathname.match(/^\/sites\/([^\/]+)/);
 	if (!pathMatch) throw new InvalidArgumentError("Invalid SharePoint URL. Must start with '/sites/'.");
 	const siteName = pathMatch[1] as SiteName;
 
-	const itemPath = (url.searchParams.get("viewPath") || url.searchParams.get("newTargetListUrl") || null) as ItemPath | null; // TODO: Not these params are correct
+	const itemPath = (uiUrl.searchParams.get("viewPath") || uiUrl.searchParams.get("newTargetListUrl") || null) as ItemPath | null; // TODO: Not these params are correct
 	if (!itemPath) throw new InvalidArgumentError("Invalid SharePoint URL. Path not found in parameters.");
 
 	return {
