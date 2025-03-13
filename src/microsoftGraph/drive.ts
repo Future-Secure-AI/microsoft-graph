@@ -2,7 +2,9 @@ import InvalidArgumentError from "../errors/InvalidArgumentError.js";
 import { apiDelete, apiGet, apiGetRaw, apiPost } from "./api.js";
 import type { DriveItem, Site } from "./models.d.ts";
 
-export type SiteId = string & { __brand: "SiteId" };
+export type Hostname = string & { __brand: "Hostname" };
+
+export type SiteId = string & { __brand: "SiteId" }; // NOTE: SiteId is in the format `{hostname},{site-collection-id},{web-id}` and therefore implicity contains the hostname
 export type SiteRef = { site: SiteId };
 export type SiteName = string & { __brand: "SiteName" };
 
@@ -40,6 +42,12 @@ export const searchSites = async (search: string): Promise<ListSitesReponse> => 
  * https://learn.microsoft.com/en-us/graph/api/site-get
  */
 export const getSite = async (ref: SiteRef): Promise<Site> => apiGet<Site>("/sites/?", [ref.site]);
+
+/**
+ * Get site by name.
+ * https://learn.microsoft.com/en-us/graph/api/site-getbypath
+ */
+export const getSiteByName = async (hostname: Hostname, siteName: SiteName): Promise<Site> => apiGet<Site>("/sites/?:/?", [hostname, siteName]);
 
 /**
  * Retrieve the list of Drive resources available for a Site.
@@ -116,8 +124,9 @@ export const copyItem = async (srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFi
  * Get a the site name and item path from a given SharePoint URL.
  * (ie https://lachlandev.sharepoint.com/sites/Nexus-Test/Shared%20Documents/Forms/AllItems.aspx?newTargetListUrl=%2Fsites%2FNexus%2DTest%2FShared%20Documents))
  */
-export const parseUiUrl = (uiUrl: URL): { siteName: SiteName; itemPath: ItemPath } => {
+export const parseUiUrl = (uiUrl: URL): { hostname: Hostname; siteName: SiteName; itemPath: ItemPath } => {
 	if (!uiUrl.hostname.endsWith(".sharepoint.com")) throw new InvalidArgumentError("Invalid SharePoint URL. Must end with '.sharepoint.com'.");
+	const hostname = uiUrl.hostname as Hostname;
 
 	const pathMatch = uiUrl.pathname.match(/^\/sites\/([^\/]+)/);
 	if (!pathMatch) throw new InvalidArgumentError("Invalid SharePoint URL. Must start with '/sites/'.");
@@ -127,6 +136,7 @@ export const parseUiUrl = (uiUrl: URL): { siteName: SiteName; itemPath: ItemPath
 	if (!itemPath) throw new InvalidArgumentError("Invalid SharePoint URL. Path not found in parameters.");
 
 	return {
+		hostname,
 		siteName,
 		itemPath,
 	};
