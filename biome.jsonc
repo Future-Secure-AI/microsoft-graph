@@ -12,7 +12,7 @@
 		"ignore": ["src/microsoftGraph/models.d.ts"]
 	},
 	"formatter": {
-		"enabled": true,
+		"enabled": false,
 		"lineWidth": 320,
 		"indentStyle": "tab",
 		"indentWidth": 2
