@@ -27,16 +27,22 @@ export type ListItemResponse = {
 export const listDrives = async (ref: SiteRef): Promise<ListDriveResponse> => apiGet<ListDriveResponse>("/sites/?/drives", [ref.site]);
 
 /**
- * Retrieve the metadata for an item in a drive by file system path.
+ * Retrieve the metadata for an item in a drive by file path. NOTE: If the target file is moved this will cease working.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
 export const getItemByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> => apiGet<DriveItem>(`/sites/?/drives/?/root:${itemPath}`, [driveRef.site, driveRef.drive]);
 
 /**
- * Retrieve the metadata for child items in a drive by file system path.
+ * Retrieve the metadata for an item in a drive.
+ * https://learn.microsoft.com/en-us/graph/api/driveitem-get
+ */
+export const getItem = async (itemRef: ItemRef): Promise<DriveItem> => apiGet<DriveItem>(`/sites/?/drives/?/items/?`, [itemRef.site, itemRef.drive, itemRef.item]);
+
+/**
+ * Retrieve the metadata for items in a drive by file path.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-list-children
  */
-export const listItemChildenByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<ListItemResponse> => {
+export const listItems = async (driveRef: DriveRef, itemPath: ItemPath): Promise<ListItemResponse> => {
 	const output: DriveItem[] = [];
 
 	let response = await apiGet<ListItemResponse>(`/sites/?/drives/?/root:${itemPath}:/children`, [driveRef.site, driveRef.drive]);
