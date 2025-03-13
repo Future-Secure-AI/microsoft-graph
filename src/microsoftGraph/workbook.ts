@@ -1,6 +1,6 @@
-import { deleteItem, type ItemRef } from "./drive.js";
-import { apiDelete, apiGet, apiPatch } from "./api.js";
-import type { WorkbookRange, WorkbookWorksheet } from "./models.d.ts";
+import { deleteItem, type DriveRef, type ItemPath, type ItemRef } from "./drive.js";
+import { apiDelete, apiGet, apiPatch, apiPut } from "./api.js";
+import type { DriveItem, WorkbookRange, WorkbookWorksheet } from "./models.d.ts";
 
 export type WorkbookRef = ItemRef;
 
@@ -22,16 +22,24 @@ export type ListWorksheetResponse = {
 };
 
 /**
+ * Create a new workbook in a drive.
+ * NOTE: This appears not to be documented in Microsoft Learn.
+ */
+export const createWorkbook = async (driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> => apiPut<DriveItem>(`/sites/?/drives/?/root:${itemPath}:/content`, [driveRef.site, driveRef.drive], Buffer.from([]));
+
+/**
  * Delete an workbook.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-delete
  */
-export const deleteWorkbook = async (ref: WorkbookRef): Promise<void> => deleteItem(ref);
+export const deleteWorkbook = async (workbookRef: WorkbookRef): Promise<void> => deleteItem(workbookRef);
 
 /**
  * Retrieve a list of worksheets in a given workbook.
  * https://learn.microsoft.com/en-us/graph/api/worksheet-list
  */
-export const listWorksheets = async (ref: WorkbookRef): Promise<ListWorksheetResponse> => apiGet<ListWorksheetResponse>("/sites/?/drives/?/items/?/workbook/worksheets", [ref.site, ref.drive, ref.item]);
+export const listWorksheets = async (workbookRef: WorkbookRef): Promise<ListWorksheetResponse> => apiGet<ListWorksheetResponse>("/sites/?/drives/?/items/?/workbook/worksheets", [workbookRef.site, workbookRef.drive, workbookRef.item]);
+
+// TODO: Create worksheet
 
 /**
  * Delete worksheet from a workbook.

@@ -55,6 +55,16 @@ export const apiPostRaw = async <T>(path: string, data: unknown): Promise<T> => 
 export const apiPost = async <T>(pathTemplate: string, pathArgs: string[], data: unknown): Promise<T> => (await apiPostRaw(generatePath(pathTemplate, pathArgs), data)) as T;
 
 /**
+ * Perform a PYT request to the Microsoft Graph API with a raw path. PREFER TO USE `apiPut` INSTEAD, as it automatically escapes arguments.
+ */
+export const apiPutRaw = async <T>(path: string, data: unknown): Promise<T> => (await client.api(path).put(data)) as T;
+
+/**
+ * Perform a PUT request to the Microsoft Graph API with an array of path segments. Segments are automatically escaped.
+ */
+export const apiPut = async <T>(pathTemplate: string, pathArgs: string[], data: unknown): Promise<T> => (await apiPutRaw(generatePath(pathTemplate, pathArgs), data)) as T;
+
+/**
  * Perform a PATCH request to the Microsoft Graph API with a raw path. PREFER TO USE `apiPatch` INSTEAD, as it automatically escapes arguments.
  */
 export const apiPatchRaw = async (path: string, data: unknown): Promise<void> => {
