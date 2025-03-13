@@ -11,9 +11,7 @@ export type Arguments = {
 	worksheetName: WorksheetName;
 };
 
-/*
- * Core logic goes here. But don't call this function directly - use `runNative` or `runCli` instead.
- */
+/** Core logic goes here. But don't call this function directly - use `runNative` or `runCli` instead. */
 async function run(args: Arguments): Promise<void> {
 	//
 	// TODO: Core logic goes here...
@@ -28,9 +26,7 @@ async function run(args: Arguments): Promise<void> {
 	console.info(cells.values);
 }
 
-/*
- * Called by Flowise during normal use.
- */
+/** Called by Flowise during normal use. */
 export async function runNative(args: Arguments): Promise<string[]> {
 	const info = console.info;
 	const warn = console.warn;
@@ -55,9 +51,7 @@ export async function runNative(args: Arguments): Promise<string[]> {
 	return messages;
 }
 
-/*
- * Called by CLI during development.
- */
+/** Called by CLI during development. */
 async function runCli(): Promise<void> {
 	const args = await yargs(hideBin(process.argv))
 		.options({

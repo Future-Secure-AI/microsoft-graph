@@ -1,6 +1,6 @@
 const missingEnvironmentVariables: string[] = [];
 
-export function tryGetEnvironmentVariable(env: string, fallbackValue: string | null = null): string {
+function tryGetEnvironmentVariable(env: string, fallbackValue: string | null = null): string {
 	const value = process.env[env]?.trim() ?? "";
 
 	if (value === "") {
