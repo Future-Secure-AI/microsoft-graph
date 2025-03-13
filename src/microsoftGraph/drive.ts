@@ -1,13 +1,17 @@
+import InvalidArgumentError from "../errors/InvalidArgumentError.js";
 import { apiDelete, apiGet, apiGetRaw, apiPost } from "./api.js";
-import type { DriveItem } from "./models.d.ts";
-import type { SiteRef } from "./site.js";
+import type { DriveItem, Site } from "./models.d.ts";
+
+export type SiteId = string & { __brand: "SiteId" };
+export type SiteRef = { site: SiteId };
+export type SiteName = string & { __brand: "SiteName" };
 
 export type DriveId = string & { __brand: "DriveId" };
 export type DriveRef = SiteRef & { drive: DriveId };
 
 export type ItemId = string & { __brand: "ItemId" };
 export type ItemRef = DriveRef & { item: ItemId };
-export type ItemPath = string & { __brand: "Path" };
+export type ItemPath = string & { __brand: "ItemPath" };
 
 export type ListDriveResponse = {
 	"@odata.context": string;
@@ -19,6 +23,28 @@ export type ListItemResponse = {
 	value: DriveItem[];
 	"@odata.nextLink"?: string;
 };
+
+export type ListSitesReponse = {
+	"@odata.context": string;
+	value: Site[];
+};
+
+export type ParseUiResponse = {
+	siteName: SiteName;
+	path: ItemPath;
+};
+
+/**
+ * Search across a SharePoint tenant for sites that match keywords provided.
+ * https://learn.microsoft.com/en-us/graph/api/site-search
+ */
+export const searchSites = async (search: string): Promise<ListSitesReponse> => apiGet<ListSitesReponse>("/sites\\?search=?", [search]);
+
+/**
+ * Retrieve properties for a site resource.
+ * https://learn.microsoft.com/en-us/graph/api/site-get
+ */
+export const getSite = async (ref: SiteRef): Promise<Site> => apiGet<Site>("/sites/?", [ref.site]);
 
 /**
  * Retrieve the list of Drive resources available for a Site.
@@ -90,3 +116,24 @@ export const copyItem = async (srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFi
 			id: dstFolderRef.item,
 		},
 	});
+
+/**
+ * Get a the site name and item path from a given SharePoint URL.
+ * (ie https://lachlandev.sharepoint.com/sites/Nexus-Test/Shared%20Documents/Forms/AllItems.aspx?viewid=00eac7c9%2Dddb5%2D49f8%2D9dfc%2D321f9ef7c53e&newTargetListUrl=%2Fsites%2FNexus%2DTest%2FShared%20Documents&viewpath=%2Fsites%2FNexus%2DTest%2FShared%20Documents%2FForms%2FAllItems%2Easpx))
+ */
+export const parseUiUrl = (uiUrl: string): ParseUiResponse => {
+	const url = new URL(uiUrl);
+	if (!url.hostname.endsWith(".sharepoint.com")) throw new InvalidArgumentError("Invalid SharePoint URL. Must end with '.sharepoint.com'.");
+
+	const pathMatch = url.pathname.match(/^\/sites\/([^\/]+)/);
+	if (!pathMatch) throw new InvalidArgumentError("Invalid SharePoint URL. Must start with '/sites/'.");
+	const siteName = pathMatch[1] as SiteName;
+
+	const itemPath = (url.searchParams.get("viewPath") || url.searchParams.get("newTargetListUrl") || null) as ItemPath | null; // TODO: Not these params are correct
+	if (!itemPath) throw new InvalidArgumentError("Invalid SharePoint URL. Path not found in parameters.");
+
+	return {
+		siteName: siteName,
+		path: itemPath,
+	};
+};

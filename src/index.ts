@@ -16,7 +16,7 @@ export type Arguments = {
  * Core logic goes here. But don't call this function directly - use `runNative` or `runCli` instead.
  */
 const run = async (args: Arguments) => {
-  // TODO: Core logic
+	// TODO: Core logic
 	const cells = await getUsedRangeValues({
 		site: args.siteId,
 		drive: args.driveId,
