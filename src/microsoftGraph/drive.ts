@@ -1,4 +1,4 @@
-import InvalidArgumentError from "../errors/InvalidArgumentError.js";
+import InvalidArgumentError from "./InvalidArgumentError.js";
 import { apiDelete, apiGet, apiGetRaw, apiPost } from "./api.js";
 import type { DriveItem, Site } from "./models.d.ts";
 

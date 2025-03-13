@@ -1,12 +1,14 @@
 import { Client } from "@microsoft/microsoft-graph-client";
-import { getCurrentAccessToken } from "../azureEntra/accessToken.js";
-import BadTemplateError from "../errors/BadTemplateError.js";
+import { getCurrentAccessToken, type Scope } from "../azureEntra/accessToken.js";
+import BadTemplateError from "./BadTemplateError.js";
 
 // See https://learn.microsoft.com/en-us/graph/api/overview for more information on the Microsoft Graph API
 
+const scope = "https://graph.microsoft.com/.default" as Scope;
+
 const client = Client.init({
 	authProvider: (done) => {
-		getCurrentAccessToken() // Do not store the returned access token as it may expire
+		getCurrentAccessToken(scope) // Do not store the returned access token as it may expire
 			.then((accessToken) => {
 				done(null, accessToken);
 			})

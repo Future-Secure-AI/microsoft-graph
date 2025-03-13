@@ -1,16 +1,21 @@
 import { ClientSecretCredential, type AccessToken as InnerAccessToken } from "@azure/identity";
-import { azureClientId, azureClientSecret, azureScope, azureTenantId } from "./configuration.js";
+import { azureClientId, azureClientSecret, azureTenantId } from "./configuration.js";
 
 export type AccessToken = string & { __brand: "AccessToken" };
+export type Scope = string & { __brand: "Scope" };
 
 const credential = new ClientSecretCredential(azureTenantId, azureClientId, azureClientSecret);
-let lastAccessToken: InnerAccessToken | null = null;
+const innerTokenCache: Record<Scope, InnerAccessToken> = {};
 
 /**
- * Get the current access token. Do not store this token as it may expire.
+ * Get an access token for a given scope. If an unexpred one is cached it will be returned, otherwise requests a new one.
+ * NOTE: Do not store these tokens as they expire.
  */
-export const getCurrentAccessToken = async (): Promise<AccessToken> => {
-	if (lastAccessToken === null || lastAccessToken.expiresOnTimestamp < Date.now()) lastAccessToken = await credential.getToken(azureScope);
+export const getCurrentAccessToken = async (scope: Scope): Promise<AccessToken> => {
+	let innerToken = innerTokenCache[scope];
 
-	return lastAccessToken.token as AccessToken;
+	if (!innerToken || innerToken.expiresOnTimestamp < Date.now())
+		innerTokenCache[scope] = innerToken = await credential.getToken(scope);
+
+	return innerToken.token as AccessToken;
 };
