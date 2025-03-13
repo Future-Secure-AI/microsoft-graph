@@ -35,7 +35,13 @@ export type ListSitesReponse = {
  * Search across a SharePoint tenant for sites that match keywords provided.
  * https://learn.microsoft.com/en-us/graph/api/site-search
  */
-export const searchSites = async (search: string): Promise<ListSitesReponse> => apiGet<ListSitesReponse>("/sites\\?search=?", [search]);
+export const searchAvailableSites = async (search: string): Promise<ListSitesReponse> => apiGet<ListSitesReponse>("/sites\\?search=?", [search]);
+
+/**
+ * List all available sites in an organization.
+ * https://learn.microsoft.com/en-us/graph/api/site-list
+ */
+export const listAvailableSites = async (): Promise<Site[]> => apiGet<Site[]>("/sites", []);
 
 /**
  * Retrieve properties for a site resource.

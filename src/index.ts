@@ -1,8 +1,7 @@
 import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import type { DriveId, ItemId } from "./microsoftGraph/drive.js";
-import type { SiteId } from "./microsoftGraph/site.js";
+import type { DriveId, ItemId, SiteId } from "./microsoftGraph/drive.js";
 import { getUsedRangeValues, type WorksheetName } from "./microsoftGraph/workbook.js";
 
 export type Arguments = {
@@ -16,7 +15,9 @@ export type Arguments = {
  * Core logic goes here. But don't call this function directly - use `runNative` or `runCli` instead.
  */
 const run = async (args: Arguments) => {
-	// TODO: Core logic
+	//
+	// TODO: Core logic goes here...
+	//
 	const cells = await getUsedRangeValues({
 		site: args.siteId,
 		drive: args.driveId,
