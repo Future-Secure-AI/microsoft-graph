@@ -29,11 +29,6 @@ export type ListSitesReponse = {
 	value: Site[];
 };
 
-export type ParseUiResponse = {
-	siteName: SiteName;
-	path: ItemPath;
-};
-
 /**
  * Search across a SharePoint tenant for sites that match keywords provided.
  * https://learn.microsoft.com/en-us/graph/api/site-search
@@ -119,9 +114,9 @@ export const copyItem = async (srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFi
 
 /**
  * Get a the site name and item path from a given SharePoint URL.
- * (ie https://lachlandev.sharepoint.com/sites/Nexus-Test/Shared%20Documents/Forms/AllItems.aspx?viewid=00eac7c9%2Dddb5%2D49f8%2D9dfc%2D321f9ef7c53e&newTargetListUrl=%2Fsites%2FNexus%2DTest%2FShared%20Documents&viewpath=%2Fsites%2FNexus%2DTest%2FShared%20Documents%2FForms%2FAllItems%2Easpx))
+ * (ie https://lachlandev.sharepoint.com/sites/Nexus-Test/Shared%20Documents/Forms/AllItems.aspx?newTargetListUrl=%2Fsites%2FNexus%2DTest%2FShared%20Documents))
  */
-export const parseUiUrl = (uiUrl: string): ParseUiResponse => {
+export const parseUiUrl = (uiUrl: string): { siteName: SiteName, itemPath: ItemPath } => {
 	const url = new URL(uiUrl);
 	if (!url.hostname.endsWith(".sharepoint.com")) throw new InvalidArgumentError("Invalid SharePoint URL. Must end with '.sharepoint.com'.");
 
@@ -133,7 +128,7 @@ export const parseUiUrl = (uiUrl: string): ParseUiResponse => {
 	if (!itemPath) throw new InvalidArgumentError("Invalid SharePoint URL. Path not found in parameters.");
 
 	return {
-		siteName: siteName,
-		path: itemPath,
+		siteName,
+		itemPath,
 	};
 };
