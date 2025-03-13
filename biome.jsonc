@@ -12,10 +12,7 @@
 		"ignore": ["src/microsoftGraph/models.d.ts"]
 	},
 	"formatter": {
-		"enabled": false,
-		"lineWidth": 320,
-		"indentStyle": "tab",
-		"indentWidth": 2
+		"enabled": false
 	},
 	"organizeImports": {
 		"enabled": false // VSCode and Biome organize imports differently

@@ -35,43 +35,50 @@ export type ListSitesReponse = {
  * Search across a SharePoint tenant for sites that match keywords provided.
  * https://learn.microsoft.com/en-us/graph/api/site-search
  */
-export const searchAvailableSites = async (search: string): Promise<ListSitesReponse> => apiGet<ListSitesReponse>("/sites\\?search=?", [search]);
+export const searchAvailableSites = async (search: string): Promise<ListSitesReponse> =>
+	apiGet<ListSitesReponse>("/sites\\?search=?", [search]);
 
 /**
  * List all available sites in an organization.
  * https://learn.microsoft.com/en-us/graph/api/site-list
  */
-export const listAvailableSites = async (): Promise<Site[]> => apiGet<Site[]>("/sites", []);
+export const listAvailableSites = async (): Promise<Site[]> =>
+	apiGet<Site[]>("/sites", []);
 
 /**
  * Retrieve properties for a site resource.
  * https://learn.microsoft.com/en-us/graph/api/site-get
  */
-export const getSite = async (siteRef: SiteRef): Promise<Site> => apiGet<Site>("/sites/?", [siteRef.site]);
+export const getSite = async (siteRef: SiteRef): Promise<Site> => 
+	apiGet<Site>("/sites/?", [siteRef.site]);
 
 /**
  * Get site by name.
  * https://learn.microsoft.com/en-us/graph/api/site-getbypath
  */
-export const getSiteByName = async (hostname: Hostname, siteName: SiteName): Promise<Site> => apiGet<Site>("/sites/?:/?", [hostname, siteName]);
+export const getSiteByName = async (hostname: Hostname, siteName: SiteName): Promise<Site> =>
+	apiGet<Site>("/sites/?:/?", [hostname, siteName]);
 
 /**
  * Retrieve the list of Drive resources available for a Site.
  * https://learn.microsoft.com/en-us/graph/api/drive-list
  */
-export const listDrives = async (siteRef: SiteRef): Promise<ListDriveResponse> => apiGet<ListDriveResponse>("/sites/?/drives", [siteRef.site]);
+export const listDrives = async (siteRef: SiteRef): Promise<ListDriveResponse> => 
+	apiGet<ListDriveResponse>("/sites/?/drives", [siteRef.site]);
 
 /**
  * Retrieve the metadata for an item in a drive by file path. NOTE: If the target file is moved this will cease working.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
-export const getItemByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> => apiGet<DriveItem>(`/sites/?/drives/?/root:${itemPath}`, [driveRef.site, driveRef.drive]);
+export const getItemByPath = async (driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> => 
+	apiGet<DriveItem>(`/sites/?/drives/?/root:${itemPath}`, [driveRef.site, driveRef.drive]);
 
 /**
  * Retrieve the metadata for an item in a drive.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
-export const getItem = async (itemRef: ItemRef): Promise<DriveItem> => apiGet<DriveItem>(`/sites/?/drives/?/items/?`, [itemRef.site, itemRef.drive, itemRef.item]);
+export const getItem = async (itemRef: ItemRef): Promise<DriveItem> => 
+	apiGet<DriveItem>(`/sites/?/drives/?/items/?`, [itemRef.site, itemRef.drive, itemRef.item]);
 
 /**
  * Retrieve the metadata for items in a drive by file path.
@@ -98,7 +105,8 @@ export const listItems = async (driveRef: DriveRef, itemPath: ItemPath): Promise
  * Delete an item.
  * https://learn.microsoft.com/en-us/graph/api/driveitem-delete
  */
-export const deleteItem = async (itemRef: ItemRef): Promise<void> => apiDelete("/sites /?/drives/?/items/?", [itemRef.site, itemRef.drive, itemRef.item]);
+export const deleteItem = async (itemRef: ItemRef): Promise<void> => 
+	apiDelete("/sites /?/drives/?/items/?", [itemRef.site, itemRef.drive, itemRef.item]);
 
 /**
  * Create folder if it doesn't exist, and return the folder.
