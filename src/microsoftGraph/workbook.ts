@@ -11,7 +11,7 @@ export type WorksheetName = string & { __brand: "WorksheetName" };
 export type WorksheetRef = WorkbookRef & { worksheetId: WorksheetId };
 
 export type RangeName = string & { __brand: "RangeName" };
-export type RangeRef = WorkbookRef & { rangeNae: RangeName };
+export type RangeRef = WorkbookRef & { rangeName: RangeName };
 
 export type CellValue = string | number | boolean | null | Date;
 export type RangeValues = CellValue[][];
