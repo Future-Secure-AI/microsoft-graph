@@ -27,15 +27,12 @@ async function run(args: Arguments): Promise<void> {
 		itemId: args.itemId,
 	};
 
-	workbookRef.sessionId = await createWorkbookSession({ // Optional, but improved performance on subsequent requests
-		siteId: args.siteId,
-		driveId: args.driveId,
-		itemId: args.itemId,
-	});
+	const sessionId = await createWorkbookSession(workbookRef); // Optional, but improved performance on subsequent requests
 
 	const worksheetRef: WorksheetRef = {
 		...workbookRef,
 		worksheetId: args.worksheetId,
+		sessionId: sessionId,
 	}
 
 	const cells = await getUsedRange(worksheetRef);
