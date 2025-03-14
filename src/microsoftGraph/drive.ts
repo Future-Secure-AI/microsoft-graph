@@ -1,18 +1,18 @@
 import InvalidArgumentError from "./InvalidArgumentError.js";
-import { apiDelete, apiGet, apiPost, client } from "./api.js";
+import { apiDelete, apiGet, apiPost } from "./api.js";
 import type { DriveItem, Site } from "./models.d.ts";
 
 export type Hostname = string & { __brand: "Hostname" };
 
 export type SiteId = string & { __brand: "SiteId" }; // NOTE: SiteId is in the format `{hostname},{site-collection-id},{web-id}` and therefore implicity contains the hostname
-export type SiteRef = { site: SiteId };
+export type SiteRef = { siteId: SiteId };
 export type SiteName = string & { __brand: "SiteName" };
 
 export type DriveId = string & { __brand: "DriveId" };
-export type DriveRef = SiteRef & { drive: DriveId };
+export type DriveRef = SiteRef & { driveId: DriveId };
 
 export type ItemId = string & { __brand: "ItemId" };
-export type ItemRef = DriveRef & { item: ItemId };
+export type ItemRef = DriveRef & { itemId: ItemId };
 export type ItemPath = string & { __brand: "ItemPath" };
 
 export type ListDriveResponse = {
@@ -33,48 +33,48 @@ export type ListSitesReponse = {
 
 /** Search across a SharePoint tenant for sites that match keywords provided. @see https://learn.microsoft.com/en-us/graph/api/site-search */
 export async function searchAvailableSites(search: string): Promise<ListSitesReponse> {
-	return await apiGet<ListSitesReponse>("/sites\\?search=?", [search]);
+	return await apiGet<ListSitesReponse>("/sites?search={search}", { search });
 }
 
 /** List all available sites in an organization. @see https://learn.microsoft.com/en-us/graph/api/site-list */
 export async function listAvailableSites(): Promise<Site[]> {
-	return await apiGet<Site[]>("/sites", []);
+	return await apiGet<Site[]>("/sites", {});
 }
 
 /** Retrieve properties for a site resource. @see https://learn.microsoft.com/en-us/graph/api/site-get */
 export async function getSite(siteRef: SiteRef): Promise<Site> {
-	return await apiGet<Site>("/sites/?", [siteRef.site]);
+	return await apiGet<Site>("/sites/{site-id}", siteRef);
 }
 
 /** Get site by name. @see https://learn.microsoft.com/en-us/graph/api/site-getbypath */
-export async function getSiteByName(hostname: Hostname, siteName: SiteName): Promise<Site> {
-	return await apiGet<Site>("/sites/?:/?", [hostname, siteName]);
+export async function getSiteByName(hostName: Hostname, siteName: SiteName): Promise<Site> {
+	return await apiGet<Site>("/sites/{host-name}:/{site-name}", { hostName, siteName });
 }
 
 /** Retrieve the list of Drive resources available for a Site. @see https://learn.microsoft.com/en-us/graph/api/drive-list */
 export async function listDrives(siteRef: SiteRef): Promise<ListDriveResponse> {
-	return await apiGet<ListDriveResponse>("/sites/?/drives", [siteRef.site]);
+	return await apiGet<ListDriveResponse>("/sites/{site-id}/drives", siteRef);
 }
 
 /** Retrieve the metadata for an item in a drive by file path. NOTE: If the target file is moved this will cease working. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get */
 export async function getItemByPath(driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> {
-	return await apiGet<DriveItem>(`/sites/?/drives/?/root:${itemPath}`, [driveRef.site, driveRef.drive]);
+	return await apiGet<DriveItem>(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef);
 }
 
 /** Retrieve the metadata for an item in a drive. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get */
 export async function getItem(itemRef: ItemRef): Promise<DriveItem> {
-	return await apiGet<DriveItem>(`/sites/?/drives/?/items/?`, [itemRef.site, itemRef.drive, itemRef.item]);
+	return await apiGet<DriveItem>(`/sites/{site-id}/drives/{drive-id}/items/{item-id}`, itemRef);
 }
 
 /** Retrieve the metadata for items in a drive by file path. @see https://learn.microsoft.com/en-us/graph/api/driveitem-list-children */
 export async function listItems(driveRef: DriveRef, itemPath: ItemPath): Promise<ListItemResponse> {
 	const output: DriveItem[] = [];
 
-	let response = await apiGet<ListItemResponse>(`/sites/?/drives/?/root:${itemPath}:/children`, [driveRef.site, driveRef.drive]);
+	let response = await apiGet<ListItemResponse>(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}:/children`, driveRef);
 	output.push(...response.value);
 
 	while (response["@odata.nextLink"] !== undefined) {
-		response = (await client.api(response["@odata.nextLink"]).get()) as ListItemResponse;
+		response = (await apiGet(response["@odata.nextLink"], {})) as ListItemResponse;
 		output.push(...response.value);
 	}
 
@@ -86,12 +86,12 @@ export async function listItems(driveRef: DriveRef, itemPath: ItemPath): Promise
 
 /** Delete an item. @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete */
 export async function deleteItem(itemRef: ItemRef): Promise<void> {
-	await apiDelete("/sites/?/drives/?/items/?", [itemRef.site, itemRef.drive, itemRef.item]);
+	await apiDelete("/sites/{site-id}/drives/{drive-id}/items/{item-id}", itemRef);
 }
 
 /** Create folder if it doesn't exist, and return the folder. @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children */
 export async function createFolder(driveRef: DriveRef, folderPath: ItemPath): Promise<DriveItem> {
-	return await apiPost<DriveItem>(`/sites/?/drives/?/root:${folderPath}:/children`, [driveRef.site, driveRef.drive], {
+	return await apiPost<DriveItem>(`/sites/{site-id}/drives/{drive-id}/root:${folderPath}:/children`, driveRef, {
 		name: folderPath,
 		folder: {},
 		"@microsoft.graph.conflictBehavior": "rename", // Do nothing if already exists
@@ -100,12 +100,12 @@ export async function createFolder(driveRef: DriveRef, folderPath: ItemPath): Pr
 
 /** Initiate a copy of an item. NOTE The response from the API will only indicate that the copy operation was accepted or rejected, as the copy operation is performed asynchronously. @see https://learn.microsoft.com/en-us/graph/api/driveitem-copy */
 export async function copyItem(srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFileName: string): Promise<void> {
-	await apiPost("/sites/?/drives/?/items/?/copy", [srcFileRef.site, srcFileRef.drive, srcFileRef.item], {
+	await apiPost("/sites/{site-id}/drives/{drive-id}/items/{item-id}/copy", srcFileRef, {
 		name: dstFileName,
 		parentReference: {
-			siteId: dstFolderRef.site,
-			driveId: dstFolderRef.drive,
-			id: dstFolderRef.item,
+			siteId: dstFolderRef.siteId,
+			driveId: dstFolderRef.driveId,
+			id: dstFolderRef.itemId,
 		},
 	});
 }

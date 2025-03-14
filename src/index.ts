@@ -17,10 +17,10 @@ async function run(args: Arguments): Promise<void> {
 	// TODO: Core logic goes here...
 	//
 	const cells = await getUsedRangeValues({
-		site: args.siteId,
-		drive: args.driveId,
-		item: args.itemId,
-		worksheet: args.worksheetName,
+		siteId: args.siteId,
+		driveId: args.driveId,
+		itemId: args.itemId,
+		worksheetId: args.worksheetName,
 	});
 
 	console.info(cells.values);
