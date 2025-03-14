@@ -75,12 +75,12 @@ export async function createWorksheet(workbookRef: WorkbookRef, name?: string): 
 
 /** Update the name, position and/or visibility of a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-update */
 export async function updateWorksheet(worksheetRef: WorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden" }): Promise<WorkbookWorksheet> {
-	return await apiPatch<WorkbookWorksheet>("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheet/{worksheet-id}", worksheetRef, calculateHeader(worksheetRef), updates);
+	return await apiPatch<WorkbookWorksheet>("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}", worksheetRef, calculateHeader(worksheetRef), updates);
 }
 
 /** Permanently delete a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete */
 export async function deleteWorksheet(worksheetRef: WorksheetRef): Promise<void> {
-	await apiDelete("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheet/{worksheet-id}", worksheetRef, calculateHeader(worksheetRef));
+	await apiDelete("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}", worksheetRef, calculateHeader(worksheetRef));
 }
 
 // ADDRESSED RANGES
