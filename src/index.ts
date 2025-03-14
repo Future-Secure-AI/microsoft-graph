@@ -1,18 +1,19 @@
 import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import type { DriveId, SiteId } from "./microsoftGraph/drive.js";
-import type { ItemId } from "./microsoftGraph/driveItem.js";
-import type { WorkbookRef } from "./microsoftGraph/workbook.js";
-import { getUsedRange } from "./microsoftGraph/workbookRange.js";
-import { closeWorkbookSession, createWorkbookSession } from "./microsoftGraph/workbookSession.js";
-import type { WorksheetId, WorksheetRef } from "./microsoftGraph/workbookWorksheet.js";
+import type { DriveId } from "./microsoftGraph/drives/drive.js";
+import type { DriveItemId } from "./microsoftGraph/drives/driveItem.js";
+import type { SiteId } from "./microsoftGraph/sites/site.js";
+import type { WorkbookRef } from "./microsoftGraph/workbooks/workbook.js";
+import { getUsedRange } from "./microsoftGraph/workbooks/workbookRange.js";
+import { closeWorkbookSession, createWorkbookSession } from "./microsoftGraph/workbooks/workbookSession.js";
+import type { WorkbookWorksheetId, WorkbookWorksheetRef } from "./microsoftGraph/workbooks/workbookWorksheet.js";
 
 export type Arguments = {
 	siteId: SiteId;
 	driveId: DriveId;
-	itemId: ItemId;
-	worksheetId: WorksheetId;
+	itemId: DriveItemId;
+	worksheetId: WorkbookWorksheetId;
 };
 
 /** Core logic goes here. But don't call this function directly - use `runNative` or `runCli` instead. */
@@ -29,7 +30,7 @@ async function run(args: Arguments): Promise<void> {
 
 	const sessionId = await createWorkbookSession(workbookRef); // Optional, but improved performance on subsequent requests
 
-	const worksheetRef: WorksheetRef = {
+	const worksheetRef: WorkbookWorksheetRef = {
 		...workbookRef,
 		worksheetId: args.worksheetId,
 		sessionId: sessionId,
@@ -73,13 +74,13 @@ async function runCli(): Promise<void> {
 		.options({
 			siteId: { type: "string", demandOption: true, coerce: (v) => v as SiteId },
 			driveId: { type: "string", demandOption: true, coerce: (v) => v as DriveId },
-			itemId: { type: "string", demandOption: true, coerce: (v) => v as ItemId },
-			worksheetId: { type: "string", demandOption: true, coerce: (v) => v as WorksheetId },
+			itemId: { type: "string", demandOption: true, coerce: (v) => v as DriveItemId },
+			worksheetId: { type: "string", demandOption: true, coerce: (v) => v as WorkbookWorksheetId },
 		})
 		.parse();
 
 	await run(args);
 }
 
-const isCliInvoked = process.argv[1] === fileURLToPath(import.meta.url);
-if (isCliInvoked) await runCli();
+if (process.argv[1] === fileURLToPath(import.meta.url))
+	await runCli();

@@ -1,8 +1,10 @@
 /** GraphAPI Workbook Session bindings. NO NOT ADD BUSINESS OR MANIPULATION LOGIC HERE! */
 
-import { apiPost } from "./api.js";
-import InvalidArgumentError from "./InvalidArgumentError.js";
-import { type WorkbookRef, type WorkbookSessionId, calculateApiHeader } from "./workbook.js";
+import { apiPost } from "../api.js";
+import InvalidArgumentError from "../errors/InvalidArgumentError.js";
+import { type WorkbookRef, calculateApiHeader } from "./workbook.js";
+
+export type WorkbookSessionId = string & { __brand: "WorkbookSessionId" };
 
 /** Create a new workbook session. Typically the persistent session expires after about 5 minutes of inactivity. Non persistent session expires after about 7 minutes of inactivity. Most performant with `persistChanges = true`. @see https://learn.microsoft.com/en-us/graph/api/workbook-createsession @see https://learn.microsoft.com/en-us/graph/api/resources/excel#usage */
 export async function createWorkbookSession(workbookRef: WorkbookRef, persistChanges = true): Promise<WorkbookSessionId> {

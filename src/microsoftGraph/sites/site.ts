@@ -1,7 +1,7 @@
-/** GraphAPI Drive bindings. NO NOT ADD BUSINESS OR MANIPULATION LOGIC HERE! */
+/** GraphAPI Site bindings. NO NOT ADD BUSINESS OR MANIPULATION LOGIC HERE! */
 
-import { apiGet } from "./api.js";
-import type { DriveItem, Site } from "./models.d.ts";
+import { apiGet } from "../api.js";
+import type { Site } from "../models.js";
 
 export type HostName = string & { __brand: "Hostname" };
 
@@ -9,19 +9,6 @@ export type SiteId = string & { __brand: "SiteId" }; // SiteId is in the format 
 export type SiteRef = { siteId: SiteId };
 export type SiteName = string & { __brand: "SiteName" };
 
-export type DriveId = string & { __brand: "DriveId" };
-export type DriveRef = SiteRef & { driveId: DriveId };
-
-export type ListDriveResponse = {
-	"@odata.context": string;
-	value: DriveItem[];
-};
-
-export type ListItemResponse = {
-	"@odata.context": string;
-	value: DriveItem[];
-	"@odata.nextLink"?: string;
-};
 
 export type ListSitesReponse = {
 	"@odata.context": string;

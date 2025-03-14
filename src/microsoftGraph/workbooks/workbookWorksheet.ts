@@ -1,12 +1,11 @@
 /** GraphAPI Workbook Worksheet bindings. NO NOT ADD BUSINESS OR MANIPULATION LOGIC HERE! */
 
-import { apiDelete, apiGet, apiPatch, apiPost } from "./api.js";
-import type { WorkbookWorksheet } from "./models.js";
+import { apiDelete, apiGet, apiPatch, apiPost } from "../api.js";
+import type { WorkbookWorksheet } from "../models.js";
 import { calculateApiHeader, type WorkbookRef } from "./workbook.js";
 
-export type WorksheetId = string & { __brand: "WorksheetId" };
-export type WorksheetName = string & { __brand: "WorksheetName" };
-export type WorksheetRef = WorkbookRef & { worksheetId: WorksheetId };
+export type WorkbookWorksheetId = string & { __brand: "WorkbookWorksheetId" };
+export type WorkbookWorksheetRef = WorkbookRef & { worksheetId: WorkbookWorksheetId };
 
 export type ListWorksheetResponse = {
     value: WorkbookWorksheet[];
@@ -23,11 +22,11 @@ export async function createWorksheet(workbookRef: WorkbookRef, name?: string): 
 }
 
 /** Update the name, position and/or visibility of a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-update */
-export async function updateWorksheet(worksheetRef: WorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden"; }): Promise<WorkbookWorksheet> {
+export async function updateWorksheet(worksheetRef: WorkbookWorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden"; }): Promise<WorkbookWorksheet> {
     return await apiPatch<WorkbookWorksheet>("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}", worksheetRef, calculateApiHeader(worksheetRef), updates);
 }
 
 /** Permanently delete a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete */
-export async function deleteWorksheet(worksheetRef: WorksheetRef): Promise<void> {
+export async function deleteWorksheet(worksheetRef: WorkbookWorksheetRef): Promise<void> {
     await apiDelete("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}", worksheetRef, calculateApiHeader(worksheetRef));
 }

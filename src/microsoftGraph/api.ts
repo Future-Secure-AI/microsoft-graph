@@ -2,13 +2,14 @@
 
 import { Client } from "@microsoft/microsoft-graph-client";
 import { getCurrentAccessToken, type Scope } from "../azureEntra/accessToken.js";
-import BadTemplateError from "./BadTemplateError.js";
+import BadTemplateError from "./errors/BadTemplateError.js";
+import { kebabToCamelCase } from "./stringCaseConversion.js";
 
-const scope = "https://graph.microsoft.com/.default" as Scope;
+const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 
 const client = Client.init({
 	authProvider: (done) => {
-		getCurrentAccessToken(scope) // Do not store the returned access token as it may expire
+		getCurrentAccessToken(authenticationScope) // Do not store the returned access token as it may expire
 			.then((accessToken) => {
 				done(null, accessToken);
 			})
@@ -18,16 +19,12 @@ const client = Client.init({
 	},
 });
 
-function toCamelCase(str: string): string {
-	return str.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase());
-}
-
 function generatePath(template: string, args: Record<string, string>): string {
 	if (!template.startsWith("/")) throw new BadTemplateError("Path template must start with a slash.");
 	if (template.includes("\n")) throw new BadTemplateError("Path template must not contain newlines.");
 
 	return template.replace(/{(\w+)}/g, (key: string): string => {
-		const camelCaseKey = toCamelCase(key);
+		const camelCaseKey = kebabToCamelCase(key);
 		const value = args[camelCaseKey as keyof typeof args];
 		if (value === undefined) throw new BadTemplateError(`Path template references argument '${camelCaseKey}' however no such argument provided.`);
 		return encodeURIComponent(value);
