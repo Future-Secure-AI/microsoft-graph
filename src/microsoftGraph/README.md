@@ -15,10 +15,10 @@ So what you find here is just that - `@microsoft/microsoft-graph-client` glued t
 ```typescript
 // Make sure the envs `AZURE_TENANT_ID`, `AZURE_CLIENT_ID` and `AZURE_CLIENT_SECRET` are set.
 const cells = await getUsedRangeValues({
-    site: args.siteId,
-    drive: args.driveId,
-    item: args.itemId,
-    worksheet: args.worksheetName,
+    siteId: args.siteId,
+    driveId: args.driveId,
+    itemId: args.itemId,
+    worksheetId: args.worksheetId,
 });
 ```
 
