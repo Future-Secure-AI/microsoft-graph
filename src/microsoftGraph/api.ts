@@ -35,31 +35,56 @@ function generatePath(template: string, args: Record<string, string>): string {
 }
 
 /** Perform a GET request on the Graph API. */
-export async function apiGet<T>(pathTemplate: string, pathArgs: Record<string, string>): Promise<T> {
+export async function apiGet<T>(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][]): Promise<T> {
 	const path = generatePath(pathTemplate, pathArgs);
-	return await client.api(path).get() as T;
+
+	let request = client.api(path);
+	for (const header of headers)
+		request = request.header(header[0], header[1]);
+
+	return await request.get() as T;
 }
 
 /** Perform a POST request on the Graph API. */
-export async function apiPost<T>(pathTemplate: string, pathArgs: Record<string, string>, data: unknown): Promise<T> {
+export async function apiPost<T>(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][], data: unknown): Promise<T> {
 	const path = generatePath(pathTemplate, pathArgs);
-	return await client.api(path).post(data) as T;
+
+	let request = client.api(path);
+	for (const header of headers)
+		request = request.header(header[0], header[1]);
+
+	return await request.post(data) as T;
 }
 
 /** Perform a PUT request on the Graph API. */
-export async function apiPut<T>(pathTemplate: string, pathArgs: Record<string, string>, data: unknown): Promise<T> {
+export async function apiPut<T>(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][], data: unknown): Promise<T> {
 	const path = generatePath(pathTemplate, pathArgs);
-	return await client.api(path).put(data) as T;
+
+	let request = client.api(path);
+	for (const header of headers)
+		request = request.header(header[0], header[1]);
+
+	return await request.put(data) as T;
 }
 
 /** Perform a PATCH request on the Graph API. */
-export async function apiPatch<T>(pathTemplate: string, pathArgs: Record<string, string>, data: unknown): Promise<T> {
+export async function apiPatch<T>(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][], data: unknown): Promise<T> {
 	const path = generatePath(pathTemplate, pathArgs);
-	return await client.api(path).patch(data) as T;
+
+	let request = client.api(path);
+	for (const header of headers)
+		request = request.header(header[0], header[1]);
+
+	return await request.patch(data) as T;
 }
 
 /** Perform a DELETE request on the Graph API. */
-export async function apiDelete<T>(pathTemplate: string, pathArgs: Record<string, string>): Promise<void> {
+export async function apiDelete(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][]): Promise<void> {
 	const path = generatePath(pathTemplate, pathArgs);
-	await client.api(path).delete() as T;
+
+	let request = client.api(path);
+	for (const header of headers)
+		request = request.header(header[0], header[1]);
+
+	await request.delete();
 }

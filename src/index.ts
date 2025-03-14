@@ -2,7 +2,7 @@ import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import type { DriveId, ItemId, SiteId } from "./microsoftGraph/drive.js";
-import { getUsedRangeValues, type WorksheetId } from "./microsoftGraph/workbook.js";
+import { closeSession, createSession, getUsedRangeValues, type WorkbookRef, type WorksheetId, type WorksheetRef } from "./microsoftGraph/workbook.js";
 
 export type Arguments = {
 	siteId: SiteId;
@@ -16,12 +16,27 @@ async function run(args: Arguments): Promise<void> {
 	//
 	// TODO: Core logic goes here...
 	//
-	const cells = await getUsedRangeValues({
+
+	const workbookRef: WorkbookRef = {
 		siteId: args.siteId,
 		driveId: args.driveId,
 		itemId: args.itemId,
-		worksheetId: args.worksheetId,
+	};
+
+	workbookRef.sessionId = await createSession({ // Optional, but improved performance on subsequent requests
+		siteId: args.siteId,
+		driveId: args.driveId,
+		itemId: args.itemId,
 	});
+
+	const worksheetRef: WorksheetRef = {
+		...workbookRef,
+		worksheetId: args.worksheetId,
+	}
+
+	const cells = await getUsedRangeValues(worksheetRef);
+
+	await closeSession(workbookRef);
 
 	console.info(cells.values);
 }
