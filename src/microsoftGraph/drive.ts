@@ -1,3 +1,5 @@
+/** GraphAPI drive methods. NO NOT ADD BUSINESS OR MANIPULATION LOGIC HERE! */
+
 import { apiDelete, apiGet, apiPost } from "./api.js";
 import type { DriveItem, Site } from "./models.d.ts";
 

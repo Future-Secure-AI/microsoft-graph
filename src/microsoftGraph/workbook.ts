@@ -1,3 +1,5 @@
+/** GraphAPI workbook methods. NO NOT ADD BUSINESS OR MANIPULATION LOGIC HERE! */
+
 import { apiDelete, apiGet, apiPatch, apiPost, apiPut } from "./api.js";
 import { deleteItem, type DriveRef, type ItemPath, type ItemRef } from "./drive.js";
 import InvalidArgumentError from "./InvalidArgumentError.js";
@@ -15,9 +17,6 @@ export type AddressedRangeRef = WorksheetRef & { address: RangeAddress };
 
 export type RangeName = string & { __brand: "RangeName" };
 export type NamedRangeRef = WorkbookRef & { rangeName: RangeName };
-
-export type CellValue = string | number | boolean | null | Date;
-export type RangeValues = CellValue[][];
 
 export type ListWorksheetResponse = {
 	value: WorkbookWorksheet[];
@@ -97,7 +96,6 @@ export async function updateRange(rangeRef: AddressedRangeRef, update: WorkbookR
 
 /** Clear a range - content, formatting or both. @see https://learn.microsoft.com/en-us/graph/api/range-delete */
 export async function clearRange(rangeRef: AddressedRangeRef, applyTo: "All" | "Formats" | "Contents" = "All"): Promise<void> {
-	"/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}"
 	await apiPost("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')/clear", rangeRef, calculateHeader(rangeRef), { applyTo });
 }
 
