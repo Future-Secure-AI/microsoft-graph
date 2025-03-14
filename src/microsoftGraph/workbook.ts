@@ -33,7 +33,7 @@ function calculateHeader(workbookRef: WorkbookRef): [string, string][] {
 
 /** Create a new blank workbook. */
 export async function createWorkbook(driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> {
-	return await apiPut<DriveItem>(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}:/content`, driveRef, [], Buffer.from([])); // NOTE: This appears not to be documented in Microsoft Learn. 
+	return await apiPut<DriveItem>(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}:/content`, driveRef, [], Buffer.from("UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA==", "base64"));// Base64 for an empty Excel file (compressed format)
 }
 
 /** Delete a workbook. @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete */
