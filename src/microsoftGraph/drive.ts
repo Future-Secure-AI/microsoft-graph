@@ -3,7 +3,7 @@ import type { DriveItem, Site } from "./models.d.ts";
 
 export type HostName = string & { __brand: "Hostname" };
 
-export type SiteId = string & { __brand: "SiteId" }; // NOTE: SiteId is in the format `{hostname},{site-collection-id},{web-id}` and therefore implicity contains the hostname
+export type SiteId = string & { __brand: "SiteId" }; // SiteId is in the format `{hostname},{site-collection-id},{web-id}` and therefore implicity contains the hostname
 export type SiteRef = { siteId: SiteId };
 export type SiteName = string & { __brand: "SiteName" };
 
@@ -30,12 +30,12 @@ export type ListSitesReponse = {
 	value: Site[];
 };
 
-/** Search across a SharePoint tenant for sites that match keywords provided. @see https://learn.microsoft.com/en-us/graph/api/site-search */
+/** Find accessible sites that match keywords provided. @see https://learn.microsoft.com/en-us/graph/api/site-search */
 export async function searchAvailableSites(search: string): Promise<ListSitesReponse> {
 	return await apiGet<ListSitesReponse>("/sites?search={search}", { search }, []);
 }
 
-/** List all available sites in an organization. @see https://learn.microsoft.com/en-us/graph/api/site-list */
+/** List sites that are available. @see https://learn.microsoft.com/en-us/graph/api/site-list */
 export async function listAvailableSites(): Promise<Site[]> {
 	return await apiGet<Site[]>("/sites", {}, []);
 }
@@ -55,7 +55,7 @@ export async function listDrives(siteRef: SiteRef): Promise<ListDriveResponse> {
 	return await apiGet<ListDriveResponse>("/sites/{site-id}/drives", siteRef, []);
 }
 
-/** Retrieve the metadata for an item in a drive by file path. NOTE: If the target file is moved this will cease working. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get */
+/** Retrieve the metadata for an item in a drive by file path. If the target file is moved this will cease working. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get */
 export async function getItemByPath(driveRef: DriveRef, itemPath: ItemPath): Promise<DriveItem> {
 	return await apiGet<DriveItem>(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef, []);
 }
@@ -97,7 +97,7 @@ export async function createFolder(driveRef: DriveRef, folderPath: ItemPath): Pr
 	});
 }
 
-/** Initiate a copy of an item. NOTE The response from the API will only indicate that the copy operation was accepted or rejected, as the copy operation is performed asynchronously. @see https://learn.microsoft.com/en-us/graph/api/driveitem-copy */
+/** Initiate an asyncronous copy of an item. NOTE: The copied file may not be immediately available and polling is required. @see https://learn.microsoft.com/en-us/graph/api/driveitem-copy */
 export async function copyItem(srcFileRef: ItemRef, dstFolderRef: ItemRef, dstFileName: string): Promise<void> {
 	await apiPost("/sites/{site-id}/drives/{drive-id}/items/{item-id}/copy", srcFileRef, [], {
 		name: dstFileName,
