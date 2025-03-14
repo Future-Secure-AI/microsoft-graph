@@ -97,7 +97,8 @@ export async function updateRange(rangeRef: AddressedRangeRef, update: WorkbookR
 
 /** Clear a range - content, formatting or both. @see https://learn.microsoft.com/en-us/graph/api/range-delete */
 export async function clearRange(rangeRef: AddressedRangeRef, applyTo: "All" | "Formats" | "Contents" = "All"): Promise<void> {
-	await apiPost("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')/ckear", rangeRef, calculateHeader(rangeRef), { applyTo });
+	"/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}"
+	await apiPost("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')/clear", rangeRef, calculateHeader(rangeRef), { applyTo });
 }
 
 /** Delete a range. @see https://learn.microsoft.com/en-us/graph/api/range-clear */
@@ -126,5 +127,5 @@ export async function updateNamedRange(rangeRef: NamedRangeRef, value: WorkbookR
 
 /** Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank. @see https://learn.microsoft.com/en-us/graph/api/range-usedrange */
 export async function getUsedRange(worksheetRef: WorksheetRef): Promise<WorkbookRange> {
-	return await apiGet<WorkbookRange>("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheet/{worksheet-id}/range/usedRange", worksheetRef, calculateHeader(worksheetRef));
+	return await apiGet<WorkbookRange>("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range/usedRange", worksheetRef, calculateHeader(worksheetRef));
 }
