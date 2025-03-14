@@ -7,6 +7,9 @@ the models, however nothing appears to exist to pull these basic concepts togeth
 
 So what you find here is just that - `@microsoft/microsoft-graph-client` glued to `msgraph-typescript-typings`, with some strongly typed IDs injected to make it hard to make mistakes.
 
+## Scope
+Provide a faithfil interface to GraphAPI with minimal opinion and minimal value-add. Data manipulation logic should go elsewhere - keep this clean!
+
 ## Usage
 
 1) Make sure the enviuronment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_ID` and `AZURE_CLIENT_SECRET` are set.
