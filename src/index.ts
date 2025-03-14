@@ -2,13 +2,13 @@ import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import type { DriveId, ItemId, SiteId } from "./microsoftGraph/drive.js";
-import { getUsedRangeValues, type WorksheetName } from "./microsoftGraph/workbook.js";
+import { getUsedRangeValues, type WorksheetId } from "./microsoftGraph/workbook.js";
 
 export type Arguments = {
 	siteId: SiteId;
 	driveId: DriveId;
 	itemId: ItemId;
-	worksheetName: WorksheetName;
+	worksheetId: WorksheetId;
 };
 
 /** Core logic goes here. But don't call this function directly - use `runNative` or `runCli` instead. */
@@ -20,7 +20,7 @@ async function run(args: Arguments): Promise<void> {
 		siteId: args.siteId,
 		driveId: args.driveId,
 		itemId: args.itemId,
-		worksheetId: args.worksheetName,
+		worksheetId: args.worksheetId,
 	});
 
 	console.info(cells.values);
@@ -58,7 +58,7 @@ async function runCli(): Promise<void> {
 			siteId: { type: "string", demandOption: true, coerce: (v) => v as SiteId },
 			driveId: { type: "string", demandOption: true, coerce: (v) => v as DriveId },
 			itemId: { type: "string", demandOption: true, coerce: (v) => v as ItemId },
-			worksheetName: { type: "string", demandOption: true, coerce: (v) => v as WorksheetName },
+			worksheetId: { type: "string", demandOption: true, coerce: (v) => v as WorksheetId },
 		})
 		.parse();
 
