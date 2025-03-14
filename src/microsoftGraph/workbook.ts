@@ -10,9 +10,8 @@ export type WorksheetId = string & { __brand: "WorksheetId" };
 export type WorksheetName = string & { __brand: "WorksheetName" };
 export type WorksheetRef = WorkbookRef & { worksheetId: WorksheetId };
 
-export type RangeId = string & { __brand: "RangeId" };
 export type RangeName = string & { __brand: "RangeName" };
-// export type RangeRef = WorkbookRef & { rangeId: RangeId };
+export type RangeRef = WorkbookRef & { rangeNae: RangeName };
 
 export type CellValue = string | number | boolean | null | Date;
 export type RangeValues = CellValue[][];
@@ -81,11 +80,11 @@ export async function getUsedRangeValues(worksheetRef: WorksheetRef): Promise<Wo
 }
 
 /** Retrieve a named range. @see https://learn.microsoft.com/en-us/graph/api/range-get */
-export async function getNamedRangeValues(workbookRef: WorkbookRef, rangeName: RangeName): Promise<WorkbookRange> {
-	return await apiGet<WorkbookRange>("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/names/{range-name}/range", { ...workbookRef, rangeName }, calculateHeader(workbookRef));
+export async function getNamedRangeValues(rangeRef: RangeRef): Promise<WorkbookRange> {
+	return await apiGet<WorkbookRange>("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/names/{range-name}/range", rangeRef, calculateHeader(rangeRef));
 }
 
 /** Update a named range. @see https://learn.microsoft.com/en-us/graph/api/range-update */
-export async function setNamedRangeValues(workbookRef: WorkbookRef, rangeName: RangeName, values: RangeValues): Promise<void> {
-	await apiPatch("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/names/{range-name}/range", { ...workbookRef, rangeName }, calculateHeader(workbookRef), values);
+export async function setNamedRangeValues(rangeRef: RangeRef, values: RangeValues): Promise<void> {
+	await apiPatch("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/names/{range-name}/range", rangeRef, calculateHeader(rangeRef), values);
 }
