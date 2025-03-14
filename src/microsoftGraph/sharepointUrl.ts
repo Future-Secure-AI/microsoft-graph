@@ -1,4 +1,5 @@
-import type { HostName, ItemPath, SiteName } from "../microsoftGraph/drive.js";
+import type { HostName, SiteName } from "./drive.js";
+import type { ItemPath } from "./driveItem.js";
 import InvalidArgumentError from "./InvalidArgumentError.js";
 
 /** Get the site name and item path from a given SharePoint URL. (ie https://lachlandev.sharepoint.com/sites/Nexus-Test/Shared%20Documents/Forms/AllItems.aspx?newTargetListUrl=%2Fsites%2FNexus%2DTest%2FShared%20Documents)) */

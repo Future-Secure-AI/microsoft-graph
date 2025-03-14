@@ -1,8 +1,12 @@
 import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import type { DriveId, ItemId, SiteId } from "./microsoftGraph/drive.js";
-import { closeSession, createSession, getUsedRange, type WorkbookRef, type WorksheetId, type WorksheetRef } from "./microsoftGraph/workbook.js";
+import type { DriveId, SiteId } from "./microsoftGraph/drive.js";
+import type { ItemId } from "./microsoftGraph/driveItem.js";
+import type { WorkbookRef } from "./microsoftGraph/workbook.js";
+import { getUsedRange } from "./microsoftGraph/workbookRange.js";
+import { closeWorkbookSession, createWorkbookSession } from "./microsoftGraph/workbookSession.js";
+import type { WorksheetId, WorksheetRef } from "./microsoftGraph/workbookWorksheet.js";
 
 export type Arguments = {
 	siteId: SiteId;
@@ -23,7 +27,7 @@ async function run(args: Arguments): Promise<void> {
 		itemId: args.itemId,
 	};
 
-	workbookRef.sessionId = await createSession({ // Optional, but improved performance on subsequent requests
+	workbookRef.sessionId = await createWorkbookSession({ // Optional, but improved performance on subsequent requests
 		siteId: args.siteId,
 		driveId: args.driveId,
 		itemId: args.itemId,
@@ -36,7 +40,7 @@ async function run(args: Arguments): Promise<void> {
 
 	const cells = await getUsedRange(worksheetRef);
 
-	await closeSession(workbookRef);
+	await closeWorkbookSession(workbookRef);
 
 	console.info(cells.values);
 }
