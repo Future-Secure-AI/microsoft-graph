@@ -1,13 +1,16 @@
 import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import type { DriveId } from "./microsoftGraph/drives/drive.js";
-import type { DriveItemId } from "./microsoftGraph/drives/driveItem.js";
-import type { SiteId } from "./microsoftGraph/sites/site.js";
-import type { WorkbookRef } from "./microsoftGraph/workbooks/workbook.js";
-import { getUsedRange } from "./microsoftGraph/workbooks/workbookRange.js";
-import { closeWorkbookSession, createWorkbookSession } from "./microsoftGraph/workbooks/workbookSession.js";
-import type { WorkbookWorksheetId, WorkbookWorksheetRef } from "./microsoftGraph/workbooks/workbookWorksheet.js";
+import { execute } from "./microsoftGraph/api.js";
+import type { DriveId } from "./microsoftGraph/drives/DriveId.js";
+import type { DriveItemId } from "./microsoftGraph/drives/DriveItemId.js";
+import type { SiteId } from "./microsoftGraph/sites/SiteId.js";
+import { closeWorkbookSession } from "./microsoftGraph/workbooks/closeWorkbookSession.js";
+import { createWorkbookSession } from "./microsoftGraph/workbooks/createWorkbookSession.js";
+import { getUsedRange } from "./microsoftGraph/workbooks/getUsedRange.js";
+import type { WorkbookRef } from "./microsoftGraph/workbooks/WorkbookRef.js";
+import type { WorkbookWorksheetId } from "./microsoftGraph/workbooks/WorkbookWorksheetId.js";
+import type { WorkbookWorksheetRef } from "./microsoftGraph/workbooks/WorkbookWorksheetRef.js";
 
 export type Arguments = {
 	siteId: SiteId;
@@ -28,15 +31,15 @@ async function run(args: Arguments): Promise<void> {
 		itemId: args.itemId,
 	};
 
-	const sessionId = await createWorkbookSession(workbookRef); // Optional, but improved performance on subsequent requests
+	const [session] = await execute(createWorkbookSession(workbookRef)); // Optional, but improved performance on subsequent requests
 
 	const worksheetRef: WorkbookWorksheetRef = {
 		...workbookRef,
 		worksheetId: args.worksheetId,
-		sessionId: sessionId,
+		sessionId: session.id,
 	}
 
-	const cells = await getUsedRange(worksheetRef);
+	const [cells] = await execute(getUsedRange(worksheetRef));
 
 	await closeWorkbookSession(workbookRef);
 

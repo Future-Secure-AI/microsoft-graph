@@ -1,87 +1,109 @@
-/** Low level type-safe API for GraphAPI @see https://learn.microsoft.com/en-us/graph/api/overview */
-
-import { Client } from "@microsoft/microsoft-graph-client";
 import { getCurrentAccessToken, type Scope } from "../azureEntra/accessToken.js";
 import BadTemplateError from "./errors/BadTemplateError.js";
+import InvalidArgumentError from "./errors/InvalidArgumentError.js";
+import RequestFailedError from "./errors/RequestFailedError.js";
 import { kebabToCamelCase } from "./stringCaseConversion.js";
+import type { WorkbookSessionId } from "./workbooks/WorkbookSessionId.js";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
+const endpoint = "https://graph.microsoft.com/v1.0/$batch";
+const minBatchCalls = 1;
+const maxBatchCalls = 20;// https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
-const client = Client.init({
-	authProvider: (done) => {
-		getCurrentAccessToken(authenticationScope) // Do not store the returned access token as it may expire
-			.then((accessToken) => {
-				done(null, accessToken);
-			})
-			.catch((error: unknown) => {
-				done(error, null);
-			});
-	},
-});
+export type GraphMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+export type GraphPath = string & { __brand: "Path" };
+export type GraphHeaders = {
+    "workbook-session-id"?: WorkbookSessionId | undefined,
+    "content-type"?: "application/json" | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" | undefined
+};
 
-function generatePath(template: string, args: Record<string, string>): string {
-	if (!template.startsWith("/")) throw new BadTemplateError("Path template must start with a slash.");
-	if (template.includes("\n")) throw new BadTemplateError("Path template must not contain newlines.");
+// @ts-ignore: Type used to match response
+// biome-ignore lint/correctness/noUnusedVariables: Type used to match response
+export type GraphRequest<T> = {
+    /** HTTP method to be used. */
+    method: GraphMethod;
+    /** Relative resource URL for the individual request. Ie, if the absolute URL is `https://graph.microsoft.com/v1.0/users`, this path is `/users`. */
+    path: GraphPath;
+    /** HTTP headers to be used. When the body is supplied, a Content-Type header must be included. */
+    headers: GraphHeaders,
+    /** JSON object or a base64 URL-encoded value, for example, when the body is an image. When a body is included with the request, the headers object must contain a value for Content-Type. */
+    body: unknown,
+    /** Array of request IDs that must be completed before this request is executed */
+    dependsOn?: number[]
+};
 
-	return template.replace(/{(\w+)}/g, (key: string): string => {
-		const camelCaseKey = kebabToCamelCase(key);
-		const value = args[camelCaseKey as keyof typeof args];
-		if (value === undefined) throw new BadTemplateError(`Path template references argument '${camelCaseKey}' however no such argument provided.`);
-		return encodeURIComponent(value);
-	});
+export type GraphResponse = {
+    id: string;
+    status: number;
+    headers: GraphHeaders;
+    body: unknown;
+};
+
+export type ErrorBody = {
+    code: string;
+    message: string;
+};
+
+export type Results<T> = {
+    [K in keyof T]: T[K] extends GraphRequest<infer R> ? R : never;
+};
+
+export function generatePath(template: string, args: Record<string, string>): GraphPath {
+    if (!template.startsWith("/")) throw new BadTemplateError("Path template must start with a slash.");
+    if (template.includes("\n")) throw new BadTemplateError("Path template must not contain newlines.");
+
+    return template.replace(/{(\w+)}/g, (key: string): string => {
+        const camelCaseKey = kebabToCamelCase(key.slice(1, -1)); // Remove curly braces before converting to camel case
+        const value = args[camelCaseKey as keyof typeof args];
+        if (value === undefined) throw new BadTemplateError(`Path template references argument '${camelCaseKey}' however no such argument provided.`);
+        return encodeURIComponent(value);
+    }) as GraphPath;
 }
 
-/** Perform a GET request on the Graph API. */
-export async function apiGet<T>(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][]): Promise<T> {
-	const path = generatePath(pathTemplate, pathArgs);
+export async function execute<T extends GraphRequest<unknown>[]>(...calls: T): Promise<Results<T>> {
+    const accessToken = await getCurrentAccessToken(authenticationScope);
 
-	let request = client.api(path);
-	for (const header of headers)
-		request = request.header(header[0], header[1]);
+    if (calls.length < minBatchCalls || calls.length > maxBatchCalls)
+        throw new InvalidArgumentError(`Requires at least ${minBatchCalls} and at most ${maxBatchCalls} calls`);
 
-	return await request.get() as T;
-}
+    const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+            'authorization': `Bearer ${accessToken}`,
+            'accept': 'application/json',
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            requests: calls.map((call, index) => ({
+                id: index.toString(),
+                method: call.method,
+                url: call.path,
+                headers: call.headers,
+                body: call.body,
+                dependsOn: call.dependsOn?.map((id) => id.toString())
+            }))
+        })
+    });
 
-/** Perform a POST request on the Graph API. */
-export async function apiPost<T>(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][], data: unknown): Promise<T> {
-	const path = generatePath(pathTemplate, pathArgs);
+    if (!response.ok)
+        throw new RequestFailedError(`Batch request failed with status ${response.status}`);
 
-	let request = client.api(path);
-	for (const header of headers)
-		request = request.header(header[0], header[1]);
+    const json = await response.json();
 
-	return await request.post(data) as T;
-}
+    if (!json.responses)
+        throw new RequestFailedError("Batch request did not return any responses");
 
-/** Perform a PUT request on the Graph API. */
-export async function apiPut<T>(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][], data: unknown): Promise<T> {
-	const path = generatePath(pathTemplate, pathArgs);
+    const results: Partial<Results<T>> = {};
 
-	let request = client.api(path);
-	for (const header of headers)
-		request = request.header(header[0], header[1]);
+    json.responses.forEach((response: GraphResponse) => {
+        if (response.status !== 200) {
+            const body = response.body as ErrorBody;
+            throw new RequestFailedError(`[REQUEST INDEX: ${response.id} STATUS: ${response.status} CODE: ${body.code}]: ${body.message}`);
+        }
 
-	return await request.put(data) as T;
-}
+        const index = parseInt(response.id, 10);
+        results[index] = response.body;
+    });
 
-/** Perform a PATCH request on the Graph API. */
-export async function apiPatch<T>(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][], data: unknown): Promise<T> {
-	const path = generatePath(pathTemplate, pathArgs);
-
-	let request = client.api(path);
-	for (const header of headers)
-		request = request.header(header[0], header[1]);
-
-	return await request.patch(data) as T;
-}
-
-/** Perform a DELETE request on the Graph API. */
-export async function apiDelete(pathTemplate: string, pathArgs: Record<string, string>, headers: [string, string][]): Promise<void> {
-	const path = generatePath(pathTemplate, pathArgs);
-
-	let request = client.api(path);
-	for (const header of headers)
-		request = request.header(header[0], header[1]);
-
-	await request.delete();
+    return results as Results<T>;
 }
