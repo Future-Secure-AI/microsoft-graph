@@ -29,3 +29,6 @@ That's it!
 
 ## Extending
 This is not a fully-featured SDK. Only methods that have been required so far have been implemented, so you probably will need to add new ones. **Please feel free to do this**, however be sure to follow the existing pattern.
+
+## Regenerating models
+Models are imported from `msgraph-typescript-typings` with some fixes and strongly typed IDs injected. To update the models with the latest run this command: `npx tsx regenerate-models.ts`

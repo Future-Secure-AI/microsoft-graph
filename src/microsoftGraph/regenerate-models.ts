@@ -1,10 +1,10 @@
 import fs from "fs/promises";
 import https from "https";
-import { basename } from "path";
+import { basename, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const inputUrl = "https://raw.githubusercontent.com/microsoftgraph/msgraph-typescript-typings/refs/heads/main/microsoft-graph.d.ts";
-const outputFilePath = "src/microsoftGraph/models.d.ts";
+const outputFilePath = `${dirname(fileURLToPath(import.meta.url))}/models.d.ts`;
 
 const downloadFile = async (url: string): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -30,20 +30,17 @@ const writeFile = async (path: string, data: string): Promise<void> =>
 const fixWhiteSpace = (data: string): string =>
     data.replace(/\u202F/g, " ");
 
-const fixAnyDataType = (data: string): string =>
-    data.replace(/\bany\b/g, "unknown");
+const fixAnyDataType = (data: string): string => data
+    .replace(/: any\b/g, ": unknown")
+    .replace(/\<any\>/g, "<unknown>");
 
 const fixLintDisables = (data: string): string =>
-    "/* eslint-disable */\n" +
-    "\n" +
-    data.replace(
+    `/* eslint-disable */\n\n${data.replace(
         /\/\/ tslint:disable-next-line: [a-z- ]+\n/g,
-        "");
+        "")}`;
 
 const linkStronglyTypedIds = (data: string): string =>
-    "import type { DriveId, ItemId } from './drive.ts'\n" +
-    "import type { SiteId } from './site.ts';\n\n" +
-    data
+    `import type { DriveId, ItemId } from './drive.ts'\nimport type { SiteId } from './site.ts';\n\n${data
         .replace(
             /export interface Entity\s*{[^}]*id\?: string;/g,
             "export interface Entity<TId = string> {\n    // The unique identifier for an entity. Read-only.\n    id?: TId;"
@@ -63,7 +60,7 @@ const linkStronglyTypedIds = (data: string): string =>
         .replace(
             "export interface Site extends BaseItem {",
             "export interface Site extends BaseItem<SiteId> {"
-        )
+        )}`
     ;
 
 let data = await downloadFile(inputUrl);
