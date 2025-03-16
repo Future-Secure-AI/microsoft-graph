@@ -3,14 +3,14 @@ import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { execute } from "./microsoftGraph/api.js";
 import type { DriveId } from "./microsoftGraph/drives/DriveId.js";
-import type { DriveItemId } from "./microsoftGraph/drives/DriveItemId.js";
+import type { DriveItemId } from "./microsoftGraph/drives/driveItem/DriveItemId.js";
 import type { SiteId } from "./microsoftGraph/sites/SiteId.js";
-import { closeWorkbookSession } from "./microsoftGraph/workbooks/closeWorkbookSession.js";
-import { createWorkbookSession } from "./microsoftGraph/workbooks/createWorkbookSession.js";
-import { getUsedRange } from "./microsoftGraph/workbooks/getUsedRange.js";
+import getWorkbookUsedRange from "./microsoftGraph/workbooks/workbookRange/getWorkbookUsedRange.js";
 import type { WorkbookRef } from "./microsoftGraph/workbooks/WorkbookRef.js";
-import type { WorkbookWorksheetId } from "./microsoftGraph/workbooks/WorkbookWorksheetId.js";
-import type { WorkbookWorksheetRef } from "./microsoftGraph/workbooks/WorkbookWorksheetRef.js";
+import closeWorkbookSession from "./microsoftGraph/workbooks/workbookSession/closeWorkbookSession.js";
+import createWorkbookSession from "./microsoftGraph/workbooks/workbookSession/createWorkbookSession.js";
+import type { WorkbookWorksheetId } from "./microsoftGraph/workbooks/workbookWorksheet/WorkbookWorksheetId.js";
+import type { WorkbookWorksheetRef } from "./microsoftGraph/workbooks/workbookWorksheet/WorkbookWorksheetRef.js";
 
 export type Arguments = {
 	siteId: SiteId;
@@ -39,7 +39,7 @@ async function run(args: Arguments): Promise<void> {
 		sessionId: session.id,
 	}
 
-	const [cells] = await execute(getUsedRange(worksheetRef));
+	const [cells] = await execute(getWorkbookUsedRange(worksheetRef));
 
 	await closeWorkbookSession(workbookRef);
 

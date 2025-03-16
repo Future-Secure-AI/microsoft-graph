@@ -1,4 +1,4 @@
-import type { DriveItemPath } from "./drives/DriveItemPath.js";
+import type { DriveItemPath } from "./drives/driveItem/DriveItemPath.js";
 import InvalidArgumentError from "./errors/InvalidArgumentError.js";
 import type { HostName } from "./sites/HostName.js";
 import type { SiteName } from "./sites/SiteName.js";

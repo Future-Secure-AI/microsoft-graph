@@ -1,6 +1,6 @@
-import { type GraphRequest, generatePath } from "../api.js";
-import InvalidArgumentError from "../errors/InvalidArgumentError.js";
-import type { WorkbookRef } from "./WorkbookRef.js";
+import { type GraphRequest, generatePath } from "../../api.js";
+import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
+import type { WorkbookRef } from "../WorkbookRef.js";
 
 /** Close an existing workbook session. @see https://learn.microsoft.com/en-us/graph/api/workbook-closesession */
 export default function closeWorkbookSession(workbookRef: WorkbookRef): GraphRequest<void> {

@@ -1,6 +1,6 @@
-import { type GraphRequest, generatePath } from "../api.js";
-import InvalidArgumentError from "../errors/InvalidArgumentError.js";
-import type { WorkbookRef } from "./WorkbookRef.js";
+import { type GraphRequest, generatePath } from "../../api.js";
+import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
+import type { WorkbookRef } from "../WorkbookRef.js";
 
 /** Refresh a workbook session. @see https://learn.microsoft.com/en-us/graph/api/workbook-refreshsession */
 export default function refreshWorkbookSession(workbookRef: WorkbookRef): GraphRequest<void> {

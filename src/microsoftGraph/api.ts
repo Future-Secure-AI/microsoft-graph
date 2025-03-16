@@ -3,7 +3,7 @@ import BadTemplateError from "./errors/BadTemplateError.js";
 import InvalidArgumentError from "./errors/InvalidArgumentError.js";
 import RequestFailedError from "./errors/RequestFailedError.js";
 import { kebabToCamelCase } from "./stringCaseConversion.js";
-import type { WorkbookSessionId } from "./workbooks/WorkbookSessionId.js";
+import type { WorkbookSessionId } from "./workbooks/workbookSession/WorkbookSessionId.js";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 const endpoint = "https://graph.microsoft.com/v1.0/$batch";
