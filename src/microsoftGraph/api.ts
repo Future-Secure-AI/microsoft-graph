@@ -17,6 +17,10 @@ export type GraphHeaders = {
     "content-type"?: "application/json" | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" | undefined
 };
 
+export type GraphOptions = {
+    dependsOn?: number[];
+};
+
 // @ts-ignore: Type used to match response
 // biome-ignore lint/correctness/noUnusedVariables: Type used to match response
 export type GraphRequest<T> = {
@@ -29,7 +33,7 @@ export type GraphRequest<T> = {
     /** JSON object or a base64 URL-encoded value, for example, when the body is an image. When a body is included with the request, the headers object must contain a value for Content-Type. */
     body: unknown,
     /** Array of request IDs that must be completed before this request is executed */
-    dependsOn?: number[]
+    dependsOn: number[] | undefined
 };
 
 export type GraphResponse = {

@@ -1,4 +1,5 @@
-import { type GraphOptions, type GraphRequest, generatePath } from "../../api.js";
+import type { GraphOptions } from "../../api.js";
+import { type GraphRequest, generatePath } from "../../api.js";
 import type { DriveItem } from "../../models.js";
 import type { DriveRef } from "../DriveRef.js";
 import type { DriveItemPath } from "./DriveItemPath.js";
