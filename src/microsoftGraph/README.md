@@ -15,7 +15,7 @@ First up, make sure the enviuronment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_
 Then make calls:
 
 ```typescript
-const [cells] = await execute(getUsedRangeValues({
+const [cells] = await execute(getWorkbookUsedRangeValues({
     siteId: args.siteId,
     driveId: args.driveId,
     itemId: args.itemId,
@@ -51,7 +51,7 @@ Batching improves the speed of all operations, allowing them to be performed in 
 
 ```typescript
 const [cells, _, __] = await execute(
-    getUsedRangeValues({
+    getWorkbookUsedRangeValues({
         siteId: args.siteId,
         driveId: args.driveId,
         itemId: args.itemId,
