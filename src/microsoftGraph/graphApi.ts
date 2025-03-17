@@ -59,23 +59,23 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
         throw new RequestFailedError("Batch request did not return any responses");
     }
 
-    const results: Partial<ExecutionResults<T>> = {};
+    const results: unknown[] = []; // A little ugly, but effective without blatantly compromising type safety. Is there a neater way?
 
     for (const response of json.responses) {
-        const opIndex = Number.parseInt(response.id, 10);
+        const index = Number.parseInt(response.id, 10);
 
         if (response.status !== 200) {
-            const op = JSON.stringify(ops[opIndex], null, 2);
+            const op = JSON.stringify(ops[index], null, 2);
             const bodyRaw = JSON.stringify(response.body, null, 2);
 
             throw new RequestFailedError(
                 `GraphAPI execution failed with HTTP ${response.status}\n` +
-                `Operation (index ${opIndex}): ${op}\n` +
+                `Operation (index ${index}): ${op}\n` +
                 `Error body: ${bodyRaw}}`
             );
         }
 
-        results[opIndex] = response.body;
+        results[index] = response.body;
     }
 
     return results as ExecutionResults<T>;
