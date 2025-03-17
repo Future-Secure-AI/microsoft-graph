@@ -1,13 +1,12 @@
-import type { DriveItemRef } from "../../model/DriveItemRef.js";
 import type { GraphOperation } from "../../model/GraphOperation.js";
 import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { DriveItem } from "../../model/models.js";
 import generatePath from "../../utils/generatePath.js";
+import type { DriveItemRef } from "./DriveItemRef.js";
 
-/** Retrieve the metadata for an item in a drive. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get */
-export default function getItem(itemRef: DriveItemRef, opts?: GraphOptions): GraphOperation<DriveItem> {
+/** Delete an item. @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete */
+export default function deleteDriveItem(itemRef: DriveItemRef, opts?: GraphOptions): GraphOperation<void> {
     return {
-        method: "GET",
+        method: "DELETE",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}`, itemRef),
         headers: {},
         body: null,

@@ -1,5 +1,5 @@
 import BadTemplateError from "../errors/BadTemplateError.js";
-import type { GraphPath } from "../GraphRequest.js";
+import type { GraphPath } from "../model/GraphOperation.js";
 import { kebabToCamelCase } from "./stringCaseConversion.js";
 
 /** Create a GraphAPI path based on a given template and arguments. Escaping is automatically handeld */

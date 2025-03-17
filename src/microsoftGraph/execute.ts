@@ -1,7 +1,8 @@
-import { getCurrentAccessToken, type Scope } from "./accessToken.js";
+import { getCurrentAccessToken } from "./accessToken.js";
 import InvalidArgumentError from "./errors/InvalidArgumentError.js";
 import RequestFailedError from "./errors/RequestFailedError.js";
-import type { GraphHeaders, GraphRequest } from "./GraphRequest.js";
+import type { GraphHeaders, GraphOperation } from "./model/GraphOperation.js";
+import type { Scope } from "./model/Scope.js";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 const endpoint = "https://graph.microsoft.com/v1.0/$batch";
@@ -21,14 +22,14 @@ type ResponseErrorBody = {
 };
 
 type ExecutionResults<T> = {
-    [K in keyof T]: T[K] extends GraphRequest<infer R> ? R : never;
+    [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
 
 /** Execute GraphAPI batch with up to 20 requests to be executed as a batch. */
-export default async function execute<T extends GraphRequest<unknown>[]>(...calls: T): Promise<ExecutionResults<T>> {
+export default async function execute<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
     const accessToken = await getCurrentAccessToken(authenticationScope);
 
-    if (calls.length < minBatchCalls || calls.length > maxBatchCalls)
+    if (ops.length < minBatchCalls || ops.length > maxBatchCalls)
         throw new InvalidArgumentError(`Requires at least ${minBatchCalls} and at most ${maxBatchCalls} calls`);
 
     const response = await fetch(endpoint, {
@@ -39,7 +40,7 @@ export default async function execute<T extends GraphRequest<unknown>[]>(...call
             'content-type': 'application/json'
         },
         body: JSON.stringify({
-            requests: calls.map((call, index) => ({
+            requests: ops.map((call, index) => ({
                 id: index.toString(),
                 method: call.method,
                 url: call.path,

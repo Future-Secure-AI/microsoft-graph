@@ -1,6 +1,6 @@
-import type { GraphOperation } from "../../model/GraphOperation.js";
-import type { WorkbookRef } from "../../model/WorkbookRef.js";
-import deleteDriveItem from "../driveItem/deleteDriveItem.js";
+import type { GraphOperation } from "../model/GraphOperation.js";
+import deleteDriveItem from "../operations/driveItem/deleteDriveItem.js";
+import type { WorkbookRef } from "./WorkbookRef.js";
 
 /** Delete a workbook. @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete */
 export default function deleteWorkbook(workbookRef: WorkbookRef): GraphOperation<void> {

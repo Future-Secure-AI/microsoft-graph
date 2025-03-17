@@ -1,8 +1,7 @@
 import { ClientSecretCredential, type AccessToken as InnerAccessToken } from "@azure/identity";
 import { azureClientId, azureClientSecret, azureTenantId } from "./configuration.js";
-
-export type AccessToken = string & { __brand: "AccessToken" };
-export type Scope = string & { __brand: "Scope" };
+import type { AccessToken } from "./model/AccessToken.1.js";
+import type { Scope } from "./model/Scope.js";
 
 const credential = new ClientSecretCredential(azureTenantId, azureClientId, azureClientSecret);
 const innerTokenCache: Record<Scope, InnerAccessToken> = {};

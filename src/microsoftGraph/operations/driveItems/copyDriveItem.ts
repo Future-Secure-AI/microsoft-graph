@@ -1,7 +1,7 @@
-import type { DriveItemRef } from "../../model/DriveItemRef.js";
 import type { GraphOperation } from "../../model/GraphOperation.js";
 import type { GraphOptions } from "../../model/GraphOptions.js";
 import generatePath from "../../utils/generatePath.js";
+import type { DriveItemRef } from "./DriveItemRef.js";
 
 /** Initiate an asyncronous copy of an item. NOTE: The copied file may not be immediately available and polling is required. @see https://learn.microsoft.com/en-us/graph/api/driveitem-copy */
 export default function copyDriveItem(srcFileRef: DriveItemRef, dstFolderRef: DriveItemRef, dstFileName: string, opts?: GraphOptions): GraphOperation<void> {

@@ -1,11 +1,11 @@
-import type { GraphOptions } from "../../GraphOptions.js";
-import type { GraphRequest } from "../../GraphRequest.js";
+import type { GraphOperation } from "../../model/GraphOperation.js";
+import type { GraphOptions } from "../../model/GraphOptions.js";
 import type { WorkbookRange } from "../../model/models.js";
 import type { WorkbookRangeRef } from "../../model/WorkbookRangeRef.js";
 import generatePath from "../../utils/generatePath.js";
 
 /** Update range, including values and formatting. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values. @see https://learn.microsoft.com/en-us/graph/api/range-update */
-export default function updateWorkbookRange(rangeRef: WorkbookRangeRef, update: WorkbookRange, opts?: GraphOptions): GraphRequest<void> {
+export default function updateWorkbookRange(rangeRef: WorkbookRangeRef, update: WorkbookRange, opts?: GraphOptions): GraphOperation<void> {
     return {
         method: "PATCH",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')`, rangeRef),
