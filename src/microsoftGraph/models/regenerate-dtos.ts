@@ -1,7 +1,7 @@
-import fs from "fs/promises";
-import https from "https";
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs/promises";
+import https from "node:https";
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const inputUrl = "https://raw.githubusercontent.com/microsoftgraph/msgraph-typescript-typings/refs/heads/main/microsoft-graph.d.ts";
 const outputFilePath = `${dirname(fileURLToPath(import.meta.url))}/Dto.d.ts`;

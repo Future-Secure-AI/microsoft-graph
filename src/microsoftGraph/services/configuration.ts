@@ -4,7 +4,9 @@ function tryGetEnvironmentVariable(env: string, fallbackValue: string | null = n
 	const value = process.env[env]?.trim() ?? "";
 
 	if (value === "") {
-		if (fallbackValue === null) missingEnvironmentVariables.push(env); // It's fatal if env is unset and there is no fallbackValue, however we want to report all of these in one batch..
+		if (fallbackValue === null) {
+			missingEnvironmentVariables.push(env); // It's fatal if env is unset and there is no fallbackValue, however we want to report all of these in one batch..
+		}
 		return fallbackValue ?? "";
 	}
 
