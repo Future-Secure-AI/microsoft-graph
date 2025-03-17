@@ -1,7 +1,7 @@
-import type { DriveItemRef } from "../../model/DriveItemRef.js";
-import type { GraphOperation } from "../../model/GraphOperation.js";
-import type { GraphOptions } from "../../model/GraphOptions.js";
-import generatePath from "../../utils/generatePath.js";
+import type { DriveItemRef } from "../../models/DriveItemRef.js";
+import type { GraphOperation } from "../../models/GraphOperation.js";
+import type { GraphOptions } from "../../models/GraphOptions.js";
+import generatePath from "../../services/generatePath.js";
 
 /** Delete an item. @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete */
 export default function deleteDriveItem(itemRef: DriveItemRef, opts?: GraphOptions): GraphOperation<void> {

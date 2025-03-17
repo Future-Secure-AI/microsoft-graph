@@ -4,11 +4,11 @@ import { hideBin } from "yargs/helpers";
 import execute from "./microsoftGraph/execute.js";
 import openWorkbook from "./microsoftGraph/helpers/openWorkbook.js";
 import openWorksheet from "./microsoftGraph/helpers/openWorksheet.js";
-import type { DriveId } from "./microsoftGraph/model/DriveId.js";
-import type { DriveItemId } from "./microsoftGraph/model/DriveItemId.js";
-import type { WorkbookWorksheetId } from "./microsoftGraph/model/WorkbookWorksheetId.js";
+import type { DriveId } from "./microsoftGraph/models/DriveId.js";
+import type { DriveItemId } from "./microsoftGraph/models/DriveItemId.js";
+import type { SiteId } from "./microsoftGraph/models/SiteId.js";
+import type { WorkbookWorksheetId } from "./microsoftGraph/models/WorkbookWorksheetId.js";
 import getWorkbookUsedRange from "./microsoftGraph/operations/workbookRange/getWorkbookUsedRange.js";
-import type { SiteId } from "./microsoftGraph/sites/SiteId.js";
 
 export type Arguments = {
 	siteId: SiteId;

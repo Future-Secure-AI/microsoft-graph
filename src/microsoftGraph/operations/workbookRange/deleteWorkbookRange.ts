@@ -1,7 +1,7 @@
-import type { GraphOperation } from "../../model/GraphOperation.js";
-import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { WorkbookRangeRef } from "../../model/WorkbookRangeRef.js";
-import generatePath from "../../utils/generatePath.js";
+import type { GraphOperation } from "../../models/GraphOperation.js";
+import type { GraphOptions } from "../../models/GraphOptions.js";
+import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.js";
+import generatePath from "../../services/generatePath.js";
 
 /** Delete a range. @see https://learn.microsoft.com/en-us/graph/api/range-clear */
 export default function deleteWorkbookRange(rangeRef: WorkbookRangeRef, shift: "Up" | "Left", opts?: GraphOptions): GraphOperation<void> {

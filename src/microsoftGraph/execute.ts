@@ -1,8 +1,8 @@
-import { getCurrentAccessToken } from "./accessToken.js";
 import InvalidArgumentError from "./errors/InvalidArgumentError.js";
 import RequestFailedError from "./errors/RequestFailedError.js";
-import type { GraphHeaders, GraphOperation } from "./model/GraphOperation.js";
-import type { Scope } from "./model/Scope.js";
+import type { GraphHeaders, GraphOperation } from "./models/GraphOperation.js";
+import type { Scope } from "./models/Scope.js";
+import { getCurrentAccessToken } from "./services/accessToken.js";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 const endpoint = "https://graph.microsoft.com/v1.0/$batch";

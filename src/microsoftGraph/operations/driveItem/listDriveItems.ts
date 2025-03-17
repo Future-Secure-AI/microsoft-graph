@@ -1,9 +1,9 @@
-import type { DriveItemPath } from "../../model/DriveItemPath.js";
-import type { DriveRef } from "../../model/DriveRef.js";
-import type { DriveItem } from "../../model/Dto.js";
-import type { GraphOperation } from "../../model/GraphOperation.js";
-import type { GraphOptions } from "../../model/GraphOptions.js";
-import generatePath from "../../utils/generatePath.js";
+import type { DriveItemPath } from "../../models/DriveItemPath.js";
+import type { DriveRef } from "../../models/DriveRef.js";
+import type { DriveItem } from "../../models/Dto.js";
+import type { GraphOperation } from "../../models/GraphOperation.js";
+import type { GraphOptions } from "../../models/GraphOptions.js";
+import generatePath from "../../services/generatePath.js";
 
 export type ListDriveItemResponse = {
     "@odata.context": string;

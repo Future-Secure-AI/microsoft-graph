@@ -1,5 +1,5 @@
-import type { WorkbookWorksheetId } from "../model/WorkbookWorksheetId.js";
-import type { WorkbookWorksheetRef } from "../model/WorkbookWorksheetRef.js";
+import type { WorkbookWorksheetId } from "../models/WorkbookWorksheetId.js";
+import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.js";
 import type { WorkbookRef } from "../workbooks/WorkbookRef.js";
 
 /** Convenience helper to start a worksheet session */

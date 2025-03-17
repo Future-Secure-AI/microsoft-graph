@@ -1,8 +1,8 @@
-import type { WorkbookRange } from "../../model/Dto.js";
-import type { GraphOperation } from "../../model/GraphOperation.js";
-import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { WorkbookNamedRangeRef } from "../../model/WorkbookNamedRangeRef.js";
-import generatePath from "../../utils/generatePath.js";
+import type { WorkbookRange } from "../../models/Dto.js";
+import type { GraphOperation } from "../../models/GraphOperation.js";
+import type { GraphOptions } from "../../models/GraphOptions.js";
+import type { WorkbookNamedRangeRef } from "../../models/WorkbookNamedRangeRef.js";
+import generatePath from "../../services/generatePath.js";
 
 /** Update range that has been defined using the "named range" functionality. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values. @see https://learn.microsoft.com/en-us/graph/api/range-update */
 export default function updateWorkbookNamedRange(rangeRef: WorkbookNamedRangeRef, value: WorkbookRange, opts?: GraphOptions): GraphOperation<void> {

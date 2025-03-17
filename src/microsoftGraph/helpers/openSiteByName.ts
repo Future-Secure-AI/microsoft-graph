@@ -1,7 +1,7 @@
 import execute from "../execute.js";
-import type { HostName } from "../model/HostName.js";
-import type { SiteName } from "../model/SiteName.js";
-import type { SiteRef } from "../model/SiteRef.js";
+import type { HostName } from "../models/HostName.js";
+import type { SiteName } from "../models/SiteName.js";
+import type { SiteRef } from "../models/SiteRef.js";
 import getSiteByName from "../operations/site/getSiteByName.js";
 
 /** Convenience helper to get a reference to a site by name. Avoid using this however and code to siteId instead for a less brittle and performant result. */

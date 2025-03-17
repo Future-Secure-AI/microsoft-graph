@@ -1,7 +1,7 @@
-import type { GraphOperation } from "../../model/GraphOperation.js";
-import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { WorkbookRangeRef } from "../../model/WorkbookRangeRef.js";
-import generatePath from "../../utils/generatePath.js";
+import type { GraphOperation } from "../../models/GraphOperation.js";
+import type { GraphOptions } from "../../models/GraphOptions.js";
+import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.js";
+import generatePath from "../../services/generatePath.js";
 
 /** Clear a range - content, formatting or both. @see https://learn.microsoft.com/en-us/graph/api/range-delete */
 export default function clearWorkbookRange(rangeRef: WorkbookRangeRef, applyTo: "All" | "Formats" | "Contents" = "All", opts?: GraphOptions): GraphOperation<void> {
