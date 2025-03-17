@@ -14,8 +14,7 @@ const downloadFile = async (url: string): Promise<string> => {
                 return;
             }
 
-            const scriptName = basename(fileURLToPath(import.meta.url));
-            let data = `/*\n * DO NOT MODIFY THIS FILE, it is programmatically derived from ${url}.\n * Run ${scriptName} to regenerate.\n*/\n\n`;
+            let data = "";
             res.on("data", (chunk) => {
                 data += chunk;
             });
@@ -24,8 +23,12 @@ const downloadFile = async (url: string): Promise<string> => {
     });
 }
 
-const writeFile = async (path: string, data: string): Promise<void> =>
-    await fs.writeFile(path, data, "utf-8");
+const writeFile = async (path: string, data: string): Promise<void> => {
+    const scriptName = basename(fileURLToPath(import.meta.url));
+
+    const payload = `/*\n * DO NOT MODIFY THIS FILE, it is programmatically generated.\n * Run \`npx tsx ${scriptName}\` to regenerate.\n*/\n\n${data}`;
+    return await fs.writeFile(path, payload, "utf-8");
+};
 
 const fixWhiteSpace = (data: string): string =>
     data.replace(/\u202F/g, " ");
@@ -34,13 +37,11 @@ const fixAnyDataType = (data: string): string => data
     .replace(/: any\b/g, ": unknown")
     .replace(/\<any\>/g, "<unknown>");
 
-const fixLintDisables = (data: string): string =>
-    `/* eslint-disable */\n\n${data.replace(
-        /\/\/ tslint:disable-next-line: [a-z- ]+\n/g,
-        "")}`;
+const fixLintDisables = (data: string): string => data
+    .replace(/\/\/ tslint:disable-next-line: [a-z- ]+\n/g, "");
 
 const linkStronglyTypedIds = (data: string): string =>
-    `import type { DriveId, ItemId } from './drive.ts'\nimport type { SiteId } from './site.ts';\n\n${data
+    `import type { DriveId } from './drives/DriveId.ts'\nimport type { DriveItemId } from './drives/driveItem/DriveItemId.ts'\nimport type { SiteId } from './sites/SiteId.ts';\n\n${data
         .replace(
             /export interface Entity\s*{[^}]*id\?: string;/g,
             "export interface Entity<TId = string> {\n    // The unique identifier for an entity. Read-only.\n    id?: TId;"
@@ -55,7 +56,7 @@ const linkStronglyTypedIds = (data: string): string =>
         )
         .replace(
             "export interface DriveItem extends BaseItem {",
-            "export interface DriveItem extends BaseItem<ItemId> {"
+            "export interface DriveItem extends BaseItem<DriveItemId> {"
         )
         .replace(
             "export interface Site extends BaseItem {",
@@ -63,10 +64,15 @@ const linkStronglyTypedIds = (data: string): string =>
         )}`
     ;
 
+const fixNamespaces = (data: string): string => data
+    .replace(/microsoftgraph\./g, "")
+    .replace(/Partners\.Billing\.Billing/g, "unknown"); // Workaround possible incorrect ordering. Not worth time to investigate
+
 let data = await downloadFile(inputUrl);
 data = fixWhiteSpace(data);
 data = fixAnyDataType(data);
 data = fixLintDisables(data);
+data = fixNamespaces(data);
 data = linkStronglyTypedIds(data);
 await writeFile(outputFilePath, data);
 

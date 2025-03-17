@@ -9,7 +9,7 @@
 	"files": {
 		"ignoreUnknown": true,
 		"include": ["src/*.ts"],
-		"ignore": ["src/microsoftGraph/models.d.ts"]
+		"maxSize": 2097152 // 2MB to cover generated models
 	},
 	"formatter": {
 		"enabled": false
@@ -160,5 +160,21 @@
 	},
 	"javascript": {
 		"globals": ["exports"]
-	}
+	},
+	"overrides": [
+		{
+		  "include": ["src/microsoftGraph/models.d.ts"],
+		  "linter": {
+			"rules": {
+			  "style": {
+				"useNamingConvention": "off",
+				"noNamespace": "off"
+			  },
+			  "correctness": {
+				"noUnusedVariables": "off"
+			  }
+			}
+		  }
+		}
+	  ]
 }

@@ -1,12 +1,11 @@
-import type { DriveId, ItemId } from './drive.ts'
-import type { SiteId } from './site.ts';
-
-/* eslint-disable */
-
 /*
- * DO NOT MODIFY THIS FILE, it is programmatically derived from https://raw.githubusercontent.com/microsoftgraph/msgraph-typescript-typings/refs/heads/main/microsoft-graph.d.ts.
- * Run regenerate-models.ts to regenerate.
+ * DO NOT MODIFY THIS FILE, it is programmatically generated.
+ * Run `npx tsx regenerate-models.ts` to regenerate.
 */
+
+import type { DriveId } from './drives/DriveId.ts'
+import type { DriveItemId } from './drives/driveItem/DriveItemId.ts'
+import type { SiteId } from './sites/SiteId.ts';
 
 // Project: https://github.com/microsoftgraph/msgraph-typescript-typings
 // Definitions by: Microsoft Graph Team <https://github.com/microsoftgraph>
@@ -9147,7 +9146,7 @@ export interface Drive extends BaseItem<DriveId> {
     // Collection of common folders available in OneDrive. Read-only. Nullable.
     special?: NullableOption<DriveItem[]>;
 }
-export interface DriveItem extends BaseItem<ItemId> {
+export interface DriveItem extends BaseItem<DriveItemId> {
     // Audio metadata, if the item is an audio file. Read-only. Read-only. Only on OneDrive Personal.
     audio?: NullableOption<Audio>;
     // Bundle metadata, if the item is a bundle. Read-only.
@@ -14113,7 +14112,7 @@ export interface ParticipantLeftNotification extends Entity {
 }
 export interface Partners extends Entity {
     // Represents billing details for billed and unbilled data.
-    billing?: NullableOption<Partners.Billing.Billing>;
+    billing?: NullableOption<unknown>;
 }
 export interface PasswordAuthenticationMethod extends AuthenticationMethod {
     /**
@@ -32898,7 +32897,7 @@ export namespace CallRecords {
         | "wifi80211ac"
         | "wifi80211ax"
         | "unknownFutureValue";
-    interface CallRecord extends microsoftgraph.Entity {
+    interface CallRecord extends Entity {
         /**
          * UTC time when the last user left the call. The DateTimeOffset type represents date and time information using ISO 8601
          * format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -32920,12 +32919,12 @@ export namespace CallRecords {
          * The organizing party's identity. The organizer property is deprecated and will stop returning data on June 30, 2026.
          * Going forward, use the organizer_v2 relationship.
          */
-        organizer?: NullableOption<microsoftgraph.IdentitySet>;
+        organizer?: NullableOption<IdentitySet>;
         /**
          * List of distinct identities involved in the call. Limited to 130 entries. The participants property is deprecated and
          * will stop returning data on June 30, 2026. Going forward, use the participants_v2 relationship.
          */
-        participants?: NullableOption<microsoftgraph.IdentitySet[]>;
+        participants?: NullableOption<IdentitySet[]>;
         /**
          * UTC time when the first user joined the call. The DatetimeOffset type represents date and time information using ISO
          * 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -32950,13 +32949,13 @@ export namespace CallRecords {
     }
     interface Organizer extends ParticipantBase {}
     interface Participant extends ParticipantBase {}
-    interface ParticipantBase extends microsoftgraph.Entity {
+    interface ParticipantBase extends Entity {
         // List of administrativeUnitInfo objects for the call participant.
         administrativeUnitInfos?: NullableOption<AdministrativeUnitInfo[]>;
         // The identity of the call participant.
-        identity?: NullableOption<microsoftgraph.CommunicationsIdentitySet>;
+        identity?: NullableOption<CommunicationsIdentitySet>;
     }
-    interface Segment extends microsoftgraph.Entity {
+    interface Segment extends Entity {
         // Endpoint that answered this segment.
         callee?: NullableOption<Endpoint>;
         // Endpoint that initiated this segment.
@@ -32976,7 +32975,7 @@ export namespace CallRecords {
          */
         startDateTime?: string;
     }
-    interface Session extends microsoftgraph.Entity {
+    interface Session extends Entity {
         // Endpoint that answered the session.
         callee?: NullableOption<Endpoint>;
         // Endpoint that initiated the session.
@@ -33360,7 +33359,7 @@ export namespace CallRecords {
     }
     interface ParticipantEndpoint extends Endpoint {
         // Identity associated with the endpoint.
-        associatedIdentity?: NullableOption<microsoftgraph.Identity>;
+        associatedIdentity?: NullableOption<Identity>;
         // CPU number of cores used by the media endpoint.
         cpuCoresCount?: NullableOption<number>;
         // CPU name used by the media endpoint.
@@ -33373,7 +33372,7 @@ export namespace CallRecords {
          * Identity associated with the endpoint. The identity property is deprecated and will stop returning data on June 30,
          * 2026. Going forward, use the associatedIdentity property.
          */
-        identity?: NullableOption<microsoftgraph.IdentitySet>;
+        identity?: NullableOption<IdentitySet>;
         // Name of the device used by the media endpoint.
         name?: NullableOption<string>;
     }
@@ -33489,7 +33488,7 @@ export namespace CallRecords {
          */
         tokens?: NullableOption<FeedbackTokenSet>;
     }
-    interface UserIdentity extends microsoftgraph.Identity {
+    interface UserIdentity extends Identity {
         userPrincipalName?: NullableOption<string>;
     }
 }
@@ -33534,9 +33533,9 @@ export namespace ExternalConnectors {
         | "greaterThan"
         | "startsWith"
         | "unknownFutureValue";
-    interface ConnectionOperation extends microsoftgraph.Entity {
+    interface ConnectionOperation extends Entity {
         // If status is failed, provides more information about the error that caused the failure.
-        error?: NullableOption<microsoftgraph.PublicError>;
+        error?: NullableOption<PublicError>;
         /**
          * Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed,
          * unknownFutureValue.
@@ -33546,7 +33545,7 @@ export namespace ExternalConnectors {
     interface External {
         connections?: NullableOption<ExternalConnection[]>;
     }
-    interface ExternalActivity extends microsoftgraph.Entity {
+    interface ExternalActivity extends Entity {
         /**
          * The date and time when the particular activity occurred. The DateTimeOffset type represents date and time information
          * using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -33559,9 +33558,9 @@ export namespace ExternalConnectors {
     }
     interface ExternalActivityResult extends ExternalActivity {
         // Error information that explains the failure to process an external activity.
-        error?: NullableOption<microsoftgraph.PublicError>;
+        error?: NullableOption<PublicError>;
     }
-    interface ExternalConnection extends microsoftgraph.Entity {
+    interface ExternalConnection extends Entity {
         // Collects configurable settings related to activities involving connector content.
         activitySettings?: NullableOption<ActivitySettings>;
         /**
@@ -33593,7 +33592,7 @@ export namespace ExternalConnectors {
         operations?: NullableOption<ConnectionOperation[]>;
         schema?: NullableOption<Schema>;
     }
-    interface ExternalGroup extends microsoftgraph.Entity {
+    interface ExternalGroup extends Entity {
         // The description of the external group. Optional.
         description?: NullableOption<string>;
         // The friendly name of the external group. Optional.
@@ -33604,7 +33603,7 @@ export namespace ExternalConnectors {
          */
         members?: NullableOption<Identity[]>;
     }
-    interface ExternalItem extends microsoftgraph.Entity {
+    interface ExternalItem extends Entity {
         // An array of access control entries. Each entry specifies the access granted to a user or group. Required.
         acl?: NullableOption<Acl[]>;
         // A plain-text representation of the contents of the item. The text in this property is full-text indexed. Optional.
@@ -33617,14 +33616,14 @@ export namespace ExternalConnectors {
         // Returns a list of activities performed on the item. Write-only.
         activities?: NullableOption<ExternalActivity[]>;
     }
-    interface Identity extends microsoftgraph.Entity {
+    interface Identity extends Entity {
         /**
          * The type of identity. Possible values are: user or group for Microsoft Entra identities and externalgroup for groups in
          * an external system.
          */
         type?: NullableOption<IdentityType>;
     }
-    interface Schema extends microsoftgraph.Entity {
+    interface Schema extends Entity {
         // Must be set to microsoft.graph.externalConnector.externalItem. Required.
         baseType?: string;
         // The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
@@ -33761,7 +33760,7 @@ export namespace ExternalConnectors {
          * The join operator for evaluating multiple propertyRules. For example, if and is specified, then all propertyRules must
          * be true for the propertyRule to be true. Possible values are: or, and. Required.
          */
-        valuesJoinedBy?: microsoftgraph.BinaryOperator;
+        valuesJoinedBy?: BinaryOperator;
     }
     interface SearchSettings {
         /**
@@ -33805,9 +33804,9 @@ export namespace IdentityGovernanceNamespace {
         | "employeeLeaveDateTime"
         | "unknownFutureValue"
         | "createdDateTime";
-    interface CustomTaskExtension extends microsoftgraph.CustomCalloutExtension {
+    interface CustomTaskExtension extends CustomCalloutExtension {
         // The callback configuration for a custom task extension.
-        callbackConfiguration?: NullableOption<microsoftgraph.CustomExtensionCallbackConfiguration>;
+        callbackConfiguration?: NullableOption<CustomExtensionCallbackConfiguration>;
         // When the custom task extension was created.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
         createdDateTime?: NullableOption<string>;
         // When the custom extension was last modified.Supports $filter(lt, le, gt, ge, eq, ne) and $orderby.
@@ -33816,32 +33815,32 @@ export namespace IdentityGovernanceNamespace {
          * The unique identifier of the Microsoft Entra user that created the custom task extension.Supports $filter(eq, ne) and
          * $expand.
          */
-        createdBy?: NullableOption<microsoftgraph.User>;
+        createdBy?: NullableOption<User>;
         /**
          * The unique identifier of the Microsoft Entra user that modified the custom task extension last.Supports $filter(eq, ne)
          * and $expand.
          */
-        lastModifiedBy?: NullableOption<microsoftgraph.User>;
+        lastModifiedBy?: NullableOption<User>;
     }
-    interface Insights extends microsoftgraph.Entity {}
-    interface LifecycleManagementSettings extends microsoftgraph.Entity {
+    interface Insights extends Entity {}
+    interface LifecycleManagementSettings extends Entity {
         /**
          * Defines the settings for emails sent out from email-specific tasks within workflows. Accepts 2 parameterssenderDomain-
          * Defines the domain of who is sending the email. useCompanyBranding- A Boolean value that defines if company branding is
          * to be used with the email.
          */
-        emailSettings?: microsoftgraph.EmailSettings;
+        emailSettings?: EmailSettings;
         /**
          * The interval in hours at which all workflows running in the tenant should be scheduled for execution. This interval has
          * a minimum value of 1 and a maximum value of 24. The default value is 3 hours.
          */
         workflowScheduleIntervalInHours?: number;
     }
-    interface LifecycleWorkflowsContainer extends microsoftgraph.Entity {
+    interface LifecycleWorkflowsContainer extends Entity {
         // The customTaskExtension instance.
         customTaskExtensions?: NullableOption<CustomTaskExtension[]>;
         // Deleted workflows in your lifecycle workflows instance.
-        deletedItems?: NullableOption<microsoftgraph.DeletedItemContainer>;
+        deletedItems?: NullableOption<DeletedItemContainer>;
         // The insight container holding workflow insight summaries for a tenant.
         insights?: NullableOption<Insights>;
         // The settings of the lifecycle workflows instance.
@@ -33853,7 +33852,7 @@ export namespace IdentityGovernanceNamespace {
         // The workflow templates in the lifecycle workflow instance.
         workflowTemplates?: NullableOption<WorkflowTemplate[]>;
     }
-    interface Run extends microsoftgraph.Entity {
+    interface Run extends Entity {
         /**
          * The date time that the run completed. Value is null if the workflow hasn't completed.Supports $filter(lt, le, gt, ge,
          * eq, ne) and $orderby.
@@ -33894,12 +33893,12 @@ export namespace IdentityGovernanceNamespace {
         // The associated individual user execution.
         userProcessingResults?: NullableOption<UserProcessingResult[]>;
     }
-    interface Task extends microsoftgraph.Entity {
+    interface Task extends Entity {
         /**
          * Arguments included within the task. For guidance to configure this property, see Configure the arguments for built-in
          * Lifecycle Workflow tasks. Required.
          */
-        arguments?: microsoftgraph.KeyValuePair[];
+        arguments?: KeyValuePair[];
         /**
          * The category of the task. The possible values are: joiner, leaver, unknownFutureValue. This property is multi-valued
          * and the same task can apply to both joiner and leaver categories.Supports $filter(eq, ne).
@@ -33927,7 +33926,7 @@ export namespace IdentityGovernanceNamespace {
         // The result of processing the task.
         taskProcessingResults?: NullableOption<TaskProcessingResult[]>;
     }
-    interface TaskDefinition extends microsoftgraph.Entity {
+    interface TaskDefinition extends Entity {
         /**
          * The category of the HR function that the tasks created using this definition can be used with. The possible values are:
          * joiner, mover, leaver, unknownFutureValue. This is a multi-valued enumeration whose allowed combinations are joiner,
@@ -33948,7 +33947,7 @@ export namespace IdentityGovernanceNamespace {
          */
         version?: number;
     }
-    interface TaskProcessingResult extends microsoftgraph.Entity {
+    interface TaskProcessingResult extends Entity {
         /**
          * The date time when taskProcessingResult execution ended. Value is null if task execution is still in progress.Supports
          * $filter(lt, le, gt, ge, eq, ne) and $orderby.
@@ -33969,11 +33968,11 @@ export namespace IdentityGovernanceNamespace {
          */
         startedDateTime?: NullableOption<string>;
         // The unique identifier of the Microsoft Entra user targeted for the task execution.Supports $filter(eq, ne) and $expand.
-        subject?: microsoftgraph.User;
+        subject?: User;
         // The related workflow task
         task?: Task;
     }
-    interface TaskReport extends microsoftgraph.Entity {
+    interface TaskReport extends Entity {
         /**
          * The date time that the associated run completed. Value is null if the run has not completed.Supports $filter(lt, le,
          * gt, ge, eq, ne) and $orderby.
@@ -34018,7 +34017,7 @@ export namespace IdentityGovernanceNamespace {
         // The related lifecycle workflow taskProcessingResults.
         taskProcessingResults?: NullableOption<TaskProcessingResult[]>;
     }
-    interface UserProcessingResult extends microsoftgraph.Entity {
+    interface UserProcessingResult extends Entity {
         /**
          * The date time that the workflow execution for a user completed. Value is null if the workflow hasn't completed.Supports
          * $filter(lt, le, gt, ge, eq, ne) and $orderby.
@@ -34053,7 +34052,7 @@ export namespace IdentityGovernanceNamespace {
         // The version of the workflow that was executed.
         workflowVersion?: number;
         // The unique identifier of the AAD user targeted for the taskProcessingResult.Supports $filter(eq, ne) and $expand.
-        subject?: microsoftgraph.User;
+        subject?: User;
         // The associated individual task execution.
         taskProcessingResults?: NullableOption<TaskProcessingResult[]>;
     }
@@ -34107,13 +34106,13 @@ export namespace IdentityGovernanceNamespace {
         // When the workflow was last modified.
         lastModifiedDateTime?: NullableOption<string>;
         // The user who created the workflow.
-        createdBy?: NullableOption<microsoftgraph.User>;
+        createdBy?: NullableOption<User>;
         // The unique identifier of the Microsoft Entra identity that last modified the workflow.
-        lastModifiedBy?: NullableOption<microsoftgraph.User>;
+        lastModifiedBy?: NullableOption<User>;
         // The tasks in the workflow.
         tasks?: NullableOption<Task[]>;
     }
-    interface WorkflowTemplate extends microsoftgraph.Entity {
+    interface WorkflowTemplate extends Entity {
         /**
          * The category of the workflow template. The possible values are: joiner, mover, leaver,unknownFutureValue.Supports
          * $filter(eq, ne) and $orderby.
@@ -34139,24 +34138,24 @@ export namespace IdentityGovernanceNamespace {
         // The trigger attribute being changed that triggers the workflowexecutiontrigger of a workflow.)
         triggerAttributes?: TriggerAttribute[];
     }
-    interface CustomTaskExtensionCallbackConfiguration extends microsoftgraph.CustomExtensionCallbackConfiguration {
-        authorizedApps?: NullableOption<microsoftgraph.Application[]>;
+    interface CustomTaskExtensionCallbackConfiguration extends CustomExtensionCallbackConfiguration {
+        authorizedApps?: NullableOption<Application[]>;
     }
-    interface CustomTaskExtensionCallbackData extends microsoftgraph.CustomExtensionData {
+    interface CustomTaskExtensionCallbackData extends CustomExtensionData {
         /**
          * Operation status that's provided by the Azure Logic App indicating whenever the Azure Logic App has run successfully or
          * not. Supported values: completed, failed, unknownFutureValue.
          */
         operationStatus?: NullableOption<CustomTaskExtensionOperationStatus>;
     }
-    interface CustomTaskExtensionCalloutData extends microsoftgraph.CustomExtensionData {
-        subject?: NullableOption<microsoftgraph.User>;
+    interface CustomTaskExtensionCalloutData extends CustomExtensionData {
+        subject?: NullableOption<User>;
         task?: NullableOption<Task>;
         taskProcessingresult?: NullableOption<TaskProcessingResult>;
         workflow?: NullableOption<Workflow>;
     }
-    interface GroupBasedSubjectSet extends microsoftgraph.SubjectSet {
-        groups?: NullableOption<microsoftgraph.Group[]>;
+    interface GroupBasedSubjectSet extends SubjectSet {
+        groups?: NullableOption<Group[]>;
     }
     interface MembershipChangeTrigger extends WorkflowExecutionTrigger {
         /**
@@ -34174,7 +34173,7 @@ export namespace IdentityGovernanceNamespace {
         // The value type of the parameter. The possible values are: enum, string, int, bool, unknownFutureValue.
         valueType?: ValueType;
     }
-    interface RuleBasedSubjectSet extends microsoftgraph.SubjectSet {
+    interface RuleBasedSubjectSet extends SubjectSet {
         /**
          * The rule for the subject set. Lifecycle Workflows supports a rich set of user properties for configuring the rules
          * using $filter query expressions. For more information, see supported user and query parameters.
@@ -34263,7 +34262,7 @@ export namespace IdentityGovernanceNamespace {
     }
     interface TriggerAndScopeBasedConditions extends WorkflowExecutionConditions {
         // Defines who the workflow runs for.
-        scope?: NullableOption<microsoftgraph.SubjectSet>;
+        scope?: NullableOption<SubjectSet>;
         // What triggers a workflow to run.
         trigger?: NullableOption<WorkflowExecutionTrigger>;
     }
@@ -34336,15 +34335,15 @@ export namespace IdentityGovernanceNamespace {
 export namespace Partners.Billing {
     type AttributeSet = "full" | "basic" | "unknownFutureValue";
     type BillingPeriod = "current" | "last" | "unknownFutureValue";
-    interface AzureUsage extends microsoftgraph.Entity {
+    interface AzureUsage extends Entity {
         // Represents details for billed Azure usage data.
         billed?: BilledUsage;
         // Represents details for unbilled Azure usage data.
         unbilled?: UnbilledUsage;
     }
-    interface BilledReconciliation extends microsoftgraph.Entity {}
-    interface BilledUsage extends microsoftgraph.Entity {}
-    interface Billing extends microsoftgraph.Entity {
+    interface BilledReconciliation extends Entity {}
+    interface BilledUsage extends Entity {}
+    interface Billing extends Entity {
         // Represents metadata for the exported data.
         manifests?: NullableOption<Manifest[]>;
         // Represents an operation to export the billing data of a partner.
@@ -34354,7 +34353,7 @@ export namespace Partners.Billing {
         // Represents details for billed and unbilled Azure usage data.
         usage?: AzureUsage;
     }
-    interface BillingReconciliation extends microsoftgraph.Entity {
+    interface BillingReconciliation extends Entity {
         // Represents details for billed invoice reconciliation data.
         billed?: BilledReconciliation;
     }
@@ -34363,9 +34362,9 @@ export namespace Partners.Billing {
         resourceLocation?: Manifest;
     }
     interface FailedOperation extends Operation {
-        error?: microsoftgraph.PublicError;
+        error?: PublicError;
     }
-    interface Manifest extends microsoftgraph.Entity {
+    interface Manifest extends Entity {
         // The total file count for this partner tenant ID.
         blobCount?: number;
         // A collection of blob objects that contain details of all the files for the partner tenant ID.
@@ -34397,7 +34396,7 @@ export namespace Partners.Billing {
         // The version of the manifest schema.
         schemaVersion?: string;
     }
-    interface Operation extends microsoftgraph.Entity {
+    interface Operation extends Entity {
         /**
          * The start time of the operation. The timestamp type represents date and time information using ISO 8601 format and is
          * always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -34409,10 +34408,10 @@ export namespace Partners.Billing {
          */
         lastActionDateTime?: string;
         // The status of the operation. Possible values are: notStarted, running, completed, failed, unknownFutureValue.
-        status?: NullableOption<microsoftgraph.LongRunningOperationStatus>;
+        status?: NullableOption<LongRunningOperationStatus>;
     }
     interface RunningOperation extends Operation {}
-    interface UnbilledUsage extends microsoftgraph.Entity {}
+    interface UnbilledUsage extends Entity {}
     interface Blob {
         // The blob name.
         name?: string;
@@ -34463,7 +34462,7 @@ export namespace Search {
          * androidForWork, ios, macOS, windowsPhone81, windowsPhone81AndLater, windows10AndLater, androidWorkProfile, unknown,
          * androidASOP, androidMobileApplicationManagement, iOSMobileApplicationManagement, unknownFutureValue.
          */
-        platforms?: microsoftgraph.DevicePlatformType[];
+        platforms?: DevicePlatformType[];
         /**
          * List of Power Apps associated with this bookmark. If users add existing Power Apps to a bookmark, they can complete
          * tasks directly on the search results page, such as entering vacation time or reporting expenses.
@@ -34507,7 +34506,7 @@ export namespace Search {
          * ios, macOS, windowsPhone81, windowsPhone81AndLater, windows10AndLater, androidWorkProfile, unknown, androidASOP,
          * androidMobileApplicationManagement, iOSMobileApplicationManagement, unknownFutureValue.
          */
-        platforms?: microsoftgraph.DevicePlatformType[];
+        platforms?: DevicePlatformType[];
         // State of the QnA. Possible values are: published, draft, excluded, unknownFutureValue.
         state?: AnswerState;
         /**
@@ -34516,7 +34515,7 @@ export namespace Search {
          */
         targetedVariations?: NullableOption<AnswerVariant[]>;
     }
-    interface SearchAnswer extends microsoftgraph.Entity {
+    interface SearchAnswer extends Entity {
         // The search answer description that is shown on the search results page.
         description?: NullableOption<string>;
         // The search answer name that is displayed in search results.
@@ -34555,7 +34554,7 @@ export namespace Search {
          * macOS, windowsPhone81, windowsPhone81AndLater, windows10AndLater, androidWorkProfile, unknown, androidASOP,
          * androidMobileApplicationManagement, iOSMobileApplicationManagement, unknownFutureValue.
          */
-        platform?: NullableOption<microsoftgraph.DevicePlatformType>;
+        platform?: NullableOption<DevicePlatformType>;
         /**
          * The URL link for the answer variation. When users select this answer variation from the search results, they're
          * directed to the specified URL.
@@ -34835,7 +34834,7 @@ export namespace SecurityNamespace {
         | "clientTransferProhibited"
         | "clientUpdateProhibited"
         | "unknownFutureValue";
-    interface Alert extends microsoftgraph.Entity {
+    interface Alert extends Entity {
         // The adversary or activity group that is associated with this alert.
         actorDisplayName?: NullableOption<string>;
         /**
@@ -34940,7 +34939,7 @@ export namespace SecurityNamespace {
         // Brief identifying string value describing the alert.
         title?: NullableOption<string>;
     }
-    interface Article extends microsoftgraph.Entity {
+    interface Article extends Entity {
         // Formatted article contents.
         body?: FormattedContent;
         /**
@@ -34967,17 +34966,17 @@ export namespace SecurityNamespace {
         indicators?: NullableOption<ArticleIndicator[]>;
     }
     interface ArticleIndicator extends Indicator {}
-    interface Artifact extends microsoftgraph.Entity {}
+    interface Artifact extends Entity {}
     interface AuthorityTemplate extends FilePlanDescriptorTemplate {}
-    interface Case extends microsoftgraph.Entity {
+    interface Case extends Entity {
         createdDateTime?: NullableOption<string>;
         description?: NullableOption<string>;
         displayName?: NullableOption<string>;
-        lastModifiedBy?: NullableOption<microsoftgraph.IdentitySet>;
+        lastModifiedBy?: NullableOption<IdentitySet>;
         lastModifiedDateTime?: NullableOption<string>;
         status?: NullableOption<CaseStatus>;
     }
-    interface CaseOperation extends microsoftgraph.Entity {
+    interface CaseOperation extends Entity {
         /**
          * The type of action the operation represents. Possible values are: contentExport, applyTags, convertToPdf, index,
          * estimateStatistics, addToReviewSet, holdUpdate, unknownFutureValue, purgeData, exportReport, exportResult. Use the
@@ -34988,20 +34987,20 @@ export namespace SecurityNamespace {
         // The date and time the operation was completed.
         completedDateTime?: NullableOption<string>;
         // The user that created the operation.
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+        createdBy?: NullableOption<IdentitySet>;
         // The date and time the operation was created.
         createdDateTime?: NullableOption<string>;
         // The progress of the operation.
         percentProgress?: NullableOption<number>;
         // Contains success and failure-specific result information.
-        resultInfo?: NullableOption<microsoftgraph.ResultInfo>;
+        resultInfo?: NullableOption<ResultInfo>;
         /**
          * The status of the case operation. Possible values are: notStarted, submissionFailed, running, succeeded,
          * partiallySucceeded, failed.
          */
         status?: NullableOption<CaseOperationStatus>;
     }
-    interface CasesRoot extends microsoftgraph.Entity {
+    interface CasesRoot extends Entity {
         ediscoveryCases?: NullableOption<EdiscoveryCase[]>;
     }
     interface CategoryTemplate extends FilePlanDescriptorTemplate {
@@ -35014,15 +35013,15 @@ export namespace SecurityNamespace {
         // Represents the URL to the published citation.
         citationUrl?: NullableOption<string>;
     }
-    interface DataSet extends microsoftgraph.Entity {
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+    interface DataSet extends Entity {
+        createdBy?: NullableOption<IdentitySet>;
         createdDateTime?: NullableOption<string>;
         description?: NullableOption<string>;
         displayName?: NullableOption<string>;
     }
-    interface DataSource extends microsoftgraph.Entity {
+    interface DataSource extends Entity {
         // The user who created the dataSource.
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+        createdBy?: NullableOption<IdentitySet>;
         // The date and time the dataSource was created.
         createdDateTime?: NullableOption<string>;
         // The display name of the dataSource and is the name of the SharePoint site.
@@ -35030,7 +35029,7 @@ export namespace SecurityNamespace {
         // The hold status of the dataSource.The possible values are: notApplied, applied, applying, removing, partial
         holdStatus?: NullableOption<DataSourceHoldStatus>;
     }
-    interface DataSourceContainer extends microsoftgraph.Entity {
+    interface DataSourceContainer extends Entity {
         // Created date and time of the dataSourceContainer entity.
         createdDateTime?: NullableOption<string>;
         // Display name of the dataSourceContainer entity.
@@ -35045,7 +35044,7 @@ export namespace SecurityNamespace {
         status?: NullableOption<DataSourceContainerStatus>;
     }
     interface DepartmentTemplate extends FilePlanDescriptorTemplate {}
-    interface DispositionReviewStage extends microsoftgraph.Entity {
+    interface DispositionReviewStage extends Entity {
         // Name representing each stage within a collection.
         name?: NullableOption<string>;
         // A collection of reviewers at each stage.
@@ -35061,7 +35060,7 @@ export namespace SecurityNamespace {
     }
     interface EdiscoveryCase extends Case {
         // The user who closed the case.
-        closedBy?: NullableOption<microsoftgraph.IdentitySet>;
+        closedBy?: NullableOption<IdentitySet>;
         /**
          * The date and time when the case was closed. The Timestamp type represents date and time information using ISO 8601
          * format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -35084,7 +35083,7 @@ export namespace SecurityNamespace {
         // Returns a list of ediscoveryReviewTag objects associated to this case.
         tags?: NullableOption<EdiscoveryReviewTag[]>;
     }
-    interface EdiscoveryCaseSettings extends microsoftgraph.Entity {
+    interface EdiscoveryCaseSettings extends Entity {
         // The OCR (Optical Character Recognition) settings for the case.
         ocr?: NullableOption<OcrSettings>;
         // The redundancy (near duplicate and email threading) detection settings for the case.
@@ -35214,7 +35213,7 @@ export namespace SecurityNamespace {
         search?: NullableOption<EdiscoverySearch>;
     }
     interface EdiscoveryTagOperation extends CaseOperation {}
-    interface FilePlanDescriptor extends microsoftgraph.Entity {
+    interface FilePlanDescriptor extends Entity {
         // Represents the file plan descriptor of type authority applied to a particular retention label.
         authority?: NullableOption<FilePlanAuthority>;
         category?: NullableOption<FilePlanAppliedCategory>;
@@ -35238,16 +35237,16 @@ export namespace SecurityNamespace {
         // Specifies a unique alpha-numeric identifier for an organization’s retention schedule.
         filePlanReferenceTemplate?: NullableOption<FilePlanReferenceTemplate>;
     }
-    interface FilePlanDescriptorTemplate extends microsoftgraph.Entity {
+    interface FilePlanDescriptorTemplate extends Entity {
         // Represents the user who created the filePlanDescriptorTemplate column.
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+        createdBy?: NullableOption<IdentitySet>;
         // Represents the date and time in which the filePlanDescriptorTemplate is created.
         createdDateTime?: NullableOption<string>;
         // Unique string that defines a filePlanDescriptorTemplate name.
         displayName?: NullableOption<string>;
     }
     interface FilePlanReferenceTemplate extends FilePlanDescriptorTemplate {}
-    interface HealthIssue extends microsoftgraph.Entity {
+    interface HealthIssue extends Entity {
         // Contains additional information about the issue, such as a list of items to fix.
         additionalInformation?: string[];
         /**
@@ -35389,7 +35388,7 @@ export namespace SecurityNamespace {
         // The registrar for this hostname, from WHOIS data.
         registrar?: NullableOption<string>;
     }
-    interface HostPair extends microsoftgraph.Entity {
+    interface HostPair extends Entity {
         /**
          * The date and time when Microsoft Defender Threat Intelligence first observed the hostPair. The timestamp type
          * represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1,
@@ -35409,7 +35408,7 @@ export namespace SecurityNamespace {
         // Host used to reach the childHost.
         parentHost?: Host;
     }
-    interface HostPort extends microsoftgraph.Entity {
+    interface HostPort extends Entity {
         // The hostPortBanners retrieved from scanning the port.
         banners?: NullableOption<HostPortBanner[]>;
         /**
@@ -35448,7 +35447,7 @@ export namespace SecurityNamespace {
         // The most recent sslCertificate used to communicate on the port.
         mostRecentSslCertificate?: NullableOption<SslCertificate>;
     }
-    interface HostReputation extends microsoftgraph.Entity {
+    interface HostReputation extends Entity {
         /**
          * The calculated reputation of the host. The possible values are: unknown, neutral, suspicious, malicious,
          * unknownFutureValue.
@@ -35505,7 +35504,7 @@ export namespace SecurityNamespace {
          */
         host?: Host;
     }
-    interface IdentityContainer extends microsoftgraph.Entity {
+    interface IdentityContainer extends Entity {
         /**
          * Represents potential issues identified by Microsoft Defender for Identity within a customer's Microsoft Defender for
          * Identity configuration.
@@ -35514,7 +35513,7 @@ export namespace SecurityNamespace {
         // Represents a customer's Microsoft Defender for Identity sensors.
         sensors?: NullableOption<Sensor[]>;
     }
-    interface Incident extends microsoftgraph.Entity {
+    interface Incident extends Entity {
         // Owner of the incident, or null if no owner is assigned. Free editable text.
         assignedTo?: NullableOption<string>;
         /**
@@ -35577,7 +35576,7 @@ export namespace SecurityNamespace {
         // The list of related alerts. Supports $expand.
         alerts?: NullableOption<Alert[]>;
     }
-    interface Indicator extends microsoftgraph.Entity {
+    interface Indicator extends Entity {
         /**
          * The source that provides this indicator. The possible values are: microsoftDefenderThreatIntelligence,
          * openSourceIntelligence, public, unknownFutureValue.
@@ -35586,7 +35585,7 @@ export namespace SecurityNamespace {
         // The artifact related to this indicator.
         artifact?: Artifact;
     }
-    interface IntelligenceProfile extends microsoftgraph.Entity {
+    interface IntelligenceProfile extends Entity {
         // A list of commonly-known aliases for the threat intelligence included in the intelligenceProfile.
         aliases?: NullableOption<string[]>;
         // The country/region of origin for the given actor or threat associated with this intelligenceProfile.
@@ -35643,7 +35642,7 @@ export namespace SecurityNamespace {
         // The block of IP addresses this IP address belongs to.
         netblock?: NullableOption<string>;
     }
-    interface LabelsRoot extends microsoftgraph.Entity {
+    interface LabelsRoot extends Entity {
         // Specifies the underlying authority that describes the type of content to be retained and its retention schedule.
         authorities?: NullableOption<AuthorityTemplate[]>;
         // Specifies a group of similar types of content in a particular department.
@@ -35660,7 +35659,7 @@ export namespace SecurityNamespace {
         // Represents how customers can manage their data, whether and for how long to retain or delete it.
         retentionLabels?: NullableOption<RetentionLabel[]>;
     }
-    interface NetworkAdapter extends microsoftgraph.Entity {
+    interface NetworkAdapter extends Entity {
         // Indicates whether the network adapter is selected for capturing and analyzing network traffic.
         isEnabled?: NullableOption<boolean>;
         // The name of the network adapter.
@@ -35695,9 +35694,9 @@ export namespace SecurityNamespace {
          */
         parentHost?: Host;
     }
-    interface RetentionEvent extends microsoftgraph.Entity {
+    interface RetentionEvent extends Entity {
         // The user who created the retentionEvent.
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+        createdBy?: NullableOption<IdentitySet>;
         // The date time when the retentionEvent was created.
         createdDateTime?: NullableOption<string>;
         // Optional information about the event.
@@ -35716,7 +35715,7 @@ export namespace SecurityNamespace {
         // Optional time when the event should be triggered.
         eventTriggerDateTime?: NullableOption<string>;
         // The user who last modified the retentionEvent.
-        lastModifiedBy?: NullableOption<microsoftgraph.IdentitySet>;
+        lastModifiedBy?: NullableOption<IdentitySet>;
         // The latest date time when the retentionEvent was modified.
         lastModifiedDateTime?: NullableOption<string>;
         // Last time the status of the event was updated.
@@ -35724,9 +35723,9 @@ export namespace SecurityNamespace {
         // Specifies the event that will start the retention period for labels that use this event type when an event is created.
         retentionEventType?: NullableOption<RetentionEventType>;
     }
-    interface RetentionEventType extends microsoftgraph.Entity {
+    interface RetentionEventType extends Entity {
         // The user who created the retentionEventType.
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+        createdBy?: NullableOption<IdentitySet>;
         // The date time when the retentionEventType was created.
         createdDateTime?: NullableOption<string>;
         // Optional information about the event type.
@@ -35734,11 +35733,11 @@ export namespace SecurityNamespace {
         // Name of the event type.
         displayName?: NullableOption<string>;
         // The user who last modified the retentionEventType.
-        lastModifiedBy?: NullableOption<microsoftgraph.IdentitySet>;
+        lastModifiedBy?: NullableOption<IdentitySet>;
         // The latest date time when the retentionEventType was modified.
         lastModifiedDateTime?: NullableOption<string>;
     }
-    interface RetentionLabel extends microsoftgraph.Entity {
+    interface RetentionLabel extends Entity {
         /**
          * Specifies the action to take on the labeled document after the period specified by the retentionDuration property
          * expires. The possible values are: none, delete, startDispositionReview, unknownFutureValue.
@@ -35750,7 +35749,7 @@ export namespace SecurityNamespace {
          */
         behaviorDuringRetentionPeriod?: NullableOption<BehaviorDuringRetentionPeriod>;
         // Represents the user who created the retentionLabel.
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+        createdBy?: NullableOption<IdentitySet>;
         // Represents the date and time in which the retentionLabel is created.
         createdDateTime?: NullableOption<string>;
         /**
@@ -35769,7 +35768,7 @@ export namespace SecurityNamespace {
         // Specifies the replacement label to be applied automatically after the retention period of the current label ends.
         labelToBeApplied?: NullableOption<string>;
         // The user who last modified the retentionLabel.
-        lastModifiedBy?: NullableOption<microsoftgraph.IdentitySet>;
+        lastModifiedBy?: NullableOption<IdentitySet>;
         // The latest date time when the retentionLabel was modified.
         lastModifiedDateTime?: NullableOption<string>;
         // Specifies the number of days to retain the content.
@@ -35792,16 +35791,16 @@ export namespace SecurityNamespace {
         // Represents the type associated with a retention event.
         retentionEventType?: NullableOption<RetentionEventType>;
     }
-    interface Search extends microsoftgraph.Entity {
+    interface Search extends Entity {
         contentQuery?: NullableOption<string>;
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+        createdBy?: NullableOption<IdentitySet>;
         createdDateTime?: NullableOption<string>;
         description?: NullableOption<string>;
         displayName?: NullableOption<string>;
-        lastModifiedBy?: NullableOption<microsoftgraph.IdentitySet>;
+        lastModifiedBy?: NullableOption<IdentitySet>;
         lastModifiedDateTime?: NullableOption<string>;
     }
-    interface Sensor extends microsoftgraph.Entity {
+    interface Sensor extends Entity {
         /**
          * The date and time when the sensor was generated. The Timestamp represents date and time information using ISO 8601
          * format and is always in UTC. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -35840,7 +35839,7 @@ export namespace SecurityNamespace {
     }
     interface SiteSource extends DataSource {
         // The SharePoint site associated with the siteSource.
-        site?: microsoftgraph.Site;
+        site?: Site;
     }
     interface SslCertificate extends Artifact {
         /**
@@ -35878,7 +35877,7 @@ export namespace SecurityNamespace {
         relatedHosts?: NullableOption<Host[]>;
     }
     interface SubcategoryTemplate extends FilePlanDescriptorTemplate {}
-    interface Subdomain extends microsoftgraph.Entity {
+    interface Subdomain extends Entity {
         /**
          * The date and time when Microsoft Defender Threat Intelligence first observed the subdomain. The timestamp type
          * represents date and time information using ISO 8601 format and is always in UTC. For example, midnight UTC on Jan 1,
@@ -35888,13 +35887,13 @@ export namespace SecurityNamespace {
         // The host of the subdomain.
         host?: Host;
     }
-    interface Tag extends microsoftgraph.Entity {
-        createdBy?: NullableOption<microsoftgraph.IdentitySet>;
+    interface Tag extends Entity {
+        createdBy?: NullableOption<IdentitySet>;
         description?: NullableOption<string>;
         displayName?: NullableOption<string>;
         lastModifiedDateTime?: NullableOption<string>;
     }
-    interface ThreatIntelligence extends microsoftgraph.Entity {
+    interface ThreatIntelligence extends Entity {
         // Refers to indicators of threat or compromise highlighted in an article.Note: List retrieval is not yet supported.
         articleIndicators?: NullableOption<ArticleIndicator[]>;
         // A list of article objects.
@@ -35929,10 +35928,10 @@ export namespace SecurityNamespace {
         // A list of whoisRecord objects.
         whoisRecords?: NullableOption<WhoisRecord[]>;
     }
-    interface TriggersRoot extends microsoftgraph.Entity {
+    interface TriggersRoot extends Entity {
         retentionEvents?: NullableOption<RetentionEvent[]>;
     }
-    interface TriggerTypesRoot extends microsoftgraph.Entity {
+    interface TriggerTypesRoot extends Entity {
         retentionEventTypes?: NullableOption<RetentionEventType[]>;
     }
     interface UnclassifiedArtifact extends Artifact {
@@ -35945,7 +35944,7 @@ export namespace SecurityNamespace {
         // Specifies which sources are included in this group. Possible values are: mailbox, site.
         includedSources?: NullableOption<SourceType>;
         // Represents a group.
-        group?: microsoftgraph.Group;
+        group?: Group;
     }
     interface UserSource extends DataSource {
         // Email address of the user's mailbox.
@@ -35955,7 +35954,7 @@ export namespace SecurityNamespace {
         // The URL of the user's OneDrive for Business site. Read-only.
         siteWebUrl?: NullableOption<string>;
     }
-    interface Vulnerability extends microsoftgraph.Entity {
+    interface Vulnerability extends Entity {
         // Indicates whether this vulnerability has any known exploits associated to known bad actors.
         activeExploitsObserved?: boolean;
         // Community-defined common weakness enumerations (CWE).
@@ -35998,11 +35997,11 @@ export namespace SecurityNamespace {
         // Components related to this vulnerability article.
         components?: NullableOption<VulnerabilityComponent[]>;
     }
-    interface VulnerabilityComponent extends microsoftgraph.Entity {
+    interface VulnerabilityComponent extends Entity {
         // The name of this vulnerability component.
         name?: string;
     }
-    interface WhoisBaseRecord extends microsoftgraph.Entity {
+    interface WhoisBaseRecord extends Entity {
         // The contact information for the abuse contact.
         abuse?: NullableOption<WhoisContact>;
         // The contact information for the admin contact.
@@ -36897,7 +36896,7 @@ export namespace SecurityNamespace {
     }
     interface RetentionEventStatus {
         // The error if the status isn't successful.
-        error?: NullableOption<microsoftgraph.PublicError>;
+        error?: NullableOption<PublicError>;
         // The status of the distribution. The possible values are: pending, error, success, notAvaliable.
         status?: NullableOption<EventStatusType>;
     }
@@ -36950,7 +36949,7 @@ export namespace SecurityNamespace {
     }
     interface SslCertificateEntity {
         // A physical address of the entity.
-        address?: NullableOption<microsoftgraph.PhysicalAddress>;
+        address?: NullableOption<PhysicalAddress>;
         // Alternate names for this entity that are part of the certificate.
         alternateNames?: NullableOption<string[]>;
         // A common name for this entity.
@@ -37099,7 +37098,7 @@ export namespace SecurityNamespace {
     }
     interface WhoisContact {
         // The physical address of the entity.
-        address?: NullableOption<microsoftgraph.PhysicalAddress>;
+        address?: NullableOption<PhysicalAddress>;
         // The email of this WHOIS contact.
         email?: NullableOption<string>;
         // The fax of this WHOIS contact. No format is guaranteed.
@@ -37128,7 +37127,7 @@ export namespace SecurityNamespace {
 export namespace TermStore {
     type RelationType = "pin" | "reuse" | "unknownFutureValue";
     type TermGroupScope = "global" | "system" | "siteCollection" | "unknownFutureValue";
-    interface Group extends microsoftgraph.Entity {
+    interface Group extends Entity {
         // Date and time of the group creation. Read-only.
         createdDateTime?: NullableOption<string>;
         // Description that gives details on the term usage.
@@ -37142,7 +37141,7 @@ export namespace TermStore {
         // All sets under the group in a term [store].
         sets?: NullableOption<Set[]>;
     }
-    interface Relation extends microsoftgraph.Entity {
+    interface Relation extends Entity {
         // The type of relation. Possible values are: pin, reuse.
         relationship?: NullableOption<RelationType>;
         /**
@@ -37155,7 +37154,7 @@ export namespace TermStore {
         // The to [term] of the relation. The term to which the relationship is defined.
         toTerm?: NullableOption<Term>;
     }
-    interface Set extends microsoftgraph.Entity {
+    interface Set extends Entity {
         // Date and time of set creation. Read-only.
         createdDateTime?: NullableOption<string>;
         // Description that gives details on the term usage.
@@ -37163,7 +37162,7 @@ export namespace TermStore {
         // Name of the set for each languageTag.
         localizedNames?: NullableOption<LocalizedName[]>;
         // Custom properties for the set.
-        properties?: NullableOption<microsoftgraph.KeyValue[]>;
+        properties?: NullableOption<KeyValue[]>;
         // Children terms of set in term [store].
         children?: NullableOption<Term[]>;
         // The parent [group] that contains the set.
@@ -37173,7 +37172,7 @@ export namespace TermStore {
         // All the terms under the set.
         terms?: NullableOption<Term[]>;
     }
-    interface Store extends microsoftgraph.Entity {
+    interface Store extends Entity {
         // Default language of the term store.
         defaultLanguageTag?: string;
         // List of languages for the term store.
@@ -37183,7 +37182,7 @@ export namespace TermStore {
         // Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         sets?: NullableOption<Set[]>;
     }
-    interface Term extends microsoftgraph.Entity {
+    interface Term extends Entity {
         // Date and time of term creation. Read-only.
         createdDateTime?: NullableOption<string>;
         // Description about term that is dependent on the languageTag.
@@ -37193,7 +37192,7 @@ export namespace TermStore {
         // Last date and time of term modification. Read-only.
         lastModifiedDateTime?: NullableOption<string>;
         // Collection of properties on the term.
-        properties?: NullableOption<microsoftgraph.KeyValue[]>;
+        properties?: NullableOption<KeyValue[]>;
         // Children of current term.
         children?: NullableOption<Term[]>;
         // To indicate which terms are related to the current term as either pinned or reused.
