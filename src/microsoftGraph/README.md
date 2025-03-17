@@ -1,28 +1,81 @@
 # Microsoft Graph integration
 ## Overview
-Microsoft's Graph API is pretty good. It's extensive, powerful, and pretty well designed. Graph however doesn't have a complete client SDK available for though. 
-Sure, there is [`@microsoft/microsoft-graph-client`](https://www.npmjs.com/package/@microsoft/microsoft-graph-client), however it's thin and doesn't define 
+This is a SDK to allow access to Microsoft's Graph API, particularly for the use with Sharepoint. It is not fully featured, and does rely on each method being added as it's needed.
+
+## Justification/Approach
+Why not just use the default SDK for this? Well - there isn't really one. Sure, there is [`@microsoft/microsoft-graph-client`](https://www.npmjs.com/package/@microsoft/microsoft-graph-client), however it's thin and doesn't define 
 individual methods we can call. And there's also [`msgraph-typescript-typings`](https://github.com/microsoftgraph/msgraph-typescript-typings) which defines 
 the models, however nothing appears to exist to pull these basic concepts together into a SDK.
 
-So what you find here is just that - `@microsoft/microsoft-graph-client` glued to `msgraph-typescript-typings`, with some strongly typed IDs injected to make it hard to make mistakes.
-
-## Scope
-Provide a faithfil interface to GraphAPI with minimal opinion and minimal value-add. Data manipulation logic should go elsewhere - keep this clean!
+Since we're trying to do the minimum amount of effort, this project takes `msgraph-typescript-typings` injects strongly typed IDs and adds a simple (hopefully elegant) layer that allows individual methods to be added.
 
 ## Usage
+First up, make sure the enviuronment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_ID` and `AZURE_CLIENT_SECRET` are set.
 
-1) Make sure the enviuronment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_ID` and `AZURE_CLIENT_SECRET` are set.
-2) Make whatever calls you need. See `drive.ts` and `workbook.ts` for a list of whats available
+Then make calls:
 
 ```typescript
-// Make sure the envs `AZURE_TENANT_ID`, `AZURE_CLIENT_ID` and `AZURE_CLIENT_SECRET` are set.
-const cells = await getUsedRangeValues({
+const [cells] = await execute(getUsedRangeValues({
     siteId: args.siteId,
     driveId: args.driveId,
     itemId: args.itemId,
     worksheetId: args.worksheetId,
-});
+}));
+```
+
+While performance is not a primary concern for this SDK, it does support a couple of pieces to allow for faster development iteration. Sessions dramatically improves worksheet speed:
+
+```typescript
+const workbookRef: WorkbookRef = {
+    siteId: args.siteId,
+    driveId: args.driveId,
+    itemId: args.itemId,
+};
+
+const [session] = await execute(createWorkbookSession(workbookRef));
+
+const worksheetRef: WorkbookWorksheetRef = {
+    ...workbookRef,
+    worksheetId: args.worksheetId,
+    sessionId: session.id,
+}
+
+const [cells] = await execute(getWorkbookUsedRange(worksheetRef));
+
+await closeWorkbookSession(workbookRef);
+
+console.info(cells.values);
+```
+
+Batching improves the speed of all operations, allowing them to be performed in a single request to the server, and indeed in parallel:
+
+```typescript
+const [cells, _, __] = await execute(
+    getUsedRangeValues({
+        siteId: args.siteId,
+        driveId: args.driveId,
+        itemId: args.itemId,
+        worksheetId: args.worksheetId,
+    }),
+    updateWorkbookRange(
+        {
+            iteId: args.siteId,
+            driveId: args.driveId,
+            itemId: args.itemId,
+            worksheetId: args.worksheetId,
+            address: "A1"
+        },
+        {
+            values: [["cake"]]
+        }
+    ),
+    deleteDriveItem({
+        siteId: args.siteId,
+        driveId: args.driveId,
+        itemId: args.itemId,
+    }),
+    // etc...
+);
 ```
 
 That's it!
