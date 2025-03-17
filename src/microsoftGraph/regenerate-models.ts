@@ -51,24 +51,24 @@ const linkStronglyTypedIds = (data: string): string =>
             "export interface Entity<TId = string> {\n    // The unique identifier for an entity. Read-only.\n    id?: TId;"
         )
         .replace(
-            /export interface BaseItem<TId = string> extends Entity<TId>/g,
-            "export interface BaseItem extends Entity"
+            "export interface BaseItem extends Entity",
+            "export interface BaseItem<TId = string> extends Entity<TId>"
         )
         .replace(
-            "export interface Site extends BaseItem {",
-            "export interface Site extends BaseItem<SiteId> {"
+            "export interface Site extends BaseItem",
+            "export interface Site extends BaseItem<SiteId>"
         )
         .replace(
-            "export interface Drive extends BaseItem {",
-            "export interface Drive extends BaseItem<DriveId> {"
+            "export interface Drive extends BaseItem",
+            "export interface Drive extends BaseItem<DriveId>"
         )
         .replace(
-            "export interface DriveItem extends BaseItem {",
-            "export interface DriveItem extends BaseItem<DriveItemId> {"
+            "export interface DriveItem extends BaseItem",
+            "export interface DriveItem extends BaseItem<DriveItemId>"
         )
         .replace(
-            "export interface Workbook extends Entity {",
-            "export interface Workbook extends Entity<DriveItemId> {"
+            "export interface Workbook extends Entity",
+            "export interface Workbook extends Entity<DriveItemId>"
         )
 
     ;

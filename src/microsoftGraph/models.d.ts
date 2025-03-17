@@ -5659,7 +5659,7 @@ export interface BackupRestoreRoot extends Entity {
     // The list of site protection units in the tenant.
     siteProtectionUnits?: NullableOption<SiteProtectionUnit[]>;
 }
-export interface BaseItem extends Entity {
+export interface BaseItem<TId = string> extends Entity<TId> {
     // Identity of the user, device, or application that created the item. Read-only.
     createdBy?: NullableOption<IdentitySet>;
     // Date and time of item creation. Read-only.
