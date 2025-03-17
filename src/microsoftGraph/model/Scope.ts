@@ -1,2 +1,3 @@
-
-export type Scope = string & { __brand: "Scope"; };
+export type Scope = string & {
+    __brand: "Scope";
+};

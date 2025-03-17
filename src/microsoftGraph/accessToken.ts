@@ -1,6 +1,6 @@
 import { ClientSecretCredential, type AccessToken as InnerAccessToken } from "@azure/identity";
 import { azureClientId, azureClientSecret, azureTenantId } from "./configuration.js";
-import type { AccessToken } from "./model/AccessToken.1.js";
+import type { AccessToken } from "./model/AccessToken.js";
 import type { Scope } from "./model/Scope.js";
 
 const credential = new ClientSecretCredential(azureTenantId, azureClientId, azureClientSecret);
