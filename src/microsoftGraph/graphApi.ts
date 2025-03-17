@@ -18,11 +18,6 @@ type Response = {
     }[];
 }
 
-type ResponseErrorBody = {
-    code: string;
-    message: string;
-};
-
 type ExecutionResults<T> = {
     [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
@@ -68,8 +63,15 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
 
     for (const response of json.responses) {
         if (response.status !== 200) {
-            const body = response.body as ResponseErrorBody;
-            throw new RequestFailedError(`[REQUEST INDEX: ${response.id} STATUS: ${response.status} CODE: ${body.code}]: ${body.message}`);
+            const opIndex = Number.parseInt(response.id, 10);
+            const op = JSON.stringify(ops[opIndex], null, 2);
+            const bodyRaw = JSON.stringify(response.body, null, 2);
+
+            throw new RequestFailedError(
+                `GraphAPI execution failed with HTTP ${response.status}\n` +
+                `Operation (index ${opIndex}): ${op}\n` +
+                `Error body: ${bodyRaw}}`
+            );
         }
 
         const index = Number.parseInt(response.id, 10);
