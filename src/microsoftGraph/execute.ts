@@ -1,4 +1,4 @@
-import { getCurrentAccessToken, type Scope } from "../azureEntra/accessToken.js";
+import { getCurrentAccessToken, type Scope } from "./accessToken.js";
 import InvalidArgumentError from "./errors/InvalidArgumentError.js";
 import RequestFailedError from "./errors/RequestFailedError.js";
 import type { GraphHeaders, GraphRequest } from "./GraphRequest.js";

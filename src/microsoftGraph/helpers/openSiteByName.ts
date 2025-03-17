@@ -1,8 +1,8 @@
 import execute from "../execute.js";
-import getSiteByName from "../sites/getSiteByName.js";
-import type { HostName } from "../sites/HostName.js";
-import type { SiteName } from "../sites/SiteName.js";
-import type { SiteRef } from "../sites/SiteRef.js";
+import type { HostName } from "../model/HostName.js";
+import type { SiteName } from "../model/SiteName.js";
+import type { SiteRef } from "../model/SiteRef.js";
+import getSiteByName from "../operations/site/getSiteByName.js";
 
 /** Convenience helper to get a reference to a site by name. Avoid using this however and code to siteId instead for a less brittle and performant result. */
 export default async function openSiteByName(hostName: HostName, siteName: SiteName): Promise<SiteRef> {

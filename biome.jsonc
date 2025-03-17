@@ -163,7 +163,7 @@
 	},
 	"overrides": [
 		{
-		  "include": ["src/microsoftGraph/models.d.ts"],
+		  "include": ["src/microsoftGraph/model/models.d.ts"],
 		  "linter": {
 			"rules": {
 			  "style": {

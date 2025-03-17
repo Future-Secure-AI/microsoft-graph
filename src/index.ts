@@ -1,14 +1,14 @@
 import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import type { DriveId } from "./microsoftGraph/drives/DriveId.js";
-import type { DriveItemId } from "./microsoftGraph/drives/driveItem/DriveItemId.js";
 import execute from "./microsoftGraph/execute.js";
 import openWorkbook from "./microsoftGraph/helpers/openWorkbook.js";
 import openWorksheet from "./microsoftGraph/helpers/openWorksheet.js";
+import type { DriveId } from "./microsoftGraph/model/DriveId.js";
+import type { DriveItemId } from "./microsoftGraph/model/DriveItemId.js";
+import type { WorkbookWorksheetId } from "./microsoftGraph/model/WorkbookWorksheetId.js";
+import getWorkbookUsedRange from "./microsoftGraph/operations/workbookRange/getWorkbookUsedRange.js";
 import type { SiteId } from "./microsoftGraph/sites/SiteId.js";
-import getWorkbookUsedRange from "./microsoftGraph/workbooks/workbookRange/getWorkbookUsedRange.js";
-import type { WorkbookWorksheetId } from "./microsoftGraph/workbooks/workbookWorksheet/WorkbookWorksheetId.js";
 
 export type Arguments = {
 	siteId: SiteId;
