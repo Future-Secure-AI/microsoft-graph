@@ -1,4 +1,6 @@
-import { type GraphOptions, type GraphRequest, generatePath } from "../../api.js";
+import generatePath from "../../generatePath.js";
+import type { GraphOptions } from "../../GraphOptions.js";
+import type { GraphRequest } from "../../GraphRequest.js";
 import type { WorkbookRange } from "../../models.js";
 import type { WorkbookWorksheetRef } from "../workbookWorksheet/WorkbookWorksheetRef.js";
 

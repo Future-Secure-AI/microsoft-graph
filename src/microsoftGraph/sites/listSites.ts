@@ -1,4 +1,6 @@
-import { generatePath, type GraphOptions, type GraphRequest } from "../api.js";
+import generatePath from "../generatePath.js";
+import type { GraphOptions } from "../GraphOptions.js";
+import type { GraphRequest } from "../GraphRequest.js";
 import type { Site } from "../models.js";
 
 /** List sites that are available. @see https://learn.microsoft.com/en-us/graph/api/site-list */

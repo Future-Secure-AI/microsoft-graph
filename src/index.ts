@@ -1,9 +1,9 @@
 import { fileURLToPath } from "url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import { execute } from "./microsoftGraph/api.js";
 import type { DriveId } from "./microsoftGraph/drives/DriveId.js";
 import type { DriveItemId } from "./microsoftGraph/drives/driveItem/DriveItemId.js";
+import execute from "./microsoftGraph/execute.js";
 import type { SiteId } from "./microsoftGraph/sites/SiteId.js";
 import getWorkbookUsedRange from "./microsoftGraph/workbooks/workbookRange/getWorkbookUsedRange.js";
 import type { WorkbookRef } from "./microsoftGraph/workbooks/WorkbookRef.js";

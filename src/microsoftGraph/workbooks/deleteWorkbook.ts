@@ -1,4 +1,4 @@
-import type { GraphRequest } from "../api.js";
+import type { GraphRequest } from "../GraphRequest.js";
 import deleteDriveItem from "../drives/driveItem/deleteDriveItem.js";
 import type { WorkbookRef } from "./WorkbookRef.js";
 
