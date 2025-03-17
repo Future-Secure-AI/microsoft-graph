@@ -5,9 +5,9 @@ import type { Scope } from "./models/Scope.js";
 import { getCurrentAccessToken } from "./services/accessToken.js";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
-const endpoint = "https://graph.microsoft.com/v1.0/$batch";
+const batchEndpoint = "https://graph.microsoft.com/v1.0/$batch";
 const minBatchCalls = 1;
-const maxBatchCalls = 20;// https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
+const maxBatchCalls = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
 type Response = {
     id: string;
@@ -32,7 +32,7 @@ export default async function execute<T extends GraphOperation<unknown>[]>(...op
     if (ops.length < minBatchCalls || ops.length > maxBatchCalls)
         throw new InvalidArgumentError(`Requires at least ${minBatchCalls} and at most ${maxBatchCalls} calls`);
 
-    const response = await fetch(endpoint, {
+    const response = await fetch(batchEndpoint, {
         method: "POST",
         headers: {
             'authorization': `Bearer ${accessToken}`,
