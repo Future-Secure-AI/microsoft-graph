@@ -64,7 +64,7 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
     for (const response of json.responses) {
         const index = Number.parseInt(response.id, 10);
 
-        if (response.status !== 200) {
+        if (response.status < 200 || response.status > 299) {
             const op = JSON.stringify(ops[index], null, 2);
             const bodyRaw = JSON.stringify(response.body, null, 2);
 
