@@ -67,7 +67,7 @@ export default async function execute<T extends GraphOperation<unknown>[]>(...op
             throw new RequestFailedError(`[REQUEST INDEX: ${response.id} STATUS: ${response.status} CODE: ${body.code}]: ${body.message}`);
         }
 
-        const index = parseInt(response.id, 10);
+        const index = Number.parseInt(response.id, 10);
         results[index] = response.body;
     });
 
