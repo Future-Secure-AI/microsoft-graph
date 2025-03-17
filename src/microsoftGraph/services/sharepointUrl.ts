@@ -1,31 +1,32 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.js";
-import type { DriveItemPath } from "../models/DriveItemPath.js";
+import type { DriveItemId } from "../models/DriveItemId.js";
 import type { HostName } from "../models/HostName.js";
 import type { SiteName } from "../models/SiteName.js";
 
-const sharepointUrlPattern = /^\/sites\/([^\/]+)/;
-
-/** Get the site name and item path from a given SharePoint URL. (ie https://lachlandev.sharepoint.com/sites/Nexus-Test/Shared%20Documents/Forms/AllItems.aspx?newTargetListUrl=%2Fsites%2FNexus%2DTest%2FShared%20Documents)) */
-export function parseSharepointUrl(uiUrl: URL): { hostname: HostName; siteName: SiteName; itemPath: DriveItemPath } { // TODO: Move to service
-    if (!uiUrl.hostname.endsWith(".sharepoint.com")) {
-        throw new InvalidArgumentError("Invalid SharePoint URL. Must end with '.sharepoint.com'.");
+/** Get the site name and item path from a given SharePoint document URL. (ie https://msftfuturesecureai.sharepoint.com/sites/FSAI-MQG/_layouts/15/doc.aspx?sourcedoc={500ff055-1e0f-4c2e-8b32-d167fba4778b} */
+export function parseSharepointUrl(url: URL): { hostName: HostName; siteName: SiteName; itemId: DriveItemId } {
+    if (!url.hostname.endsWith(".sharepoint.com")) {
+        throw new InvalidArgumentError("Invalid SharePoint URL. Hostname must end with '.sharepoint.com'.");
     }
-    const hostname = uiUrl.hostname as HostName;
+    const hostName = url.hostname as HostName;
 
-    const pathMatch = uiUrl.pathname.match(sharepointUrlPattern);
-    if (!pathMatch) {
-        throw new InvalidArgumentError("Invalid SharePoint URL. Must start with '/sites/'.");
+    const pathSegments = url.pathname.split('/');
+    const siteNameIndex = pathSegments.indexOf('sites') + 1;
+    if (siteNameIndex <= 0 || !pathSegments[siteNameIndex]) {
+        throw new InvalidArgumentError("Invalid SharePoint URL. Site name not found.");
     }
-    const siteName = pathMatch[1] as SiteName;
+    const siteName = pathSegments[siteNameIndex] as SiteName;
 
-    const itemPath = (uiUrl.searchParams.get("viewPath") || uiUrl.searchParams.get("newTargetListUrl") || null) as DriveItemPath | null;
-    if (!itemPath) {
+    const sourcedoc = url.searchParams.get('sourcedoc');
+    if (!sourcedoc) {
         throw new InvalidArgumentError("Invalid SharePoint URL. Path not found in parameters.");
     }
 
+    const itemId = sourcedoc.replace(/[{}]/g, '').toLocaleUpperCase() as DriveItemId;
+
     return {
-        hostname,
+        hostName,
         siteName,
-        itemPath,
+        itemId,
     };
 }
