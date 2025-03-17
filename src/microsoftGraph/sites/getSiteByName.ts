@@ -1,7 +1,7 @@
-import generatePath from "../generatePath.js";
 import type { GraphOptions } from "../GraphOptions.js";
 import type { GraphRequest } from "../GraphRequest.js";
 import type { Site } from "../models.js";
+import generatePath from "../utils/generatePath.js";
 import type { HostName } from "./HostName.js";
 import type { SiteName } from "./SiteName.js";
 

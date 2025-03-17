@@ -1,7 +1,7 @@
 import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookRef } from "../WorkbookRef.js";
 
 /** Close an existing workbook session. @see https://learn.microsoft.com/en-us/graph/api/workbook-closesession */

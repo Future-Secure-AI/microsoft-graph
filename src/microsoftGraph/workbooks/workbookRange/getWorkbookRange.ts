@@ -1,7 +1,7 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
 import type { WorkbookRange } from "../../models.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookRangeRef } from "./WorkbookRangeRef.js";
 
 /** Fetch a range, including values and formatting. @see https://learn.microsoft.com/en-us/graph/api/range-get */

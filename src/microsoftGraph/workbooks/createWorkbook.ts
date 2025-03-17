@@ -1,9 +1,9 @@
 import type { DriveItemPath } from "../drives/driveItem/DriveItemPath.js";
 import type { DriveRef } from "../drives/DriveRef.js";
-import generatePath from "../generatePath.js";
 import type { GraphOptions } from "../GraphOptions.js";
 import type { GraphRequest } from "../GraphRequest.js";
 import type { DriveItem } from "../models.js";
+import generatePath from "../utils/generatePath.js";
 
 const emptyWorkbookBase64 = "UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA==";
 

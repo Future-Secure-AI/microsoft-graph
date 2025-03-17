@@ -1,6 +1,6 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
+import generatePath from "../../utils/generatePath.js";
 import type { DriveItemRef } from "./DriveItemRef.js";
 
 /** Initiate an asyncronous copy of an item. NOTE: The copied file may not be immediately available and polling is required. @see https://learn.microsoft.com/en-us/graph/api/driveitem-copy */

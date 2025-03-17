@@ -1,6 +1,6 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
+import generatePath from "../../utils/generatePath.js";
 import type { DriveItemRef } from "./DriveItemRef.js";
 
 /** Delete an item. @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete */

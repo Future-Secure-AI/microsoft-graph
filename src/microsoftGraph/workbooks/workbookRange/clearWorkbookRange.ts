@@ -1,6 +1,6 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookRangeRef } from "./WorkbookRangeRef.js";
 
 /** Clear a range - content, formatting or both. @see https://learn.microsoft.com/en-us/graph/api/range-delete */

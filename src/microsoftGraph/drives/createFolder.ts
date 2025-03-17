@@ -1,7 +1,7 @@
-import generatePath from "../generatePath.js";
 import type { GraphOptions } from "../GraphOptions.js";
 import type { GraphRequest } from "../GraphRequest.js";
 import type { DriveItem } from "../models.js";
+import generatePath from "../utils/generatePath.js";
 import type { DriveItemPath } from "./driveItem/DriveItemPath.js";
 import type { DriveRef } from "./DriveRef.js";
 

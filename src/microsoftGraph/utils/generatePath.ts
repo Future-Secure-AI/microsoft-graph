@@ -1,6 +1,6 @@
-import BadTemplateError from "./errors/BadTemplateError.js";
-import type { GraphPath } from "./GraphRequest.js";
-import { kebabToCamelCase } from "./stringCaseConversion.js";
+import BadTemplateError from "../errors/BadTemplateError.js";
+import type { GraphPath } from "../GraphRequest.js";
+import kebabToCamelCase from "./stringCaseConversion.js";
 
 /** Create a GraphAPI path based on a given template and arguments. Escaping is automatically handeld */
 export default function generatePath(template: string, args: Record<string, string>): GraphPath {

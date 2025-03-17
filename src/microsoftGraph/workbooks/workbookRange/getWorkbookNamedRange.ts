@@ -1,7 +1,7 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
 import type { WorkbookRange } from "../../models.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookNamedRangeRef } from "./WorkbookNamedRangeRef.js";
 
 /** Retrieve range that has been defined using the "named range" functionality. @see https://learn.microsoft.com/en-us/graph/api/range-get */

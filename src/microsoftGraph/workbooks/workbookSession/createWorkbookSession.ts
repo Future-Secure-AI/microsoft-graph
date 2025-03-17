@@ -1,6 +1,6 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookRef } from "../WorkbookRef.js";
 import type { WorkbookSessionId } from "./WorkbookSessionId.js";
 

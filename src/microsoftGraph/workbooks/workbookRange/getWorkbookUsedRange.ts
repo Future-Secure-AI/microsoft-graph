@@ -1,7 +1,7 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
 import type { WorkbookRange } from "../../models.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookWorksheetRef } from "../workbookWorksheet/WorkbookWorksheetRef.js";
 
 /** Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank. @see https://learn.microsoft.com/en-us/graph/api/range-usedrange */

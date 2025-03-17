@@ -1,7 +1,7 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
 import type { WorkbookWorksheet } from "../../models.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookRef } from "../WorkbookRef.js";
 
 /** Create a new worksheet, optionally with a defined name. @see https://learn.microsoft.com/en-us/graph/api/worksheetcollection-add */

@@ -1,7 +1,7 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
 import type { WorkbookWorksheet } from "../../models.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookWorksheetRef } from "./WorkbookWorksheetRef.js";
 
 /** Update the name, position and/or visibility of a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-update */

@@ -1,7 +1,7 @@
-import generatePath from "../../generatePath.js";
 import type { GraphOptions } from "../../GraphOptions.js";
 import type { GraphRequest } from "../../GraphRequest.js";
 import type { WorkbookRange } from "../../models.js";
+import generatePath from "../../utils/generatePath.js";
 import type { WorkbookWorksheetRef } from "../workbookWorksheet/WorkbookWorksheetRef.js";
 
 /** Insert a new blank range at a specified address, shifting existing cells. Use `updateRange` after to set content. @see https://learn.microsoft.com/en-us/graph/api/range-insert */
