@@ -4,20 +4,12 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug index.ts",
+      "name": "Debug with tsx",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["tsx", "--inspect", "src/index.ts"],
+      "cwd": "${workspaceFolder}",
       "skipFiles": ["<node_internals>/**"],
-      "program": "${workspaceFolder}/src/index.ts",
-      "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "${workspaceFolder}/**",
-        "!**/node_modules/**"
-      ],
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "console": "integratedTerminal"
+      "autoAttachChildProcesses": true
     }
   ]
 }
