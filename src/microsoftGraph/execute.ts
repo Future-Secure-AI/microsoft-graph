@@ -20,12 +20,12 @@ type ResponseErrorBody = {
     message: string;
 };
 
-type Results<T> = {
+type ExecutionResults<T> = {
     [K in keyof T]: T[K] extends GraphRequest<infer R> ? R : never;
 };
 
-/** Execute GraphAPI batch with up to 20 concurrent requests. */
-export default async function execute<T extends GraphRequest<unknown>[]>(...calls: T): Promise<Results<T>> {
+/** Execute GraphAPI batch with up to 20 requests to be executed as a batch. */
+export default async function execute<T extends GraphRequest<unknown>[]>(...calls: T): Promise<ExecutionResults<T>> {
     const accessToken = await getCurrentAccessToken(authenticationScope);
 
     if (calls.length < minBatchCalls || calls.length > maxBatchCalls)
@@ -58,7 +58,7 @@ export default async function execute<T extends GraphRequest<unknown>[]>(...call
     if (!json.responses)
         throw new RequestFailedError("Batch request did not return any responses");
 
-    const results: Partial<Results<T>> = {};
+    const results: Partial<ExecutionResults<T>> = {};
 
     json.responses.forEach((response: Response) => {
         if (response.status !== 200) {
@@ -70,5 +70,5 @@ export default async function execute<T extends GraphRequest<unknown>[]>(...call
         results[index] = response.body;
     });
 
-    return results as Results<T>;
+    return results as ExecutionResults<T>;
 }
