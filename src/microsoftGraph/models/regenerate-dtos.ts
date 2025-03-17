@@ -6,7 +6,7 @@ import { fileURLToPath } from "url";
 const inputUrl = "https://raw.githubusercontent.com/microsoftgraph/msgraph-typescript-typings/refs/heads/main/microsoft-graph.d.ts";
 const outputFilePath = `${dirname(fileURLToPath(import.meta.url))}/Dto.d.ts`;
 
-const downloadFile = async (url: string): Promise<string> => {
+async function downloadFile(url: string): Promise<string> {
     return new Promise((resolve, reject) => {
         https.get(url, (res) => {
             if (res.statusCode !== 200) {
@@ -23,57 +23,63 @@ const downloadFile = async (url: string): Promise<string> => {
     });
 }
 
-const writeFile = async (path: string, data: string): Promise<void> => {
+async function writeFile(path: string, data: string): Promise<void> {
     const payload = `/*\n * DO NOT MODIFY THIS FILE, it is programmatically generated.\n * Run \`npm run regenerate-dtos\` to regenerate.\n*/\n\n${data}`;
     return await fs.writeFile(path, payload, "utf-8");
-};
+}
 
-const fixWhiteSpace = (data: string): string =>
-    data.replace(/\u202F/g, " ");
+function fixWhiteSpace(data: string): string {
+    return data.replace(/\u202F/g, " ");
+}
 
-const fixAnyDataType = (data: string): string => data
-    .replace(/: any\b/g, ": unknown")
-    .replace(/\<any\>/g, "<unknown>");
+function fixAnyDataType(data: string): string {
+    return data
+        .replace(/: any\b/g, ": unknown")
+        .replace(/\<any\>/g, "<unknown>");
+}
 
-const fixLintDisables = (data: string): string => data
-    .replace(/\/\/ tslint:disable-next-line: [a-z- ]+\n/g, "");
+function fixLintDisables(data: string): string {
+    return data
+        .replace(/\/\/ tslint:disable-next-line: [a-z- ]+\n/g, "");
+}
 
-const linkStronglyTypedIds = (data: string): string =>
+function linkStronglyTypedIds(data: string): string {
     // biome-ignore lint/style/useTemplate: <explanation>
-    `import type { DriveId } from './DriveId.ts'\n` +
-    `import type { DriveItemId } from './DriveItemId.ts'\n` +
-    `import type { SiteId } from './SiteId.ts';\n\n` +
-    data
-        .replace(
-            /export interface Entity\s*{[^}]*id\?: string;/g,
-            "export interface Entity<TId = string> {\n    // The unique identifier for an entity. Read-only.\n    id?: TId;"
-        )
-        .replace(
-            "export interface BaseItem extends Entity",
-            "export interface BaseItem<TId = string> extends Entity<TId>"
-        )
-        .replace(
-            "export interface Site extends BaseItem",
-            "export interface Site extends BaseItem<SiteId>"
-        )
-        .replace(
-            "export interface Drive extends BaseItem",
-            "export interface Drive extends BaseItem<DriveId>"
-        )
-        .replace(
-            "export interface DriveItem extends BaseItem",
-            "export interface DriveItem extends BaseItem<DriveItemId>"
-        )
-        .replace(
-            "export interface Workbook extends Entity",
-            "export interface Workbook extends Entity<DriveItemId>"
-        )
+    return `import type { DriveId } from './DriveId.ts'\n` +
+        `import type { DriveItemId } from './DriveItemId.ts'\n` +
+        `import type { SiteId } from './SiteId.ts';\n\n` +
+        data
+            .replace(
+                /export interface Entity\s*{[^}]*id\?: string;/g,
+                "export interface Entity<TId = string> {\n    // The unique identifier for an entity. Read-only.\n    id?: TId;"
+            )
+            .replace(
+                "export interface BaseItem extends Entity",
+                "export interface BaseItem<TId = string> extends Entity<TId>"
+            )
+            .replace(
+                "export interface Site extends BaseItem",
+                "export interface Site extends BaseItem<SiteId>"
+            )
+            .replace(
+                "export interface Drive extends BaseItem",
+                "export interface Drive extends BaseItem<DriveId>"
+            )
+            .replace(
+                "export interface DriveItem extends BaseItem",
+                "export interface DriveItem extends BaseItem<DriveItemId>"
+            )
+            .replace(
+                "export interface Workbook extends Entity",
+                "export interface Workbook extends Entity<DriveItemId>"
+            );
+}
 
-    ;
-
-const fixNamespaces = (data: string): string => data
-    .replace(/microsoftgraph\./g, "")
-    .replace(/Partners\.Billing\.Billing/g, "unknown"); // Workaround possible incorrect ordering. Not worth time to investigate
+function fixNamespaces(data: string): string {
+    return data
+        .replace(/microsoftgraph\./g, "")
+        .replace(/Partners\.Billing\.Billing/g, "unknown"); // Workaround possible incorrect ordering. Not worth time to investigate
+}
 
 let data = await downloadFile(inputUrl);
 data = fixWhiteSpace(data);
