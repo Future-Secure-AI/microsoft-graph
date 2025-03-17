@@ -16,6 +16,6 @@ export const azureClientId: string = tryGetEnvironmentVariable("AZURE_CLIENT_ID"
 export const azureClientSecret: string = tryGetEnvironmentVariable("AZURE_CLIENT_SECRET");
 
 if (missingEnvironmentVariables.length > 0) {
-	console.error(`\x1b[31mFATAL: Require environment variable(s) ${missingEnvironmentVariables.join(", ")} missing or empty.\x1b[0m`);
+	console.error(`\x1b[31mFATAL: Required environment variable(s) ${missingEnvironmentVariables.join(", ")} missing, empty or whitespace.\x1b[0m`);
 	process.exit(1);
 }
