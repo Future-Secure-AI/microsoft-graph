@@ -1,8 +1,8 @@
 import type { DriveItemPath } from "../../model/DriveItemPath.js";
 import type { DriveRef } from "../../model/DriveRef.js";
+import type { DriveItem } from "../../model/Dto.js";
 import type { GraphOperation } from "../../model/GraphOperation.js";
 import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { DriveItem } from "../../model/models.js";
 import generatePath from "../../utils/generatePath.js";
 
 /** Create folder if it doesn't exist, and return the folder. @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children */

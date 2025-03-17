@@ -1,10 +1,10 @@
 import fs from "fs/promises";
 import https from "https";
-import { basename, dirname } from "path";
+import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const inputUrl = "https://raw.githubusercontent.com/microsoftgraph/msgraph-typescript-typings/refs/heads/main/microsoft-graph.d.ts";
-const outputFilePath = `${dirname(fileURLToPath(import.meta.url))}/models.d.ts`;
+const outputFilePath = `${dirname(fileURLToPath(import.meta.url))}/Dto.d.ts`;
 
 const downloadFile = async (url: string): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -24,9 +24,7 @@ const downloadFile = async (url: string): Promise<string> => {
 }
 
 const writeFile = async (path: string, data: string): Promise<void> => {
-    const scriptName = basename(fileURLToPath(import.meta.url));
-
-    const payload = `/*\n * DO NOT MODIFY THIS FILE, it is programmatically generated.\n * Run \`npx tsx ${scriptName}\` to regenerate.\n*/\n\n${data}`;
+    const payload = `/*\n * DO NOT MODIFY THIS FILE, it is programmatically generated.\n * Run \`npm run regenerate-dtos\` to regenerate.\n*/\n\n${data}`;
     return await fs.writeFile(path, payload, "utf-8");
 };
 

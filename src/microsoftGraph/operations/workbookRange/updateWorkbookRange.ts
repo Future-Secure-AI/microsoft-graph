@@ -1,6 +1,6 @@
+import type { WorkbookRange } from "../../model/Dto.js";
 import type { GraphOperation } from "../../model/GraphOperation.js";
 import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { WorkbookRange } from "../../model/models.js";
 import type { WorkbookRangeRef } from "../../model/WorkbookRangeRef.js";
 import generatePath from "../../utils/generatePath.js";
 

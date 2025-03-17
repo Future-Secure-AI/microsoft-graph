@@ -1,6 +1,6 @@
+import type { Site } from "../../model/Dto.js";
 import type { GraphOperation } from "../../model/GraphOperation.js";
 import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { Site } from "../../model/models.js";
 import type { SiteRef } from "../../model/SiteRef.js";
 import generatePath from "../../utils/generatePath.js";
 

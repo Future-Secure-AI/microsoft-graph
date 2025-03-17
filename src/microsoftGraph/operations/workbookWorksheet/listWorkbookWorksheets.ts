@@ -1,6 +1,6 @@
+import type { WorkbookWorksheet } from "../../model/Dto.js";
 import type { GraphOperation } from "../../model/GraphOperation.js";
 import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { WorkbookWorksheet } from "../../model/models.js";
 import generatePath from "../../utils/generatePath.js";
 import type { WorkbookRef } from "../../workbooks/WorkbookRef.js";
 

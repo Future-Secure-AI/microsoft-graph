@@ -1,6 +1,6 @@
+import type { Site } from "../../model/Dto.js";
 import type { GraphOperation } from "../../model/GraphOperation.js";
 import type { GraphOptions } from "../../model/GraphOptions.js";
-import type { Site } from "../../model/models.js";
 import generatePath from "../../utils/generatePath.js";
 
 /** Find accessible sites that match keywords provided. @see https://learn.microsoft.com/en-us/graph/api/site-search */
