@@ -1,6 +1,10 @@
+// biome-ignore lint/correctness/noNodejsModules: Fit for purpose
 import fs from "node:fs/promises";
+// biome-ignore lint/correctness/noNodejsModules: Fit for purpose
 import https from "node:https";
+// biome-ignore lint/correctness/noNodejsModules: Fit for purpose
 import { dirname } from "node:path";
+// biome-ignore lint/correctness/noNodejsModules: Fit for purpose
 import { fileURLToPath } from "node:url";
 
 const inputUrl = "https://raw.githubusercontent.com/microsoftgraph/msgraph-typescript-typings/refs/heads/main/microsoft-graph.d.ts";
@@ -89,4 +93,5 @@ data = fixNamespaces(data);
 data = linkStronglyTypedIds(data);
 await writeFile(outputFilePath, data);
 
+// biome-ignore lint/suspicious/noConsoleLog: <explanation>
 console.log(`File saved to ${outputFilePath}`);

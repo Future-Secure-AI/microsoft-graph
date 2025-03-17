@@ -10,11 +10,13 @@ const minBatchCalls = 1;
 const maxBatchCalls = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
 type Response = {
-    id: string;
-    status: number;
-    headers: GraphHeaders;
-    body: unknown;
-};
+    responses: {
+        id: string;
+        status: number;
+        headers: GraphHeaders;
+        body: unknown;
+    }[];
+}
 
 type ResponseErrorBody = {
     code: string;
@@ -26,11 +28,12 @@ type ExecutionResults<T> = {
 };
 
 /** Execute GraphAPI batch with up to 20 requests to be executed as a batch. */
-export default async function execute<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
     const accessToken = await getCurrentAccessToken(authenticationScope);
 
-    if (ops.length < minBatchCalls || ops.length > maxBatchCalls)
+    if (ops.length < minBatchCalls || ops.length > maxBatchCalls) {
         throw new InvalidArgumentError(`Requires at least ${minBatchCalls} and at most ${maxBatchCalls} calls`);
+    }
 
     const response = await fetch(batchEndpoint, {
         method: "POST",
@@ -51,17 +54,19 @@ export default async function execute<T extends GraphOperation<unknown>[]>(...op
         })
     });
 
-    if (!response.ok)
+    if (!response.ok) {
         throw new RequestFailedError(`Batch request failed with status ${response.status}`);
+    }
 
-    const json = await response.json();
+    const json = await response.json() as Response;
 
-    if (!json.responses)
+    if (!json.responses) {
         throw new RequestFailedError("Batch request did not return any responses");
+    }
 
     const results: Partial<ExecutionResults<T>> = {};
 
-    json.responses.forEach((response: Response) => {
+    for (const response of json.responses) {
         if (response.status !== 200) {
             const body = response.body as ResponseErrorBody;
             throw new RequestFailedError(`[REQUEST INDEX: ${response.id} STATUS: ${response.status} CODE: ${body.code}]: ${body.message}`);
@@ -69,7 +74,7 @@ export default async function execute<T extends GraphOperation<unknown>[]>(...op
 
         const index = Number.parseInt(response.id, 10);
         results[index] = response.body;
-    });
+    }
 
     return results as ExecutionResults<T>;
 }

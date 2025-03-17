@@ -1,7 +1,8 @@
-import { fileURLToPath } from "url";
+// biome-ignore lint/correctness/noNodejsModules: Better way to do this?
+import { fileURLToPath } from "node:url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import execute from "./microsoftGraph/execute.js";
+import { execute } from "./microsoftGraph/graphApi.js";
 import openWorkbook from "./microsoftGraph/helpers/openWorkbook.js";
 import openWorksheet from "./microsoftGraph/helpers/openWorksheet.js";
 import type { DriveId } from "./microsoftGraph/models/DriveId.js";
@@ -75,5 +76,6 @@ async function runCli(): Promise<void> {
 	await run(args);
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url))
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
 	await runCli();
+}

@@ -1,4 +1,4 @@
-import execute from "../execute.js";
+import { execute } from "../graphApi.js";
 import type { WorkbookRef } from "../models/WorkbookRef.js";
 import createWorkbookSession from "../operations/workbookSession/createWorkbookSession.js";
 

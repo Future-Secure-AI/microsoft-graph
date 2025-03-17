@@ -2,7 +2,7 @@ import type { DriveItemRef } from "../src/microsoftGraph/drives/driveItem/DriveI
 import type { DriveItem } from "../src/microsoftGraph/models/Dto.js";
 import { type GraphOperation } from "../src/microsoftGraph/models/GraphOperation.js";
 import { type GraphOptions } from "../src/microsoftGraph/models/GraphOptions.js";
-import { generatePath } from "../src/microsoftGraph/services/generatePath.js";
+import { generatePath } from "../src/microsoftGraph/services/templatedPaths.js";
 
 /** Retrieve the metadata for an item in a drive. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get */
 export default function getItem(itemRef: DriveItemRef, opts?: GraphOptions): GraphOperation<DriveItem> {

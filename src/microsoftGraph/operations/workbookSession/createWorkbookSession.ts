@@ -1,14 +1,14 @@
 import type { GraphOperation } from "../../models/GraphOperation.js";
 import type { GraphOptions } from "../../models/GraphOptions.js";
+import type { WorkbookRef } from "../../models/WorkbookRef.js";
 import type { WorkbookSessionId } from "../../models/WorkbookSessionId.js";
-import generatePath from "../../services/generatePath.js";
-import type { WorkbookRef } from "../../workbooks/WorkbookRef.js";
+import { generatePath } from "../../services/templatedPaths.js";
 
 /** Create a new workbook session. Typically the persistent session expires after about 5 minutes of inactivity. Non persistent session expires after about 7 minutes of inactivity. Most performant with `persistChanges = true`. @see https://learn.microsoft.com/en-us/graph/api/workbook-createsession @see https://learn.microsoft.com/en-us/graph/api/resources/excel#usage */
 export default function createWorkbookSession(workbookRef: WorkbookRef, persistChanges = true, opts?: GraphOptions): GraphOperation<{ id: WorkbookSessionId; }> {
     return {
         method: "POST",
-        path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/createSession`, workbookRef),
+        path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/createSession", workbookRef),
         headers: {
             'content-type': 'application/json',
         },
