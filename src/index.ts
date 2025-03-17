@@ -3,17 +3,13 @@ import { fileURLToPath } from "node:url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { execute } from "./microsoftGraph/graphApi.js";
-import openWorkbook from "./microsoftGraph/helpers/openWorkbook.js";
-import openWorksheet from "./microsoftGraph/helpers/openWorksheet.js";
-import type { DriveId } from "./microsoftGraph/models/DriveId.js";
+import { openWorkbookInDefaultDrive } from "./microsoftGraph/helpers/openWorkbook.js";
+import { openWorksheet } from "./microsoftGraph/helpers/openWorksheet.js";
 import type { DriveItemId } from "./microsoftGraph/models/DriveItemId.js";
-import type { SiteId } from "./microsoftGraph/models/SiteId.js";
 import type { WorkbookWorksheetId } from "./microsoftGraph/models/WorkbookWorksheetId.js";
 import getWorkbookUsedRange from "./microsoftGraph/operations/workbookRange/getWorkbookUsedRange.js";
 
 export type Arguments = {
-	siteId: SiteId;
-	driveId: DriveId;
 	itemId: DriveItemId;
 	worksheetId: WorkbookWorksheetId;
 };
@@ -24,14 +20,8 @@ async function run(args: Arguments): Promise<void> {
 	// TODO: Core logic goes here...
 	//
 
-	const workbookRef = await openWorkbook({
-		siteId: args.siteId,
-		driveId: args.driveId,
-		itemId: args.itemId,
-	});
-
+	const workbookRef = await openWorkbookInDefaultDrive(args.itemId);
 	const worksheetRef = openWorksheet(workbookRef, args.worksheetId);
-
 	const [usedRange] = await execute(getWorkbookUsedRange(worksheetRef));
 
 	console.info(usedRange.values);
@@ -66,8 +56,6 @@ export async function runNative(args: Arguments): Promise<string[]> {
 async function runCli(): Promise<void> {
 	const args = await yargs(hideBin(process.argv))
 		.options({
-			siteId: { type: "string", demandOption: true, coerce: (v) => v as SiteId },
-			driveId: { type: "string", demandOption: true, coerce: (v) => v as DriveId },
 			itemId: { type: "string", demandOption: true, coerce: (v) => v as DriveItemId },
 			worksheetId: { type: "string", demandOption: true, coerce: (v) => v as WorkbookWorksheetId },
 		})

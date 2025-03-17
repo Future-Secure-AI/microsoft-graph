@@ -5,11 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "tsx src/index.ts",
-		"dev": "biome check --reporter=summary && tsx watch src/index.ts",
 		"watch": "tsx watch src/index.ts",
 		"check": "biome check",
 		"test": "vitest",
-		"lint-my-changes": "biome check --changed",
 		"regenerate-dtos": "tsx src/microsoftGraph/models/regenerate-dtos.ts"
 	},
 	"keywords": [],

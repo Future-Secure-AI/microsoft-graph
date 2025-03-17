@@ -1,3 +1,6 @@
+import type { DriveId } from "../models/DriveId.js";
+import type { SiteId } from "../models/SiteId.js";
+
 const missingEnvironmentVariables: string[] = [];
 
 function tryGetEnvironmentVariable(env: string, fallbackValue: string | null = null): string {
@@ -13,9 +16,12 @@ function tryGetEnvironmentVariable(env: string, fallbackValue: string | null = n
 	return value;
 }
 
-export const azureTenantId: string = tryGetEnvironmentVariable("AZURE_TENANT_ID");
-export const azureClientId: string = tryGetEnvironmentVariable("AZURE_CLIENT_ID");
-export const azureClientSecret: string = tryGetEnvironmentVariable("AZURE_CLIENT_SECRET");
+export const azureTenantId = tryGetEnvironmentVariable("AZURE_TENANT_ID");
+export const azureClientId = tryGetEnvironmentVariable("AZURE_CLIENT_ID");
+export const azureClientSecret = tryGetEnvironmentVariable("AZURE_CLIENT_SECRET");
+
+export const defaultSiteId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
+export const defaultDriveId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
 
 if (missingEnvironmentVariables.length > 0) {
 	console.error(`\x1b[31mFATAL: Required environment variable(s) ${missingEnvironmentVariables.join(", ")} missing, empty or whitespace.\x1b[0m`);
