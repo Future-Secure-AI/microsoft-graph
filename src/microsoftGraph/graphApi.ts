@@ -62,8 +62,9 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
     const results: Partial<ExecutionResults<T>> = {};
 
     for (const response of json.responses) {
+        const opIndex = Number.parseInt(response.id, 10);
+
         if (response.status !== 200) {
-            const opIndex = Number.parseInt(response.id, 10);
             const op = JSON.stringify(ops[opIndex], null, 2);
             const bodyRaw = JSON.stringify(response.body, null, 2);
 
@@ -74,8 +75,7 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
             );
         }
 
-        const index = Number.parseInt(response.id, 10);
-        results[index] = response.body;
+        results[opIndex] = response.body;
     }
 
     return results as ExecutionResults<T>;
