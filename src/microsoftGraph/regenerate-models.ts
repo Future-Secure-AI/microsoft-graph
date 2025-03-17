@@ -41,7 +41,11 @@ const fixLintDisables = (data: string): string => data
     .replace(/\/\/ tslint:disable-next-line: [a-z- ]+\n/g, "");
 
 const linkStronglyTypedIds = (data: string): string =>
-    `import type { DriveId } from './drives/DriveId.ts'\nimport type { DriveItemId } from './drives/driveItem/DriveItemId.ts'\nimport type { SiteId } from './sites/SiteId.ts';\n\n${data
+    // biome-ignore lint/style/useTemplate: <explanation>
+    `import type { DriveId } from './drives/DriveId.ts'\n` +
+    `import type { DriveItemId } from './drives/driveItem/DriveItemId.ts'\n` +
+    `import type { SiteId } from './sites/SiteId.ts';\n\n` +
+    data
         .replace(
             /export interface Entity\s*{[^}]*id\?: string;/g,
             "export interface Entity<TId = string> {\n    // The unique identifier for an entity. Read-only.\n    id?: TId;"
@@ -49,6 +53,10 @@ const linkStronglyTypedIds = (data: string): string =>
         .replace(
             /export interface BaseItem<TId = string> extends Entity<TId>/g,
             "export interface BaseItem extends Entity"
+        )
+        .replace(
+            "export interface Site extends BaseItem {",
+            "export interface Site extends BaseItem<SiteId> {"
         )
         .replace(
             "export interface Drive extends BaseItem {",
@@ -59,9 +67,10 @@ const linkStronglyTypedIds = (data: string): string =>
             "export interface DriveItem extends BaseItem<DriveItemId> {"
         )
         .replace(
-            "export interface Site extends BaseItem {",
-            "export interface Site extends BaseItem<SiteId> {"
-        )}`
+            "export interface Workbook extends Entity {",
+            "export interface Workbook extends Entity<DriveItemId> {"
+        )
+
     ;
 
 const fixNamespaces = (data: string): string => data

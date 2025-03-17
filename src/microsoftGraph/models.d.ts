@@ -22112,7 +22112,7 @@ export interface WindowsWebApp extends MobileApp {
     // Indicates the Windows web app URL. Example: 'https://www.contoso.com'
     appUrl?: NullableOption<string>;
 }
-export interface Workbook extends Entity {
+export interface Workbook extends Entity<DriveItemId> {
     application?: NullableOption<WorkbookApplication>;
     // Represents a collection of comments in a workbook.
     comments?: NullableOption<WorkbookComment[]>;
