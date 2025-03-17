@@ -4,13 +4,11 @@ import { hideBin } from "yargs/helpers";
 import type { DriveId } from "./microsoftGraph/drives/DriveId.js";
 import type { DriveItemId } from "./microsoftGraph/drives/driveItem/DriveItemId.js";
 import execute from "./microsoftGraph/execute.js";
+import openWorkbook from "./microsoftGraph/helpers/openWorkbook.js";
+import openWorksheet from "./microsoftGraph/helpers/openWorksheet.js";
 import type { SiteId } from "./microsoftGraph/sites/SiteId.js";
 import getWorkbookUsedRange from "./microsoftGraph/workbooks/workbookRange/getWorkbookUsedRange.js";
-import type { WorkbookRef } from "./microsoftGraph/workbooks/WorkbookRef.js";
-import closeWorkbookSession from "./microsoftGraph/workbooks/workbookSession/closeWorkbookSession.js";
-import createWorkbookSession from "./microsoftGraph/workbooks/workbookSession/createWorkbookSession.js";
 import type { WorkbookWorksheetId } from "./microsoftGraph/workbooks/workbookWorksheet/WorkbookWorksheetId.js";
-import type { WorkbookWorksheetRef } from "./microsoftGraph/workbooks/workbookWorksheet/WorkbookWorksheetRef.js";
 
 export type Arguments = {
 	siteId: SiteId;
@@ -25,25 +23,17 @@ async function run(args: Arguments): Promise<void> {
 	// TODO: Core logic goes here...
 	//
 
-	const workbookRef: WorkbookRef = {
+	const workbookRef = await openWorkbook({
 		siteId: args.siteId,
 		driveId: args.driveId,
 		itemId: args.itemId,
-	};
+	});
 
-	const [session] = await execute(createWorkbookSession(workbookRef)); // Optional, but improved performance on subsequent requests
+	const worksheetRef = openWorksheet(workbookRef, args.worksheetId);
 
-	const worksheetRef: WorkbookWorksheetRef = {
-		...workbookRef,
-		worksheetId: args.worksheetId,
-		sessionId: session.id,
-	}
+	const [usedRange] = await execute(getWorkbookUsedRange(worksheetRef));
 
-	const [cells] = await execute(getWorkbookUsedRange(worksheetRef));
-
-	await closeWorkbookSession(workbookRef);
-
-	console.info(cells.values);
+	console.info(usedRange.values);
 }
 
 /** Called by Flowise during normal use. */
