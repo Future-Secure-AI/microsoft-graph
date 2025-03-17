@@ -5,7 +5,7 @@ import type { GraphOperation } from "../../models/GraphOperation.js";
 import type { GraphOptions } from "../../models/GraphOptions.js";
 import { generatePath } from "../../services/templatedPaths.js";
 
-const emptyWorkbookBase64 = "UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA==";
+const emptyWorkbookBase64 = "";
 
 /** Create a new blank workbook. */
 export default function createWorkbook(driveRef: DriveRef, itemPath: DriveItemPath, opts?: GraphOptions): GraphOperation<DriveItem> {
