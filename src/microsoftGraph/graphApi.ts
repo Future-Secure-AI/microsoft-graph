@@ -3,7 +3,7 @@ import RequestFailedError from "./errors/RequestFailedError.js";
 import type { GraphOperation } from "./models/GraphOperation.js";
 import type { Scope } from "./models/Scope.js";
 import { getCurrentAccessToken } from "./services/accessToken.js";
-import { isHttpOk } from "./services/httpStatus.js";
+import { operationIdToIndex, operationIndexToId } from "./services/operationId.js";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 const endpoint = "https://graph.microsoft.com/v1.0/$batch";
@@ -25,38 +25,28 @@ type ExecutionResults<T> = {
 
 /** Execute GraphAPI batch with up to 20 requests to be executed as a batch. */
 export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-    if (ops.length < minBatchCalls || ops.length > maxBatchCalls) {
-        throw new InvalidArgumentError(`Requires at least ${minBatchCalls} and at most ${maxBatchCalls} calls`);
-    }
+    InvalidArgumentError.throwIfOutside(ops.length, minBatchCalls, maxBatchCalls, "Requires at least 1 and at most 20 calls");
 
     const requestPayload = await composeRequestPayload<T>(ops);
-
     const reply = await fetch(endpoint, requestPayload);
-
     const replyPayload = await reply.json() as ReplyPayload;
+    RequestFailedError.throwIfNotOkBatch(reply.status, ops, replyPayload);
+    const responses = parseResponses<T>(replyPayload, ops);
 
-    if (!isHttpOk(reply.status)) {
-        throw new RequestFailedError(
-            `GraphAPI batch failed with HTTP ${reply.status}\n` +
-            `Operations: ${JSON.stringify(ops, null, 2)}\n` +
-            `Response: ${JSON.stringify(replyPayload, null, 2)}`
-        );
-    }
-
-    return parseResponses<T>(replyPayload, ops);
+    return responses;
 }
 
 async function composeRequestPayload<T extends GraphOperation<unknown>[]>(ops: T) {
     const accessToken = await getCurrentAccessToken(authenticationScope);
 
     const requestBody = {
-        requests: ops.map((call, index) => ({
-            id: index.toString(),
-            method: call.method,
-            url: call.path,
-            headers: call.headers,
-            body: call.body === null ? undefined : call.body,
-            dependsOn: call.dependsOn?.map((id) => id.toString())
+        requests: ops.map((op, index) => ({
+            id: operationIndexToId(index),
+            method: op.method,
+            url: op.path,
+            headers: op.headers,
+            body: op.body === null ? undefined : op.body,
+            dependsOn: op.dependsOn?.map((id) => id.toString())
         }))
     };
 
@@ -73,43 +63,37 @@ async function composeRequestPayload<T extends GraphOperation<unknown>[]>(ops: T
     return requestPayload;
 }
 
-function parseResponses<T extends GraphOperation<unknown>[]>(replyPayload: ReplyPayload, ops: T) {
-    if (!replyPayload.responses) {
-        throw new RequestFailedError("Batch request did not return any responses");
+function normaliseBody(contentType: string | undefined, body: unknown) {
+    if (contentType?.startsWith("application/json") && typeof body === "string") {
+        return JSON.parse(atob(body));
     }
 
-    const results: unknown[] = []; // A little ugly, but effective without blatantly compromising type safety. Is there a neater way?
+    return body;
+}
+
+function normaliseHeaders(input: Record<string, string>): Record<string, string> {
+    const headers: Record<string, string> = {};
+    for (const key in input) {
+        if (input[key]) {
+            headers[key.toLocaleLowerCase()] = input[key];
+        }
+    }
+    return headers;
+}
+
+function parseResponses<T extends GraphOperation<unknown>[]>(replyPayload: ReplyPayload, ops: T) {
+    const results: unknown[] = [];
 
     for (const response of replyPayload.responses) {
-        const index = Number.parseInt(response.id, 10);
-
-        const headers: Record<string, string> = {};
-        for (const key in response.headers) {
-            headers[key.toLocaleLowerCase()] = response.headers[key] ?? "";
-        }
-
+        const index = operationIdToIndex(response.id);
+        const headers = normaliseHeaders(response.headers);
         const contentType = headers["content-type"];
+        const body = normaliseBody(contentType, response.body);
 
-        let body = response.body;
-
-        // Batch API sometimes returns base64 encoded JSON, correct for that
-        if (contentType?.startsWith("application/json") && typeof response.body === "string") {
-            body = JSON.parse(atob(response.body));
-        }
-
-        if (!isHttpOk(response.status)) {
-            const op = JSON.stringify(ops[index], null, 2);
-            const bodyRaw = JSON.stringify(body, null, 2);
-
-            throw new RequestFailedError(
-                `GraphAPI batch operation ${index} failed with HTTP ${response.status}\n` +
-                `Operation: ${op}\n` +
-                `Error body: ${bodyRaw}}`
-            );
-        }
+        RequestFailedError.throwIfNotOkOperation(response.status, index, ops[index], body);
 
         results[index] = body;
     }
 
-    return results as ExecutionResults<T>;
+    return results as ExecutionResults<T>; // A little ugly, but effective without blatantly compromising type safety. Is there a neater way?
 }
