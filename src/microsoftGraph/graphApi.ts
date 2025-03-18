@@ -7,7 +7,7 @@ import { operationIdToIndex, operationIndexToId } from "./services/operationId.j
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 const endpoint = "https://graph.microsoft.com/v1.0/$batch";
-const maxBatchCalls = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
+const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
 type ReplyPayload = {
     responses: {
@@ -48,7 +48,7 @@ export async function executeSequential<T extends GraphOperation<unknown>[]>(...
 }
 
 async function execute<T extends Op<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-    InvalidArgumentError.throwIfGreater(ops.length, maxBatchCalls, `At most ${maxBatchCalls} operations allowed, but ${ops.length} were provided.`);
+    InvalidArgumentError.throwIfGreater(ops.length, maxBatchOperations, `At most ${maxBatchOperations} operations allowed, but ${ops.length} were provided.`);
 
     if (ops.length === 0) {
         return [] as ExecutionResults<T>;
