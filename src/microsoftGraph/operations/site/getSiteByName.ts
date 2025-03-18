@@ -8,7 +8,7 @@ import { generatePath } from "../../services/templatedPaths.js";
 export default function getSiteByName(hostName: HostName, siteName: SiteName): GraphOperation<Site> {
     return {
         method: "GET",
-        path: generatePath("/sites/{host-name}:/{site-name}", { hostName, siteName }),
+        path: generatePath("/sites/{host-name}:/sites/{site-name}", { hostName, siteName }),
         headers: {},
         body: null,
     };
