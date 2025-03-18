@@ -1,11 +1,10 @@
 
 import { info } from "./log.js";
-import { execute } from "./microsoftGraph/graphApi.js";
 import closeSessionAndDeleteWorkbook from "./microsoftGraph/helpers/closeSessionAndDeleteWorkbook.js";
 import createWorkbookAndOpenSessionAndGetRef from "./microsoftGraph/helpers/createWorkbookAndOpenSessionAndGetRef.js";
 import getDefaultDriveRef from "./microsoftGraph/helpers/getDefaultDriveRef.js";
+import listItemsAndGetRefs from "./microsoftGraph/helpers/listItemsAndGetRefs.js";
 import type { DriveItemPath } from "./microsoftGraph/models/DriveItemPath.js";
-import listDriveItems from "./microsoftGraph/operations/driveItem/listDriveItems.js";
 import { workbookFileExtension, } from "./microsoftGraph/services/workbookFile.js";
 
 export async function run(): Promise<void> {
@@ -17,9 +16,9 @@ export async function run(): Promise<void> {
 	const workbookRef = await createWorkbookAndOpenSessionAndGetRef(driveRef, testFile);
 
 	info("Listing files...");
-	const [itemList] = await execute(listDriveItems(driveRef, testPath));
-	for (const driveItem of itemList.value) {
-		info(` - ${driveItem.name}`);
+	const items = await listItemsAndGetRefs(driveRef, testPath);
+	for (const item of items) {
+		info(` - ${item.name}`);
 	}
 
 	info("Deleting file...");
