@@ -1,5 +1,8 @@
+
 import type { DriveId } from "../models/DriveId.js";
+import type { DriveRef } from "../models/DriveRef.js";
 import type { SiteId } from "../models/SiteId.js";
+import type { SiteRef } from "../models/SiteRef.js";
 
 const missingEnvironmentVariables: string[] = [];
 
@@ -22,6 +25,15 @@ export const azureClientSecret = tryGetEnvironmentVariable("AZURE_CLIENT_SECRET"
 
 export const defaultSiteId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
 export const defaultDriveId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
+
+export const defaultSiteRef = {
+	siteId: defaultSiteId,
+} as SiteRef;
+
+export const defaultDriveRef = {
+	siteId: defaultSiteId,
+	driveId: defaultDriveId,
+} as DriveRef;
 
 if (missingEnvironmentVariables.length > 0) {
 	// biome-ignore lint/suspicious/noConsole: <explanation>
