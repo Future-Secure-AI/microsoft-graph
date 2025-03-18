@@ -1,10 +1,12 @@
 
 import { info } from "./log.js";
 import { execute } from "./microsoftGraph/graphApi.js";
-import { openDefaultDrive as getDefaultDriveRef } from "./microsoftGraph/helpers/openDrive.js";
-import { closeSessionAndDeleteWorkbook, createWorkbookAndOpenSession, workbookFileExtension, } from "./microsoftGraph/helpers/openWorkbook.js";
+import closeSessionAndDeleteWorkbook from "./microsoftGraph/helpers/closeSessionAndDeleteWorkbook.js";
+import createWorkbookAndOpenSessionAndGetRef from "./microsoftGraph/helpers/createWorkbookAndOpenSessionAndGetRef.js";
+import getDefaultDriveRef from "./microsoftGraph/helpers/getDefaultDriveRef.js";
 import type { DriveItemPath } from "./microsoftGraph/models/DriveItemPath.js";
 import listDriveItems from "./microsoftGraph/operations/driveItem/listDriveItems.js";
+import { workbookFileExtension, } from "./microsoftGraph/services/workbookFile.js";
 
 export async function run(): Promise<void> {
 	const testPath = "/test" as DriveItemPath;
@@ -12,7 +14,7 @@ export async function run(): Promise<void> {
 	const driveRef = getDefaultDriveRef();
 
 	info("Creating file...");
-	const workbookRef = await createWorkbookAndOpenSession(driveRef, testFile);
+	const workbookRef = await createWorkbookAndOpenSessionAndGetRef(driveRef, testFile);
 
 	info("Listing files...");
 	const [itemList] = await execute(listDriveItems(driveRef, testPath));

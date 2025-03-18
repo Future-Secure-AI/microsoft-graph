@@ -2,8 +2,7 @@ import type { WorkbookRef } from "../models/WorkbookRef.js";
 import type { WorkbookWorksheetId } from "../models/WorkbookWorksheetId.js";
 import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.js";
 
-/** Convenience helper to start a worksheet session */
-export function openWorksheet(workbookRef: WorkbookRef, worksheetId: WorkbookWorksheetId): WorkbookWorksheetRef {
+export default function getWorksheetRef(workbookRef: WorkbookRef, worksheetId: WorkbookWorksheetId): WorkbookWorksheetRef {
     return {
         ...workbookRef,
         worksheetId: worksheetId
