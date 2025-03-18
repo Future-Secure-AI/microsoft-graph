@@ -93,5 +93,6 @@ data = fixNamespaces(data);
 data = linkStronglyTypedIds(data);
 await writeFile(outputFilePath, data);
 
-// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+// biome-ignore lint/suspicious/noConsoleLog: Fit for purpose
+// biome-ignore lint/suspicious/noConsole: Fit for purpose
 console.log(`File saved to ${outputFilePath}`);
