@@ -54,7 +54,7 @@ export function driveItemPath(...segments: string[]): DriveItemPath {
 
 export function driveItemRef(driveRef: DriveRef, itemId: DriveItemId | undefined): DriveItemRef {
     if (!itemId) {
-        throw new ProtocolError("Folder ID is missing");
+        throw new ProtocolError("ItemID is missing");
     }
 
     return {

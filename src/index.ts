@@ -1,6 +1,6 @@
 import { debug, info, } from "./log.js";
 import { defaultDriveRef } from "./microsoftGraph/services/configuration.js";
-import { driveItemPath, generateTempFileName } from "./microsoftGraph/services/drivePath.js";
+import { driveItemPath, generateTempFileName } from "./microsoftGraph/services/driveItem.js";
 import { workbookFileExtension, } from "./microsoftGraph/services/workbookFile.js";
 import closeSessionAndDeleteWorkbook from "./microsoftGraph/tasks/closeSessionAndDeleteWorkbook.js";
 import createWorkbookAndOpenSessionAndGetRef from "./microsoftGraph/tasks/createWorkbookAndOpenSessionAndGetRef.js";

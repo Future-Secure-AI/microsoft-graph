@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import InvalidArgumentError from "../errors/InvalidArgumentError.js";
-import { driveItemPath } from "./drivePath.js";
+import { driveItemPath } from "./driveItem.js";
 
 describe("driveItemPath", () => {
     it("throws an error for empty segment", () => {

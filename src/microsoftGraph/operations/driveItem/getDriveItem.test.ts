@@ -3,7 +3,7 @@ import { executeSingle } from "../../graphApi.js";
 import type { DriveItemId } from "../../models/DriveItemId.js";
 import type { DriveItemRef } from "../../models/DriveItemRef.js";
 import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemRef, generateTempFileName } from "../../services/drivePath.js";
+import { driveItemRef, generateTempFileName } from "../../services/driveItem.js";
 import createFolder from "../drive/createFolder.js";
 import deleteDriveItem from "./deleteDriveItem.js";
 import getDriveItem from "./getDriveItem.js";

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { executeSingle } from "../../graphApi.js";
 import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemRef, generateTempFileName } from "../../services/drivePath.js";
+import { driveItemRef, generateTempFileName } from "../../services/driveItem.js";
 import deleteDriveItem from "../driveItem/deleteDriveItem.js";
 import createFolder from "./createFolder.js";
 

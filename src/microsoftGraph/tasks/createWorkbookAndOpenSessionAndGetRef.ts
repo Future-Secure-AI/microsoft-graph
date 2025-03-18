@@ -4,7 +4,7 @@ import type { DriveItemPath } from "../models/DriveItemPath.js";
 import type { DriveRef } from "../models/DriveRef.js";
 import type { WorkbookRef } from "../models/WorkbookRef.js";
 import createWorkbookInner from "../operations/workbook/createWorkbook.js";
-import { driveItemRef } from "../services/drivePath.js";
+import { driveItemRef } from "../services/driveItem.js";
 import { workbookFileExtension } from "../services/workbookFile.js";
 import createWorkbookSessionAndGetRef from "./createWorkbookSessionAndGetRef.js";
 
