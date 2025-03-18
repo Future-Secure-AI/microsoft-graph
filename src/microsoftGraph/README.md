@@ -1,4 +1,4 @@
-# Microsoft Graph integration
+# Microsoft Graph SDK
 ## Overview
 This is a SDK to allow access to Microsoft's Graph API, particularly for the use with Sharepoint. It is not fully featured, and does rely on each operation being added as it's needed.
 
@@ -7,7 +7,7 @@ Why not just use the default SDK for this? Well - there isn't really one. Sure, 
 individual methods we can call. And there's also [`msgraph-typescript-typings`](https://github.com/microsoftgraph/msgraph-typescript-typings) which defines 
 the models, however nothing appears to exist to pull these basic concepts together into a SDK.
 
-Since we're trying to do the minimum amount of effort, this project takes `msgraph-typescript-typings` injects strongly typed IDs and adds a simple (hopefully elegant) layer that allows individual methods to be added.
+This project takes `msgraph-typescript-typings` DTOS, injects strongly typed IDs in them and adds a simple (hopefully elegant) layer that allows individual operations to be added.
 
 ## Key concepts
 GraphAPI exposes a set of operations. This SDK has a series of `operations` defined that maps to this API. If we want to do some rich manipulation of those operations we use a `helper`.
@@ -20,7 +20,7 @@ First up, make sure the enviuronment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_
 Then make calls:
 
 ```typescript
-const [cells] = await execute(getWorkbookUsedRangeValues({
+const [cells] = await execute(getWorkbookUsedRange({
     siteId: args.siteId,
     driveId: args.driveId,
     itemId: args.itemId,
