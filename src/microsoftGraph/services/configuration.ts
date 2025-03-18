@@ -24,6 +24,7 @@ export const defaultSiteId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_
 export const defaultDriveId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
 
 if (missingEnvironmentVariables.length > 0) {
+	// biome-ignore lint/suspicious/noConsole: <explanation>
 	console.error(`\x1b[31mFATAL: Required environment variable(s) ${missingEnvironmentVariables.join(", ")} missing, empty or whitespace.\x1b[0m`);
 	process.exit(1);
 }

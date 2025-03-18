@@ -7,15 +7,15 @@ import type { DriveItemPath } from "./microsoftGraph/models/DriveItemPath.js";
 import { workbookFileExtension, } from "./microsoftGraph/services/workbookFile.js";
 
 export async function run(): Promise<void> {
-	const testPath = "/test" as DriveItemPath;
-	const testFile = `/${testPath}/${crypto.randomUUID()}${workbookFileExtension}` as DriveItemPath;
+	const testFolderPath = "/test" as DriveItemPath;
+	const testFilePath = `/${testFolderPath}/${crypto.randomUUID()}${workbookFileExtension}` as DriveItemPath;
 	const driveRef = getDefaultDriveRef();
 
 	info("Creating file...");
-	const workbookRef = await createWorkbookAndOpenSessionAndGetRef(driveRef, testFile);
+	const workbookRef = await createWorkbookAndOpenSessionAndGetRef(driveRef, testFilePath);
 
 	info("Listing files...");
-	const items = await listItemsAndGetRefs(driveRef, testPath);
+	const items = await listItemsAndGetRefs(driveRef, testFolderPath);
 	for (const item of items) {
 		debug(` - ${item.name}`);
 	}
