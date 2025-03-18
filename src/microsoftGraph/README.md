@@ -83,5 +83,11 @@ That's it!
 ## Extending
 This is not a fully-featured SDK. Only methods that have been required so far have been implemented, so you probably will need to add new ones. **Please feel free to do this**, however be sure to follow the existing pattern.
 
+There are two key types of extensions you can add:
+
+Add an ***operations*** to the `/operations` folder if there is an additional underlying GraphAPI call that's needed. These operations are simple and largely unopinionated. They just declare that an operation exists and the types used for it.
+
+I'm sure you then have opinions about how the data returned from an operation should be used. This is where ***helpers*** come in. Add a helper to the `/helper` folder if you feel that one or more operations returned data should be manipulated in some standard way before being returned. Note that this should *NOT* include anything outside of the scope of GraphAPI. For instance, if you find yourself wanting to manipulate a PDF, or locally do something to an Excel file - do that outside of this SDK. It doesn't belong here.
+
 ## Regenerating models
 DTO models are imported from `msgraph-typescript-typings` with some fixes and strongly typed IDs injected. To update the models with the latest run `npm run regenerate-dtos`
