@@ -1,4 +1,5 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.js";
+import ProtocolError from "../errors/ProtocolError.js";
 import { executeSingle } from "../graphApi.js";
 import type { DriveItemPath } from "../models/DriveItemPath.js";
 import type { DriveItemRef } from "../models/DriveItemRef.js";
@@ -16,8 +17,9 @@ export default async function createWorkbookAndOpenSessionAndGetRef(driveRef: Dr
     const item = await executeSingle(createWorkbookInner(driveRef, itemPath));
 
     if (item.id === undefined) {
-        throw new Error("Item id is undefined");
+        throw new ProtocolError("Item.id is undefined");
     }
+
     const itemRef: DriveItemRef = {
         ...driveRef,
         itemId: item.id,

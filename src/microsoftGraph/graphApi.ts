@@ -7,7 +7,6 @@ import { operationIdToIndex, operationIndexToId } from "./services/operationId.j
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 const endpoint = "https://graph.microsoft.com/v1.0/$batch";
-const minBatchCalls = 1;
 const maxBatchCalls = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
 type ReplyPayload = {
@@ -49,7 +48,11 @@ export async function executeSequential<T extends GraphOperation<unknown>[]>(...
 }
 
 async function execute<T extends Op<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-    InvalidArgumentError.throwIfOutside(ops.length, minBatchCalls, maxBatchCalls, `Requires at least ${minBatchCalls} and at most ${maxBatchCalls} operations`);
+    InvalidArgumentError.throwIfGreater(ops.length, maxBatchCalls, `At most ${maxBatchCalls} operations allowed, but ${ops.length} were provided.`);
+
+    if (ops.length === 0) {
+        return [] as ExecutionResults<T>;
+    }
 
     const requestPayload = await composeRequestPayload<T>(ops);
     const reply = await fetch(endpoint, requestPayload);
@@ -70,7 +73,7 @@ async function composeRequestPayload<T extends Op<unknown>[]>(ops: T) {
             url: op.path,
             headers: op.headers,
             body: op.body === null ? undefined : op.body,
-            dependsOn: op.dependsOn?.map((id) => id.toString()) // TODO: Check that the dependsOn index is valid
+            dependsOn: op.dependsOn?.map((id) => id.toString())
         }))
     };
 

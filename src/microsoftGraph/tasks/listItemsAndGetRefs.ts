@@ -1,3 +1,4 @@
+import ProtocolError from "../errors/ProtocolError.js";
 import { executeSingle } from "../graphApi.js";
 import type { DriveItemPath } from "../models/DriveItemPath.js";
 import type { DriveItemRef } from "../models/DriveItemRef.js";
@@ -13,10 +14,10 @@ export default async function listItemsAndGetRefs(driveRef: DriveRef, itemPath: 
 
     const items = list.value.map((item) => {
         if (item.id === undefined) {
-            throw new Error("Item id is undefined");
+            throw new ProtocolError("Item.id is undefined");
         }
         if (!item.name) {
-            throw new Error("Item name is undefined");
+            throw new ProtocolError("Item.name is undefined");
         }
 
         return {

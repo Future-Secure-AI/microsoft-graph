@@ -4,8 +4,14 @@ export default class InvalidArgumentError extends Error {
 		this.name = "InvalidArgumentError";
 	}
 
-	public static throwIfOutside(value: number, min: number, max: number, message:string): void {
+	public static throwIfOutside(value: number, min: number, max: number, message: string): void {
 		if (value < min || value > max) {
+			throw new InvalidArgumentError(message);
+		}
+	}
+
+	public static throwIfGreater(value: number, max: number, message: string): void {
+		if (value > max) {
 			throw new InvalidArgumentError(message);
 		}
 	}
