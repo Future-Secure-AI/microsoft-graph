@@ -13,6 +13,8 @@ const reservedNames = [
     "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
 ];
 
+export const rootDriveItemPath = driveItemPath("/");
+
 /** Create a drive item path from a given set of segments. Ie ["a","b"] => "/a/b" */
 export function driveItemPath(...segments: string[]): DriveItemPath {
     for (const segment of segments) {
