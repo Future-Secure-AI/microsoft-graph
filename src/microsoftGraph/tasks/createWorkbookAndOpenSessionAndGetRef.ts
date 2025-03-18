@@ -1,5 +1,5 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.js";
-import { execute } from "../graphApi.js";
+import { executeSingle } from "../graphApi.js";
 import type { DriveItemPath } from "../models/DriveItemPath.js";
 import type { DriveItemRef } from "../models/DriveItemRef.js";
 import type { DriveRef } from "../models/DriveRef.js";
@@ -13,7 +13,7 @@ export default async function createWorkbookAndOpenSessionAndGetRef(driveRef: Dr
         throw new InvalidArgumentError(`Item path must end with '${workbookFileExtension}'`);
     }
 
-    const [item] = await execute(createWorkbookInner(driveRef, itemPath));
+    const item = await executeSingle(createWorkbookInner(driveRef, itemPath));
 
     if (item.id === undefined) {
         throw new Error("Item id is undefined");

@@ -1,20 +1,17 @@
 import type { WorkbookWorksheet } from "../../models/Dto.js";
 import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { GraphOptions } from "../../models/GraphOptions.js";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.js";
-import { jsonContentType } from "../../services/contentTypes.js";
 import { generatePath } from "../../services/templatedPaths.js";
 
 /** Update the name, position and/or visibility of a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-update */
-export default function updateWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden"; }, opts?: GraphOptions): GraphOperation<WorkbookWorksheet> {
+export default function updateWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden"; }): GraphOperation<WorkbookWorksheet> {
     return {
         method: "PATCH",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}", worksheetRef),
         headers: {
             "workbook-session-id": worksheetRef.sessionId,
-            "content-type": jsonContentType,
+            "content-type": "application/json",
         },
         body: updates,
-        dependsOn: opts?.dependsOn,
     };
 }

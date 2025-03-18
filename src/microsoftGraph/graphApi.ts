@@ -3,7 +3,6 @@ import RequestFailedError from "./errors/RequestFailedError.js";
 import type { GraphOperation } from "./models/GraphOperation.js";
 import type { Scope } from "./models/Scope.js";
 import { getCurrentAccessToken } from "./services/accessToken.js";
-import { jsonContentType } from "./services/contentTypes.js";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.js";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
@@ -20,13 +19,37 @@ type ReplyPayload = {
     }[];
 }
 
+type Op<T> = GraphOperation<T> & {
+    /** Array of request indexes that must be completed before this request is executed. */
+    dependsOn?: number[] | undefined;
+};
+
 type ExecutionResults<T> = {
     [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
 
-/** Execute GraphAPI batch with up to 20 requests to be executed as a batch. */
-export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-    InvalidArgumentError.throwIfOutside(ops.length, minBatchCalls, maxBatchCalls, "Requires at least 1 and at most 20 calls");
+/** Execute a single GraphAPI operation. */
+export async function executeSingle<T>(op: GraphOperation<T>): Promise<T> {
+    return (await execute(op))[0] as T;
+}
+
+/** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
+export async function executeParallel<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+    return await execute(...ops);
+}
+
+/** Execute a batch of GraphAPI operations sequentially. */
+export async function executeSequential<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+    const opsSequential = ops.map((op, index) => ({
+        ...op,
+        dependsOn: index > 0 ? [index - 1] : undefined // Each op is dependant on the previous op
+    }) as Op<T>) as T;
+
+    return await execute(...opsSequential);
+}
+
+async function execute<T extends Op<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+    InvalidArgumentError.throwIfOutside(ops.length, minBatchCalls, maxBatchCalls, `Requires at least ${minBatchCalls} and at most ${maxBatchCalls} operations`);
 
     const requestPayload = await composeRequestPayload<T>(ops);
     const reply = await fetch(endpoint, requestPayload);
@@ -37,7 +60,7 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
     return responses;
 }
 
-async function composeRequestPayload<T extends GraphOperation<unknown>[]>(ops: T) {
+async function composeRequestPayload<T extends Op<unknown>[]>(ops: T) {
     const accessToken = await getCurrentAccessToken(authenticationScope);
 
     const requestBody = {
@@ -47,7 +70,7 @@ async function composeRequestPayload<T extends GraphOperation<unknown>[]>(ops: T
             url: op.path,
             headers: op.headers,
             body: op.body === null ? undefined : op.body,
-            dependsOn: op.dependsOn?.map((id) => id.toString())
+            dependsOn: op.dependsOn?.map((id) => id.toString()) // TODO: Check that the dependsOn index is valid
         }))
     };
 
@@ -55,8 +78,8 @@ async function composeRequestPayload<T extends GraphOperation<unknown>[]>(ops: T
         method: "POST",
         headers: {
             "authorization": `Bearer ${accessToken}`,
-            "accept": jsonContentType,
-            "content-type": jsonContentType
+            "accept": "application/json",
+            "content-type": "application/json"
         },
         body: JSON.stringify(requestBody)
     };
@@ -82,7 +105,7 @@ function normaliseHeaders(input: Record<string, string>): Record<string, string>
     return headers;
 }
 
-function parseResponses<T extends GraphOperation<unknown>[]>(replyPayload: ReplyPayload, ops: T) {
+function parseResponses<T extends Op<unknown>[]>(replyPayload: ReplyPayload, ops: T) {
     const results: unknown[] = [];
 
     for (const response of replyPayload.responses) {

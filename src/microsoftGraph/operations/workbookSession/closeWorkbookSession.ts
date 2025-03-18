@@ -1,11 +1,10 @@
 import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
 import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { GraphOptions } from "../../models/GraphOptions.js";
 import type { WorkbookRef } from "../../models/WorkbookRef.js";
 import { generatePath } from "../../services/templatedPaths.js";
 
 /** Close an existing workbook session. @see https://learn.microsoft.com/en-us/graph/api/workbook-closesession */
-export default function closeWorkbookSession(workbookRef: WorkbookRef, opts?: GraphOptions): GraphOperation<void> {
+export default function closeWorkbookSession(workbookRef: WorkbookRef): GraphOperation<void> {
     if (!workbookRef.sessionId) {
         throw new InvalidArgumentError("Workbook session ID is required to close a session.");
     }
@@ -16,6 +15,5 @@ export default function closeWorkbookSession(workbookRef: WorkbookRef, opts?: Gr
             "workbook-session-id": workbookRef.sessionId,
         },
         body: null,
-        dependsOn: opts?.dependsOn,
     };
 }

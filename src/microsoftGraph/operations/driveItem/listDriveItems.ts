@@ -3,7 +3,6 @@ import type { DriveItemPath } from "../../models/DriveItemPath.js";
 import type { DriveRef } from "../../models/DriveRef.js";
 import type { DriveItem } from "../../models/Dto.js";
 import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { GraphOptions } from "../../models/GraphOptions.js";
 import { generatePath } from "../../services/templatedPaths.js";
 
 export type ListDriveItemResponse = {
@@ -13,7 +12,7 @@ export type ListDriveItemResponse = {
 };
 
 /** Retrieve the metadata for items in a drive by file path. @see https://learn.microsoft.com/en-us/graph/api/driveitem-list-children */
-export default function listDriveItems(driveRef: DriveRef, itemPath: DriveItemPath, opts?: GraphOptions): GraphOperation<ListDriveItemResponse> {
+export default function listDriveItems(driveRef: DriveRef, itemPath: DriveItemPath): GraphOperation<ListDriveItemResponse> {
     if (!itemPath.startsWith("/")) {
         throw new InvalidArgumentError("Path template must start with a slash.");
     }
@@ -25,6 +24,5 @@ export default function listDriveItems(driveRef: DriveRef, itemPath: DriveItemPa
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/root${pathSegment}/children`, driveRef),
         headers: {},
         body: null,
-        dependsOn: opts?.dependsOn,
     };
 }

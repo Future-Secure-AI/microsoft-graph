@@ -18,6 +18,4 @@ export type GraphOperation<T> = {
     headers: GraphHeaders;
     /** JSON object or a base64 URL-encoded value, for example, when the body is an image. When a body is included with the request, the headers object must contain a value for Content-Type. */
     body: unknown;
-    /** Array of request indexes that must be completed before this request is executed. */
-    dependsOn: number[] | undefined;
 };
