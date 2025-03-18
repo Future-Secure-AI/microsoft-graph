@@ -7,8 +7,8 @@ import listDriveItems from "../operations/driveItem/listDriveItems.js";
 export type NamedDriveItemRef = DriveItemRef & {
     name: string;
 };
-export default async function listItemsAndGetRefs(driveRef: DriveRef, itemPath: DriveItemPath): Promise<NamedDriveItemRef[]> {
 
+export default async function listItemsAndGetRefs(driveRef: DriveRef, itemPath: DriveItemPath): Promise<NamedDriveItemRef[]> {
     const [list] = await execute(listDriveItems(driveRef, itemPath));
 
     const items = list.value.map((item) => {

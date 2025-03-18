@@ -3,12 +3,12 @@ import closeSessionAndDeleteWorkbook from "./microsoftGraph/helpers/closeSession
 import createWorkbookAndOpenSessionAndGetRef from "./microsoftGraph/helpers/createWorkbookAndOpenSessionAndGetRef.js";
 import getDefaultDriveRef from "./microsoftGraph/helpers/getDefaultDriveRef.js";
 import listItemsAndGetRefs from "./microsoftGraph/helpers/listItemsAndGetRefs.js";
-import type { DriveItemPath } from "./microsoftGraph/models/DriveItemPath.js";
+import { drivePath } from "./microsoftGraph/services/drivePath.js";
 import { workbookFileExtension, } from "./microsoftGraph/services/workbookFile.js";
 
 export async function run(): Promise<void> {
-	const testFolderPath = "/test" as DriveItemPath;
-	const testFilePath = `/${testFolderPath}/${crypto.randomUUID()}${workbookFileExtension}` as DriveItemPath;
+	const testFolderPath = drivePath("test");
+	const testFilePath = drivePath(testFolderPath, `${crypto.randomUUID()}${workbookFileExtension}`);
 	const driveRef = getDefaultDriveRef();
 
 	info("Creating file...");
