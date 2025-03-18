@@ -31,19 +31,17 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
 
     const requestPayload = await composeRequestPayload<T>(ops);
 
-    const response = await fetch(endpoint, requestPayload);
+    const reply = await fetch(endpoint, requestPayload);
 
-    if (!isHttpOk(response.status)) {
-        const responsePayload = await response.json();
+    const replyPayload = await reply.json() as ReplyPayload;
 
+    if (!isHttpOk(reply.status)) {
         throw new RequestFailedError(
-            `GraphAPI batch failed with HTTP ${response.status}\n` +
+            `GraphAPI batch failed with HTTP ${reply.status}\n` +
             `Operations: ${JSON.stringify(ops, null, 2)}\n` +
-            `Response: ${JSON.stringify(responsePayload, null, 2)}`
+            `Response: ${JSON.stringify(replyPayload, null, 2)}`
         );
     }
-
-    const replyPayload = await response.json() as ReplyPayload;
 
     return parseResponses<T>(replyPayload, ops);
 }
