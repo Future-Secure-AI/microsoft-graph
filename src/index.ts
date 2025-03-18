@@ -6,7 +6,7 @@ import listItemsAndGetRefs from "./microsoftGraph/helpers/listItemsAndGetRefs.js
 import { drivePath } from "./microsoftGraph/services/drivePath.js";
 import { workbookFileExtension, } from "./microsoftGraph/services/workbookFile.js";
 
-export async function run(): Promise<void> {
+export async function main(): Promise<void> {
 	const testFolderPath = drivePath("test");
 	const testFilePath = drivePath(testFolderPath, `${crypto.randomUUID()}${workbookFileExtension}`);
 	const driveRef = getDefaultDriveRef();

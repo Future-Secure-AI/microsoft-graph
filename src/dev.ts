@@ -1,5 +1,5 @@
 /** Entry point for local development. Not used when deployed */
 
-import { run } from "./index.js";
+import { main } from "./index.js";
 
-await run();
+await main();
