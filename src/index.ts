@@ -3,11 +3,16 @@ import { fileURLToPath } from "node:url";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { execute } from "./microsoftGraph/graphApi.js";
-import { openWorkbookInDefaultDrive } from "./microsoftGraph/helpers/openWorkbook.js";
-import { openWorksheet } from "./microsoftGraph/helpers/openWorksheet.js";
+import { openDefaultDrive } from "./microsoftGraph/helpers/openDrive.js";
+import { createWorkbookWithSession, } from "./microsoftGraph/helpers/openWorkbook.js";
 import type { DriveItemId } from "./microsoftGraph/models/DriveItemId.js";
+import type { DriveItemPath } from "./microsoftGraph/models/DriveItemPath.js";
 import type { WorkbookWorksheetId } from "./microsoftGraph/models/WorkbookWorksheetId.js";
-import getWorkbookUsedRange from "./microsoftGraph/operations/workbookRange/getWorkbookUsedRange.js";
+import deleteDriveItem from "./microsoftGraph/operations/driveItem/deleteDriveItem.js";
+import listDriveItems from "./microsoftGraph/operations/driveItem/listDriveItems.js";
+import closeWorkbookSession from "./microsoftGraph/operations/workbookSession/closeWorkbookSession.js";
+import { defaultDriveId, defaultSiteId } from "./microsoftGraph/services/configuration.js";
+import { sleep } from "./microsoftGraph/services/sleep.js";
 
 export type Arguments = {
 	itemId: DriveItemId;
@@ -16,15 +21,20 @@ export type Arguments = {
 
 /** Core logic goes here. But don't call this function directly - use `runNative` or `runCli` instead. */
 async function run(args: Arguments): Promise<void> {
-	//
-	// TODO: Core logic goes here...
-	//
+	const driveRef = openDefaultDrive();
 
-	const workbookRef = await openWorkbookInDefaultDrive(args.itemId);
-	const worksheetRef = openWorksheet(workbookRef, args.worksheetId);
-	const [usedRange] = await execute(getWorkbookUsedRange(worksheetRef));
+	const workbookRef = await createWorkbookWithSession(driveRef, `/test/${crypto.randomUUID()}.xlsx` as DriveItemPath);
 
-	console.info(usedRange.values);
+	const [itemList] = await execute(listDriveItems({ siteId: defaultSiteId, driveId: defaultDriveId }, "/test" as DriveItemPath));
+
+	console.info("Items in /Subfolder:");
+	for (const driveItem of itemList.value) {
+		console.info(driveItem.name);
+	}
+
+	await execute(closeWorkbookSession(workbookRef));
+	await sleep(1000); // Close session takes a moment to release the file lock
+	await execute(deleteDriveItem(workbookRef));
 }
 
 /** Called by Flowise during normal use. */
@@ -64,6 +74,8 @@ async function runCli(): Promise<void> {
 	await run(args);
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
-	await runCli();
-}
+process.nextTick(async () => {
+	if (process.argv[1] === fileURLToPath(import.meta.url)) {
+		await runCli();
+	}
+});

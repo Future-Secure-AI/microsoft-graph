@@ -13,7 +13,7 @@ export default function createWorkbook(driveRef: DriveRef, itemPath: DriveItemPa
         method: "PUT",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}:/content`, driveRef),
         headers: {
-            "content-type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            "content-type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         },
         body: emptyWorkbookBase64,
         dependsOn: opts?.dependsOn,

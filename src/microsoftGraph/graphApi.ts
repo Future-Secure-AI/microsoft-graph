@@ -1,6 +1,6 @@
 import InvalidArgumentError from "./errors/InvalidArgumentError.js";
 import RequestFailedError from "./errors/RequestFailedError.js";
-import type { GraphHeaders, GraphOperation } from "./models/GraphOperation.js";
+import type { GraphOperation } from "./models/GraphOperation.js";
 import type { Scope } from "./models/Scope.js";
 import { getCurrentAccessToken } from "./services/accessToken.js";
 
@@ -13,7 +13,7 @@ type Response = {
     responses: {
         id: string;
         status: number;
-        headers: GraphHeaders;
+        headers: Record<string, string>;
         body: unknown;
     }[];
 }
@@ -30,6 +30,17 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
         throw new InvalidArgumentError(`Requires at least ${minBatchCalls} and at most ${maxBatchCalls} calls`);
     }
 
+    const requestBody = {
+        requests: ops.map((call, index) => ({
+            id: index.toString(),
+            method: call.method,
+            url: call.path,
+            headers: call.headers,
+            body: call.body == null ? undefined : call.body,
+            dependsOn: call.dependsOn?.map((id) => id.toString())
+        }))
+    };
+
     const response = await fetch(batchEndpoint, {
         method: "POST",
         headers: {
@@ -37,20 +48,17 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
             'accept': 'application/json',
             'content-type': 'application/json'
         },
-        body: JSON.stringify({
-            requests: ops.map((call, index) => ({
-                id: index.toString(),
-                method: call.method,
-                url: call.path,
-                headers: call.headers,
-                body: call.body,
-                dependsOn: call.dependsOn?.map((id) => id.toString())
-            }))
-        })
+        body: JSON.stringify(requestBody)
     });
 
     if (!response.ok) {
-        throw new RequestFailedError(`Batch request failed with status ${response.status}`);
+        const responseBody = await response.json();
+
+        throw new RequestFailedError(
+            `GraphAPI batch failed with HTTP ${response.status}\n` +
+            `Batch: ${JSON.stringify(requestBody, null, 2)}\n` +
+            `Body: ${JSON.stringify(responseBody, null, 2)}`
+        );
     }
 
     const json = await response.json() as Response;
@@ -64,18 +72,32 @@ export async function execute<T extends GraphOperation<unknown>[]>(...ops: T): P
     for (const response of json.responses) {
         const index = Number.parseInt(response.id, 10);
 
+        const headers: Record<string, string> = {};
+        for (const key in response.headers) {
+            headers[key.toLocaleLowerCase()] = response.headers[key] ?? "";
+        }
+
+        const contentType = headers["content-type"];
+
+        let body = response.body;
+
+        if (contentType?.startsWith("application/json") && typeof response.body === "string") { // Batch API sometimes returns base64 encoded JSON
+            body = JSON.parse(atob(response.body));
+        }
+
+        //   "Content-Type": "application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8"
         if (response.status < 200 || response.status > 299) {
             const op = JSON.stringify(ops[index], null, 2);
-            const bodyRaw = JSON.stringify(response.body, null, 2);
+            const bodyRaw = JSON.stringify(body, null, 2);
 
             throw new RequestFailedError(
-                `GraphAPI execution failed with HTTP ${response.status}\n` +
-                `Operation (index ${index}): ${op}\n` +
+                `GraphAPI batch operation ${index} failed with HTTP ${response.status}\n` +
+                `Operation: ${op}\n` +
                 `Error body: ${bodyRaw}}`
             );
         }
 
-        results[index] = response.body;
+        results[index] = body;
     }
 
     return results as ExecutionResults<T>;
