@@ -36,7 +36,7 @@
 			}
 		},
 		{
-			"include": ["src/microsoftGraph/operations/*.ts", "src/microsoftGraph/errors/*.ts", "src/microsoftGraph/helpers/*.ts"],
+			"include": ["src/microsoftGraph/operations/*.ts", "src/microsoftGraph/errors/*.ts", "src/microsoftGraph/tasks/*.ts"],
 			"linter":{
 				"rules": {
 					"style":{

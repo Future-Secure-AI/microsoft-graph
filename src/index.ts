@@ -1,8 +1,8 @@
 import { debug, info, } from "./log.js";
-import closeSessionAndDeleteWorkbook from "./microsoftGraph/helpers/closeSessionAndDeleteWorkbook.js";
-import createWorkbookAndOpenSessionAndGetRef from "./microsoftGraph/helpers/createWorkbookAndOpenSessionAndGetRef.js";
-import getDefaultDriveRef from "./microsoftGraph/helpers/getDefaultDriveRef.js";
-import listItemsAndGetRefs from "./microsoftGraph/helpers/listItemsAndGetRefs.js";
+import closeSessionAndDeleteWorkbook from "./microsoftGraph/tasks/closeSessionAndDeleteWorkbook.js";
+import createWorkbookAndOpenSessionAndGetRef from "./microsoftGraph/tasks/createWorkbookAndOpenSessionAndGetRef.js";
+import getDefaultDriveRef from "./microsoftGraph/tasks/getDefaultDriveRef.js";
+import listItemsAndGetRefs from "./microsoftGraph/tasks/listItemsAndGetRefs.js";
 import { drivePath } from "./microsoftGraph/services/drivePath.js";
 import { workbookFileExtension, } from "./microsoftGraph/services/workbookFile.js";
 
