@@ -4,9 +4,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug with tsx",
+      "name": "Debug",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["tsx", "--inspect", "src/dev.ts"],
+      "runtimeArgs": ["tsx", "src/dev.ts"],
       "cwd": "${workspaceFolder}",
       "skipFiles": ["<node_internals>/**"],
       "autoAttachChildProcesses": true
