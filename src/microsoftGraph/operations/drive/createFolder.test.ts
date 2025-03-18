@@ -3,12 +3,13 @@ import ProtocolError from "../../errors/ProtocolError.js";
 import { executeSingle } from "../../graphApi.js";
 import type { DriveItemRef } from "../../models/DriveItemRef.js";
 import { defaultDriveRef } from "../../services/configuration.js";
+import { generateTempFileName } from "../../services/drivePath.js";
 import deleteDriveItem from "../driveItem/deleteDriveItem.js";
 import createFolder from "./createFolder.js";
 
 describe("createFolder", () => {
     it("can create root folder", async () => {
-        const folderName = crypto.randomUUID();
+        const folderName = generateTempFileName();
         const folder = await executeSingle(createFolder(defaultDriveRef, folderName));
 
         if (!folder.id) {
@@ -26,7 +27,7 @@ describe("createFolder", () => {
     });
 
     it("can create sub-folder", async () => {
-        const topFolderName = crypto.randomUUID();
+        const topFolderName = generateTempFileName();
         console.debug(`Creating top-level folder ${topFolderName}...`);
         const topFolder = await executeSingle(createFolder(defaultDriveRef, topFolderName));
 
@@ -40,7 +41,7 @@ describe("createFolder", () => {
         };
 
         try {
-            const bottomFolderName = crypto.randomUUID();
+            const bottomFolderName = generateTempFileName();
             console.debug(`Creating second-level folder ${bottomFolderName}...`);
             const bottomFolder = await executeSingle(createFolder(topFolderRef, bottomFolderName));
 
