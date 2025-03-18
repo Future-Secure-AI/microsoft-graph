@@ -13,9 +13,7 @@ export type ListDriveItemResponse = {
 
 /** Retrieve the metadata for items in a drive by file path. @see https://learn.microsoft.com/en-us/graph/api/driveitem-list-children */
 export default function listDriveItems(driveRef: DriveRef, itemPath: DriveItemPath): GraphOperation<ListDriveItemResponse> {
-    if (!itemPath.startsWith("/")) {
-        throw new InvalidArgumentError("Path template must start with a slash.");
-    }
+    InvalidArgumentError.throwIfFalsy(itemPath.startsWith("/"), "Path must start with a slash.");
 
     const pathSegment = itemPath === "/" ? "" : `:${itemPath}:`;
 

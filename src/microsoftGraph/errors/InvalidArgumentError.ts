@@ -15,4 +15,11 @@ export default class InvalidArgumentError extends Error {
 			throw new InvalidArgumentError(message);
 		}
 	}
+
+	public static throwIfFalsy(value: unknown, message: string): void {
+		if (!value) {
+			throw new InvalidArgumentError(message);
+		}
+	}
+	
 }
