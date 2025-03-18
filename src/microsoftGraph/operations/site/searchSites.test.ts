@@ -18,4 +18,11 @@ describe("searchSites", () => {
         expect(result.value).toBeInstanceOf(Array);
         expect(result.value.length).toBe(0);
     });
+
+    it("handles search with '/' character", async () => {
+        const searchKeyword = "/";
+        const result = await executeSingle(searchSites(searchKeyword));
+
+        expect(result.value).toBeInstanceOf(Array);
+    });
 });
