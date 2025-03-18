@@ -3,6 +3,7 @@ import RequestFailedError from "./errors/RequestFailedError.js";
 import type { GraphOperation } from "./models/GraphOperation.js";
 import type { Scope } from "./models/Scope.js";
 import { getCurrentAccessToken } from "./services/accessToken.js";
+import { jsonContentType } from "./services/contentTypes.js";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.js";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
@@ -53,9 +54,9 @@ async function composeRequestPayload<T extends GraphOperation<unknown>[]>(ops: T
     const requestPayload = {
         method: "POST",
         headers: {
-            'authorization': `Bearer ${accessToken}`,
-            'accept': 'application/json',
-            'content-type': 'application/json'
+            "authorization": `Bearer ${accessToken}`,
+            "accept": jsonContentType,
+            "content-type": jsonContentType
         },
         body: JSON.stringify(requestBody)
     };

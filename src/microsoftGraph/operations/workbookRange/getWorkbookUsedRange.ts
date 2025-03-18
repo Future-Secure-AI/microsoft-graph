@@ -10,7 +10,7 @@ export default function getWorkbookUsedRange(worksheetRef: WorkbookWorksheetRef,
         method: "GET",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range/usedRange", worksheetRef),
         headers: {
-            'workbook-session-id': worksheetRef.sessionId,
+            "workbook-session-id": worksheetRef.sessionId,
         },
         body: null,
         dependsOn: opts?.dependsOn,

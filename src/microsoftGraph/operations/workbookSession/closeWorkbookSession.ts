@@ -13,7 +13,7 @@ export default function closeWorkbookSession(workbookRef: WorkbookRef, opts?: Gr
         method: "POST",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/closeSession", workbookRef),
         headers: {
-            'workbook-session-id': workbookRef.sessionId,
+            "workbook-session-id": workbookRef.sessionId,
         },
         body: null,
         dependsOn: opts?.dependsOn,

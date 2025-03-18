@@ -10,19 +10,19 @@ export function parseSharepointUrl(url: URL): { hostName: HostName; siteName: Si
     }
     const hostName = url.hostname as HostName;
 
-    const pathSegments = url.pathname.split('/');
-    const siteNameIndex = pathSegments.indexOf('sites') + 1;
+    const pathSegments = url.pathname.split("/");
+    const siteNameIndex = pathSegments.indexOf("sites") + 1;
     if (siteNameIndex <= 0 || !pathSegments[siteNameIndex]) {
         throw new InvalidArgumentError("Invalid SharePoint URL. Site name not found.");
     }
     const siteName = pathSegments[siteNameIndex] as SiteName;
 
-    const sourcedoc = url.searchParams.get('sourcedoc');
+    const sourcedoc = url.searchParams.get("sourcedoc");
     if (!sourcedoc) {
         throw new InvalidArgumentError("Invalid SharePoint URL. Path not found in parameters.");
     }
 
-    const itemId = sourcedoc.replace(/[{}]/g, '').toLocaleUpperCase() as DriveItemId;
+    const itemId = sourcedoc.replace(/[{}]/g, "").toLocaleUpperCase() as DriveItemId;
 
     return {
         hostName,

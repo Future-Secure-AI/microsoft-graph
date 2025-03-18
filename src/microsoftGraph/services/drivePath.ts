@@ -29,7 +29,7 @@ export function drivePath(...segments: string[]): DriveItemPath {
         }
     }
 
-    let path = `${segments.join('/')}`;
+    let path = `${segments.join("/")}`;
 
     if (!path.startsWith("/")) {
         path = `/${path}`;

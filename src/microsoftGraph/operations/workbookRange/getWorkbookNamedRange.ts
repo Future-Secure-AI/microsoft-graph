@@ -10,7 +10,7 @@ export default function getWorkbookNamedRange(rangeRef: WorkbookNamedRangeRef, o
         method: "GET",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/names/{range-name}/range", rangeRef),
         headers: {
-            'workbook-session-id': rangeRef.sessionId,
+            "workbook-session-id": rangeRef.sessionId,
         },
         body: null,
         dependsOn: opts?.dependsOn,
