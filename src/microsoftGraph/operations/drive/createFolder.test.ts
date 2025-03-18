@@ -1,4 +1,4 @@
-import { describe, it } from "vitest";
+import { describe, expect, it } from "vitest";
 import ProtocolError from "../../errors/ProtocolError.js";
 import { executeSingle } from "../../graphApi.js";
 import type { DriveItemRef } from "../../models/DriveItemRef.js";
@@ -7,7 +7,25 @@ import deleteDriveItem from "../driveItem/deleteDriveItem.js";
 import createFolder from "./createFolder.js";
 
 describe("createFolder", () => {
-    it("can create in root", async () => {
+    it("can create root folder", async () => {
+        const folderName = crypto.randomUUID();
+        const folder = await executeSingle(createFolder(defaultDriveRef, folderName));
+
+        if (!folder.id) {
+            throw new ProtocolError("Folder ID is missing");
+        }
+
+        const folderRef: DriveItemRef = {
+            ...defaultDriveRef,
+            itemId: folder.id
+        };
+
+        expect(folder.webUrl?.endsWith(`/${folderName}`)).toBeTruthy();
+
+        await executeSingle(deleteDriveItem(folderRef));
+    });
+
+    it("can create sub-folder", async () => {
         const topFolderName = crypto.randomUUID();
         console.debug(`Creating top-level folder ${topFolderName}...`);
         const topFolder = await executeSingle(createFolder(defaultDriveRef, topFolderName));
@@ -21,14 +39,18 @@ describe("createFolder", () => {
             itemId: topFolder.id
         };
 
-        const bottomFolderName = crypto.randomUUID();
-        console.debug(`Creating second-level folder ${bottomFolderName}...`);
-        const bottomFolder = await executeSingle(createFolder(topFolderRef, bottomFolderName));
+        try {
+            const bottomFolderName = crypto.randomUUID();
+            console.debug(`Creating second-level folder ${bottomFolderName}...`);
+            const bottomFolder = await executeSingle(createFolder(topFolderRef, bottomFolderName));
 
-        if (!bottomFolder.id) {
-            throw new ProtocolError("Folder ID is missing");
+            if (!bottomFolder.id) {
+                throw new ProtocolError("Folder ID is missing");
+            }
+
+            expect(bottomFolder.webUrl?.endsWith(`/${topFolderName}/${bottomFolderName}`)).toBeTruthy();
+        } finally {
+            await executeSingle(deleteDriveItem(topFolderRef));
         }
-
-        await executeSingle(deleteDriveItem(topFolderRef));
     });
 });
