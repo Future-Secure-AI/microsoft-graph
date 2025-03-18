@@ -3,9 +3,10 @@
  * Run `npm run regenerate-dtos` to regenerate.
 */
 
+import type { SiteId } from './SiteId.ts';
 import type { DriveId } from './DriveId.ts'
 import type { DriveItemId } from './DriveItemId.ts'
-import type { SiteId } from './SiteId.ts';
+import type { WorkbookWorksheetId } from './WorkbookWorksheetId.ts'
 
 // Project: https://github.com/microsoftgraph/msgraph-typescript-typings
 // Definitions by: Microsoft Graph Team <https://github.com/microsoftgraph>
@@ -1082,6 +1083,7 @@ export type ImportedWindowsAutopilotDeviceIdentityImportStatus =
 export type ImportedWindowsAutopilotDeviceIdentityUploadStatus = "noUpload" | "pending" | "complete" | "error";
 export type IncludedUserRoles = "all" | "privilegedAdmin" | "admin" | "user" | "unknownFutureValue";
 export type IncludedUserTypes = "all" | "member" | "guest" | "unknownFutureValue";
+export type IncompatiblePrinterSettings = "show" | "hide" | "unknownFutureValue";
 export type InferenceClassificationType = "focused" | "other";
 export type InitiatorType = "user" | "application" | "system" | "unknownFutureValue";
 export type InstallIntent = "available" | "required" | "uninstall" | "availableWithoutEnrollment";
@@ -6882,6 +6884,11 @@ export interface CloudPcOnPremisesConnection extends Entity {
 export interface CloudPcProvisioningPolicy extends Entity {
     // The URL of the alternate resource that links to this provisioning policy. Read-only.
     alternateResourceUrl?: NullableOption<string>;
+    /**
+     * Indicates the Windows Autopatch settings for Cloud PCs using this provisioning policy. The settings take effect when
+     * the tenant enrolls in Autopatch and the managedType of the microsoftManagedDesktop property is set as starterManaged.
+     * Supports $select.
+     */
     autopatch?: NullableOption<CloudPcProvisioningPolicyAutopatch>;
     // The display name of the Cloud PC group that the Cloud PCs reside in. Read-only.
     cloudPcGroupDisplayName?: NullableOption<string>;
@@ -14717,8 +14724,12 @@ export interface PrintDocument extends Entity {
     contentType?: NullableOption<string>;
     // The document's name. Read-only.
     displayName?: NullableOption<string>;
+    // The time the document was downloaded. Read-only
+    downloadedDateTime?: NullableOption<string>;
     // The document's size in bytes. Read-only.
     size?: number;
+    // The time the document was uploaded. Read-only
+    uploadedDateTime?: NullableOption<string>;
 }
 export interface Printer extends PrinterBase {
     // True if the printer has a physical device for printing. Read-only.
@@ -14783,11 +14794,15 @@ export interface PrinterShare extends PrinterBase {
     printer?: NullableOption<Printer>;
 }
 export interface PrintJob extends Entity {
+    // The dateTimeOffset when the job was acknowledged. Read-only.
+    acknowledgedDateTime?: NullableOption<string>;
     // A group of settings that a printer should use to print a job.
     configuration?: PrintJobConfiguration;
     createdBy?: NullableOption<UserIdentity>;
     // The DateTimeOffset when the job was created. Read-only.
     createdDateTime?: string;
+    // The error code of the print job. Read-only.
+    errorCode?: NullableOption<number>;
     // If true, document can be fetched by printer.
     isFetchable?: boolean;
     // Contains the source job URL, if the job has been redirected from another printer.
@@ -17411,6 +17426,10 @@ export interface Team extends Entity {
     description?: NullableOption<string>;
     // The name of the team.
     displayName?: NullableOption<string>;
+    /**
+     * The name of the first channel in the team. This is an optional property, only used during team creation and isn't
+     * returned in methods to get and list teams.
+     */
     firstChannelName?: NullableOption<string>;
     // Settings to configure use of Giphy, memes, and stickers in the team.
     funSettings?: NullableOption<TeamFunSettings>;
@@ -22657,7 +22676,7 @@ export interface WorkbookTableSort extends Entity {
      */
     method?: string;
 }
-export interface WorkbookWorksheet extends Entity {
+export interface WorkbookWorksheet extends Entity<WorkbookWorksheetId> {
     // The display name of the worksheet.
     name?: NullableOption<string>;
     // The zero-based position of the worksheet within the workbook.
@@ -23159,6 +23178,13 @@ export interface AggregationOption {
 export interface AgreementFileData {
     // Data that represents the terms of use PDF document. Read-only.
     data?: NullableOption<string>;
+}
+export interface AirPrintSettings {
+    /**
+     * Describes whether Universal Print hides printers from macOS when they don't support all capabilities required by the
+     * operating system as defined by AirPrint.
+     */
+    incompatiblePrinters?: IncompatiblePrinterSettings;
 }
 export interface Album {
     // Unique identifier of the driveItem that is the cover of the album.
@@ -24936,6 +24962,12 @@ export interface CloudPcOnPremisesConnectionStatusDetail {
     startDateTime?: string;
 }
 export interface CloudPcProvisioningPolicyAutopatch {
+    /**
+     * The unique identifier (ID) of a Windows Autopatch group. An Autopatch group is a logical container or unit that groups
+     * several Microsoft Entra groups and software update policies. Devices with the same Autopatch group ID share unified
+     * software update management. The default value is null that indicates that no Autopatch group is associated with the
+     * provisioning policy.
+     */
     autopatchGroupId?: NullableOption<string>;
 }
 export interface CloudPcRestorePointSetting {
@@ -29064,6 +29096,13 @@ export interface PrinterDefaults {
      */
     scaling?: NullableOption<PrintScaling>;
 }
+export interface PrinterDiscoverySettings {
+    /**
+     * Represents tenant-wide settings to configure the behavior of printers when print jobs are submitted to Universal Print
+     * from macOS, which requires AirPrint compatibility.
+     */
+    airPrint?: AirPrintSettings;
+}
 export interface PrinterLocation {
     // The altitude, in meters, that the printer is located at.
     altitudeInMeters?: NullableOption<number>;
@@ -29208,6 +29247,8 @@ export interface PrintSettings {
      * service converts documents into a format compatible with the printer (xps to pdf) when needed.
      */
     documentConversionEnabled?: boolean;
+    // Specifies settings that affect printer discovery when using Universal Print.
+    printerDiscoverySettings?: NullableOption<PrinterDiscoverySettings>;
 }
 export interface PrintTaskStatus {
     // A human-readable description of the current processing state of the printTask.
@@ -32705,27 +32746,27 @@ export interface WorkbookSortField {
     sortOn?: string;
 }
 export interface WorkbookWorksheetProtectionOptions {
-    // Represents the worksheet protection option of allowing using auto filter feature.
+    // Indicates whether the worksheet protection option to allow the use of the autofilter feature is enabled.
     allowAutoFilter?: boolean;
-    // Represents the worksheet protection option of allowing deleting columns.
+    // Indicates whether the worksheet protection option to allow deleting columns is enabled.
     allowDeleteColumns?: boolean;
-    // Represents the worksheet protection option of allowing deleting rows.
+    // Indicates whether the worksheet protection option to allow deleting rows is enabled.
     allowDeleteRows?: boolean;
-    // Represents the worksheet protection option of allowing formatting cells.
+    // Indicates whether the worksheet protection option to allow formatting cells is enabled.
     allowFormatCells?: boolean;
-    // Represents the worksheet protection option of allowing formatting columns.
+    // Indicates whether the worksheet protection option to allow formatting columns is enabled.
     allowFormatColumns?: boolean;
-    // Represents the worksheet protection option of allowing formatting rows.
+    // Indicates whether the worksheet protection option to allow formatting rows is enabled.
     allowFormatRows?: boolean;
-    // Represents the worksheet protection option of allowing inserting columns.
+    // Indicates whether the worksheet protection option to allow inserting columns is enabled.
     allowInsertColumns?: boolean;
-    // Represents the worksheet protection option of allowing inserting hyperlinks.
+    // Indicates whether the worksheet protection option to allow inserting hyperlinks is enabled.
     allowInsertHyperlinks?: boolean;
-    // Represents the worksheet protection option of allowing inserting rows.
+    // Indicates whether the worksheet protection option to allow inserting rows is enabled.
     allowInsertRows?: boolean;
-    // Represents the worksheet protection option of allowing using pivot table feature.
+    // Indicates whether the worksheet protection option to allow the use of the pivot table feature is enabled.
     allowPivotTables?: boolean;
-    // Represents the worksheet protection option of allowing using sort feature.
+    // Indicates whether the worksheet protection option to allow the use of the sort feature is enabled.
     allowSort?: boolean;
 }
 export interface WorkforceIntegrationEncryption {

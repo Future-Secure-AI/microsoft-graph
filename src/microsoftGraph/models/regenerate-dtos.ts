@@ -49,9 +49,11 @@ function fixLintDisables(data: string): string {
 
 function linkStronglyTypedIds(data: string): string {
     // biome-ignore lint/style/useTemplate: <explanation>
-    return `import type { DriveId } from './DriveId.ts'\n` +
+    return `import type { SiteId } from './SiteId.ts';\n` +
+        `import type { DriveId } from './DriveId.ts'\n` +
         `import type { DriveItemId } from './DriveItemId.ts'\n` +
-        `import type { SiteId } from './SiteId.ts';\n\n` +
+        `import type { WorkbookWorksheetId } from './WorkbookWorksheetId.ts'\n` +
+        "\n" +
         data
             .replace(
                 /export interface Entity\s*{[^}]*id\?: string;/g,
@@ -76,7 +78,12 @@ function linkStronglyTypedIds(data: string): string {
             .replace(
                 "export interface Workbook extends Entity",
                 "export interface Workbook extends Entity<DriveItemId>"
-            );
+            )
+            .replace(
+                "export interface WorkbookWorksheet extends Entity",
+                "export interface WorkbookWorksheet extends Entity<WorkbookWorksheetId>"
+            )
+        ;
 }
 
 function fixNamespaces(data: string): string {
