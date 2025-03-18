@@ -1,5 +1,4 @@
-
-import { info } from "./log.js";
+import { debug, info, } from "./log.js";
 import closeSessionAndDeleteWorkbook from "./microsoftGraph/helpers/closeSessionAndDeleteWorkbook.js";
 import createWorkbookAndOpenSessionAndGetRef from "./microsoftGraph/helpers/createWorkbookAndOpenSessionAndGetRef.js";
 import getDefaultDriveRef from "./microsoftGraph/helpers/getDefaultDriveRef.js";
@@ -18,7 +17,7 @@ export async function run(): Promise<void> {
 	info("Listing files...");
 	const items = await listItemsAndGetRefs(driveRef, testPath);
 	for (const item of items) {
-		info(` - ${item.name}`);
+		debug(` - ${item.name}`);
 	}
 
 	info("Deleting file...");
