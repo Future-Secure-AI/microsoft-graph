@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import InvalidArgumentError from "../errors/InvalidArgumentError.js";
-import { drivePath } from "./drivePath.js";
+import { driveItemPath } from "./drivePath.js";
 
 describe("driveItemPath", () => {
     it("throws an error for empty segment", () => {
-        expect(() => drivePath("")).toThrow(InvalidArgumentError);
+        expect(() => driveItemPath("")).toThrow(InvalidArgumentError);
     });
 
     it.each([
@@ -14,6 +14,6 @@ describe("driveItemPath", () => {
         [["/a"], "/a"],
         [[], "/"],
     ])("parses %s", (segments, expected) => {
-        expect(drivePath(...segments)).toEqual(expected);
+        expect(driveItemPath(...segments)).toEqual(expected);
     });
 });

@@ -4,6 +4,7 @@ import type { DriveItemPath } from "../models/DriveItemPath.js";
 import type { DriveItemRef } from "../models/DriveItemRef.js";
 import type { DriveRef } from "../models/DriveRef.js";
 import listDriveItems from "../operations/driveItem/listDriveItems.js";
+import { driveItemRef } from "../services/drivePath.js";
 
 export type NamedDriveItemRef = DriveItemRef & {
     name: string;
@@ -13,16 +14,14 @@ export default async function listItemsAndGetRefs(driveRef: DriveRef, itemPath: 
     const list = await executeSingle(listDriveItems(driveRef, itemPath));
 
     const items = list.value.map((item) => {
-        if (item.id === undefined) {
-            throw new ProtocolError("Item.id is undefined");
-        }
+        const itemRef = driveItemRef(driveRef, item.id);
+
         if (!item.name) {
             throw new ProtocolError("Item.name is undefined");
         }
 
         return {
-            ...driveRef,
-            itemId: item.id,
+            ...itemRef,
             name: item.name,
         }
     });

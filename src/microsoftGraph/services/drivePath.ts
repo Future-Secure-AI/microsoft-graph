@@ -1,5 +1,9 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.js";
+import ProtocolError from "../errors/ProtocolError.js";
+import type { DriveItemId } from "../models/DriveItemId.js";
 import type { DriveItemPath } from "../models/DriveItemPath.js";
+import type { DriveItemRef } from "../models/DriveItemRef.js";
+import type { DriveRef } from "../models/DriveRef.js";
 
 const segmentPattern = /^[^"*:<>?\\|#]{1,256}$/;
 
@@ -10,7 +14,7 @@ const reservedNames = [
 ];
 
 /** Create a drive item path from a given set of segments. Ie ["a","b"] => "/a/b" */
-export function drivePath(...segments: string[]): DriveItemPath {
+export function driveItemPath(...segments: string[]): DriveItemPath {
     for (const segment of segments) {
         if (segment === "") {
             throw new InvalidArgumentError("Segment cannot be an empty string.");
@@ -44,6 +48,17 @@ export function drivePath(...segments: string[]): DriveItemPath {
     }
 
     return path as DriveItemPath;
+}
+
+export function driveItemRef(driveRef: DriveRef, itemId: DriveItemId | undefined): DriveItemRef {
+    if (!itemId) {
+        throw new ProtocolError("Folder ID is missing");
+    }
+
+    return {
+        ...driveRef,
+        itemId
+    };
 }
 
 export function generateTempFileName(extension: string | null = "tmp"): string {
