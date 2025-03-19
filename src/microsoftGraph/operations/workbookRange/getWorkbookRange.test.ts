@@ -35,5 +35,5 @@ describe("getWorkbookRange", () => {
             await sleep(1000);
             await executeSingle(deleteDriveItem(workbookRef));
         }
-    });
+    }, { timeout: 10000 });
 });

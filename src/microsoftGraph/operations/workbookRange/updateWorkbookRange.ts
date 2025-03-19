@@ -7,7 +7,7 @@ import { generatePath } from "../../services/templatedPaths.js";
 export default function updateWorkbookRange(rangeRef: WorkbookRangeRef, update: WorkbookRange): GraphOperation<void> {
     return {
         method: "PATCH",
-        path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')`, rangeRef),
+        path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${rangeRef.address}')`, rangeRef),
         headers: {
             "workbook-session-id": rangeRef.sessionId,
             "content-type": "application/json",
