@@ -4,7 +4,7 @@ import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
 import { sleep } from "../../services/sleep.js";
 import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
 import createFolder from "../drive/createFolder.js";
 import copyDriveItem from "./copyDriveItem.js";
 import getDriveItemByPath from "./getDriveItemByPath.js";

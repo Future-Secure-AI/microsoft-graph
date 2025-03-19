@@ -3,7 +3,7 @@ import { executeSingle } from "../../graphApi.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
 import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
 import createWorkbook from "./createWorkbook.js";
 
 describe("createWorkbook", () => {

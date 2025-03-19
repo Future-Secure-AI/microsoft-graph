@@ -4,7 +4,7 @@ import type { WorkbookWorksheetId } from "../../models/WorkbookWorksheetId.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
 import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
 import createWorkbook from "../workbook/createWorkbook.js";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.js";
 import listWorkbookWorksheets from "./listWorkbookWorksheets.js";

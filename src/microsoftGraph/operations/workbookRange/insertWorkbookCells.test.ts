@@ -5,9 +5,9 @@ import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
 import { sleep } from "../../services/sleep.js";
 import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { defaultWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
+import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.js";
-import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
 import createWorkbook from "../workbook/createWorkbook.js";
 import getWorkbookUsedRange from "./getWorkbookUsedRange.js";
 import insertWorkbookCells from "./insertWorkbookCells.js";
@@ -30,7 +30,7 @@ describe("insertWorkbookCells", () => {
         const workbookPath = driveItemPath(workbookName);
         const workbook = await executeSingle(createWorkbook(defaultDriveRef, workbookPath));
         const workbookRef = driveItemRef(defaultDriveRef, workbook.id);
-        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorksheetId);
+        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {

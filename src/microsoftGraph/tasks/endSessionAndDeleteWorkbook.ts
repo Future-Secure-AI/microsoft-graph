@@ -1,7 +1,7 @@
 import { executeSingle } from "../graphApi.js";
 import type { WorkbookRef } from "../models/WorkbookRef.js";
 import closeWorkbookSession from "../operations/workbookSession/closeWorkbookSession.js";
-import { deleteDriveItemWithRetry } from "./waitAndDeleteDriveItem.js";
+import { deleteDriveItemWithRetry } from "./deleteDriveItemWithRetry.js";
 
 export default async function endSessionAndDeleteWorkbook(workbookRef: WorkbookRef): Promise<void> {
     await executeSingle(closeWorkbookSession(workbookRef));
