@@ -12,7 +12,7 @@ import getWorkbookUsedRange from "./getWorkbookUsedRange.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
 
 describe("getWorkbookUsedRange", () => {
-    it("can retrieve the used range from an existing workbook", { timeout: 10000 }, async () => {
+    it("can retrieve the used range from an existing workbook", async () => {
         const address = "A1:B2" as WorkbookRangeAddress;
         const values = [[1, 2], [3, 4]];
 
@@ -28,7 +28,7 @@ describe("getWorkbookUsedRange", () => {
                 values: values
             }));
 
-            await sleep(500); // Used range isn't immediately updated?
+            await sleep(250); // Used range isn't immediately updated?
             const usedRange = await executeSingle(getWorkbookUsedRange(worksheetRef));
             expect(usedRange.values).toEqual(values);
         } finally {

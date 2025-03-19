@@ -3,6 +3,7 @@ import { executeSingle } from "../../graphApi.js";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef, generateTempFileName } from "../../services/driveItem.js";
+import { sleep } from "../../services/sleep.js";
 import { workbookWorksheetRangeRef } from "../../services/workbookRange.js";
 import { defaultWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
 import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
@@ -26,6 +27,8 @@ describe("updateWorkbookRange", () => {
             await executeSingle(updateWorkbookRange(rangeRef, {
                 values: values
             }));
+
+            await sleep(250); // Range isn't updated immediately
 
             const updatedRange = await executeSingle(getWorkbookRange(rangeRef));
             expect(updatedRange.values).toEqual(values);
