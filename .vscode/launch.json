@@ -4,9 +4,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug",
+      "name": "Run",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["tsx", "src/dev.ts"],
+      "runtimeArgs": ["tsx", "src/run.ts"],
       "cwd": "${workspaceFolder}",
       "skipFiles": ["<node_internals>/**"],
       "autoAttachChildProcesses": true
