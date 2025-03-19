@@ -3,10 +3,11 @@ import { executeSingle } from "../../graphApi.js";
 import type { DriveItemId } from "../../models/DriveItemId.js";
 import type { DriveItemRef } from "../../models/DriveItemRef.js";
 import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemRef, generateTempFileName } from "../../services/driveItem.js";
+import { driveItemRef } from "../../services/driveItem.js";
+import { generateTempFileName } from "../../services/temporaryFiles.js";
+import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createFolder from "../drive/createFolder.js";
 import getDriveItem from "./getDriveItem.js";
-import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 
 describe("getDriveItem", () => {
     it("can retrieve an existing folder", async () => {

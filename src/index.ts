@@ -1,9 +1,9 @@
 import { debug, info, } from "./log.js";
 import { defaultDriveRef } from "./microsoftGraph/services/configuration.js";
-import { driveItemPath, generateTempFileName } from "./microsoftGraph/services/driveItem.js";
-import { workbookFileExtension, } from "./microsoftGraph/services/workbookFile.js";
-import endSessionAndDeleteWorkbook from "./microsoftGraph/tasks/endSessionAndDeleteWorkbook.js";
+import { driveItemPath, workbookFileExtension } from "./microsoftGraph/services/driveItem.js";
+import { generateTempFileName } from "./microsoftGraph/services/temporaryFiles.js";
 import createWorkbookAndStartSessionAndGetRef from "./microsoftGraph/tasks/createWorkbookAndStartSessionAndGetRef.js";
+import endSessionAndDeleteWorkbook from "./microsoftGraph/tasks/endSessionAndDeleteWorkbook.js";
 import listItemsAndGetRefs from "./microsoftGraph/tasks/listItemsAndGetRefs.js";
 
 export async function main(): Promise<void> {

@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { executeSingle } from "../../graphApi.js";
 import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemPath, driveItemRef, generateTempFileName } from "../../services/driveItem.js";
+import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
+import { generateTempFileName } from "../../services/temporaryFiles.js";
 import { workbookWorksheetRef } from "../../services/workbookWorksheet.js";
 import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createWorkbook from "../workbook/createWorkbook.js";

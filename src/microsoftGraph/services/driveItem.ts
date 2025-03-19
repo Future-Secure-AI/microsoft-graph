@@ -13,6 +13,8 @@ const reservedNames = [
     "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
 ];
 
+export const workbookFileExtension = "xlsx";
+
 export const rootDriveItemPath = driveItemPath("/");
 
 /** Create a drive item path from a given set of segments. Ie ["a","b"] => "/a/b" */
@@ -61,16 +63,4 @@ export function driveItemRef(driveRef: DriveRef, itemId: DriveItemId | undefined
         ...driveRef,
         itemId
     };
-}
-
-export function generateTempFileName(extension: string | null = "tmp"): string {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    const charactersLength = characters.length;
-    const length = 16;
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        const randomIndex = Math.floor(Math.random() * charactersLength);
-        result += characters[randomIndex];
-    }
-    return `~${result}.${extension}`;
 }

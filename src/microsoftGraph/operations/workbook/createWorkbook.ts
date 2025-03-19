@@ -3,8 +3,8 @@ import type { DriveItemPath } from "../../models/DriveItemPath.js";
 import type { DriveRef } from "../../models/DriveRef.js";
 import type { DriveItem } from "../../models/Dto.js";
 import type { GraphOperation } from "../../models/GraphOperation.js";
+import { workbookFileExtension } from "../../services/driveItem.js";
 import { generatePath } from "../../services/templatedPaths.js";
-import { workbookFileExtension } from "../../services/workbookFile.js";
 
 const emptyWorkbookBase64 = ""; // This is correct, Sharepoint interprets a 0-byte files as a new workbook.
 
