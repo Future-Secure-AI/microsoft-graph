@@ -13,7 +13,7 @@ import updateWorkbookRange from "./updateWorkbookRange.js";
 
 describe("getWorkbookRange", () => {
     it("can retrieve a range from an existing workbook", async () => {
-        const address = "Sheet1!A1:B2" as WorkbookRangeAddress;
+        const address = "A1:B2" as WorkbookRangeAddress;
         const values = [[1, 2], [3, 4]];
 
         const workbookName = generateTempFileName("xlsx");
