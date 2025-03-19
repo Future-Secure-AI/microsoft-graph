@@ -28,7 +28,7 @@ describe("updateWorkbookRange", () => {
                 values: values
             }));
 
-            await sleep(250); // Range isn't updated immediately
+            await sleep(500); // Range isn't updated immediately
 
             const updatedRange = await executeSingle(getWorkbookRange(rangeRef));
             expect(updatedRange.values).toEqual(values);

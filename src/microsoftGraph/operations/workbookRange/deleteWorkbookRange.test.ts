@@ -13,7 +13,7 @@ import getWorkbookRange from "./getWorkbookRange.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
 
 describe("deleteWorkbookRange", () => {
-    it("can delete a range in an existing workbook", async () => {
+    it("can delete a range in an existing workbook", { timeout: 10000 }, async () => {
         const address = "A1:B2" as WorkbookRangeAddress;
         const values = [[1, 2], [3, 4]];
 
@@ -31,7 +31,7 @@ describe("deleteWorkbookRange", () => {
 
             await executeSingle(deleteWorkbookRange(rangeRef, "Up"));
 
-            await sleep(250); // Range isn't updated immediately
+            await sleep(500); // Range isn't updated immediately
 
             const deletedRange = await executeSingle(getWorkbookRange(rangeRef));
             expect(deletedRange.values).toEqual([["", ""], ["", ""]]);

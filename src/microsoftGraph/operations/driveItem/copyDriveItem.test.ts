@@ -24,7 +24,7 @@ describe("copyDriveItem", () => {
 
             const copyPath = driveItemPath(dstFolderName, copiedItemName);
 
-            await sleep(250); // Copy doesn't happen immediately
+            await sleep(500); // Copy doesn't happen immediately
 
             const copyFolder = await executeSingle(getDriveItemByPath(defaultDriveRef, copyPath));
             expect(copyFolder.webUrl?.endsWith(copyPath)).toBeTruthy();

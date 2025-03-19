@@ -37,7 +37,7 @@ describe("insertWorkbookCells", () => {
              * 1 4  
              */
 
-            await sleep(250); // Range isn't updated immediately
+            await sleep(500); // Range isn't updated immediately
 
             const insertedRange = await executeSingle(getWorkbookRange(rangeRef));
 

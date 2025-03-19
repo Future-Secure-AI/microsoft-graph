@@ -31,7 +31,7 @@ describe("clearWorkbookRange", () => {
 
             await executeSingle(clearWorkbookRange(rangeRef));
 
-            await sleep(250); // Range isn't updated immediately
+            await sleep(500); // Range isn't updated immediately
 
             const clearedRange = await executeSingle(getWorkbookRange(rangeRef));
             expect(clearedRange.values).toEqual([["", ""], ["", ""]]);

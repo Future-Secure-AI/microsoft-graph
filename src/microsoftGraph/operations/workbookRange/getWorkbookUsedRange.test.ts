@@ -28,7 +28,7 @@ describe("getWorkbookUsedRange", () => {
                 values: values
             }));
 
-            await sleep(250); // Used range isn't immediately updated?
+            await sleep(500); // Used range isn't immediately updated?
             const usedRange = await executeSingle(getWorkbookUsedRange(worksheetRef));
             expect(usedRange.values).toEqual(values);
         } finally {
