@@ -6,14 +6,13 @@ import { driveItemPath, driveItemRef, generateTempFileName } from "../../service
 import { sleep } from "../../services/sleep.js";
 import { workbookWorksheetRangeRef } from "../../services/workbookRange.js";
 import { defaultWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
-import deleteDriveItem from "../driveItem/deleteDriveItem.js";
 import createWorkbook from "../workbook/createWorkbook.js";
-import clearWorkbookRange from "./clearWorkbookRange.js";
 import getWorkbookRange from "./getWorkbookRange.js";
+import insertWorkbookCells from "./insertWorkbookCells.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
 
-describe("clearWorkbookRange", () => {
-    it("can clear a range in an existing workbook", { timeout: 10000 }, async () => {
+describe("insertWorkbookCells", () => {
+    it("can insert cells in an existing workbook", { timeout: 20000 }, async () => {
         const address = "A1:B2" as WorkbookRangeAddress;
         const values = [[1, 2], [3, 4]];
 
@@ -25,17 +24,24 @@ describe("clearWorkbookRange", () => {
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
-            await executeSingle(updateWorkbookRange(rangeRef, {
-                values: values
-            }));
+            await executeSingle(updateWorkbookRange(rangeRef, { values: values }));
+            /* Initial:
+             * 1 2
+             * 3 4
+             */
 
-            await executeSingle(clearWorkbookRange(rangeRef));
+            await executeSingle(insertWorkbookCells(worksheetRef, "A1" as WorkbookRangeAddress, "Down"));
+            /* Final: 
+             * - 2
+             * 1 4  
+             */
 
-            const clearedRange = await executeSingle(getWorkbookRange(rangeRef));
-            expect(clearedRange.values).toEqual([["", ""], ["", ""]]);
+            const insertedRange = await executeSingle(getWorkbookRange(rangeRef));
+
+            expect(insertedRange.values).toEqual([["", ""], ["", ""], [1, 2], [3, 4]]);
         } finally {
-            await sleep(1000);
-            await executeSingle(deleteDriveItem(workbookRef));
+            await sleep(2000);
+            // await executeSingle(deleteDriveItem(workbookRef));
         }
     });
 });

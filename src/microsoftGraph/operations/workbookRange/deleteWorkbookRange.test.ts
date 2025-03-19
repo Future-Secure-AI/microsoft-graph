@@ -4,10 +4,10 @@ import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.js"
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef, generateTempFileName } from "../../services/driveItem.js";
 import { sleep } from "../../services/sleep.js";
-import { workbookRangeRef } from "../../services/workbookRange.js";
+import { workbookWorksheetRangeRef } from "../../services/workbookRange.js";
+import { defaultWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
 import deleteDriveItem from "../driveItem/deleteDriveItem.js";
 import createWorkbook from "../workbook/createWorkbook.js";
-import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.js";
 import deleteWorkbookRange from "./deleteWorkbookRange.js";
 import getWorkbookRange from "./getWorkbookRange.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
@@ -21,11 +21,10 @@ describe("deleteWorkbookRange", () => {
         const workbookPath = driveItemPath(workbookName);
         const workbook = await executeSingle(createWorkbook(defaultDriveRef, workbookPath));
         const workbookRef = driveItemRef(defaultDriveRef, workbook.id);
-        const worksheet = await executeSingle(createWorkbookWorksheet(workbookRef));
+        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorksheetId);
+        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
-            const rangeRef = workbookRangeRef(workbookRef, worksheet.id, address);
-
             await executeSingle(updateWorkbookRange(rangeRef, {
                 values: values
             }));

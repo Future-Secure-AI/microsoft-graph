@@ -1,16 +1,10 @@
 import type { WorkbookRangeAddress } from "../models/WorkbookRangeAddress.js";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.js";
-import type { WorkbookRef } from "../models/WorkbookRef.js";
-import type { WorkbookWorksheetId } from "../models/WorkbookWorksheetId.js";
+import type { WorkbookWorksheetRangeRef } from "../models/WorkbookWorksheetRangeRef.js";
+import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.js";
 
-export function workbookRangeRef(workbookRef: WorkbookRef, worksheetId: WorkbookWorksheetId | undefined, address: WorkbookRangeAddress): WorkbookRangeRef {
-    if (!worksheetId) {
-        throw new Error("Worksheet ID is missing");
-    }
-
+export function workbookWorksheetRangeRef(worksheetRef: WorkbookWorksheetRef, address: WorkbookRangeAddress): WorkbookWorksheetRangeRef {
     return {
-        ...workbookRef,
-        worksheetId,
+        ...worksheetRef,
         address
     };
 }
