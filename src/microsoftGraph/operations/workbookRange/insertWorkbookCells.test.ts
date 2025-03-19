@@ -3,9 +3,9 @@ import { executeSingle } from "../../graphApi.js";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef, generateTempFileName } from "../../services/driveItem.js";
-import { sleep } from "../../services/sleep.js";
 import { workbookWorksheetRangeRef } from "../../services/workbookRange.js";
 import { defaultWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
+import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createWorkbook from "../workbook/createWorkbook.js";
 import getWorkbookRange from "./getWorkbookRange.js";
 import insertWorkbookCells from "./insertWorkbookCells.js";
@@ -40,8 +40,7 @@ describe("insertWorkbookCells", () => {
 
             expect(insertedRange.values).toEqual([["", ""], ["", ""], [1, 2], [3, 4]]);
         } finally {
-            await sleep(2000);
-            // await executeSingle(deleteDriveItem(workbookRef));
+            await deleteDriveItemWithRetry(workbookRef);
         }
     });
 });

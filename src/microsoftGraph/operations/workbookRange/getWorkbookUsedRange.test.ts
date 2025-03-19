@@ -6,7 +6,7 @@ import { driveItemPath, driveItemRef, generateTempFileName } from "../../service
 import { sleep } from "../../services/sleep.js";
 import { workbookWorksheetRangeRef } from "../../services/workbookRange.js";
 import { defaultWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
-import deleteDriveItem from "../driveItem/deleteDriveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createWorkbook from "../workbook/createWorkbook.js";
 import getWorkbookUsedRange from "./getWorkbookUsedRange.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
@@ -28,11 +28,11 @@ describe("getWorkbookUsedRange", () => {
                 values: values
             }));
 
+            await sleep(500); // Used range isn't immediately updated?
             const usedRange = await executeSingle(getWorkbookUsedRange(worksheetRef));
             expect(usedRange.values).toEqual(values);
         } finally {
-            await sleep(1000);
-            await executeSingle(deleteDriveItem(workbookRef));
+            await deleteDriveItemWithRetry(workbookRef);
         }
     });
 });
