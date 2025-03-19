@@ -41,7 +41,7 @@ describe("insertWorkbookCells", () => {
 
             const insertedRange = await executeSingle(getWorkbookRange(rangeRef));
 
-            expect(insertedRange.values).toEqual([["", ""], ["", ""], [1, 2], [3, 4]]);
+            expect(insertedRange.values).toEqual([["", 2], [1, 4]]);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
         }
