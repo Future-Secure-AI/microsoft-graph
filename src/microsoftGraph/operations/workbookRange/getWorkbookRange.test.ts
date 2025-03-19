@@ -12,7 +12,7 @@ import getWorkbookRange from "./getWorkbookRange.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
 
 describe("getWorkbookRange", () => {
-    it("can retrieve a range from an existing workbook", async () => {
+    it("can retrieve a range from an existing workbook", { timeout: 10000 }, async () => {
         const address = "A1:B2" as WorkbookRangeAddress;
         const values = [[1, 2], [3, 4]];
 
@@ -35,5 +35,5 @@ describe("getWorkbookRange", () => {
             await sleep(1000);
             await executeSingle(deleteDriveItem(workbookRef));
         }
-    }, { timeout: 10000 });
+    });
 });

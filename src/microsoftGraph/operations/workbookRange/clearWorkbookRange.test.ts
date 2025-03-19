@@ -8,12 +8,12 @@ import { workbookRangeRef } from "../../services/workbookRange.js";
 import deleteDriveItem from "../driveItem/deleteDriveItem.js";
 import createWorkbook from "../workbook/createWorkbook.js";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.js";
+import clearWorkbookRange from "./clearWorkbookRange.js";
 import getWorkbookRange from "./getWorkbookRange.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
-import clearWorkbookRange from "./clearWorkbookRange.js";
 
 describe("clearWorkbookRange", () => {
-    it("can clear a range in an existing workbook", async () => {
+    it("can clear a range in an existing workbook", { timeout: 10000 }, async () => {
         const address = "A1:B2" as WorkbookRangeAddress;
         const values = [[1, 2], [3, 4]];
 
@@ -38,5 +38,5 @@ describe("clearWorkbookRange", () => {
             await sleep(1000);
             await executeSingle(deleteDriveItem(workbookRef));
         }
-    }, { timeout: 10000 });
+    });
 });
