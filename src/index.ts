@@ -23,7 +23,7 @@ export async function main(): Promise<void> {
 
 	info("Creating file...");
 	const workbookRef = await createWorkbookAndStartSession(defaultDriveRef, workbookPath);
-	const worksheetRef = await getWorkbookWorksheetRefByName(workbookRef, "Sheet1"); // Should just use `workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId)` since it's much faster and less brittle, but this is demonstrating the named approach.
+	const worksheetRef = await getWorkbookWorksheetRefByName(workbookRef, "Sheet1"); // Should just use `workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId)` since it's faster and less brittle, but this is demonstrating the named approach.
 
 	info("Updating range...");
 	const rangeAddress = workbookRangeAddress("A1:B2");

@@ -30,15 +30,13 @@ type ExecutionResults<T> = {
 
 
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
-    const a = single(definition) as GraphOperation<T>;
-
-    a.definition = definition;
-
-    return a;
+    const op = single(definition) as GraphOperation<T>;
+    op.definition = definition;
+    return op;
 }
 
 async function single<T>(op: GraphOperationDefinition<T>): Promise<T> { // TODO: Refactor away?
-    return (await execute(op))[0] as T; // TODO: Use non-batching endpoint? Gives better concurency??
+    return (await execute(op))[0] as T; // TODO: Use non-batching endpoint? Gives better concurency?
 }
 
 /** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
