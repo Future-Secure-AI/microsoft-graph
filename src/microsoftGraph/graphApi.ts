@@ -19,7 +19,7 @@ type ReplyPayload = {
     }[];
 }
 
-type Op<T> = GraphOperationDefinition<T> & {
+type Op<T> = GraphOperationDefinition<T> & { // TODO: Rename for clarity
     /** Array of request indexes that must be completed before this request is executed. */
     dependsOn?: number[] | undefined;
 };
@@ -28,8 +28,9 @@ type ExecutionResults<T> = {
     [K in keyof T]: T[K] extends GraphOperationDefinition<infer R> ? R : never;
 };
 
-
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
+    // The returned operation can be called directly by simply `await`ing it, or it can be passed to the `parallel` or `sequential` functions to be executed in a batch.
+
     const op = single(definition) as GraphOperation<T>;
     op.definition = definition;
     return op;
@@ -129,5 +130,5 @@ function parseResponses<T extends Op<unknown>[]>(replyPayload: ReplyPayload, ops
         results[index] = body;
     }
 
-    return results as ExecutionResults<T>; // A little ugly, but effective without blatantly compromising type safety. Is there a neater way?
+    return results as ExecutionResults<T>; // TODO: Is there a neater way to massage the types correctly? This is functionally correct, but I do want to avoid using `unknown` here if possible.
 }
