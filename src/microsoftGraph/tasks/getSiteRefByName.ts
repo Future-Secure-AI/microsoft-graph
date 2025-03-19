@@ -1,3 +1,4 @@
+import ProtocolError from "../errors/ProtocolError.js";
 import { executeSingle } from "../graphApi.js";
 import type { HostName } from "../models/HostName.js";
 import type { SiteName } from "../models/SiteName.js";
@@ -7,8 +8,8 @@ import getSiteByName from "../operations/site/getSiteByName.js";
 export default async function getSiteRefFromName(hostName: HostName, siteName: SiteName): Promise<SiteRef> {
     const site = await executeSingle(getSiteByName(hostName, siteName));
 
-    if (site.id === undefined) {// TODO: This may need to be refined on testing
-        throw new Error(`Site ${siteName} not found in host ${hostName}`);
+    if (!site.id) {
+        throw new ProtocolError("SiteID not set");
     }
 
     return {

@@ -1,1 +1,1 @@
-export const workbookFileExtension = ".xlsx";
+export const workbookFileExtension = "xlsx";
