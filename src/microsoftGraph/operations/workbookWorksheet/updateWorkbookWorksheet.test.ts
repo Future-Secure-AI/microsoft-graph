@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { executeSingle } from "../../graphApi.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
 import { generateTempFileName } from "../../services/temporaryFiles.js";
@@ -13,15 +12,15 @@ describe("updateWorkbookWorksheet", () => {
     it("can update the name of an existing worksheet", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await executeSingle(createWorkbook(defaultDriveRef, workbookPath));
+        const workbook = await createWorkbook(defaultDriveRef, workbookPath);
         const workbookRef = driveItemRef(defaultDriveRef, workbook.id);
 
         try {
-            const worksheet = await executeSingle(createWorkbookWorksheet(workbookRef));
+            const worksheet = await createWorkbookWorksheet(workbookRef);
             const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
             const newName = "UpdatedSheet";
-            const updatedWorksheet = await executeSingle(updateWorkbookWorksheet(worksheetRef, { name: newName }));
+            const updatedWorksheet = await updateWorkbookWorksheet(worksheetRef, { name: newName });
             expect(updatedWorksheet.name).toBe(newName);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
@@ -31,14 +30,14 @@ describe("updateWorkbookWorksheet", () => {
     it("can update the visibility of an existing worksheet", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await executeSingle(createWorkbook(defaultDriveRef, workbookPath));
+        const workbook = await createWorkbook(defaultDriveRef, workbookPath);
         const workbookRef = driveItemRef(defaultDriveRef, workbook.id);
 
         try {
-            const worksheet = await executeSingle(createWorkbookWorksheet(workbookRef));
+            const worksheet = await createWorkbookWorksheet(workbookRef);
             const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
-            const updatedWorksheet = await executeSingle(updateWorkbookWorksheet(worksheetRef, { visibility: "Hidden" }));
+            const updatedWorksheet = await updateWorkbookWorksheet(worksheetRef, { visibility: "Hidden" });
             expect(updatedWorksheet.visibility).toBe("Hidden");
         } finally {
             await deleteDriveItemWithRetry(workbookRef);

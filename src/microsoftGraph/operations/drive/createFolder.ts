@@ -1,4 +1,5 @@
 
+import { operation } from "../../graphApi.js";
 import type { DriveItemRef } from "../../models/DriveItemRef.js";
 import type { DriveRef } from "../../models/DriveRef.js";
 import type { DriveItem } from "../../models/Dto.js";
@@ -9,7 +10,7 @@ import { generatePath } from "../../services/templatedPaths.js";
 export default function createFolder(parentRef: DriveRef | DriveItemRef, folderName: string): GraphOperation<DriveItem> {
     const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root"
 
-    return {
+    return operation({
         method: "POST",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}/children`, parentRef),
         headers: {
@@ -20,5 +21,5 @@ export default function createFolder(parentRef: DriveRef | DriveItemRef, folderN
             folder: {},
             "@microsoft.graph.conflictBehavior": "rename", // Do nothing if already exists
         },
-    };
+    });
 }

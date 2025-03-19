@@ -1,4 +1,5 @@
 import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
+import { operation } from "../../graphApi.js";
 import type { GraphOperation } from "../../models/GraphOperation.js";
 import type { WorkbookRef } from "../../models/WorkbookRef.js";
 import { generatePath } from "../../services/templatedPaths.js";
@@ -8,7 +9,7 @@ export default function refreshWorkbookSession(workbookRef: WorkbookRef): GraphO
     if (!workbookRef.sessionId) {
         throw new InvalidArgumentError("Workbook session ID is required to refresh a session.");
     }
-    return {
+    return operation({
         method: "POST",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/refreshSession", workbookRef),
         headers: {
@@ -16,5 +17,5 @@ export default function refreshWorkbookSession(workbookRef: WorkbookRef): GraphO
             "content-type": "application/json",
         },
         body: null,
-    };
+    });
 }

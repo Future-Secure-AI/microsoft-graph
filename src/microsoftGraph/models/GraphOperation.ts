@@ -9,7 +9,7 @@ export type GraphHeaders = {
 
 // @ts-ignore: Type used to match response
 // biome-ignore lint/correctness/noUnusedVariables: Type used to match response
-export type GraphOperation<T> = {
+export type GraphOperationDefinition<T> = {
     /** HTTP method to be used. */
     method: GraphMethod;
     /** Relative resource URL for the individual request. Ie, if the absolute URL is `https://graph.microsoft.com/v1.0/users`, this path is `/users`. */
@@ -18,4 +18,8 @@ export type GraphOperation<T> = {
     headers: GraphHeaders;
     /** JSON object or a base64 URL-encoded value, for example, when the body is an image. When a body is included with the request, the headers object must contain a value for Content-Type. */
     body: unknown;
+};
+
+export type GraphOperation<T> = Promise<T> & {
+    definition: GraphOperationDefinition<T>
 };

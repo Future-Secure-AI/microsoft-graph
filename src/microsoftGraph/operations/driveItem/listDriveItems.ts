@@ -1,4 +1,5 @@
 import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
+import { operation } from "../../graphApi.js";
 import type { DriveItemPath } from "../../models/DriveItemPath.js";
 import type { DriveRef } from "../../models/DriveRef.js";
 import type { DriveItem } from "../../models/Dto.js";
@@ -17,10 +18,10 @@ export default function listDriveItems(driveRef: DriveRef, itemPath: DriveItemPa
 
     const pathSegment = itemPath === "/" ? "" : `:${itemPath}:`;
 
-    return {
+    return operation({
         method: "GET",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/root${pathSegment}/children`, driveRef),
         headers: {},
         body: null,
-    };
+    });
 }

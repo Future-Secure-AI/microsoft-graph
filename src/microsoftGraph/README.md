@@ -20,12 +20,12 @@ First up, make sure the enviuronment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_
 Then make calls:
 
 ```typescript
-const [cells] = await execute(getWorkbookUsedRange({
+const [cells] = await getWorkbookUsedRange({
     siteId: args.siteId,
     driveId: args.driveId,
     itemId: args.itemId,
     worksheetId: args.worksheetId,
-}));
+});
 ```
 
 While performance is not a primary concern for this SDK, it does support a couple of pieces to allow for faster development iteration. Sessions dramatically improves worksheet speed:
@@ -37,7 +37,7 @@ const workbookRef: WorkbookRef = {
     itemId: args.itemId,
 };
 
-const [session] = await execute(createWorkbookSession(workbookRef));
+const [session] = await createWorkbookSession(workbookRef);
 
 const worksheetRef: WorkbookWorksheetRef = {
     ...workbookRef,
@@ -45,7 +45,7 @@ const worksheetRef: WorkbookWorksheetRef = {
     sessionId: session.id,
 }
 
-const [cells] = await execute(getWorkbookUsedRange(worksheetRef));
+const [cells] = await getWorkbookUsedRange(worksheetRef);
 
 await closeWorkbookSession(workbookRef);
 
@@ -55,7 +55,7 @@ console.info(cells.values);
 Batching improves the speed of all operations, allowing them to be performed in a single request to the server, and indeed in parallel:
 
 ```typescript
-const [cells, _, __] = await execute(
+const [cells, _, __] = await parallel(
     getWorkbookUsedRangeValues({
         siteId: args.siteId,
         driveId: args.driveId,

@@ -1,10 +1,12 @@
+
+import { operation } from "../../graphApi.js";
 import type { GraphOperation } from "../../models/GraphOperation.js";
 import type { WorkbookWorksheetRangeRef } from "../../models/WorkbookWorksheetRangeRef.js";
 import { generatePath } from "../../services/templatedPaths.js";
 
 /** Delete a range. @see https://learn.microsoft.com/en-us/graph/api/range-clear */
 export default function deleteWorkbookRange(rangeRef: WorkbookWorksheetRangeRef, shift: "Up" | "Left"): GraphOperation<void> {
-    return {
+    return operation({
         method: "POST",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')/delete", rangeRef),
         headers: {
@@ -14,5 +16,5 @@ export default function deleteWorkbookRange(rangeRef: WorkbookWorksheetRangeRef,
         body: {
             shift
         },
-    };
+    });
 }

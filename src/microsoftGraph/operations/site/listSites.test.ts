@@ -1,10 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { executeSingle } from "../../graphApi.js";
 import listSites from "./listSites.js";
 
 describe("listSites", () => {
     it("can list all sites", async () => {
-        const sites = await executeSingle(listSites());
+        const sites = await listSites();
 
         console.debug("Sites:", sites.value.map((site) => [site.id, site.name]));
 

@@ -1,4 +1,5 @@
 import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
+import { operation } from "../../graphApi.js";
 import type { DriveItemPath } from "../../models/DriveItemPath.js";
 import type { DriveRef } from "../../models/DriveRef.js";
 import type { DriveItem } from "../../models/Dto.js";
@@ -14,12 +15,12 @@ export default function createWorkbook(driveRef: DriveRef, itemPath: DriveItemPa
         throw new InvalidArgumentError(`Item path must end with '.${workbookFileExtension}'`);
     }
 
-    return {
+    return operation({
         method: "PUT",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}:/content`, driveRef),
         headers: {
             "content-type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         },
         body: emptyWorkbookBase64,
-    };
+    });
 }

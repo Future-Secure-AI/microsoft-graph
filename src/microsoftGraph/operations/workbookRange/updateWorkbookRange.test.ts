@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { executeSingle } from "../../graphApi.js";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
@@ -19,19 +18,19 @@ describe("updateWorkbookRange", () => {
 
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await executeSingle(createWorkbook(defaultDriveRef, workbookPath));
+        const workbook = await createWorkbook(defaultDriveRef, workbookPath);
         const workbookRef = driveItemRef(defaultDriveRef, workbook.id);
         const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
-            await executeSingle(updateWorkbookRange(rangeRef, {
+            await updateWorkbookRange(rangeRef, {
                 values: values
-            }));
+            });
 
             await sleep(500); // Range isn't updated immediately
 
-            const updatedRange = await executeSingle(getWorkbookRange(rangeRef));
+            const updatedRange = await getWorkbookRange(rangeRef);
             expect(updatedRange.values).toEqual(values);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);

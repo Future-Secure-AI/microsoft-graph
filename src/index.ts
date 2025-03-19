@@ -1,7 +1,8 @@
 import { debug, info, } from "./log.js";
-import { executeSingle } from "./microsoftGraph/graphApi.js";
+import listDrives from "./microsoftGraph/operations/drive/listDrives.js";
+import listSites from "./microsoftGraph/operations/site/listSites.js";
 import updateWorkbookRange from "./microsoftGraph/operations/workbookRange/updateWorkbookRange.js";
-import { defaultDriveRef } from "./microsoftGraph/services/configuration.js";
+import { defaultDriveRef, } from "./microsoftGraph/services/configuration.js";
 import { driveItemPath, workbookFileExtension } from "./microsoftGraph/services/driveItem.js";
 import { generateTempFileName } from "./microsoftGraph/services/temporaryFiles.js";
 import { workbookWorksheetRangeRef } from "./microsoftGraph/services/workbookWorksheetRange.js";
@@ -12,6 +13,14 @@ import { getWorkbookWorksheetByName } from "./microsoftGraph/tasks/getWorkbookWo
 import listDriveItems from "./microsoftGraph/tasks/listDriveItems.js";
 
 export async function main(): Promise<void> {
+	info("Listing drives...");
+	const driveList = await listDrives(defaultDriveRef)
+	for (const drive of driveList.value) {
+		debug(` - ${drive.name}`);
+	}
+
+	// TODO: Rename tasks to add ref
+
 	const folderPath = driveItemPath("test");
 	const workbookPath = driveItemPath(folderPath, generateTempFileName(workbookFileExtension));
 
@@ -22,12 +31,12 @@ export async function main(): Promise<void> {
 	info("Updating range...");
 	const rangeAddress = workbookRangeAddress("A1:B2");
 	const rangeRef = workbookWorksheetRangeRef(worksheetRef, rangeAddress);
-	await executeSingle(updateWorkbookRange(rangeRef, {
+	await updateWorkbookRange(rangeRef, {
 		values: [
 			[1, 2],
 			[3, 4]
 		]
-	}));
+	});
 
 	info("Listing files...");
 	const items = await listDriveItems(defaultDriveRef, folderPath);
@@ -40,4 +49,3 @@ export async function main(): Promise<void> {
 
 	info("Done.");
 }
-

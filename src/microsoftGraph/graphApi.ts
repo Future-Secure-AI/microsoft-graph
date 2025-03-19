@@ -1,6 +1,7 @@
+
 import InvalidArgumentError from "./errors/InvalidArgumentError.js";
 import RequestFailedError from "./errors/RequestFailedError.js";
-import type { GraphOperation } from "./models/GraphOperation.js";
+import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.js";
 import type { Scope } from "./models/Scope.js";
 import { getCurrentAccessToken } from "./services/accessToken.js";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.js";
@@ -18,27 +19,35 @@ type ReplyPayload = {
     }[];
 }
 
-type Op<T> = GraphOperation<T> & {
+type Op<T> = GraphOperationDefinition<T> & {
     /** Array of request indexes that must be completed before this request is executed. */
     dependsOn?: number[] | undefined;
 };
 
 type ExecutionResults<T> = {
-    [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
+    [K in keyof T]: T[K] extends GraphOperationDefinition<infer R> ? R : never;
 };
 
-/** Execute a single GraphAPI operation. */
-export async function executeSingle<T>(op: GraphOperation<T>): Promise<T> {
-    return (await execute(op))[0] as T;
+
+export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
+    const a = single(definition) as GraphOperation<T>;
+
+    a.definition = definition;
+
+    return a;
+}
+
+async function single<T>(op: GraphOperationDefinition<T>): Promise<T> { // TODO: Refactor away?
+    return (await execute(op))[0] as T; // TODO: Use non-batching endpoint? Gives better concurency??
 }
 
 /** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
-export async function executeParallel<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+export async function parallel<T extends GraphOperationDefinition<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
     return await execute(...ops);
 }
 
 /** Execute a batch of GraphAPI operations sequentially. */
-export async function executeSequential<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+export async function sequential<T extends GraphOperationDefinition<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
     const opsSequential = ops.map((op, index) => ({
         ...op,
         dependsOn: index > 0 ? [index - 1] : undefined // Each op is dependant on the previous op

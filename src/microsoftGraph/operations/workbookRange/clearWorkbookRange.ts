@@ -1,10 +1,12 @@
+
+import { operation } from "../../graphApi.js";
 import type { GraphOperation } from "../../models/GraphOperation.js";
 import type { WorkbookWorksheetRangeRef } from "../../models/WorkbookWorksheetRangeRef.js";
 import { generatePath } from "../../services/templatedPaths.js";
 
 /** Clear a range - content, formatting or both. @see https://learn.microsoft.com/en-us/graph/api/range-delete */
 export default function clearWorkbookRange(rangeRef: WorkbookWorksheetRangeRef, applyTo: "All" | "Formats" | "Contents" = "All"): GraphOperation<void> {
-    return {
+    return operation({
         method: "POST",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')/clear", rangeRef),
         headers: {
@@ -14,5 +16,5 @@ export default function clearWorkbookRange(rangeRef: WorkbookWorksheetRangeRef, 
         body: {
             applyTo
         },
-    };
+    });
 }

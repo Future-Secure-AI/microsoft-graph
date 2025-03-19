@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { executeSingle } from "../../graphApi.js";
 import type { DriveItemId } from "../../models/DriveItemId.js";
 import type { DriveItemRef } from "../../models/DriveItemRef.js";
 import { defaultDriveRef } from "../../services/configuration.js";
@@ -12,10 +11,10 @@ import getDriveItem from "./getDriveItem.js";
 describe("getDriveItem", () => {
     it("can retrieve an existing folder", async () => {
         const folderName = generateTempFileName();
-        const folder = await executeSingle(createFolder(defaultDriveRef, folderName));
+        const folder = await createFolder(defaultDriveRef, folderName);
         const folderRef = driveItemRef(defaultDriveRef, folder.id);
 
-        const retrievedFolder = await executeSingle(getDriveItem(folderRef));
+        const retrievedFolder = await getDriveItem(folderRef);
 
         expect(retrievedFolder.id).toBe(folder.id);
         expect(retrievedFolder.name).toBe(folderName);
@@ -29,6 +28,6 @@ describe("getDriveItem", () => {
             itemId: "non-existent-item-id" as DriveItemId
         };
 
-        await expect(executeSingle(getDriveItem(nonExistentItemRef))).rejects.toThrow();
+        await expect(getDriveItem(nonExistentItemRef)).rejects.toThrow();
     });
 });
