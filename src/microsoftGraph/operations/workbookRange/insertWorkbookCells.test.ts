@@ -9,14 +9,22 @@ import { defaultWorksheetId, workbookWorksheetRef } from "../../services/workboo
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.js";
 import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createWorkbook from "../workbook/createWorkbook.js";
-import getWorkbookRange from "./getWorkbookRange.js";
+import getWorkbookUsedRange from "./getWorkbookUsedRange.js";
 import insertWorkbookCells from "./insertWorkbookCells.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
 
 describe("insertWorkbookCells", () => {
     it("can insert cells in an existing workbook", { timeout: 20000 }, async () => {
         const address = "A1:B2" as WorkbookRangeAddress;
-        const values = [[1, 2], [3, 4]];
+        const initialValues = [
+            [1, 2],
+            [3, 4]
+        ];
+        const finalValues = [
+            ["", 2],
+            [1, 4],
+            [3, ""]
+        ];
 
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
@@ -26,23 +34,14 @@ describe("insertWorkbookCells", () => {
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
-            await executeSingle(updateWorkbookRange(rangeRef, { values: values }));
-            /* Initial:
-             * 1 2
-             * 3 4
-             */
-
+            await executeSingle(updateWorkbookRange(rangeRef, { values: initialValues }));
             await executeSingle(insertWorkbookCells(worksheetRef, "A1" as WorkbookRangeAddress, "Down"));
-            /* Final: 
-             * - 2
-             * 1 4  
-             */
 
             await sleep(500); // Range isn't updated immediately
 
-            const insertedRange = await executeSingle(getWorkbookRange(rangeRef));
+            const insertedRange = await executeSingle(getWorkbookUsedRange(rangeRef));
 
-            expect(insertedRange.values).toEqual([["", 2], [1, 4]]);
+            expect(insertedRange.values).toEqual(finalValues);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
         }
