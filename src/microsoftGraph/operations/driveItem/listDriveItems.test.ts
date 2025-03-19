@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { executeSingle } from "../../graphApi.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef, generateTempFileName, rootDriveItemPath } from "../../services/driveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createFolder from "../drive/createFolder.js";
-import deleteDriveItem from "./deleteDriveItem.js";
 import listDriveItems from "./listDriveItems.js";
 
 describe("listDriveItems", () => {
@@ -23,7 +23,7 @@ describe("listDriveItems", () => {
 
         expect(items.value).toBeInstanceOf(Array);
 
-        await executeSingle(deleteDriveItem(folderRef));
+        await deleteDriveItemWithRetry(folderRef);
     });
 
     it("throws an error when trying to list items in a non-existent folder", async () => {

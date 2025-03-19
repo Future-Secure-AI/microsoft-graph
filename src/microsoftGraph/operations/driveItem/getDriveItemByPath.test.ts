@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { executeSingle } from "../../graphApi.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef, generateTempFileName } from "../../services/driveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createFolder from "../drive/createFolder.js";
-import deleteDriveItem from "./deleteDriveItem.js";
 import getDriveItemByPath from "./getDriveItemByPath.js";
 
 describe("getDriveItemByPath", () => {
@@ -18,7 +18,7 @@ describe("getDriveItemByPath", () => {
         expect(retrievedFolder.id).toBe(folder.id);
         expect(retrievedFolder.name).toBe(folderName);
 
-        await executeSingle(deleteDriveItem(folderRef));
+        await deleteDriveItemWithRetry(folderRef);
     });
 
     it("throws an error when trying to retrieve a non-existent item by path", async () => {

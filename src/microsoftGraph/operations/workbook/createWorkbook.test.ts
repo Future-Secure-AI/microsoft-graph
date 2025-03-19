@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { executeSingle } from "../../graphApi.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef, generateTempFileName } from "../../services/driveItem.js";
-import deleteDriveItem from "../driveItem/deleteDriveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createWorkbook from "./createWorkbook.js";
 
 describe("createWorkbook", () => {
@@ -14,6 +14,6 @@ describe("createWorkbook", () => {
 
         expect(workbook.name).toBe(workbookName);
 
-        await executeSingle(deleteDriveItem(workbookRef));
+        await deleteDriveItemWithRetry(workbookRef);
     });
 });

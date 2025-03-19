@@ -3,9 +3,9 @@ import { executeSingle } from "../../graphApi.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef, generateTempFileName } from "../../services/driveItem.js";
 import { sleep } from "../../services/sleep.js";
+import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createFolder from "../drive/createFolder.js";
 import copyDriveItem from "./copyDriveItem.js";
-import deleteDriveItem from "./deleteDriveItem.js";
 import getDriveItemByPath from "./getDriveItemByPath.js";
 
 describe("copyDriveItem", () => {
@@ -29,8 +29,8 @@ describe("copyDriveItem", () => {
             const copyFolder = await executeSingle(getDriveItemByPath(defaultDriveRef, copyPath));
             expect(copyFolder.webUrl?.endsWith(copyPath)).toBeTruthy();
         } finally {
-            await executeSingle(deleteDriveItem(srcFolderRef));
-            await executeSingle(deleteDriveItem(dstFolderRef));
+            await deleteDriveItemWithRetry(srcFolderRef);
+            await deleteDriveItemWithRetry(dstFolderRef);
         }
     });
 });

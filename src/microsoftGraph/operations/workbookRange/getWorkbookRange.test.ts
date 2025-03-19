@@ -3,12 +3,10 @@ import { executeSingle } from "../../graphApi.js";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.js";
 import { defaultDriveRef } from "../../services/configuration.js";
 import { driveItemPath, driveItemRef, generateTempFileName } from "../../services/driveItem.js";
-import { sleep } from "../../services/sleep.js";
 import { workbookWorksheetRangeRef } from "../../services/workbookRange.js";
 import { defaultWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
-import deleteDriveItem from "../driveItem/deleteDriveItem.js";
+import { deleteDriveItemWithRetry } from "../../tasks/waitAndDeleteDriveItem.js";
 import createWorkbook from "../workbook/createWorkbook.js";
-import getWorkbookRange from "./getWorkbookRange.js";
 import updateWorkbookRange from "./updateWorkbookRange.js";
 
 describe("getWorkbookRange", () => {
@@ -24,15 +22,13 @@ describe("getWorkbookRange", () => {
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
-            await executeSingle(updateWorkbookRange(rangeRef, {
+            const range = await executeSingle(updateWorkbookRange(rangeRef, {
                 values: values
             }));
 
-            const updatedRange = await executeSingle(getWorkbookRange(rangeRef));
-            expect(updatedRange.values).toEqual(values);
+            expect(range.values).toEqual(values);
         } finally {
-            await sleep(1000);
-            await executeSingle(deleteDriveItem(workbookRef));
+            await deleteDriveItemWithRetry(workbookRef);
         }
     });
 });
