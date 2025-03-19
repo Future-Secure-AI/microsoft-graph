@@ -4,7 +4,7 @@ import type { SiteName } from "../models/SiteName.js";
 import type { SiteRef } from "../models/SiteRef.js";
 import getSiteByNameOp from "../operations/site/getSiteByName.js";
 
-export default async function getSiteByName(hostName: HostName, siteName: SiteName): Promise<SiteRef> {
+export default async function getSiteRefByName(hostName: HostName, siteName: SiteName): Promise<SiteRef> {
     const site = await getSiteByNameOp(hostName, siteName);
 
     if (!site.id) {

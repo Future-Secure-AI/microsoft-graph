@@ -6,7 +6,7 @@ import type { DriveItem } from "../models/Dto.js";
 import listDriveItemsOp from "../operations/driveItem/listDriveItems.js";
 import { driveItemRef } from "../services/driveItem.js";
 
-export default async function listDriveItems(driveRef: DriveRef, itemPath: DriveItemPath): Promise<(DriveItemRef & DriveItem)[]> {
+export default async function listDriveItemRefs(driveRef: DriveRef, itemPath: DriveItemPath): Promise<(DriveItemRef & DriveItem)[]> {
     const list = await listDriveItemsOp(driveRef, itemPath);
 
     const items = list.value.map((item) => {

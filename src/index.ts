@@ -1,6 +1,5 @@
 import { debug, info, } from "./log.js";
 import listDrives from "./microsoftGraph/operations/drive/listDrives.js";
-import listSites from "./microsoftGraph/operations/site/listSites.js";
 import updateWorkbookRange from "./microsoftGraph/operations/workbookRange/updateWorkbookRange.js";
 import { defaultDriveRef, } from "./microsoftGraph/services/configuration.js";
 import { driveItemPath, workbookFileExtension } from "./microsoftGraph/services/driveItem.js";
@@ -9,8 +8,8 @@ import { workbookWorksheetRangeRef } from "./microsoftGraph/services/workbookWor
 import { workbookRangeAddress } from "./microsoftGraph/services/workbookWorksheetRangeAddress.js";
 import createWorkbookAndStartSession from "./microsoftGraph/tasks/createWorkbookAndStartSession.js";
 import endSessionAndDeleteWorkbook from "./microsoftGraph/tasks/endSessionAndDeleteWorkbook.js";
-import { getWorkbookWorksheetByName } from "./microsoftGraph/tasks/getWorkbookWorksheetByName.js";
-import listDriveItems from "./microsoftGraph/tasks/listDriveItems.js";
+import { getWorkbookWorksheetRefByName } from "./microsoftGraph/tasks/getWorkbookWorksheetRefByName.js";
+import listDriveItemRefs from "./microsoftGraph/tasks/listDriveItemRefs.js";
 
 export async function main(): Promise<void> {
 	info("Listing drives...");
@@ -19,14 +18,12 @@ export async function main(): Promise<void> {
 		debug(` - ${drive.name}`);
 	}
 
-	// TODO: Rename tasks to add ref
-
 	const folderPath = driveItemPath("test");
 	const workbookPath = driveItemPath(folderPath, generateTempFileName(workbookFileExtension));
 
 	info("Creating file...");
 	const workbookRef = await createWorkbookAndStartSession(defaultDriveRef, workbookPath);
-	const worksheetRef = await getWorkbookWorksheetByName(workbookRef, "Sheet1"); // Should just use `workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId)` since it's much faster and less brittle, but this is demonstrating the named approach.
+	const worksheetRef = await getWorkbookWorksheetRefByName(workbookRef, "Sheet1"); // Should just use `workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId)` since it's much faster and less brittle, but this is demonstrating the named approach.
 
 	info("Updating range...");
 	const rangeAddress = workbookRangeAddress("A1:B2");
@@ -39,7 +36,7 @@ export async function main(): Promise<void> {
 	});
 
 	info("Listing files...");
-	const items = await listDriveItems(defaultDriveRef, folderPath);
+	const items = await listDriveItemRefs(defaultDriveRef, folderPath);
 	for (const item of items) {
 		debug(` - ${item.name}`);
 	}
