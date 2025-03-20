@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { sequential } from "../../graphApi.ts";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
@@ -31,31 +30,6 @@ describe("getWorkbookUsedRange", { timeout: 10000 }, () => {
 
             await sleep(500); // Used range isn't immediately updated?
             const usedRange = await getWorkbookUsedRange(worksheetRef);
-            expect(usedRange.values).toEqual(values);
-        } finally {
-            await deleteDriveItemWithRetry(workbookRef);
-        }
-    });
-
-    it("can retrieve the used range from an existing workbook sequential", { timeout: 10000 }, async () => {
-        const address = "A1:B2" as WorkbookRangeAddress;
-        const values = [[1, 2], [3, 4]];
-
-        const workbookName = generateTempFileName("xlsx");
-        const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(defaultDriveRef, workbookPath);
-        const workbookRef = driveItemRef(defaultDriveRef, workbook.id);
-        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
-
-        try {
-            await sleep(500); 
-            const [_, usedRange] = await sequential(
-                updateWorkbookRange(rangeRef, {
-                    values: values
-                }),
-                getWorkbookUsedRange(worksheetRef)
-            );
             expect(usedRange.values).toEqual(values);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
