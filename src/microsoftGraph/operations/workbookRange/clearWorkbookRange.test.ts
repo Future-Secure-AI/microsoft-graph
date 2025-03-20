@@ -3,11 +3,11 @@ import { sequential } from "../../graphApi.ts";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
-import { sleep } from "../../services/sleep.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import clearWorkbookRange from "./clearWorkbookRange.ts";
 import getWorkbookRange from "./getWorkbookRange.ts";
@@ -51,16 +51,15 @@ describe("clearWorkbookRange", () => {
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
-            await sequential(
+            const [_, __, ___, clearedRange] = await sequential(
                 updateWorkbookRange(rangeRef, {
                     values: values
                 }),
-                clearWorkbookRange(rangeRef)
+                clearWorkbookRange(rangeRef),
+                calculateWorkbook(workbookRef),
+                getWorkbookRange(rangeRef)
             );
 
-            await sleep(500); // Deletes don't apply immedaitely
-
-            const clearedRange = await getWorkbookRange(rangeRef); // Yeah, this doesn't prove that the above operation occured, room for improvement!
             expect(clearedRange.values).toEqual([["", ""], ["", ""]]);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
