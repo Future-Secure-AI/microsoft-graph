@@ -20,7 +20,7 @@ First up, make sure the enviuronment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_
 Then make calls:
 
 ```typescript
-const [cells] = await getWorkbookUsedRange({
+const cells = await getWorkbookUsedRange({
     siteId: args.siteId,
     driveId: args.driveId,
     itemId: args.itemId,
@@ -37,7 +37,7 @@ const workbookRef: WorkbookRef = {
     itemId: args.itemId,
 };
 
-const [session] = await createWorkbookSession(workbookRef);
+const session = await createWorkbookSession(workbookRef);
 
 const worksheetRef: WorkbookWorksheetRef = {
     ...workbookRef,
@@ -45,7 +45,7 @@ const worksheetRef: WorkbookWorksheetRef = {
     sessionId: session.id,
 }
 
-const [cells] = await getWorkbookUsedRange(worksheetRef);
+const cells = await getWorkbookUsedRange(worksheetRef);
 
 await closeWorkbookSession(workbookRef);
 
