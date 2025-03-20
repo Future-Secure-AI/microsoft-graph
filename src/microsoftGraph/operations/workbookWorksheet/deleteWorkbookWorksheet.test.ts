@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { sleep } from "../../services/sleep.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
@@ -21,6 +22,7 @@ describe("deleteWorkbookWorksheet", () => {
             const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
             await deleteWorkbookWorksheet(worksheetRef);
+            await sleep(500); // Deletes don't apply immedaitely
 
             const worksheets = await listWorkbookWorksheets(workbookRef);
 

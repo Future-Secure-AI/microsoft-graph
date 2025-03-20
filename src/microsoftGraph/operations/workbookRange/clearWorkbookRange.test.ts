@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
-import { sleep } from "../../services/sleep.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
@@ -30,8 +29,6 @@ describe("clearWorkbookRange", () => {
             });
 
             await clearWorkbookRange(rangeRef);
-
-            await sleep(500); // Range isn't updated immediately
 
             const clearedRange = await getWorkbookRange(rangeRef);
             expect(clearedRange.values).toEqual([["", ""], ["", ""]]);

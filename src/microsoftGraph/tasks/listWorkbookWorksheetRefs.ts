@@ -9,7 +9,6 @@ export async function listWorkbookWorksheetRefs(workbookRef: WorkbookRef): Promi
     const worksheets = await listWorkbookWorksheetsOp(workbookRef);
 
     return worksheets.value.map(worksheet => {
-
         const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
         if (!worksheet.name) {

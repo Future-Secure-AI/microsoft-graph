@@ -8,6 +8,5 @@ import startWorkbookSession from "./startWorkbookSession.ts";
 export default async function createWorkbookAndStartSession(driveRef: DriveRef, itemPath: DriveItemPath): Promise<WorkbookRef> {
     const item = await createWorkbook(driveRef, itemPath);
     const itemRef = driveItemRef(driveRef, item.id);
-
     return await startWorkbookSession(itemRef);
 }

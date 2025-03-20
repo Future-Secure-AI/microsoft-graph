@@ -7,7 +7,7 @@ import createFolder from "../drive/createFolder.ts";
 import listDriveItems from "./listDriveItems.ts";
 
 describe("listDriveItems", () => {
-    it("can list items in the root folder", async () => {
+    it("can list items in the root folder",  { timeout: 10000 },async () => {
         const items = await listDriveItems(defaultDriveRef, rootDriveItemPath);
 
         expect(items.value).toBeInstanceOf(Array);

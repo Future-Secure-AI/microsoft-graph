@@ -31,7 +31,7 @@ describe("deleteWorkbookRange", () => {
 
             await deleteWorkbookRange(rangeRef, "Up");
 
-            await sleep(500); // Range isn't updated immediately
+            await sleep(500); // Deletes don't apply immedaitely
 
             const deletedRange = await getWorkbookRange(rangeRef);
             expect(deletedRange.values).toEqual([["", ""], ["", ""]]);

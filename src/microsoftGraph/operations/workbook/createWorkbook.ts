@@ -7,8 +7,6 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import { workbookFileExtension } from "../../services/driveItem.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-const emptyWorkbookBase64 = ""; // This is correct, Sharepoint interprets a 0-byte files as a new workbook.
-
 /** Create a new blank workbook. */
 export default function createWorkbook(driveRef: DriveRef, itemPath: DriveItemPath): GraphOperation<DriveItem> {
     if (!itemPath.endsWith(`.${workbookFileExtension}`)) {
@@ -21,6 +19,6 @@ export default function createWorkbook(driveRef: DriveRef, itemPath: DriveItemPa
         headers: {
             "content-type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         },
-        body: emptyWorkbookBase64,
+        body: null // This is correct, Sharepoint interprets a 0-byte files as a new workbook.
     });
 }

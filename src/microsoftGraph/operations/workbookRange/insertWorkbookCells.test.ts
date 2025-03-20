@@ -36,7 +36,7 @@ describe("insertWorkbookCells", () => {
             await updateWorkbookRange(rangeRef, { values: initialValues });
             await insertWorkbookCells(worksheetRef, "A1" as WorkbookRangeAddress, "Down");
 
-            await sleep(500); // Range isn't updated immediately
+            await sleep(1000); // Range isn't updated immediately
 
             const insertedRange = await getWorkbookUsedRange(rangeRef);
 

@@ -1,4 +1,3 @@
-
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
 import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
@@ -7,7 +6,8 @@ import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
-const endpoint = "https://graph.microsoft.com/v1.0/$batch";
+const endpoint = "https://graph.microsoft.com/v1.0";
+const batchEndpoint = `${endpoint}/$batch`;
 const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
 type ReplyPayload = {
@@ -19,7 +19,7 @@ type ReplyPayload = {
     }[];
 }
 
-type GraphOperationDefinitionWithDeps<T> = GraphOperationDefinition<T> & { 
+type GraphOperationDefinitionWithDeps<T> = GraphOperationDefinition<T> & {
     /** Array of request indexes that must be completed before this request is executed. */
     dependsOn?: number[] | undefined;
 };
@@ -36,8 +36,27 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
     return op;
 }
 
-export async function single<T>(op: GraphOperationDefinition<T>): Promise<T> {
-    return (await execute(op))[0] as T; // TODO: Use non-batching endpoint? Gives better concurency?
+export async function single<T>(op: GraphOperationDefinition<T>): Promise<T> { // TODO: Tidy
+    const accessToken = await getCurrentAccessToken(authenticationScope);
+
+    const requestHeaders = {
+        "authorization": `Bearer ${accessToken}`,
+        ...Object.fromEntries(Object.entries(op.headers ?? {}).filter(([_, v]) => v !== undefined)), // TODO: Tidy
+    } as Record<string, string>;
+
+    const reply = await fetch(`${endpoint}${op.path}`, {
+        method: op.method,
+        headers: requestHeaders,
+        body: op.body === null ? null : JSON.stringify(op.body)
+    });
+
+    const replyContentType = reply.headers.get('content-type')?.toLowerCase();
+
+    const body = replyContentType?.startsWith("application/json") ? await reply.json() : null;
+    RequestFailedError.throwIfNotOkOperation(reply.status, 0, op, body);
+
+
+    return body as T;
 }
 
 /** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
@@ -63,7 +82,7 @@ async function execute<T extends GraphOperationDefinitionWithDeps<unknown>[]>(..
     }
 
     const requestPayload = await composeRequestPayload<T>(ops);
-    const reply = await fetch(endpoint, requestPayload);
+    const reply = await fetch(batchEndpoint, requestPayload);
     const replyPayload = await reply.json() as ReplyPayload;
     RequestFailedError.throwIfNotOkBatch(reply.status, ops, replyPayload);
     const responses = parseResponses<T>(replyPayload, ops);

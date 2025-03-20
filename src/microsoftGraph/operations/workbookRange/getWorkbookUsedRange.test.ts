@@ -11,8 +11,8 @@ import createWorkbook from "../workbook/createWorkbook.ts";
 import getWorkbookUsedRange from "./getWorkbookUsedRange.ts";
 import updateWorkbookRange from "./updateWorkbookRange.ts";
 
-describe("getWorkbookUsedRange", () => {
-    it("can retrieve the used range from an existing workbook", async () => {
+describe("getWorkbookUsedRange", { timeout: 10000 }, () => {
+    it("can retrieve the used range from an existing workbook", { timeout: 10000 }, async () => {
         const address = "A1:B2" as WorkbookRangeAddress;
         const values = [[1, 2], [3, 4]];
 

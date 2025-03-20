@@ -6,7 +6,7 @@ import deleteDriveItem from "../driveItem/deleteDriveItem.ts";
 import createFolder from "./createFolder.ts";
 
 describe("createFolder", () => {
-    it("can create root folder", async () => {
+    it("can create root folder", { timeout: 10000 }, async () => {
         const folderName = generateTempFileName();
         const folder = await createFolder(defaultDriveRef, folderName);
         const folderRef = driveItemRef(defaultDriveRef, folder.id);
@@ -16,7 +16,7 @@ describe("createFolder", () => {
         await deleteDriveItem(folderRef);
     });
 
-    it("can create sub-folder", async () => {
+    it("can create sub-folder", { timeout: 10000 }, async () => {
         const topFolderName = generateTempFileName();
         console.debug(`Creating top-level folder ${topFolderName}...`);
         const topFolder = await createFolder(defaultDriveRef, topFolderName);
