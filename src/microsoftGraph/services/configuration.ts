@@ -1,8 +1,8 @@
 
-import type { DriveId } from "../models/DriveId.js";
-import type { DriveRef } from "../models/DriveRef.js";
-import type { SiteId } from "../models/SiteId.js";
-import type { SiteRef } from "../models/SiteRef.js";
+import type { DriveId } from "../models/DriveId.ts";
+import type { DriveRef } from "../models/DriveRef.ts";
+import type { SiteId } from "../models/SiteId.ts";
+import type { SiteRef } from "../models/SiteRef.ts";
 
 const missingEnvironmentVariables: string[] = [];
 

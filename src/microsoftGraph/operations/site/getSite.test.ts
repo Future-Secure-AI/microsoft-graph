@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import type { SiteId } from "../../models/SiteId.js";
-import { defaultSiteRef } from "../../services/configuration.js";
-import { siteRef } from "../../services/site.js";
-import getSite from "./getSite.js";
+import type { SiteId } from "../../models/SiteId.ts";
+import { defaultSiteRef } from "../../services/configuration.ts";
+import { siteRef } from "../../services/site.ts";
+import getSite from "./getSite.ts";
 
 describe("getSite", () => {
     it("can retrieve an existing site", async () => {

@@ -1,6 +1,6 @@
-import type { WorkbookRef } from "../models/WorkbookRef.js";
-import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.js";
-import { listWorkbookWorksheetRefs } from "./listWorkbookWorksheetRefs.js";
+import type { WorkbookRef } from "../models/WorkbookRef.ts";
+import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
+import { listWorkbookWorksheetRefs } from "./listWorkbookWorksheetRefs.ts";
 
 export async function getWorkbookWorksheetRefByName(workbookRef: WorkbookRef, name: string): Promise<WorkbookWorksheetRef> {
     const worksheetRefs = await listWorkbookWorksheetRefs(workbookRef);

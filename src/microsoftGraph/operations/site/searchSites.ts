@@ -1,7 +1,7 @@
-import { operation } from "../../graphApi.js";
-import type { Site } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import { operation } from "../../graphApi.ts";
+import type { Site } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Find accessible sites that match keywords provided. @see https://learn.microsoft.com/en-us/graph/api/site-search */
 export default function searchSites(search: string): GraphOperation<{ value: Site[] }> {

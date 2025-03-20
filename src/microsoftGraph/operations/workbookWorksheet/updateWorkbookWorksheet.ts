@@ -1,8 +1,8 @@
-import { operation } from "../../graphApi.js";
-import type { WorkbookWorksheet } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import { operation } from "../../graphApi.ts";
+import type { WorkbookWorksheet } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Update the name, position and/or visibility of a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-update */
 export default function updateWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden"; }): GraphOperation<WorkbookWorksheet> {

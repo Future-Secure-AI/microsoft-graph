@@ -1,4 +1,4 @@
-import { isHttpOk } from "../services/httpStatus.js";
+import { isHttpOk } from "../services/httpStatus.ts";
 
 export default class RequestFailedError extends Error {
 	public constructor(message: string) {

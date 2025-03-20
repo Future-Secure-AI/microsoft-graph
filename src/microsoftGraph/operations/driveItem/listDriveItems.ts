@@ -1,10 +1,10 @@
-import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
-import { operation } from "../../graphApi.js";
-import type { DriveItemPath } from "../../models/DriveItemPath.js";
-import type { DriveRef } from "../../models/DriveRef.js";
-import type { DriveItem } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
+import { operation } from "../../graphApi.ts";
+import type { DriveItemPath } from "../../models/DriveItemPath.ts";
+import type { DriveRef } from "../../models/DriveRef.ts";
+import type { DriveItem } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 export type ListDriveItemResponse = {
     "@odata.context": string;

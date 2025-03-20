@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseSharepointUrl } from "./sharepointUrl.js";
+import { parseSharepointUrl } from "./sharepointUrl.ts";
 
 describe("parseSharepointUrl", () => {
     it.each([

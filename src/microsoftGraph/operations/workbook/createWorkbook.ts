@@ -1,11 +1,11 @@
-import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
-import { operation } from "../../graphApi.js";
-import type { DriveItemPath } from "../../models/DriveItemPath.js";
-import type { DriveRef } from "../../models/DriveRef.js";
-import type { DriveItem } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import { workbookFileExtension } from "../../services/driveItem.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
+import { operation } from "../../graphApi.ts";
+import type { DriveItemPath } from "../../models/DriveItemPath.ts";
+import type { DriveRef } from "../../models/DriveRef.ts";
+import type { DriveItem } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import { workbookFileExtension } from "../../services/driveItem.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 const emptyWorkbookBase64 = ""; // This is correct, Sharepoint interprets a 0-byte files as a new workbook.
 

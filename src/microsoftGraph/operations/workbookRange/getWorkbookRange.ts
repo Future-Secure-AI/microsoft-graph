@@ -1,8 +1,8 @@
-import { operation } from "../../graphApi.js";
-import type { WorkbookRange } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { WorkbookWorksheetRangeRef } from "../../models/WorkbookWorksheetRangeRef.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import { operation } from "../../graphApi.ts";
+import type { WorkbookRange } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { WorkbookWorksheetRangeRef } from "../../models/WorkbookWorksheetRangeRef.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Fetch a range, including values and formatting. @see https://learn.microsoft.com/en-us/graph/api/range-get */
 export default function getWorkbookRange(rangeRef: WorkbookWorksheetRangeRef): GraphOperation<WorkbookRange> {

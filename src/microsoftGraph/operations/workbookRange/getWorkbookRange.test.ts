@@ -1,13 +1,13 @@
 import { describe, expect, it } from "vitest";
-import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.js";
-import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
-import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.js";
-import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.js";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
-import createWorkbook from "../workbook/createWorkbook.js";
-import updateWorkbookRange from "./updateWorkbookRange.js";
+import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
+import { defaultDriveRef } from "../../services/configuration.ts";
+import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
+import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import createWorkbook from "../workbook/createWorkbook.ts";
+import updateWorkbookRange from "./updateWorkbookRange.ts";
 
 describe("getWorkbookRange", () => {
     it("can retrieve a range from an existing workbook", { timeout: 10000 }, async () => {

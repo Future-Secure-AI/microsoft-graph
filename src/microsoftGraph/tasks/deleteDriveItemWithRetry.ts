@@ -1,6 +1,6 @@
-import type { DriveItemRef } from "../models/DriveItemRef.js";
-import deleteDriveItem from "../operations/driveItem/deleteDriveItem.js";
-import { sleep } from "../services/sleep.js";
+import type { DriveItemRef } from "../models/DriveItemRef.ts";
+import deleteDriveItem from "../operations/driveItem/deleteDriveItem.ts";
+import { sleep } from "../services/sleep.ts";
 
 export async function deleteDriveItemWithRetry(driveItemRef: DriveItemRef): Promise<void> {
     try {

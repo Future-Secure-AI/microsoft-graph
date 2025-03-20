@@ -1,8 +1,8 @@
-import InvalidArgumentError from "../../errors/InvalidArgumentError.js";
-import { operation } from "../../graphApi.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { WorkbookRef } from "../../models/WorkbookRef.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
+import { operation } from "../../graphApi.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { WorkbookRef } from "../../models/WorkbookRef.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Refresh a workbook session. @see https://learn.microsoft.com/en-us/graph/api/workbook-refreshsession */
 export default function refreshWorkbookSession(workbookRef: WorkbookRef): GraphOperation<void> {

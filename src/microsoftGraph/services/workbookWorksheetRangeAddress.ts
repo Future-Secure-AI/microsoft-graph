@@ -1,5 +1,5 @@
-import InvalidArgumentError from "../errors/InvalidArgumentError.js";
-import type { WorkbookRangeAddress, WorkbookRangeAddressUnderlying } from "../models/WorkbookRangeAddress.js";
+import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import type { WorkbookRangeAddress, WorkbookRangeAddressUnderlying } from "../models/WorkbookRangeAddress.ts";
 
 const addressPattern = /^[A-Z]+\d+(:[A-Z]+\d+)?$/;
 

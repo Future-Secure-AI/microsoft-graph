@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import type { HostName } from "../../models/HostName.js";
-import type { SiteName } from "../../models/SiteName.js";
-import { defaultSiteRef } from "../../services/configuration.js";
-import getSite from "./getSite.js";
-import getSiteByName from "./getSiteByName.js";
+import type { HostName } from "../../models/HostName.ts";
+import type { SiteName } from "../../models/SiteName.ts";
+import { defaultSiteRef } from "../../services/configuration.ts";
+import getSite from "./getSite.ts";
+import getSiteByName from "./getSiteByName.ts";
 
 describe("getSiteByName", () => {
     it("can retrieve an existing site by name", async () => {

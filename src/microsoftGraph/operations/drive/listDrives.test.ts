@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { defaultSiteRef } from "../../services/configuration.js";
-import listDrives from "./listDrives.js";
+import { defaultSiteRef } from "../../services/configuration.ts";
+import listDrives from "./listDrives.ts";
 
 describe("listDrives", () => {
     it("can listDrives", async () => {

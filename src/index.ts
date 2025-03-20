@@ -1,15 +1,15 @@
-import { debug, info, } from "./log.js";
-import listDrives from "./microsoftGraph/operations/drive/listDrives.js";
-import updateWorkbookRange from "./microsoftGraph/operations/workbookRange/updateWorkbookRange.js";
-import { defaultDriveRef, } from "./microsoftGraph/services/configuration.js";
-import { driveItemPath, workbookFileExtension } from "./microsoftGraph/services/driveItem.js";
-import { generateTempFileName } from "./microsoftGraph/services/temporaryFiles.js";
-import { workbookWorksheetRangeRef } from "./microsoftGraph/services/workbookWorksheetRange.js";
-import { workbookRangeAddress } from "./microsoftGraph/services/workbookWorksheetRangeAddress.js";
-import createWorkbookAndStartSession from "./microsoftGraph/tasks/createWorkbookAndStartSession.js";
-import endSessionAndDeleteWorkbook from "./microsoftGraph/tasks/endSessionAndDeleteWorkbook.js";
-import { getWorkbookWorksheetRefByName } from "./microsoftGraph/tasks/getWorkbookWorksheetRefByName.js";
-import listDriveItemRefs from "./microsoftGraph/tasks/listDriveItemRefs.js";
+import { debug, info, } from "./log.ts";
+import listDrives from "./microsoftGraph/operations/drive/listDrives.ts";
+import updateWorkbookRange from "./microsoftGraph/operations/workbookRange/updateWorkbookRange.ts";
+import { defaultDriveRef, } from "./microsoftGraph/services/configuration.ts";
+import { driveItemPath, workbookFileExtension } from "./microsoftGraph/services/driveItem.ts";
+import { generateTempFileName } from "./microsoftGraph/services/temporaryFiles.ts";
+import { workbookWorksheetRangeRef } from "./microsoftGraph/services/workbookWorksheetRange.ts";
+import { workbookRangeAddress } from "./microsoftGraph/services/workbookWorksheetRangeAddress.ts";
+import createWorkbookAndStartSession from "./microsoftGraph/tasks/createWorkbookAndStartSession.ts";
+import endSessionAndDeleteWorkbook from "./microsoftGraph/tasks/endSessionAndDeleteWorkbook.ts";
+import { getWorkbookWorksheetRefByName } from "./microsoftGraph/tasks/getWorkbookWorksheetRefByName.ts";
+import listDriveItemRefs from "./microsoftGraph/tasks/listDriveItemRefs.ts";
 
 export async function main(): Promise<void> {
 	info("Listing drives...");

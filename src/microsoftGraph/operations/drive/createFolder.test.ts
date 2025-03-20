@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemRef } from "../../services/driveItem.js";
-import { generateTempFileName } from "../../services/temporaryFiles.js";
-import deleteDriveItem from "../driveItem/deleteDriveItem.js";
-import createFolder from "./createFolder.js";
+import { defaultDriveRef } from "../../services/configuration.ts";
+import { driveItemRef } from "../../services/driveItem.ts";
+import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import deleteDriveItem from "../driveItem/deleteDriveItem.ts";
+import createFolder from "./createFolder.ts";
 
 describe("createFolder", () => {
     it("can create root folder", async () => {

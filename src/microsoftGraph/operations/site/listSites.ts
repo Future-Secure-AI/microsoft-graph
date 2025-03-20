@@ -1,7 +1,7 @@
-import { operation } from "../../graphApi.js";
-import type { Site } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import { operation } from "../../graphApi.ts";
+import type { Site } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** List sites that are available. @see https://learn.microsoft.com/en-us/graph/api/site-list */
 export default function listSites(): GraphOperation<{ value: Site[] }> {

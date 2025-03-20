@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import searchSites from "./searchSites.js";
+import searchSites from "./searchSites.ts";
 
 describe("searchSites", () => {
     it("can find sites matching the search keyword", async () => {

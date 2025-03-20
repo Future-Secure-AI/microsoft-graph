@@ -19,7 +19,3 @@ export type GraphOperationDefinition<T> = {
     /** JSON object or a base64 URL-encoded value, for example, when the body is an image. When a body is included with the request, the headers object must contain a value for Content-Type. */
     body: unknown;
 };
-
-export type GraphOperation<T> = Promise<T> & {
-    definition: GraphOperationDefinition<T>
-};

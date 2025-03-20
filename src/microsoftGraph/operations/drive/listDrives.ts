@@ -1,9 +1,9 @@
 
-import { operation } from "../../graphApi.js";
-import type { DriveItem } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { SiteRef } from "../../models/SiteRef.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import { operation } from "../../graphApi.ts";
+import type { DriveItem } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { SiteRef } from "../../models/SiteRef.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Retrieve the list of Drive resources available for a Site. @see https://learn.microsoft.com/en-us/graph/api/drive-list */
 export default function listDrives(siteRef: SiteRef): GraphOperation<{ value: DriveItem[] }> {

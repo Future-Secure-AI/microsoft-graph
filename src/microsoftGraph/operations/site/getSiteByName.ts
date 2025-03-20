@@ -1,9 +1,9 @@
-import { operation } from "../../graphApi.js";
-import type { Site } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { HostName } from "../../models/HostName.js";
-import type { SiteName } from "../../models/SiteName.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import { operation } from "../../graphApi.ts";
+import type { Site } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { HostName } from "../../models/HostName.ts";
+import type { SiteName } from "../../models/SiteName.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Get site by name. @see https://learn.microsoft.com/en-us/graph/api/site-getbypath */
 export default function getSiteByName(hostName: HostName, siteName: SiteName): GraphOperation<Site> {

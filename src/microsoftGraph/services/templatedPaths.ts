@@ -1,6 +1,6 @@
-import BadTemplateError from "../errors/BadTemplateError.js";
-import type { GraphPath } from "../models/GraphOperation.js";
-import { kebabToCamelCase } from "./stringCaseConversion.js";
+import BadTemplateError from "../errors/BadTemplateError.ts";
+import type { GraphPath } from "../models/GraphOperation.ts";
+import { kebabToCamelCase } from "./stringCaseConversion.ts";
 
 const argmentPattern = /\{([a-z-]+)\}/g;
 

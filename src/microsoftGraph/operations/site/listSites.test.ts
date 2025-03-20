@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import listSites from "./listSites.js";
+import listSites from "./listSites.ts";
 
 describe("listSites", () => {
     it("can list all sites", async () => {

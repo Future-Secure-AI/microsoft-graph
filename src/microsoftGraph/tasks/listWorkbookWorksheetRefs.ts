@@ -1,9 +1,9 @@
-import ProtocolError from "../errors/ProtocolError.js";
-import type { WorkbookWorksheet } from "../models/Dto.js";
-import type { WorkbookRef } from "../models/WorkbookRef.js";
-import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.js";
-import listWorkbookWorksheetsOp from "../operations/workbookWorksheet/listWorkbookWorksheets.js";
-import { workbookWorksheetRef } from "../services/workbookWorksheet.js";
+import ProtocolError from "../errors/ProtocolError.ts";
+import type { WorkbookWorksheet } from "../models/Dto.ts";
+import type { WorkbookRef } from "../models/WorkbookRef.ts";
+import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
+import listWorkbookWorksheetsOp from "../operations/workbookWorksheet/listWorkbookWorksheets.ts";
+import { workbookWorksheetRef } from "../services/workbookWorksheet.ts";
 
 export async function listWorkbookWorksheetRefs(workbookRef: WorkbookRef): Promise<(WorkbookWorksheetRef & WorkbookWorksheet)[]> {
     const worksheets = await listWorkbookWorksheetsOp(workbookRef);

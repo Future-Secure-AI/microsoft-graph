@@ -1,9 +1,9 @@
-import type { DriveItemPath } from "../models/DriveItemPath.js";
-import type { DriveRef } from "../models/DriveRef.js";
-import type { WorkbookRef } from "../models/WorkbookRef.js";
-import createWorkbook from "../operations/workbook/createWorkbook.js";
-import { driveItemRef } from "../services/driveItem.js";
-import startWorkbookSession from "./startWorkbookSession.js";
+import type { DriveItemPath } from "../models/DriveItemPath.ts";
+import type { DriveRef } from "../models/DriveRef.ts";
+import type { WorkbookRef } from "../models/WorkbookRef.ts";
+import createWorkbook from "../operations/workbook/createWorkbook.ts";
+import { driveItemRef } from "../services/driveItem.ts";
+import startWorkbookSession from "./startWorkbookSession.ts";
 
 export default async function createWorkbookAndStartSession(driveRef: DriveRef, itemPath: DriveItemPath): Promise<WorkbookRef> {
     const item = await createWorkbook(driveRef, itemPath);

@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemPath, driveItemRef, rootDriveItemPath } from "../../services/driveItem.js";
-import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
-import createFolder from "../drive/createFolder.js";
-import listDriveItems from "./listDriveItems.js";
+import { defaultDriveRef } from "../../services/configuration.ts";
+import { driveItemPath, driveItemRef, rootDriveItemPath } from "../../services/driveItem.ts";
+import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import createFolder from "../drive/createFolder.ts";
+import listDriveItems from "./listDriveItems.ts";
 
 describe("listDriveItems", () => {
     it("can list items in the root folder", async () => {

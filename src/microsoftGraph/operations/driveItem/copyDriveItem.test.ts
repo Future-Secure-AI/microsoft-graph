@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
-import { sleep } from "../../services/sleep.js";
-import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
-import createFolder from "../drive/createFolder.js";
-import copyDriveItem from "./copyDriveItem.js";
-import getDriveItemByPath from "./getDriveItemByPath.js";
+import { defaultDriveRef } from "../../services/configuration.ts";
+import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { sleep } from "../../services/sleep.ts";
+import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import createFolder from "../drive/createFolder.ts";
+import copyDriveItem from "./copyDriveItem.ts";
+import getDriveItemByPath from "./getDriveItemByPath.ts";
 
 describe("copyDriveItem", () => {
     it("can copy an item to a new folder", async () => {

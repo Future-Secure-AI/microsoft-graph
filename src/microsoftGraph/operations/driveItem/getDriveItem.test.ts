@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import type { DriveItemId } from "../../models/DriveItemId.js";
-import type { DriveItemRef } from "../../models/DriveItemRef.js";
-import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemRef } from "../../services/driveItem.js";
-import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
-import createFolder from "../drive/createFolder.js";
-import getDriveItem from "./getDriveItem.js";
+import type { DriveItemId } from "../../models/DriveItemId.ts";
+import type { DriveItemRef } from "../../models/DriveItemRef.ts";
+import { defaultDriveRef } from "../../services/configuration.ts";
+import { driveItemRef } from "../../services/driveItem.ts";
+import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import createFolder from "../drive/createFolder.ts";
+import getDriveItem from "./getDriveItem.ts";
 
 describe("getDriveItem", () => {
     it("can retrieve an existing folder", async () => {

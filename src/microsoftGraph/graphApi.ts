@@ -1,10 +1,10 @@
 
-import InvalidArgumentError from "./errors/InvalidArgumentError.js";
-import RequestFailedError from "./errors/RequestFailedError.js";
-import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.js";
-import type { Scope } from "./models/Scope.js";
-import { getCurrentAccessToken } from "./services/accessToken.js";
-import { operationIdToIndex, operationIndexToId } from "./services/operationId.js";
+import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
+import RequestFailedError from "./errors/RequestFailedError.ts";
+import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
+import type { Scope } from "./models/Scope.ts";
+import { getCurrentAccessToken } from "./services/accessToken.ts";
+import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 const endpoint = "https://graph.microsoft.com/v1.0/$batch";

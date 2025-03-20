@@ -1,10 +1,10 @@
-import ProtocolError from "../errors/ProtocolError.js";
-import type { DriveItemPath } from "../models/DriveItemPath.js";
-import type { DriveItemRef } from "../models/DriveItemRef.js";
-import type { DriveRef } from "../models/DriveRef.js";
-import type { DriveItem } from "../models/Dto.js";
-import listDriveItemsOp from "../operations/driveItem/listDriveItems.js";
-import { driveItemRef } from "../services/driveItem.js";
+import ProtocolError from "../errors/ProtocolError.ts";
+import type { DriveItemPath } from "../models/DriveItemPath.ts";
+import type { DriveItemRef } from "../models/DriveItemRef.ts";
+import type { DriveRef } from "../models/DriveRef.ts";
+import type { DriveItem } from "../models/Dto.ts";
+import listDriveItemsOp from "../operations/driveItem/listDriveItems.ts";
+import { driveItemRef } from "../services/driveItem.ts";
 
 export default async function listDriveItemRefs(driveRef: DriveRef, itemPath: DriveItemPath): Promise<(DriveItemRef & DriveItem)[]> {
     const list = await listDriveItemsOp(driveRef, itemPath);

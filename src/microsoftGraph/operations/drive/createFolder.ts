@@ -1,10 +1,10 @@
 
-import { operation } from "../../graphApi.js";
-import type { DriveItemRef } from "../../models/DriveItemRef.js";
-import type { DriveRef } from "../../models/DriveRef.js";
-import type { DriveItem } from "../../models/Dto.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import { operation } from "../../graphApi.ts";
+import type { DriveItemRef } from "../../models/DriveItemRef.ts";
+import type { DriveRef } from "../../models/DriveRef.ts";
+import type { DriveItem } from "../../models/Dto.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Create folder if it doesn't exist, and return the folder. Use a `DriveRef` to create in root or `DriveItemRef` to create in a subfolder. @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children */
 export default function createFolder(parentRef: DriveRef | DriveItemRef, folderName: string): GraphOperation<DriveItem> {

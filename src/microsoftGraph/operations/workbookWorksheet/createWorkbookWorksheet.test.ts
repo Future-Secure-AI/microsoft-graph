@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheetName.js";
-import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
-import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
-import createWorkbook from "../workbook/createWorkbook.js";
-import createWorkbookWorksheet from "./createWorkbookWorksheet.js";
+import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheetName.ts";
+import { defaultDriveRef } from "../../services/configuration.ts";
+import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import createWorkbook from "../workbook/createWorkbook.ts";
+import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 
 describe("createWorkbookWorksheet", () => {
     it("can create a new worksheet in an existing workbook", async () => {

@@ -1,6 +1,6 @@
-import type { DriveItemRef } from "../models/DriveItemRef.js";
-import type { WorkbookRef } from "../models/WorkbookRef.js";
-import createWorkbookSession from "../operations/workbookSession/createWorkbookSession.js";
+import type { DriveItemRef } from "../models/DriveItemRef.ts";
+import type { WorkbookRef } from "../models/WorkbookRef.ts";
+import createWorkbookSession from "../operations/workbookSession/createWorkbookSession.ts";
 
 export default async function startWorkbookSession(itemRef: DriveItemRef): Promise<WorkbookRef> {
     const session = await createWorkbookSession(itemRef);

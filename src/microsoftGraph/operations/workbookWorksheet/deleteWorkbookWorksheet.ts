@@ -1,8 +1,8 @@
 
-import { operation } from "../../graphApi.js";
-import type { GraphOperation } from "../../models/GraphOperation.js";
-import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.js";
-import { generatePath } from "../../services/templatedPaths.js";
+import { operation } from "../../graphApi.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
+import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Permanently delete a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete */
 export default function deleteWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef): GraphOperation<void> {

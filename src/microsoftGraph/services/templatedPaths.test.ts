@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import BadTemplateError from "../errors/BadTemplateError.js";
-import { generatePath } from "./templatedPaths.js";
+import BadTemplateError from "../errors/BadTemplateError.ts";
+import { generatePath } from "./templatedPaths.ts";
 
 describe("generatePath", () => {
     it("should generate a valid path with correct arguments", () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { kebabToCamelCase } from "./stringCaseConversion.js";
+import { kebabToCamelCase } from "./stringCaseConversion.ts";
 
 describe("kebabToCamelCase", () => {
     it("should handle single word strings", () => {

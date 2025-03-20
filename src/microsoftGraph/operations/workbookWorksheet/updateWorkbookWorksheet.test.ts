@@ -1,12 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { defaultDriveRef } from "../../services/configuration.js";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.js";
-import { generateTempFileName } from "../../services/temporaryFiles.js";
-import { workbookWorksheetRef } from "../../services/workbookWorksheet.js";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.js";
-import createWorkbook from "../workbook/createWorkbook.js";
-import createWorkbookWorksheet from "./createWorkbookWorksheet.js";
-import updateWorkbookWorksheet from "./updateWorkbookWorksheet.js";
+import { defaultDriveRef } from "../../services/configuration.ts";
+import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
+import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import createWorkbook from "../workbook/createWorkbook.ts";
+import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
+import updateWorkbookWorksheet from "./updateWorkbookWorksheet.ts";
 
 describe("updateWorkbookWorksheet", () => {
     it("can update the name of an existing worksheet", { timeout: 10000 }, async () => {

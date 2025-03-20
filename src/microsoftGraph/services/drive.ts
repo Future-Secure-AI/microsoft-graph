@@ -1,7 +1,7 @@
-import ProtocolError from "../errors/ProtocolError.js";
-import type { DriveId } from "../models/DriveId.js";
-import type { DriveRef } from "../models/DriveRef.js";
-import type { SiteRef } from "../models/SiteRef.js";
+import ProtocolError from "../errors/ProtocolError.ts";
+import type { DriveId } from "../models/DriveId.ts";
+import type { DriveRef } from "../models/DriveRef.ts";
+import type { SiteRef } from "../models/SiteRef.ts";
 
 export function driveRef(siteRef: SiteRef, driveId: DriveId | undefined): DriveRef {
     if (!driveId) {
