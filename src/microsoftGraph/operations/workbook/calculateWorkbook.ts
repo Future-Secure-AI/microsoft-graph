@@ -16,3 +16,8 @@ export default function calculateWorkbook(workbookRef: WorkbookRef, calculationT
         },
     });
 }
+
+/** @deprecated Use calculateWorkbook instead. */
+export function recalculateWorkbook(workbookRef: WorkbookRef): GraphOperation<void> {
+    return calculateWorkbook(workbookRef, "Recalculate");
+}

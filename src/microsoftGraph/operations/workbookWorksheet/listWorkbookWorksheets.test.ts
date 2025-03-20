@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { parallel } from "../../graphApi.ts";
+import { sequential } from "../../graphApi.ts";
 import type { WorkbookWorksheetId } from "../../models/WorkbookWorksheetId.ts";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
-import { sleep } from "../../services/sleep.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 import listWorkbookWorksheets from "./listWorkbookWorksheets.ts";
@@ -20,8 +20,7 @@ describe("listWorkbookWorksheets", () => {
         try {
             const worksheet1 = await createWorkbookWorksheet(workbookRef);
             const worksheet2 = await createWorkbookWorksheet(workbookRef);
-
-            await sleep(500); // Creates don't apply immedaitely
+            await calculateWorkbook(workbookRef);
 
             const worksheets = await listWorkbookWorksheets(workbookRef);
             const worksheetIds = worksheets.value.map(ws => ws.id).filter(id => !!id) as WorkbookWorksheetId[];
@@ -40,9 +39,13 @@ describe("listWorkbookWorksheets", () => {
         const workbookRef = driveItemRef(defaultDriveRef, workbook.id);
 
         try {
-            const [worksheet1, worksheet2] = await parallel(createWorkbookWorksheet(workbookRef), createWorkbookWorksheet(workbookRef));
-            await sleep(500); // Creates don't apply immediately
-            const worksheets = await listWorkbookWorksheets(workbookRef);
+            const [worksheet1, worksheet2, _, worksheets] = await sequential(
+                createWorkbookWorksheet(workbookRef),
+                createWorkbookWorksheet(workbookRef),
+                calculateWorkbook(workbookRef),
+                listWorkbookWorksheets(workbookRef)
+            );
+
             const worksheetIds = worksheets.value.map(ws => ws.id).filter(id => !!id) as WorkbookWorksheetId[];
 
             expect(worksheetIds).toContain(worksheet1.id);
