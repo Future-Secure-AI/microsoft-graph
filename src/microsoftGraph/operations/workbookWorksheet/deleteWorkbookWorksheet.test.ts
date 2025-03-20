@@ -22,7 +22,7 @@ describe("deleteWorkbookWorksheet", () => {
             const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
             await deleteWorkbookWorksheet(worksheetRef);
-            await sleep(500); // Deletes don't apply immedaitely
+            await sleep(500); // Deletes don't apply immediately
 
             const worksheets = await listWorkbookWorksheets(workbookRef);
 
