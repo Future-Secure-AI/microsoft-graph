@@ -53,6 +53,7 @@ function linkStronglyTypedIds(data: string): string {
         `import type { DriveId } from './DriveId.ts'\n` +
         `import type { DriveItemId } from './DriveItemId.ts'\n` +
         `import type { WorkbookWorksheetId } from './WorkbookWorksheetId.ts'\n` +
+        `import type { WorkbookTableId } from './WorkbookTableId.ts'\n` +
         "\n" +
         data
             .replace(
@@ -82,6 +83,10 @@ function linkStronglyTypedIds(data: string): string {
             .replace(
                 "export interface WorkbookWorksheet extends Entity",
                 "export interface WorkbookWorksheet extends Entity<WorkbookWorksheetId>"
+            )
+            .replace(
+                "export interface WorkbookTable extends Entity",
+                "export interface WorkbookTable extends Entity<WorkbookTableId>"
             )
         ;
 }

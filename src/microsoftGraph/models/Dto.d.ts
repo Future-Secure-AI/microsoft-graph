@@ -7,6 +7,7 @@ import type { SiteId } from './SiteId.ts';
 import type { DriveId } from './DriveId.ts'
 import type { DriveItemId } from './DriveItemId.ts'
 import type { WorkbookWorksheetId } from './WorkbookWorksheetId.ts'
+import type { WorkbookTableId } from './WorkbookTableId.ts'
 
 // Project: https://github.com/microsoftgraph/msgraph-typescript-typings
 // Definitions by: Microsoft Graph Team <https://github.com/microsoftgraph>
@@ -22596,7 +22597,7 @@ export interface WorkbookRangeView extends Entity {
     // The collection of range views associated with the range. Read-only. Read-only.
     rows?: NullableOption<WorkbookRangeView[]>;
 }
-export interface WorkbookTable extends Entity {
+export interface WorkbookTable extends Entity<WorkbookTableId> {
     // Indicates whether the first column contains special formatting.
     highlightFirstColumn?: boolean;
     // Indicates whether the last column contains special formatting.
