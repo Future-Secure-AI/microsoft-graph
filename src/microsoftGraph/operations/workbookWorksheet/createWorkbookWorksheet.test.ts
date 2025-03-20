@@ -8,7 +8,7 @@ import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 
 describe("createWorkbookWorksheet", () => {
-    it("can create a new worksheet in an existing workbook", async () => {
+    it("can create a new worksheet in an existing workbook", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
         const workbook = await createWorkbook(defaultDriveRef, workbookPath);

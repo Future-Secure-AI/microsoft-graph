@@ -49,6 +49,7 @@ describe("getWorkbookUsedRange", { timeout: 10000 }, () => {
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
+            await sleep(500); 
             const [_, usedRange] = await sequential(
                 updateWorkbookRange(rangeRef, {
                     values: values
