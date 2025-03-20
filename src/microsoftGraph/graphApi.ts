@@ -19,7 +19,7 @@ type ReplyPayload = {
     }[];
 }
 
-type Op<T> = GraphOperationDefinition<T> & { // TODO: Rename for clarity
+type GraphOperationDefinitionWithDeps<T> = GraphOperationDefinition<T> & { 
     /** Array of request indexes that must be completed before this request is executed. */
     dependsOn?: number[] | undefined;
 };
@@ -36,7 +36,7 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
     return op;
 }
 
-async function single<T>(op: GraphOperationDefinition<T>): Promise<T> { // TODO: Refactor away?
+export async function single<T>(op: GraphOperationDefinition<T>): Promise<T> {
     return (await execute(op))[0] as T; // TODO: Use non-batching endpoint? Gives better concurency?
 }
 
@@ -50,12 +50,12 @@ export async function sequential<T extends GraphOperationDefinition<unknown>[]>(
     const opsSequential = ops.map((op, index) => ({
         ...op,
         dependsOn: index > 0 ? [index - 1] : undefined // Each op is dependant on the previous op
-    }) as Op<T>) as T;
+    }) as GraphOperationDefinitionWithDeps<T>) as T;
 
     return await execute(...opsSequential);
 }
 
-async function execute<T extends Op<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+async function execute<T extends GraphOperationDefinitionWithDeps<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
     InvalidArgumentError.throwIfGreater(ops.length, maxBatchOperations, `At most ${maxBatchOperations} operations allowed, but ${ops.length} were provided.`);
 
     if (ops.length === 0) {
@@ -71,7 +71,7 @@ async function execute<T extends Op<unknown>[]>(...ops: T): Promise<ExecutionRes
     return responses;
 }
 
-async function composeRequestPayload<T extends Op<unknown>[]>(ops: T) {
+async function composeRequestPayload<T extends GraphOperationDefinitionWithDeps<unknown>[]>(ops: T) {
     const accessToken = await getCurrentAccessToken(authenticationScope);
 
     const requestBody = {
@@ -116,7 +116,7 @@ function normaliseHeaders(input: Record<string, string>): Record<string, string>
     return headers;
 }
 
-function parseResponses<T extends Op<unknown>[]>(replyPayload: ReplyPayload, ops: T) {
+function parseResponses<T extends GraphOperationDefinitionWithDeps<unknown>[]>(replyPayload: ReplyPayload, ops: T) {
     const results: unknown[] = [];
 
     for (const response of replyPayload.responses) {
