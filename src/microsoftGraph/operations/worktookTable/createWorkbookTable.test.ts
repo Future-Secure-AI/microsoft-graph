@@ -7,9 +7,9 @@ import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
-import createTable from "./createTable.ts";
+import createWorkbookTable from "./createWorkbookTable.ts";
 
-describe("createTable", () => {
+describe("createWorkbookTable", () => {
     it("can create a new table in an existing worksheet", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
@@ -21,7 +21,7 @@ describe("createTable", () => {
             const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
             const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:D4");
-            const table = await createTable(rangeRef, true);
+            const table = await createWorkbookTable(rangeRef, true);
             expect(table.id).toBeTruthy();
         } finally {
             await deleteDriveItemWithRetry(workbookRef);

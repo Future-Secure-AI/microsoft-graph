@@ -3,16 +3,17 @@ import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { sleep } from "../../services/sleep.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { workbookTableRef } from "../../services/workbookTable.ts";
 import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
-import createTable from "./createTable.ts";
-import listTables from "./listTables.ts";
+import createWorkbookTable from "./createWorkbookTable.ts";
+import getWorkbookTable from "./getWorkbookTable.ts";
 
-describe("listTables", () => {
-    it("can list tables in an existing worksheet", { timeout: 10000 }, async () => {
+describe("getWorkbookTable", () => {
+    it("can retrieve a table by its ID", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
         const workbook = await createWorkbook(defaultDriveRef, workbookPath);
@@ -23,11 +24,12 @@ describe("listTables", () => {
             const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
             const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:D4");
-            await createTable(rangeRef, true);
+            const table = await createWorkbookTable(rangeRef, true);
             await sleep(500); // Tables don't apply immediately
 
-            const tables = await listTables(worksheetRef);
-            expect(tables.value.length).toBeGreaterThan(0);
+            const tableRef = workbookTableRef(worksheetRef, table.id);
+            const retrievedTable = await getWorkbookTable(tableRef);
+            expect(retrievedTable.id).toBe(table.id);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
         }
