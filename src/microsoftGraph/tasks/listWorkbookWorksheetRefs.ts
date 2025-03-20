@@ -5,7 +5,7 @@ import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
 import listWorkbookWorksheetsOp from "../operations/workbookWorksheet/listWorkbookWorksheets.ts";
 import { workbookWorksheetRef } from "../services/workbookWorksheet.ts";
 
-export async function listWorkbookWorksheetRefs(workbookRef: WorkbookRef): Promise<(WorkbookWorksheetRef & WorkbookWorksheet)[]> {
+export default async function listWorkbookWorksheetRefs(workbookRef: WorkbookRef): Promise<(WorkbookWorksheetRef & WorkbookWorksheet)[]> {
     const worksheets = await listWorkbookWorksheetsOp(workbookRef);
 
     return worksheets.value.map(worksheet => {

@@ -7,7 +7,7 @@ import { sleep } from "../../services/sleep.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import clearWorkbookRange from "./clearWorkbookRange.ts";
 import getWorkbookRange from "./getWorkbookRange.ts";
@@ -57,7 +57,7 @@ describe("clearWorkbookRange", () => {
                 }),
                 clearWorkbookRange(rangeRef)
             );
-            
+
             await sleep(500); // Deletes don't apply immedaitely
 
             const clearedRange = await getWorkbookRange(rangeRef); // Yeah, this doesn't prove that the above operation occured, room for improvement!

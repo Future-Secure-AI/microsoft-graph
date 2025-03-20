@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "./createWorkbook.ts";
 
 describe("createWorkbook", () => {

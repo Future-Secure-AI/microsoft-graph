@@ -8,7 +8,7 @@ import { workbookWorksheetRangeRef } from "./microsoftGraph/services/workbookWor
 import { workbookRangeAddress } from "./microsoftGraph/services/workbookWorksheetRangeAddress.ts";
 import createWorkbookAndStartSession from "./microsoftGraph/tasks/createWorkbookAndStartSession.ts";
 import endSessionAndDeleteWorkbook from "./microsoftGraph/tasks/endSessionAndDeleteWorkbook.ts";
-import { getWorkbookWorksheetRefByName } from "./microsoftGraph/tasks/getWorkbookWorksheetRefByName.ts";
+import getWorkbookWorksheetRefByName from "./microsoftGraph/tasks/getWorkbookWorksheetRefByName.ts";
 import listDriveItemRefs from "./microsoftGraph/tasks/listDriveItemRefs.ts";
 
 export async function main(): Promise<void> {

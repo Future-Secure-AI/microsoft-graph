@@ -4,7 +4,7 @@ import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { sleep } from "../../services/sleep.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 import deleteWorkbookWorksheet from "./deleteWorkbookWorksheet.ts";

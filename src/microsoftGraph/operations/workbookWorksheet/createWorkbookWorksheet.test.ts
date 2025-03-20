@@ -3,7 +3,7 @@ import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheetName.t
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 

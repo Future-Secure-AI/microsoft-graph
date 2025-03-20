@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import { deleteDriveItemWithRetry } from "../../tasks/deleteDriveItemWithRetry.ts";
+import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createFolder from "../drive/createFolder.ts";
 import copyDriveItem from "./copyDriveItem.ts";
 import getDriveItemByPath from "./getDriveItemByPath.ts";
