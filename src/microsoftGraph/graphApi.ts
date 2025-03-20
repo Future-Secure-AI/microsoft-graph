@@ -25,7 +25,7 @@ type GraphOperationDefinitionWithDeps<T> = GraphOperationDefinition<T> & {
 };
 
 type ExecutionResults<T> = {
-    [K in keyof T]: T[K] extends GraphOperationDefinition<infer R> ? R : never;
+    [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
 
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
@@ -36,6 +36,7 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
     return op;
 }
 
+// TODO: JDoc
 export async function single<T>(op: GraphOperationDefinition<T>): Promise<T> { // TODO: Tidy
     const accessToken = await getCurrentAccessToken(authenticationScope);
 
@@ -55,23 +56,24 @@ export async function single<T>(op: GraphOperationDefinition<T>): Promise<T> { /
     const body = replyContentType?.startsWith("application/json") ? await reply.json() : null;
     RequestFailedError.throwIfNotOkOperation(reply.status, 0, op, body);
 
-
     return body as T;
 }
 
 /** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
-export async function parallel<T extends GraphOperationDefinition<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-    return await execute(...ops);
+export async function parallel<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+    const definitions = ops.map(op => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
+    return await execute(...definitions) as ExecutionResults<T>;
 }
 
 /** Execute a batch of GraphAPI operations sequentially. */
-export async function sequential<T extends GraphOperationDefinition<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-    const opsSequential = ops.map((op, index) => ({
-        ...op,
+export async function sequential<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+    const definitions = ops.map(op => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
+    const sequentialOps = definitions.map((definition, index) => ({
+        ...definition,
         dependsOn: index > 0 ? [index - 1] : undefined // Each op is dependant on the previous op
-    }) as GraphOperationDefinitionWithDeps<T>) as T;
+    }) as GraphOperationDefinitionWithDeps<unknown>);
 
-    return await execute(...opsSequential);
+    return await execute(...sequentialOps) as ExecutionResults<T>;
 }
 
 async function execute<T extends GraphOperationDefinitionWithDeps<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
