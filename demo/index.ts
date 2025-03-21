@@ -1,14 +1,13 @@
 import listDrives from "../src/operations/drive/listDrives.ts";
+import listDriveItems from "../src/operations/driveItem/listDriveItems.ts";
 import updateWorkbookRange from "../src/operations/workbookRange/updateWorkbookRange.ts";
 import { getDefaultDriveRef } from "../src/services/drive.ts";
 import { driveItemPath, workbookFileExtension } from "../src/services/driveItem.ts";
 import { generateTempFileName } from "../src/services/temporaryFiles.ts";
 import { workbookWorksheetRangeRef } from "../src/services/workbookWorksheetRange.ts";
-import { workbookRangeAddress } from "../src/services/workbookWorksheetRangeAddress.ts";
 import createWorkbookAndStartSession from "../src/tasks/createWorkbookAndStartSession.ts";
 import endSessionAndDeleteWorkbook from "../src/tasks/endSessionAndDeleteWorkbook.ts";
 import getWorkbookWorksheetByName from "../src/tasks/getWorkbookWorksheetRefByName.ts";
-import listDriveItemRefs from "../src/tasks/listDriveItemRefs.ts";
 import { debug, info, } from "./log.ts";
 
 const driveRef = getDefaultDriveRef();
@@ -26,8 +25,7 @@ const workbookRef = await createWorkbookAndStartSession(driveRef, workbookPath);
 const worksheetRef = await getWorkbookWorksheetByName(workbookRef, "Sheet1"); // Should just use `workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId)` since it's faster and less brittle, but this is demonstrating the named approach.
 
 info("Updating range...");
-const rangeAddress = workbookRangeAddress("A1:B2");
-const rangeRef = workbookWorksheetRangeRef(worksheetRef, rangeAddress);
+const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:B2");
 await updateWorkbookRange(rangeRef, {
 	values: [
 		[1, 2],
@@ -36,7 +34,7 @@ await updateWorkbookRange(rangeRef, {
 });
 
 info("Listing files...");
-for (const item of await listDriveItemRefs(driveRef, folderPath)) {
+for (const item of await listDriveItems(driveRef, folderPath)) {
 	debug(` - ${item.name}`);
 }
 
