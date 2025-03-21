@@ -23,9 +23,9 @@ export const azureTenantId = tryGetEnvironmentVariable("AZURE_TENANT_ID");
 export const azureClientId = tryGetEnvironmentVariable("AZURE_CLIENT_ID");
 export const azureClientSecret = tryGetEnvironmentVariable("AZURE_CLIENT_SECRET");
 
-export const defaultSiteId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
-export const defaultDriveId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
-export const httpProxy = tryGetEnvironmentVariable("HTTP_PROXY", "");
+export const defaultSiteId = (tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID", "") ?? null) as SiteId | null;
+export const defaultDriveId = (tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID", "") ?? null) as DriveId | null;
+export const httpProxy = tryGetEnvironmentVariable("HTTP_PROXY", "") ?? null;
 
 export const defaultSiteRef = {
 	siteId: defaultSiteId,

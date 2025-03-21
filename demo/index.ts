@@ -12,8 +12,7 @@ import listDriveItemRefs from "../src/tasks/listDriveItemRefs.ts";
 import { debug, info, } from "./log.ts";
 
 info("Listing drives...");
-const driveList = await listDrives(defaultDriveRef)
-for (const drive of driveList.value) {
+for (const drive of await listDrives(defaultDriveRef)) {
 	debug(` - ${drive.name}`);
 }
 
@@ -35,8 +34,7 @@ await updateWorkbookRange(rangeRef, {
 });
 
 info("Listing files...");
-const items = await listDriveItemRefs(defaultDriveRef, folderPath);
-for (const item of items) {
+for (const item of await listDriveItemRefs(defaultDriveRef, folderPath)) {
 	debug(` - ${item.name}`);
 }
 

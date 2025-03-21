@@ -6,12 +6,15 @@ import type { SiteRef } from "../../models/SiteRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Retrieve the list of Drive resources available for a Site. @see https://learn.microsoft.com/en-us/graph/api/drive-list */
-export default function listDrives(siteRef: SiteRef): GraphOperation<{ value: DriveItem[] }> {
+export default function listDrives(siteRef: SiteRef): GraphOperation<DriveItem[]> {
     return operation({
         method: "GET",
         path: generatePath("/sites/{site-id}/drives", siteRef),
         headers: {},
         body: null,
-        responseTransform: response => response as { value: DriveItem[] }
+        responseTransform: response => {
+            const list = response as { value: DriveItem[]; };
+            return list.value
+        }
     });
 }
