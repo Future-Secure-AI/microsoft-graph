@@ -4,8 +4,8 @@ import listDrives from "./listDrives.ts";
 
 describe("listDrives", () => {
     it("can listDrives", async () => {
-        const defaultSiteRef = getDefaultSiteRef();
-        const drives = await listDrives(defaultSiteRef);
+        const siteRef = getDefaultSiteRef();
+        const drives = await listDrives(siteRef);
 
         console.debug("Drives:", drives.map((drive) => [drive.id, drive.name]));
         expect(drives.length).toBeGreaterThan(0);

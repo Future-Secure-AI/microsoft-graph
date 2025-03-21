@@ -24,7 +24,7 @@ describe("getWorkbookTable", () => {
             await calculateWorkbook(workbook);
 
             const retrievedTable = await getWorkbookTable(table);
-            expect(retrievedTable.id).toBe(table.id);
+            expect(retrievedTable.tableId).toBe(table.tableId);
         } finally {
             await deleteDriveItemWithRetry(workbook);
         }
