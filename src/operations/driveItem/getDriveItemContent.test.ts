@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { DriveItemId } from "../../models/DriveItemId.ts";
-import { defaultDriveRef } from "../../services/configuration.ts";
+import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
@@ -14,7 +14,7 @@ import getDriveItemContent from "./getDriveItemContent.ts";
 describe("getDriveItemContent", () => {
     it("can download the content of an existing workbook", { timeout: 20000 }, async () => {
         const workbookPath = driveItemPath(generateTempFileName("xlsx"));
-        const workbook = await createWorkbook(defaultDriveRef, workbookPath);
+        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
 
         try {
             const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
@@ -37,7 +37,7 @@ describe("getDriveItemContent", () => {
     });
 
     it("throws an error when trying to download a non-existent item", async () => {
-        const nonExistentItemRef = driveItemRef(defaultDriveRef, "non-existent-item-id" as DriveItemId);
+        const nonExistentItemRef = driveItemRef(getDefaultDriveRef(), "non-existent-item-id" as DriveItemId);
 
         await expect(getDriveItemContent(nonExistentItemRef)).rejects.toThrow();
     });

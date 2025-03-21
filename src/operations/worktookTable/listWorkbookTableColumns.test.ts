@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { defaultDriveRef } from "../../services/configuration.ts";
+import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
@@ -14,7 +14,7 @@ describe("listWorkbookTableColumns", () => {
     it("can list columns in an existing table", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(defaultDriveRef, workbookPath);
+        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
 
         try {
             const worksheet = await createWorkbookWorksheet(workbook);

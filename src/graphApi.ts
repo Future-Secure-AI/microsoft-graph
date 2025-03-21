@@ -1,11 +1,11 @@
-import { HttpProxyAgent } from 'http-proxy-agent';
+
 import fetch from 'node-fetch';
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
 import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
 import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
-import { httpProxy } from './services/configuration.ts';
+import { getHttpAgent } from './services/httpAgent.ts';
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 
 export const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
@@ -31,7 +31,6 @@ type ExecutionResults<T> = {
     [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
 
-export const agent = httpProxy ? new HttpProxyAgent(httpProxy) : undefined;
 
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
     // The returned operation can be called directly by simply `await`ing it, or it can be passed to the `parallel` or `sequential` functions to be executed in a batch.
@@ -43,6 +42,7 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
 
 async function single<T>(definition: GraphOperationDefinition<T>): Promise<T> { // TODO: Tidy
     const accessToken = await getCurrentAccessToken(authenticationScope);
+    const agent = getHttpAgent();
 
     const requestHeaders = {
         "authorization": `Bearer ${accessToken}`,
@@ -99,6 +99,7 @@ async function execute<T extends GraphOperationDefinitionWithDeps<unknown>[]>(..
 
 async function composeRequestPayload<T extends GraphOperationDefinitionWithDeps<unknown>[]>(ops: T) {
     const accessToken = await getCurrentAccessToken(authenticationScope);
+    const agent = await getHttpAgent();
 
     const requestBody = {
         requests: ops.map((op, index) => ({

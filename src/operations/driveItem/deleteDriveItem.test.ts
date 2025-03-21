@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { DriveItemId } from "../../models/DriveItemId.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
-import { defaultDriveRef } from "../../services/configuration.ts";
+import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import createFolder from "../drive/createFolder.ts";
@@ -11,8 +11,8 @@ import getDriveItem from "./getDriveItem.ts";
 describe("deleteDriveItem", () => {
     it("can delete an existing folder", { timeout: 10000 }, async () => {
         const folderName = generateTempFileName();
-        const folder = await createFolder(defaultDriveRef, folderName);
-        const folderRef = driveItemRef(defaultDriveRef, folder.id);
+        const folder = await createFolder(getDefaultDriveRef(), folderName);
+        const folderRef = driveItemRef(getDefaultDriveRef(), folder.id);
 
         await deleteDriveItem(folderRef);
 
@@ -20,6 +20,8 @@ describe("deleteDriveItem", () => {
     });
 
     it("throws an error when trying to delete a non-existent item", async () => {
+        const defaultDriveRef = getDefaultDriveRef();
+
         const nonExistentItemRef: DriveItemRef = {
             ...defaultDriveRef,
             itemId: "non-existent-item-id" as DriveItemId

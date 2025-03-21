@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { defaultDriveRef } from "../../services/configuration.ts";
+import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
@@ -9,6 +9,8 @@ import getDriveItemByPath from "./getDriveItemByPath.ts";
 
 describe("copyDriveItem", () => {
     it("can copy an item to a new folder", { timeout: 10000 }, async () => {
+        const defaultDriveRef = getDefaultDriveRef();
+        
         const srcFolderName = generateTempFileName();
         const srcFolder = await createFolder(defaultDriveRef, srcFolderName);
         const srcFolderRef = driveItemRef(defaultDriveRef, srcFolder.id);

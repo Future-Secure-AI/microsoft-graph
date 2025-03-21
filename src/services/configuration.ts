@@ -1,17 +1,11 @@
+import EnvironmentVariableMissingError from "../errors/EnvironmentVariableMissingError.ts";
 
-import type { DriveId } from "../models/DriveId.ts";
-import type { DriveRef } from "../models/DriveRef.ts";
-import type { SiteId } from "../models/SiteId.ts";
-import type { SiteRef } from "../models/SiteRef.ts";
-
-const missingEnvironmentVariables: string[] = [];
-
-function tryGetEnvironmentVariable(env: string, fallbackValue: string | null = null): string {
+function get(env: string, fallbackValue: string | null = null): string {
 	const value = process.env[env]?.trim() ?? "";
 
 	if (value === "") {
 		if (fallbackValue === null) {
-			missingEnvironmentVariables.push(env); // It's fatal if env is unset and there is no fallbackValue, however we want to report all of these in one batch..
+			throw new EnvironmentVariableMissingError(env);
 		}
 		return fallbackValue ?? "";
 	}
@@ -19,25 +13,15 @@ function tryGetEnvironmentVariable(env: string, fallbackValue: string | null = n
 	return value;
 }
 
-export const azureTenantId = tryGetEnvironmentVariable("AZURE_TENANT_ID");
-export const azureClientId = tryGetEnvironmentVariable("AZURE_CLIENT_ID");
-export const azureClientSecret = tryGetEnvironmentVariable("AZURE_CLIENT_SECRET");
-
-export const defaultSiteId = (tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID", "") ?? null) as SiteId | null;
-export const defaultDriveId = (tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID", "") ?? null) as DriveId | null;
-export const httpProxy = tryGetEnvironmentVariable("HTTP_PROXY", "") ?? null;
-
-export const defaultSiteRef = {
-	siteId: defaultSiteId,
-} as SiteRef;
-
-export const defaultDriveRef = {
-	siteId: defaultSiteId,
-	driveId: defaultDriveId,
-} as DriveRef;
-
-if (missingEnvironmentVariables.length > 0) {
-	// biome-ignore lint/suspicious/noConsole: <explanation>
-	console.error(`\x1b[31mFATAL: Required environment variable(s) ${missingEnvironmentVariables.join(", ")} missing, empty or whitespace.\x1b[0m`);
-	process.exit(1);
+function bind(env: string, fallbackValue: string | null = null): () => string {
+	return () => get(env, fallbackValue);
 }
+
+export const azureTenantIdEnv = bind("AZURE_TENANT_ID");
+export const azureClientIdEnv = bind("AZURE_CLIENT_ID");
+export const azureClientSecretEnv = bind("AZURE_CLIENT_SECRET");
+
+export const defaultSiteIdEnv = bind("SHAREPOINT_DEFAULT_SITE_ID");
+export const defaultDriveIdEnv = bind("SHAREPOINT_DEFAULT_DRIVE_ID");
+
+export const httpProxyEnv = bind("HTTP_PROXY", "");

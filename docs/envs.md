@@ -1,5 +1,5 @@
 # Environment variables
-Environment variables are read at startup. If a mandatory env is missing startup will be aborted.
+Environment variables are read just-in-time. A missing env will result in an exception.
 
 | Env                           | Mandatory | Purpose                                                            |
 | ----------------------------- | --------- | ------------------------------------------------------------------ |
