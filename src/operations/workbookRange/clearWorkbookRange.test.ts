@@ -21,8 +21,7 @@ describe("clearWorkbookRange", () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
         const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
-        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
+        const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
@@ -31,11 +30,12 @@ describe("clearWorkbookRange", () => {
             });
 
             await clearWorkbookRange(rangeRef);
+            await calculateWorkbook(workbook);
 
             const clearedRange = await getWorkbookRange(rangeRef);
             expect(clearedRange.values).toEqual([["", ""], ["", ""]]);
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 
