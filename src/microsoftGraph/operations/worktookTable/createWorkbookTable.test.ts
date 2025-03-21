@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
@@ -18,9 +17,7 @@ describe("createWorkbookTable", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbookRef);
-            const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
-
-            const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:D4");
+            const rangeRef = workbookWorksheetRangeRef(worksheet, "A1:D4");
             const table = await createWorkbookTable(rangeRef, true);
             expect(table.id).toBeTruthy();
         } finally {

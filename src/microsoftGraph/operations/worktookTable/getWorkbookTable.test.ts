@@ -3,7 +3,6 @@ import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { workbookTableRef } from "../../services/workbookTable.ts";
-import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
@@ -21,13 +20,12 @@ describe("getWorkbookTable", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbookRef);
-            const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
-            const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:D4");
+            const rangeRef = workbookWorksheetRangeRef(worksheet, "A1:D4");
             const table = await createWorkbookTable(rangeRef, true);
             await calculateWorkbook(workbookRef);
 
-            const tableRef = workbookTableRef(worksheetRef, table.id);
+            const tableRef = workbookTableRef(worksheet, table.id);
             const retrievedTable = await getWorkbookTable(tableRef);
             expect(retrievedTable.id).toBe(table.id);
         } finally {

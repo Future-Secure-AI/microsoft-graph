@@ -3,7 +3,6 @@ import { sequential } from "../../graphApi.ts";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
@@ -20,9 +19,8 @@ describe("deleteWorkbookWorksheet", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbookRef);
-            const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
-            await deleteWorkbookWorksheet(worksheetRef);
+            await deleteWorkbookWorksheet(worksheet);
             await calculateWorkbook(workbookRef);
 
             const worksheets = await listWorkbookWorksheets(workbookRef);
@@ -41,10 +39,9 @@ describe("deleteWorkbookWorksheet", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbookRef);
-            const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
 
             const [_, __, worksheets] = await sequential(
-                deleteWorkbookWorksheet(worksheetRef),
+                deleteWorkbookWorksheet(worksheet),
                 calculateWorkbook(workbookRef),
                 listWorkbookWorksheets(workbookRef)
             );

@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { defaultDriveRef } from "../../services/configuration.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
@@ -17,10 +16,8 @@ describe("updateWorkbookWorksheet", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbookRef);
-            const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
-
             const newName = "UpdatedSheet";
-            const updatedWorksheet = await updateWorkbookWorksheet(worksheetRef, { name: newName });
+            const updatedWorksheet = await updateWorkbookWorksheet(worksheet, { name: newName });
             expect(updatedWorksheet.name).toBe(newName);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
@@ -35,9 +32,7 @@ describe("updateWorkbookWorksheet", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbookRef);
-            const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id);
-
-            const updatedWorksheet = await updateWorkbookWorksheet(worksheetRef, { visibility: "Hidden" });
+            const updatedWorksheet = await updateWorkbookWorksheet(worksheet, { visibility: "Hidden" });
             expect(updatedWorksheet.visibility).toBe("Hidden");
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
