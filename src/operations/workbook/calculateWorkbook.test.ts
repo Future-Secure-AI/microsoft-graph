@@ -1,6 +1,6 @@
 import { describe, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "./calculateWorkbook.ts";
@@ -12,38 +12,38 @@ describe("calculateWorkbook", () => {
     it(`can calculate workbook with calculation type: 'Recalculate'`, { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
+        const driveRef = getDefaultDriveRef();
+        const workbook = await createWorkbook(driveRef, workbookPath);
 
         try {
-            await calculateWorkbook(workbookRef, "Recalculate");
+            await calculateWorkbook(workbook, "Recalculate");
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 
     it(`can calculate workbook with calculation type: 'Full'`, async () => {
+        const driveRef = getDefaultDriveRef();
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
+        const workbook = await createWorkbook(driveRef, workbookPath);
         try {
-            await calculateWorkbook(workbookRef, "Full");
+            await calculateWorkbook(workbook, "Full");
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 
     it(`can calculate workbook with calculation type: 'FullRebuild'`, { timeout: 10000 }, async () => {
+        const driveRef = getDefaultDriveRef();
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
+        const workbook = await createWorkbook(driveRef, workbookPath);
 
         try {
-            await calculateWorkbook(workbookRef, "FullRebuild");
+            await calculateWorkbook(workbook, "FullRebuild");
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 });

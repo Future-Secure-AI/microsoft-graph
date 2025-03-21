@@ -14,7 +14,8 @@ describe("getWorkbookTable", () => {
     it("can retrieve a table by its ID", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
+        const driveRef = getDefaultDriveRef();
+        const workbook = await createWorkbook(driveRef, workbookPath);
 
         try {
             const worksheet = await createWorkbookWorksheet(workbook);

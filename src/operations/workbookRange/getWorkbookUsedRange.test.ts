@@ -19,9 +19,9 @@ describe("getWorkbookUsedRange", { timeout: 10000 }, () => {
 
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
-        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
+        const driveRef = getDefaultDriveRef();
+        const workbook = await createWorkbook(driveRef, workbookPath);
+        const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 
         try {
@@ -29,12 +29,12 @@ describe("getWorkbookUsedRange", { timeout: 10000 }, () => {
                 values: values
             });
 
-            await calculateWorkbook(workbookRef);
+            await calculateWorkbook(workbook);
 
             const usedRange = await getWorkbookUsedRange(worksheetRef);
             expect(usedRange.values).toEqual(values);
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 
@@ -44,8 +44,9 @@ describe("getWorkbookUsedRange", { timeout: 10000 }, () => {
 
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
+        const driveRef = getDefaultDriveRef();
+        const workbook = await createWorkbook(driveRef, workbookPath);
+        const workbookRef = driveItemRef(driveRef, workbook.id);
         const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
         const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
 

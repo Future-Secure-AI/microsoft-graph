@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { driveItemPath, driveItemRef, rootDriveItemPath } from "../../services/driveItem.ts";
+import { getDefaultDriveRef } from "../../services/drive.ts";
+import { driveItemPath, rootDriveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createFolder from "../drive/createFolder.ts";
 import listDriveItems from "./listDriveItems.ts";
-import { getDefaultDriveRef } from "../../services/drive.ts";
 
 describe("listDriveItems", () => {
     it("can list items in the root folder", { timeout: 10000 }, async () => {
@@ -15,15 +15,15 @@ describe("listDriveItems", () => {
 
     it("can list items in a folder", async () => {
         const folderName = generateTempFileName();
-        const folder = await createFolder(getDefaultDriveRef(), folderName);
+        const driveRef = getDefaultDriveRef();
+        const folder = await createFolder(driveRef, folderName);
         const folderPath = driveItemPath(folderName);
-        const folderRef = driveItemRef(getDefaultDriveRef(), folder.id);
 
         const items = await listDriveItems(getDefaultDriveRef(), folderPath);
 
         expect(items).toBeInstanceOf(Array);
 
-        await deleteDriveItemWithRetry(folderRef);
+        await deleteDriveItemWithRetry(folder);
     });
 
     it("throws an error when trying to list items in a non-existent folder", async () => {
