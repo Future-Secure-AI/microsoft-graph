@@ -23,7 +23,7 @@ describe("listWorkbookWorksheets", () => {
             await calculateWorkbook(workbookRef);
 
             const worksheets = await listWorkbookWorksheets(workbookRef);
-            const worksheetIds = worksheets.value.map(ws => ws.id).filter(id => !!id) as WorkbookWorksheetId[];
+            const worksheetIds = worksheets.map(ws => ws.worksheetId) as WorkbookWorksheetId[];
 
             expect(worksheetIds).toContain(worksheet1.id);
             expect(worksheetIds).toContain(worksheet2.id);
@@ -46,7 +46,7 @@ describe("listWorkbookWorksheets", () => {
                 listWorkbookWorksheets(workbookRef)
             );
 
-            const worksheetIds = worksheets.value.map(ws => ws.id).filter(id => !!id) as WorkbookWorksheetId[];
+            const worksheetIds = worksheets.map(ws => ws.worksheetId);
 
             expect(worksheetIds).toContain(worksheet1.id);
             expect(worksheetIds).toContain(worksheet2.id);

@@ -21,5 +21,6 @@ export default function createFolder(parentRef: DriveRef | DriveItemRef, folderN
             folder: {},
             "@microsoft.graph.conflictBehavior": "rename", // Do nothing if already exists
         },
+        responseTransform: response => response as DriveItem
     });
 }

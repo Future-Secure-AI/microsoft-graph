@@ -13,5 +13,6 @@ export default function deleteWorkbookWorksheet(worksheetRef: WorkbookWorksheetR
             "workbook-session-id": worksheetRef.sessionId,
         },
         body: null,
+        responseTransform: () => undefined
     });
 }

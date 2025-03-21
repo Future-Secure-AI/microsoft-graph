@@ -11,5 +11,6 @@ export default function getDriveItem(itemRef: DriveItemRef): GraphOperation<Driv
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}", itemRef),
         headers: {},
         body: null,
+        responseTransform: response => response as DriveItem
     });
 }

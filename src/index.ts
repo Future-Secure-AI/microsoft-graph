@@ -8,7 +8,7 @@ import { workbookWorksheetRangeRef } from "./microsoftGraph/services/workbookWor
 import { workbookRangeAddress } from "./microsoftGraph/services/workbookWorksheetRangeAddress.ts";
 import createWorkbookAndStartSession from "./microsoftGraph/tasks/createWorkbookAndStartSession.ts";
 import endSessionAndDeleteWorkbook from "./microsoftGraph/tasks/endSessionAndDeleteWorkbook.ts";
-import getWorkbookWorksheetRefByName from "./microsoftGraph/tasks/getWorkbookWorksheetRefByName.ts";
+import getWorkbookWorksheetByName from "./microsoftGraph/tasks/getWorkbookWorksheetRefByName.ts";
 import listDriveItemRefs from "./microsoftGraph/tasks/listDriveItemRefs.ts";
 
 export async function main(): Promise<void> {
@@ -23,7 +23,7 @@ export async function main(): Promise<void> {
 
 	info("Creating file...");
 	const workbookRef = await createWorkbookAndStartSession(defaultDriveRef, workbookPath);
-	const worksheetRef = await getWorkbookWorksheetRefByName(workbookRef, "Sheet1"); // Should just use `workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId)` since it's faster and less brittle, but this is demonstrating the named approach.
+	const worksheetRef = await getWorkbookWorksheetByName(workbookRef, "Sheet1"); // Should just use `workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId)` since it's faster and less brittle, but this is demonstrating the named approach.
 
 	info("Updating range...");
 	const rangeAddress = workbookRangeAddress("A1:B2");

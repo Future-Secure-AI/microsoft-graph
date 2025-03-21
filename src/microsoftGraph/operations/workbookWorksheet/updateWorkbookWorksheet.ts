@@ -14,5 +14,6 @@ export default function updateWorkbookWorksheet(worksheetRef: WorkbookWorksheetR
             "content-type": "application/json",
         },
         body: updates,
+        responseTransform: response => response as WorkbookWorksheet
     });
 }

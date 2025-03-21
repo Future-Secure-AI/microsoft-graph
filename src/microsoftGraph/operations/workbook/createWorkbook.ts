@@ -19,6 +19,7 @@ export default function createWorkbook(driveRef: DriveRef, itemPath: DriveItemPa
         headers: {
             "content-type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
         },
-        body: null // This is correct, Sharepoint interprets a 0-byte files as a new workbook.
+        body: null, // This is correct, Sharepoint interprets a 0-byte files as a new workbook.
+        responseTransform: response => response as DriveItem
     });
 }

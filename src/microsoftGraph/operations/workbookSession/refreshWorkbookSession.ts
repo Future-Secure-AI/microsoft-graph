@@ -17,5 +17,6 @@ export default function refreshWorkbookSession(workbookRef: WorkbookRef): GraphO
             "content-type": "application/json",
         },
         body: null,
+        responseTransform: () => undefined
     });
 }

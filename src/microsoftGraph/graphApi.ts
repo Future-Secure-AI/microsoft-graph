@@ -36,27 +36,26 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
     return op;
 }
 
-// TODO: JDoc
-export async function single<T>(op: GraphOperationDefinition<T>): Promise<T> { // TODO: Tidy
+async function single<T>(definition: GraphOperationDefinition<T>): Promise<T> { // TODO: Tidy
     const accessToken = await getCurrentAccessToken(authenticationScope);
 
     const requestHeaders = {
         "authorization": `Bearer ${accessToken}`,
-        ...Object.fromEntries(Object.entries(op.headers ?? {}).filter(([_, v]) => v !== undefined)), // TODO: Tidy
+        ...Object.fromEntries(Object.entries(definition.headers ?? {}).filter(([_, v]) => v !== undefined)), // TODO: Tidy
     } as Record<string, string>;
 
-    const reply = await fetch(`${endpoint}${op.path}`, {
-        method: op.method,
+    const reply = await fetch(`${endpoint}${definition.path}`, {
+        method: definition.method,
         headers: requestHeaders,
-        body: op.body === null ? null : JSON.stringify(op.body)
+        body: definition.body === null ? null : JSON.stringify(definition.body)
     });
 
     const replyContentType = reply.headers.get('content-type')?.toLowerCase();
 
     const body = replyContentType?.startsWith("application/json") ? await reply.json() : null;
-    RequestFailedError.throwIfNotOkOperation(reply.status, 0, op, body);
+    RequestFailedError.throwIfNotOkOperation(reply.status, 0, definition, body);
 
-    return body as T;
+    return definition.responseTransform(body);
 }
 
 /** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */

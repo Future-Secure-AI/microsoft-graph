@@ -12,5 +12,6 @@ export default function getDriveItemByPath(driveRef: DriveRef, itemPath: DriveIt
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef),
         headers: {},
         body: null,
+        responseTransform: response => response as DriveItem
     });
 }

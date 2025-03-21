@@ -10,5 +10,6 @@ export default function deleteDriveItem(itemRef: DriveItemRef): GraphOperation<v
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}", itemRef),
         headers: {},
         body: null,
+        responseTransform: () => undefined
     });
 }

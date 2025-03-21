@@ -12,5 +12,6 @@ export default function listDrives(siteRef: SiteRef): GraphOperation<{ value: Dr
         path: generatePath("/sites/{site-id}/drives", siteRef),
         headers: {},
         body: null,
+        responseTransform: response => response as { value: DriveItem[] }
     });
 }

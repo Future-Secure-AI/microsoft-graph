@@ -16,5 +16,6 @@ export default function closeWorkbookSession(workbookRef: WorkbookRef): GraphOpe
             "workbook-session-id": workbookRef.sessionId,
         },
         body: null,
+        responseTransform: () => undefined
     });
 }

@@ -13,5 +13,6 @@ export default function getWorkbookRange(rangeRef: WorkbookWorksheetRangeRef): G
             "workbook-session-id": rangeRef.sessionId,
         },
         body: null,
+        responseTransform: response => response as WorkbookRange
     });
 }

@@ -17,5 +17,6 @@ export default function createWorkbookTable(rangeRef: WorkbookWorksheetRangeRef,
             address: rangeRef.address,
             hasHeaders
         },
+        responseTransform: response => response as WorkbookTable
     });
 }

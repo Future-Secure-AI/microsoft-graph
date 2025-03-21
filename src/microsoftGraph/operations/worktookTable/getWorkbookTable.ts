@@ -13,5 +13,6 @@ export default function getWorkbookTable(tableRef: WorkbookTableRef): GraphOpera
             "workbook-session-id": tableRef.sessionId,
         },
         body: null,
+        responseTransform: response => response as WorkbookTable
     });
 }

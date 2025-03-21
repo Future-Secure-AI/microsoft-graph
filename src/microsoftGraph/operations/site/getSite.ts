@@ -11,5 +11,6 @@ export default function getSite(siteRef: SiteRef): GraphOperation<Site> {
         path: generatePath("/sites/{site-id}", siteRef),
         headers: {},
         body: null,
+        responseTransform: response => response as Site
     });
 }

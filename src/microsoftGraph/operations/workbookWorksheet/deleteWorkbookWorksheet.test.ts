@@ -27,7 +27,7 @@ describe("deleteWorkbookWorksheet", () => {
 
             const worksheets = await listWorkbookWorksheets(workbookRef);
 
-            expect(worksheets.value.some(ws => ws.id === worksheet.id)).toBe(false);
+            expect(worksheets.some(ws => ws.id === worksheet.id)).toBe(false);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
         }
@@ -49,7 +49,7 @@ describe("deleteWorkbookWorksheet", () => {
                 listWorkbookWorksheets(workbookRef)
             );
 
-            expect(worksheets.value.some(ws => ws.id === worksheet.id)).toBe(false);
+            expect(worksheets.some(ws => ws.id === worksheet.worksheetId)).toBe(false);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
         }

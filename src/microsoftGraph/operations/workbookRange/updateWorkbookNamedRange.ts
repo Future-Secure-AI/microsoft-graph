@@ -14,5 +14,6 @@ export default function updateWorkbookNamedRange(rangeRef: WorkbookNamedRangeRef
             "content-type": "application/json",
         },
         body: value,
+        responseTransform: () => undefined
     });
 }

@@ -14,6 +14,7 @@ export default function calculateWorkbook(workbookRef: WorkbookRef, calculationT
         body: {
             calculationType
         },
+        responseTransform: () => undefined
     });
 }
 

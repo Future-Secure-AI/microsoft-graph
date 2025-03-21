@@ -10,5 +10,6 @@ export default function searchSites(search: string): GraphOperation<{ value: Sit
         path: generatePath("/sites?search={search}", { search }),
         headers: {},
         body: null,
+        responseTransform: response => response as { value: Site[] }
     });
 }

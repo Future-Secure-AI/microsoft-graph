@@ -23,7 +23,7 @@ describe("createWorkbookWorksheet", () => {
         }
     });
 
-    it("can create a new worksheet without a name", async () => {
+    it("can create a new worksheet without a name", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
         const workbook = await createWorkbook(defaultDriveRef, workbookPath);

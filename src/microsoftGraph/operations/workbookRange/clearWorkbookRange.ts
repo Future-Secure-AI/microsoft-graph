@@ -16,5 +16,6 @@ export default function clearWorkbookRange(rangeRef: WorkbookWorksheetRangeRef, 
         body: {
             applyTo
         },
+        responseTransform: () => undefined
     });
 }

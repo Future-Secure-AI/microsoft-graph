@@ -16,5 +16,6 @@ export default function deleteWorkbookRange(rangeRef: WorkbookWorksheetRangeRef,
         body: {
             shift
         },
+        responseTransform: () => undefined
     });
 }

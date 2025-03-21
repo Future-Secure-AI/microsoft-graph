@@ -17,5 +17,6 @@ export default function insertWorkbookCells(worksheetRef: WorkbookWorksheetRef, 
         body: {
             shift
         },
+        responseTransform: response => response as WorkbookRange
     });
 }

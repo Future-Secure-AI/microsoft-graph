@@ -10,5 +10,6 @@ export default function listSites(): GraphOperation<{ value: Site[] }> {
         path: generatePath("/sites", {}),
         headers: {},
         body: null,
+        responseTransform: response => response as { value: Site[] }
     });
 }

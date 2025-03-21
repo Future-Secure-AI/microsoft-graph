@@ -23,5 +23,6 @@ export default function listDriveItems(driveRef: DriveRef, itemPath: DriveItemPa
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/root${pathSegment}/children`, driveRef),
         headers: {},
         body: null,
+        responseTransform: response => response as ListDriveItemResponse
     });
 }
