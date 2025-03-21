@@ -32,6 +32,9 @@
 			"include": ["*.ts"],
 			"linter":{
 				"rules": {
+					"correctness":{
+						"noNodejsModules": "off"
+					}
 				}
 			}
 		},

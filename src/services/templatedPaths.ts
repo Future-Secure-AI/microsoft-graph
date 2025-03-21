@@ -7,7 +7,7 @@ const argmentPattern = /\{([a-z-]+)\}/g;
 /** Create a GraphAPI path based on a given template and arguments. Escaping is automatically handeld */
 export function generatePath(template: string, args: Record<string, string>): GraphPath {
     if (!template.startsWith("/")) {
-        throw new BadTemplateError("Path template must start with a slash.");
+        throw new BadTemplateError(`Path template '${template}' must start with a slash.`);
     }
     if (template.includes("\n")) {
         throw new BadTemplateError("Path template must not contain newlines.");

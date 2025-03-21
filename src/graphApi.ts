@@ -8,9 +8,9 @@ import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { httpProxy } from './services/configuration.ts';
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 
-const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
-const endpoint = "https://graph.microsoft.com/v1.0";
-const batchEndpoint = `${endpoint}/$batch`;
+export const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
+export const endpoint = "https://graph.microsoft.com/v1.0";
+export const batchEndpoint = `${endpoint}/$batch`;
 const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
 type ReplyPayload = {
@@ -31,7 +31,7 @@ type ExecutionResults<T> = {
     [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
 
-const agent = httpProxy ? new HttpProxyAgent(httpProxy) : undefined;
+export const agent = httpProxy ? new HttpProxyAgent(httpProxy) : undefined;
 
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
     // The returned operation can be called directly by simply `await`ing it, or it can be passed to the `parallel` or `sequential` functions to be executed in a batch.

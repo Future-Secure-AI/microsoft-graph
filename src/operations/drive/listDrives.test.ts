@@ -6,7 +6,7 @@ describe("listDrives", () => {
     it("can listDrives", async () => {
         const drives = await listDrives(defaultSiteRef);
 
-        console.debug("Drives:", drives.value.map((drive) => [drive.id, drive.name]));
-        expect(drives.value.length).toBeGreaterThan(0);
+        console.debug("Drives:", drives.map((drive) => [drive.id, drive.name]));
+        expect(drives.length).toBeGreaterThan(0);
     });
 });

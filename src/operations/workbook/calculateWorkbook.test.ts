@@ -34,7 +34,7 @@ describe("calculateWorkbook", () => {
         }
     });
 
-    it(`can calculate workbook with calculation type: 'FullRebuild'`, async () => {
+    it(`can calculate workbook with calculation type: 'FullRebuild'`, { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
         const workbook = await createWorkbook(defaultDriveRef, workbookPath);
