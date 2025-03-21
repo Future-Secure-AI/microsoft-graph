@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
@@ -14,20 +14,20 @@ describe("listWorkbookTables", () => {
     it("can list tables in an existing worksheet", { timeout: 10000 }, async () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
+        const driveRef = getDefaultDriveRef();
+        const workbook = await createWorkbook(driveRef, workbookPath);
 
         try {
-            const worksheet = await createWorkbookWorksheet(workbookRef);
+            const worksheet = await createWorkbookWorksheet(workbook);
 
             const rangeRef = workbookWorksheetRangeRef(worksheet, "A1:D4");
             await createWorkbookTable(rangeRef, true);
-            await calculateWorkbook(workbookRef);
+            await calculateWorkbook(workbook);
 
             const tables = await listTables(worksheet);
-            expect(tables.value.length).toBeGreaterThan(0);
+            expect(tables.length).toBeGreaterThan(0);
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 });

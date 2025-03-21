@@ -1,11 +1,13 @@
 import { operation } from "../../graphApi.ts";
 import type { WorkbookTable } from "../../models/Dto.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { WorkbookRef } from "../../models/WorkbookRef.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
+import { workbookTableRef } from "../../services/workbookTable.ts";
 
 /** Retrieve a list of tables in a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-list-tables */
-export default function listWorkbookTables(worksheetRef: WorkbookWorksheetRef): GraphOperation<{ value: WorkbookTable[] }> {
+export default function listWorkbookTables(worksheetRef: WorkbookWorksheetRef): GraphOperation<(WorkbookTable & WorkbookRef)[]> {
     return operation({
         method: "GET",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables", worksheetRef),
@@ -13,6 +15,19 @@ export default function listWorkbookTables(worksheetRef: WorkbookWorksheetRef): 
             "workbook-session-id": worksheetRef.sessionId,
         },
         body: null,
-        responseTransform: response => response as { value: WorkbookTable[] }
+        responseTransform: response => {
+            const list = response as { value: WorkbookTable[]; };
+
+            const tables = list.value.map(table => {
+                const tableRef = workbookTableRef(worksheetRef, table.id);
+
+                return {
+                    ...table,
+                    ...tableRef,
+                }
+            });
+
+            return tables;
+        }
     });
 }
