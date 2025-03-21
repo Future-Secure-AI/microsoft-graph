@@ -1,5 +1,3 @@
-// TODO: Inject logging here
-
 export function debug(msg: unknown): void {
     // biome-ignore lint/suspicious/noConsole: <explanation>
     console.debug(`\x1b[90m[DBG] ${msg}\x1b[0m`);

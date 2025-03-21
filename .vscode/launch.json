@@ -6,7 +6,7 @@
       "request": "launch",
       "name": "Run",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["tsx", "src/run.ts"],
+      "runtimeArgs": ["tsx", "src/demo.ts"],
       "cwd": "${workspaceFolder}",
       "skipFiles": ["<node_internals>/**"],
       "autoAttachChildProcesses": true
