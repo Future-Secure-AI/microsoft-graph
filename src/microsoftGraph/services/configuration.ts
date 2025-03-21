@@ -25,6 +25,7 @@ export const azureClientSecret = tryGetEnvironmentVariable("AZURE_CLIENT_SECRET"
 
 export const defaultSiteId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
 export const defaultDriveId = tryGetEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
+export const httpProxy = tryGetEnvironmentVariable("HTTP_PROXY", "");
 
 export const defaultSiteRef = {
 	siteId: defaultSiteId,

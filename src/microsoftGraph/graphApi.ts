@@ -1,8 +1,11 @@
+import { HttpProxyAgent } from 'http-proxy-agent';
+import fetch from 'node-fetch';
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
 import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
 import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
+import { httpProxy } from './services/configuration.ts';
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 
 const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
@@ -28,6 +31,8 @@ type ExecutionResults<T> = {
     [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
 
+const agent = httpProxy ? new HttpProxyAgent(httpProxy) : undefined;
+
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
     // The returned operation can be called directly by simply `await`ing it, or it can be passed to the `parallel` or `sequential` functions to be executed in a batch.
 
@@ -47,7 +52,8 @@ async function single<T>(definition: GraphOperationDefinition<T>): Promise<T> { 
     const reply = await fetch(`${endpoint}${definition.path}`, {
         method: definition.method,
         headers: requestHeaders,
-        body: definition.body === null ? null : JSON.stringify(definition.body)
+        body: definition.body === null ? null : JSON.stringify(definition.body),
+        agent
     });
 
     const replyContentType = reply.headers.get('content-type')?.toLowerCase();
@@ -112,7 +118,8 @@ async function composeRequestPayload<T extends GraphOperationDefinitionWithDeps<
             "accept": "application/json",
             "content-type": "application/json"
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify(requestBody),
+        agent
     };
 
     return requestPayload;
@@ -126,7 +133,7 @@ function normalizeBody(contentType: string | undefined, body: unknown): unknown 
     return body;
 }
 
-function normaliseHeaders(input: Record<string, string>): Record<string, string> {
+function normalizeHeaders(input: Record<string, string>): Record<string, string> {
     const headers: Record<string, string> = {};
     for (const key in input) {
         if (input[key]) {
@@ -141,7 +148,7 @@ function parseResponses<T extends GraphOperationDefinitionWithDeps<unknown>[]>(r
 
     for (const response of replyPayload.responses) {
         const index = operationIdToIndex(response.id);
-        const headers = normaliseHeaders(response.headers);
+        const headers = normalizeHeaders(response.headers);
         const contentType = headers["content-type"];
         const body = normalizeBody(contentType, response.body);
 

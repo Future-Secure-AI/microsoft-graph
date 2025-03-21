@@ -24,6 +24,8 @@
 	},
 	"dependencies": {
 		"@azure/identity": "^4.7.0",
+		"http-proxy-agent": "^7.0.2",
+		"node-fetch": "^3.3.2",
 		"tsx": "^4.19.3"
 	}
 }
