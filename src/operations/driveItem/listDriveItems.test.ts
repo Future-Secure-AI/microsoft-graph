@@ -10,7 +10,7 @@ describe("listDriveItems", () => {
     it("can list items in the root folder", { timeout: 10000 }, async () => {
         const items = await listDriveItems(getDefaultDriveRef(), rootDriveItemPath);
 
-        expect(items.value).toBeInstanceOf(Array);
+        expect(items).toBeInstanceOf(Array);
     });
 
     it("can list items in a folder", async () => {
@@ -21,7 +21,7 @@ describe("listDriveItems", () => {
 
         const items = await listDriveItems(getDefaultDriveRef(), folderPath);
 
-        expect(items.value).toBeInstanceOf(Array);
+        expect(items).toBeInstanceOf(Array);
 
         await deleteDriveItemWithRetry(folderRef);
     });
