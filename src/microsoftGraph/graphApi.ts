@@ -118,7 +118,7 @@ async function composeRequestPayload<T extends GraphOperationDefinitionWithDeps<
     return requestPayload;
 }
 
-function normaliseBody(contentType: string | undefined, body: unknown) {
+function normalizeBody(contentType: string | undefined, body: unknown): unknown {
     if (contentType?.startsWith("application/json") && typeof body === "string") {
         return JSON.parse(atob(body));
     }
@@ -143,11 +143,15 @@ function parseResponses<T extends GraphOperationDefinitionWithDeps<unknown>[]>(r
         const index = operationIdToIndex(response.id);
         const headers = normaliseHeaders(response.headers);
         const contentType = headers["content-type"];
-        const body = normaliseBody(contentType, response.body);
+        const body = normalizeBody(contentType, response.body);
 
-        RequestFailedError.throwIfNotOkOperation(response.status, index, ops[index], body);
+        const op = ops[index];
+        if (!op) {
+            throw new Error("Op not found. Should be impossible");
+        }
+        RequestFailedError.throwIfNotOkOperation(response.status, index, op, body);
 
-        results[index] = body;
+        results[index] = op.responseTransform(body);
     }
 
     return results as ExecutionResults<T>; // TODO: Is there a neater way to massage the types correctly? This is functionally correct, but I do want to avoid using `unknown` here if possible.
