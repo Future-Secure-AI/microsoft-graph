@@ -29,14 +29,14 @@
 	},
 	"overrides": [
 		{
-			"include": ["src/*.ts"],
+			"include": ["*.ts"],
 			"linter":{
 				"rules": {
 				}
 			}
 		},
 		{
-			"include": ["src/*.test.ts"],
+			"include": ["*.test.ts"],
 			"linter":{
 				"rules": {
 					"suspicious":{
