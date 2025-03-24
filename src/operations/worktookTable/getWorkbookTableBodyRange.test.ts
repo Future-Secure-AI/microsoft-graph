@@ -7,6 +7,7 @@ import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
+import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
 import createWorkbookTable from "./createWorkbookTable.ts";
 import getWorkbookTableBodyRange from "./getWorkbookTableBodyRange.ts";
@@ -23,8 +24,23 @@ describe("getWorkbookTableBodyRange", () => {
             const rangeRef = workbookWorksheetRangeRef(worksheet, "A1:D4");
             const table = await createWorkbookTable(rangeRef, true);
 
+            await updateWorkbookRange(rangeRef, {
+                values: [
+                    ["Header1", "Header2", "Header3", "Header4"],
+                    ["Value1", "Value2", "Value3", "Value4"],
+                    ["Value5", "Value6", "Value7", "Value8"],
+                    ["Value9", "Value10", "Value11", "Value12"]
+                ]
+            });
+            await calculateWorkbook(workbook);
+
             const [_, dataBodyRange] = await sequential(calculateWorkbook(workbook), getWorkbookTableBodyRange(table));
             expect(dataBodyRange.address).toBeTruthy();
+            expect(dataBodyRange.values).toEqual([
+                ["Value1", "Value2", "Value3", "Value4"],
+                ["Value5", "Value6", "Value7", "Value8"],
+                ["Value9", "Value10", "Value11", "Value12"]
+            ]);
         } finally {
             await deleteDriveItemWithRetry(workbook);
         }
