@@ -1,9 +1,9 @@
 import type { WorkbookTable } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookTableId } from "../../models/WorkbookTableId.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
-import type { WorkbookRangeRef } from "../../models/WorkbookWorksheetRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { workbookTableRef } from "../../services/workbookTable.ts";
 

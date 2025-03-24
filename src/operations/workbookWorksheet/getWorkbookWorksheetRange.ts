@@ -1,7 +1,7 @@
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookRangeRef } from "../../models/WorkbookWorksheetRangeRef.ts";
+import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Fetch a range, including values and formatting. @see https://learn.microsoft.com/en-us/graph/api/range-get */

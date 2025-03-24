@@ -5,5 +5,10 @@ export default defineConfig({
         environment: "node",
         include: ["src/**/*.test.ts"],
         watch: true,
+        poolOptions: {
+            threads: {
+                maxThreads: 2 // Avoid API throttling
+            },
+        },
     },
 }); 

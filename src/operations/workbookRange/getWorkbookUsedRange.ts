@@ -2,7 +2,7 @@ import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeAddressUnderlying } from "../../models/WorkbookRangeAddress.ts";
-import type { WorkbookRangeRef } from "../../models/WorkbookWorksheetRangeRef.ts";
+import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { workbookRangeRef } from "../../services/workbookRange.ts";

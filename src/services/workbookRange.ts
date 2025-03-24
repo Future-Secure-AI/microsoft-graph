@@ -1,6 +1,6 @@
 
 import type { WorkbookRangeAddress, WorkbookRangeAddressUnderlying } from "../models/WorkbookRangeAddress.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookWorksheetRangeRef.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
 
 export function workbookRangeRef(worksheetRef: WorkbookWorksheetRef, address: WorkbookRangeAddressUnderlying): WorkbookRangeRef {

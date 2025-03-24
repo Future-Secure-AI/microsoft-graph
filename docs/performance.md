@@ -8,7 +8,7 @@ If you have performing multiple operations on a workbook, first open a session u
 If you have a number of operations that can be performed at the same time, use `await parallel(operation1(), operation2(), ...)`. This allows you to send up to 20 operations to GraphAPI in a single request and have them be performed in parallel. 
 
 ## Parallel batch
-Sometimes the order of operations are important. To facilitate this variant of a batch operation you can use `await sequntial(operation1(), operation2(), ...)`.
+Sometimes the order of operations are important. To facilitate this variant of a batch operation you can use `await sequential(operation1(), operation2(), ...)`.
 
 ```typescript
  const [_, __, ___, clearedRange] = await sequential(

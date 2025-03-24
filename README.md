@@ -8,21 +8,21 @@ First up, make sure the environment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_I
 
 ### List drives
 ```typescript
-for (const drive of await listDrives(defaultDriveRef)) {
+for (const drive of await listDrives()) {
 	console.log(drive.name);
 }
 ```
 
 ### List files
 ```typescript
-for (const item of await listDriveItemRefs(defaultDriveRef, folderPath)) {
+for (const item of await listDriveItems()) {
 	console.log(item.name);
 }
 ```
 
 ### Getting a used range
 ```typescript
-const cells = await getWorkbookUsedRange({
+const range = await getWorkbookUsedRange({
     siteId: args.siteId,
     driveId: args.driveId,
     itemId: args.itemId,
@@ -32,7 +32,7 @@ const cells = await getWorkbookUsedRange({
 
 ### Updating a range
 ```typescript
-await updateWorkbookRange(rangeRef, {
+await updateWorkbookRange(range, {
 	values: [
 		[1, 2],
 		[3, 4]

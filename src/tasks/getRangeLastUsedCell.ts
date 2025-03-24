@@ -1,5 +1,5 @@
 import ProtocolError from "../errors/ProtocolError.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookWorksheetRangeRef.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookWorksheet/getWorkbookWorksheetRange.ts";
 import { indexesToAddress as cellIndexesToAddress } from "../services/address.ts";
 

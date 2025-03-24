@@ -3,15 +3,17 @@ import deleteDriveItem from "../operations/driveItem/deleteDriveItem.ts";
 import { sleep } from "../services/sleep.ts";
 
 export default async function deleteDriveItemWithRetry(driveItemRef: DriveItemRef): Promise<void> {
-    try {
-        await deleteDriveItem(driveItemRef);
-    } catch (_) {
+    const retryDelays = [1000, 2000, 4000];
+
+    for (const delay of retryDelays) {
         try {
-            await sleep(1000);
             await deleteDriveItem(driveItemRef);
+            return;
         } catch (_) {
-            await sleep(2000);
-            await deleteDriveItem(driveItemRef);
+            await sleep(delay);
         }
     }
+
+    // Final attempt without delay
+    await deleteDriveItem(driveItemRef);
 }
