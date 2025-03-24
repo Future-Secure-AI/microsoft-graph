@@ -1,4 +1,6 @@
-export function generateTempFileName(extension: string | null = "tmp"): string {
+import type { DriveItemPath } from "../models/DriveItemPath.ts";
+
+export function generateTempFileName(extension: string | null = "tmp"): DriveItemPath {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     const charactersLength = characters.length;
     const length = 16;
@@ -7,5 +9,5 @@ export function generateTempFileName(extension: string | null = "tmp"): string {
         const randomIndex = Math.floor(Math.random() * charactersLength);
         result += characters[randomIndex];
     }
-    return `~${result}.${extension}`;
+    return `~${result}.${extension}` as DriveItemPath;
 }
