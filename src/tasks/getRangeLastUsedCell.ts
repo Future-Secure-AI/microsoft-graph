@@ -5,6 +5,7 @@ import { indexesToAddress as cellIndexesToAddress } from "../services/address.ts
 
 export default async function getRangeLastUsedCell(rangeRef: WorkbookWorksheetRangeRef): Promise<{ value: string | number | boolean | null, address: string, rowIndex: number, columnIndex: number } | null> {
     // TODO: Consider adding chunking if the range is too large
+    // TODO: Reduce cells returned by using "used range"?
 
     const range = await getWorkbookWorksheetRange(rangeRef);
 

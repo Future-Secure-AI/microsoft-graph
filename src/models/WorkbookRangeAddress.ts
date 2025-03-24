@@ -1,10 +1,10 @@
 type Column = `${Uppercase<string>}`;
 type Row = `${number}`;
 
-type SingleAddress = `${Column}${Row}`;
-type BoxAddress = `${SingleAddress}:${SingleAddress}`;
+type Cell = `${Column}${Row}`;
+type Box = `${Cell}:${Cell}` | `${Column}:${Column}` | `${Row}:${Row}`;
 
-export type WorkbookRangeAddressUnderlying = SingleAddress | BoxAddress;
+export type WorkbookRangeAddressUnderlying = Cell | Box;
 
 export type WorkbookRangeAddress = WorkbookRangeAddressUnderlying & {
     __brand: "WorkbookRangeAddress";

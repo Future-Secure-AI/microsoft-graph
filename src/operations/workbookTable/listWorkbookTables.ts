@@ -1,5 +1,5 @@
 import { operation } from "../../graphApi.ts";
-import type { WorkbookTable } from "../../models/Dto.ts";
+import type { WorkbookTable } from "../../models/Dto.js";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRef } from "../../models/WorkbookRef.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
