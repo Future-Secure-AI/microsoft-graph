@@ -1,4 +1,4 @@
-import type { WorkbookRangeView } from "../models/Dto.js";
+import type { WorkbookRangeView } from "@microsoft/microsoft-graph-types";
 import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
 import getWorkbookVisibleRange from "../operations/workbookRange/getWorkbookVisibleRange.ts";
 import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTableBodyRange.ts";

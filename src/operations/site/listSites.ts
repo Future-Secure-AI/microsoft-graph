@@ -1,6 +1,7 @@
+import type { Site } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
-import type { Site } from "../../models/Dto.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { SiteId } from "../../models/SiteId.ts";
 import type { SiteRef } from "../../models/SiteRef.ts";
 import { siteRef } from "../../services/site.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
@@ -16,11 +17,11 @@ export default function listSites(): GraphOperation<(Site & SiteRef)[]> {
             const list = response as { value: Site[]; };
 
             const sites = list.value.map(site => {
-                const a = siteRef(site.id);
+                const ref = siteRef(site.id as SiteId);
 
                 return {
                     ...site,
-                    ...a,
+                    ...ref,
                 }
             });
 

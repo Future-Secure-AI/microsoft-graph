@@ -6,8 +6,8 @@ import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
+import { workbookRangeRef } from "../services/workbookRange.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../services/workbookWorksheet.ts";
-import { workbookWorksheetRangeRef } from "../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import getRangeLastUsedCell from "./getRangeLastUsedCell.ts";
 
@@ -18,7 +18,7 @@ describe("getRangeLastUsedCell", () => {
         const driveRef = getDefaultDriveRef();
         const workbook = await createWorkbook(driveRef, workbookPath);
         const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:B2");
+        const rangeRef = workbookRangeRef(worksheetRef, "A1:B2");
 
         try {
             await sequential(
@@ -49,7 +49,7 @@ describe("getRangeLastUsedCell", () => {
         const driveRef = getDefaultDriveRef();
         const workbook = await createWorkbook(driveRef, workbookPath);
         const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:B2");
+        const rangeRef = workbookRangeRef(worksheetRef, "A1:B2");
 
         try {
             await sequential(
@@ -80,7 +80,7 @@ describe("getRangeLastUsedCell", () => {
         const driveRef = getDefaultDriveRef();
         const workbook = await createWorkbook(driveRef, workbookPath);
         const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:B2");
+        const rangeRef = workbookRangeRef(worksheetRef, "A1:B2");
 
         try {
             await sequential(

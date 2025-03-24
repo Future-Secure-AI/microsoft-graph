@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
+import { workbookRangeRef } from "../../services/workbookRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
@@ -20,7 +20,7 @@ describe("listWorkbookTables", () => {
         try {
             const worksheet = await createWorkbookWorksheet(workbook);
 
-            const rangeRef = workbookWorksheetRangeRef(worksheet, "A1:D4");
+            const rangeRef = workbookRangeRef(worksheet, "A1:D4");
             await createWorkbookTable(rangeRef, true);
             await calculateWorkbook(workbook);
 

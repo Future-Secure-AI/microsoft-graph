@@ -4,8 +4,8 @@ import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts"
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { workbookRangeRef } from "../../services/workbookRange.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
@@ -23,7 +23,7 @@ describe("getWorkbookRangeVisible", () => {
         const workbook = await createWorkbook(driveRef, workbookPath);
         const workbookRef = driveItemRef(driveRef, workbook.id);
         const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
+        const rangeRef = workbookRangeRef(worksheetRef, address);
 
         try {
             await updateWorkbookRange(rangeRef, { values: values });
@@ -46,7 +46,7 @@ describe("getWorkbookRangeVisible", () => {
         const workbook = await createWorkbook(driveRef, workbookPath);
         const workbookRef = driveItemRef(driveRef, workbook.id);
         const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
+        const rangeRef = workbookRangeRef(worksheetRef, address);
 
         try {
             const [_, __, visibleView] = await sequential(
@@ -68,7 +68,7 @@ describe("getWorkbookRangeVisible", () => {
         const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 
         try {
-            const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:C3");
+            const rangeRef = workbookRangeRef(worksheetRef, "A1:C3");
             await updateWorkbookRange(rangeRef, {
                 values: [
                     [1, 2, 3],
@@ -77,15 +77,13 @@ describe("getWorkbookRangeVisible", () => {
                 ]
             });
 
-            const hiddenRange = workbookWorksheetRangeRef(worksheetRef, "B:B");
+            const hiddenRange = workbookRangeRef(worksheetRef, "B:B");
 
-            const [_, __, visibleView] = await sequential(
-                updateWorkbookRange(hiddenRange, {
-                    columnHidden: true
-                }),
-                calculateWorkbook(workbook),
-                getWorkbookVisibleRange(rangeRef)
-            );
+            await updateWorkbookRange(hiddenRange, {
+                columnHidden: true
+            });
+            await calculateWorkbook(workbook);
+            const visibleView = await getWorkbookVisibleRange(rangeRef);
             expect(visibleView.values).toEqual([
                 [1, 3],
                 [4, 6],
@@ -105,7 +103,7 @@ describe("getWorkbookRangeVisible", () => {
         const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 
         try {
-            const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:C3");
+            const rangeRef = workbookRangeRef(worksheetRef, "A1:C3");
             await updateWorkbookRange(rangeRef, {
                 values: [
                     [1, 2, 3],
@@ -114,7 +112,7 @@ describe("getWorkbookRangeVisible", () => {
                 ]
             });
 
-            const hiddenRange = workbookWorksheetRangeRef(worksheetRef, "2:2");
+            const hiddenRange = workbookRangeRef(worksheetRef, "2:2");
 
             const [_, __, visibleView] = await sequential(
                 updateWorkbookRange(hiddenRange, {

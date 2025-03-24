@@ -1,11 +1,11 @@
 
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookWorksheetRangeRef } from "../../models/WorkbookWorksheetRangeRef.ts";
+import type { WorkbookRangeRef } from "../../models/WorkbookWorksheetRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Delete a range. @see https://learn.microsoft.com/en-us/graph/api/range-clear */
-export default function deleteWorkbookRange(rangeRef: WorkbookWorksheetRangeRef, shift: "Up" | "Left"): GraphOperation<void> {
+export default function deleteWorkbookRange(rangeRef: WorkbookRangeRef, shift: "Up" | "Left"): GraphOperation<void> {
     return operation({
         method: "POST",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')/delete", rangeRef),

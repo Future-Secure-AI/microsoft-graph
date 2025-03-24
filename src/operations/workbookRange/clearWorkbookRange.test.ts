@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 import { sequential } from "../../graphApi.ts";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { workbookRangeRef } from "../../services/workbookRange.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
@@ -23,7 +23,7 @@ describe("clearWorkbookRange", () => {
         const driveRef = getDefaultDriveRef();
         const workbook = await createWorkbook(driveRef, workbookPath);
         const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
+        const rangeRef = workbookRangeRef(worksheetRef, address);
 
         try {
             await updateWorkbookRange(rangeRef, {
@@ -48,9 +48,8 @@ describe("clearWorkbookRange", () => {
         const workbookPath = driveItemPath(workbookName);
         const driveRef = getDefaultDriveRef();
         const workbook = await createWorkbook(driveRef, workbookPath);
-        const workbookRef = driveItemRef(driveRef, workbook.id);
-        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
+        const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+        const rangeRef = workbookRangeRef(worksheetRef, address);
 
         try {
             const [_, __, ___, clearedRange] = await sequential(
@@ -58,13 +57,13 @@ describe("clearWorkbookRange", () => {
                     values: values
                 }),
                 clearWorkbookRange(rangeRef),
-                calculateWorkbook(workbookRef),
+                calculateWorkbook(workbook),
                 getWorkbookWorksheetRange(rangeRef)
             );
 
             expect(clearedRange.values).toEqual([["", ""], ["", ""]]);
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 });

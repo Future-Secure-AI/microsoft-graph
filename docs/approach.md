@@ -3,5 +3,5 @@ Why not just use the default SDK for this? Well - there isn't really one. Sure, 
 individual methods we can call. And there's also [`msgraph-typescript-typings`](https://github.com/microsoftgraph/msgraph-typescript-typings) which defines 
 the models, however nothing appears to exist to pull these basic concepts together into a SDK.
 
-This project takes `msgraph-typescript-typings` DTOs, injects strongly typed IDs in them and adds a simple (hopefully elegant) layer that allows individual operations to be added.
+This project implements `msgraph-typescript-typings` DTOs without using `@microsoft/microsoft-graph-client` as it added negligible value.
 

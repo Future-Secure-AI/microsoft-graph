@@ -60,7 +60,8 @@ export function driveItemRef(driveRef: DriveRef, itemId: DriveItemId | undefined
     }
 
     return {
-        ...driveRef,
+        siteId: driveRef.siteId,
+        driveId: driveRef.driveId,
         itemId
     };
 }

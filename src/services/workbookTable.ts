@@ -8,7 +8,11 @@ export function workbookTableRef(worksheetRef: WorkbookWorksheetRef, tableId: Wo
         throw new Error("TableId is missing");
     }
     return {
-        ...worksheetRef,
+        siteId: worksheetRef.siteId,
+        driveId: worksheetRef.driveId,
+        itemId: worksheetRef.itemId,
+        worksheetId: worksheetRef.worksheetId,
+        sessionId: worksheetRef.sessionId,
         tableId: tableId
     };
 }

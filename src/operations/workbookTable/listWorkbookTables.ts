@@ -1,7 +1,8 @@
+import type { WorkbookTable } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
-import type { WorkbookTable } from "../../models/Dto.js";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRef } from "../../models/WorkbookRef.ts";
+import type { WorkbookTableId } from "../../models/WorkbookTableId.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { workbookTableRef } from "../../services/workbookTable.ts";
@@ -19,7 +20,7 @@ export default function listWorkbookTables(worksheetRef: WorkbookWorksheetRef): 
             const list = response as { value: WorkbookTable[]; };
 
             const tables = list.value.map(table => {
-                const tableRef = workbookTableRef(worksheetRef, table.id);
+                const tableRef = workbookTableRef(worksheetRef, table.id as WorkbookTableId);
 
                 return {
                     ...table,

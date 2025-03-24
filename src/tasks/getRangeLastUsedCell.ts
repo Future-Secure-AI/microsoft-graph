@@ -1,9 +1,9 @@
 import ProtocolError from "../errors/ProtocolError.ts";
-import type { WorkbookWorksheetRangeRef } from "../models/WorkbookWorksheetRangeRef.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookWorksheetRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookWorksheet/getWorkbookWorksheetRange.ts";
 import { indexesToAddress as cellIndexesToAddress } from "../services/address.ts";
 
-export default async function getRangeLastUsedCell(rangeRef: WorkbookWorksheetRangeRef): Promise<{ value: string | number | boolean | null, address: string, rowIndex: number, columnIndex: number } | null> {
+export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): Promise<{ value: string | number | boolean | null, address: string, rowIndex: number, columnIndex: number } | null> {
     // TODO: Consider adding chunking if the range is too large
     // TODO: Reduce cells returned by using "used range"?
 

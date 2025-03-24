@@ -6,8 +6,8 @@ import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath, driveItemRef } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
+import { workbookRangeRef } from "../services/workbookRange.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../services/workbookWorksheet.ts";
-import { workbookWorksheetRangeRef } from "../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import setColumnHidden from "./setColumnHidden.ts";
 
@@ -21,7 +21,7 @@ describe("setColumnHidden", () => {
         const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
 
         try {
-            const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:C3");
+            const rangeRef = workbookRangeRef(worksheetRef, "A1:C3");
             await updateWorkbookRange(rangeRef, {
                 values: [
                     [1, 2, 3],
@@ -30,7 +30,7 @@ describe("setColumnHidden", () => {
                 ]
             });
 
-            const hiddenRange = workbookWorksheetRangeRef(worksheetRef, "B:B");
+            const hiddenRange = workbookRangeRef(worksheetRef, "B:B");
             await setColumnHidden(hiddenRange, true);
             await calculateWorkbook(workbookRef);
 

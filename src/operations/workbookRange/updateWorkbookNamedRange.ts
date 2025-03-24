@@ -1,5 +1,5 @@
+import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
-import type { WorkbookRange } from "../../models/Dto.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookNamedRangeRef } from "../../models/WorkbookNamedRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";

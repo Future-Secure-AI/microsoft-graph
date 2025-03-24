@@ -1,8 +1,9 @@
 
+import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
+import type { DriveItemId } from "../../models/DriveItemId.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
-import type { DriveItem } from "../../models/Dto.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import { driveItemRef } from "../../services/driveItem.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
@@ -24,7 +25,7 @@ export default function createFolder(parentRef: DriveRef | DriveItemRef, folderN
         },
         responseTransform: response => {
             const item = response as DriveItem;
-            const itemRef = driveItemRef(parentRef, item.id);
+            const itemRef = driveItemRef(parentRef, item.id as DriveItemId);
 
             return {
                 ...item,

@@ -1,5 +1,5 @@
+import type { WorkbookTableColumn } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
-import type { WorkbookTableColumn } from "../../models/Dto.js";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";

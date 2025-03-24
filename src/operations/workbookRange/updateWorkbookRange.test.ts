@@ -2,10 +2,10 @@ import { describe, expect, it } from "vitest";
 import { sequential } from "../../graphApi.ts";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { workbookRangeRef } from "../../services/workbookRange.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
@@ -19,21 +19,21 @@ describe("updateWorkbookRange", () => {
 
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
-        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
+        const driveRef = getDefaultDriveRef();
+        const workbook = await createWorkbook(driveRef, workbookPath);
+        const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+        const rangeRef = workbookRangeRef(worksheetRef, address);
 
         try {
             await updateWorkbookRange(rangeRef, {
                 values: values
             });
-            await calculateWorkbook(workbookRef);
+            await calculateWorkbook(workbook);
 
             const updatedRange = await getWorkbookWorksheetRange(rangeRef);
             expect(updatedRange.values).toEqual(values);
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 
@@ -43,22 +43,22 @@ describe("updateWorkbookRange", () => {
 
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const workbookRef = driveItemRef(getDefaultDriveRef(), workbook.id);
-        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
+        const driveRef = getDefaultDriveRef();
+        const workbook = await createWorkbook(driveRef, workbookPath);
+        const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+        const rangeRef = workbookRangeRef(worksheetRef, address);
 
         try {
             const [_, __, updatedRange] = await sequential(
                 updateWorkbookRange(rangeRef, {
                     values: values
                 }),
-                calculateWorkbook(workbookRef),
+                calculateWorkbook(workbook),
                 getWorkbookWorksheetRange(rangeRef)
             );
             expect(updatedRange.values).toEqual(values);
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 });

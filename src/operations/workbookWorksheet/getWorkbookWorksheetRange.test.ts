@@ -3,8 +3,8 @@ import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts"
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { workbookRangeRef } from "../../services/workbookRange.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
@@ -19,7 +19,7 @@ describe("getWorkbookWorksheetRange", () => {
         const driveRef = getDefaultDriveRef();
         const workbook = await createWorkbook(driveRef, workbookPath);
         const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-        const rangeRef = workbookWorksheetRangeRef(worksheetRef, address);
+        const rangeRef = workbookRangeRef(worksheetRef, address);
 
         try {
             const range = await updateWorkbookRange(rangeRef, {

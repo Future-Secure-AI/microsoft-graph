@@ -46,7 +46,7 @@ describe("listWorkbookWorksheets", () => {
                 listWorkbookWorksheets(workbook)
             );
 
-            const worksheetIds = worksheets.map(ws => ws.worksheetId);
+            const worksheetIds = worksheets.map(worksheet => worksheet.worksheetId);
 
             expect(worksheetIds).toContain(worksheet1.worksheetId);
             expect(worksheetIds).toContain(worksheet2.worksheetId);

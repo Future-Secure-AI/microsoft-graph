@@ -1,8 +1,9 @@
+import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import { operation } from "../../graphApi.ts";
+import type { DriveItemId } from "../../models/DriveItemId.ts";
 import type { DriveItemPath } from "../../models/DriveItemPath.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
-import type { DriveItem } from "../../models/Dto.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRef } from "../../models/WorkbookRef.ts";
 import { driveItemRef, workbookFileExtension } from "../../services/driveItem.ts";
@@ -24,7 +25,7 @@ export default function createWorkbook(driveRef: DriveRef, itemPath: DriveItemPa
         responseTransform: response => {
             const driveItem = response as DriveItem;
 
-            const itemRef = driveItemRef(driveRef, driveItem.id);
+            const itemRef = driveItemRef(driveRef, driveItem.id as DriveItemId);
 
             return {
                 ...driveItem,

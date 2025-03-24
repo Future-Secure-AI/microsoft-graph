@@ -11,7 +11,7 @@ export function driveRef(siteRef: SiteRef, driveId: DriveId | undefined): DriveR
     }
 
     return {
-        ...siteRef,
+        siteId: siteRef.siteId,
         driveId,
     };
 }

@@ -17,18 +17,21 @@ describe("createFolder", () => {
 
     it("can create sub-folder", { timeout: 10000 }, async () => {
         const driveRef = getDefaultDriveRef();
-        const topFolderName = generateTempFileName();
-        console.debug(`Creating top-level folder ${topFolderName}...`);
-        const topFolder = await createFolder(driveRef, topFolderName);
+        const parentFolderName = generateTempFileName("parent");
+        console.debug(`Creating parent folder ${parentFolderName}...`);
+        const parentFolder = await createFolder(driveRef, parentFolderName);
+
+        console.debug(`Created parent folder ${parentFolder.webUrl}...`);
 
         try {
-            const bottomFolderName = generateTempFileName();
-            console.debug(`Creating second-level folder ${bottomFolderName}...`);
-            const bottomFolder = await createFolder(topFolder, bottomFolderName);
+            const childFolderName = generateTempFileName("child");
+            console.debug(`Creating child folder ${childFolderName}...`);
+            const childFolder = await createFolder(parentFolder, childFolderName);
+            console.debug(`Created child folder ${childFolder.webUrl}...`);
 
-            expect(bottomFolder.webUrl?.endsWith(`/${topFolderName}/${bottomFolderName}`)).toBeTruthy();
+            expect(childFolder.webUrl).contains(`/${parentFolderName}/${childFolderName}`);
         } finally {
-            await deleteDriveItem(topFolder);
+            await deleteDriveItem(parentFolder);
         }
     });
 

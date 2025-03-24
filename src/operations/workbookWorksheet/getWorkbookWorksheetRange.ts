@@ -1,11 +1,11 @@
+import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
-import type { WorkbookRange } from "../../models/Dto.js";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookWorksheetRangeRef } from "../../models/WorkbookWorksheetRangeRef.ts";
+import type { WorkbookRangeRef } from "../../models/WorkbookWorksheetRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Fetch a range, including values and formatting. @see https://learn.microsoft.com/en-us/graph/api/range-get */
-export default function getWorkbookWorksheetRange(rangeRef: WorkbookWorksheetRangeRef): GraphOperation<WorkbookRange> {
+export default function getWorkbookWorksheetRange(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {
     return operation({
         method: "GET",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${rangeRef.address}')`, rangeRef),
@@ -13,6 +13,13 @@ export default function getWorkbookWorksheetRange(rangeRef: WorkbookWorksheetRan
             "workbook-session-id": rangeRef.sessionId,
         },
         body: null,
-        responseTransform: response => response as WorkbookRange
+        responseTransform: response => {
+            const range = response as WorkbookRange;
+
+            return {
+                ...range,
+                ...rangeRef
+            };
+        }
     });
 }

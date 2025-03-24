@@ -3,8 +3,8 @@ import type { DriveItemId } from "../../models/DriveItemId.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
+import { workbookRangeRef } from "../../services/workbookRange.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
@@ -18,7 +18,7 @@ describe("getDriveItemContent", () => {
 
         try {
             const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-            const rangeRef = workbookWorksheetRangeRef(worksheetRef, "A1:B1");
+            const rangeRef = workbookRangeRef(worksheetRef, "A1:B1");
 
             await updateWorkbookRange(rangeRef, {
                 values: [

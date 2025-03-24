@@ -7,8 +7,7 @@
 		"start": "tsx src/index.ts",
 		"watch": "tsx watch src/index.ts",
 		"check": "biome check",
-		"test": "vitest",
-		"regenerate-dtos": "tsx src/microsoftGraph/models/regenerate-dtos.ts"
+		"test": "vitest"
 	},
 	"keywords": [],
 	"author": "",
@@ -16,6 +15,7 @@
 	"type": "module",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
+		"@microsoft/microsoft-graph-types": "^2.40.0",
 		"@types/node": "^22.13.4",
 		"@types/yargs": "^17.0.33",
 		"globals": "^16.0.0",

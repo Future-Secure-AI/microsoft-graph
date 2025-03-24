@@ -11,7 +11,10 @@ export function workbookWorksheetRef(workbookRef: WorkbookRef, worksheetId: Work
     }
 
     return {
-        ...workbookRef,
+        siteId: workbookRef.siteId,
+        driveId: workbookRef.driveId,
+        itemId: workbookRef.itemId,
+        sessionId: workbookRef.sessionId,
         worksheetId
     };
 }
