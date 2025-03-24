@@ -9,7 +9,7 @@ import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
-import getWorkbookRange from "./getWorkbookRange.ts";
+import getWorkbookWorksheetRange from "../workbookWorksheet/getWorkbookWorksheetRange.ts";
 import updateWorkbookRange from "./updateWorkbookRange.ts";
 
 describe("updateWorkbookRange", () => {
@@ -30,7 +30,7 @@ describe("updateWorkbookRange", () => {
             });
             await calculateWorkbook(workbookRef);
 
-            const updatedRange = await getWorkbookRange(rangeRef);
+            const updatedRange = await getWorkbookWorksheetRange(rangeRef);
             expect(updatedRange.values).toEqual(values);
         } finally {
             await deleteDriveItemWithRetry(workbookRef);
@@ -54,7 +54,7 @@ describe("updateWorkbookRange", () => {
                     values: values
                 }),
                 calculateWorkbook(workbookRef),
-                getWorkbookRange(rangeRef)
+                getWorkbookWorksheetRange(rangeRef)
             );
             expect(updatedRange.values).toEqual(values);
         } finally {

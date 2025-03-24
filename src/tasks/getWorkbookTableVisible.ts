@@ -1,6 +1,6 @@
 import type { WorkbookTableRow } from "../models/Dto.ts";
 import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
-import getWorkbookRange from "../operations/workbookRange/getWorkbookRange.ts";
+import getWorkbookWorksheetRange from "../operations/workbookWorksheet/getWorkbookWorksheetRange.ts";
 import listWorkbookTableRows from "../operations/worktookTable/listWorkbookTableRows.ts";
 
 export default async function getWorkbookTableVisible(tableRef: WorkbookTableRef): Promise<WorkbookTableRow[]> {
@@ -9,7 +9,7 @@ export default async function getWorkbookTableVisible(tableRef: WorkbookTableRef
 
     for (const row of rows) {
         const index = row.index;
-        const rowRange = await getWorkbookRange({
+        const rowRange = await getWorkbookWorksheetRange({
             ...tableRef,
             address: `${index + 1}:${index + 1}`
         });

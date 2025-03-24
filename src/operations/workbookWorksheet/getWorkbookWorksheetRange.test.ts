@@ -7,10 +7,10 @@ import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services
 import { workbookWorksheetRangeRef } from "../../services/workbookWorksheetRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
-import updateWorkbookRange from "./updateWorkbookRange.ts";
+import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 
-describe("getWorkbookRange", () => {
-    it("can retrieve a range from an existing workbook", { timeout: 10000 }, async () => {
+describe("getWorkbookWorksheetRange", () => {
+    it("can retrieve a range from an existing worksheet", { timeout: 10000 }, async () => {
         const address = "A1:B2" as WorkbookRangeAddress;
         const values = [[1, 2], [3, 4]];
 
