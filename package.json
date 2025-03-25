@@ -1,12 +1,13 @@
 {
   "name": "microsoft-graph",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && npx tsx update-exports.ts",
     "check": "biome check",
+    "build": "npm run check && tsc && npx tsx update-exports.ts",
+    "release": "npm run build && npm publish --access public",
     "test": "vitest"
   },
   "keywords": [
