@@ -41,7 +41,7 @@ await updateWorkbookRange(range, {
 ```
 
 From here, have a look at:
-* [`/doc`](https://github.com/ProspectSafe/microsoft-graph/tree/main/doc) for more general documentation and advice.
+* [`/docs`](https://github.com/ProspectSafe/microsoft-graph/tree/main/docs) for more general documentation and advice.
 * [`/src/operations`](https://github.com/ProspectSafe/microsoft-graph/tree/main/src/operations) for other supported GraphAPI operations.
 * [`/src/tasks`](https://github.com/ProspectSafe/microsoft-graph/tree/main/src/tasks) for supported tasks that make use of multiple operations. 
 * [`/src/services`](https://github.com/ProspectSafe/microsoft-graph/tree/main/src/services) for a bunch of helpers that make life generally easier.
