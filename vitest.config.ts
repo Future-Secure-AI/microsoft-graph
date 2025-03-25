@@ -3,12 +3,18 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
     test: {
         environment: "node",
+        watch: false,
         include: ["src/**/*.test.ts"],
-        watch: true,
+        maxConcurrency: 1, // Avoid API throttling
+        retry: 2,
         poolOptions: {
             threads: {
-                maxThreads: 2 // Avoid API throttling
+                maxThreads: 1,// Avoid API throttling
             },
         },
+        sequence: {
+            concurrent: false,
+        },
+        testTimeout: 10000,
     },
 }); 
