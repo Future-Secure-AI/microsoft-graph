@@ -1,7 +1,7 @@
 {
-	"name": "learn-struct",
+	"name": "microsoft-graph",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Microsoft Graph SDK",
 	"main": "index.js",
 	"scripts": {
 		"start": "tsx src/index.ts",
