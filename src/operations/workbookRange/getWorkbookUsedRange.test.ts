@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { sequential } from "../../graphApi.ts";
 import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
-import { driveItemPath, driveItemRef } from "../../services/driveItem.ts";
+import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { workbookRangeRef } from "../../services/workbookRange.ts";
 import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
@@ -46,8 +46,7 @@ describe("getWorkbookUsedRange", { timeout: 10000 }, () => {
         const workbookPath = driveItemPath(workbookName);
         const driveRef = getDefaultDriveRef();
         const workbook = await createWorkbook(driveRef, workbookPath);
-        const workbookRef = driveItemRef(driveRef, workbook.id);
-        const worksheetRef = workbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
+        const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
         const rangeRef = workbookRangeRef(worksheetRef, address);
 
         try {
@@ -55,12 +54,12 @@ describe("getWorkbookUsedRange", { timeout: 10000 }, () => {
                 updateWorkbookRange(rangeRef, {
                     values: values
                 }),
-                calculateWorkbook(workbookRef),
+                calculateWorkbook(workbook),
                 getWorkbookUsedRange(worksheetRef)
             );
             expect(usedRange.values).toEqual(values);
         } finally {
-            await deleteDriveItemWithRetry(workbookRef);
+            await deleteDriveItemWithRetry(workbook);
         }
     });
 });

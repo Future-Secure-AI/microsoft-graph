@@ -1,17 +1,25 @@
 {
 	"name": "microsoft-graph",
 	"version": "1.0.0",
-	"description": "Microsoft Graph SDK",
+	"description": "Microsoft GraphAPI SDK for NodeJS",
 	"main": "index.js",
 	"scripts": {
-		"start": "tsx src/index.ts",
-		"watch": "tsx watch src/index.ts",
+		"build": "tsc",
 		"check": "biome check",
 		"test": "vitest"
 	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
+	"keywords": [
+		"Microsoft",
+		"GraphAPI",
+		"SDK",
+		"NodeJS"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ProspectSafe/microsoft-graph"
+	},
+	"author": "ProtectSafe",
+	"license": "CC BY-NC-SA 4.0",
 	"type": "module",
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
@@ -20,12 +28,12 @@
 		"@types/yargs": "^17.0.33",
 		"globals": "^16.0.0",
 		"typescript": "^5.7.3",
-		"vitest": "^3.0.9"
+		"vitest": "^3.0.9",
+		"tsx": "^4.19.3"
 	},
 	"dependencies": {
 		"@azure/identity": "^4.7.0",
 		"http-proxy-agent": "^7.0.2",
-		"node-fetch": "^3.3.2",
-		"tsx": "^4.19.3"
+		"node-fetch": "^3.3.2"
 	}
 }
