@@ -1,426 +1,426 @@
 {
-  "name": "microsoft-graph",
-  "version": "1.0.5",
-  "description": "Microsoft GraphAPI SDK for NodeJS",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "check": "biome check",
-    "build": "npm run check && tsc && npx tsx update-exports.ts",
-    "release": "npm run build && npm publish --access public",
-    "test": "vitest --bail=3"
-  },
-  "keywords": [
-    "Microsoft",
-    "GraphAPI",
-    "SDK",
-    "NodeJS"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ProspectSafe/microsoft-graph"
-  },
-  "author": "ProtectSafe",
-  "license": "CC BY-NC-SA 4.0",
-  "type": "module",
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@microsoft/microsoft-graph-types": "^2.40.0",
-    "@types/node": "^22.13.4",
-    "globals": "^16.0.0",
-    "tsx": "^4.19.3",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.9"
-  },
-  "dependencies": {
-    "@azure/identity": "^4.7.0",
-    "http-proxy-agent": "^7.0.2",
-    "node-fetch": "^3.3.2"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
-    "./errors/BadTemplateError": {
-      "import": "./dist/errors/BadTemplateError.js",
-      "types": "./dist/errors/BadTemplateError.d.ts"
-    },
-    "./errors/EnvironmentVariableMissingError": {
-      "import": "./dist/errors/EnvironmentVariableMissingError.js",
-      "types": "./dist/errors/EnvironmentVariableMissingError.d.ts"
-    },
-    "./errors/InvalidArgumentError": {
-      "import": "./dist/errors/InvalidArgumentError.js",
-      "types": "./dist/errors/InvalidArgumentError.d.ts"
-    },
-    "./errors/ProtocolError": {
-      "import": "./dist/errors/ProtocolError.js",
-      "types": "./dist/errors/ProtocolError.d.ts"
-    },
-    "./errors/RequestFailedError": {
-      "import": "./dist/errors/RequestFailedError.js",
-      "types": "./dist/errors/RequestFailedError.d.ts"
-    },
-    "./graphApi": {
-      "import": "./dist/graphApi.js",
-      "types": "./dist/graphApi.d.ts"
-    },
-    "./models/AccessToken": {
-      "import": "./dist/models/AccessToken.js",
-      "types": "./dist/models/AccessToken.d.ts"
-    },
-    "./models/DriveId": {
-      "import": "./dist/models/DriveId.js",
-      "types": "./dist/models/DriveId.d.ts"
-    },
-    "./models/DriveItemId": {
-      "import": "./dist/models/DriveItemId.js",
-      "types": "./dist/models/DriveItemId.d.ts"
-    },
-    "./models/DriveItemPath": {
-      "import": "./dist/models/DriveItemPath.js",
-      "types": "./dist/models/DriveItemPath.d.ts"
-    },
-    "./models/DriveItemRef": {
-      "import": "./dist/models/DriveItemRef.js",
-      "types": "./dist/models/DriveItemRef.d.ts"
-    },
-    "./models/DriveRef": {
-      "import": "./dist/models/DriveRef.js",
-      "types": "./dist/models/DriveRef.d.ts"
-    },
-    "./models/GraphOperation": {
-      "import": "./dist/models/GraphOperation.js",
-      "types": "./dist/models/GraphOperation.d.ts"
-    },
-    "./models/GraphOperationDefinition": {
-      "import": "./dist/models/GraphOperationDefinition.js",
-      "types": "./dist/models/GraphOperationDefinition.d.ts"
-    },
-    "./models/HostName": {
-      "import": "./dist/models/HostName.js",
-      "types": "./dist/models/HostName.d.ts"
-    },
-    "./models/Scope": {
-      "import": "./dist/models/Scope.js",
-      "types": "./dist/models/Scope.d.ts"
-    },
-    "./models/SiteId": {
-      "import": "./dist/models/SiteId.js",
-      "types": "./dist/models/SiteId.d.ts"
-    },
-    "./models/SiteName": {
-      "import": "./dist/models/SiteName.js",
-      "types": "./dist/models/SiteName.d.ts"
-    },
-    "./models/SiteRef": {
-      "import": "./dist/models/SiteRef.js",
-      "types": "./dist/models/SiteRef.d.ts"
-    },
-    "./models/WorkbookNamedRangeRef": {
-      "import": "./dist/models/WorkbookNamedRangeRef.js",
-      "types": "./dist/models/WorkbookNamedRangeRef.d.ts"
-    },
-    "./models/WorkbookRangeAddress": {
-      "import": "./dist/models/WorkbookRangeAddress.js",
-      "types": "./dist/models/WorkbookRangeAddress.d.ts"
-    },
-    "./models/WorkbookRangeName": {
-      "import": "./dist/models/WorkbookRangeName.js",
-      "types": "./dist/models/WorkbookRangeName.d.ts"
-    },
-    "./models/WorkbookRangeRef": {
-      "import": "./dist/models/WorkbookRangeRef.js",
-      "types": "./dist/models/WorkbookRangeRef.d.ts"
-    },
-    "./models/WorkbookRef": {
-      "import": "./dist/models/WorkbookRef.js",
-      "types": "./dist/models/WorkbookRef.d.ts"
-    },
-    "./models/WorkbookSessionId": {
-      "import": "./dist/models/WorkbookSessionId.js",
-      "types": "./dist/models/WorkbookSessionId.d.ts"
-    },
-    "./models/WorkbookTableId": {
-      "import": "./dist/models/WorkbookTableId.js",
-      "types": "./dist/models/WorkbookTableId.d.ts"
-    },
-    "./models/WorkbookTableRef": {
-      "import": "./dist/models/WorkbookTableRef.js",
-      "types": "./dist/models/WorkbookTableRef.d.ts"
-    },
-    "./models/WorkbookWorksheetId": {
-      "import": "./dist/models/WorkbookWorksheetId.js",
-      "types": "./dist/models/WorkbookWorksheetId.d.ts"
-    },
-    "./models/WorkbookWorksheetName": {
-      "import": "./dist/models/WorkbookWorksheetName.js",
-      "types": "./dist/models/WorkbookWorksheetName.d.ts"
-    },
-    "./models/WorkbookWorksheetRef": {
-      "import": "./dist/models/WorkbookWorksheetRef.js",
-      "types": "./dist/models/WorkbookWorksheetRef.d.ts"
-    },
-    "./operations/drive/createFolder": {
-      "import": "./dist/operations/drive/createFolder.js",
-      "types": "./dist/operations/drive/createFolder.d.ts"
-    },
-    "./operations/drive/listDrives": {
-      "import": "./dist/operations/drive/listDrives.js",
-      "types": "./dist/operations/drive/listDrives.d.ts"
-    },
-    "./operations/driveItem/copyDriveItem": {
-      "import": "./dist/operations/driveItem/copyDriveItem.js",
-      "types": "./dist/operations/driveItem/copyDriveItem.d.ts"
-    },
-    "./operations/driveItem/deleteDriveItem": {
-      "import": "./dist/operations/driveItem/deleteDriveItem.js",
-      "types": "./dist/operations/driveItem/deleteDriveItem.d.ts"
-    },
-    "./operations/driveItem/getDriveItem": {
-      "import": "./dist/operations/driveItem/getDriveItem.js",
-      "types": "./dist/operations/driveItem/getDriveItem.d.ts"
-    },
-    "./operations/driveItem/getDriveItemByPath": {
-      "import": "./dist/operations/driveItem/getDriveItemByPath.js",
-      "types": "./dist/operations/driveItem/getDriveItemByPath.d.ts"
-    },
-    "./operations/driveItem/getDriveItemContent": {
-      "import": "./dist/operations/driveItem/getDriveItemContent.js",
-      "types": "./dist/operations/driveItem/getDriveItemContent.d.ts"
-    },
-    "./operations/driveItem/listDriveItems": {
-      "import": "./dist/operations/driveItem/listDriveItems.js",
-      "types": "./dist/operations/driveItem/listDriveItems.d.ts"
-    },
-    "./operations/site/getSite": {
-      "import": "./dist/operations/site/getSite.js",
-      "types": "./dist/operations/site/getSite.d.ts"
-    },
-    "./operations/site/getSiteByName": {
-      "import": "./dist/operations/site/getSiteByName.js",
-      "types": "./dist/operations/site/getSiteByName.d.ts"
-    },
-    "./operations/site/listSites": {
-      "import": "./dist/operations/site/listSites.js",
-      "types": "./dist/operations/site/listSites.d.ts"
-    },
-    "./operations/site/searchSites": {
-      "import": "./dist/operations/site/searchSites.js",
-      "types": "./dist/operations/site/searchSites.d.ts"
-    },
-    "./operations/workbook/calculateWorkbook": {
-      "import": "./dist/operations/workbook/calculateWorkbook.js",
-      "types": "./dist/operations/workbook/calculateWorkbook.d.ts"
-    },
-    "./operations/workbook/createWorkbook": {
-      "import": "./dist/operations/workbook/createWorkbook.js",
-      "types": "./dist/operations/workbook/createWorkbook.d.ts"
-    },
-    "./operations/workbook/deleteWorkbook": {
-      "import": "./dist/operations/workbook/deleteWorkbook.js",
-      "types": "./dist/operations/workbook/deleteWorkbook.d.ts"
-    },
-    "./operations/workbookRange/clearWorkbookRange": {
-      "import": "./dist/operations/workbookRange/clearWorkbookRange.js",
-      "types": "./dist/operations/workbookRange/clearWorkbookRange.d.ts"
-    },
-    "./operations/workbookRange/deleteWorkbookRange": {
-      "import": "./dist/operations/workbookRange/deleteWorkbookRange.js",
-      "types": "./dist/operations/workbookRange/deleteWorkbookRange.d.ts"
-    },
-    "./operations/workbookRange/getWorkbookNamedRange": {
-      "import": "./dist/operations/workbookRange/getWorkbookNamedRange.js",
-      "types": "./dist/operations/workbookRange/getWorkbookNamedRange.d.ts"
-    },
-    "./operations/workbookRange/getWorkbookUsedRange": {
-      "import": "./dist/operations/workbookRange/getWorkbookUsedRange.js",
-      "types": "./dist/operations/workbookRange/getWorkbookUsedRange.d.ts"
-    },
-    "./operations/workbookRange/getWorkbookVisibleRange": {
-      "import": "./dist/operations/workbookRange/getWorkbookVisibleRange.js",
-      "types": "./dist/operations/workbookRange/getWorkbookVisibleRange.d.ts"
-    },
-    "./operations/workbookRange/insertWorkbookCells": {
-      "import": "./dist/operations/workbookRange/insertWorkbookCells.js",
-      "types": "./dist/operations/workbookRange/insertWorkbookCells.d.ts"
-    },
-    "./operations/workbookRange/updateWorkbookNamedRange": {
-      "import": "./dist/operations/workbookRange/updateWorkbookNamedRange.js",
-      "types": "./dist/operations/workbookRange/updateWorkbookNamedRange.d.ts"
-    },
-    "./operations/workbookRange/updateWorkbookRange": {
-      "import": "./dist/operations/workbookRange/updateWorkbookRange.js",
-      "types": "./dist/operations/workbookRange/updateWorkbookRange.d.ts"
-    },
-    "./operations/workbookSession/closeWorkbookSession": {
-      "import": "./dist/operations/workbookSession/closeWorkbookSession.js",
-      "types": "./dist/operations/workbookSession/closeWorkbookSession.d.ts"
-    },
-    "./operations/workbookSession/createWorkbookSession": {
-      "import": "./dist/operations/workbookSession/createWorkbookSession.js",
-      "types": "./dist/operations/workbookSession/createWorkbookSession.d.ts"
-    },
-    "./operations/workbookSession/refreshWorkbookSession": {
-      "import": "./dist/operations/workbookSession/refreshWorkbookSession.js",
-      "types": "./dist/operations/workbookSession/refreshWorkbookSession.d.ts"
-    },
-    "./operations/workbookTable/createWorkbookTable": {
-      "import": "./dist/operations/workbookTable/createWorkbookTable.js",
-      "types": "./dist/operations/workbookTable/createWorkbookTable.d.ts"
-    },
-    "./operations/workbookTable/getWorkbookTable": {
-      "import": "./dist/operations/workbookTable/getWorkbookTable.js",
-      "types": "./dist/operations/workbookTable/getWorkbookTable.d.ts"
-    },
-    "./operations/workbookTable/getWorkbookTableBodyRange": {
-      "import": "./dist/operations/workbookTable/getWorkbookTableBodyRange.js",
-      "types": "./dist/operations/workbookTable/getWorkbookTableBodyRange.d.ts"
-    },
-    "./operations/workbookTable/getWorkbookTableHeaderRange": {
-      "import": "./dist/operations/workbookTable/getWorkbookTableHeaderRange.js",
-      "types": "./dist/operations/workbookTable/getWorkbookTableHeaderRange.d.ts"
-    },
-    "./operations/workbookTable/listWorkbookTableColumns": {
-      "import": "./dist/operations/workbookTable/listWorkbookTableColumns.js",
-      "types": "./dist/operations/workbookTable/listWorkbookTableColumns.d.ts"
-    },
-    "./operations/workbookTable/listWorkbookTableRows": {
-      "import": "./dist/operations/workbookTable/listWorkbookTableRows.js",
-      "types": "./dist/operations/workbookTable/listWorkbookTableRows.d.ts"
-    },
-    "./operations/workbookTable/listWorkbookTables": {
-      "import": "./dist/operations/workbookTable/listWorkbookTables.js",
-      "types": "./dist/operations/workbookTable/listWorkbookTables.d.ts"
-    },
-    "./operations/workbookWorksheet/createWorkbookWorksheet": {
-      "import": "./dist/operations/workbookWorksheet/createWorkbookWorksheet.js",
-      "types": "./dist/operations/workbookWorksheet/createWorkbookWorksheet.d.ts"
-    },
-    "./operations/workbookWorksheet/deleteWorkbookWorksheet": {
-      "import": "./dist/operations/workbookWorksheet/deleteWorkbookWorksheet.js",
-      "types": "./dist/operations/workbookWorksheet/deleteWorkbookWorksheet.d.ts"
-    },
-    "./operations/workbookWorksheet/getWorkbookWorksheetRange": {
-      "import": "./dist/operations/workbookWorksheet/getWorkbookWorksheetRange.js",
-      "types": "./dist/operations/workbookWorksheet/getWorkbookWorksheetRange.d.ts"
-    },
-    "./operations/workbookWorksheet/listWorkbookWorksheets": {
-      "import": "./dist/operations/workbookWorksheet/listWorkbookWorksheets.js",
-      "types": "./dist/operations/workbookWorksheet/listWorkbookWorksheets.d.ts"
-    },
-    "./operations/workbookWorksheet/updateWorkbookWorksheet": {
-      "import": "./dist/operations/workbookWorksheet/updateWorkbookWorksheet.js",
-      "types": "./dist/operations/workbookWorksheet/updateWorkbookWorksheet.d.ts"
-    },
-    "./services/accessToken": {
-      "import": "./dist/services/accessToken.js",
-      "types": "./dist/services/accessToken.d.ts"
-    },
-    "./services/address": {
-      "import": "./dist/services/address.js",
-      "types": "./dist/services/address.d.ts"
-    },
-    "./services/configuration": {
-      "import": "./dist/services/configuration.js",
-      "types": "./dist/services/configuration.d.ts"
-    },
-    "./services/drive": {
-      "import": "./dist/services/drive.js",
-      "types": "./dist/services/drive.d.ts"
-    },
-    "./services/driveItem": {
-      "import": "./dist/services/driveItem.js",
-      "types": "./dist/services/driveItem.d.ts"
-    },
-    "./services/httpAgent": {
-      "import": "./dist/services/httpAgent.js",
-      "types": "./dist/services/httpAgent.d.ts"
-    },
-    "./services/httpStatus": {
-      "import": "./dist/services/httpStatus.js",
-      "types": "./dist/services/httpStatus.d.ts"
-    },
-    "./services/operationId": {
-      "import": "./dist/services/operationId.js",
-      "types": "./dist/services/operationId.d.ts"
-    },
-    "./services/sharepointUrl": {
-      "import": "./dist/services/sharepointUrl.js",
-      "types": "./dist/services/sharepointUrl.d.ts"
-    },
-    "./services/site": {
-      "import": "./dist/services/site.js",
-      "types": "./dist/services/site.d.ts"
-    },
-    "./services/sleep": {
-      "import": "./dist/services/sleep.js",
-      "types": "./dist/services/sleep.d.ts"
-    },
-    "./services/stringCaseConversion": {
-      "import": "./dist/services/stringCaseConversion.js",
-      "types": "./dist/services/stringCaseConversion.d.ts"
-    },
-    "./services/templatedPaths": {
-      "import": "./dist/services/templatedPaths.js",
-      "types": "./dist/services/templatedPaths.d.ts"
-    },
-    "./services/temporaryFiles": {
-      "import": "./dist/services/temporaryFiles.js",
-      "types": "./dist/services/temporaryFiles.d.ts"
-    },
-    "./services/workbookRange": {
-      "import": "./dist/services/workbookRange.js",
-      "types": "./dist/services/workbookRange.d.ts"
-    },
-    "./services/workbookRangeAddress": {
-      "import": "./dist/services/workbookRangeAddress.js",
-      "types": "./dist/services/workbookRangeAddress.d.ts"
-    },
-    "./services/workbookTable": {
-      "import": "./dist/services/workbookTable.js",
-      "types": "./dist/services/workbookTable.d.ts"
-    },
-    "./services/workbookWorksheet": {
-      "import": "./dist/services/workbookWorksheet.js",
-      "types": "./dist/services/workbookWorksheet.d.ts"
-    },
-    "./tasks/createWorkbookAndStartSession": {
-      "import": "./dist/tasks/createWorkbookAndStartSession.js",
-      "types": "./dist/tasks/createWorkbookAndStartSession.d.ts"
-    },
-    "./tasks/deleteDriveItemWithRetry": {
-      "import": "./dist/tasks/deleteDriveItemWithRetry.js",
-      "types": "./dist/tasks/deleteDriveItemWithRetry.d.ts"
-    },
-    "./tasks/downloadDriveItemContent": {
-      "import": "./dist/tasks/downloadDriveItemContent.js",
-      "types": "./dist/tasks/downloadDriveItemContent.d.ts"
-    },
-    "./tasks/endSessionAndDeleteWorkbook": {
-      "import": "./dist/tasks/endSessionAndDeleteWorkbook.js",
-      "types": "./dist/tasks/endSessionAndDeleteWorkbook.d.ts"
-    },
-    "./tasks/getRangeLastUsedCell": {
-      "import": "./dist/tasks/getRangeLastUsedCell.js",
-      "types": "./dist/tasks/getRangeLastUsedCell.d.ts"
-    },
-    "./tasks/getWorkbookTableVisibleBody": {
-      "import": "./dist/tasks/getWorkbookTableVisibleBody.js",
-      "types": "./dist/tasks/getWorkbookTableVisibleBody.d.ts"
-    },
-    "./tasks/getWorkbookWorksheetRefByName": {
-      "import": "./dist/tasks/getWorkbookWorksheetRefByName.js",
-      "types": "./dist/tasks/getWorkbookWorksheetRefByName.d.ts"
-    },
-    "./tasks/setColumnHidden": {
-      "import": "./dist/tasks/setColumnHidden.js",
-      "types": "./dist/tasks/setColumnHidden.d.ts"
-    },
-    "./tasks/setRowHidden": {
-      "import": "./dist/tasks/setRowHidden.js",
-      "types": "./dist/tasks/setRowHidden.d.ts"
-    }
-  }
+	"name": "microsoft-graph",
+	"version": "1.0.6",
+	"description": "Microsoft GraphAPI SDK for NodeJS",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"check": "biome check",
+		"build": "npm run check && tsc && npx tsx update-exports.ts",
+		"release": "npm run build && npm publish --access public",
+		"test": "vitest --bail=3"
+	},
+	"keywords": [
+		"Microsoft",
+		"GraphAPI",
+		"SDK",
+		"NodeJS"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ProspectSafe/microsoft-graph"
+	},
+	"author": "ProtectSafe",
+	"license": "CC BY-NC-SA 4.0",
+	"type": "module",
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@microsoft/microsoft-graph-types": "^2.40.0",
+		"@types/node": "^22.13.4",
+		"globals": "^16.0.0",
+		"tsx": "^4.19.3",
+		"typescript": "^5.7.3",
+		"vitest": "^3.0.9"
+	},
+	"dependencies": {
+		"@azure/identity": "^4.7.0",
+		"http-proxy-agent": "^7.0.2",
+		"node-fetch": "^3.3.2"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
+		},
+		"./errors/BadTemplateError": {
+			"import": "./dist/errors/BadTemplateError.js",
+			"types": "./dist/errors/BadTemplateError.d.ts"
+		},
+		"./errors/EnvironmentVariableMissingError": {
+			"import": "./dist/errors/EnvironmentVariableMissingError.js",
+			"types": "./dist/errors/EnvironmentVariableMissingError.d.ts"
+		},
+		"./errors/InvalidArgumentError": {
+			"import": "./dist/errors/InvalidArgumentError.js",
+			"types": "./dist/errors/InvalidArgumentError.d.ts"
+		},
+		"./errors/ProtocolError": {
+			"import": "./dist/errors/ProtocolError.js",
+			"types": "./dist/errors/ProtocolError.d.ts"
+		},
+		"./errors/RequestFailedError": {
+			"import": "./dist/errors/RequestFailedError.js",
+			"types": "./dist/errors/RequestFailedError.d.ts"
+		},
+		"./graphApi": {
+			"import": "./dist/graphApi.js",
+			"types": "./dist/graphApi.d.ts"
+		},
+		"./models/AccessToken": {
+			"import": "./dist/models/AccessToken.js",
+			"types": "./dist/models/AccessToken.d.ts"
+		},
+		"./models/DriveId": {
+			"import": "./dist/models/DriveId.js",
+			"types": "./dist/models/DriveId.d.ts"
+		},
+		"./models/DriveItemId": {
+			"import": "./dist/models/DriveItemId.js",
+			"types": "./dist/models/DriveItemId.d.ts"
+		},
+		"./models/DriveItemPath": {
+			"import": "./dist/models/DriveItemPath.js",
+			"types": "./dist/models/DriveItemPath.d.ts"
+		},
+		"./models/DriveItemRef": {
+			"import": "./dist/models/DriveItemRef.js",
+			"types": "./dist/models/DriveItemRef.d.ts"
+		},
+		"./models/DriveRef": {
+			"import": "./dist/models/DriveRef.js",
+			"types": "./dist/models/DriveRef.d.ts"
+		},
+		"./models/GraphOperation": {
+			"import": "./dist/models/GraphOperation.js",
+			"types": "./dist/models/GraphOperation.d.ts"
+		},
+		"./models/GraphOperationDefinition": {
+			"import": "./dist/models/GraphOperationDefinition.js",
+			"types": "./dist/models/GraphOperationDefinition.d.ts"
+		},
+		"./models/HostName": {
+			"import": "./dist/models/HostName.js",
+			"types": "./dist/models/HostName.d.ts"
+		},
+		"./models/Scope": {
+			"import": "./dist/models/Scope.js",
+			"types": "./dist/models/Scope.d.ts"
+		},
+		"./models/SiteId": {
+			"import": "./dist/models/SiteId.js",
+			"types": "./dist/models/SiteId.d.ts"
+		},
+		"./models/SiteName": {
+			"import": "./dist/models/SiteName.js",
+			"types": "./dist/models/SiteName.d.ts"
+		},
+		"./models/SiteRef": {
+			"import": "./dist/models/SiteRef.js",
+			"types": "./dist/models/SiteRef.d.ts"
+		},
+		"./models/WorkbookNamedRangeRef": {
+			"import": "./dist/models/WorkbookNamedRangeRef.js",
+			"types": "./dist/models/WorkbookNamedRangeRef.d.ts"
+		},
+		"./models/WorkbookRangeAddress": {
+			"import": "./dist/models/WorkbookRangeAddress.js",
+			"types": "./dist/models/WorkbookRangeAddress.d.ts"
+		},
+		"./models/WorkbookRangeName": {
+			"import": "./dist/models/WorkbookRangeName.js",
+			"types": "./dist/models/WorkbookRangeName.d.ts"
+		},
+		"./models/WorkbookRangeRef": {
+			"import": "./dist/models/WorkbookRangeRef.js",
+			"types": "./dist/models/WorkbookRangeRef.d.ts"
+		},
+		"./models/WorkbookRef": {
+			"import": "./dist/models/WorkbookRef.js",
+			"types": "./dist/models/WorkbookRef.d.ts"
+		},
+		"./models/WorkbookSessionId": {
+			"import": "./dist/models/WorkbookSessionId.js",
+			"types": "./dist/models/WorkbookSessionId.d.ts"
+		},
+		"./models/WorkbookTableId": {
+			"import": "./dist/models/WorkbookTableId.js",
+			"types": "./dist/models/WorkbookTableId.d.ts"
+		},
+		"./models/WorkbookTableRef": {
+			"import": "./dist/models/WorkbookTableRef.js",
+			"types": "./dist/models/WorkbookTableRef.d.ts"
+		},
+		"./models/WorkbookWorksheetId": {
+			"import": "./dist/models/WorkbookWorksheetId.js",
+			"types": "./dist/models/WorkbookWorksheetId.d.ts"
+		},
+		"./models/WorkbookWorksheetName": {
+			"import": "./dist/models/WorkbookWorksheetName.js",
+			"types": "./dist/models/WorkbookWorksheetName.d.ts"
+		},
+		"./models/WorkbookWorksheetRef": {
+			"import": "./dist/models/WorkbookWorksheetRef.js",
+			"types": "./dist/models/WorkbookWorksheetRef.d.ts"
+		},
+		"./operations/drive/createFolder": {
+			"import": "./dist/operations/drive/createFolder.js",
+			"types": "./dist/operations/drive/createFolder.d.ts"
+		},
+		"./operations/drive/listDrives": {
+			"import": "./dist/operations/drive/listDrives.js",
+			"types": "./dist/operations/drive/listDrives.d.ts"
+		},
+		"./operations/driveItem/copyDriveItem": {
+			"import": "./dist/operations/driveItem/copyDriveItem.js",
+			"types": "./dist/operations/driveItem/copyDriveItem.d.ts"
+		},
+		"./operations/driveItem/deleteDriveItem": {
+			"import": "./dist/operations/driveItem/deleteDriveItem.js",
+			"types": "./dist/operations/driveItem/deleteDriveItem.d.ts"
+		},
+		"./operations/driveItem/getDriveItem": {
+			"import": "./dist/operations/driveItem/getDriveItem.js",
+			"types": "./dist/operations/driveItem/getDriveItem.d.ts"
+		},
+		"./operations/driveItem/getDriveItemByPath": {
+			"import": "./dist/operations/driveItem/getDriveItemByPath.js",
+			"types": "./dist/operations/driveItem/getDriveItemByPath.d.ts"
+		},
+		"./operations/driveItem/getDriveItemContent": {
+			"import": "./dist/operations/driveItem/getDriveItemContent.js",
+			"types": "./dist/operations/driveItem/getDriveItemContent.d.ts"
+		},
+		"./operations/driveItem/listDriveItems": {
+			"import": "./dist/operations/driveItem/listDriveItems.js",
+			"types": "./dist/operations/driveItem/listDriveItems.d.ts"
+		},
+		"./operations/site/getSite": {
+			"import": "./dist/operations/site/getSite.js",
+			"types": "./dist/operations/site/getSite.d.ts"
+		},
+		"./operations/site/getSiteByName": {
+			"import": "./dist/operations/site/getSiteByName.js",
+			"types": "./dist/operations/site/getSiteByName.d.ts"
+		},
+		"./operations/site/listSites": {
+			"import": "./dist/operations/site/listSites.js",
+			"types": "./dist/operations/site/listSites.d.ts"
+		},
+		"./operations/site/searchSites": {
+			"import": "./dist/operations/site/searchSites.js",
+			"types": "./dist/operations/site/searchSites.d.ts"
+		},
+		"./operations/workbook/calculateWorkbook": {
+			"import": "./dist/operations/workbook/calculateWorkbook.js",
+			"types": "./dist/operations/workbook/calculateWorkbook.d.ts"
+		},
+		"./operations/workbook/createWorkbook": {
+			"import": "./dist/operations/workbook/createWorkbook.js",
+			"types": "./dist/operations/workbook/createWorkbook.d.ts"
+		},
+		"./operations/workbook/deleteWorkbook": {
+			"import": "./dist/operations/workbook/deleteWorkbook.js",
+			"types": "./dist/operations/workbook/deleteWorkbook.d.ts"
+		},
+		"./operations/workbookRange/clearWorkbookRange": {
+			"import": "./dist/operations/workbookRange/clearWorkbookRange.js",
+			"types": "./dist/operations/workbookRange/clearWorkbookRange.d.ts"
+		},
+		"./operations/workbookRange/deleteWorkbookRange": {
+			"import": "./dist/operations/workbookRange/deleteWorkbookRange.js",
+			"types": "./dist/operations/workbookRange/deleteWorkbookRange.d.ts"
+		},
+		"./operations/workbookRange/getWorkbookNamedRange": {
+			"import": "./dist/operations/workbookRange/getWorkbookNamedRange.js",
+			"types": "./dist/operations/workbookRange/getWorkbookNamedRange.d.ts"
+		},
+		"./operations/workbookRange/getWorkbookUsedRange": {
+			"import": "./dist/operations/workbookRange/getWorkbookUsedRange.js",
+			"types": "./dist/operations/workbookRange/getWorkbookUsedRange.d.ts"
+		},
+		"./operations/workbookRange/getWorkbookVisibleRange": {
+			"import": "./dist/operations/workbookRange/getWorkbookVisibleRange.js",
+			"types": "./dist/operations/workbookRange/getWorkbookVisibleRange.d.ts"
+		},
+		"./operations/workbookRange/insertWorkbookCells": {
+			"import": "./dist/operations/workbookRange/insertWorkbookCells.js",
+			"types": "./dist/operations/workbookRange/insertWorkbookCells.d.ts"
+		},
+		"./operations/workbookRange/updateWorkbookNamedRange": {
+			"import": "./dist/operations/workbookRange/updateWorkbookNamedRange.js",
+			"types": "./dist/operations/workbookRange/updateWorkbookNamedRange.d.ts"
+		},
+		"./operations/workbookRange/updateWorkbookRange": {
+			"import": "./dist/operations/workbookRange/updateWorkbookRange.js",
+			"types": "./dist/operations/workbookRange/updateWorkbookRange.d.ts"
+		},
+		"./operations/workbookSession/closeWorkbookSession": {
+			"import": "./dist/operations/workbookSession/closeWorkbookSession.js",
+			"types": "./dist/operations/workbookSession/closeWorkbookSession.d.ts"
+		},
+		"./operations/workbookSession/createWorkbookSession": {
+			"import": "./dist/operations/workbookSession/createWorkbookSession.js",
+			"types": "./dist/operations/workbookSession/createWorkbookSession.d.ts"
+		},
+		"./operations/workbookSession/refreshWorkbookSession": {
+			"import": "./dist/operations/workbookSession/refreshWorkbookSession.js",
+			"types": "./dist/operations/workbookSession/refreshWorkbookSession.d.ts"
+		},
+		"./operations/workbookTable/createWorkbookTable": {
+			"import": "./dist/operations/workbookTable/createWorkbookTable.js",
+			"types": "./dist/operations/workbookTable/createWorkbookTable.d.ts"
+		},
+		"./operations/workbookTable/getWorkbookTable": {
+			"import": "./dist/operations/workbookTable/getWorkbookTable.js",
+			"types": "./dist/operations/workbookTable/getWorkbookTable.d.ts"
+		},
+		"./operations/workbookTable/getWorkbookTableBodyRange": {
+			"import": "./dist/operations/workbookTable/getWorkbookTableBodyRange.js",
+			"types": "./dist/operations/workbookTable/getWorkbookTableBodyRange.d.ts"
+		},
+		"./operations/workbookTable/getWorkbookTableHeaderRange": {
+			"import": "./dist/operations/workbookTable/getWorkbookTableHeaderRange.js",
+			"types": "./dist/operations/workbookTable/getWorkbookTableHeaderRange.d.ts"
+		},
+		"./operations/workbookTable/listWorkbookTableColumns": {
+			"import": "./dist/operations/workbookTable/listWorkbookTableColumns.js",
+			"types": "./dist/operations/workbookTable/listWorkbookTableColumns.d.ts"
+		},
+		"./operations/workbookTable/listWorkbookTableRows": {
+			"import": "./dist/operations/workbookTable/listWorkbookTableRows.js",
+			"types": "./dist/operations/workbookTable/listWorkbookTableRows.d.ts"
+		},
+		"./operations/workbookTable/listWorkbookTables": {
+			"import": "./dist/operations/workbookTable/listWorkbookTables.js",
+			"types": "./dist/operations/workbookTable/listWorkbookTables.d.ts"
+		},
+		"./operations/workbookWorksheet/createWorkbookWorksheet": {
+			"import": "./dist/operations/workbookWorksheet/createWorkbookWorksheet.js",
+			"types": "./dist/operations/workbookWorksheet/createWorkbookWorksheet.d.ts"
+		},
+		"./operations/workbookWorksheet/deleteWorkbookWorksheet": {
+			"import": "./dist/operations/workbookWorksheet/deleteWorkbookWorksheet.js",
+			"types": "./dist/operations/workbookWorksheet/deleteWorkbookWorksheet.d.ts"
+		},
+		"./operations/workbookWorksheet/getWorkbookWorksheetRange": {
+			"import": "./dist/operations/workbookWorksheet/getWorkbookWorksheetRange.js",
+			"types": "./dist/operations/workbookWorksheet/getWorkbookWorksheetRange.d.ts"
+		},
+		"./operations/workbookWorksheet/listWorkbookWorksheets": {
+			"import": "./dist/operations/workbookWorksheet/listWorkbookWorksheets.js",
+			"types": "./dist/operations/workbookWorksheet/listWorkbookWorksheets.d.ts"
+		},
+		"./operations/workbookWorksheet/updateWorkbookWorksheet": {
+			"import": "./dist/operations/workbookWorksheet/updateWorkbookWorksheet.js",
+			"types": "./dist/operations/workbookWorksheet/updateWorkbookWorksheet.d.ts"
+		},
+		"./services/accessToken": {
+			"import": "./dist/services/accessToken.js",
+			"types": "./dist/services/accessToken.d.ts"
+		},
+		"./services/address": {
+			"import": "./dist/services/address.js",
+			"types": "./dist/services/address.d.ts"
+		},
+		"./services/configuration": {
+			"import": "./dist/services/configuration.js",
+			"types": "./dist/services/configuration.d.ts"
+		},
+		"./services/drive": {
+			"import": "./dist/services/drive.js",
+			"types": "./dist/services/drive.d.ts"
+		},
+		"./services/driveItem": {
+			"import": "./dist/services/driveItem.js",
+			"types": "./dist/services/driveItem.d.ts"
+		},
+		"./services/httpAgent": {
+			"import": "./dist/services/httpAgent.js",
+			"types": "./dist/services/httpAgent.d.ts"
+		},
+		"./services/httpStatus": {
+			"import": "./dist/services/httpStatus.js",
+			"types": "./dist/services/httpStatus.d.ts"
+		},
+		"./services/operationId": {
+			"import": "./dist/services/operationId.js",
+			"types": "./dist/services/operationId.d.ts"
+		},
+		"./services/sharepointUrl": {
+			"import": "./dist/services/sharepointUrl.js",
+			"types": "./dist/services/sharepointUrl.d.ts"
+		},
+		"./services/site": {
+			"import": "./dist/services/site.js",
+			"types": "./dist/services/site.d.ts"
+		},
+		"./services/sleep": {
+			"import": "./dist/services/sleep.js",
+			"types": "./dist/services/sleep.d.ts"
+		},
+		"./services/stringCaseConversion": {
+			"import": "./dist/services/stringCaseConversion.js",
+			"types": "./dist/services/stringCaseConversion.d.ts"
+		},
+		"./services/templatedPaths": {
+			"import": "./dist/services/templatedPaths.js",
+			"types": "./dist/services/templatedPaths.d.ts"
+		},
+		"./services/temporaryFiles": {
+			"import": "./dist/services/temporaryFiles.js",
+			"types": "./dist/services/temporaryFiles.d.ts"
+		},
+		"./services/workbookRange": {
+			"import": "./dist/services/workbookRange.js",
+			"types": "./dist/services/workbookRange.d.ts"
+		},
+		"./services/workbookRangeAddress": {
+			"import": "./dist/services/workbookRangeAddress.js",
+			"types": "./dist/services/workbookRangeAddress.d.ts"
+		},
+		"./services/workbookTable": {
+			"import": "./dist/services/workbookTable.js",
+			"types": "./dist/services/workbookTable.d.ts"
+		},
+		"./services/workbookWorksheet": {
+			"import": "./dist/services/workbookWorksheet.js",
+			"types": "./dist/services/workbookWorksheet.d.ts"
+		},
+		"./tasks/createWorkbookAndStartSession": {
+			"import": "./dist/tasks/createWorkbookAndStartSession.js",
+			"types": "./dist/tasks/createWorkbookAndStartSession.d.ts"
+		},
+		"./tasks/deleteDriveItemWithRetry": {
+			"import": "./dist/tasks/deleteDriveItemWithRetry.js",
+			"types": "./dist/tasks/deleteDriveItemWithRetry.d.ts"
+		},
+		"./tasks/downloadDriveItemContent": {
+			"import": "./dist/tasks/downloadDriveItemContent.js",
+			"types": "./dist/tasks/downloadDriveItemContent.d.ts"
+		},
+		"./tasks/endSessionAndDeleteWorkbook": {
+			"import": "./dist/tasks/endSessionAndDeleteWorkbook.js",
+			"types": "./dist/tasks/endSessionAndDeleteWorkbook.d.ts"
+		},
+		"./tasks/getRangeLastUsedCell": {
+			"import": "./dist/tasks/getRangeLastUsedCell.js",
+			"types": "./dist/tasks/getRangeLastUsedCell.d.ts"
+		},
+		"./tasks/getWorkbookTableVisibleBody": {
+			"import": "./dist/tasks/getWorkbookTableVisibleBody.js",
+			"types": "./dist/tasks/getWorkbookTableVisibleBody.d.ts"
+		},
+		"./tasks/getWorkbookWorksheetRefByName": {
+			"import": "./dist/tasks/getWorkbookWorksheetRefByName.js",
+			"types": "./dist/tasks/getWorkbookWorksheetRefByName.d.ts"
+		},
+		"./tasks/setColumnHidden": {
+			"import": "./dist/tasks/setColumnHidden.js",
+			"types": "./dist/tasks/setColumnHidden.d.ts"
+		},
+		"./tasks/setRowHidden": {
+			"import": "./dist/tasks/setRowHidden.js",
+			"types": "./dist/tasks/setRowHidden.d.ts"
+		}
+	}
 }

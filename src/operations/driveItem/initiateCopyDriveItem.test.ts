@@ -4,10 +4,10 @@ import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import createFolder from "../drive/createFolder.ts";
-import copyDriveItem from "./copyDriveItem.ts";
 import getDriveItemByPath from "./getDriveItemByPath.ts";
+import initiateCopyDriveItem from "./initiateCopyDriveItem.ts";
 
-describe("copyDriveItem", () => {
+describe("initiateCopyDriveItem", () => {
     it("can copy an item to a new folder", { timeout: 10000 }, async () => {
         const driveRef = getDefaultDriveRef();
 
@@ -19,7 +19,7 @@ describe("copyDriveItem", () => {
 
         try {
             const copiedItemName = `${srcFolderName}-copy`;
-            await copyDriveItem(srcFolder, dstFolder, copiedItemName);
+            await initiateCopyDriveItem(srcFolder, dstFolder, copiedItemName);
 
             const copyPath = driveItemPath(dstFolderName, copiedItemName);
 
