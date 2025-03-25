@@ -2,6 +2,7 @@
 ## Overview
 This is an extensible library that allows access to Microsoft's GraphAPI, including (but not only) Sharepoint's API. It currently supports the most common operations, with more being added over time.
 
+Note that this is a THIRD PARTY library and not associated with Microsoft.
 
 ## Usage
 First up, make sure the environment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` and [any others you require](docs/envs.md) are set. Then make calls:
