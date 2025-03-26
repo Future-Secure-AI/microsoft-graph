@@ -1,5 +1,5 @@
 import { HttpProxyAgent } from "http-proxy-agent";
-import { httpProxyEnv } from "./configuration.ts";
+import { httpProxyEnv } from "./environmentVariable.ts";
 
 export function getHttpAgent(): HttpProxyAgent<string> | undefined {
     const httpProxy = httpProxyEnv();

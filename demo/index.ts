@@ -11,8 +11,12 @@ import createWorkbookAndStartSession from "../src/tasks/createWorkbookAndStartSe
 import getWorkbookWorksheetByName from "../src/tasks/getWorkbookWorksheetRefByName.ts";
 import { debug, info, } from "./log.ts";
 
+login(tentnatId, clientId, clientSecret);
+
+const cred = {tenantId, clientId};
+
 info("Creating folder...");
-const driveRef = getDefaultDriveRef();
+const driveRef = getDefaultDriveRef(cred);
 const folder = await createFolder(driveRef, generateTempFileName());
 
 info("Creating workbook...");;
