@@ -1,15 +1,11 @@
 {
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.addMissingImports":"explicit",
-    "source.fixAll": "explicit",
+    "source.organizeImports": "never",
+    "source.addMissingImports": "never",
+    "source.fixAll": "never"
   },
   "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "cSpell.words": [
-    "Entra",
-    "msgraph"
-  ],
+  }
 }

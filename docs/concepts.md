@@ -1,4 +1,5 @@
 # Key concepts
+
 GraphAPI exposes a set of operations. This SDK has a series of `operations` defined that maps to this API. If we want to do some rich manipulation of those operations we use a `task`.
 
 When using the SDK you can use low-level operations directly (ie `createWorkbookSession`) or you can use higher-level opinionated tasks (ie `createWorkbookAndOpenSession`). The opinionated tasks are useful for quick development, however they include assumptions that may not match your circumstance, and also do not lend themselves to optimizations like parallel requesting. You choose what works for you, and you can mix-and-match both.

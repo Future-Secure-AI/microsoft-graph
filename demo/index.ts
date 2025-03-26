@@ -1,46 +1,66 @@
-import createFolder from "../src/operations/drive/createFolder.ts";
-import deleteDriveItem from "../src/operations/driveItem/deleteDriveItem.ts";
+import listDrives from "../src/operations/drive/listDrives.ts";
 import listDriveItems from "../src/operations/driveItem/listDriveItems.ts";
-import updateWorkbookRange from "../src/operations/workbookRange/updateWorkbookRange.ts";
-import closeWorkbookSession from "../src/operations/workbookSession/closeWorkbookSession.ts";
+import getWorkbookPivotTable from "../src/operations/workbookPivotTable/getWorkbookPivotTable.ts";
+import getDriveItemByPath from "../src/operations/driveItem/getDriveItemByPath.ts";
 import { getDefaultDriveRef } from "../src/services/drive.ts";
-import { workbookFileExtension } from "../src/services/driveItem.ts";
-import { generateTempFileName } from "../src/services/temporaryFiles.ts";
-import { workbookRangeRef } from "../src/services/workbookRange.ts";
-import createWorkbookAndStartSession from "../src/tasks/createWorkbookAndStartSession.ts";
-import getWorkbookWorksheetByName from "../src/tasks/getWorkbookWorksheetRefByName.ts";
-import { debug, info, } from "./log.ts";
+import { driveItemPath } from "../src/services/driveItem.ts";
+import { info } from "./log.ts";
+import { WorkbookPivotTableRef } from "../src/models/WorkbookPivotTableRef.ts";
 
 info("Creating folder...");
 const driveRef = getDefaultDriveRef();
-const folder = await createFolder(driveRef, generateTempFileName());
+console.log(driveRef);
+const driveList = await listDrives();
+// for (const drive of driveList) {
+// 	console.log(drive);
+// }
+// const driveItemList = await listDriveItems(driveRef);
+// for (const driveItem of driveItemList) {
+// 	if (driveItem.folder)
+// 		console.log(`${driveItem.folder}: ${driveItem.id}`);
+// }
 
-info("Creating workbook...");;
-const workbook = await createWorkbookAndStartSession(folder, generateTempFileName(workbookFileExtension));
+//PivotTable1
+const workbookPath = driveItemPath("erhan-dev", "PivotTable-Test.xlsx");
+const workbookRef = await getDriveItemByPath(driveRef, workbookPath);
+console.log(workbookRef);
 
-info("Updating range...");
-const worksheet = await getWorkbookWorksheetByName(workbook, "Sheet1");
-const range = await updateWorkbookRange(workbookRangeRef(worksheet, "A1:B2"), {
-	values: [
-		[1, 2],
-		[3, 4]
-	]
-});
-await updateWorkbookRange(range, { // Could be merged with the above, but demo'ing ref use
-	format: {
-		font: {
-			bold: true
-		}
-	}
-});
+// workbookPivotTableRef(workbookRef, worksheetRef, "PivotTable1");
+// const pivotTable = await getWorkbookPivotTable({
 
-info("Listing files...");
-for (const item of await listDriveItems(folder)) {
-	debug(` - ${item.name}`);
-}
+// } as WorkbookPivotTableRef);
+// console.log(pivotTable);
+// const retrievedFolder = await getDriveItemByPath(getDefaultDriveRef(), folderPath);
 
-info("Cleanup...");
-await closeWorkbookSession(workbook);
-await deleteDriveItem(folder);
+// console.log(retrievedFolder);
+//const folder = await createFolder(driveRef, generateTempFileName());
 
-info("Done.");
+// info("Creating workbook...");;
+// const workbook = await createWorkbookAndStartSession(folder, generateTempFileName(workbookFileExtension));
+
+// info("Updating range...");
+// const worksheet = await getWorkbookWorksheetByName(workbook, "Sheet1");
+// const range = await updateWorkbookRange(workbookRangeRef(worksheet, "A1:B2"), {
+// 	values: [
+// 		[1, 2],
+// 		[3, 4]
+// 	]
+// });
+// await updateWorkbookRange(range, { // Could be merged with the above, but demo'ing ref use
+// 	format: {
+// 		font: {
+// 			bold: true
+// 		}
+// 	}
+// });
+
+// info("Listing files...");
+// for (const item of await listDriveItems(folder)) {
+// 	debug(` - ${item.name}`);
+// }
+
+// info("Cleanup...");
+// await closeWorkbookSession(workbook);
+// await deleteDriveItem(folder);
+
+// info("Done.");
