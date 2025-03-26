@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -213,6 +213,10 @@
     "./operations/site/searchSites": {
       "import": "./dist/operations/site/searchSites.js",
       "types": "./dist/operations/site/searchSites.d.ts"
+    },
+    "./operations/user/userSendMail": {
+      "import": "./dist/operations/user/userSendMail.js",
+      "types": "./dist/operations/user/userSendMail.d.ts"
     },
     "./operations/workbook/calculateWorkbook": {
       "import": "./dist/operations/workbook/calculateWorkbook.js",
