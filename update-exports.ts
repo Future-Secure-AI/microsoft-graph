@@ -54,5 +54,5 @@ walk(distDir);
 
 pkg.exports = exportsMap;
 
-writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
+writeFileSync(pkgPath, JSON.stringify(pkg, null, 1) + "\n");
 console.log("✅ package.json exports updated with", Object.keys(exportsMap).length, "entries");
