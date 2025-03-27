@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -46,9 +46,17 @@
       "import": "./dist/errors/BadTemplateError.js",
       "types": "./dist/errors/BadTemplateError.d.ts"
     },
+    "./errors/ContextNotRegisteredError": {
+      "import": "./dist/errors/ContextNotRegisteredError.js",
+      "types": "./dist/errors/ContextNotRegisteredError.d.ts"
+    },
     "./errors/EnvironmentVariableMissingError": {
       "import": "./dist/errors/EnvironmentVariableMissingError.js",
       "types": "./dist/errors/EnvironmentVariableMissingError.d.ts"
+    },
+    "./errors/InconsistentContextError": {
+      "import": "./dist/errors/InconsistentContextError.js",
+      "types": "./dist/errors/InconsistentContextError.d.ts"
     },
     "./errors/InvalidArgumentError": {
       "import": "./dist/errors/InvalidArgumentError.js",
@@ -69,6 +77,26 @@
     "./models/AccessToken": {
       "import": "./dist/models/AccessToken.js",
       "types": "./dist/models/AccessToken.d.ts"
+    },
+    "./models/ClientId": {
+      "import": "./dist/models/ClientId.js",
+      "types": "./dist/models/ClientId.d.ts"
+    },
+    "./models/ClientSecret": {
+      "import": "./dist/models/ClientSecret.js",
+      "types": "./dist/models/ClientSecret.d.ts"
+    },
+    "./models/Context": {
+      "import": "./dist/models/Context.js",
+      "types": "./dist/models/Context.d.ts"
+    },
+    "./models/ContextId": {
+      "import": "./dist/models/ContextId.js",
+      "types": "./dist/models/ContextId.d.ts"
+    },
+    "./models/ContextRef": {
+      "import": "./dist/models/ContextRef.js",
+      "types": "./dist/models/ContextRef.d.ts"
     },
     "./models/DriveId": {
       "import": "./dist/models/DriveId.js",
@@ -102,6 +130,10 @@
       "import": "./dist/models/HostName.js",
       "types": "./dist/models/HostName.d.ts"
     },
+    "./models/HttpProxy": {
+      "import": "./dist/models/HttpProxy.js",
+      "types": "./dist/models/HttpProxy.d.ts"
+    },
     "./models/Scope": {
       "import": "./dist/models/Scope.js",
       "types": "./dist/models/Scope.d.ts"
@@ -117,6 +149,10 @@
     "./models/SiteRef": {
       "import": "./dist/models/SiteRef.js",
       "types": "./dist/models/SiteRef.d.ts"
+    },
+    "./models/TenantId": {
+      "import": "./dist/models/TenantId.js",
+      "types": "./dist/models/TenantId.d.ts"
     },
     "./models/WorkbookNamedRangeRef": {
       "import": "./dist/models/WorkbookNamedRangeRef.js",
@@ -334,6 +370,10 @@
       "import": "./dist/services/configuration.js",
       "types": "./dist/services/configuration.d.ts"
     },
+    "./services/context": {
+      "import": "./dist/services/context.js",
+      "types": "./dist/services/context.d.ts"
+    },
     "./services/drive": {
       "import": "./dist/services/drive.js",
       "types": "./dist/services/drive.d.ts"
@@ -341,6 +381,10 @@
     "./services/driveItem": {
       "import": "./dist/services/driveItem.js",
       "types": "./dist/services/driveItem.d.ts"
+    },
+    "./services/environmentVariable": {
+      "import": "./dist/services/environmentVariable.js",
+      "types": "./dist/services/environmentVariable.d.ts"
     },
     "./services/httpAgent": {
       "import": "./dist/services/httpAgent.js",
@@ -353,6 +397,10 @@
     "./services/operationId": {
       "import": "./dist/services/operationId.js",
       "types": "./dist/services/operationId.d.ts"
+    },
+    "./services/random": {
+      "import": "./dist/services/random.js",
+      "types": "./dist/services/random.d.ts"
     },
     "./services/sharepointUrl": {
       "import": "./dist/services/sharepointUrl.js",
