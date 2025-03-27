@@ -1,3 +1,4 @@
+import type { ContextId } from "./ContextId.ts";
 import type { WorkbookSessionId } from "./WorkbookSessionId.ts";
 
 export type GraphMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -9,6 +10,8 @@ export type GraphHeaders = {
 
 // @ts-ignore: Type used to match response
 export type GraphOperationDefinition<T> = {
+    /** Context to match the operation to. Used for authentication etc. */
+    contextId: ContextId;
     /** HTTP method to be used. */
     method: GraphMethod;
     /** Relative resource URL for the individual request. Ie, if the absolute URL is `https://graph.microsoft.com/v1.0/users`, this path is `/users`. */

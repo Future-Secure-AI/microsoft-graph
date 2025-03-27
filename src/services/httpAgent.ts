@@ -1,9 +1,7 @@
 import { HttpProxyAgent } from "http-proxy-agent";
-import { httpProxyEnv } from "./environmentVariable.ts";
+import type { HttpProxy } from "../models/HttpProxy.ts";
 
-export function getHttpAgent(): HttpProxyAgent<string> | undefined {
-    const httpProxy = httpProxyEnv();
-
+export function tryGetHttpAgent(httpProxy: HttpProxy | undefined): HttpProxyAgent<string> | undefined {
     if (!httpProxy) {
         return undefined;
     }

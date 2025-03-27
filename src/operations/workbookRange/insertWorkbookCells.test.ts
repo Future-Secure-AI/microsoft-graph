@@ -3,8 +3,8 @@ import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts"
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import { workbookRangeRef } from "../../services/workbookRange.ts";
-import { defaultWorkbookWorksheetId, workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
+import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
+import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../services/workbookWorksheet.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
@@ -28,8 +28,8 @@ describe("insertWorkbookCells", () => {
         const workbookName = generateTempFileName("xlsx");
         const workbookPath = driveItemPath(workbookName);
         const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
-        const worksheetRef = workbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-        const rangeRef = workbookRangeRef(worksheetRef, address);
+        const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+        const rangeRef = createWorkbookRangeRef(worksheetRef, address);
 
         try {
             await updateWorkbookRange(rangeRef, { values: initialValues });

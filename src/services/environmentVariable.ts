@@ -1,6 +1,6 @@
 import EnvironmentVariableMissingError from "../errors/EnvironmentVariableMissingError.ts";
 
-export function getEnvironmentVariable(env: string, fallbackValue: string | null = null): string {
+export function getEnvironmentVariable(env: string, fallbackValue: string | null = null): unknown {
 	const value = process.env[env]?.trim() ?? "";
 
 	if (value === "") {
@@ -13,15 +13,6 @@ export function getEnvironmentVariable(env: string, fallbackValue: string | null
 	return value;
 }
 
-export function  bindEnvironmentVariable(env: string, fallbackValue: string | null = null): () => string {
+export function bindEnvironmentVariable(env: string, fallbackValue: string | null = null): () => unknown {
 	return () => getEnvironmentVariable(env, fallbackValue);
 }
-
-export const azureTenantIdEnv = bindEnvironmentVariable("AZURE_TENANT_ID");
-export const azureClientIdEnv = bindEnvironmentVariable("AZURE_CLIENT_ID");
-export const azureClientSecretEnv = bindEnvironmentVariable("AZURE_CLIENT_SECRET");
-
-export const defaultSiteIdEnv = bindEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID");
-export const defaultDriveIdEnv = bindEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID");
-
-export const httpProxyEnv = bindEnvironmentVariable("HTTP_PROXY", "");

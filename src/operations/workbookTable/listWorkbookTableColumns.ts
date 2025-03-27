@@ -7,6 +7,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /** Retrieve a list of columns in a table. @see https://learn.microsoft.com/en-us/graph/api/tablecolumn-list */
 export default function listWorkbookTableColumns(tableRef: WorkbookTableRef): GraphOperation<WorkbookTableColumn[]> {
     return operation({
+        contextId: tableRef.contextId,
         method: "GET",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/tables/{table-id}/columns", tableRef),
         headers: {

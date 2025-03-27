@@ -6,6 +6,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /** Delete an item. @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete */
 export default function deleteDriveItem(itemRef: DriveItemRef): GraphOperation<void> {
     return operation({
+        contextId: itemRef.contextId,
         method: "DELETE",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}", itemRef),
         headers: {},

@@ -1,14 +1,16 @@
 import type { Site } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
+import type { ContextRef } from "../../models/ContextRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { SiteId } from "../../models/SiteId.ts";
 import type { SiteRef } from "../../models/SiteRef.ts";
-import { siteRef } from "../../services/site.ts";
+import { createSiteRef } from "../../services/site.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /** List sites that are available. @see https://learn.microsoft.com/en-us/graph/api/site-list */
-export default function listSites(): GraphOperation<(Site & SiteRef)[]> {
+export default function listSites(contextRef: ContextRef): GraphOperation<(Site & SiteRef)[]> {
     return operation({
+        contextId: contextRef.contextId,
         method: "GET",
         path: generatePath("/sites", {}),
         headers: {},
@@ -17,11 +19,12 @@ export default function listSites(): GraphOperation<(Site & SiteRef)[]> {
             const list = response as { value: Site[]; };
 
             const sites = list.value.map(site => {
-                const ref = siteRef(site.id as SiteId);
+                const siteId = site.id as SiteId;
+                const siteRef = createSiteRef(contextRef, siteId);
 
                 return {
                     ...site,
-                    ...ref,
+                    ...siteRef,
                 }
             });
 

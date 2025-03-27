@@ -4,44 +4,66 @@ This is an extensible library that allows access to Microsoft's GraphAPI, includ
 
 Note that this is a THIRD PARTY library and not associated with Microsoft.
 
+## Breaking changes
+### v2.0.0 
+* Contextual authentication. Authentication details are no longer automatically loaded from envs. You need to call `const contextRef = register(tenantId, clientId, clientSecret, httpProxy);` 
+* References are created with new funcs. Like `createSiteRef`.
+
 ## Usage
-1. Make sure the environment variables `AZURE_TENANT_ID`, `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` and [any others you require](docs/envs.md) are set. 
-2. Install the NPM package `npm i microsoft-graph`
-3. Then make calls:
+Install the NPM package `npm i microsoft-graph`, then:
 
-	### List drives
-	```typescript
-	for (const drive of await listDrives()) {
-		console.log(drive.name);
-	}
-	```
+### Prepare configuration
+Something like this, but whatever works in your context.
 
-	### List files
-	```typescript
-	for (const item of await listDriveItems()) {
-		console.log(item.name);
-	}
-	```
+```typescript
+const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as TenantId;
+const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as ClientId;
+const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as ClientSecret;
+const siteId = getEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
+const driveId = getEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
+```
 
-	### Getting a used range
-	```typescript
-	const range = await getWorkbookUsedRange({
-		siteId: args.siteId,
-		driveId: args.driveId,
-		itemId: args.itemId,
-		worksheetId: args.worksheetId,
-	});
-	```
+### Get reference to drive
+```typescript
+const contextRef = register(tenantId, clientId, clientSecret, httpProxy);
+const siteRef = createSiteRef(contextRef, siteId);
+const driveRef = createDriveRef(siteRef, driveId);
+```
 
-	### Updating a range
-	```typescript
-	await updateWorkbookRange(range, {
-		values: [
-			[1, 2],
-			[3, 4]
-		]
-	});
-	```
+### Create folder
+```typescript
+const folder = await createFolder(driveRef, "folder-name");
+```
+
+### Create workbook
+```typescript
+const workbook = await createWorkbookAndStartSession(folder, "workbook-name");
+```
+
+### Update range
+```typescript
+const worksheet = await getWorkbookWorksheetByName(workbook, "Sheet1");
+const rangeRef = createWorkbookRangeRef(worksheet, "A1:B2");
+await updateWorkbookRange(rangeRef, {
+	values: [
+		[1, 2],
+		[3, 4]
+	]
+});
+```
+
+### List files
+```typescript
+for (const item of await listDriveItems(folder)) {
+	console.debug(` - ${item.name}`);
+}
+```
+
+### Cleanup
+```typescript
+await closeWorkbookSession(workbook);
+await deleteDriveItemWithRetry(folder); // May take a moment to unlock the file
+```
 
 From here, have a look at:
 * [`/docs`](https://github.com/ProspectSafe/microsoft-graph/tree/main/docs) for more general documentation and advice.

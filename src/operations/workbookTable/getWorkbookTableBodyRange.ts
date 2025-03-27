@@ -5,11 +5,12 @@ import type { WorkbookRangeAddressUnderlying } from "../../models/WorkbookRangeA
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
-import { workbookRangeRef } from "../../services/workbookRange.ts";
+import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
 /** Retrieve the data body range of a table. @see https://learn.microsoft.com/en-us/graph/api/table-databodyrange */
 export default function getWorkbookTableBodyRange(tableRef: WorkbookTableRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {
     return operation({
+        contextId: tableRef.contextId,
         method: "GET",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables/{table-id}/dataBodyRange", tableRef),
         headers: {
@@ -18,7 +19,7 @@ export default function getWorkbookTableBodyRange(tableRef: WorkbookTableRef): G
         body: null,
         responseTransform: response => {
             const range = response as WorkbookRange;
-            const rangeRef = workbookRangeRef(tableRef, range.address as WorkbookRangeAddressUnderlying);
+            const rangeRef = createWorkbookRangeRef(tableRef, range.address as WorkbookRangeAddressUnderlying);
 
             return {
                 ...range,

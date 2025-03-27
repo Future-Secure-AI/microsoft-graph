@@ -1,3 +1,4 @@
+
 import type { WorkbookSessionId } from "./WorkbookSessionId.ts";
 
 export type GraphMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";

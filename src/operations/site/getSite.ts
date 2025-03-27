@@ -7,6 +7,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /** Retrieve properties for a site resource. @see https://learn.microsoft.com/en-us/graph/api/site-get */
 export default function getSite(siteRef: SiteRef): GraphOperation<Site & SiteRef> {
     return operation({
+        contextId: siteRef.contextId,
         method: "GET",
         path: generatePath("/sites/{site-id}", siteRef),
         headers: {},

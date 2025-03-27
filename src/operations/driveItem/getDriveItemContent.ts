@@ -3,15 +3,17 @@ import fetch from 'node-fetch';
 import { authenticationScope, endpoint } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import { getCurrentAccessToken } from "../../services/accessToken.ts";
-import { getHttpAgent } from '../../services/httpAgent.ts';
+import { getContext } from '../../services/context.ts';
+import { tryGetHttpAgent } from '../../services/httpAgent.ts';
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Download drive item. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get-content */
 export default async function getDriveItemContent(itemRef: DriveItemRef): Promise<ArrayBuffer> {
     // Note this method doesn't match the standard pattern since the batching library doesn't support non-JSON return types, and there appears to be no value in adding support.
     const url = `${endpoint}${generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/content", itemRef)}`;
-    const accessToken = await getCurrentAccessToken(authenticationScope);
-    const agent = getHttpAgent();
+    const context = getContext(itemRef.contextId);
+    const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
+    const agent = tryGetHttpAgent(context.httpProxy);
 
     const response = await fetch(url, {
         headers: {

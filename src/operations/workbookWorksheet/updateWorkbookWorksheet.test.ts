@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
+import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheetName.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath, } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import getWorkbookWorksheetByName from "../../tasks/getWorkbookWorksheetRefByName.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 import updateWorkbookWorksheet from "./updateWorkbookWorksheet.ts";
@@ -16,7 +18,9 @@ describe("updateWorkbookWorksheet", () => {
         try {
             const worksheet = await createWorkbookWorksheet(workbook);
             const newName = "UpdatedSheet";
-            const updatedWorksheet = await updateWorkbookWorksheet(worksheet, { name: newName });
+            await updateWorkbookWorksheet(worksheet, { name: newName });
+
+            const updatedWorksheet = await getWorkbookWorksheetByName(workbook, newName);
             expect(updatedWorksheet.name).toBe(newName);
         } finally {
             await deleteDriveItemWithRetry(workbook);
@@ -29,8 +33,10 @@ describe("updateWorkbookWorksheet", () => {
         const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
 
         try {
-            const worksheet = await createWorkbookWorksheet(workbook);
-            const updatedWorksheet = await updateWorkbookWorksheet(worksheet, { visibility: "Hidden" });
+            const worksheetName = "Sheet2" as WorkbookWorksheetName;
+            const worksheet = await createWorkbookWorksheet(workbook, worksheetName);
+            await updateWorkbookWorksheet(worksheet, { visibility: "Hidden" });
+            const updatedWorksheet = await getWorkbookWorksheetByName(worksheet, worksheetName);
             expect(updatedWorksheet.visibility).toBe("Hidden");
         } finally {
             await deleteDriveItemWithRetry(workbook);
