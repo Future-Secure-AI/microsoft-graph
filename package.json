@@ -42,6 +42,10 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
+    "./docs/getItem": {
+      "import": "./dist/docs/getItem.js",
+      "types": "./dist/docs/getItem.d.ts"
+    },
     "./errors/BadTemplateError": {
       "import": "./dist/errors/BadTemplateError.js",
       "types": "./dist/errors/BadTemplateError.d.ts"
@@ -73,6 +77,254 @@
     "./graphApi": {
       "import": "./dist/graphApi.js",
       "types": "./dist/graphApi.d.ts"
+    },
+    "./microsoftGraph/errors/BadTemplateError": {
+      "import": "./dist/microsoftGraph/errors/BadTemplateError.js",
+      "types": "./dist/microsoftGraph/errors/BadTemplateError.d.ts"
+    },
+    "./microsoftGraph/errors/InvalidArgumentError": {
+      "import": "./dist/microsoftGraph/errors/InvalidArgumentError.js",
+      "types": "./dist/microsoftGraph/errors/InvalidArgumentError.d.ts"
+    },
+    "./microsoftGraph/errors/RequestFailedError": {
+      "import": "./dist/microsoftGraph/errors/RequestFailedError.js",
+      "types": "./dist/microsoftGraph/errors/RequestFailedError.d.ts"
+    },
+    "./microsoftGraph/graphApi": {
+      "import": "./dist/microsoftGraph/graphApi.js",
+      "types": "./dist/microsoftGraph/graphApi.d.ts"
+    },
+    "./microsoftGraph/helpers/openSite": {
+      "import": "./dist/microsoftGraph/helpers/openSite.js",
+      "types": "./dist/microsoftGraph/helpers/openSite.d.ts"
+    },
+    "./microsoftGraph/helpers/openWorkbook": {
+      "import": "./dist/microsoftGraph/helpers/openWorkbook.js",
+      "types": "./dist/microsoftGraph/helpers/openWorkbook.d.ts"
+    },
+    "./microsoftGraph/helpers/openWorksheet": {
+      "import": "./dist/microsoftGraph/helpers/openWorksheet.js",
+      "types": "./dist/microsoftGraph/helpers/openWorksheet.d.ts"
+    },
+    "./microsoftGraph/models/AccessToken": {
+      "import": "./dist/microsoftGraph/models/AccessToken.js",
+      "types": "./dist/microsoftGraph/models/AccessToken.d.ts"
+    },
+    "./microsoftGraph/models/DriveId": {
+      "import": "./dist/microsoftGraph/models/DriveId.js",
+      "types": "./dist/microsoftGraph/models/DriveId.d.ts"
+    },
+    "./microsoftGraph/models/DriveItemId": {
+      "import": "./dist/microsoftGraph/models/DriveItemId.js",
+      "types": "./dist/microsoftGraph/models/DriveItemId.d.ts"
+    },
+    "./microsoftGraph/models/DriveItemPath": {
+      "import": "./dist/microsoftGraph/models/DriveItemPath.js",
+      "types": "./dist/microsoftGraph/models/DriveItemPath.d.ts"
+    },
+    "./microsoftGraph/models/DriveItemRef": {
+      "import": "./dist/microsoftGraph/models/DriveItemRef.js",
+      "types": "./dist/microsoftGraph/models/DriveItemRef.d.ts"
+    },
+    "./microsoftGraph/models/DriveRef": {
+      "import": "./dist/microsoftGraph/models/DriveRef.js",
+      "types": "./dist/microsoftGraph/models/DriveRef.d.ts"
+    },
+    "./microsoftGraph/models/GraphOperation": {
+      "import": "./dist/microsoftGraph/models/GraphOperation.js",
+      "types": "./dist/microsoftGraph/models/GraphOperation.d.ts"
+    },
+    "./microsoftGraph/models/GraphOptions": {
+      "import": "./dist/microsoftGraph/models/GraphOptions.js",
+      "types": "./dist/microsoftGraph/models/GraphOptions.d.ts"
+    },
+    "./microsoftGraph/models/HostName": {
+      "import": "./dist/microsoftGraph/models/HostName.js",
+      "types": "./dist/microsoftGraph/models/HostName.d.ts"
+    },
+    "./microsoftGraph/models/Scope": {
+      "import": "./dist/microsoftGraph/models/Scope.js",
+      "types": "./dist/microsoftGraph/models/Scope.d.ts"
+    },
+    "./microsoftGraph/models/SiteId": {
+      "import": "./dist/microsoftGraph/models/SiteId.js",
+      "types": "./dist/microsoftGraph/models/SiteId.d.ts"
+    },
+    "./microsoftGraph/models/SiteName": {
+      "import": "./dist/microsoftGraph/models/SiteName.js",
+      "types": "./dist/microsoftGraph/models/SiteName.d.ts"
+    },
+    "./microsoftGraph/models/SiteRef": {
+      "import": "./dist/microsoftGraph/models/SiteRef.js",
+      "types": "./dist/microsoftGraph/models/SiteRef.d.ts"
+    },
+    "./microsoftGraph/models/WorkbookNamedRangeRef": {
+      "import": "./dist/microsoftGraph/models/WorkbookNamedRangeRef.js",
+      "types": "./dist/microsoftGraph/models/WorkbookNamedRangeRef.d.ts"
+    },
+    "./microsoftGraph/models/WorkbookRangeAddress": {
+      "import": "./dist/microsoftGraph/models/WorkbookRangeAddress.js",
+      "types": "./dist/microsoftGraph/models/WorkbookRangeAddress.d.ts"
+    },
+    "./microsoftGraph/models/WorkbookRangeName": {
+      "import": "./dist/microsoftGraph/models/WorkbookRangeName.js",
+      "types": "./dist/microsoftGraph/models/WorkbookRangeName.d.ts"
+    },
+    "./microsoftGraph/models/WorkbookRangeRef": {
+      "import": "./dist/microsoftGraph/models/WorkbookRangeRef.js",
+      "types": "./dist/microsoftGraph/models/WorkbookRangeRef.d.ts"
+    },
+    "./microsoftGraph/models/WorkbookRef": {
+      "import": "./dist/microsoftGraph/models/WorkbookRef.js",
+      "types": "./dist/microsoftGraph/models/WorkbookRef.d.ts"
+    },
+    "./microsoftGraph/models/WorkbookSessionId": {
+      "import": "./dist/microsoftGraph/models/WorkbookSessionId.js",
+      "types": "./dist/microsoftGraph/models/WorkbookSessionId.d.ts"
+    },
+    "./microsoftGraph/models/WorkbookWorksheetId": {
+      "import": "./dist/microsoftGraph/models/WorkbookWorksheetId.js",
+      "types": "./dist/microsoftGraph/models/WorkbookWorksheetId.d.ts"
+    },
+    "./microsoftGraph/models/WorkbookWorksheetRef": {
+      "import": "./dist/microsoftGraph/models/WorkbookWorksheetRef.js",
+      "types": "./dist/microsoftGraph/models/WorkbookWorksheetRef.d.ts"
+    },
+    "./microsoftGraph/models/regenerate-dtos": {
+      "import": "./dist/microsoftGraph/models/regenerate-dtos.js",
+      "types": "./dist/microsoftGraph/models/regenerate-dtos.d.ts"
+    },
+    "./microsoftGraph/operations/drive/createFolder": {
+      "import": "./dist/microsoftGraph/operations/drive/createFolder.js",
+      "types": "./dist/microsoftGraph/operations/drive/createFolder.d.ts"
+    },
+    "./microsoftGraph/operations/drive/listDrives": {
+      "import": "./dist/microsoftGraph/operations/drive/listDrives.js",
+      "types": "./dist/microsoftGraph/operations/drive/listDrives.d.ts"
+    },
+    "./microsoftGraph/operations/driveItem/copyDriveItem": {
+      "import": "./dist/microsoftGraph/operations/driveItem/copyDriveItem.js",
+      "types": "./dist/microsoftGraph/operations/driveItem/copyDriveItem.d.ts"
+    },
+    "./microsoftGraph/operations/driveItem/deleteDriveItem": {
+      "import": "./dist/microsoftGraph/operations/driveItem/deleteDriveItem.js",
+      "types": "./dist/microsoftGraph/operations/driveItem/deleteDriveItem.d.ts"
+    },
+    "./microsoftGraph/operations/driveItem/getDriveItem": {
+      "import": "./dist/microsoftGraph/operations/driveItem/getDriveItem.js",
+      "types": "./dist/microsoftGraph/operations/driveItem/getDriveItem.d.ts"
+    },
+    "./microsoftGraph/operations/driveItem/getDriveItemByPath": {
+      "import": "./dist/microsoftGraph/operations/driveItem/getDriveItemByPath.js",
+      "types": "./dist/microsoftGraph/operations/driveItem/getDriveItemByPath.d.ts"
+    },
+    "./microsoftGraph/operations/driveItem/listDriveItems": {
+      "import": "./dist/microsoftGraph/operations/driveItem/listDriveItems.js",
+      "types": "./dist/microsoftGraph/operations/driveItem/listDriveItems.d.ts"
+    },
+    "./microsoftGraph/operations/site/getSite": {
+      "import": "./dist/microsoftGraph/operations/site/getSite.js",
+      "types": "./dist/microsoftGraph/operations/site/getSite.d.ts"
+    },
+    "./microsoftGraph/operations/site/getSiteByName": {
+      "import": "./dist/microsoftGraph/operations/site/getSiteByName.js",
+      "types": "./dist/microsoftGraph/operations/site/getSiteByName.d.ts"
+    },
+    "./microsoftGraph/operations/site/listSites": {
+      "import": "./dist/microsoftGraph/operations/site/listSites.js",
+      "types": "./dist/microsoftGraph/operations/site/listSites.d.ts"
+    },
+    "./microsoftGraph/operations/site/searchSites": {
+      "import": "./dist/microsoftGraph/operations/site/searchSites.js",
+      "types": "./dist/microsoftGraph/operations/site/searchSites.d.ts"
+    },
+    "./microsoftGraph/operations/workbook/createWorkbook": {
+      "import": "./dist/microsoftGraph/operations/workbook/createWorkbook.js",
+      "types": "./dist/microsoftGraph/operations/workbook/createWorkbook.d.ts"
+    },
+    "./microsoftGraph/operations/workbook/deleteWorkbook": {
+      "import": "./dist/microsoftGraph/operations/workbook/deleteWorkbook.js",
+      "types": "./dist/microsoftGraph/operations/workbook/deleteWorkbook.d.ts"
+    },
+    "./microsoftGraph/operations/workbookRange/clearWorkbookRange": {
+      "import": "./dist/microsoftGraph/operations/workbookRange/clearWorkbookRange.js",
+      "types": "./dist/microsoftGraph/operations/workbookRange/clearWorkbookRange.d.ts"
+    },
+    "./microsoftGraph/operations/workbookRange/deleteWorkbookRange": {
+      "import": "./dist/microsoftGraph/operations/workbookRange/deleteWorkbookRange.js",
+      "types": "./dist/microsoftGraph/operations/workbookRange/deleteWorkbookRange.d.ts"
+    },
+    "./microsoftGraph/operations/workbookRange/getWorkbookNamedRange": {
+      "import": "./dist/microsoftGraph/operations/workbookRange/getWorkbookNamedRange.js",
+      "types": "./dist/microsoftGraph/operations/workbookRange/getWorkbookNamedRange.d.ts"
+    },
+    "./microsoftGraph/operations/workbookRange/getWorkbookRange": {
+      "import": "./dist/microsoftGraph/operations/workbookRange/getWorkbookRange.js",
+      "types": "./dist/microsoftGraph/operations/workbookRange/getWorkbookRange.d.ts"
+    },
+    "./microsoftGraph/operations/workbookRange/getWorkbookUsedRange": {
+      "import": "./dist/microsoftGraph/operations/workbookRange/getWorkbookUsedRange.js",
+      "types": "./dist/microsoftGraph/operations/workbookRange/getWorkbookUsedRange.d.ts"
+    },
+    "./microsoftGraph/operations/workbookRange/insertWorkbookCells": {
+      "import": "./dist/microsoftGraph/operations/workbookRange/insertWorkbookCells.js",
+      "types": "./dist/microsoftGraph/operations/workbookRange/insertWorkbookCells.d.ts"
+    },
+    "./microsoftGraph/operations/workbookRange/updateWorkbookNamedRange": {
+      "import": "./dist/microsoftGraph/operations/workbookRange/updateWorkbookNamedRange.js",
+      "types": "./dist/microsoftGraph/operations/workbookRange/updateWorkbookNamedRange.d.ts"
+    },
+    "./microsoftGraph/operations/workbookRange/updateWorkbookRange": {
+      "import": "./dist/microsoftGraph/operations/workbookRange/updateWorkbookRange.js",
+      "types": "./dist/microsoftGraph/operations/workbookRange/updateWorkbookRange.d.ts"
+    },
+    "./microsoftGraph/operations/workbookSession/closeWorkbookSession": {
+      "import": "./dist/microsoftGraph/operations/workbookSession/closeWorkbookSession.js",
+      "types": "./dist/microsoftGraph/operations/workbookSession/closeWorkbookSession.d.ts"
+    },
+    "./microsoftGraph/operations/workbookSession/createWorkbookSession": {
+      "import": "./dist/microsoftGraph/operations/workbookSession/createWorkbookSession.js",
+      "types": "./dist/microsoftGraph/operations/workbookSession/createWorkbookSession.d.ts"
+    },
+    "./microsoftGraph/operations/workbookSession/refreshWorkbookSession": {
+      "import": "./dist/microsoftGraph/operations/workbookSession/refreshWorkbookSession.js",
+      "types": "./dist/microsoftGraph/operations/workbookSession/refreshWorkbookSession.d.ts"
+    },
+    "./microsoftGraph/operations/workbookWorksheet/createWorkbookWorksheet": {
+      "import": "./dist/microsoftGraph/operations/workbookWorksheet/createWorkbookWorksheet.js",
+      "types": "./dist/microsoftGraph/operations/workbookWorksheet/createWorkbookWorksheet.d.ts"
+    },
+    "./microsoftGraph/operations/workbookWorksheet/deleteWorkbookWorksheet": {
+      "import": "./dist/microsoftGraph/operations/workbookWorksheet/deleteWorkbookWorksheet.js",
+      "types": "./dist/microsoftGraph/operations/workbookWorksheet/deleteWorkbookWorksheet.d.ts"
+    },
+    "./microsoftGraph/operations/workbookWorksheet/listWorkbookWorksheets": {
+      "import": "./dist/microsoftGraph/operations/workbookWorksheet/listWorkbookWorksheets.js",
+      "types": "./dist/microsoftGraph/operations/workbookWorksheet/listWorkbookWorksheets.d.ts"
+    },
+    "./microsoftGraph/operations/workbookWorksheet/updateWorkbookWorksheet": {
+      "import": "./dist/microsoftGraph/operations/workbookWorksheet/updateWorkbookWorksheet.js",
+      "types": "./dist/microsoftGraph/operations/workbookWorksheet/updateWorkbookWorksheet.d.ts"
+    },
+    "./microsoftGraph/services/accessToken": {
+      "import": "./dist/microsoftGraph/services/accessToken.js",
+      "types": "./dist/microsoftGraph/services/accessToken.d.ts"
+    },
+    "./microsoftGraph/services/configuration": {
+      "import": "./dist/microsoftGraph/services/configuration.js",
+      "types": "./dist/microsoftGraph/services/configuration.d.ts"
+    },
+    "./microsoftGraph/services/sharepointUrl": {
+      "import": "./dist/microsoftGraph/services/sharepointUrl.js",
+      "types": "./dist/microsoftGraph/services/sharepointUrl.d.ts"
+    },
+    "./microsoftGraph/services/stringCaseConversion": {
+      "import": "./dist/microsoftGraph/services/stringCaseConversion.js",
+      "types": "./dist/microsoftGraph/services/stringCaseConversion.d.ts"
+    },
+    "./microsoftGraph/services/templatedPaths": {
+      "import": "./dist/microsoftGraph/services/templatedPaths.js",
+      "types": "./dist/microsoftGraph/services/templatedPaths.d.ts"
     },
     "./models/AccessToken": {
       "import": "./dist/models/AccessToken.js",
@@ -441,6 +693,254 @@
     "./services/workbookWorksheet": {
       "import": "./dist/services/workbookWorksheet.js",
       "types": "./dist/services/workbookWorksheet.d.ts"
+    },
+    "./src/microsoftGraph/errors/BadTemplateError": {
+      "import": "./dist/src/microsoftGraph/errors/BadTemplateError.js",
+      "types": "./dist/src/microsoftGraph/errors/BadTemplateError.d.ts"
+    },
+    "./src/microsoftGraph/errors/InvalidArgumentError": {
+      "import": "./dist/src/microsoftGraph/errors/InvalidArgumentError.js",
+      "types": "./dist/src/microsoftGraph/errors/InvalidArgumentError.d.ts"
+    },
+    "./src/microsoftGraph/errors/RequestFailedError": {
+      "import": "./dist/src/microsoftGraph/errors/RequestFailedError.js",
+      "types": "./dist/src/microsoftGraph/errors/RequestFailedError.d.ts"
+    },
+    "./src/microsoftGraph/graphApi": {
+      "import": "./dist/src/microsoftGraph/graphApi.js",
+      "types": "./dist/src/microsoftGraph/graphApi.d.ts"
+    },
+    "./src/microsoftGraph/helpers/openSite": {
+      "import": "./dist/src/microsoftGraph/helpers/openSite.js",
+      "types": "./dist/src/microsoftGraph/helpers/openSite.d.ts"
+    },
+    "./src/microsoftGraph/helpers/openWorkbook": {
+      "import": "./dist/src/microsoftGraph/helpers/openWorkbook.js",
+      "types": "./dist/src/microsoftGraph/helpers/openWorkbook.d.ts"
+    },
+    "./src/microsoftGraph/helpers/openWorksheet": {
+      "import": "./dist/src/microsoftGraph/helpers/openWorksheet.js",
+      "types": "./dist/src/microsoftGraph/helpers/openWorksheet.d.ts"
+    },
+    "./src/microsoftGraph/models/AccessToken": {
+      "import": "./dist/src/microsoftGraph/models/AccessToken.js",
+      "types": "./dist/src/microsoftGraph/models/AccessToken.d.ts"
+    },
+    "./src/microsoftGraph/models/DriveId": {
+      "import": "./dist/src/microsoftGraph/models/DriveId.js",
+      "types": "./dist/src/microsoftGraph/models/DriveId.d.ts"
+    },
+    "./src/microsoftGraph/models/DriveItemId": {
+      "import": "./dist/src/microsoftGraph/models/DriveItemId.js",
+      "types": "./dist/src/microsoftGraph/models/DriveItemId.d.ts"
+    },
+    "./src/microsoftGraph/models/DriveItemPath": {
+      "import": "./dist/src/microsoftGraph/models/DriveItemPath.js",
+      "types": "./dist/src/microsoftGraph/models/DriveItemPath.d.ts"
+    },
+    "./src/microsoftGraph/models/DriveItemRef": {
+      "import": "./dist/src/microsoftGraph/models/DriveItemRef.js",
+      "types": "./dist/src/microsoftGraph/models/DriveItemRef.d.ts"
+    },
+    "./src/microsoftGraph/models/DriveRef": {
+      "import": "./dist/src/microsoftGraph/models/DriveRef.js",
+      "types": "./dist/src/microsoftGraph/models/DriveRef.d.ts"
+    },
+    "./src/microsoftGraph/models/GraphOperation": {
+      "import": "./dist/src/microsoftGraph/models/GraphOperation.js",
+      "types": "./dist/src/microsoftGraph/models/GraphOperation.d.ts"
+    },
+    "./src/microsoftGraph/models/GraphOptions": {
+      "import": "./dist/src/microsoftGraph/models/GraphOptions.js",
+      "types": "./dist/src/microsoftGraph/models/GraphOptions.d.ts"
+    },
+    "./src/microsoftGraph/models/HostName": {
+      "import": "./dist/src/microsoftGraph/models/HostName.js",
+      "types": "./dist/src/microsoftGraph/models/HostName.d.ts"
+    },
+    "./src/microsoftGraph/models/Scope": {
+      "import": "./dist/src/microsoftGraph/models/Scope.js",
+      "types": "./dist/src/microsoftGraph/models/Scope.d.ts"
+    },
+    "./src/microsoftGraph/models/SiteId": {
+      "import": "./dist/src/microsoftGraph/models/SiteId.js",
+      "types": "./dist/src/microsoftGraph/models/SiteId.d.ts"
+    },
+    "./src/microsoftGraph/models/SiteName": {
+      "import": "./dist/src/microsoftGraph/models/SiteName.js",
+      "types": "./dist/src/microsoftGraph/models/SiteName.d.ts"
+    },
+    "./src/microsoftGraph/models/SiteRef": {
+      "import": "./dist/src/microsoftGraph/models/SiteRef.js",
+      "types": "./dist/src/microsoftGraph/models/SiteRef.d.ts"
+    },
+    "./src/microsoftGraph/models/WorkbookNamedRangeRef": {
+      "import": "./dist/src/microsoftGraph/models/WorkbookNamedRangeRef.js",
+      "types": "./dist/src/microsoftGraph/models/WorkbookNamedRangeRef.d.ts"
+    },
+    "./src/microsoftGraph/models/WorkbookRangeAddress": {
+      "import": "./dist/src/microsoftGraph/models/WorkbookRangeAddress.js",
+      "types": "./dist/src/microsoftGraph/models/WorkbookRangeAddress.d.ts"
+    },
+    "./src/microsoftGraph/models/WorkbookRangeName": {
+      "import": "./dist/src/microsoftGraph/models/WorkbookRangeName.js",
+      "types": "./dist/src/microsoftGraph/models/WorkbookRangeName.d.ts"
+    },
+    "./src/microsoftGraph/models/WorkbookRangeRef": {
+      "import": "./dist/src/microsoftGraph/models/WorkbookRangeRef.js",
+      "types": "./dist/src/microsoftGraph/models/WorkbookRangeRef.d.ts"
+    },
+    "./src/microsoftGraph/models/WorkbookRef": {
+      "import": "./dist/src/microsoftGraph/models/WorkbookRef.js",
+      "types": "./dist/src/microsoftGraph/models/WorkbookRef.d.ts"
+    },
+    "./src/microsoftGraph/models/WorkbookSessionId": {
+      "import": "./dist/src/microsoftGraph/models/WorkbookSessionId.js",
+      "types": "./dist/src/microsoftGraph/models/WorkbookSessionId.d.ts"
+    },
+    "./src/microsoftGraph/models/WorkbookWorksheetId": {
+      "import": "./dist/src/microsoftGraph/models/WorkbookWorksheetId.js",
+      "types": "./dist/src/microsoftGraph/models/WorkbookWorksheetId.d.ts"
+    },
+    "./src/microsoftGraph/models/WorkbookWorksheetRef": {
+      "import": "./dist/src/microsoftGraph/models/WorkbookWorksheetRef.js",
+      "types": "./dist/src/microsoftGraph/models/WorkbookWorksheetRef.d.ts"
+    },
+    "./src/microsoftGraph/models/regenerate-dtos": {
+      "import": "./dist/src/microsoftGraph/models/regenerate-dtos.js",
+      "types": "./dist/src/microsoftGraph/models/regenerate-dtos.d.ts"
+    },
+    "./src/microsoftGraph/operations/drive/createFolder": {
+      "import": "./dist/src/microsoftGraph/operations/drive/createFolder.js",
+      "types": "./dist/src/microsoftGraph/operations/drive/createFolder.d.ts"
+    },
+    "./src/microsoftGraph/operations/drive/listDrives": {
+      "import": "./dist/src/microsoftGraph/operations/drive/listDrives.js",
+      "types": "./dist/src/microsoftGraph/operations/drive/listDrives.d.ts"
+    },
+    "./src/microsoftGraph/operations/driveItem/copyDriveItem": {
+      "import": "./dist/src/microsoftGraph/operations/driveItem/copyDriveItem.js",
+      "types": "./dist/src/microsoftGraph/operations/driveItem/copyDriveItem.d.ts"
+    },
+    "./src/microsoftGraph/operations/driveItem/deleteDriveItem": {
+      "import": "./dist/src/microsoftGraph/operations/driveItem/deleteDriveItem.js",
+      "types": "./dist/src/microsoftGraph/operations/driveItem/deleteDriveItem.d.ts"
+    },
+    "./src/microsoftGraph/operations/driveItem/getDriveItem": {
+      "import": "./dist/src/microsoftGraph/operations/driveItem/getDriveItem.js",
+      "types": "./dist/src/microsoftGraph/operations/driveItem/getDriveItem.d.ts"
+    },
+    "./src/microsoftGraph/operations/driveItem/getDriveItemByPath": {
+      "import": "./dist/src/microsoftGraph/operations/driveItem/getDriveItemByPath.js",
+      "types": "./dist/src/microsoftGraph/operations/driveItem/getDriveItemByPath.d.ts"
+    },
+    "./src/microsoftGraph/operations/driveItem/listDriveItems": {
+      "import": "./dist/src/microsoftGraph/operations/driveItem/listDriveItems.js",
+      "types": "./dist/src/microsoftGraph/operations/driveItem/listDriveItems.d.ts"
+    },
+    "./src/microsoftGraph/operations/site/getSite": {
+      "import": "./dist/src/microsoftGraph/operations/site/getSite.js",
+      "types": "./dist/src/microsoftGraph/operations/site/getSite.d.ts"
+    },
+    "./src/microsoftGraph/operations/site/getSiteByName": {
+      "import": "./dist/src/microsoftGraph/operations/site/getSiteByName.js",
+      "types": "./dist/src/microsoftGraph/operations/site/getSiteByName.d.ts"
+    },
+    "./src/microsoftGraph/operations/site/listSites": {
+      "import": "./dist/src/microsoftGraph/operations/site/listSites.js",
+      "types": "./dist/src/microsoftGraph/operations/site/listSites.d.ts"
+    },
+    "./src/microsoftGraph/operations/site/searchSites": {
+      "import": "./dist/src/microsoftGraph/operations/site/searchSites.js",
+      "types": "./dist/src/microsoftGraph/operations/site/searchSites.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbook/createWorkbook": {
+      "import": "./dist/src/microsoftGraph/operations/workbook/createWorkbook.js",
+      "types": "./dist/src/microsoftGraph/operations/workbook/createWorkbook.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbook/deleteWorkbook": {
+      "import": "./dist/src/microsoftGraph/operations/workbook/deleteWorkbook.js",
+      "types": "./dist/src/microsoftGraph/operations/workbook/deleteWorkbook.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookRange/clearWorkbookRange": {
+      "import": "./dist/src/microsoftGraph/operations/workbookRange/clearWorkbookRange.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookRange/clearWorkbookRange.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookRange/deleteWorkbookRange": {
+      "import": "./dist/src/microsoftGraph/operations/workbookRange/deleteWorkbookRange.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookRange/deleteWorkbookRange.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookRange/getWorkbookNamedRange": {
+      "import": "./dist/src/microsoftGraph/operations/workbookRange/getWorkbookNamedRange.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookRange/getWorkbookNamedRange.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookRange/getWorkbookRange": {
+      "import": "./dist/src/microsoftGraph/operations/workbookRange/getWorkbookRange.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookRange/getWorkbookRange.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookRange/getWorkbookUsedRange": {
+      "import": "./dist/src/microsoftGraph/operations/workbookRange/getWorkbookUsedRange.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookRange/getWorkbookUsedRange.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookRange/insertWorkbookCells": {
+      "import": "./dist/src/microsoftGraph/operations/workbookRange/insertWorkbookCells.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookRange/insertWorkbookCells.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookRange/updateWorkbookNamedRange": {
+      "import": "./dist/src/microsoftGraph/operations/workbookRange/updateWorkbookNamedRange.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookRange/updateWorkbookNamedRange.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookRange/updateWorkbookRange": {
+      "import": "./dist/src/microsoftGraph/operations/workbookRange/updateWorkbookRange.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookRange/updateWorkbookRange.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookSession/closeWorkbookSession": {
+      "import": "./dist/src/microsoftGraph/operations/workbookSession/closeWorkbookSession.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookSession/closeWorkbookSession.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookSession/createWorkbookSession": {
+      "import": "./dist/src/microsoftGraph/operations/workbookSession/createWorkbookSession.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookSession/createWorkbookSession.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookSession/refreshWorkbookSession": {
+      "import": "./dist/src/microsoftGraph/operations/workbookSession/refreshWorkbookSession.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookSession/refreshWorkbookSession.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookWorksheet/createWorkbookWorksheet": {
+      "import": "./dist/src/microsoftGraph/operations/workbookWorksheet/createWorkbookWorksheet.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookWorksheet/createWorkbookWorksheet.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookWorksheet/deleteWorkbookWorksheet": {
+      "import": "./dist/src/microsoftGraph/operations/workbookWorksheet/deleteWorkbookWorksheet.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookWorksheet/deleteWorkbookWorksheet.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookWorksheet/listWorkbookWorksheets": {
+      "import": "./dist/src/microsoftGraph/operations/workbookWorksheet/listWorkbookWorksheets.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookWorksheet/listWorkbookWorksheets.d.ts"
+    },
+    "./src/microsoftGraph/operations/workbookWorksheet/updateWorkbookWorksheet": {
+      "import": "./dist/src/microsoftGraph/operations/workbookWorksheet/updateWorkbookWorksheet.js",
+      "types": "./dist/src/microsoftGraph/operations/workbookWorksheet/updateWorkbookWorksheet.d.ts"
+    },
+    "./src/microsoftGraph/services/accessToken": {
+      "import": "./dist/src/microsoftGraph/services/accessToken.js",
+      "types": "./dist/src/microsoftGraph/services/accessToken.d.ts"
+    },
+    "./src/microsoftGraph/services/configuration": {
+      "import": "./dist/src/microsoftGraph/services/configuration.js",
+      "types": "./dist/src/microsoftGraph/services/configuration.d.ts"
+    },
+    "./src/microsoftGraph/services/sharepointUrl": {
+      "import": "./dist/src/microsoftGraph/services/sharepointUrl.js",
+      "types": "./dist/src/microsoftGraph/services/sharepointUrl.d.ts"
+    },
+    "./src/microsoftGraph/services/stringCaseConversion": {
+      "import": "./dist/src/microsoftGraph/services/stringCaseConversion.js",
+      "types": "./dist/src/microsoftGraph/services/stringCaseConversion.d.ts"
+    },
+    "./src/microsoftGraph/services/templatedPaths": {
+      "import": "./dist/src/microsoftGraph/services/templatedPaths.js",
+      "types": "./dist/src/microsoftGraph/services/templatedPaths.d.ts"
     },
     "./tasks/createWorkbookAndStartSession": {
       "import": "./dist/tasks/createWorkbookAndStartSession.js",
