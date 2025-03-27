@@ -1,7 +1,7 @@
 {
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.addMissingImports":"explicit",
+    "source.organizeImports": "never",
+    "source.addMissingImports": "explicit",
     "source.fixAll": "explicit",
   },
   "editor.formatOnSave": true,
