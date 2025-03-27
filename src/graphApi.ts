@@ -1,6 +1,6 @@
 
 import fetch from 'node-fetch';
-import InconsistentContextError from './errors/ContextMismatchError.ts';
+import InconsistentContextError from './errors/InconsistentContextError.ts';
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
 import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";

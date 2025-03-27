@@ -1,9 +1,4 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "never",
-    "source.addMissingImports": "explicit",
-    "source.fixAll": "explicit",
-  },
   "editor.formatOnSave": true,
   "[typescript]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
