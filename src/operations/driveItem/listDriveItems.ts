@@ -5,7 +5,7 @@ import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
-import { driveItemRef } from "../../services/driveItem.ts";
+import { createDriveItemRef } from "../../services/driveItem.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 export type ListDriveItemResponse = {
@@ -19,6 +19,7 @@ export default function listDriveItems(parentRef: DriveRef | DriveItemRef = getD
     const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root"
 
     return operation({
+        contextId: parentRef.contextId,
         method: "GET",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}/children`, parentRef),
         headers: {},
@@ -27,7 +28,7 @@ export default function listDriveItems(parentRef: DriveRef | DriveItemRef = getD
             const list = response as ListDriveItemResponse;
 
             const items = list.value.map(item => {
-                const itemRef = driveItemRef(parentRef, item.id as DriveItemId);
+                const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
 
                 return {
                     ...item,

@@ -5,7 +5,7 @@ import type { DriveItemId } from "../../models/DriveItemId.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import { driveItemRef } from "../../services/driveItem.ts";
+import { createDriveItemRef } from "../../services/driveItem.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Create folder if it doesn't exist, and return the folder. Use a `DriveRef` to create in root or `DriveItemRef` to create in a subfolder. @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children */
@@ -13,6 +13,7 @@ export default function createFolder(parentRef: DriveRef | DriveItemRef, folderN
     const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root"
 
     return operation({
+        contextId: parentRef.contextId,
         method: "POST",
         path: generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}/children`, parentRef),
         headers: {
@@ -25,7 +26,7 @@ export default function createFolder(parentRef: DriveRef | DriveItemRef, folderN
         },
         responseTransform: response => {
             const item = response as DriveItem;
-            const itemRef = driveItemRef(parentRef, item.id as DriveItemId);
+            const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
 
             return {
                 ...item,

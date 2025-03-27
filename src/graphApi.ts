@@ -1,11 +1,13 @@
 
 import fetch from 'node-fetch';
+import InconsistentContextError from './errors/ContextMismatchError.ts';
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
 import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
 import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
-import { getHttpAgent } from './services/httpAgent.ts';
+import { getContext } from './services/context.ts';
+import { tryGetHttpAgent } from './services/httpAgent.ts';
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 
 export const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
@@ -41,8 +43,9 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
 }
 
 async function single<T>(definition: GraphOperationDefinition<T>): Promise<T> { // TODO: Tidy
-    const accessToken = await getCurrentAccessToken(authenticationScope);
-    const agent = getHttpAgent();
+    const context = getContext(definition.contextId);
+    const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
+    const agent = tryGetHttpAgent(context.httpProxy);
 
     const requestHeaders = {
         "authorization": `Bearer ${accessToken}`,
@@ -98,8 +101,20 @@ async function execute<T extends GraphOperationDefinitionWithDeps<unknown>[]>(..
 }
 
 async function composeRequestPayload<T extends GraphOperationDefinitionWithDeps<unknown>[]>(ops: T) {
-    const accessToken = await getCurrentAccessToken(authenticationScope);
-    const agent = await getHttpAgent();
+    const firstOp = ops[0];
+    if (!firstOp) {
+        throw new Error("First op not found. Should be impossible");
+    }
+
+    const contextId = firstOp.contextId;
+
+    if (ops.some(op => op.contextId !== contextId)) {
+        throw new InconsistentContextError("All operations in a batch must share the same contextId.");
+    }
+
+    const context = getContext(contextId);
+    const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
+    const agent = tryGetHttpAgent(context.httpProxy);
 
     const requestBody = {
         requests: ops.map((op, index) => ({

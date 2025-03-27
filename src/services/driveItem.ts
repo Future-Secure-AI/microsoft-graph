@@ -54,12 +54,13 @@ export function driveItemPath(...segments: string[]): DriveItemPath {
     return path as DriveItemPath;
 }
 
-export function driveItemRef(driveRef: DriveRef, itemId: DriveItemId | undefined): DriveItemRef {
+export function createDriveItemRef(driveRef: DriveRef, itemId: DriveItemId | undefined): DriveItemRef {
     if (!itemId) {
         throw new ProtocolError("ItemID is missing");
     }
 
     return {
+        contextId: driveRef.contextId,
         siteId: driveRef.siteId,
         driveId: driveRef.driveId,
         itemId

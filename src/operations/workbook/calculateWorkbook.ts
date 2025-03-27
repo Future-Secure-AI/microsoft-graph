@@ -6,6 +6,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /** Recalculate a workbook. @see https://learn.microsoft.com/en-us/graph/api/workbookapplication-calculate */
 export default function calculateWorkbook(workbookRef: WorkbookRef, calculationType: "Recalculate" | "Full" | "FullRebuild" = "Recalculate"): GraphOperation<void> {
     return operation({
+        contextId: workbookRef.contextId,
         method: "POST",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/application/calculate", workbookRef),
         headers: {

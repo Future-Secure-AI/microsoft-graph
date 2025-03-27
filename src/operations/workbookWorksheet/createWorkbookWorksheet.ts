@@ -6,11 +6,12 @@ import type { WorkbookWorksheetId } from "../../models/WorkbookWorksheetId.ts";
 import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheetName.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
-import { workbookWorksheetRef } from "../../services/workbookWorksheet.ts";
+import { createWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 
 /** Create a new worksheet, optionally with a defined name. @see https://learn.microsoft.com/en-us/graph/api/worksheetcollection-add */
 export default function createWorkbookWorksheet(workbookRef: WorkbookRef, name?: WorkbookWorksheetName): GraphOperation<WorkbookWorksheet & WorkbookWorksheetRef> {
     return operation({
+        contextId: workbookRef.contextId,
         method: "POST",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/add", workbookRef),
         headers: {
@@ -22,7 +23,7 @@ export default function createWorkbookWorksheet(workbookRef: WorkbookRef, name?:
         },
         responseTransform: response => {
             const worksheet = response as WorkbookWorksheet;
-            const worksheetRef = workbookWorksheetRef(workbookRef, worksheet.id as WorkbookWorksheetId);
+            const worksheetRef = createWorkbookWorksheetRef(workbookRef, worksheet.id as WorkbookWorksheetId);
 
             return {
                 ...worksheet,

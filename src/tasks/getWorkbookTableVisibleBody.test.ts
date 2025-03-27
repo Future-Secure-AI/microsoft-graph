@@ -7,7 +7,7 @@ import createWorkbookWorksheet from "../operations/workbookWorksheet/createWorkb
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
-import { workbookRangeRef } from "../services/workbookRange.ts";
+import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import { getWorkbookTableVisibleBody } from "./getWorkbookTableVisibleBody.ts";
 
@@ -20,7 +20,7 @@ describe("getWorkbookTableVisibleBody", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbook);
-            const rangeRef = workbookRangeRef(worksheet, "A1:D4");
+            const rangeRef = createWorkbookRangeRef(worksheet, "A1:D4");
             const table = await createWorkbookTable(rangeRef, true);
 
             await updateWorkbookRange(rangeRef, {
@@ -52,7 +52,7 @@ describe("getWorkbookTableVisibleBody", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbook);
-            const rangeRef = workbookRangeRef(worksheet, "A1:D4");
+            const rangeRef = createWorkbookRangeRef(worksheet, "A1:D4");
             const table = await createWorkbookTable(rangeRef, true);
 
             await updateWorkbookRange(rangeRef, {
@@ -64,7 +64,7 @@ describe("getWorkbookTableVisibleBody", () => {
                 ]
             });
 
-            const hiddenRange = workbookRangeRef(worksheet, "2:2");
+            const hiddenRange = createWorkbookRangeRef(worksheet, "2:2");
             await updateWorkbookRange(hiddenRange, { rowHidden: true });
             await calculateWorkbook(workbook);
 
@@ -86,7 +86,7 @@ describe("getWorkbookTableVisibleBody", () => {
 
         try {
             const worksheet = await createWorkbookWorksheet(workbook);
-            const rangeRef = workbookRangeRef(worksheet, "A1:D4");
+            const rangeRef = createWorkbookRangeRef(worksheet, "A1:D4");
             const table = await createWorkbookTable(rangeRef, true);
 
             await updateWorkbookRange(rangeRef, {
@@ -98,7 +98,7 @@ describe("getWorkbookTableVisibleBody", () => {
                 ]
             });
 
-            const hiddenRange = workbookRangeRef(worksheet, "B:B");
+            const hiddenRange = createWorkbookRangeRef(worksheet, "B:B");
             await updateWorkbookRange(hiddenRange, { columnHidden: true });
             await calculateWorkbook(workbook);
 

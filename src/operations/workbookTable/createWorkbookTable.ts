@@ -5,11 +5,12 @@ import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookTableId } from "../../models/WorkbookTableId.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
-import { workbookTableRef } from "../../services/workbookTable.ts";
+import { createWorkbookTableRef } from "../../services/workbookTable.ts";
 
 /** Create a new table in a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-post-tables */
 export default function createWorkbookTable(rangeRef: WorkbookRangeRef, hasHeaders: boolean): GraphOperation<WorkbookTable & WorkbookTableRef> {
     return operation({
+        contextId: rangeRef.contextId,
         method: "POST",
         path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables/add", rangeRef),
         headers: {
@@ -22,7 +23,7 @@ export default function createWorkbookTable(rangeRef: WorkbookRangeRef, hasHeade
         },
         responseTransform: response => {
             const table = response as WorkbookTable;
-            const tableRef = workbookTableRef(rangeRef, table.id as WorkbookTableId);
+            const tableRef = createWorkbookTableRef(rangeRef, table.id as WorkbookTableId);
             return {
                 ...table,
                 ...tableRef

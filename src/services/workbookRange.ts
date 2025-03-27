@@ -3,8 +3,9 @@ import type { WorkbookRangeAddress, WorkbookRangeAddressUnderlying } from "../mo
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
 
-export function workbookRangeRef(worksheetRef: WorkbookWorksheetRef, address: WorkbookRangeAddressUnderlying): WorkbookRangeRef {
+export function createWorkbookRangeRef(worksheetRef: WorkbookWorksheetRef, address: WorkbookRangeAddressUnderlying): WorkbookRangeRef {
     return {
+        contextId: worksheetRef.contextId,
         siteId: worksheetRef.siteId,
         driveId: worksheetRef.driveId,
         itemId: worksheetRef.itemId,
