@@ -25,7 +25,7 @@ const driveId = getEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId
 
 ### Get reference to drive
 ```typescript
-const contextRef = register(tenantId, clientId, clientSecret, httpProxy);
+const contextRef = register(tenantId, clientId, clientSecret);
 const siteRef = createSiteRef(contextRef, siteId);
 const driveRef = createDriveRef(siteRef, driveId);
 ```
