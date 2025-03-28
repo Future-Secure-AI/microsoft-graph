@@ -1,3 +1,3 @@
 export type SiteId = string & {
-    __brand: "SiteId";
+	__brand: "SiteId";
 };

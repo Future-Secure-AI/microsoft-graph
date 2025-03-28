@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "check": "biome check",
+    "fix": "biome check --fix",
     "build": "npm run check && tsc && npx tsx update-exports.ts",
     "release": "npm run build && npm publish --access public",
     "test": "vitest --bail=3"

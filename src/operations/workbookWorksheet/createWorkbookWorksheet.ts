@@ -10,25 +10,25 @@ import { createWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts"
 
 /** Create a new worksheet, optionally with a defined name. @see https://learn.microsoft.com/en-us/graph/api/worksheetcollection-add */
 export default function createWorkbookWorksheet(workbookRef: WorkbookRef, name?: WorkbookWorksheetName): GraphOperation<WorkbookWorksheet & WorkbookWorksheetRef> {
-    return operation({
-        contextId: workbookRef.contextId,
-        method: "POST",
-        path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/add", workbookRef),
-        headers: {
-            "workbook-session-id": workbookRef.sessionId,
-            "content-type": "application/json",
-        },
-        body: {
-            name
-        },
-        responseTransform: response => {
-            const worksheet = response as WorkbookWorksheet;
-            const worksheetRef = createWorkbookWorksheetRef(workbookRef, worksheet.id as WorkbookWorksheetId);
+	return operation({
+		contextId: workbookRef.contextId,
+		method: "POST",
+		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/add", workbookRef),
+		headers: {
+			"workbook-session-id": workbookRef.sessionId,
+			"content-type": "application/json",
+		},
+		body: {
+			name,
+		},
+		responseTransform: (response) => {
+			const worksheet = response as WorkbookWorksheet;
+			const worksheetRef = createWorkbookWorksheetRef(workbookRef, worksheet.id as WorkbookWorksheetId);
 
-            return {
-                ...worksheet,
-                ...worksheetRef
-            }
-        }
-    });
+			return {
+				...worksheet,
+				...worksheetRef,
+			};
+		},
+	});
 }

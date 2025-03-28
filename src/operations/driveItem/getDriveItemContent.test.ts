@@ -12,33 +12,31 @@ import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 import getDriveItemContent from "./getDriveItemContent.ts";
 
 describe("getDriveItemContent", () => {
-    it("can download the content of an existing workbook", { timeout: 20000 }, async () => {
-        const workbookPath = driveItemPath(generateTempFileName("xlsx"));
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
+	it("can download the content of an existing workbook", { timeout: 20000 }, async () => {
+		const workbookPath = driveItemPath(generateTempFileName("xlsx"));
+		const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
 
-        try {
-            const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-            const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B1");
+		try {
+			const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B1");
 
-            await updateWorkbookRange(rangeRef, {
-                values: [
-                    ["Hello", "World"]
-                ]
-            });
+			await updateWorkbookRange(rangeRef, {
+				values: [["Hello", "World"]],
+			});
 
-            await calculateWorkbook(workbook);
+			await calculateWorkbook(workbook);
 
-            const content = await getDriveItemContent(workbook);
-            expect(content).toBeInstanceOf(ArrayBuffer);
-            expect(content.byteLength).toBeGreaterThan(0);
-        } finally {
-            await deleteDriveItemWithRetry(workbook);
-        }
-    });
+			const content = await getDriveItemContent(workbook);
+			expect(content).toBeInstanceOf(ArrayBuffer);
+			expect(content.byteLength).toBeGreaterThan(0);
+		} finally {
+			await deleteDriveItemWithRetry(workbook);
+		}
+	});
 
-    it("throws an error when trying to download a non-existent item", async () => {
-        const nonExistentItemRef = createDriveItemRef(getDefaultDriveRef(), "non-existent-item-id" as DriveItemId);
+	it("throws an error when trying to download a non-existent item", async () => {
+		const nonExistentItemRef = createDriveItemRef(getDefaultDriveRef(), "non-existent-item-id" as DriveItemId);
 
-        await expect(getDriveItemContent(nonExistentItemRef)).rejects.toThrow();
-    });
+		await expect(getDriveItemContent(nonExistentItemRef)).rejects.toThrow();
+	});
 });

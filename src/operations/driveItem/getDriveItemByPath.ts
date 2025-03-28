@@ -10,20 +10,20 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Retrieve the metadata for an item in a drive by file path. If the target file is moved this will cease working. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get */
 export default function getDriveItemByPath(driveRef: DriveRef, itemPath: DriveItemPath): GraphOperation<DriveItem & DriveItemRef> {
-    return operation({
-        contextId: driveRef.contextId,
-        method: "GET",
-        path: generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef),
-        headers: {},
-        body: null,
-        responseTransform: response => {
-            const item = response as DriveItem;
-            const itemRef = createDriveItemRef(driveRef, item.id as DriveItemId);
+	return operation({
+		contextId: driveRef.contextId,
+		method: "GET",
+		path: generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef),
+		headers: {},
+		body: null,
+		responseTransform: (response) => {
+			const item = response as DriveItem;
+			const itemRef = createDriveItemRef(driveRef, item.id as DriveItemId);
 
-            return {
-                ...item,
-                ...itemRef
-            };
-        }
-    });
+			return {
+				...item,
+				...itemRef,
+			};
+		},
+	});
 }

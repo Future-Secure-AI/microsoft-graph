@@ -4,8 +4,8 @@ import type { HttpProxy } from "./HttpProxy.ts";
 import type { TenantId } from "./TenantId.ts";
 
 export type Context = {
-    tenantId: TenantId;
-    clientId: ClientId;
-    clientSecret: ClientSecret;
-    httpProxy: HttpProxy | undefined;
+	tenantId: TenantId;
+	clientId: ClientId;
+	clientSecret: ClientSecret;
+	httpProxy: HttpProxy | undefined;
 };

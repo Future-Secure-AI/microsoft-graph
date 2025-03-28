@@ -4,9 +4,9 @@ import type { WorkbookRangeAddress, WorkbookRangeAddressUnderlying } from "../mo
 const addressPattern = /^[A-Z]+\d+(:[A-Z]+\d+)?$/;
 
 export function createWorkbookRangeAddress(address: WorkbookRangeAddressUnderlying): WorkbookRangeAddress {
-    if (!addressPattern.test(address)) {
-        throw new InvalidArgumentError(`Invalid address format. It must match the pattern ${addressPattern}.`);
-    }
+	if (!addressPattern.test(address)) {
+		throw new InvalidArgumentError(`Invalid address format. It must match the pattern ${addressPattern}.`);
+	}
 
-    return address as WorkbookRangeAddress;
+	return address as WorkbookRangeAddress;
 }

@@ -18,7 +18,7 @@ export async function getCurrentAccessToken(tenantId: TenantId, clientId: Client
 		innerTokenCache[cacheKey] = innerToken = await credential.getToken(scope);
 	}
 
-	return innerToken.token as AccessToken
+	return innerToken.token as AccessToken;
 }
 
 type CacheKey = string & {

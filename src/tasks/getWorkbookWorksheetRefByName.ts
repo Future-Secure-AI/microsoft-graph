@@ -4,15 +4,13 @@ import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
 import listWorkbookWorksheets from "../operations/workbookWorksheet/listWorkbookWorksheets.ts";
 
 export default async function getWorkbookWorksheetByName(workbookRef: WorkbookRef, name: string): Promise<WorkbookWorksheet & WorkbookWorksheetRef> {
-    // TODO: Probably can get this from a direct API call without fetching all worksheets
-    const worksheets = await listWorkbookWorksheets(workbookRef);
-    const worksheet = worksheets.find(worksheetRef => worksheetRef.name === name);
+	// TODO: Probably can get this from a direct API call without fetching all worksheets
+	const worksheets = await listWorkbookWorksheets(workbookRef);
+	const worksheet = worksheets.find((worksheetRef) => worksheetRef.name === name);
 
-    if (!worksheet) {
-        throw new Error(`Worksheet '${name}' not found.`); // TODO: Make NotFoundError
-    }
+	if (!worksheet) {
+		throw new Error(`Worksheet '${name}' not found.`); // TODO: Make NotFoundError
+	}
 
-    return worksheet;
+	return worksheet;
 }
-
-

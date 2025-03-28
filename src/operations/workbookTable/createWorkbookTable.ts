@@ -9,25 +9,25 @@ import { createWorkbookTableRef } from "../../services/workbookTable.ts";
 
 /** Create a new table in a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-post-tables */
 export default function createWorkbookTable(rangeRef: WorkbookRangeRef, hasHeaders: boolean): GraphOperation<WorkbookTable & WorkbookTableRef> {
-    return operation({
-        contextId: rangeRef.contextId,
-        method: "POST",
-        path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables/add", rangeRef),
-        headers: {
-            "workbook-session-id": rangeRef.sessionId,
-            "content-type": "application/json",
-        },
-        body: {
-            address: rangeRef.address,
-            hasHeaders
-        },
-        responseTransform: response => {
-            const table = response as WorkbookTable;
-            const tableRef = createWorkbookTableRef(rangeRef, table.id as WorkbookTableId);
-            return {
-                ...table,
-                ...tableRef
-            };
-        }
-    });
+	return operation({
+		contextId: rangeRef.contextId,
+		method: "POST",
+		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables/add", rangeRef),
+		headers: {
+			"workbook-session-id": rangeRef.sessionId,
+			"content-type": "application/json",
+		},
+		body: {
+			address: rangeRef.address,
+			hasHeaders,
+		},
+		responseTransform: (response) => {
+			const table = response as WorkbookTable;
+			const tableRef = createWorkbookTableRef(rangeRef, table.id as WorkbookTableId);
+			return {
+				...table,
+				...tableRef,
+			};
+		},
+	});
 }

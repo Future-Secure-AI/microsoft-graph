@@ -9,26 +9,26 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Find accessible sites that match keywords provided. @see https://learn.microsoft.com/en-us/graph/api/site-search */
 export default function searchSites(contextRef: ContextRef, search: string): GraphOperation<(Site & SiteRef)[]> {
-    return operation({
-        contextId: contextRef.contextId,
-        method: "GET",
-        path: generatePath("/sites?search={search}", { search }),
-        headers: {},
-        body: null,
-        responseTransform: response => {
-            const list = response as { value: Site[]; };
+	return operation({
+		contextId: contextRef.contextId,
+		method: "GET",
+		path: generatePath("/sites?search={search}", { search }),
+		headers: {},
+		body: null,
+		responseTransform: (response) => {
+			const list = response as { value: Site[] };
 
-            const sites = list.value.map(site => {
-                const siteId = site.id as SiteId;
-                const siteRef = createSiteRef(contextRef, siteId);
+			const sites = list.value.map((site) => {
+				const siteId = site.id as SiteId;
+				const siteRef = createSiteRef(contextRef, siteId);
 
-                return {
-                    ...site,
-                    ...siteRef,
-                }
-            });
+				return {
+					...site,
+					...siteRef,
+				};
+			});
 
-            return sites;
-        }
-    });
+			return sites;
+		},
+	});
 }

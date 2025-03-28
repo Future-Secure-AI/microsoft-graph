@@ -4,8 +4,8 @@ import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 
 /** Safely delete a workbook by first closing any open sessions and then delete with a back-off retry to allow for any outstanding locks to be closed. */
 export default async function safeDeleteWorkbook(workbookRef: WorkbookRef): Promise<void> {
-    if (workbookRef.sessionId) {
-        await closeWorkbookSession(workbookRef);
-    }
-    await deleteDriveItemWithRetry(workbookRef);
+	if (workbookRef.sessionId) {
+		await closeWorkbookSession(workbookRef);
+	}
+	await deleteDriveItemWithRetry(workbookRef);
 }

@@ -1,3 +1,3 @@
 export type TenantId = string & {
-    __brand: "TenantId";
+	__brand: "TenantId";
 };

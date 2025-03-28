@@ -1,3 +1,3 @@
 export function isHttpOk(status: number): boolean {
-    return status >= 200 && status < 300;
+	return status >= 200 && status < 300;
 }

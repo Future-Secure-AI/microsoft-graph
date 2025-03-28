@@ -1,3 +1,3 @@
 export type WorkbookRangeName = string & {
-    __brand: "WorkbookRangeName";
+	__brand: "WorkbookRangeName";
 };

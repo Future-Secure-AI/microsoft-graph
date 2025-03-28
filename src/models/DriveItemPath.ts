@@ -1,3 +1,3 @@
 export type DriveItemPath = string & {
-    __brand: "DriveItemPath";
+	__brand: "DriveItemPath";
 };

@@ -6,11 +6,11 @@ import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import createWorkbookSession from "../operations/workbookSession/createWorkbookSession.ts";
 
 export default async function createWorkbookAndStartSession(driveRef: DriveRef, itemPath: DriveItemPath): Promise<Workbook & WorkbookRef> {
-    const workbook = await createWorkbook(driveRef, itemPath);
-    const workbookRef = await createWorkbookSession(workbook);
+	const workbook = await createWorkbook(driveRef, itemPath);
+	const workbookRef = await createWorkbookSession(workbook);
 
-    return {
-        ...workbook,
-        ...workbookRef
-    };
+	return {
+		...workbook,
+		...workbookRef,
+	};
 }

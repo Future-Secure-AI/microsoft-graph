@@ -2,5 +2,5 @@ import type { WorkbookRangeAddress as WorkbookWorksheetRangeAddress } from "./Wo
 import type { WorkbookWorksheetRef } from "./WorkbookWorksheetRef.ts";
 
 export type WorkbookRangeRef = WorkbookWorksheetRef & {
-    address: WorkbookWorksheetRangeAddress;
+	address: WorkbookWorksheetRangeAddress;
 };

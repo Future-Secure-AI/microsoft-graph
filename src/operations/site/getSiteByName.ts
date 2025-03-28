@@ -11,20 +11,20 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Get site by name. @see https://learn.microsoft.com/en-us/graph/api/site-getbypath */
 export default function getSiteByName(contextRef: ContextRef, hostName: HostName, siteName: SiteName): GraphOperation<Site & SiteRef> {
-    return operation({
-        contextId: contextRef.contextId,
-        method: "GET",
-        path: generatePath("/sites/{host-name}:/sites/{site-name}", { hostName, siteName }),
-        headers: {},
-        body: null,
-        responseTransform: (response: unknown) => {
-            const site = response as Site;
-            const siteId = site.id as SiteId;
-            const siteRef = createSiteRef(contextRef, siteId);
-            return {
-                ...site,
-                ...siteRef
-            };
-        }
-    });
+	return operation({
+		contextId: contextRef.contextId,
+		method: "GET",
+		path: generatePath("/sites/{host-name}:/sites/{site-name}", { hostName, siteName }),
+		headers: {},
+		body: null,
+		responseTransform: (response: unknown) => {
+			const site = response as Site;
+			const siteId = site.id as SiteId;
+			const siteRef = createSiteRef(contextRef, siteId);
+			return {
+				...site,
+				...siteRef,
+			};
+		},
+	});
 }

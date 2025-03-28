@@ -6,17 +6,17 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /** Close an existing workbook session. @see https://learn.microsoft.com/en-us/graph/api/workbook-closesession */
 export default function closeWorkbookSession(workbookRef: WorkbookRef): GraphOperation<void> {
-    if (!workbookRef.sessionId) {
-        throw new InvalidArgumentError("Workbook session ID is required to close a session.");
-    }
-    return operation({
-        contextId: workbookRef.contextId,
-        method: "POST",
-        path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/closeSession", workbookRef),
-        headers: {
-            "workbook-session-id": workbookRef.sessionId,
-        },
-        body: null,
-        responseTransform: () => undefined
-    });
+	if (!workbookRef.sessionId) {
+		throw new InvalidArgumentError("Workbook session ID is required to close a session.");
+	}
+	return operation({
+		contextId: workbookRef.contextId,
+		method: "POST",
+		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/closeSession", workbookRef),
+		headers: {
+			"workbook-session-id": workbookRef.sessionId,
+		},
+		body: null,
+		responseTransform: () => undefined,
+	});
 }

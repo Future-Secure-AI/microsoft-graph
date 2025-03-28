@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
-import { driveItemPath, } from "../../services/driveItem.ts";
+import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
@@ -11,23 +11,23 @@ import createWorkbookTable from "./createWorkbookTable.ts";
 import listWorkbookTableColumns from "./listWorkbookTableColumns.ts";
 
 describe("listWorkbookTableColumns", () => {
-    it("can list columns in an existing table", { timeout: 10000 }, async () => {
-        const workbookName = generateTempFileName("xlsx");
-        const workbookPath = driveItemPath(workbookName);
-        const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
+	it("can list columns in an existing table", { timeout: 10000 }, async () => {
+		const workbookName = generateTempFileName("xlsx");
+		const workbookPath = driveItemPath(workbookName);
+		const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
 
-        try {
-            const worksheet = await createWorkbookWorksheet(workbook);
+		try {
+			const worksheet = await createWorkbookWorksheet(workbook);
 
-            const rangeRef = createWorkbookRangeRef(worksheet, "A1:D4");
-            const table = await createWorkbookTable(rangeRef, true);
+			const rangeRef = createWorkbookRangeRef(worksheet, "A1:D4");
+			const table = await createWorkbookTable(rangeRef, true);
 
-            await calculateWorkbook(workbook);
+			await calculateWorkbook(workbook);
 
-            const columns = await listWorkbookTableColumns(table);
-            expect(columns.length).toBeGreaterThan(0);
-        } finally {
-            await deleteDriveItemWithRetry(workbook);
-        }
-    });
+			const columns = await listWorkbookTableColumns(table);
+			expect(columns.length).toBeGreaterThan(0);
+		} finally {
+			await deleteDriveItemWithRetry(workbook);
+		}
+	});
 });

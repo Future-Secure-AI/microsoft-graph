@@ -1,4 +1,3 @@
-
 export type WorkbookTableId = string & {
-    __brand: "WorkbookTableId";
+	__brand: "WorkbookTableId";
 };

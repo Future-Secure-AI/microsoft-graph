@@ -21,5 +21,4 @@ export default class InvalidArgumentError extends Error {
 			throw new InvalidArgumentError(message);
 		}
 	}
-	
 }

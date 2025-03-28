@@ -7,77 +7,47 @@
 		"defaultBranch": "main"
 	},
 	"files": {
-		"ignoreUnknown": true,
 		"include": ["src/*.ts"],
 		"maxSize": 2097152 // 2MB to cover generated models
 	},
 	"formatter": {
-		"enabled": false
+		"lineWidth": 320 // We have large monitors these days, 80 characters is crazy
 	},
 	"organizeImports": {
-		"enabled": false // VSCode and Biome organize imports differently
+		"enabled": false // VSCode and Biome organize imports differently, and really, who cares
 	},
 	"linter": {
-		"enabled": true,
 		"rules": {
-			"all": true
+			"all": true // Maximize consistency
 		},
 		"include": ["src/*.ts"]
-	},
-	"javascript": {
-		"globals": ["exports"]
 	},
 	"overrides": [
 		{
 			"include": ["*.ts"],
-			"linter":{
+			"linter": {
 				"rules": {
-					"correctness":{
-						"noNodejsModules": "off"
+					"correctness": {
+						"noNodejsModules": "off" // We are in a Node environment, and need these
+					},
+					"style": {
+						"noDefaultExport": "off" // We are using this to discourage large files in some cases.
+					},
+					"suspicious": {
+						"noConsole": "off" // Logging is to be done through the logger, not directly to console\
 					}
 				}
 			}
 		},
 		{
 			"include": ["*.test.ts"],
-			"linter":{
+			"linter": {
 				"rules": {
-					"suspicious":{
-						"noConsole": "off"
+					"suspicious": {
+						"noConsole": "off" // Test can log to console, as the logger is impractical here.
 					}
 				}
 			}
-		},
-		{
-			"include": ["src/operations/*.ts", "src/errors/*.ts", "src/tasks/*.ts"],
-			"linter":{
-				"rules": {
-					"style":{
-						"noDefaultExport": "off"
-					}
-				}
-			}
-		},
-		{
-		  "include": ["src/models/Dto.d.ts"],
-		  "linter": {
-			"rules": {
-			  "style": {
-				"useNamingConvention": "off",
-				"noNamespace": "off",
-				"useFilenamingConvention": "off"
-			  },
-			  "correctness": {
-				"noUnusedVariables": "off"
-			  },
-			  "complexity":{
-				"noBannedTypes": "off"
-			  },
-			  "suspicious": {
-				"noEmptyInterface": "off"
-			  }
-			}
-		  }
 		}
-	  ]
+	]
 }
