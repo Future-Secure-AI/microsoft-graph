@@ -1,0 +1,2 @@
+# "The resource you are attempting to access is locked"
+If you attempt to delete a workbook you may occasionally get this error. To mitigate this call [`safeDeleteWorkbook`](/src/tasks/safeDeleteWorkbook.ts) instead of `deleteDriveItem`. It will attempt to close any active session first, and then delete with a retry in case it takes some time for the lock to be removed.
