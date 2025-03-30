@@ -2,7 +2,8 @@ import fetch from "node-fetch";
 import InconsistentContextError from "./errors/InconsistentContextError.ts";
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
-import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
+import type { AccessToken } from "./models/AccessToken.ts";
+import type { GraphHeaders, GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
 import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { getContext } from "./services/context.ts";
@@ -65,14 +66,12 @@ async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
 	const agent = tryGetHttpAgent(context.httpProxy);
 
-	const requestHeaders = {
-		authorization: `Bearer ${accessToken}`,
-		...Object.fromEntries(Object.entries(definition.headers ?? {}).filter(([_, v]) => v !== undefined)), // TODO: Tidy
-	} as Record<string, string>;
-
 	const requestPayload = {
 		method: definition.method,
-		headers: requestHeaders,
+		headers: {
+			authorization: createAuthorizationHeader(accessToken),
+			...headersToObject(definition.headers),
+		},
 		body: definition.body === null ? null : JSON.stringify(definition.body),
 		agent,
 	};
@@ -122,7 +121,7 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 	const requestPayload = {
 		method: "POST",
 		headers: {
-			authorization: `Bearer ${accessToken}`,
+			authorization: createAuthorizationHeader(accessToken),
 			accept: "application/json",
 			"content-type": "application/json",
 		},
@@ -170,4 +169,12 @@ function normalizeBatchHeaders(input: Record<string, string>): Record<string, st
 		}
 	}
 	return headers;
+}
+
+function createAuthorizationHeader(accessToken: AccessToken): string {
+	return `Bearer ${accessToken}`;
+}
+
+function headersToObject(obj: GraphHeaders): Record<string, string> {
+	return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== undefined)) as Record<string, string>;
 }
