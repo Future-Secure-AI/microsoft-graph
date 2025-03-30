@@ -5,6 +5,10 @@ export default class RequestFailedError extends Error {
 	}
 
 	public static throw(message: string, request: unknown, response?: unknown): never {
-		throw new RequestFailedError(`${message}\n\nREQUEST:\n${JSON.stringify(request, null, 2)}\n\nRESPONSE:\n${response}`);
+		const r = request as { headers?: { authorization?: string } };
+		if (r?.headers?.authorization) {
+			r.headers.authorization = "<REDACTED>";
+		}
+		throw new RequestFailedError(`${message}\n\nREQUEST: ${JSON.stringify(r, null, 2)}\n\nRESPONSE: ${JSON.stringify(response, null, 2)}`);
 	}
 }
