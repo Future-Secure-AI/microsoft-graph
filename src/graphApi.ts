@@ -26,7 +26,7 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
 
 /** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
 export async function parallel<T extends GraphOperation<unknown>[]>(...operations: T): Promise<ExecutionResults<T>> {
-	const definitions = operations.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
+	const definitions = operations.map((op) => op.definition) as BatchGraphOperationDefinition<unknown>[];
 
 	return (await executeBatch(...definitions)) as ExecutionResults<T>;
 }
@@ -43,7 +43,7 @@ export async function sequential<T extends GraphOperation<unknown>[]>(...operati
 
 const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
-type ReplyPayload = {
+type BatchReplyPayload = {
 	responses: {
 		id: string;
 		status: number;
@@ -52,8 +52,7 @@ type ReplyPayload = {
 	}[];
 };
 
-type GraphOperationDefinitionWithDeps<T> = GraphOperationDefinition<T> & {
-	/** Array of request indexes that must be completed before this request is executed. */
+type BatchGraphOperationDefinition<T> = GraphOperationDefinition<T> & {
 	dependsOn?: number[] | undefined;
 };
 
@@ -71,12 +70,13 @@ async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
 		...Object.fromEntries(Object.entries(definition.headers ?? {}).filter(([_, v]) => v !== undefined)), // TODO: Tidy
 	} as Record<string, string>;
 
-	const reply = await fetch(`${endpoint}${definition.path}`, {
+	const requestPayload = {
 		method: definition.method,
 		headers: requestHeaders,
 		body: definition.body === null ? null : JSON.stringify(definition.body),
 		agent,
-	});
+	};
+	const reply = await fetch(`${endpoint}${definition.path}`, requestPayload);
 
 	const replyContentType = reply.headers.get("content-type")?.toLowerCase();
 
@@ -86,23 +86,13 @@ async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
 	return definition.responseTransform(body);
 }
 
-async function executeBatch<T extends GraphOperationDefinitionWithDeps<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
 	InvalidArgumentError.throwIfGreater(ops.length, maxBatchOperations, `At most ${maxBatchOperations} operations allowed, but ${ops.length} were provided.`);
 
 	if (ops.length === 0) {
 		return [] as ExecutionResults<T>;
 	}
 
-	const requestPayload = await composeRequestPayload<T>(ops);
-	const reply = await fetch(batchEndpoint, requestPayload);
-	const replyPayload = (await reply.json()) as ReplyPayload;
-	RequestFailedError.throwIfNotOkBatch(reply.status, ops, replyPayload);
-	const responses = parseResponses<T>(replyPayload, ops);
-
-	return responses;
-}
-
-async function composeRequestPayload<T extends GraphOperationDefinitionWithDeps<unknown>[]>(ops: T) {
 	const firstOp = ops[0];
 	if (!firstOp) {
 		throw new Error("First op not found. Should be impossible");
@@ -140,35 +130,17 @@ async function composeRequestPayload<T extends GraphOperationDefinitionWithDeps<
 		agent,
 	};
 
-	return requestPayload;
-}
+	const reply = await fetch(batchEndpoint, requestPayload);
+	const replyPayload = (await reply.json()) as BatchReplyPayload;
+	RequestFailedError.throwIfNotOkBatch(reply.status, ops, replyPayload);
 
-function normalizeBody(contentType: string | undefined, body: unknown): unknown {
-	if (contentType?.startsWith("application/json") && typeof body === "string") {
-		return JSON.parse(atob(body));
-	}
-
-	return body;
-}
-
-function normalizeHeaders(input: Record<string, string>): Record<string, string> {
-	const headers: Record<string, string> = {};
-	for (const key in input) {
-		if (input[key]) {
-			headers[key.toLocaleLowerCase()] = input[key];
-		}
-	}
-	return headers;
-}
-
-function parseResponses<T extends GraphOperationDefinitionWithDeps<unknown>[]>(replyPayload: ReplyPayload, ops: T) {
 	const results: unknown[] = [];
 
 	for (const response of replyPayload.responses) {
 		const index = operationIdToIndex(response.id);
-		const headers = normalizeHeaders(response.headers);
+		const headers = normalizeBatchHeaders(response.headers);
 		const contentType = headers["content-type"];
-		const body = normalizeBody(contentType, response.body);
+		const body = normalizeBatchBody(contentType, response.body);
 
 		const op = ops[index];
 		if (!op) {
@@ -180,4 +152,22 @@ function parseResponses<T extends GraphOperationDefinitionWithDeps<unknown>[]>(r
 	}
 
 	return results as ExecutionResults<T>; // TODO: Is there a neater way to massage the types correctly? This is functionally correct, but I do want to avoid using `unknown` here if possible.
+}
+
+function normalizeBatchBody(contentType: string | undefined, body: unknown): unknown {
+	if (contentType?.startsWith("application/json") && typeof body === "string") {
+		return JSON.parse(atob(body));
+	}
+
+	return body;
+}
+
+function normalizeBatchHeaders(input: Record<string, string>): Record<string, string> {
+	const headers: Record<string, string> = {};
+	for (const key in input) {
+		if (input[key]) {
+			headers[key.toLocaleLowerCase()] = input[key];
+		}
+	}
+	return headers;
 }
