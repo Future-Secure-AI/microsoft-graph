@@ -25,15 +25,15 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
 }
 
 /** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
-export async function parallel<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-	const definitions = ops.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
+export async function parallel<T extends GraphOperation<unknown>[]>(...operations: T): Promise<ExecutionResults<T>> {
+	const definitions = operations.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
 
 	return (await executeBatch(...definitions)) as ExecutionResults<T>;
 }
 
 /** Execute a batch of GraphAPI operations sequentially. */
-export async function sequential<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-	const definitions = ops.map((definition, index) => ({
+export async function sequential<T extends GraphOperation<unknown>[]>(...operations: T): Promise<ExecutionResults<T>> {
+	const definitions = operations.map((definition, index) => ({
 		...definition.definition,
 		dependsOn: index > 0 ? [index - 1] : undefined, // Each op is dependant on the previous op
 	}));
