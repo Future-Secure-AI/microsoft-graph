@@ -1,0 +1,3 @@
+# Request retrying
+
+[GraphAPI has unmerciful throttling limits](https://learn.microsoft.com/en-us/graph/throttling). If the rate of requests exceed it's predefined limits it will reject requests with a HTTP 429. It appears there are general limits, and then more restrictive limits applied to workbook manipulation. To cater for these limits. This library supports retrying. If a request is throttled, and GraphAPI has provided a retry time, then the library will honour that request and retry automatically. Nothing needs to be done when consuming the library.
