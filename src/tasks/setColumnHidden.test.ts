@@ -12,7 +12,7 @@ import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import setColumnHidden from "./setColumnHidden.ts";
 
 describe("setColumnHidden", () => {
-	it("hides a column in an existing workbook", { timeout: 10000 }, async () => {
+	it("hides a column in an existing workbook", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

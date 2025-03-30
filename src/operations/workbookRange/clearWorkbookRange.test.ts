@@ -14,7 +14,7 @@ import clearWorkbookRange from "./clearWorkbookRange.ts";
 import updateWorkbookRange from "./updateWorkbookRange.ts";
 
 describe("clearWorkbookRange", () => {
-	it("can clear a range in an existing workbook", { timeout: 10000 }, async () => {
+	it("can clear a range in an existing workbook", async () => {
 		const address = "A1:B2" as WorkbookRangeAddress;
 		const values = [
 			[1, 2],
@@ -46,7 +46,7 @@ describe("clearWorkbookRange", () => {
 		}
 	});
 
-	it("can clear a range in an existing workbook sequential", { timeout: 10000 }, async () => {
+	it("can clear a range in an existing workbook sequential", async () => {
 		const address = "A1:B2" as WorkbookRangeAddress;
 		const values = [
 			[1, 2],

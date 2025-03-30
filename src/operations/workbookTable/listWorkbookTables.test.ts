@@ -11,7 +11,7 @@ import createWorkbookTable from "./createWorkbookTable.ts";
 import listTables from "./listWorkbookTables.ts";
 
 describe("listWorkbookTables", () => {
-	it("can list tables in an existing worksheet", { timeout: 10000 }, async () => {
+	it("can list tables in an existing worksheet", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

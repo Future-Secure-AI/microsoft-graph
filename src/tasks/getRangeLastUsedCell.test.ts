@@ -12,7 +12,7 @@ import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import getRangeLastUsedCell from "./getRangeLastUsedCell.ts";
 
 describe("getRangeLastUsedCell", () => {
-	it("should return the last used cell value", { timeout: 10000 }, async () => {
+	it("should return the last used cell value", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -43,7 +43,7 @@ describe("getRangeLastUsedCell", () => {
 		}
 	});
 
-	it("should return the last non-empty cell value when the last cell is empty", { timeout: 10000 }, async () => {
+	it("should return the last non-empty cell value when the last cell is empty", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -74,7 +74,7 @@ describe("getRangeLastUsedCell", () => {
 		}
 	});
 
-	it("should return null when no cells are used", { timeout: 10000 }, async () => {
+	it("should return null when no cells are used", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

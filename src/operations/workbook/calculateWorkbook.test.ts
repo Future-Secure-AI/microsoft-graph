@@ -9,7 +9,7 @@ import createWorkbook from "./createWorkbook.ts";
 describe("calculateWorkbook", () => {
 	// All we're really doing is check that there's no errors
 
-	it(`can calculate workbook with calculation type: 'Recalculate'`, { timeout: 10000 }, async () => {
+	it(`can calculate workbook with calculation type: 'Recalculate'`, async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -34,7 +34,7 @@ describe("calculateWorkbook", () => {
 		}
 	});
 
-	it(`can calculate workbook with calculation type: 'FullRebuild'`, { timeout: 10000 }, async () => {
+	it(`can calculate workbook with calculation type: 'FullRebuild'`, async () => {
 		const driveRef = getDefaultDriveRef();
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);

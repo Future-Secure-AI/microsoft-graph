@@ -13,7 +13,7 @@ import getWorkbookWorksheetRange from "../workbookWorksheet/getWorkbookWorksheet
 import updateWorkbookRange from "./updateWorkbookRange.ts";
 
 describe("updateWorkbookRange", () => {
-	it("can update a range in an existing workbook", { timeout: 10000 }, async () => {
+	it("can update a range in an existing workbook", async () => {
 		const address = "A1:B2" as WorkbookRangeAddress;
 		const values = [
 			[1, 2],
@@ -40,7 +40,7 @@ describe("updateWorkbookRange", () => {
 		}
 	});
 
-	it("can update a range in an existing workbook sequential", { timeout: 10000 }, async () => {
+	it("can update a range in an existing workbook sequential", async () => {
 		const address = "A1:B2" as WorkbookRangeAddress;
 		const values = [
 			[1, 2],

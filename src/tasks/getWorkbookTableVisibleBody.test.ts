@@ -12,7 +12,7 @@ import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import { getWorkbookTableVisibleBody } from "./getWorkbookTableVisibleBody.ts";
 
 describe("getWorkbookTableVisibleBody", () => {
-	it("can retrieve the visible body range of a table", { timeout: 10000 }, async () => {
+	it("can retrieve the visible body range of a table", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -44,7 +44,7 @@ describe("getWorkbookTableVisibleBody", () => {
 		}
 	});
 
-	it("omits hidden rows from the visible body range of a table", { timeout: 10000 }, async () => {
+	it("omits hidden rows from the visible body range of a table", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -78,7 +78,7 @@ describe("getWorkbookTableVisibleBody", () => {
 		}
 	});
 
-	it("omits hidden columns from the visible body range of a table", { timeout: 10000 }, async () => {
+	it("omits hidden columns from the visible body range of a table", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

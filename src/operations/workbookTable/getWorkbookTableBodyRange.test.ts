@@ -13,7 +13,7 @@ import createWorkbookTable from "./createWorkbookTable.ts";
 import getWorkbookTableBodyRange from "./getWorkbookTableBodyRange.ts";
 
 describe("getWorkbookTableBodyRange", () => {
-	it("can retrieve the data body range of a table", { timeout: 10000 }, async () => {
+	it("can retrieve the data body range of a table", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

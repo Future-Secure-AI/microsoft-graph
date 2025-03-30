@@ -11,7 +11,7 @@ import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 import listWorkbookWorksheets from "./listWorkbookWorksheets.ts";
 
 describe("listWorkbookWorksheets", () => {
-	it("can list worksheets in an existing workbook", { timeout: 10000 }, async () => {
+	it("can list worksheets in an existing workbook", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -32,7 +32,7 @@ describe("listWorkbookWorksheets", () => {
 		}
 	});
 
-	it("can list worksheets in an existing workbook parallel", { timeout: 10000 }, async () => {
+	it("can list worksheets in an existing workbook parallel", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

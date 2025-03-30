@@ -6,7 +6,7 @@ import createFolder from "../drive/createFolder.ts";
 import listDriveItems from "./listDriveItems.ts";
 
 describe("listDriveItems", () => {
-	it("can list items in the root folder", { timeout: 10000 }, async () => {
+	it("can list items in the root folder", async () => {
 		const driveRef = getDefaultDriveRef();
 		const items = await listDriveItems(driveRef);
 

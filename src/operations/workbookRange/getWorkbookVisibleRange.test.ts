@@ -13,7 +13,7 @@ import getWorkbookVisibleRange from "./getWorkbookVisibleRange.ts";
 import updateWorkbookRange from "./updateWorkbookRange.ts";
 
 describe("getWorkbookRangeVisible", () => {
-	it("can retrieve the visible view of a range in an existing workbook", { timeout: 10000 }, async () => {
+	it("can retrieve the visible view of a range in an existing workbook", async () => {
 		const address = "A1:B2" as WorkbookRangeAddress;
 		const values = [
 			[1, 2],
@@ -38,7 +38,7 @@ describe("getWorkbookRangeVisible", () => {
 		}
 	});
 
-	it("can retrieve the visible view of a range in an existing workbook sequential", { timeout: 10000 }, async () => {
+	it("can retrieve the visible view of a range in an existing workbook sequential", async () => {
 		const address = "A1:B2" as WorkbookRangeAddress;
 		const values = [
 			[1, 2],
@@ -60,7 +60,7 @@ describe("getWorkbookRangeVisible", () => {
 		}
 	});
 
-	it("omits hidden row from the visible view of a range", { timeout: 10000 }, async () => {
+	it("omits hidden row from the visible view of a range", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -94,7 +94,7 @@ describe("getWorkbookRangeVisible", () => {
 		}
 	});
 
-	it("omits hidden column from the visible view of a range", { timeout: 10000 }, async () => {
+	it("omits hidden column from the visible view of a range", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

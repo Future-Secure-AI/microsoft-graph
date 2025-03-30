@@ -10,7 +10,7 @@ import getDriveItem from "./getDriveItem.ts";
 describe("getDriveItem", () => {
 	const defaultDriveRef = getDefaultDriveRef();
 
-	it("can retrieve an existing folder", { timeout: 10000 }, async () => {
+	it("can retrieve an existing folder", async () => {
 		const folderName = generateTempFileName();
 		const folder = await createFolder(defaultDriveRef, folderName);
 

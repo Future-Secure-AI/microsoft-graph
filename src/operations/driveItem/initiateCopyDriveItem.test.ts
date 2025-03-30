@@ -8,7 +8,7 @@ import getDriveItemByPath from "./getDriveItemByPath.ts";
 import initiateCopyDriveItem from "./initiateCopyDriveItem.ts";
 
 describe("initiateCopyDriveItem", () => {
-	it("can copy an item to a new folder", { timeout: 10000 }, async () => {
+	it("can copy an item to a new folder", async () => {
 		const driveRef = getDefaultDriveRef();
 
 		const srcFolderName = generateTempFileName();

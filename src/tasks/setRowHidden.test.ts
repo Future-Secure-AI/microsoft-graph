@@ -12,7 +12,7 @@ import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import setRowHidden from "./setRowHidden.ts";
 
 describe("setRowHidden", () => {
-	it("hides a row in an existing workbook", { timeout: 10000 }, async () => {
+	it("hides a row in an existing workbook", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

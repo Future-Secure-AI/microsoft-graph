@@ -13,7 +13,7 @@ import createWorkbookTable from "./createWorkbookTable.ts";
 import getWorkbookTableHeaderRange from "./getWorkbookTableHeaderRange.ts";
 
 describe("getWorkbookTableHeaderRange", () => {
-	it("can retrieve the header row range of a table", { timeout: 10000 }, async () => {
+	it("can retrieve the header row range of a table", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

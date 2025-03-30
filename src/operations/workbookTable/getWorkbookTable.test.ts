@@ -11,7 +11,7 @@ import createWorkbookTable from "./createWorkbookTable.ts";
 import getWorkbookTable from "./getWorkbookTable.ts";
 
 describe("getWorkbookTable", () => {
-	it("can retrieve a table by its ID", { timeout: 10000 }, async () => {
+	it("can retrieve a table by its ID", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

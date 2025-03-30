@@ -10,7 +10,7 @@ import deleteWorkbookWorksheet from "./deleteWorkbookWorksheet.ts";
 import listWorkbookWorksheets from "./listWorkbookWorksheets.ts";
 
 describe("deleteWorkbookWorksheet", () => {
-	it("can delete a worksheet from an existing workbook", { timeout: 10000 }, async () => {
+	it("can delete a worksheet from an existing workbook", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

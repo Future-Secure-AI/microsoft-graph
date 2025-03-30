@@ -11,7 +11,7 @@ import createWorkbookTable from "./createWorkbookTable.ts";
 import listWorkbookTableColumns from "./listWorkbookTableColumns.ts";
 
 describe("listWorkbookTableColumns", () => {
-	it("can list columns in an existing table", { timeout: 10000 }, async () => {
+	it("can list columns in an existing table", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);

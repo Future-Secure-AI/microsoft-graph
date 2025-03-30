@@ -8,7 +8,7 @@ import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 
 describe("createWorkbookWorksheet", () => {
-	it("can create a new worksheet in an existing workbook", { timeout: 10000 }, async () => {
+	it("can create a new worksheet in an existing workbook", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -23,7 +23,7 @@ describe("createWorkbookWorksheet", () => {
 		}
 	});
 
-	it("can create a new worksheet without a name", { timeout: 10000 }, async () => {
+	it("can create a new worksheet without a name", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();

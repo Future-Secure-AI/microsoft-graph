@@ -10,7 +10,7 @@ import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 import updateWorkbookWorksheet from "./updateWorkbookWorksheet.ts";
 
 describe("updateWorkbookWorksheet", () => {
-	it("can update the name of an existing worksheet", { timeout: 10000 }, async () => {
+	it("can update the name of an existing worksheet", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
@@ -27,7 +27,7 @@ describe("updateWorkbookWorksheet", () => {
 		}
 	});
 
-	it("can update the visibility of an existing worksheet", { timeout: 10000 }, async () => {
+	it("can update the visibility of an existing worksheet", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);

@@ -10,7 +10,7 @@ import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 
 describe("getWorkbookWorksheetRange", () => {
-	it("can retrieve a range from an existing worksheet", { timeout: 10000 }, async () => {
+	it("can retrieve a range from an existing worksheet", async () => {
 		const address = "A1:B2" as WorkbookRangeAddress;
 		const values = [
 			[1, 2],
