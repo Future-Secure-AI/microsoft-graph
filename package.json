@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -70,6 +70,10 @@
     "./errors/NeverError": {
       "import": "./dist/errors/NeverError.js",
       "types": "./dist/errors/NeverError.d.ts"
+    },
+    "./errors/NotFoundError": {
+      "import": "./dist/errors/NotFoundError.js",
+      "types": "./dist/errors/NotFoundError.d.ts"
     },
     "./errors/ProtocolError": {
       "import": "./dist/errors/ProtocolError.js",
@@ -970,6 +974,10 @@
     "./tasks/getWorkbookTableVisibleBody": {
       "import": "./dist/tasks/getWorkbookTableVisibleBody.js",
       "types": "./dist/tasks/getWorkbookTableVisibleBody.d.ts"
+    },
+    "./tasks/getWorkbookWorksheetByName": {
+      "import": "./dist/tasks/getWorkbookWorksheetByName.js",
+      "types": "./dist/tasks/getWorkbookWorksheetByName.d.ts"
     },
     "./tasks/getWorkbookWorksheetRefByName": {
       "import": "./dist/tasks/getWorkbookWorksheetRefByName.js",
