@@ -1,4 +1,5 @@
 import type { WorkbookWorksheet } from "@microsoft/microsoft-graph-types";
+import NotFoundError from "../errors/NotFoundError.ts";
 import type { WorkbookRef } from "../models/WorkbookRef.ts";
 import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
 import listWorkbookWorksheets from "../operations/workbookWorksheet/listWorkbookWorksheets.ts";
@@ -9,7 +10,7 @@ export default async function getWorkbookWorksheetByName(workbookRef: WorkbookRe
 	const worksheet = worksheets.find((worksheetRef) => worksheetRef.name === name);
 
 	if (!worksheet) {
-		throw new Error(`Worksheet '${name}' not found.`); // TODO: Make NotFoundError
+		throw new NotFoundError(`Worksheet '${name}' not found.`);
 	}
 
 	return worksheet;

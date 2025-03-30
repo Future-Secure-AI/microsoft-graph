@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -66,6 +66,10 @@
     "./errors/InvalidArgumentError": {
       "import": "./dist/errors/InvalidArgumentError.js",
       "types": "./dist/errors/InvalidArgumentError.d.ts"
+    },
+    "./errors/NeverError": {
+      "import": "./dist/errors/NeverError.js",
+      "types": "./dist/errors/NeverError.d.ts"
     },
     "./errors/ProtocolError": {
       "import": "./dist/errors/ProtocolError.js",
@@ -970,6 +974,10 @@
     "./tasks/getWorkbookWorksheetRefByName": {
       "import": "./dist/tasks/getWorkbookWorksheetRefByName.js",
       "types": "./dist/tasks/getWorkbookWorksheetRefByName.d.ts"
+    },
+    "./tasks/safeDeleteWorkbook": {
+      "import": "./dist/tasks/safeDeleteWorkbook.js",
+      "types": "./dist/tasks/safeDeleteWorkbook.d.ts"
     },
     "./tasks/setColumnHidden": {
       "import": "./dist/tasks/setColumnHidden.js",
