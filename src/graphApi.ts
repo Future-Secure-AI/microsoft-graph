@@ -48,6 +48,9 @@ export async function sequential<T extends GraphOperation<unknown>[]>(...operati
 }
 
 const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
+const maxRetries = 3;
+const defaultRetryDelayMilliseconds = 1000;
+const consecutiveRetryDelayMultiplier = 2;
 
 type BatchReplyPayload = {
 	responses: {
@@ -149,9 +152,9 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 		}
 		if (!isHttpOk(r.status)) {
 			const bodyError = body as BodyError;
-			const errorMessage = bodyError?.error?.message ?? `HTTP ${r.status}`;
+			const errorMessage = bodyError?.error ? `[${bodyError.error.code}] ${bodyError.error.message}` : `HTTP ${r.status}`;
 
-			throw new RequestFailedError(`GraphAPI operation ${index} failed: ${errorMessage}\nRequest: ${JSON.stringify(op, null, 2)}\nResponse: ${JSON.stringify(r, null, 2)}}`);
+			RequestFailedError.throw(`GraphAPI operation ${index} failed: '${errorMessage}'`, op, r);
 		}
 		responses[index] = op.responseTransform(body);
 	}
@@ -163,9 +166,12 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 async function innerFetch<T>(args: RequestInit & { url: string }): Promise<T> {
 	const { url, ...options } = args;
 
-	let retryAfterMilliseconds = 1000;
-	let response: Response;
-	while (true) { // TODO: Max retries
+	let retryAfterMilliseconds = defaultRetryDelayMilliseconds;
+	let response: Response | null = null;
+	let attempts = 0; // Track the number of attempts
+
+	while (attempts < maxRetries) {
+		// Retry at most 3 times
 		response = await fetch(url, options);
 
 		if (!isHttpTooManyRequests(response.status)) {
@@ -178,7 +184,20 @@ async function innerFetch<T>(args: RequestInit & { url: string }): Promise<T> {
 		}
 
 		await sleep(retryAfterMilliseconds);
-		retryAfterMilliseconds *= 2;
+		retryAfterMilliseconds *= consecutiveRetryDelayMultiplier;
+		attempts++; // Increment the attempt counter
+	}
+
+	if (attempts >= maxRetries) {
+		RequestFailedError.throw(`GraphAPI fetch exceed retry limit of ${maxRetries} attempts.`, args);
+	}
+
+	if (!response) {
+		throw new NeverError("Response is null. Should be impossible");
+	}
+
+	if (isHttpTooManyRequests(response.status)) {
+		RequestFailedError.throw("GraphAPI fetch failed after 3 retries due to too many requests.", args);
 	}
 
 	const replyContentType = response.headers.get("content-type")?.toLowerCase();
@@ -186,9 +205,9 @@ async function innerFetch<T>(args: RequestInit & { url: string }): Promise<T> {
 
 	if (!isHttpOk(response.status)) {
 		const bodyError = body as BodyError;
-		const errorMessage = bodyError?.error?.message ?? `HTTP ${response.status} ${response.statusText}`;
+		const errorMessage = bodyError?.error ? `[${bodyError.error.code}] ${bodyError.error.message}` : `HTTP ${response.status} ${response.statusText}`;
 
-		throw new RequestFailedError(`GraphAPI fetch failed: ${errorMessage}\nRequest: ${JSON.stringify(args, null, 2)}\nResponse: ${JSON.stringify(body, null, 2)}}`);
+		RequestFailedError.throw(`GraphAPI fetch failed: '${errorMessage}'`, args, body);
 	}
 
 	return body as T;
