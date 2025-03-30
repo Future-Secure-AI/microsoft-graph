@@ -12,6 +12,39 @@ import { operationIdToIndex, operationIndexToId } from "./services/operationId.t
 export const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 export const endpoint = "https://graph.microsoft.com/v1.0";
 export const batchEndpoint = `${endpoint}/$batch`;
+
+/** Define a operation, which can either be `await`d to execute independently, or passed with other operations ot `parallel` or `sequential` to execute as part of a batch. */
+export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
+	async function single<T>(definition: GraphOperationDefinition<T>): Promise<T> {
+		return await executeSingle<T>(definition);
+	}
+
+	const op = single(definition) as GraphOperation<T>;
+	op.definition = definition;
+	return op;
+}
+
+
+/** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
+export async function parallel<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+	const definitions = ops.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
+	return (await executeBatch(...definitions)) as ExecutionResults<T>;
+}
+
+/** Execute a batch of GraphAPI operations sequentially. */
+export async function sequential<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+	const definitions = ops.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
+	const sequentialOps = definitions.map(
+		(definition, index) =>
+			({
+				...definition,
+				dependsOn: index > 0 ? [index - 1] : undefined, // Each op is dependant on the previous op
+			}) as GraphOperationDefinitionWithDeps<unknown>,
+	);
+
+	return (await executeBatch(...sequentialOps)) as ExecutionResults<T>;
+}
+
 const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
 
 type ReplyPayload = {
@@ -32,16 +65,8 @@ type ExecutionResults<T> = {
 	[K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
 
-export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
-	// The returned operation can be called directly by simply `await`ing it, or it can be passed to the `parallel` or `sequential` functions to be executed in a batch.
 
-	const op = single(definition) as GraphOperation<T>;
-	op.definition = definition;
-	return op;
-}
-
-async function single<T>(definition: GraphOperationDefinition<T>): Promise<T> {
-	// TODO: Tidy
+async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
 	const context = getContext(definition.contextId);
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
 	const agent = tryGetHttpAgent(context.httpProxy);
@@ -66,27 +91,7 @@ async function single<T>(definition: GraphOperationDefinition<T>): Promise<T> {
 	return definition.responseTransform(body);
 }
 
-/** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
-export async function parallel<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-	const definitions = ops.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
-	return (await execute(...definitions)) as ExecutionResults<T>;
-}
-
-/** Execute a batch of GraphAPI operations sequentially. */
-export async function sequential<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-	const definitions = ops.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
-	const sequentialOps = definitions.map(
-		(definition, index) =>
-			({
-				...definition,
-				dependsOn: index > 0 ? [index - 1] : undefined, // Each op is dependant on the previous op
-			}) as GraphOperationDefinitionWithDeps<unknown>,
-	);
-
-	return (await execute(...sequentialOps)) as ExecutionResults<T>;
-}
-
-async function execute<T extends GraphOperationDefinitionWithDeps<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
+async function executeBatch<T extends GraphOperationDefinitionWithDeps<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
 	InvalidArgumentError.throwIfGreater(ops.length, maxBatchOperations, `At most ${maxBatchOperations} operations allowed, but ${ops.length} were provided.`);
 
 	if (ops.length === 0) {
