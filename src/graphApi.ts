@@ -15,34 +15,30 @@ export const batchEndpoint = `${endpoint}/$batch`;
 
 /** Define a operation, which can either be `await`d to execute independently, or passed with other operations ot `parallel` or `sequential` to execute as part of a batch. */
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
-	async function single<T>(definition: GraphOperationDefinition<T>): Promise<T> {
+	const single = async <T>(definition: GraphOperationDefinition<T>): Promise<T> => {
 		return await executeSingle<T>(definition);
-	}
+	};
 
 	const op = single(definition) as GraphOperation<T>;
 	op.definition = definition;
 	return op;
 }
 
-
 /** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
 export async function parallel<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
 	const definitions = ops.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
+
 	return (await executeBatch(...definitions)) as ExecutionResults<T>;
 }
 
 /** Execute a batch of GraphAPI operations sequentially. */
 export async function sequential<T extends GraphOperation<unknown>[]>(...ops: T): Promise<ExecutionResults<T>> {
-	const definitions = ops.map((op) => op.definition) as GraphOperationDefinitionWithDeps<unknown>[];
-	const sequentialOps = definitions.map(
-		(definition, index) =>
-			({
-				...definition,
-				dependsOn: index > 0 ? [index - 1] : undefined, // Each op is dependant on the previous op
-			}) as GraphOperationDefinitionWithDeps<unknown>,
-	);
+	const definitions = ops.map((definition, index) => ({
+		...definition.definition,
+		dependsOn: index > 0 ? [index - 1] : undefined, // Each op is dependant on the previous op
+	}));
 
-	return (await executeBatch(...sequentialOps)) as ExecutionResults<T>;
+	return (await executeBatch(...definitions)) as ExecutionResults<T>;
 }
 
 const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
@@ -64,7 +60,6 @@ type GraphOperationDefinitionWithDeps<T> = GraphOperationDefinition<T> & {
 type ExecutionResults<T> = {
 	[K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
-
 
 async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
 	const context = getContext(definition.contextId);
