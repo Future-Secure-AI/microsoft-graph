@@ -6,7 +6,7 @@ export default defineConfig({
         watch: false,
         include: ["src/**/*.test.ts"],
         maxConcurrency: 1, // Avoid API throttling
-        retry: 2,
+        retry: 1,
         poolOptions: {
             threads: {
                 maxThreads: 1,// Avoid API throttling
