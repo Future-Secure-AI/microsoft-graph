@@ -2,7 +2,7 @@ import ProtocolError from "../errors/ProtocolError.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
-import getWorkbookWorksheetRange from "../operations/workbookWorksheet/getWorkbookWorksheetRange.ts";
+import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { indexesToCellAddress } from "../services/address.ts";
 
 /** Get the last used cell (ie, the most-lower-right) in a given range. */

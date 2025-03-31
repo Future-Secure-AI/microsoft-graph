@@ -4,10 +4,10 @@ import NeverError from "../errors/NeverError.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
+import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import insertWorkbookCells from "../operations/workbookRange/insertWorkbookCells.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTableBodyRange.ts";
-import getWorkbookWorksheetRange from "../operations/workbookWorksheet/getWorkbookWorksheetRange.ts";
 import { cellAddressToIndexes, getBoxRangeFirstCell, getBoxRangeLastCell, indexesToBoxRangeAddress } from "../services/address.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 

@@ -205,9 +205,12 @@ async function innerFetch<T>(args: RequestInit & { url: string }): Promise<T> {
 
 	if (!isHttpOk(response.status)) {
 		const bodyError = body as BodyError;
-		const errorMessage = bodyError?.error ? `[${bodyError.error.code}] ${bodyError.error.message}` : `HTTP ${response.status} ${response.statusText}`;
+		let errorMessage = `${response.status} '${response.statusText}'`;
+		if (bodyError?.error) {
+			errorMessage += `: [${bodyError.error.code}] '${bodyError.error.message}'`;
+		}
 
-		RequestFailedError.throw(`GraphAPI fetch failed: '${errorMessage}'`, args, body);
+		RequestFailedError.throw(`GraphAPI fetch failed: ${errorMessage}`, args, body);
 	}
 
 	return body as T;
