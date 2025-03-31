@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,7 +10,7 @@
     "build": "npm run check && tsc && npx tsx update-exports.ts",
     "release": "npm run build && npm publish --access public",
     "test": "vitest --bail=3",
-    "update": "npm-check-updates -u"
+    "update": "npm-check-updates -u && npm install"
   },
   "keywords": [
     "Microsoft",
@@ -33,7 +33,7 @@
     "npm-check-updates": "^17.1.16",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.9"
+    "vitest": "^3.1.1"
   },
   "dependencies": {
     "@azure/identity": "^4.8.0",
