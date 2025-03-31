@@ -56,8 +56,8 @@ for (const item of await listDriveItems(folder)) {
 
 ### Cleanup
 ```typescript
-await closeWorkbookSession(workbook);
-await deleteDriveItemWithRetry(folder); // May take a moment to unlock the file
+await safeDeleteWorkbook(workbook); // Closes session and waits for unlock
+await deleteDriveItem(folder);
 ```
 
 From here, have a look at:

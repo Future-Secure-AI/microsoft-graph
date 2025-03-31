@@ -5,9 +5,9 @@ import { HttpProxy } from "../src/models/HttpProxy.ts";
 import { SiteId } from "../src/models/SiteId.ts";
 import { TenantId } from "../src/models/TenantId.ts";
 import createFolder from "../src/operations/drive/createFolder.ts";
+import deleteDriveItem from "../src/operations/driveItem/deleteDriveItem.ts";
 import listDriveItems from "../src/operations/driveItem/listDriveItems.ts";
 import updateWorkbookRange from "../src/operations/workbookRange/updateWorkbookRange.ts";
-import closeWorkbookSession from "../src/operations/workbookSession/closeWorkbookSession.ts";
 import { register } from "../src/services/context.ts";
 import { createDriveRef } from "../src/services/drive.ts";
 import { workbookFileExtension } from "../src/services/driveItem.ts";
@@ -16,8 +16,8 @@ import { createSiteRef } from "../src/services/site.ts";
 import { generateTempFileName } from "../src/services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../src/services/workbookRange.ts";
 import createWorkbookAndStartSession from "../src/tasks/createWorkbookAndStartSession.ts";
-import deleteDriveItemWithRetry from "../src/tasks/deleteDriveItemWithRetry.ts";
-import getWorkbookWorksheetByName from "../src/tasks/getWorkbookWorksheetRefByName.ts";
+import getWorkbookWorksheetByName from "../src/tasks/getWorkbookWorksheetByName.ts";
+import safeDeleteWorkbook from "../src/tasks/safeDeleteWorkbook.ts";
 import { debug, info, } from "./log.ts";
 
 info("Loading envs...");
@@ -55,7 +55,7 @@ for (const item of await listDriveItems(folder)) {
 }
 
 info("Cleanup...");
-await closeWorkbookSession(workbook);
-await deleteDriveItemWithRetry(folder); // May take a moment to unlock the file
+await safeDeleteWorkbook(workbook); // Closes session and waits for unlock
+await deleteDriveItem(folder);
 
 info("Done.");
