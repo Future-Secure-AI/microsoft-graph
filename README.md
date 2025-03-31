@@ -4,11 +4,6 @@ This is an extensible library that allows access to Microsoft's GraphAPI, includ
 
 Note that this is a THIRD PARTY library and not associated with Microsoft.
 
-## Breaking changes
-### v2.0.0 
-* Contextual authentication. Authentication details are no longer automatically loaded from envs. You need to call `const contextRef = register(tenantId, clientId, clientSecret, httpProxy);` 
-* References are created with new funcs. Like `createSiteRef`.
-
 ## Usage
 Install the NPM package `npm i microsoft-graph`, then:
 
@@ -19,8 +14,8 @@ Something like this, but whatever works in your context.
 const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as TenantId;
 const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as ClientId;
 const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as ClientSecret;
-const siteId = getEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
-const driveId = getEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
+const siteId = getEnvironmentVariable("SHAREPOINT_SITE_ID") as SiteId;
+const driveId = getEnvironmentVariable("SHAREPOINT_DRIVE_ID") as DriveId;
 ```
 
 ### Get reference to drive
