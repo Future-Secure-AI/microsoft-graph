@@ -8,6 +8,7 @@ import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import getWorkbookWorksheetByName from "../../tasks/getWorkbookWorksheetByName.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
+import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 import updateWorkbookWorksheet from "./updateWorkbookWorksheet.ts";
 
 describe("updateWorkbookWorksheet", () => {
@@ -36,9 +37,9 @@ describe("updateWorkbookWorksheet", () => {
 
 		try {
 			const worksheetName = "Sheet2" as WorkbookWorksheetName;
-			const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
-			await updateWorkbookWorksheet(worksheetRef, { visibility: "Hidden" });
-			const updatedWorksheet = await getWorkbookWorksheetByName(worksheetRef, worksheetName);
+			const worksheet = await createWorkbookWorksheet(workbook); // Can't hide the single worksheet
+			await updateWorkbookWorksheet(worksheet, { visibility: "Hidden" });
+			const updatedWorksheet = await getWorkbookWorksheetByName(worksheet, worksheetName);
 			expect(updatedWorksheet.visibility).toBe("Hidden");
 		} finally {
 			await deleteDriveItemWithRetry(workbook);
