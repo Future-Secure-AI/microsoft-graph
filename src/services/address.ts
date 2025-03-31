@@ -1,15 +1,91 @@
-import type { BoxRangeAddress, CellAddress, ColumnAddress, RowAddress } from "../models/Address.ts";
+import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import type { Address, BoxRangeAddress, CellAddress, ColumnAddress, RowAddress } from "../models/Address.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 
-const cellAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)(?<row>\d+)$/; // Matches "A2" or "Sheet1!A2". We ignore the sheet since it's handle upstream
+const firstColumn = "A";
+const lastColumn = "XFD";
+const firstRow = "1";
+const lastRow = "1048576";
 
-export function getBoxRangeFirstCell(address: BoxRangeAddress): CellAddress {
-	return address.split(":", 2)[0] as CellAddress;
+const columnAddressPattern = /^(?<column>[A-Z]+)$/;
+const rowAddressPattern = /^(?<row>\d+)$/;
+const columnRangeAddressPattern = /^(?<startColumn>[A-Z]+):(?<endColumn>[A-Z]+)$/;
+const rowRangeAddressPattern = /^(?<startRow>\d+):(?<endRow>\d+)$/;
+const cellAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)(?<row>\d+)$/;
+const boxRangeAddressPattern = /^(?<startCell>[A-Z]+\d+):(?<endCell>[A-Z]+\d+)$/;
+
+export function getAddressFirstCell(address: Address): CellAddress {
+	if (columnAddressPattern.test(address)) {
+		return `${address}${firstRow}` as CellAddress;
+	}
+
+	if (rowAddressPattern.test(address)) {
+		return `${firstColumn}${address}` as CellAddress;
+	}
+
+	const columnRangeMatch = address.match(columnRangeAddressPattern);
+	if (columnRangeMatch) {
+		// biome-ignore lint/complexity/useLiteralKeys: Regex named capture groups are used
+		// biome-ignore lint/style/noNonNullAssertion: Regex named capture groups are used
+		return `${columnRangeMatch!.groups!["startColumn"]}${firstRow}` as CellAddress;
+	}
+
+	const rowRangeMatch = address.match(rowRangeAddressPattern);
+	if (rowRangeMatch) {
+		// biome-ignore lint/complexity/useLiteralKeys: Regex named capture groups are used
+		// biome-ignore lint/style/noNonNullAssertion: Regex named capture groups are used
+		return `${firstColumn}${rowRangeMatch!.groups!["startRow"]}` as CellAddress;
+	}
+
+	const boxRangeMatch = address.match(boxRangeAddressPattern);
+	if (boxRangeMatch) {
+		// biome-ignore lint/complexity/useLiteralKeys: Regex named capture groups are used
+		// biome-ignore lint/style/noNonNullAssertion: Regex named capture groups are used
+		return boxRangeMatch!.groups!["startCell"] as CellAddress;
+	}
+
+	if (cellAddressPattern.test(address)) {
+		return address as CellAddress;
+	}
+
+	throw new InvalidArgumentError(`Invalid address format '${address}'`);
 }
 
-export function getBoxRangeLastCell(address: BoxRangeAddress): CellAddress {
-	return (address.includes(":") ? address.split(":", 2)[1] : address) as CellAddress;
+export function getAddressLastCell(address: Address): CellAddress {
+	if (columnAddressPattern.test(address)) {
+		return `${address}${lastRow}` as CellAddress;
+	}
+
+	if (rowAddressPattern.test(address)) {
+		return `${lastColumn}${address}` as CellAddress;
+	}
+
+	const columnRangeMatch = address.match(columnRangeAddressPattern);
+	if (columnRangeMatch) {
+		// biome-ignore lint/complexity/useLiteralKeys: Regex named capture groups are used
+		// biome-ignore lint/style/noNonNullAssertion: Regex named capture groups are used
+		return `${columnRangeMatch!.groups!["endColumn"]}${lastRow}` as CellAddress;
+	}
+	const rowRangeMatch = address.match(rowRangeAddressPattern);
+	if (rowRangeMatch) {
+		// biome-ignore lint/complexity/useLiteralKeys: Regex named capture groups are used
+		// biome-ignore lint/style/noNonNullAssertion: Regex named capture groups are used
+		return `${lastColumn}${rowRangeMatch!.groups!["endRow"]}` as CellAddress;
+	}
+
+	const boxRangeMatch = address.match(boxRangeAddressPattern);
+	if (boxRangeMatch) {
+		// biome-ignore lint/complexity/useLiteralKeys: Regex named capture groups are used
+		// biome-ignore lint/style/noNonNullAssertion: Regex named capture groups are used
+		return boxRangeMatch!.groups!["endCell"] as CellAddress;
+	}
+
+	if (cellAddressPattern.test(address)) {
+		return address as CellAddress;
+	}
+
+	throw new Error(`Invalid address format '${address}'`);
 }
 
 export function cellAddressToIndexes(address: CellAddress): [RowIndex, ColumnIndex] {
