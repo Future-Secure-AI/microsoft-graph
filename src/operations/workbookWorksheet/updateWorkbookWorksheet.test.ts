@@ -6,6 +6,7 @@ import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import getWorkbookWorksheetByName from "../../tasks/getWorkbookWorksheetByName.ts";
+import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookWorksheet from "./updateWorkbookWorksheet.ts";
 
@@ -19,6 +20,7 @@ describe("updateWorkbookWorksheet", () => {
 			const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
 			const newName = "UpdatedSheet";
 			await updateWorkbookWorksheet(worksheetRef, { name: newName });
+			await calculateWorkbook(workbook);
 
 			const updatedWorksheet = await getWorkbookWorksheetByName(workbook, newName);
 			expect(updatedWorksheet.name).toBe(newName);

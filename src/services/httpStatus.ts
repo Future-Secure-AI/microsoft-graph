@@ -5,3 +5,8 @@ export function isHttpOk(status: number): boolean {
 export function isHttpTooManyRequests(status: number): boolean {
 	return status === 429;
 }
+
+
+export function isServiceUnavailable(status: number): boolean {
+	return status === 503;
+}

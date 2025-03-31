@@ -11,7 +11,7 @@ import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { getContext } from "./services/context.ts";
 import { tryGetHttpAgent } from "./services/httpAgent.ts";
-import { isHttpOk, isHttpTooManyRequests } from "./services/httpStatus.ts";
+import { isHttpOk, isHttpTooManyRequests, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
 
@@ -152,9 +152,11 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 		}
 		if (!isHttpOk(r.status)) {
 			const bodyError = body as BodyError;
-			const errorMessage = bodyError?.error ? `[${bodyError.error.code}] ${bodyError.error.message}` : `HTTP ${r.status}`;
-
-			RequestFailedError.throw(`GraphAPI operation ${index} failed: '${errorMessage}'`, op, r);
+			let errorMessage = `${r.status}`;
+			if (bodyError?.error) {
+				errorMessage += `: [${bodyError.error.code}] '${bodyError.error.message}'`;
+			}
+			RequestFailedError.throw(`GraphAPI operation ${index} failed: ${errorMessage}`, op, r);
 		}
 		responses[index] = op.responseTransform(body);
 	}
@@ -174,7 +176,7 @@ async function innerFetch<T>(args: RequestInit & { url: string }): Promise<T> {
 		// Retry at most 3 times
 		response = await fetch(url, options);
 
-		if (!isHttpTooManyRequests(response.status)) {
+		if (!(isHttpTooManyRequests(response.status) || isServiceUnavailable(response.status))) {
 			break;
 		}
 
