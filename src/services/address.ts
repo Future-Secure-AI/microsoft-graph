@@ -5,7 +5,7 @@ import type { RangeAddress } from "../models/RangeAddress.ts";
 import type { Row } from "../models/Row.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 
-// TODO: Tidy this 
+// TODO: Tidy this
 
 const cellPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)(?<row>\d+)$/; // Matches "A2" or "Sheet1!A2"
 
@@ -29,16 +29,15 @@ export function cellToIndexes(cell: Cell): [RowIndex, ColumnIndex] {
 
 	const rowIndex = rowToIndex(row);
 	const columnIndex = columnToIndex(column);
-	
+
 	return [rowIndex, columnIndex];
 }
-
 
 export function indexesToCell(rowIndex: RowIndex, columnIndex: ColumnIndex): Cell {
 	return `${indexToColumn(columnIndex)}${indexToRow(rowIndex)}` as Cell;
 }
 
-export function indexesToBox(startRowIndex:RowIndex, startColumnIndex: ColumnIndex, endRowIndex: RowIndex, endColumnIndex: ColumnIndex): RangeAddress {
+export function indexesToBox(startRowIndex: RowIndex, startColumnIndex: ColumnIndex, endRowIndex: RowIndex, endColumnIndex: ColumnIndex): RangeAddress {
 	return `${indexesToCell(startRowIndex, startColumnIndex)}:${indexesToCell(endRowIndex, endColumnIndex)}` as RangeAddress;
 }
 
