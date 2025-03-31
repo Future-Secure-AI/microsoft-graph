@@ -1,4 +1,4 @@
-name: Biome check
+name: Code quality
 permissions:
   contents: read
   pull-requests: write
