@@ -2,9 +2,10 @@ import { describe, expect, it } from "vitest";
 import type { Cell } from "../models/Cell.ts";
 import type { Column } from "../models/Column.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
+import type { RangeAddress } from "../models/RangeAddress.ts";
 import type { Row } from "../models/Row.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
-import { columnToIndex, indexesToCell, indexToColumn, indexToRow, rowToIndex } from "./address.ts";
+import { cellToIndexes, columnToIndex, getAddressEnd, getAddressStart, indexesToCell, indexToColumn, indexToRow, rowToIndex } from "./address.ts";
 
 describe("indexesToAddress", () => {
 	it("should convert row and column indexes to an address", () => {
@@ -47,5 +48,31 @@ describe("indexToRow", () => {
 		expect(indexToRow(0 as RowIndex)).toBe("1" as Row);
 		expect(indexToRow(4 as RowIndex)).toBe("5" as Row);
 		expect(indexToRow(99 as RowIndex)).toBe("100" as Row);
+	});
+});
+
+describe("cellToIndexes", () => {
+	it("should convert a cell address to row and column indexes", () => {
+		expect(cellToIndexes("A1" as Cell)).toEqual([0 as RowIndex, 0 as ColumnIndex]);
+		expect(cellToIndexes("C5" as Cell)).toEqual([4 as RowIndex, 2 as ColumnIndex]);
+		expect(cellToIndexes("Z11" as Cell)).toEqual([10 as RowIndex, 25 as ColumnIndex]);
+		expect(cellToIndexes("AA1" as Cell)).toEqual([0 as RowIndex, 26 as ColumnIndex]);
+		expect(cellToIndexes("ZZ100" as Cell)).toEqual([99 as RowIndex, 701 as ColumnIndex]);
+	});
+});
+
+describe("getAddressStart", () => {
+	it("should return the start cell of a range address", () => {
+		expect(getAddressStart("A1:B2" as RangeAddress)).toBe("A1" as Cell);
+		expect(getAddressStart("C3:D4" as RangeAddress)).toBe("C3" as Cell);
+		expect(getAddressStart("E5" as RangeAddress)).toBe("E5" as Cell); // Single cell address
+	});
+});
+
+describe("getAddressEnd", () => {
+	it("should return the end cell of a range address", () => {
+		expect(getAddressEnd("A1:B2" as RangeAddress)).toBe("B2" as Cell);
+		expect(getAddressEnd("C3:D4" as RangeAddress)).toBe("D4" as Cell);
+		expect(getAddressEnd("E5" as RangeAddress)).toBe("E5" as Cell); // Single cell address
 	});
 });
