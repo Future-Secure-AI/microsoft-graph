@@ -1,7 +1,7 @@
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import { operation } from "../../graphApi.ts";
-import type { Address, BoxRangeAddress } from "../../models/Address.ts";
+import type { Address, CellRangeAddress } from "../../models/Address.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
@@ -26,7 +26,7 @@ export default function insertWorkbookCells(worksheetRef: WorkbookWorksheetRef, 
 			if (!workbook.address) {
 				throw new ProtocolError("Invalid response: address is missing");
 			}
-			const rangeRef = createWorkbookRangeRef(worksheetRef, workbook.address as BoxRangeAddress);
+			const rangeRef = createWorkbookRangeRef(worksheetRef, workbook.address as CellRangeAddress);
 			return {
 				...workbook,
 				...rangeRef,

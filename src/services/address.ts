@@ -1,5 +1,5 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { Address, BoxRangeAddress, CellAddress, ColumnAddress, RowAddress } from "../models/Address.ts";
+import type { Address, CellAddress, CellRangeAddress, ColumnAddress, RowAddress } from "../models/Address.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 
@@ -9,11 +9,13 @@ const firstRow = "1";
 const lastRow = "1048576";
 
 const columnAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)$/;
-const rowAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<row>\d+)$/;
 const columnRangeAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<startColumn>[A-Z]+):(?<endColumn>[A-Z]+)$/;
+
+const rowAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<row>\d+)$/;
 const rowRangeAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<startRow>\d+):(?<endRow>\d+)$/;
+
 const cellAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)(?<row>\d+)$/;
-const boxRangeAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<startCell>[A-Z]+\d+):(?<endCell>[A-Z]+\d+)$/;
+const cellRangeAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<startCell>[A-Z]+\d+):(?<endCell>[A-Z]+\d+)$/;
 
 export function getAddressFirstCell(address: Address): CellAddress {
 	const columnAddressMatch = address.match(columnAddressPattern);
@@ -44,10 +46,10 @@ export function getAddressFirstCell(address: Address): CellAddress {
 		return `${firstColumn}${startRow}` as CellAddress;
 	}
 
-	const boxRangeMatch = address.match(boxRangeAddressPattern);
-	if (boxRangeMatch) {
+	const cellRangeMatch = address.match(cellRangeAddressPattern);
+	if (cellRangeMatch) {
 		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const startCell = boxRangeMatch?.groups?.["startCell"];
+		const startCell = cellRangeMatch?.groups?.["startCell"];
 		return startCell as CellAddress;
 	}
 
@@ -91,10 +93,10 @@ export function getAddressLastCell(address: Address): CellAddress {
 		return `${lastColumn}${endRow}` as CellAddress;
 	}
 
-	const boxRangeMatch = address.match(boxRangeAddressPattern);
-	if (boxRangeMatch) {
+	const cellRangeMatch = address.match(cellRangeAddressPattern);
+	if (cellRangeMatch) {
 		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const endCell = boxRangeMatch?.groups?.["endCell"];
+		const endCell = cellRangeMatch?.groups?.["endCell"];
 		return endCell as CellAddress;
 	}
 
@@ -130,8 +132,8 @@ export function indexesToCellAddress(rowIndex: RowIndex, columnIndex: ColumnInde
 	return `${indexToColumnAddress(columnIndex)}${indexToRowAddress(rowIndex)}` as CellAddress;
 }
 
-export function indexesToBoxRangeAddress(startRowIndex: RowIndex, startColumnIndex: ColumnIndex, endRowIndex: RowIndex, endColumnIndex: ColumnIndex): BoxRangeAddress {
-	return `${indexesToCellAddress(startRowIndex, startColumnIndex)}:${indexesToCellAddress(endRowIndex, endColumnIndex)}` as BoxRangeAddress;
+export function indexesToBoxRangeAddress(startRowIndex: RowIndex, startColumnIndex: ColumnIndex, endRowIndex: RowIndex, endColumnIndex: ColumnIndex): CellRangeAddress {
+	return `${indexesToCellAddress(startRowIndex, startColumnIndex)}:${indexesToCellAddress(endRowIndex, endColumnIndex)}` as CellRangeAddress;
 }
 
 export function columnAddressToIndex(column: ColumnAddress): ColumnIndex {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { BoxRangeAddress, CellAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
+import type { CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 import { cellAddressToIndexes, columnAddressToIndex, getAddressFirstCell, getAddressLastCell, indexesToCellAddress, indexToColumnAddress, indexToRowAddress, rowAddressToIndex } from "./address.ts";
@@ -60,8 +60,8 @@ describe("cellAddressToIndexes", () => {
 
 describe("getAddressFirstCell", () => {
 	it("should return the start cell of a range address", () => {
-		expect(getAddressFirstCell("C3:D4" as BoxRangeAddress)).toBe("C3" as CellAddress);
-		expect(getAddressFirstCell("Sheet!A1:B2" as BoxRangeAddress)).toBe("A1" as CellAddress);
+		expect(getAddressFirstCell("C3:D4" as CellRangeAddress)).toBe("C3" as CellAddress);
+		expect(getAddressFirstCell("Sheet!A1:B2" as CellRangeAddress)).toBe("A1" as CellAddress);
 		expect(getAddressFirstCell("E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
 		expect(getAddressFirstCell("Sheet!E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
 		expect(getAddressFirstCell("C" as ColumnAddress)).toBe("C1" as CellAddress); // ColumnAddress
@@ -77,8 +77,8 @@ describe("getAddressFirstCell", () => {
 
 describe("getAddressLastCell", () => {
 	it("should return the end cell of a range address", () => {
-		expect(getAddressLastCell("C3:D4" as BoxRangeAddress)).toBe("D4" as CellAddress);
-		expect(getAddressLastCell("Sheet!A1:B2" as BoxRangeAddress)).toBe("B2" as CellAddress);
+		expect(getAddressLastCell("C3:D4" as CellRangeAddress)).toBe("D4" as CellAddress);
+		expect(getAddressLastCell("Sheet!A1:B2" as CellRangeAddress)).toBe("B2" as CellAddress);
 		expect(getAddressLastCell("E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
 		expect(getAddressLastCell("Sheet!E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
 		expect(getAddressLastCell("C" as ColumnAddress)).toBe("C1048576" as CellAddress); // ColumnAddress

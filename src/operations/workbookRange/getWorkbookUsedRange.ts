@@ -1,7 +1,7 @@
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import { operation } from "../../graphApi.ts";
-import type { BoxRangeAddress } from "../../models/Address.ts";
+import type { CellRangeAddress } from "../../models/Address.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
@@ -23,7 +23,7 @@ export default function getWorkbookUsedRange(worksheetRef: WorkbookWorksheetRef)
 			if (!range.address) {
 				throw new ProtocolError("Invalid response: address is missing");
 			}
-			const rangeRef = createWorkbookRangeRef(worksheetRef, range.address as BoxRangeAddress);
+			const rangeRef = createWorkbookRangeRef(worksheetRef, range.address as CellRangeAddress);
 
 			return {
 				...range,
