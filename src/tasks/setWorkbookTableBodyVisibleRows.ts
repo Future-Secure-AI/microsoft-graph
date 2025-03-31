@@ -8,7 +8,7 @@ import insertWorkbookCells from "../operations/workbookRange/insertWorkbookCells
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTableBodyRange.ts";
 import getWorkbookWorksheetRange from "../operations/workbookWorksheet/getWorkbookWorksheetRange.ts";
-import { cellToIndexes, getAddressEnd, getAddressStart, indexesToBox } from "../services/address.ts";
+import { cellAddressToIndexes, getBoxRangeFirstCell, getBoxRangeLastCell, indexesToBoxRangeAddress } from "../services/address.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /** Overwrite visible rows of a workbook table with the provided 2D array of values, inserting new rows at the end if needed. THIS IS SLOW as it must check each rows visibility. */
@@ -18,8 +18,8 @@ export async function setWorkbookTableBodyVisibleRows(tableRef: WorkbookTableRef
 		throw new InvalidArgumentError(`Invalid number of columns in input values. Expected all rows to have ${visibleRange.columnCount}.`);
 	}
 
-	const [startRowIndex, startColumnIndex] = cellToIndexes(getAddressStart(visibleRange.address));
-	const [endRowIndex, endColumnIndex] = cellToIndexes(getAddressEnd(visibleRange.address));
+	const [startRowIndex, startColumnIndex] = cellAddressToIndexes(getBoxRangeFirstCell(visibleRange.address));
+	const [endRowIndex, endColumnIndex] = cellAddressToIndexes(getBoxRangeLastCell(visibleRange.address));
 	if (endColumnIndex - startColumnIndex + 1 !== visibleRange.columnCount) {
 		throw new NeverError("Insane address");
 	}
@@ -32,7 +32,7 @@ export async function setWorkbookTableBodyVisibleRows(tableRef: WorkbookTableRef
 		let dstRowHidden = false;
 
 		do {
-			dstRowRef = createWorkbookRangeRef(tableRef, indexesToBox(currentRowIndex, startColumnIndex, currentRowIndex, endColumnIndex));
+			dstRowRef = createWorkbookRangeRef(tableRef, indexesToBoxRangeAddress(currentRowIndex, startColumnIndex, currentRowIndex, endColumnIndex));
 			if (currentRowIndex > endRowIndex) {
 				await insertWorkbookCells(dstRowRef, dstRowRef.address, "Down");
 				dstRowHidden = false;

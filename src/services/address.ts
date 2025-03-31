@@ -1,47 +1,42 @@
-import type { Cell } from "../models/Cell.ts";
-import type { Column } from "../models/Column.ts";
+import type { BoxRangeAddress, CellAddress, ColumnAddress, RowAddress } from "../models/Address.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
-import type { RangeAddress } from "../models/RangeAddress.ts";
-import type { Row } from "../models/Row.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 
-// TODO: Tidy this
+const cellAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)(?<row>\d+)$/; // Matches "A2" or "Sheet1!A2". We ignore the sheet since it's handle upstream
 
-const cellPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)(?<row>\d+)$/; // Matches "A2" or "Sheet1!A2"
-
-export function getAddressStart(address: RangeAddress): Cell {
-	return address.split(":", 2)[0] as Cell;
+export function getBoxRangeFirstCell(address: BoxRangeAddress): CellAddress {
+	return address.split(":", 2)[0] as CellAddress;
 }
 
-export function getAddressEnd(address: RangeAddress): Cell {
-	return (address.includes(":") ? address.split(":", 2)[1] : address) as Cell;
+export function getBoxRangeLastCell(address: BoxRangeAddress): CellAddress {
+	return (address.includes(":") ? address.split(":", 2)[1] : address) as CellAddress;
 }
 
-export function cellToIndexes(cell: Cell): [RowIndex, ColumnIndex] {
-	const match = cell.match(cellPattern);
+export function cellAddressToIndexes(address: CellAddress): [RowIndex, ColumnIndex] {
+	const match = address.match(cellAddressPattern);
 	if (!match?.groups) {
-		throw new Error(`Invalid cell format '${cell}', must match '${cellPattern}`);
+		throw new Error(`Invalid cell format '${address}', must match '${cellAddressPattern}`);
 	}
 	// biome-ignore lint/complexity/useLiteralKeys: Named capture groups are used
-	const column = match.groups["column"] as Column;
+	const column = match.groups["column"] as ColumnAddress;
 	// biome-ignore lint/complexity/useLiteralKeys: Named capture groups are used
-	const row = match.groups["row"] as Row;
+	const row = match.groups["row"] as RowAddress;
 
-	const rowIndex = rowToIndex(row);
-	const columnIndex = columnToIndex(column);
+	const rowIndex = rowAddressToIndex(row);
+	const columnIndex = columnAddressToIndex(column);
 
 	return [rowIndex, columnIndex];
 }
 
-export function indexesToCell(rowIndex: RowIndex, columnIndex: ColumnIndex): Cell {
-	return `${indexToColumn(columnIndex)}${indexToRow(rowIndex)}` as Cell;
+export function indexesToCellAddress(rowIndex: RowIndex, columnIndex: ColumnIndex): CellAddress {
+	return `${indexToColumnAddress(columnIndex)}${indexToRowAddress(rowIndex)}` as CellAddress;
 }
 
-export function indexesToBox(startRowIndex: RowIndex, startColumnIndex: ColumnIndex, endRowIndex: RowIndex, endColumnIndex: ColumnIndex): RangeAddress {
-	return `${indexesToCell(startRowIndex, startColumnIndex)}:${indexesToCell(endRowIndex, endColumnIndex)}` as RangeAddress;
+export function indexesToBoxRangeAddress(startRowIndex: RowIndex, startColumnIndex: ColumnIndex, endRowIndex: RowIndex, endColumnIndex: ColumnIndex): BoxRangeAddress {
+	return `${indexesToCellAddress(startRowIndex, startColumnIndex)}:${indexesToCellAddress(endRowIndex, endColumnIndex)}` as BoxRangeAddress;
 }
 
-export function columnToIndex(column: Column): ColumnIndex {
+export function columnAddressToIndex(column: ColumnAddress): ColumnIndex {
 	let index = 0;
 	for (let i = 0; i < column.length; i++) {
 		index = index * 26 + (column.charCodeAt(i) - 65 + 1);
@@ -49,7 +44,7 @@ export function columnToIndex(column: Column): ColumnIndex {
 	return (index - 1) as ColumnIndex;
 }
 
-export function indexToColumn(index: ColumnIndex): Column {
+export function indexToColumnAddress(index: ColumnIndex): ColumnAddress {
 	let result = "";
 	let currentIndex = index + 1;
 	while (currentIndex > 0) {
@@ -57,13 +52,13 @@ export function indexToColumn(index: ColumnIndex): Column {
 		result = String.fromCharCode((currentIndex % 26) + 65) + result;
 		currentIndex = Math.floor(currentIndex / 26);
 	}
-	return result as Column;
+	return result as ColumnAddress;
 }
 
-export function rowToIndex(row: Row): RowIndex {
+export function rowAddressToIndex(row: RowAddress): RowIndex {
 	return (Number.parseInt(row, 10) - 1) as RowIndex;
 }
 
-export function indexToRow(index: RowIndex): Row {
-	return (index + 1).toString() as Row;
+export function indexToRowAddress(index: RowIndex): RowAddress {
+	return (index + 1).toString() as RowAddress;
 }

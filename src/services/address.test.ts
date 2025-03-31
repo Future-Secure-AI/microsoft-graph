@@ -1,78 +1,75 @@
 import { describe, expect, it } from "vitest";
-import type { Cell } from "../models/Cell.ts";
-import type { Column } from "../models/Column.ts";
+import type { BoxRangeAddress, CellAddress, ColumnAddress, RowAddress } from "../models/Address.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
-import type { RangeAddress } from "../models/RangeAddress.ts";
-import type { Row } from "../models/Row.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
-import { cellToIndexes, columnToIndex, getAddressEnd, getAddressStart, indexesToCell, indexToColumn, indexToRow, rowToIndex } from "./address.ts";
+import { cellAddressToIndexes, columnAddressToIndex, getBoxRangeFirstCell, getBoxRangeLastCell, indexesToCellAddress, indexToColumnAddress, indexToRowAddress, rowAddressToIndex } from "./address.ts";
 
-describe("indexesToAddress", () => {
+describe("indexesToCellAddress", () => {
 	it("should convert row and column indexes to an address", () => {
-		expect(indexesToCell(0 as RowIndex, 0 as ColumnIndex)).toBe("A1" as Cell);
-		expect(indexesToCell(4 as RowIndex, 2 as ColumnIndex)).toBe("C5" as Cell);
-		expect(indexesToCell(10 as RowIndex, 25 as ColumnIndex)).toBe("Z11" as Cell);
+		expect(indexesToCellAddress(0 as RowIndex, 0 as ColumnIndex)).toBe("A1" as CellAddress);
+		expect(indexesToCellAddress(4 as RowIndex, 2 as ColumnIndex)).toBe("C5" as CellAddress);
+		expect(indexesToCellAddress(10 as RowIndex, 25 as ColumnIndex)).toBe("Z11" as CellAddress);
 	});
 });
 
-describe("columnToIndex", () => {
+describe("columnAddressToIndex", () => {
 	it("should convert column letters to a zero-based index", () => {
-		expect(columnToIndex("A" as Column)).toBe(0 as ColumnIndex);
-		expect(columnToIndex("Z" as Column)).toBe(25 as ColumnIndex);
-		expect(columnToIndex("AA" as Column)).toBe(26 as ColumnIndex);
-		expect(columnToIndex("AB" as Column)).toBe(27 as ColumnIndex);
-		expect(columnToIndex("ZZ" as Column)).toBe(701 as ColumnIndex);
+		expect(columnAddressToIndex("A" as ColumnAddress)).toBe(0 as ColumnIndex);
+		expect(columnAddressToIndex("Z" as ColumnAddress)).toBe(25 as ColumnIndex);
+		expect(columnAddressToIndex("AA" as ColumnAddress)).toBe(26 as ColumnIndex);
+		expect(columnAddressToIndex("AB" as ColumnAddress)).toBe(27 as ColumnIndex);
+		expect(columnAddressToIndex("ZZ" as ColumnAddress)).toBe(701 as ColumnIndex);
 	});
 });
 
-describe("indexToColumn", () => {
+describe("indexToColumnAddress", () => {
 	it("should convert a zero-based index to column letters", () => {
-		expect(indexToColumn(0 as ColumnIndex)).toBe("A" as Column);
-		expect(indexToColumn(25 as ColumnIndex)).toBe("Z" as Column);
-		expect(indexToColumn(26 as ColumnIndex)).toBe("AA" as Column);
-		expect(indexToColumn(27 as ColumnIndex)).toBe("AB" as Column);
-		expect(indexToColumn(701 as ColumnIndex)).toBe("ZZ" as Column);
+		expect(indexToColumnAddress(0 as ColumnIndex)).toBe("A" as ColumnAddress);
+		expect(indexToColumnAddress(25 as ColumnIndex)).toBe("Z" as ColumnAddress);
+		expect(indexToColumnAddress(26 as ColumnIndex)).toBe("AA" as ColumnAddress);
+		expect(indexToColumnAddress(27 as ColumnIndex)).toBe("AB" as ColumnAddress);
+		expect(indexToColumnAddress(701 as ColumnIndex)).toBe("ZZ" as ColumnAddress);
 	});
 });
 
-describe("rowToIndex", () => {
+describe("rowAddressToIndex", () => {
 	it("should convert a 1-based row to a 0-based index", () => {
-		expect(rowToIndex("1" as Row)).toBe(0 as RowIndex);
-		expect(rowToIndex("5" as Row)).toBe(4 as RowIndex);
-		expect(rowToIndex("100" as Row)).toBe(99 as RowIndex);
+		expect(rowAddressToIndex("1" as RowAddress)).toBe(0 as RowIndex);
+		expect(rowAddressToIndex("5" as RowAddress)).toBe(4 as RowIndex);
+		expect(rowAddressToIndex("100" as RowAddress)).toBe(99 as RowIndex);
 	});
 });
 
-describe("indexToRow", () => {
+describe("indexToRowAddress", () => {
 	it("should convert a 0-based index to a 1-based row", () => {
-		expect(indexToRow(0 as RowIndex)).toBe("1" as Row);
-		expect(indexToRow(4 as RowIndex)).toBe("5" as Row);
-		expect(indexToRow(99 as RowIndex)).toBe("100" as Row);
+		expect(indexToRowAddress(0 as RowIndex)).toBe("1" as RowAddress);
+		expect(indexToRowAddress(4 as RowIndex)).toBe("5" as RowAddress);
+		expect(indexToRowAddress(99 as RowIndex)).toBe("100" as RowAddress);
 	});
 });
 
-describe("cellToIndexes", () => {
+describe("cellAddressToIndexes", () => {
 	it("should convert a cell address to row and column indexes", () => {
-		expect(cellToIndexes("A1" as Cell)).toEqual([0 as RowIndex, 0 as ColumnIndex]);
-		expect(cellToIndexes("C5" as Cell)).toEqual([4 as RowIndex, 2 as ColumnIndex]);
-		expect(cellToIndexes("Z11" as Cell)).toEqual([10 as RowIndex, 25 as ColumnIndex]);
-		expect(cellToIndexes("AA1" as Cell)).toEqual([0 as RowIndex, 26 as ColumnIndex]);
-		expect(cellToIndexes("ZZ100" as Cell)).toEqual([99 as RowIndex, 701 as ColumnIndex]);
+		expect(cellAddressToIndexes("A1" as CellAddress)).toEqual([0 as RowIndex, 0 as ColumnIndex]);
+		expect(cellAddressToIndexes("C5" as CellAddress)).toEqual([4 as RowIndex, 2 as ColumnIndex]);
+		expect(cellAddressToIndexes("Z11" as CellAddress)).toEqual([10 as RowIndex, 25 as ColumnIndex]);
+		expect(cellAddressToIndexes("AA1" as CellAddress)).toEqual([0 as RowIndex, 26 as ColumnIndex]);
+		expect(cellAddressToIndexes("ZZ100" as CellAddress)).toEqual([99 as RowIndex, 701 as ColumnIndex]);
 	});
 });
 
-describe("getAddressStart", () => {
+describe("getBoxRangeFirstCell", () => {
 	it("should return the start cell of a range address", () => {
-		expect(getAddressStart("A1:B2" as RangeAddress)).toBe("A1" as Cell);
-		expect(getAddressStart("C3:D4" as RangeAddress)).toBe("C3" as Cell);
-		expect(getAddressStart("E5" as RangeAddress)).toBe("E5" as Cell); // Single cell address
+		expect(getBoxRangeFirstCell("A1:B2" as BoxRangeAddress)).toBe("A1" as CellAddress);
+		expect(getBoxRangeFirstCell("C3:D4" as BoxRangeAddress)).toBe("C3" as CellAddress);
+		expect(getBoxRangeFirstCell("E5" as BoxRangeAddress)).toBe("E5" as CellAddress); // Single cell address
 	});
 });
 
-describe("getAddressEnd", () => {
+describe("getBoxRangeLastCell", () => {
 	it("should return the end cell of a range address", () => {
-		expect(getAddressEnd("A1:B2" as RangeAddress)).toBe("B2" as Cell);
-		expect(getAddressEnd("C3:D4" as RangeAddress)).toBe("D4" as Cell);
-		expect(getAddressEnd("E5" as RangeAddress)).toBe("E5" as Cell); // Single cell address
+		expect(getBoxRangeLastCell("A1:B2" as BoxRangeAddress)).toBe("B2" as CellAddress);
+		expect(getBoxRangeLastCell("C3:D4" as BoxRangeAddress)).toBe("D4" as CellAddress);
+		expect(getBoxRangeLastCell("E5" as BoxRangeAddress)).toBe("E5" as CellAddress); // Single cell address
 	});
 });
