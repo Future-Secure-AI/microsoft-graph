@@ -1,14 +1,15 @@
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
+import ProtocolError from "../../errors/ProtocolError.ts";
 import { operation } from "../../graphApi.ts";
+import type { Address, BoxRangeAddress } from "../../models/Address.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { RangeAddress } from "../../models/RangeAddress.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
 /** Insert a new blank range at a specified address, shifting existing cells. Use `updateRange` after to set content. @see https://learn.microsoft.com/en-us/graph/api/range-insert */
-export default function insertWorkbookCells(worksheetRef: WorkbookWorksheetRef, address: RangeAddress, shift: "Down" | "Right"): GraphOperation<WorkbookRange & WorkbookRangeRef> {
+export default function insertWorkbookCells(worksheetRef: WorkbookWorksheetRef, address: Address, shift: "Down" | "Right"): GraphOperation<WorkbookRange & WorkbookRangeRef> {
 	return operation({
 		contextId: worksheetRef.contextId,
 		method: "POST",
@@ -22,7 +23,10 @@ export default function insertWorkbookCells(worksheetRef: WorkbookWorksheetRef, 
 		},
 		responseTransform: (response) => {
 			const workbook = response as WorkbookRange;
-			const rangeRef = createWorkbookRangeRef(worksheetRef, workbook.address as RangeAddress);
+			if (!workbook.address) {
+				throw new ProtocolError("Invalid response: address is missing");
+			}
+			const rangeRef = createWorkbookRangeRef(worksheetRef, workbook.address as BoxRangeAddress);
 			return {
 				...workbook,
 				...rangeRef,

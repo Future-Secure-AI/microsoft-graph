@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -92,6 +92,10 @@
     "./models/AccessToken": {
       "import": "./dist/models/AccessToken.js",
       "types": "./dist/models/AccessToken.d.ts"
+    },
+    "./models/Address": {
+      "import": "./dist/models/Address.js",
+      "types": "./dist/models/Address.d.ts"
     },
     "./models/Box": {
       "import": "./dist/models/Box.js",
@@ -324,6 +328,10 @@
     "./operations/workbookRange/getWorkbookVisibleRange": {
       "import": "./dist/operations/workbookRange/getWorkbookVisibleRange.js",
       "types": "./dist/operations/workbookRange/getWorkbookVisibleRange.d.ts"
+    },
+    "./operations/workbookRange/getWorkbookWorksheetRange": {
+      "import": "./dist/operations/workbookRange/getWorkbookWorksheetRange.js",
+      "types": "./dist/operations/workbookRange/getWorkbookWorksheetRange.d.ts"
     },
     "./operations/workbookRange/insertWorkbookCells": {
       "import": "./dist/operations/workbookRange/insertWorkbookCells.js",

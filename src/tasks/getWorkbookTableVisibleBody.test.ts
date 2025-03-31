@@ -45,7 +45,8 @@ describe("getWorkbookTableVisibleBody", () => {
 		}
 	});
 
-	it("omits hidden rows from the visible body range of a table", async () => { // TODO: This test is flappy and I haven't worked out why yet
+	it("omits hidden rows from the visible body range of a table", async () => {
+		// TODO: This test is flappy and I haven't worked out why yet
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
