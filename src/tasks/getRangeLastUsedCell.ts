@@ -1,7 +1,7 @@
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookWorksheet/getWorkbookWorksheetRange.ts";
-import { indexesToAddress as cellIndexesToAddress } from "../services/address.ts";
+import { indexesToCell } from "../services/address.ts";
 
 /** Get the last used cell (ie, the most-lower-right) in a given range. */
 export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): Promise<{ value: string | number | boolean | null; address: string; rowIndex: number; columnIndex: number } | null> {
@@ -33,7 +33,7 @@ export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): 
 			}
 
 			if (cell !== null && cell !== "") {
-				const address = cellIndexesToAddress(rowIndex, columnIndex);
+				const address = indexesToCell(rowIndex, columnIndex);
 				return {
 					value: cell,
 					address,
