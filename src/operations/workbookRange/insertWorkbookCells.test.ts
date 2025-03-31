@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
+import type { RangeAddress } from "../../models/RangeAddress.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
@@ -14,7 +14,7 @@ import updateWorkbookRange from "./updateWorkbookRange.ts";
 
 describe("insertWorkbookCells", () => {
 	it("can insert cells in an existing workbook using sequential", { timeout: 20000 }, async () => {
-		const address = "A1:B2" as WorkbookRangeAddress;
+		const address = "A1:B2" as RangeAddress;
 		const initialValues = [
 			[1, 2],
 			[3, 4],
@@ -33,7 +33,7 @@ describe("insertWorkbookCells", () => {
 
 		try {
 			await updateWorkbookRange(rangeRef, { values: initialValues });
-			await insertWorkbookCells(worksheetRef, "A1" as WorkbookRangeAddress, "Down");
+			await insertWorkbookCells(worksheetRef, "A1" as RangeAddress, "Down");
 			await calculateWorkbook(workbook);
 			const insertedRange = await getWorkbookUsedRange(rangeRef);
 

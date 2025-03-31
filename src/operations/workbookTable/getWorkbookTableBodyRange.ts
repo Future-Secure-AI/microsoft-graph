@@ -1,7 +1,7 @@
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookRangeAddressUnderlying } from "../../models/WorkbookRangeAddress.ts";
+import type { RangeAddressUnderlying } from "../../models/RangeAddress.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
@@ -19,7 +19,7 @@ export default function getWorkbookTableBodyRange(tableRef: WorkbookTableRef): G
 		body: null,
 		responseTransform: (response) => {
 			const range = response as WorkbookRange;
-			const rangeRef = createWorkbookRangeRef(tableRef, range.address as WorkbookRangeAddressUnderlying);
+			const rangeRef = createWorkbookRangeRef(tableRef, range.address as RangeAddressUnderlying);
 
 			return {
 				...range,

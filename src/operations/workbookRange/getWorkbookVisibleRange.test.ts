@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { sequential } from "../../graphApi.ts";
-import type { WorkbookRangeAddress } from "../../models/WorkbookRangeAddress.ts";
+import type { RangeAddress } from "../../models/RangeAddress.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
@@ -14,7 +14,7 @@ import updateWorkbookRange from "./updateWorkbookRange.ts";
 
 describe("getWorkbookRangeVisible", () => {
 	it("can retrieve the visible view of a range in an existing workbook", async () => {
-		const address = "A1:B2" as WorkbookRangeAddress;
+		const address = "A1:B2" as RangeAddress;
 		const values = [
 			[1, 2],
 			[3, 4],
@@ -39,7 +39,7 @@ describe("getWorkbookRangeVisible", () => {
 	});
 
 	it("can retrieve the visible view of a range in an existing workbook sequential", async () => {
-		const address = "A1:B2" as WorkbookRangeAddress;
+		const address = "A1:B2" as RangeAddress;
 		const values = [
 			[1, 2],
 			[3, 4],
