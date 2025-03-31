@@ -60,24 +60,34 @@ describe("cellAddressToIndexes", () => {
 
 describe("getAddressFirstCell", () => {
 	it("should return the start cell of a range address", () => {
-		expect(getAddressFirstCell("A1:B2" as BoxRangeAddress)).toBe("A1" as CellAddress);
 		expect(getAddressFirstCell("C3:D4" as BoxRangeAddress)).toBe("C3" as CellAddress);
+		expect(getAddressFirstCell("Sheet!A1:B2" as BoxRangeAddress)).toBe("A1" as CellAddress);
 		expect(getAddressFirstCell("E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
+		expect(getAddressFirstCell("Sheet!E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
 		expect(getAddressFirstCell("C" as ColumnAddress)).toBe("C1" as CellAddress); // ColumnAddress
+		expect(getAddressFirstCell("Sheet!C" as ColumnAddress)).toBe("C1" as CellAddress); // ColumnAddress
 		expect(getAddressFirstCell("3" as RowAddress)).toBe("A3" as CellAddress); // RowAddress
+		expect(getAddressFirstCell("Sheet!3" as RowAddress)).toBe("A3" as CellAddress); // RowAddress
 		expect(getAddressFirstCell("A:Z" as ColumnRangeAddress)).toBe("A1" as CellAddress); // ColumnRangeAddress
+		expect(getAddressFirstCell("Sheet!A:Z" as ColumnRangeAddress)).toBe("A1" as CellAddress); // ColumnRangeAddress
 		expect(getAddressFirstCell("1:10" as RowRangeAddress)).toBe("A1" as CellAddress); // RowRangeAddress
+		expect(getAddressFirstCell("Sheet!1:10" as RowRangeAddress)).toBe("A1" as CellAddress); // RowRangeAddress
 	});
 });
 
 describe("getAddressLastCell", () => {
 	it("should return the end cell of a range address", () => {
-		expect(getAddressLastCell("A1:B2" as BoxRangeAddress)).toBe("B2" as CellAddress);
 		expect(getAddressLastCell("C3:D4" as BoxRangeAddress)).toBe("D4" as CellAddress);
+		expect(getAddressLastCell("Sheet!A1:B2" as BoxRangeAddress)).toBe("B2" as CellAddress);
 		expect(getAddressLastCell("E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
+		expect(getAddressLastCell("Sheet!E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
 		expect(getAddressLastCell("C" as ColumnAddress)).toBe("C1048576" as CellAddress); // ColumnAddress
+		expect(getAddressLastCell("Sheet!C" as ColumnAddress)).toBe("C1048576" as CellAddress); // ColumnAddress
 		expect(getAddressLastCell("3" as RowAddress)).toBe("XFD3" as CellAddress); // RowAddress
+		expect(getAddressLastCell("Sheet!3" as RowAddress)).toBe("XFD3" as CellAddress); // RowAddress
 		expect(getAddressLastCell("A:Z" as ColumnRangeAddress)).toBe("Z1048576" as CellAddress); // ColumnRangeAddress
+		expect(getAddressLastCell("Sheet!A:Z" as ColumnRangeAddress)).toBe("Z1048576" as CellAddress); // ColumnRangeAddress
 		expect(getAddressLastCell("1:10" as RowRangeAddress)).toBe("XFD10" as CellAddress); // RowRangeAddress
+		expect(getAddressLastCell("Sheet!1:10" as RowRangeAddress)).toBe("XFD10" as CellAddress); // RowRangeAddress
 	});
 });
