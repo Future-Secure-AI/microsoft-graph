@@ -18,3 +18,7 @@ export function createWorkbookWorksheetRef(workbookRef: WorkbookRef, worksheetId
 		worksheetId,
 	};
 }
+
+export function createDefaultWorkbookWorksheetRef(workbookRef: WorkbookRef): WorkbookWorksheetRef {
+	return createWorkbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
+}

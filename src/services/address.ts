@@ -5,7 +5,9 @@ import type { RangeAddress } from "../models/RangeAddress.ts";
 import type { Row } from "../models/Row.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 
-const cellPattern = /^([A-Z]+)(\d+)$/;
+// TODO: Tidy this 
+
+const cellPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)(?<row>\d+)$/; // Matches "A2" or "Sheet1!A2"
 
 export function getAddressStart(address: RangeAddress): Cell {
 	return address.split(":", 2)[0] as Cell;
@@ -17,16 +19,27 @@ export function getAddressEnd(address: RangeAddress): Cell {
 
 export function cellToIndexes(cell: Cell): [RowIndex, ColumnIndex] {
 	const match = cell.match(cellPattern);
-	if (!match) {
-		throw new Error(`Invalid cell format: ${cell}`);
+	if (!match?.groups) {
+		throw new Error(`Invalid cell format '${cell}', must match '${cellPattern}`);
 	}
-	const [, column, row] = match;
-	return [rowToIndex(row as Row), columnToIndex(column as Column)];
+	// biome-ignore lint/complexity/useLiteralKeys: Named capture groups are used
+	const column = match.groups["column"] as Column;
+	// biome-ignore lint/complexity/useLiteralKeys: Named capture groups are used
+	const row = match.groups["row"] as Row;
+
+	const rowIndex = rowToIndex(row);
+	const columnIndex = columnToIndex(column);
+	
+	return [rowIndex, columnIndex];
 }
 
 
-export function indexesToCell(row: RowIndex, col: ColumnIndex): Cell {
-	return `${indexToColumn(col)}${indexToRow(row)}` as Cell;
+export function indexesToCell(rowIndex: RowIndex, columnIndex: ColumnIndex): Cell {
+	return `${indexToColumn(columnIndex)}${indexToRow(rowIndex)}` as Cell;
+}
+
+export function indexesToBox(startRowIndex:RowIndex, startColumnIndex: ColumnIndex, endRowIndex: RowIndex, endColumnIndex: ColumnIndex): RangeAddress {
+	return `${indexesToCell(startRowIndex, startColumnIndex)}:${indexesToCell(endRowIndex, endColumnIndex)}` as RangeAddress;
 }
 
 export function columnToIndex(column: Column): ColumnIndex {
