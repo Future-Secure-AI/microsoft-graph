@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import createWorkbookTable from "../operations/workbookTable/createWorkbookTable.ts";
@@ -13,7 +14,7 @@ import setRowHidden from "./setRowHidden.ts";
 import { setWorkbookTableBodyVisibleRows } from "./setWorkbookTableBodyVisibleRows.ts";
 
 describe("setWorkbookTableBodyVisibleRows", () => {
-	it("writes input rows to visible rows of a table", async () => {
+	it("writes input rows to visible rows of a table", { timeout: 30000 }, async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -34,6 +35,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 			});
 
 			await setRowHidden(createWorkbookRangeRef(worksheetRef, "C1:C1"), false);
+			await calculateWorkbook(workbook);
 
 			await setWorkbookTableBodyVisibleRows(table, [
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
