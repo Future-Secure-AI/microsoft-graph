@@ -7,7 +7,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 // TODO: Move this to workbookRange
 
 /** Fetch a range, including values and formatting. @see https://learn.microsoft.com/en-us/graph/api/range-get */
-export default function getWorkbookWorksheetRange(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {
+export default function getWorkbookRange(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {
 	return operation({
 		contextId: rangeRef.contextId,
 		method: "GET",

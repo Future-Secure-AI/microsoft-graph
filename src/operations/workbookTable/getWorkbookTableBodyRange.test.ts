@@ -8,9 +8,9 @@ import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
-import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
 import createWorkbookTable from "./createWorkbookTable.ts";
 import getWorkbookTableBodyRange from "./getWorkbookTableBodyRange.ts";
+import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 
 describe("getWorkbookTableBodyRange", () => {
 	it("can retrieve the data body range of a table", async () => {
@@ -20,8 +20,8 @@ describe("getWorkbookTableBodyRange", () => {
 		const workbook = await createWorkbook(driveRef, workbookPath);
 
 		try {
-			const worksheet = await createWorkbookWorksheet(workbook);
-			const rangeRef = createWorkbookRangeRef(worksheet, "A1:D4");
+			const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
+			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:D4");
 			const table = await createWorkbookTable(rangeRef, true);
 
 			await updateWorkbookRange(rangeRef, {

@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { sequential } from "../../graphApi.ts";
-import type { RangeAddress } from "../../models/RangeAddress.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
@@ -12,20 +11,18 @@ import createWorkbook from "../workbook/createWorkbook.ts";
 import getWorkbookVisibleRange from "./getWorkbookVisibleRange.ts";
 import updateWorkbookRange from "./updateWorkbookRange.ts";
 
+const values = [
+	[1, 2],
+	[3, 4],
+];
 describe("getWorkbookRangeVisible", () => {
 	it("can retrieve the visible view of a range in an existing workbook", async () => {
-		const address = "A1:B2" as RangeAddress;
-		const values = [
-			[1, 2],
-			[3, 4],
-		];
-
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
 		const workbook = await createWorkbook(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-		const rangeRef = createWorkbookRangeRef(worksheetRef, address);
+		const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B2");
 
 		try {
 			await updateWorkbookRange(rangeRef, { values: values });
@@ -39,18 +36,12 @@ describe("getWorkbookRangeVisible", () => {
 	});
 
 	it("can retrieve the visible view of a range in an existing workbook sequential", async () => {
-		const address = "A1:B2" as RangeAddress;
-		const values = [
-			[1, 2],
-			[3, 4],
-		];
-
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
 		const workbook = await createWorkbook(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-		const rangeRef = createWorkbookRangeRef(worksheetRef, address);
+		const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B2");
 
 		try {
 			const [_, __, visibleView] = await sequential(updateWorkbookRange(rangeRef, { values: values }), calculateWorkbook(workbook), getWorkbookVisibleRange(rangeRef));

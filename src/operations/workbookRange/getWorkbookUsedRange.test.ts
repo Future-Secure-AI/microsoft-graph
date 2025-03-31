@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { sequential } from "../../graphApi.ts";
-import type { RangeAddress } from "../../models/RangeAddress.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
@@ -12,20 +11,19 @@ import createWorkbook from "../workbook/createWorkbook.ts";
 import getWorkbookUsedRange from "./getWorkbookUsedRange.ts";
 import updateWorkbookRange from "./updateWorkbookRange.ts";
 
+const values = [
+	[1, 2],
+	[3, 4],
+];
+
 describe("getWorkbookUsedRange", () => {
 	it("can retrieve the used range from an existing workbook", async () => {
-		const address = "A1:B2" as RangeAddress;
-		const values = [
-			[1, 2],
-			[3, 4],
-		];
-
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
 		const workbook = await createWorkbook(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-		const rangeRef = createWorkbookRangeRef(worksheetRef, address);
+		const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B2");
 
 		try {
 			await updateWorkbookRange(rangeRef, {
@@ -42,18 +40,12 @@ describe("getWorkbookUsedRange", () => {
 	});
 
 	it("can retrieve the used range from an existing workbook sequential", async () => {
-		const address = "A1:B2" as RangeAddress;
-		const values = [
-			[1, 2],
-			[3, 4],
-		];
-
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
 		const workbook = await createWorkbook(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-		const rangeRef = createWorkbookRangeRef(worksheetRef, address);
+		const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B2");
 
 		try {
 			const [_, __, usedRange] = await sequential(

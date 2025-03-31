@@ -3,10 +3,10 @@ import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
+import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
-import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
 import createWorkbookTable from "./createWorkbookTable.ts";
 import listWorkbookTableRows from "./listWorkbookTableRows.ts";
 
@@ -17,9 +17,8 @@ describe("listWorkbookTableRows", () => {
 		const workbook = await createWorkbook(getDefaultDriveRef(), workbookPath);
 
 		try {
-			const worksheet = await createWorkbookWorksheet(workbook);
-
-			const rangeRef = createWorkbookRangeRef(worksheet, "A1:D4");
+			const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
+			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:D4");
 			const table = await createWorkbookTable(rangeRef, true);
 
 			await calculateWorkbook(workbook);
