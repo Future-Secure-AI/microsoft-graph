@@ -5,6 +5,7 @@ import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange
 import createWorkbookTable from "../operations/workbookTable/createWorkbookTable.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
+import { sleep } from "../services/sleep.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
@@ -44,7 +45,7 @@ describe("getWorkbookTableVisibleBody", () => {
 		}
 	});
 
-	it("omits hidden rows from the visible body range of a table", async () => {
+	it("omits hidden rows from the visible body range of a table", async () => { // TODO: This test is flappy and I haven't worked out why yet
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -67,6 +68,7 @@ describe("getWorkbookTableVisibleBody", () => {
 			const hiddenRange = createWorkbookRangeRef(worksheetRef, "2:2");
 			await updateWorkbookRange(hiddenRange, { rowHidden: true });
 			await calculateWorkbook(workbook);
+			await sleep(2000);
 
 			const visibleBodyRange = await getWorkbookTableVisibleBody(table);
 			expect(visibleBodyRange.values).toEqual([
