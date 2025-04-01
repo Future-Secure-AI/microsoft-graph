@@ -9,7 +9,15 @@ import type { SiteRef } from "../../models/SiteRef.ts";
 import { createSiteRef } from "../../services/site.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Get site by name. @see https://learn.microsoft.com/en-us/graph/api/site-getbypath */
+/**
+ * Get a site by its name.
+ *
+ * @param contextRef - A reference to the context.
+ * @param hostName - The host name of the site.
+ * @param siteName - The name of the site.
+ * @returns The specified site, including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/site-getbypath
+ */
 export default function getSiteByName(contextRef: ContextRef, hostName: HostName, siteName: SiteName): GraphOperation<Site & SiteRef> {
 	return operation({
 		contextId: contextRef.contextId,

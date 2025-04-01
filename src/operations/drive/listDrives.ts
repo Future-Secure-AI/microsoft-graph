@@ -7,7 +7,13 @@ import type { SiteRef } from "../../models/SiteRef.ts";
 import { createDriveRef } from "../../services/drive.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Retrieve the list of Drive resources available for a Site. @see https://learn.microsoft.com/en-us/graph/api/drive-list */
+/**
+ * Retrieve the list of accessible Drives in a Site.
+ *
+ * @param siteRef - A reference to the site.
+ * @returns An array of drives available for the specified site, each including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/drive-list
+ */
 export default function listDrives(siteRef: SiteRef): GraphOperation<(DriveItem & DriveRef)[]> {
 	return operation({
 		contextId: siteRef.contextId,

@@ -3,7 +3,13 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Permanently delete a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete */
+/**
+ * Permanently delete a worksheet.
+ *
+ * @param worksheetRef - A reference to the worksheet to be deleted, optionally including session information.
+ * @returns Nothing.
+ * @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete
+ */
 export default function deleteWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef): GraphOperation<void> {
 	return operation({
 		contextId: worksheetRef.contextId,

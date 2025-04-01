@@ -7,7 +7,13 @@ import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts"
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookTableRef } from "../../services/workbookTable.ts";
 
-/** Retrieve a list of tables in a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-list-tables */
+/**
+ * Retrieve a list of tables in a worksheet.
+ *
+ * @param worksheetRef - A reference to the worksheet, optionally including session information.
+ * @returns An array of tables, each including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/worksheet-list-tables
+ */
 export default function listWorkbookTables(worksheetRef: WorkbookWorksheetRef): GraphOperation<(WorkbookTable & WorkbookRef)[]> {
 	return operation({
 		contextId: worksheetRef.contextId,

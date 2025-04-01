@@ -8,7 +8,13 @@ import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
-/** Retrieve the data body range of a table. @see https://learn.microsoft.com/en-us/graph/api/table-databodyrange */
+/**
+ * Retrieve the data body range of a table.
+ *
+ * @param tableRef - A reference to the table, optionally including session information.
+ * @returns The data body range of the specified table, including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/table-databodyrange
+ */
 export default function getWorkbookTableBodyRange(tableRef: WorkbookTableRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {
 	return operation({
 		contextId: tableRef.contextId,

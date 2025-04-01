@@ -3,7 +3,14 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRef } from "../../models/WorkbookRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Recalculate a workbook. @see https://learn.microsoft.com/en-us/graph/api/workbookapplication-calculate */
+/**
+ * Recalculate a workbook.
+ *
+ * @param workbookRef - A reference to the workbook to be recalculated.
+ * @param calculationType - The type of recalculation to perform. Can be "Recalculate", "Full", or "FullRebuild". Defaults to "Recalculate".
+ * @returns Nothing.
+ * @see https://learn.microsoft.com/en-us/graph/api/workbookapplication-calculate
+ */
 export default function calculateWorkbook(workbookRef: WorkbookRef, calculationType: "Recalculate" | "Full" | "FullRebuild" = "Recalculate"): GraphOperation<void> {
 	return operation({
 		contextId: workbookRef.contextId,
@@ -19,7 +26,12 @@ export default function calculateWorkbook(workbookRef: WorkbookRef, calculationT
 	});
 }
 
-/** @deprecated Use calculateWorkbook instead. */
+/**
+ * @deprecated Use calculateWorkbook instead.
+ *
+ * @param workbookRef - A reference to the workbook to be recalculated.
+ * @returns Nothing.
+ */
 export function recalculateWorkbook(workbookRef: WorkbookRef): GraphOperation<void> {
 	return calculateWorkbook(workbookRef, "Recalculate");
 }

@@ -4,7 +4,13 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Retrieve a list of columns in a table. @see https://learn.microsoft.com/en-us/graph/api/tablecolumn-list */
+/**
+ * Retrieve a list of columns in a table.
+ *
+ * @param tableRef - A reference to the table, optionally including session information.
+ * @returns An array of columns in the specified table.
+ * @see https://learn.microsoft.com/en-us/graph/api/tablecolumn-list
+ */
 export default function listWorkbookTableColumns(tableRef: WorkbookTableRef): GraphOperation<WorkbookTableColumn[]> {
 	return operation({
 		contextId: tableRef.contextId,

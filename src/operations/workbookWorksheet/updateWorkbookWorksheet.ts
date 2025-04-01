@@ -4,7 +4,17 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Update the name, position and/or visibility of a worksheet. @see https://learn.microsoft.com/en-us/graph/api/worksheet-update */
+/**
+ * Update the name, position, and/or visibility of a worksheet.
+ *
+ * @param worksheetRef - A reference to the worksheet to be updated, optionally including session information.
+ * @param updates - An object containing the properties to update:
+ *   - `name` (optional): The new name for the worksheet.
+ *   - `position` (optional): The new position of the worksheet in the workbook.
+ *   - `visibility` (optional): The visibility state of the worksheet. Can be "Visible", "Hidden", or "VeryHidden".
+ * @returns The updated worksheet, including its reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/worksheet-update
+ */
 export default function updateWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden" }): GraphOperation<WorkbookWorksheet & WorkbookWorksheetRef> {
 	return operation({
 		contextId: worksheetRef.contextId,

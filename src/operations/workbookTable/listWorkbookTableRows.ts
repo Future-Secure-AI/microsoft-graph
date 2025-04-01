@@ -4,7 +4,13 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Retrieve a list of rows in a table. @see https://learn.microsoft.com/en-us/graph/api/tablerow-list */
+/**
+ * Retrieve a list of rows in a table.
+ *
+ * @param tableRef - A reference to the table, optionally including session information.
+ * @returns An array of rows in the specified table.
+ * @see https://learn.microsoft.com/en-us/graph/api/tablerow-list
+ */
 export default function listWorkbookTableRows(tableRef: WorkbookTableRef): GraphOperation<WorkbookTableRow[]> {
 	return operation({
 		contextId: tableRef.contextId,

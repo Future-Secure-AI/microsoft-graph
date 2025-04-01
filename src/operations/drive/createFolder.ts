@@ -7,7 +7,14 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import { createDriveItemRef } from "../../services/driveItem.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Create folder if it doesn't exist, and return the folder. Use a `DriveRef` to create in root or `DriveItemRef` to create in a subfolder. @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children */
+/**
+ * Create a folder in the root of a drive, or in a folder. If it already exists do nothing.
+ *
+ * @param parentRef - A reference to the parent drive or folder where the folder will be created.
+ * @param folderName - The name of the folder to be created.
+ * @returns The newly created folder, including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
+ */
 export default function createFolder(parentRef: DriveRef | DriveItemRef, folderName: string): GraphOperation<DriveItem & DriveItemRef> {
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 

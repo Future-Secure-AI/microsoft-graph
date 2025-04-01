@@ -7,7 +7,14 @@ import type { SiteRef } from "../../models/SiteRef.ts";
 import { createSiteRef } from "../../services/site.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Find accessible sites that match keywords provided. @see https://learn.microsoft.com/en-us/graph/api/site-search */
+/**
+ * Find accessible sites that match the provided keywords.
+ *
+ * @param contextRef - A reference to the context.
+ * @param search - The search keywords to find matching sites.
+ * @returns An array of sites that match the search criteria, each including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/site-search
+ */
 export default function searchSites(contextRef: ContextRef, search: string): GraphOperation<(Site & SiteRef)[]> {
 	return operation({
 		contextId: contextRef.contextId,

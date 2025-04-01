@@ -5,7 +5,15 @@ import type { WorkbookRef } from "../../models/WorkbookRef.ts";
 import type { WorkbookSessionId } from "../../models/WorkbookSessionId.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Create a new workbook session. Typically the persistent session expires after about 5 minutes of inactivity. Non persistent session expires after about 7 minutes of inactivity. Most performant with `persistChanges = true`. @see https://learn.microsoft.com/en-us/graph/api/workbook-createsession @see https://learn.microsoft.com/en-us/graph/api/resources/excel#usage */
+/**
+ * Create a new workbook session.
+ *
+ * @param itemRef - A reference to the workbook item, optionally including session information.
+ * @param persistChanges - A boolean indicating whether changes should persist across sessions. Defaults to true.
+ * @returns A reference to the workbook, including the session ID.
+ * @see https://learn.microsoft.com/en-us/graph/api/workbook-createsession
+ * @see https://learn.microsoft.com/en-us/graph/api/resources/excel#usage
+ */
 export default function createWorkbookSession(itemRef: DriveItemRef, persistChanges = true): GraphOperation<WorkbookRef> {
 	return operation({
 		contextId: itemRef.contextId,

@@ -4,7 +4,14 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Update range, including values and formatting. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values. @see https://learn.microsoft.com/en-us/graph/api/range-update */
+/**
+ * Update a range, including values and formatting. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values.
+ *
+ * @param rangeRef - A reference to the range to be updated, optionally including session information.
+ * @param update - The updated properties for the range.
+ * @returns The updated range, including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/range-update
+ */
 export default function updateWorkbookRange(rangeRef: WorkbookRangeRef, update: WorkbookRange): GraphOperation<WorkbookRange & WorkbookRangeRef> {
 	return operation({
 		contextId: rangeRef.contextId,

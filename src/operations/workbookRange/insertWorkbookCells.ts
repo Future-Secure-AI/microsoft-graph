@@ -8,7 +8,15 @@ import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts"
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
-/** Insert a new blank range at a specified address, shifting existing cells. Use `updateRange` after to set content. @see https://learn.microsoft.com/en-us/graph/api/range-insert */
+/**
+ * Insert a new blank range at a specified address, shifting existing cells. Use `updateWorkbookRange` afterward to set content.
+ *
+ * @param worksheetRef - A reference to the worksheet where the range will be inserted, optionally including session information.
+ * @param address - The address where the new range will be inserted.
+ * @param shift - The direction to shift existing cells. Can be "Down" or "Right".
+ * @returns The newly inserted range, including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/range-insert
+ */
 export default function insertWorkbookCells(worksheetRef: WorkbookWorksheetRef, address: Address, shift: "Down" | "Right"): GraphOperation<WorkbookRange & WorkbookRangeRef> {
 	return operation({
 		contextId: worksheetRef.contextId,

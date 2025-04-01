@@ -3,7 +3,14 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Clear a range - content, formatting or both. @see https://learn.microsoft.com/en-us/graph/api/range-delete */
+/**
+ * Clear a range - content, formatting, or both.
+ *
+ * @param rangeRef - A reference to the range to be cleared, optionally including session information.
+ * @param applyTo - Specifies what to clear. Can be "All", "Formats", or "Contents". Defaults to "All".
+ * @returns Nothing.
+ * @see https://learn.microsoft.com/en-us/graph/api/range-delete
+ */
 export default function clearWorkbookRange(rangeRef: WorkbookRangeRef, applyTo: "All" | "Formats" | "Contents" = "All"): GraphOperation<void> {
 	return operation({
 		contextId: rangeRef.contextId,

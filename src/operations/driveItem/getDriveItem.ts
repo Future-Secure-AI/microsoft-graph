@@ -4,7 +4,13 @@ import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Retrieve the metadata for an item in a drive. @see https://learn.microsoft.com/en-us/graph/api/driveitem-get */
+/**
+ * Retrieve the metadata for an item in a drive.
+ *
+ * @param itemRef - A reference to the drive item.
+ * @returns The metadata of the specified drive item, including its reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/driveitem-get
+ */
 export default function getDriveItem(itemRef: DriveItemRef): GraphOperation<DriveItem & DriveItemRef> {
 	return operation({
 		contextId: itemRef.contextId,

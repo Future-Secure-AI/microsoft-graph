@@ -4,7 +4,13 @@ import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** Retrieve the format of a workbook range. @see https://learn.microsoft.com/en-us/graph/api/rangeformat-get */
+/**
+ * Retrieve the format of a workbook range.
+ *
+ * @param rangeRef - A reference to the range, optionally including session information.
+ * @returns The format of the specified range, including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-get
+ */
 export default function getWorkbookRangeFormat(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRangeFormat & WorkbookRangeRef> {
 	return operation({
 		contextId: rangeRef.contextId,
