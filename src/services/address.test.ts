@@ -4,25 +4,7 @@ import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.t
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
-import {
-	cellAddressToIndexes,
-	columnAddressToIndex,
-	composeAddress,
-	decomposeAddress,
-	decrementRow,
-	getAddressFirstCell,
-	getAddressLastCell,
-	getFirstColumn,
-	getFirstRow,
-	getLastColumn,
-	getLastRow,
-	incrementRow,
-	indexesToCellAddress,
-	indexToColumnAddress,
-	indexToRowAddress,
-	offsetRow,
-	rowAddressToIndex,
-} from "./address.ts";
+import { cellAddressToIndexes, columnAddressToIndex, composeAddress, decomposeAddress, decrementRow, getFirstCell, getFirstColumn, getFirstRow, getLastCell, getLastColumn, getLastRow, incrementRow, indexesToCellAddress, indexToColumnAddress, indexToRowAddress, offsetRow, rowAddressToIndex } from "./address.ts";
 
 describe("indexesToCellAddress", () => {
 	it("should convert row and column indexes to an address", () => {
@@ -78,37 +60,37 @@ describe("cellAddressToIndexes", () => {
 	});
 });
 
-describe("getAddressFirstCell", () => {
+describe("getFirstCell", () => {
 	it("should return the start cell of a range address", () => {
-		expect(getAddressFirstCell("C3:D4" as CellRangeAddress)).toBe("C3" as CellAddress);
-		expect(getAddressFirstCell("Sheet!A1:B2" as CellRangeAddress)).toBe("A1" as CellAddress);
-		expect(getAddressFirstCell("E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
-		expect(getAddressFirstCell("Sheet!E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
-		expect(getAddressFirstCell("C" as ColumnAddress)).toBe("C1" as CellAddress); // ColumnAddress
-		expect(getAddressFirstCell("Sheet!C" as ColumnAddress)).toBe("C1" as CellAddress); // ColumnAddress
-		expect(getAddressFirstCell("3" as RowAddress)).toBe("A3" as CellAddress); // RowAddress
-		expect(getAddressFirstCell("Sheet!3" as RowAddress)).toBe("A3" as CellAddress); // RowAddress
-		expect(getAddressFirstCell("A:Z" as ColumnRangeAddress)).toBe("A1" as CellAddress); // ColumnRangeAddress
-		expect(getAddressFirstCell("Sheet!A:Z" as ColumnRangeAddress)).toBe("A1" as CellAddress); // ColumnRangeAddress
-		expect(getAddressFirstCell("1:10" as RowRangeAddress)).toBe("A1" as CellAddress); // RowRangeAddress
-		expect(getAddressFirstCell("Sheet!1:10" as RowRangeAddress)).toBe("A1" as CellAddress); // RowRangeAddress
+		expect(getFirstCell("C3:D4" as CellRangeAddress)).toBe("C3" as CellAddress);
+		expect(getFirstCell("Sheet!A1:B2" as CellRangeAddress)).toBe("A1" as CellAddress);
+		expect(getFirstCell("E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
+		expect(getFirstCell("Sheet!E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
+		expect(getFirstCell("C" as ColumnAddress)).toBe("C1" as CellAddress); // ColumnAddress
+		expect(getFirstCell("Sheet!C" as ColumnAddress)).toBe("C1"); // ColumnAddress
+		expect(getFirstCell("3" as RowAddress)).toBe("A3" as CellAddress); // RowAddress
+		expect(getFirstCell("Sheet!3" as RowAddress)).toBe("A3" as CellAddress); // RowAddress
+		expect(getFirstCell("A:Z" as ColumnRangeAddress)).toBe("A1" as CellAddress); // ColumnRangeAddress
+		expect(getFirstCell("Sheet!A:Z" as ColumnRangeAddress)).toBe("A1" as CellAddress); // ColumnRangeAddress
+		expect(getFirstCell("1:10" as RowRangeAddress)).toBe("A1" as CellAddress); // RowRangeAddress
+		expect(getFirstCell("Sheet!1:10" as RowRangeAddress)).toBe("A1" as CellAddress); // RowRangeAddress
 	});
 });
 
-describe("getAddressLastCell", () => {
+describe("getLastCell", () => {
 	it("should return the end cell of a range address", () => {
-		expect(getAddressLastCell("C3:D4" as CellRangeAddress)).toBe("D4" as CellAddress);
-		expect(getAddressLastCell("Sheet!A1:B2" as CellRangeAddress)).toBe("B2" as CellAddress);
-		expect(getAddressLastCell("E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
-		expect(getAddressLastCell("Sheet!E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
-		expect(getAddressLastCell("C" as ColumnAddress)).toBe("C1048576" as CellAddress); // ColumnAddress
-		expect(getAddressLastCell("Sheet!C" as ColumnAddress)).toBe("C1048576" as CellAddress); // ColumnAddress
-		expect(getAddressLastCell("3" as RowAddress)).toBe("XFD3" as CellAddress); // RowAddress
-		expect(getAddressLastCell("Sheet!3" as RowAddress)).toBe("XFD3" as CellAddress); // RowAddress
-		expect(getAddressLastCell("A:Z" as ColumnRangeAddress)).toBe("Z1048576" as CellAddress); // ColumnRangeAddress
-		expect(getAddressLastCell("Sheet!A:Z" as ColumnRangeAddress)).toBe("Z1048576" as CellAddress); // ColumnRangeAddress
-		expect(getAddressLastCell("1:10" as RowRangeAddress)).toBe("XFD10" as CellAddress); // RowRangeAddress
-		expect(getAddressLastCell("Sheet!1:10" as RowRangeAddress)).toBe("XFD10" as CellAddress); // RowRangeAddress
+		expect(getLastCell("C3:D4" as CellRangeAddress)).toBe("D4" as CellAddress);
+		expect(getLastCell("Sheet!A1:B2" as CellRangeAddress)).toBe("B2" as CellAddress);
+		expect(getLastCell("E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
+		expect(getLastCell("Sheet!E5" as CellAddress)).toBe("E5" as CellAddress); // Single cell address
+		expect(getLastCell("C" as ColumnAddress)).toBe("C1048576" as CellAddress); // ColumnAddress
+		expect(getLastCell("Sheet!C" as ColumnAddress)).toBe("C1048576" as CellAddress); // ColumnAddress
+		expect(getLastCell("3" as RowAddress)).toBe("XFD3" as CellAddress); // RowAddress
+		expect(getLastCell("Sheet!3" as RowAddress)).toBe("XFD3" as CellAddress); // RowAddress
+		expect(getLastCell("A:Z" as ColumnRangeAddress)).toBe("Z1048576" as CellAddress); // ColumnRangeAddress
+		expect(getLastCell("Sheet!A:Z" as ColumnRangeAddress)).toBe("Z1048576" as CellAddress); // ColumnRangeAddress
+		expect(getLastCell("1:10" as RowRangeAddress)).toBe("XFD10" as CellAddress); // RowRangeAddress
+		expect(getLastCell("Sheet!1:10" as RowRangeAddress)).toBe("XFD10" as CellAddress); // RowRangeAddress
 	});
 });
 
@@ -118,17 +100,15 @@ describe("getFirstRow", () => {
 		expect(getFirstRow("Sheet!1:10" as Address)).toBe("1");
 	});
 
-	it("should throw for column addresses", () => {
-		expect(() => getFirstRow("A")).toThrow(UnsupportedAddressTypeError);
-		expect(() => getFirstRow("A:C")).toThrow(UnsupportedAddressTypeError);
+	it("should return the first row of a column range", () => {
+		expect(getFirstRow("A")).toBe("A1");
+		expect(getFirstRow("A:C" as Address)).toBe("A1:C1");
 	});
 
 	it("should handle cell ranges", () => {
 		expect(getFirstRow("A1:C5")).toBe("A1:C1");
 	});
-});
 
-describe("getFirstRow with cell addresses", () => {
 	it("should return the first row of a single cell address", () => {
 		expect(getFirstRow("A1" as CellAddress)).toBe("A1");
 		expect(getFirstRow("Sheet!B2" as CellAddress)).toBe("B2");
@@ -137,9 +117,7 @@ describe("getFirstRow with cell addresses", () => {
 	it("should handle cell ranges", () => {
 		expect(getFirstRow("A1:C5" as CellRangeAddress)).toBe("A1:C1");
 	});
-});
 
-describe("getFirstRow with single cell address", () => {
 	it("should return the same cell address for a single cell", () => {
 		expect(getFirstRow("C1" as CellAddress)).toBe("C1");
 	});
@@ -151,17 +129,15 @@ describe("getLastRow", () => {
 		expect(getLastRow("Sheet!1:10" as Address)).toBe("10");
 	});
 
-	it("should throw for column addresses", () => {
-		expect(() => getLastRow("A")).toThrow(UnsupportedAddressTypeError);
-		expect(() => getLastRow("A:C")).toThrow(UnsupportedAddressTypeError);
+	it("should return the last row of a column range", () => {
+		expect(getLastRow("A")).toBe("A1048576");
+		expect(getLastRow("A:C" as Address)).toBe("A1048576:C1048576");
 	});
 
 	it("should handle cell ranges", () => {
 		expect(getLastRow("A1:C5")).toBe("A5:C5");
 	});
-});
 
-describe("getLastRow with cell addresses", () => {
 	it("should return the last row of a single cell address", () => {
 		expect(getLastRow("A1" as CellAddress)).toBe("A1");
 		expect(getLastRow("Sheet!B2" as CellAddress)).toBe("B2");
@@ -170,9 +146,7 @@ describe("getLastRow with cell addresses", () => {
 	it("should handle cell ranges", () => {
 		expect(getLastRow("A1:C5" as CellRangeAddress)).toBe("A5:C5");
 	});
-});
 
-describe("getLastRow with single cell address", () => {
 	it("should return the same cell address for a single cell", () => {
 		expect(getLastRow("C1" as CellAddress)).toBe("C1");
 	});
@@ -184,17 +158,15 @@ describe("getFirstColumn", () => {
 		expect(getFirstColumn("Sheet!A:Z" as Address)).toBe("A");
 	});
 
-	it("should throw for row addresses", () => {
-		expect(() => getFirstColumn("1")).toThrow(UnsupportedAddressTypeError);
-		expect(() => getFirstColumn("1:5")).toThrow(UnsupportedAddressTypeError);
+	it("should return the first column of a row range", () => {
+		expect(getFirstColumn("1")).toBe("A1");
+		expect(getFirstColumn("1:5" as Address)).toBe("A1:A5");
 	});
 
 	it("should handle cell ranges", () => {
 		expect(getFirstColumn("A1:C5")).toBe("A1:A5");
 	});
-});
 
-describe("getFirstColumn with cell addresses", () => {
 	it("should return the first column of a single cell address", () => {
 		expect(getFirstColumn("A1" as CellAddress)).toBe("A1");
 		expect(getFirstColumn("Sheet!B2" as CellAddress)).toBe("B2");
@@ -203,9 +175,7 @@ describe("getFirstColumn with cell addresses", () => {
 	it("should handle cell ranges", () => {
 		expect(getFirstColumn("A1:C5" as CellRangeAddress)).toBe("A1:A5");
 	});
-});
 
-describe("getFirstColumn with single cell address", () => {
 	it("should return the same cell address for a single cell", () => {
 		expect(getFirstColumn("C1" as CellAddress)).toBe("C1");
 	});
@@ -217,17 +187,15 @@ describe("getLastColumn", () => {
 		expect(getLastColumn("Sheet!A:Z" as Address)).toBe("Z");
 	});
 
-	it("should throw for row addresses", () => {
-		expect(() => getLastColumn("1")).toThrow(UnsupportedAddressTypeError);
-		expect(() => getLastColumn("1:5")).toThrow(UnsupportedAddressTypeError);
+	it("should return the last column of a row range", () => {
+		expect(getLastColumn("1" as Address)).toBe("XFD1");
+		expect(getLastColumn("1:5" as Address)).toBe("XFD1:XFD5");
 	});
 
 	it("should handle cell ranges", () => {
 		expect(getLastColumn("A1:C5")).toBe("C1:C5");
 	});
-});
 
-describe("getLastColumn with cell addresses", () => {
 	it("should return the last column of a single cell address", () => {
 		expect(getLastColumn("A1" as CellAddress)).toBe("A1");
 		expect(getLastColumn("Sheet!B2" as CellAddress)).toBe("B2");
@@ -236,9 +204,7 @@ describe("getLastColumn with cell addresses", () => {
 	it("should handle cell ranges", () => {
 		expect(getLastColumn("A1:C5" as CellRangeAddress)).toBe("C1:C5");
 	});
-});
 
-describe("getLastColumn with single cell address", () => {
 	it("should return the same cell address for a single cell", () => {
 		expect(getLastColumn("C1" as CellAddress)).toBe("C1");
 	});
@@ -247,12 +213,12 @@ describe("getLastColumn with single cell address", () => {
 describe("offsetRow", () => {
 	it("should offset rows in a row range", () => {
 		expect(offsetRow("1:5", 2)).toBe("3:7");
-		expect(offsetRow("Sheet!1:10" as Address, -1)).toBe("0:9");
+		expect(offsetRow("Sheet!2:10" as Address, -1)).toBe("1:9");
 	});
 
 	it("should offset rows in a cell range", () => {
 		expect(offsetRow("A1:C5", 2)).toBe("A3:C7");
-		expect(offsetRow("Sheet!A1:C5" as Address, -1)).toBe("A0:C4");
+		expect(offsetRow("Sheet!A2:C5" as Address, -1)).toBe("A1:C4");
 	});
 
 	it("should throw for unsupported address types", () => {
@@ -264,9 +230,7 @@ describe("offsetRow", () => {
 		expect(() => offsetRow("1:5", -10)).toThrow(Error);
 		expect(() => offsetRow("A1:C5", 1048577)).toThrow(Error);
 	});
-});
 
-describe("offsetRow with cell addresses", () => {
 	it("should offset rows in a single cell address", () => {
 		expect(offsetRow("A1" as CellAddress, 2)).toBe("A3");
 		expect(offsetRow("Sheet!B2" as CellAddress, -1)).toBe("B1");
@@ -274,23 +238,19 @@ describe("offsetRow with cell addresses", () => {
 
 	it("should offset rows in a cell range", () => {
 		expect(offsetRow("A1:C5" as CellRangeAddress, 2)).toBe("A3:C7");
-		expect(offsetRow("Sheet!A1:C5" as CellRangeAddress, -1)).toBe("A0:C4");
 	});
 
 	it("should throw if offset exceeds valid range", () => {
-		expect(() => offsetRow("A1" as CellAddress, -2)).toThrow(Error);
+		expect(() => offsetRow("A1" as CellAddress, -1)).toThrow(Error);
 		expect(() => offsetRow("A1:C5" as CellRangeAddress, 1048577)).toThrow(Error);
 	});
-});
 
-describe("offsetRow with single cell address", () => {
 	it("should offset the row of a single cell address", () => {
 		expect(offsetRow("C1" as CellAddress, 2)).toBe("C3");
-		expect(offsetRow("C1" as CellAddress, -1)).toBe("C0");
 	});
 
 	it("should throw if offset exceeds valid range", () => {
-		expect(() => offsetRow("C1" as CellAddress, -2)).toThrow(Error);
+		expect(() => offsetRow("C1" as CellAddress, -1)).toThrow(Error);
 		expect(() => offsetRow("C1" as CellAddress, 1048577)).toThrow(Error);
 	});
 });

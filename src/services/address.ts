@@ -1,4 +1,5 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.ts";
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
 import type { ColumnIndex } from "../models/ColumnIndex.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
@@ -8,16 +9,14 @@ const lastColumn: ColumnAddress = "XFD";
 const firstRow: RowAddress = "1";
 const lastRow: RowAddress = "1048576";
 
-// const unifiedAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?:(?<startColumn>[A-Z]+)?(?<startRow>\d+)?(?::(?<endColumn>[A-Z]+)?(?<endRow>\d+)?)?)$/;
+const addressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?:(?<startColumn>[A-Z]+)?(?<startRow>\d+)?(?::(?<endColumn>[A-Z]+)?(?<endRow>\d+)?)?)$/;
 
-const columnAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)$/;
-const columnRangeAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<startColumn>[A-Z]+):(?<endColumn>[A-Z]+)$/;
-
-const rowAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<row>\d+)$/;
-const rowRangeAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<startRow>\d+):(?<endRow>\d+)$/;
-
-const cellAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<column>[A-Z]+)(?<row>\d+)$/;
-const cellRangeAddressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?<startColumn>[A-Z]+)(?<startRow>\d+):(?<endColumn>[A-Z]+)(?<endRow>\d+)$/;
+type AddressParsedComponents = {
+	startColumn: ColumnAddress | undefined;
+	endColumn: ColumnAddress | undefined;
+	startRow: RowAddress | undefined;
+	endRow: RowAddress | undefined;
+};
 
 export type AddressComponents = {
 	startColumn: ColumnAddress;
@@ -27,218 +26,126 @@ export type AddressComponents = {
 };
 
 export function decomposeAddress(address: Address): AddressComponents {
-	const columnAddressMatch = address.match(columnAddressPattern);
-	if (columnAddressMatch) {
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const column = (columnAddressMatch?.groups?.["column"] ?? "") as ColumnAddress;
-		return {
-			startColumn: column,
-			endColumn: column,
-			startRow: firstRow,
-			endRow: lastRow,
-		};
+	const match = address.match(addressPattern);
+	if (!match?.groups) {
+		throw new InvalidArgumentError(`Invalid address format. Must match pattern '${addressPattern}'`);
 	}
 
-	const columnRangeMatch = address.match(columnRangeAddressPattern);
-	if (columnRangeMatch) {
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const startColumn = (columnRangeMatch?.groups?.["startColumn"] ?? "") as ColumnAddress;
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const endColumn = (columnRangeMatch?.groups?.["endColumn"] ?? "") as ColumnAddress;
-		return {
-			startColumn,
-			endColumn,
-			startRow: firstRow,
-			endRow: lastRow,
-		};
-	}
+	const groups = match.groups as AddressParsedComponents;
 
-	const rowAddressMatch = address.match(rowAddressPattern);
-	if (rowAddressMatch) {
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const row = (rowAddressMatch?.groups?.["row"] ?? "") as RowAddress;
-
-		return {
-			startColumn: firstColumn,
-			endColumn: lastColumn,
-			startRow: row,
-			endRow: row,
-		};
-	}
-
-	const rowRangeMatch = address.match(rowRangeAddressPattern);
-	if (rowRangeMatch) {
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const startRow = (rowRangeMatch?.groups?.["startRow"] ?? "") as RowAddress;
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const endRow = (rowRangeMatch?.groups?.["endRow"] ?? "") as RowAddress;
-		return {
-			startColumn: firstColumn,
-			endColumn: lastColumn,
-			startRow,
-			endRow,
-		};
-	}
-
-	const cellAddressMatch = address.match(cellAddressPattern);
-	if (cellAddressMatch) {
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const column = (cellAddressMatch?.groups?.["column"] ?? "") as ColumnAddress;
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const row = (cellAddressMatch?.groups?.["row"] ?? "") as RowAddress;
-		return {
-			startColumn: column,
-			endColumn: column,
-			startRow: row,
-			endRow: row,
-		};
-	}
-
-	const cellRangeMatch = address.match(cellRangeAddressPattern);
-	if (cellRangeMatch) {
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const startRow = (cellRangeMatch?.groups?.["startRow"] ?? "") as RowAddress;
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const startColumn = (cellRangeMatch?.groups?.["startColumn"] ?? "") as ColumnAddress;
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const endRow = (cellRangeMatch?.groups?.["endRow"] ?? "") as RowAddress;
-		// biome-ignore lint/complexity/useLiteralKeys:Regex named capture groups are used
-		const endColumn = (cellRangeMatch?.groups?.["endColumn"] ?? "") as ColumnAddress;
-		return {
-			startColumn,
-			endColumn,
-			startRow,
-			endRow,
-		};
-	}
-
-	throw new InvalidArgumentError(`Invalid address format '${address}'`);
+	return {
+		startColumn: groups.startColumn ?? firstColumn,
+		startRow: groups.startRow ?? firstRow,
+		endColumn: groups.endColumn ?? groups.startColumn ?? lastColumn,
+		endRow: groups.endRow ?? groups.startRow ?? lastRow,
+	};
 }
 
-export function composeAddress(addressComponents: AddressComponents): Address {
-	const { startColumn, endColumn, startRow, endRow } = addressComponents;
-
-	// Column
-	if (startColumn === endColumn && startRow === firstRow && endRow === lastRow) {
-		return composeColumnAddress(startColumn);
+export function composeAddress(components: AddressComponents): Address {
+	if (isSingleColumn(components) && isMaxRows(components)) {
+		return composeColumnAddress(components.startColumn);
 	}
 
-	// Row
-	if (startColumn === firstColumn && endColumn === lastColumn && startRow === endRow) {
-		return composeRowAddress(startRow);
+	if (isSingleRow(components) && isMaxColumns(components)) {
+		return composeRowAddress(components.startRow);
 	}
 
-	// Column range
-	if (startRow === firstRow && endRow === lastRow) {
-		return composeColumnRangeAddress(startColumn, endColumn);
+	if (isMaxRows(components)) {
+		return composeColumnRangeAddress(components.startColumn, components.endColumn);
 	}
 
-	// Row range
-	if (startColumn === firstColumn && endColumn === lastColumn) {
-		return composeRowRangeAddress(startRow, endRow);
+	if (isMaxColumns(components)) {
+		return composeRowRangeAddress(components.startRow, components.endRow);
 	}
 
-	// Cell
-	if (startColumn === endColumn && startRow === endRow) {
-		return composeCellAddress(startColumn, startRow);
+	if (isSingleColumn(components) && isSingleRow(components)) {
+		return composeCellAddress(components.startColumn, components.startRow);
 	}
 
-	// Cell range
-	if (startColumn <= endColumn && startRow <= endRow) {
-		return composeCellRangeAddress(startColumn, startRow, endColumn, endRow);
+	if (components.startColumn > components.endColumn) {
+		throw new InvalidArgumentError("Invalid address. End column is before start column.");
+	}
+	if (components.startRow > components.endRow) {
+		throw new InvalidArgumentError("Invalid address. End row is before start row.");
 	}
 
-	throw new InvalidArgumentError("Invalid address components.");
+	return composeCellRangeAddress(components.startColumn, components.startRow, components.endColumn, components.endRow);
 }
 
-function composeCellRangeAddress(startColumn: string, startRow: string, endColumn: string, endRow: string): CellRangeAddress {
-	return `${startColumn}${startRow}:${endColumn}${endRow}` as CellRangeAddress;
-}
-
-function composeCellAddress(startColumn: string, startRow: string): CellAddress {
-	return `${startColumn}${startRow}` as CellAddress;
-}
-
-function composeRowRangeAddress(startRow: string, endRow: string): RowRangeAddress {
-	return `${startRow}:${endRow}` as RowRangeAddress;
-}
-
-function composeColumnRangeAddress(startColumn: string, endColumn: string): ColumnRangeAddress {
-	return `${startColumn}:${endColumn}` as ColumnRangeAddress;
-}
-
-function composeRowAddress(startRow: string): RowAddress {
-	return startRow as RowAddress;
-}
-
-function composeColumnAddress(startColumn: string): ColumnAddress {
-	return startColumn as ColumnAddress;
-}
-
-export function getAddressFirstCell(address: Address): CellAddress {
+export function getFirstCell(address: Address): CellAddress {
 	const components = decomposeAddress(address);
 	return composeCellAddress(components.startColumn, components.startRow);
 }
 
-export function getAddressLastCell(address: Address): CellAddress {
+export function getLastCell(address: Address): CellAddress {
 	const components = decomposeAddress(address);
 	return composeCellAddress(components.endColumn, components.endRow);
 }
 
-export function getFirstRow(address: Address): RowAddress | CellRangeAddress {
+export function getFirstRow(address: Address): Address {
 	const components = decomposeAddress(address);
-	if (components.startColumn === firstColumn && components.endColumn === lastColumn) {
-		return composeRowAddress(components.startRow);
-	}
 
-	return composeCellRangeAddress(components.startColumn, components.startRow, components.endColumn, components.startRow);
+	return composeAddress({
+		startColumn: components.startColumn,
+		startRow: components.startRow,
+		endColumn: components.endColumn,
+		endRow: components.startRow,
+	});
 }
 
-export function getLastRow(address: Address): RowAddress | CellRangeAddress {
+export function getLastRow(address: Address): Address {
 	const components = decomposeAddress(address);
-	if (components.startColumn === firstColumn && components.endColumn === lastColumn) {
-		return composeRowAddress(components.endRow);
-	}
 
-	return composeCellRangeAddress(components.startColumn, components.endRow, components.endColumn, components.endRow);
+	return composeAddress({
+		startColumn: components.startColumn,
+		startRow: components.endRow,
+		endColumn: components.endColumn,
+		endRow: components.endRow,
+	});
 }
 
-export function getFirstColumn(address: Address): ColumnAddress | CellRangeAddress {
+export function getFirstColumn(address: Address): Address {
 	const components = decomposeAddress(address);
-	if (components.startRow === firstRow && components.endRow === lastRow) {
-		return composeColumnAddress(components.startColumn);
-	}
 
-	return composeCellRangeAddress(components.startColumn, components.startRow, components.startColumn, components.endRow);
+	return composeAddress({
+		startColumn: components.startColumn,
+		startRow: components.startRow,
+		endColumn: components.startColumn,
+		endRow: components.endRow,
+	});
 }
 
-export function getLastColumn(address: Address): ColumnAddress | CellRangeAddress {
+export function getLastColumn(address: Address): Address {
 	const components = decomposeAddress(address);
-	if (components.startRow === firstRow && components.endRow === lastRow) {
-		return composeColumnAddress(components.startColumn);
-	}
 
-	return composeCellRangeAddress(components.endColumn, components.startRow, components.endColumn, components.endRow);
+	return composeAddress({
+		startColumn: components.endColumn,
+		startRow: components.startRow,
+		endColumn: components.endColumn,
+		endRow: components.endRow,
+	});
 }
 
-export function offsetRow(address: Address, offset: number): RowAddress | RowRangeAddress | CellRangeAddress {
+export function offsetRow(address: Address, offset: number): Address {
 	const components = decomposeAddress(address);
 
-	const startRow = Number.parseInt(components.startRow, 10) + offset;
-	const endRow = Number.parseInt(components.endRow, 10) + offset;
-
-	if (startRow < Number.parseInt(firstRow, 10) || endRow > Number.parseInt(lastRow, 10)) {
-		throw new InvalidArgumentError(`Row offset out of bounds: ${startRow} to ${endRow}`);
+	if (isMaxRows(components)) {
+		throw new UnsupportedAddressTypeError("All rows are selected. Cannot offset.");
 	}
 
-	if (components.startColumn === firstColumn && components.endColumn === lastColumn) {
-		if (startRow === endRow) {
-			return composeRowAddress(startRow.toString());
-		}
-		return composeRowRangeAddress(startRow.toString(), endRow.toString());
+	const newStartRow = Number.parseInt(components.startRow, 10) + offset;
+	const newEndRow = Number.parseInt(components.endRow, 10) + offset;
+
+	if (newStartRow < Number.parseInt(firstRow, 10) || newEndRow > Number.parseInt(lastRow, 10)) {
+		throw new InvalidArgumentError(`Row offset out of bounds: ${newStartRow} to ${newEndRow}`);
 	}
 
-	return composeCellRangeAddress(startRow.toString(), components.startColumn, endRow.toString(), components.endColumn);
+	return composeAddress({
+		startColumn: components.startColumn,
+		endColumn: components.endColumn,
+		startRow: newStartRow.toString() as RowAddress,
+		endRow: newEndRow.toString() as RowAddress,
+	});
 }
 
 export function incrementRow(address: Address): Address {
@@ -249,10 +156,12 @@ export function decrementRow(address: Address): Address {
 	return offsetRow(address, -1);
 }
 
+/////////
+
 export function cellAddressToIndexes(address: CellAddress): [RowIndex, ColumnIndex] {
-	const match = address.match(cellAddressPattern);
+	const match = address.match("");
 	if (!match?.groups) {
-		throw new Error(`Invalid cell format '${address}', must match '${cellAddressPattern}`);
+		throw new Error(`Invalid cell format '${address}', must match '${"cellAddressPattern"}`);
 	}
 	// biome-ignore lint/complexity/useLiteralKeys: Named capture groups are used
 	const column = match.groups["column"] as ColumnAddress;
@@ -298,4 +207,46 @@ export function rowAddressToIndex(row: RowAddress): RowIndex {
 
 export function indexToRowAddress(index: RowIndex): RowAddress {
 	return (index + 1).toString() as RowAddress;
+}
+
+///////////
+
+function composeCellRangeAddress(startColumn: string, startRow: string, endColumn: string, endRow: string): CellRangeAddress {
+	return `${startColumn}${startRow}:${endColumn}${endRow}` as CellRangeAddress;
+}
+
+function composeCellAddress(startColumn: string, startRow: string): CellAddress {
+	return `${startColumn}${startRow}` as CellAddress;
+}
+
+function composeRowRangeAddress(startRow: string, endRow: string): RowRangeAddress {
+	return `${startRow}:${endRow}` as RowRangeAddress;
+}
+
+function composeColumnRangeAddress(startColumn: string, endColumn: string): ColumnRangeAddress {
+	return `${startColumn}:${endColumn}` as ColumnRangeAddress;
+}
+
+function composeRowAddress(startRow: string): RowAddress {
+	return startRow as RowAddress;
+}
+
+function composeColumnAddress(startColumn: string): ColumnAddress {
+	return startColumn as ColumnAddress;
+}
+
+function isSingleRow(components: AddressComponents) {
+	return components.startRow === components.endRow;
+}
+
+function isSingleColumn(components: AddressComponents) {
+	return components.startColumn === components.endColumn;
+}
+
+function isMaxColumns(components: AddressComponents) {
+	return components.startColumn === firstColumn && components.endColumn === lastColumn;
+}
+
+function isMaxRows(components: AddressComponents) {
+	return components.startRow === firstRow && components.endRow === lastRow;
 }

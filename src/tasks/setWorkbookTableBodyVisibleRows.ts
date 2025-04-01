@@ -8,7 +8,7 @@ import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWo
 import insertWorkbookCells from "../operations/workbookRange/insertWorkbookCells.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTableBodyRange.ts";
-import { cellAddressToIndexes, getAddressFirstCell, getAddressLastCell, indexesToBoxRangeAddress } from "../services/address.ts";
+import { cellAddressToIndexes, getFirstCell, getLastCell, indexesToBoxRangeAddress } from "../services/address.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /** Overwrite visible rows of a workbook table with the provided 2D array of values, inserting new rows at the end if needed. THIS IS SLOW as it must check each rows visibility. */
@@ -18,8 +18,8 @@ export async function setWorkbookTableBodyVisibleRows(tableRef: WorkbookTableRef
 		throw new InvalidArgumentError(`Invalid number of columns in input values. Expected all rows to have ${visibleRange.columnCount}.`);
 	}
 
-	const [startRowIndex, startColumnIndex] = cellAddressToIndexes(getAddressFirstCell(visibleRange.address));
-	const [endRowIndex, endColumnIndex] = cellAddressToIndexes(getAddressLastCell(visibleRange.address));
+	const [startRowIndex, startColumnIndex] = cellAddressToIndexes(getFirstCell(visibleRange.address));
+	const [endRowIndex, endColumnIndex] = cellAddressToIndexes(getLastCell(visibleRange.address));
 	if (endColumnIndex - startColumnIndex + 1 !== visibleRange.columnCount) {
 		throw new NeverError("Insane address");
 	}
