@@ -5,7 +5,13 @@ import type { WorkbookRef } from "../models/WorkbookRef.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import createWorkbookSession from "../operations/workbookSession/createWorkbookSession.ts";
 
-/** One-shot creation of a new workbook and opening a session for that workbook. */
+/**
+ * Create a new workbook and open a session for that workbook in a single operation.
+ *
+ * @param driveRef - A reference to the drive where the workbook will be created.
+ * @param itemPath - The path of the new workbook within the drive.
+ * @returns The created workbook and session details.
+ */
 export default async function createWorkbookAndStartSession(driveRef: DriveRef, itemPath: DriveItemPath): Promise<Workbook & WorkbookRef> {
 	const workbook = await createWorkbook(driveRef, itemPath);
 	const workbookRef = await createWorkbookSession(workbook);

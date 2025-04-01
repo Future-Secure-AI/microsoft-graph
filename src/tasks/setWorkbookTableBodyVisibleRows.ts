@@ -8,7 +8,15 @@ import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTa
 import { getFirstRowAddress, incrementRowAddress, isAddressOverlapping } from "../services/addressManipulation.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
-/** Overwrite visible rows of a workbook table with the provided 2D array of values, inserting new rows at the end if needed. THIS IS SLOW as it must check each rows visibility. */
+/**
+ * Overwrite visible rows of a workbook table with the provided 2D array of values, inserting new rows at the end if needed.
+ * THIS IS SLOW as it must check each row's visibility.
+ *
+ * @param tableRef - A reference to the workbook table.
+ * @param values - A 2D array of strings representing the values to set in the visible rows of the table.
+ * @throws {InvalidArgumentError} If the number of columns in any row of `values` does not match the table's column count.
+ * @returns Void when the operation is complete.
+ */
 export async function setWorkbookTableBodyVisibleRows(tableRef: WorkbookTableRef, values: string[][]): Promise<void> {
 	const visibleRange = await getWorkbookTableBodyRange(tableRef);
 
