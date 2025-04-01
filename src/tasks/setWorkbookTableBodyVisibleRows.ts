@@ -1,4 +1,3 @@
-import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
@@ -17,26 +16,25 @@ export async function setWorkbookTableBodyVisibleRows(tableRef: WorkbookTableRef
 		throw new InvalidArgumentError(`Invalid number of columns in input values. Expected all rows to have ${visibleRange.columnCount}.`);
 	}
 
-	const dstFirstRowAddress = getFirstRowAddress(visibleRange.address);
-	let dstCurrentRowAddress = dstFirstRowAddress;
+	const firstRowAddress = getFirstRowAddress(visibleRange.address);
+	let currentRowAddress = firstRowAddress;
 
-	for (const srcRowValues of values) {
-		let dstRowRef: WorkbookRangeRef;
-		let dstRow: WorkbookRange;
-		let dstRowHidden = false;
+	for (const rowValues of values) {
+		let rowRef: WorkbookRangeRef;
+		let rowHidden = false;
 
 		do {
-			dstRowRef = createWorkbookRangeRef(tableRef, dstCurrentRowAddress);
-			if (isAddressOverlapping(dstCurrentRowAddress, visibleRange.address)) {
-				dstRow = await getWorkbookWorksheetRange(dstRowRef);
-				dstRowHidden = dstRow.rowHidden ?? false;
+			rowRef = createWorkbookRangeRef(tableRef, currentRowAddress);
+			if (isAddressOverlapping(currentRowAddress, visibleRange.address)) {
+				const row = await getWorkbookWorksheetRange(rowRef);
+				rowHidden = row.rowHidden ?? false;
 			} else {
-				await insertWorkbookCells(dstRowRef, dstRowRef.address, "Down");
-				dstRowHidden = false;
+				await insertWorkbookCells(rowRef, rowRef.address, "Down");
+				rowHidden = false;
 			}
-			dstCurrentRowAddress = incrementRowAddress(dstCurrentRowAddress);
-		} while (dstRowHidden);
+			currentRowAddress = incrementRowAddress(currentRowAddress);
+		} while (rowHidden);
 
-		await updateWorkbookRange(dstRowRef, { values: [srcRowValues] });
+		await updateWorkbookRange(rowRef, { values: [rowValues] });
 	}
 }

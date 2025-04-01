@@ -78,6 +78,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 			await setWorkbookTableBodyVisibleRows(table, [
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
+				["NewValue9", "NewValue10", "NewValue11", "NewValue12"],
 			]);
 
 			const visibleBodyRange = await getWorkbookTableVisibleBody(table);
@@ -85,6 +86,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
 				["OldValue5", "OldValue6", "OldValue7", "OldValue8"],
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
+				["NewValue9", "NewValue10", "NewValue11", "NewValue12"],
 			]);
 		} finally {
 			await deleteDriveItemWithRetry(workbook);
