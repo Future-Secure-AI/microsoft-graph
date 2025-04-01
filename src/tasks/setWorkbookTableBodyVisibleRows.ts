@@ -6,7 +6,7 @@ import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWo
 import insertWorkbookCells from "../operations/workbookRange/insertWorkbookCells.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTableBodyRange.ts";
-import { getFirstRowAddress, incrementRowAddress, isAddressOverlapping } from "../services/address.ts";
+import { getFirstRowAddress, incrementRowAddress, isAddressOverlapping } from "../services/addressManipulation.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /** Overwrite visible rows of a workbook table with the provided 2D array of values, inserting new rows at the end if needed. THIS IS SLOW as it must check each rows visibility. */

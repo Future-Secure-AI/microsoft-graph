@@ -3,7 +3,7 @@ import type { ColumnIndex } from "../models/ColumnIndex.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
-import { getFirstCellAddress, offsetAddress } from "../services/address.ts";
+import { getFirstCellAddress, offsetAddress } from "../services/addressManipulation.ts";
 
 /** Get the last used cell (ie, the most-lower-right) in a given range. */
 export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): Promise<{ value: string | number | boolean | null; address: string } | null> {
@@ -36,7 +36,7 @@ export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): 
 
 			if (cell !== null && cell !== "") {
 				const firstCellAddress = getFirstCellAddress(rangeRef.address);
-				const lastUsedCellAddress = offsetAddress(firstCellAddress, rowIndex, columnIndex);
+				const lastUsedCellAddress = offsetAddress(firstCellAddress, columnIndex, rowIndex);
 
 				return {
 					value: cell,

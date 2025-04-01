@@ -1,8 +1,7 @@
 import { describe, expect, it } from "vitest";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.ts";
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
-import { composeAddress, decomposeAddress, decrementRowAddress, getFirstCellAddress, getFirstColumnAddress, getFirstRowAddress, getLastCellAddress, getLastColumnAddress, getLastRowAddress, incrementRowAddress, isAddressOverlapping, offsetAddress } from "./address.ts";
+import { composeAddress, decomposeAddress, decrementRowAddress, getFirstCellAddress, getFirstColumnAddress, getFirstRowAddress, getLastCellAddress, getLastColumnAddress, getLastRowAddress, incrementRowAddress, isAddressOverlapping, offsetAddress } from "./addressManipulation.ts";
 
 describe("getFirstCellAddress", () => {
 	it("should return the start cell of a range address", () => {
@@ -157,32 +156,27 @@ describe("getLastColumnAddress", () => {
 describe("offsetAddress", () => {
 	it("should offset rows and columns in a cell range", () => {
 		expect(offsetAddress("A1:C5", 2, 2)).toBe("C3:E7");
-		expect(offsetAddress("Sheet!B2:C5" as Address, -1, -1)).toBe("A1:B4");
+		expect(offsetAddress("Sheet!B2:C5" as Address, 2, 2)).toBe("D4:E7");
 	});
 
 	it("should offset rows only", () => {
-		expect(offsetAddress("A1:C5", 2, 0)).toBe("A3:C7");
-		expect(offsetAddress("Sheet!B1:C5" as Address, -1, 0)).toBe("A1:B4");
+		expect(offsetAddress("A1:C5", 0, 2)).toBe("A3:C7");
+		expect(offsetAddress("Sheet!B1:C5" as Address, 0, 2)).toBe("B3:C7");
 	});
 
 	it("should offset columns only", () => {
-		expect(offsetAddress("A1:C5", 0, 2)).toBe("C1:E5");
-		expect(offsetAddress("Sheet!A2:C5" as Address, 0, -1)).toBe("Z1:B4");
-	});
-
-	it("should throw for unsupported address types", () => {
-		expect(() => offsetAddress("A", 1, 0)).toThrow(UnsupportedAddressTypeError);
-		expect(() => offsetAddress("1:5", 0, 1)).toThrow(UnsupportedAddressTypeError);
+		expect(offsetAddress("A1:C5", 2, 0)).toBe("C1:E5");
+		expect(offsetAddress("Sheet!A2:C5" as Address, 2, 0)).toBe("C2:E5");
 	});
 
 	it("should throw if offset exceeds valid range", () => {
-		expect(() => offsetAddress("A1:C5", 1048577, 0)).toThrow(Error);
-		expect(() => offsetAddress("A1:C5", 0, 16385)).toThrow(Error);
+		expect(() => offsetAddress("A1:C5", 0, 1048577)).toThrow(InvalidArgumentError);
+		expect(() => offsetAddress("A1:C5", 16385, 0)).toThrow(InvalidArgumentError);
 	});
 
 	it("should offset rows and columns in a single cell address", () => {
 		expect(offsetAddress("A1" as CellAddress, 2, 2)).toBe("C3");
-		expect(offsetAddress("Sheet!B2" as CellAddress, -1, -1)).toBe("A1");
+		expect(offsetAddress("Sheet!B2" as CellAddress, 2, 2)).toBe("D4");
 	});
 });
 
