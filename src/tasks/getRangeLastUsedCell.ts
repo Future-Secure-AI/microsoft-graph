@@ -1,6 +1,6 @@
 import ProtocolError from "../errors/ProtocolError.ts";
-import type { ColumnIndex } from "../models/ColumnIndex.ts";
-import type { RowIndex } from "../models/RowIndex.ts";
+import type { ColumnOffset } from "../models/ColumnOffset.ts";
+import type { RowOffset } from "../models/RowOffset.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { getFirstCellAddress, offsetAddress } from "../services/addressManipulation.ts";
@@ -22,13 +22,13 @@ export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): 
 		throw new ProtocolError("Range values missing");
 	}
 
-	for (let rowIndex = (rowCount - 1) as RowIndex; rowIndex >= 0; rowIndex--) {
+	for (let rowIndex = (rowCount - 1) as RowOffset; rowIndex >= 0; rowIndex--) {
 		const row = values[rowIndex];
 		if (row === undefined) {
 			throw new ProtocolError("Row missing");
 		}
 
-		for (let columnIndex = (columnCount - 1) as ColumnIndex; columnIndex >= 0; columnIndex--) {
+		for (let columnIndex = (columnCount - 1) as ColumnOffset; columnIndex >= 0; columnIndex--) {
 			const cell = row[columnIndex];
 			if (cell === undefined) {
 				throw new ProtocolError("Cell missing");

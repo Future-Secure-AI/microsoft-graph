@@ -1,9 +1,9 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.ts";
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
-import type { ColumnIndex } from "../models/ColumnIndex.ts";
-import type { RowIndex } from "../models/RowIndex.ts";
-import { columnAddressToIndex, indexToColumnAddress, indexToRowAddress, rowAddressToIndex } from "./addressIndexing.ts";
+import type { ColumnOffset } from "../models/ColumnOffset.ts";
+import type { RowOffset } from "../models/RowOffset.ts";
+import { columnAddressToOffset, offsetToColumnAddress, offsetToRowAddress, rowAddressToOffset } from "./addressOffset.ts";
 
 const firstColumn: ColumnAddress = "A";
 const lastColumn: ColumnAddress = "XFD";
@@ -138,25 +138,25 @@ export function offsetAddress(address: Address, columnOffset: number, rowOffset:
 		throw new UnsupportedAddressTypeError("All columns are selected. Cannot offset columns.");
 	}
 
-	const newStartRowIndex = rowAddressToIndex(components.startRow) + rowOffset;
-	const newEndRowIndex = rowAddressToIndex(components.endRow) + rowOffset;
+	const newStartRowIndex = rowAddressToOffset(components.startRow) + rowOffset;
+	const newEndRowIndex = rowAddressToOffset(components.endRow) + rowOffset;
 
-	if (newStartRowIndex < rowAddressToIndex(firstRow) || newEndRowIndex > rowAddressToIndex(lastRow)) {
+	if (newStartRowIndex < rowAddressToOffset(firstRow) || newEndRowIndex > rowAddressToOffset(lastRow)) {
 		throw new InvalidArgumentError(`Row offset out of bounds: ${newStartRowIndex + 1} to ${newEndRowIndex + 1}`);
 	}
 
-	const newStartRow = indexToRowAddress(newStartRowIndex as RowIndex);
-	const newEndRow = indexToRowAddress(newEndRowIndex as RowIndex);
+	const newStartRow = offsetToRowAddress(newStartRowIndex as RowOffset);
+	const newEndRow = offsetToRowAddress(newEndRowIndex as RowOffset);
 
-	const newStartColumnIndex = columnAddressToIndex(components.startColumn) + columnOffset;
-	const newEndColumnIndex = columnAddressToIndex(components.endColumn) + columnOffset;
+	const newStartColumnIndex = columnAddressToOffset(components.startColumn) + columnOffset;
+	const newEndColumnIndex = columnAddressToOffset(components.endColumn) + columnOffset;
 
-	if (newStartColumnIndex < columnAddressToIndex(firstColumn) || newEndColumnIndex > columnAddressToIndex(lastColumn)) {
+	if (newStartColumnIndex < columnAddressToOffset(firstColumn) || newEndColumnIndex > columnAddressToOffset(lastColumn)) {
 		throw new InvalidArgumentError(`Column offset out of bounds: ${newStartColumnIndex + 1} to ${newEndColumnIndex + 1}`);
 	}
 
-	const newStartColumn = indexToColumnAddress(newStartColumnIndex as ColumnIndex);
-	const newEndColumn = indexToColumnAddress(newEndColumnIndex as ColumnIndex);
+	const newStartColumn = offsetToColumnAddress(newStartColumnIndex as ColumnOffset);
+	const newEndColumn = offsetToColumnAddress(newEndColumnIndex as ColumnOffset);
 
 	return composeAddress({
 		startColumn: newStartColumn as ColumnAddress,
@@ -178,7 +178,7 @@ export function isAddressOverlapping(address1: Address, address2: Address): bool
 	const components1 = decomposeAddress(address1);
 	const components2 = decomposeAddress(address2);
 
-	return components1.startColumn <= components2.endColumn && components1.endColumn >= components2.startColumn && rowAddressToIndex(components1.startRow) <= rowAddressToIndex(components2.endRow) && rowAddressToIndex(components1.endRow) >= rowAddressToIndex(components2.startRow);
+	return components1.startColumn <= components2.endColumn && components1.endColumn >= components2.startColumn && rowAddressToOffset(components1.startRow) <= rowAddressToOffset(components2.endRow) && rowAddressToOffset(components1.endRow) >= rowAddressToOffset(components2.startRow);
 }
 
 function composeCellRangeAddress(startColumn: string, startRow: string, endColumn: string, endRow: string): CellRangeAddress {
