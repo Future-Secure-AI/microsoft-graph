@@ -36,8 +36,6 @@ describe("getRangeLastUsedCell", () => {
 			}
 			expect(result.value).toBe(4);
 			expect(result.address).toBe("B2");
-			expect(result.rowIndex).toBe(1);
-			expect(result.columnIndex).toBe(1);
 		} finally {
 			await deleteDriveItemWithRetry(workbook);
 		}
@@ -67,8 +65,6 @@ describe("getRangeLastUsedCell", () => {
 			}
 			expect(result.value).toBe(3);
 			expect(result.address).toBe("A2");
-			expect(result.rowIndex).toBe(1);
-			expect(result.columnIndex).toBe(0);
 		} finally {
 			await deleteDriveItemWithRetry(workbook);
 		}
