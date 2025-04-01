@@ -72,17 +72,17 @@ export function composeAddress(components: AddressComponents): Address {
 	return composeCellRangeAddress(components.startColumn, components.startRow, components.endColumn, components.endRow);
 }
 
-export function getFirstCell(address: Address): CellAddress {
+export function getFirstCellAddress(address: Address): CellAddress {
 	const components = decomposeAddress(address);
 	return composeCellAddress(components.startColumn, components.startRow);
 }
 
-export function getLastCell(address: Address): CellAddress {
+export function getLastCellAddress(address: Address): CellAddress {
 	const components = decomposeAddress(address);
 	return composeCellAddress(components.endColumn, components.endRow);
 }
 
-export function getFirstRow(address: Address): Address {
+export function getFirstRowAddress(address: Address): Address {
 	const components = decomposeAddress(address);
 
 	return composeAddress({
@@ -93,7 +93,7 @@ export function getFirstRow(address: Address): Address {
 	});
 }
 
-export function getLastRow(address: Address): Address {
+export function getLastRowAddress(address: Address): Address {
 	const components = decomposeAddress(address);
 
 	return composeAddress({
@@ -104,7 +104,7 @@ export function getLastRow(address: Address): Address {
 	});
 }
 
-export function getFirstColumn(address: Address): Address {
+export function getFirstColumnAddress(address: Address): Address {
 	const components = decomposeAddress(address);
 
 	return composeAddress({
@@ -115,7 +115,7 @@ export function getFirstColumn(address: Address): Address {
 	});
 }
 
-export function getLastColumn(address: Address): Address {
+export function getLastColumnAddress(address: Address): Address {
 	const components = decomposeAddress(address);
 
 	return composeAddress({
@@ -126,60 +126,52 @@ export function getLastColumn(address: Address): Address {
 	});
 }
 
-export function offsetRow(address: Address, offset: number): Address {
+export function offsetAddress(address: Address, rowOffset: number, columnOffset: number): Address {
 	const components = decomposeAddress(address);
 
-	if (isMaxRows(components)) {
-		throw new UnsupportedAddressTypeError("All rows are selected. Cannot offset.");
+	if (isMaxRows(components) && rowOffset !== 0) {
+		throw new UnsupportedAddressTypeError("All rows are selected. Cannot offset rows.");
 	}
 
-	const newStartRow = Number.parseInt(components.startRow, 10) + offset;
-	const newEndRow = Number.parseInt(components.endRow, 10) + offset;
+	if (isMaxColumns(components) && columnOffset !== 0) {
+		throw new UnsupportedAddressTypeError("All columns are selected. Cannot offset columns.");
+	}
 
-	if (newStartRow < Number.parseInt(firstRow, 10) || newEndRow > Number.parseInt(lastRow, 10)) {
+	const newStartRow = rowOffset !== 0 ? indexToRowAddress((rowAddressToIndex(components.startRow) + rowOffset) as RowIndex) : components.startRow;
+	const newEndRow = rowOffset !== 0 ? indexToRowAddress((rowAddressToIndex(components.endRow) + rowOffset) as RowIndex) : components.endRow;
+
+	if (rowAddressToIndex(newStartRow) < rowAddressToIndex(firstRow) || rowAddressToIndex(newEndRow) > rowAddressToIndex(lastRow)) {
 		throw new InvalidArgumentError(`Row offset out of bounds: ${newStartRow} to ${newEndRow}`);
 	}
 
+	const newStartColumn = columnOffset !== 0 ? indexToColumnAddress((columnAddressToIndex(components.startColumn) + columnOffset) as ColumnIndex) : components.startColumn;
+	const newEndColumn = columnOffset !== 0 ? indexToColumnAddress((columnAddressToIndex(components.endColumn) + columnOffset) as ColumnIndex) : components.endColumn;
+
+	if (columnAddressToIndex(newStartColumn) < columnAddressToIndex(firstColumn) || columnAddressToIndex(newEndColumn) > columnAddressToIndex(lastColumn)) {
+		throw new InvalidArgumentError(`Column offset out of bounds: ${newStartColumn} to ${newEndColumn}`);
+	}
+
 	return composeAddress({
-		startColumn: components.startColumn,
-		endColumn: components.endColumn,
-		startRow: newStartRow.toString() as RowAddress,
-		endRow: newEndRow.toString() as RowAddress,
+		startColumn: newStartColumn as ColumnAddress,
+		endColumn: newEndColumn as ColumnAddress,
+		startRow: newStartRow as RowAddress,
+		endRow: newEndRow as RowAddress,
 	});
 }
 
-export function incrementRow(address: Address): Address {
-	return offsetRow(address, +1);
+export function incrementRowAddress(address: Address): Address {
+	return offsetAddress(address, +1, 0);
 }
 
-export function decrementRow(address: Address): Address {
-	return offsetRow(address, -1);
+export function decrementRowAddress(address: Address): Address {
+	return offsetAddress(address, -1, 0);
 }
 
-/////////
+export function isAddressOverlapping(address1: Address, address2: Address): boolean {
+	const components1 = decomposeAddress(address1);
+	const components2 = decomposeAddress(address2);
 
-export function cellAddressToIndexes(address: CellAddress): [RowIndex, ColumnIndex] {
-	const match = address.match("");
-	if (!match?.groups) {
-		throw new Error(`Invalid cell format '${address}', must match '${"cellAddressPattern"}`);
-	}
-	// biome-ignore lint/complexity/useLiteralKeys: Named capture groups are used
-	const column = match.groups["column"] as ColumnAddress;
-	// biome-ignore lint/complexity/useLiteralKeys: Named capture groups are used
-	const row = match.groups["row"] as RowAddress;
-
-	const rowIndex = rowAddressToIndex(row);
-	const columnIndex = columnAddressToIndex(column);
-
-	return [rowIndex, columnIndex];
-}
-
-export function indexesToCellAddress(rowIndex: RowIndex, columnIndex: ColumnIndex): CellAddress {
-	return `${indexToColumnAddress(columnIndex)}${indexToRowAddress(rowIndex)}` as CellAddress;
-}
-
-export function indexesToBoxRangeAddress(startRowIndex: RowIndex, startColumnIndex: ColumnIndex, endRowIndex: RowIndex, endColumnIndex: ColumnIndex): CellRangeAddress {
-	return `${indexesToCellAddress(startRowIndex, startColumnIndex)}:${indexesToCellAddress(endRowIndex, endColumnIndex)}` as CellRangeAddress;
+	return components1.startColumn <= components2.endColumn && components1.endColumn >= components2.startColumn && rowAddressToIndex(components1.startRow) <= rowAddressToIndex(components2.endRow) && rowAddressToIndex(components1.endRow) >= rowAddressToIndex(components2.startRow);
 }
 
 export function columnAddressToIndex(column: ColumnAddress): ColumnIndex {
@@ -208,8 +200,6 @@ export function rowAddressToIndex(row: RowAddress): RowIndex {
 export function indexToRowAddress(index: RowIndex): RowAddress {
 	return (index + 1).toString() as RowAddress;
 }
-
-///////////
 
 function composeCellRangeAddress(startColumn: string, startRow: string, endColumn: string, endRow: string): CellRangeAddress {
 	return `${startColumn}${startRow}:${endColumn}${endRow}` as CellRangeAddress;

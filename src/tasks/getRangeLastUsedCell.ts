@@ -3,10 +3,10 @@ import type { ColumnIndex } from "../models/ColumnIndex.ts";
 import type { RowIndex } from "../models/RowIndex.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
-import { indexesToCellAddress } from "../services/address.ts";
+import { getFirstCellAddress, offsetAddress } from "../services/address.ts";
 
 /** Get the last used cell (ie, the most-lower-right) in a given range. */
-export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): Promise<{ value: string | number | boolean | null; address: string; rowIndex: number; columnIndex: number } | null> {
+export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): Promise<{ value: string | number | boolean | null; address: string } | null> {
 	// TODO: Consider adding chunking if the range is too large
 	// TODO: Reduce cells returned by using "used range"?
 
@@ -35,12 +35,12 @@ export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): 
 			}
 
 			if (cell !== null && cell !== "") {
-				const address = indexesToCellAddress(rowIndex, columnIndex);
+				const firstCellAddress = getFirstCellAddress(rangeRef.address);
+				const lastUsedCellAddress = offsetAddress(firstCellAddress, rowIndex, columnIndex);
+
 				return {
 					value: cell,
-					address,
-					rowIndex: rowIndex,
-					columnIndex: columnIndex,
+					address: lastUsedCellAddress,
 				};
 			}
 		}
