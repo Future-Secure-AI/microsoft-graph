@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.2.5",
+  "version": "2.3.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -85,6 +85,10 @@
       "import": "./dist/errors/RequestFailedError.js",
       "types": "./dist/errors/RequestFailedError.d.ts"
     },
+    "./errors/UnsupportedAddressTypeError": {
+      "import": "./dist/errors/UnsupportedAddressTypeError.js",
+      "types": "./dist/errors/UnsupportedAddressTypeError.d.ts"
+    },
     "./graphApi": {
       "import": "./dist/graphApi.js",
       "types": "./dist/graphApi.d.ts"
@@ -120,6 +124,10 @@
     "./models/ColumnIndex": {
       "import": "./dist/models/ColumnIndex.js",
       "types": "./dist/models/ColumnIndex.d.ts"
+    },
+    "./models/ColumnOffset": {
+      "import": "./dist/models/ColumnOffset.js",
+      "types": "./dist/models/ColumnOffset.d.ts"
     },
     "./models/Context": {
       "import": "./dist/models/Context.js",
@@ -180,6 +188,10 @@
     "./models/RowIndex": {
       "import": "./dist/models/RowIndex.js",
       "types": "./dist/models/RowIndex.d.ts"
+    },
+    "./models/RowOffset": {
+      "import": "./dist/models/RowOffset.js",
+      "types": "./dist/models/RowOffset.d.ts"
     },
     "./models/Scope": {
       "import": "./dist/models/Scope.js",
@@ -412,6 +424,14 @@
     "./services/address": {
       "import": "./dist/services/address.js",
       "types": "./dist/services/address.d.ts"
+    },
+    "./services/addressManipulation": {
+      "import": "./dist/services/addressManipulation.js",
+      "types": "./dist/services/addressManipulation.d.ts"
+    },
+    "./services/addressOffset": {
+      "import": "./dist/services/addressOffset.js",
+      "types": "./dist/services/addressOffset.d.ts"
     },
     "./services/context": {
       "import": "./dist/services/context.js",
