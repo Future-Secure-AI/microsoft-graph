@@ -13,7 +13,12 @@ export const workbookFileExtension = "xlsx";
 
 export const rootDriveItemPath = driveItemPath("/");
 
-/** Create a drive item path from a given set of segments. Ie ["a","b"] => "/a/b" */
+/**
+ * Creates a drive item path from a given set of segments.
+ * @param segments - The segments of the path.
+ * @returns The constructed drive item path.
+ * @throws InvalidArgumentError if a segment is invalid or the path exceeds 400 characters.
+ */
 export function driveItemPath(...segments: string[]): DriveItemPath {
 	for (const segment of segments) {
 		if (segment === "") {
@@ -50,6 +55,13 @@ export function driveItemPath(...segments: string[]): DriveItemPath {
 	return path as DriveItemPath;
 }
 
+/**
+ * Creates a reference to a drive item.
+ * @param driveRef - The reference to the drive.
+ * @param itemId - The ID of the drive item.
+ * @returns A reference to the drive item.
+ * @throws ProtocolError if the item ID is missing.
+ */
 export function createDriveItemRef(driveRef: DriveRef, itemId: DriveItemId | undefined): DriveItemRef {
 	if (!itemId) {
 		throw new ProtocolError("ItemID is missing");

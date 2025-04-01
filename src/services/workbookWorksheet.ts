@@ -4,6 +4,13 @@ import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
 
 export const defaultWorkbookWorksheetId = "{00000000-0001-0000-0000-000000000000}" as WorkbookWorksheetId; // Program Manager in Microsoft Office Extensibility team says this ID is used for the first sheet of all workbooks by design, but not documented. https://github.com/OfficeDev/office-js/issues/552#issuecomment-800841930
 
+/**
+ * Creates a reference to a workbook worksheet.
+ * @param workbookRef - The reference to the workbook.
+ * @param worksheetId - The ID of the worksheet.
+ * @returns A reference to the workbook worksheet.
+ * @throws Error if the worksheet ID is missing.
+ */
 export function createWorkbookWorksheetRef(workbookRef: WorkbookRef, worksheetId: WorkbookWorksheetId | undefined): WorkbookWorksheetRef {
 	if (!worksheetId) {
 		throw new Error("WorksheetID is missing");
@@ -19,6 +26,11 @@ export function createWorkbookWorksheetRef(workbookRef: WorkbookRef, worksheetId
 	};
 }
 
+/**
+ * Creates a reference to the default workbook worksheet that is initially included in all new workbooks.
+ * @param workbookRef - The reference to the workbook.
+ * @returns A reference to the default workbook worksheet.
+ */
 export function createDefaultWorkbookWorksheetRef(workbookRef: WorkbookRef): WorkbookWorksheetRef {
 	return createWorkbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);
 }

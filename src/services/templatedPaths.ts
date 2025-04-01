@@ -4,7 +4,13 @@ import { kebabToCamelCase } from "./stringCaseConversion.ts";
 
 const argumentPattern = /\{([a-z-]+)\}/g;
 
-/** Create a GraphAPI path based on a given template and arguments. Escaping is automatically handeld */
+/**
+ * Generates a HTTP path based on a template and arguments. Arguments are automatically escaped.
+ * @param template - The path template, which must start with a slash.
+ * @param args - A record of arguments to replace placeholders in the template.
+ * @returns The generated Graph API path.
+ * @throws BadTemplateError if the template is invalid or required arguments are missing.
+ */
 export function generatePath(template: string, args: Record<string, string | undefined>): GraphPath {
 	if (!template.startsWith("/")) {
 		throw new BadTemplateError(`Path template '${template}' must start with a slash.`);

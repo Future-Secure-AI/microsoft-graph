@@ -7,7 +7,15 @@ import type { TenantId } from "../models/TenantId.ts";
 
 const innerTokenCache: Record<CacheKey, InnerAccessToken> = {};
 
-/** Get an access token for a given client and scope. If an unexpired one is cached it will be returned, otherwise requests a new one. */
+/**
+ * Retrieves the current access token for a given client and scope.
+ * If a valid token is cached, it will be returned; otherwise, a new token will be requested.
+ * @param tenantId - The tenant ID.
+ * @param clientId - The client ID.
+ * @param clientSecret - The client secret.
+ * @param scope - The scope for which the token is requested.
+ * @returns A promise that resolves to the access token.
+ */
 export async function getCurrentAccessToken(tenantId: TenantId, clientId: ClientId, clientSecret: ClientSecret, scope: Scope): Promise<AccessToken> {
 	const cacheKey = createCacheKey(tenantId, clientId, scope);
 	let innerToken = innerTokenCache[cacheKey];

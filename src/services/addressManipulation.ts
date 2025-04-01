@@ -26,6 +26,12 @@ export type AddressComponents = {
 	endRow: RowAddress;
 };
 
+/**
+ * Decomposes an address into its components (start and end columns/rows).
+ * @param address - The address to decompose.
+ * @returns The decomposed address components.
+ * @throws InvalidArgumentError if the address format is invalid.
+ */
 export function decomposeAddress(address: Address): AddressComponents {
 	const match = address.match(addressPattern);
 	if (!match?.groups) {
@@ -42,6 +48,12 @@ export function decomposeAddress(address: Address): AddressComponents {
 	};
 }
 
+/**
+ * Composes an address from its components.
+ * @param components - The address components.
+ * @returns The composed address.
+ * @throws InvalidArgumentError if the components are invalid.
+ */
 export function composeAddress(components: AddressComponents): Address {
 	if (isSingleColumn(components) && isMaxRows(components)) {
 		return composeColumnAddress(components.startColumn);
@@ -73,16 +85,31 @@ export function composeAddress(components: AddressComponents): Address {
 	return composeCellRangeAddress(components.startColumn, components.startRow, components.endColumn, components.endRow);
 }
 
+/**
+ * Gets the first cell address from a given address.
+ * @param address - The address to analyze.
+ * @returns The first cell address.
+ */
 export function getFirstCellAddress(address: Address): CellAddress {
 	const components = decomposeAddress(address);
 	return composeCellAddress(components.startColumn, components.startRow);
 }
 
+/**
+ * Gets the last cell address from a given address.
+ * @param address - The address to analyze.
+ * @returns The last cell address.
+ */
 export function getLastCellAddress(address: Address): CellAddress {
 	const components = decomposeAddress(address);
 	return composeCellAddress(components.endColumn, components.endRow);
 }
 
+/**
+ * Gets the first row address from a given address.
+ * @param address - The address to analyze.
+ * @returns The first row address.
+ */
 export function getFirstRowAddress(address: Address): Address {
 	const components = decomposeAddress(address);
 
@@ -94,6 +121,11 @@ export function getFirstRowAddress(address: Address): Address {
 	});
 }
 
+/**
+ * Gets the last row address from a given address.
+ * @param address - The address to analyze.
+ * @returns The last row address.
+ */
 export function getLastRowAddress(address: Address): Address {
 	const components = decomposeAddress(address);
 
@@ -105,6 +137,11 @@ export function getLastRowAddress(address: Address): Address {
 	});
 }
 
+/**
+ * Gets the first column address from a given address.
+ * @param address - The address to analyze.
+ * @returns The first column address.
+ */
 export function getFirstColumnAddress(address: Address): Address {
 	const components = decomposeAddress(address);
 
@@ -116,6 +153,11 @@ export function getFirstColumnAddress(address: Address): Address {
 	});
 }
 
+/**
+ * Gets the last column address from a given address.
+ * @param address - The address to analyze.
+ * @returns The last column address.
+ */
 export function getLastColumnAddress(address: Address): Address {
 	const components = decomposeAddress(address);
 
@@ -127,6 +169,15 @@ export function getLastColumnAddress(address: Address): Address {
 	});
 }
 
+/**
+ * Offsets an address by the specified column and row offsets.
+ * @param address - The address to offset.
+ * @param columnOffset - The column offset.
+ * @param rowOffset - The row offset.
+ * @returns The offset address.
+ * @throws UnsupportedAddressTypeError if the address cannot be offset.
+ * @throws InvalidArgumentError if the offset is out of bounds.
+ */
 export function offsetAddress(address: Address, columnOffset: number, rowOffset: number): Address {
 	const components = decomposeAddress(address);
 
@@ -166,14 +217,30 @@ export function offsetAddress(address: Address, columnOffset: number, rowOffset:
 	});
 }
 
+/**
+ * Increments the row address by one.
+ * @param address - The address to increment.
+ * @returns The incremented address.
+ */
 export function incrementRowAddress(address: Address): Address {
 	return offsetAddress(address, 0, +1);
 }
 
+/**
+ * Decrements the row address by one.
+ * @param address - The address to decrement.
+ * @returns The decremented address.
+ */
 export function decrementRowAddress(address: Address): Address {
 	return offsetAddress(address, 0, -1);
 }
 
+/**
+ * Checks if two addresses overlap.
+ * @param address1 - The first address.
+ * @param address2 - The second address.
+ * @returns True if the addresses overlap, otherwise false.
+ */
 export function isAddressOverlapping(address1: Address, address2: Address): boolean {
 	const components1 = decomposeAddress(address1);
 	const components2 = decomposeAddress(address2);
