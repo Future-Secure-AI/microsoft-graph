@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -384,6 +384,14 @@
     "./operations/workbookTable/createWorkbookTable": {
       "import": "./dist/operations/workbookTable/createWorkbookTable.js",
       "types": "./dist/operations/workbookTable/createWorkbookTable.d.ts"
+    },
+    "./operations/workbookTable/deleteWorkbookTable": {
+      "import": "./dist/operations/workbookTable/deleteWorkbookTable.js",
+      "types": "./dist/operations/workbookTable/deleteWorkbookTable.d.ts"
+    },
+    "./operations/workbookTable/deleteWorkbookTablePreservingValues": {
+      "import": "./dist/operations/workbookTable/deleteWorkbookTablePreservingValues.js",
+      "types": "./dist/operations/workbookTable/deleteWorkbookTablePreservingValues.d.ts"
     },
     "./operations/workbookTable/getWorkbookTable": {
       "import": "./dist/operations/workbookTable/getWorkbookTable.js",
