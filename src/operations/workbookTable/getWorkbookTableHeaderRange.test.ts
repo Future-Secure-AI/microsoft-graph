@@ -5,7 +5,7 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
@@ -38,7 +38,7 @@ describe("getWorkbookTableHeaderRange", () => {
 			expect(headerRange.address).toBeTruthy();
 			expect(headerRange.values).toEqual([["Header1", "Header2", "Header3", "Header4"]]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

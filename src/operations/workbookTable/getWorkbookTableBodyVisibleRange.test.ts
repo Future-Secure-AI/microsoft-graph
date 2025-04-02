@@ -5,7 +5,7 @@ import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookTableColumnRef } from "../../services/workbookTableColumn.ts";
 import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
@@ -44,7 +44,7 @@ describe("getWorkbookTableBodyVisibleRange", () => {
 
 			expect(visible.values).toEqual([[9, 10, 11, 12]]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
@@ -26,7 +26,7 @@ describe("deleteWorkbookWorksheet", () => {
 
 			expect(worksheets.some((ws) => ws.id === worksheet.worksheetId)).toBe(false);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

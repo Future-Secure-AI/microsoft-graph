@@ -3,7 +3,7 @@ import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheetName.t
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 
@@ -19,7 +19,7 @@ describe("createWorkbookWorksheet", () => {
 			const worksheet = await createWorkbookWorksheet(workbook, worksheetName);
 			expect(worksheet.name).toBe(worksheetName);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -33,7 +33,7 @@ describe("createWorkbookWorksheet", () => {
 			const worksheet = await createWorkbookWorksheet(workbook);
 			expect(worksheet.name).toBeDefined();
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

@@ -3,7 +3,7 @@ import type { DriveItemId } from "../../models/DriveItemId.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createFolder from "../drive/createFolder.ts";
 import getDriveItem from "./getDriveItem.ts";
 
@@ -19,7 +19,7 @@ describe("getDriveItem", () => {
 		expect(retrievedFolder.id).toBe(folder.id);
 		expect(retrievedFolder.name).toBe(folderName);
 
-		await deleteDriveItemWithRetry(folder);
+		await tryDeleteDriveItem(folder);
 	});
 
 	it("throws an error when trying to retrieve a non-existent item", async () => {

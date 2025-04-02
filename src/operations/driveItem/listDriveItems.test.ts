@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createFolder from "../drive/createFolder.ts";
 import listDriveItems from "./listDriveItems.ts";
 
@@ -22,7 +22,7 @@ describe("listDriveItems", () => {
 
 			expect(items).toBeInstanceOf(Array);
 		} finally {
-			await deleteDriveItemWithRetry(folder);
+			await tryDeleteDriveItem(folder);
 		}
 	});
 });

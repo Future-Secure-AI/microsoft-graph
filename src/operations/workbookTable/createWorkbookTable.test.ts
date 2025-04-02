@@ -4,7 +4,7 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookTable from "./createWorkbookTable.ts";
 
@@ -20,7 +20,7 @@ describe("createWorkbookTable", () => {
 			const table = await createWorkbookTable(rangeRef, true);
 			expect(table.id).toBeTruthy();
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

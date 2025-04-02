@@ -4,8 +4,8 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import setRowHidden from "../../tasks/setRowHidden.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
@@ -34,7 +34,7 @@ describe("getWorkbookWorksheetUsedVisibleRange", () => {
 			const usedRange = await getWorkbookWorksheetUsedVisibleRange(worksheetRef);
 			expect(usedRange.values).toEqual([[3, 4]]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

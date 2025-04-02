@@ -9,9 +9,9 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createDefaultWorkbookWorksheetRef } from "../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import setRowHidden from "./setRowHidden.ts";
 import { setWorkbookTableBodyVisibleRows } from "./setWorkbookTableBodyVisibleRows.ts";
+import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 describe("setWorkbookTableBodyVisibleRows", () => {
 	it("writes input rows to visible rows of a table", { timeout: 30000 }, async () => {
@@ -49,7 +49,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
 			]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -89,7 +89,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 				["NewValue9", "NewValue10", "NewValue11", "NewValue12"],
 			]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

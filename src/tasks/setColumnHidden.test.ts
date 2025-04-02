@@ -8,8 +8,8 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import setColumnHidden from "./setColumnHidden.ts";
+import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 describe("setColumnHidden", () => {
 	it("hides a column in an existing workbook", async () => {
@@ -40,7 +40,7 @@ describe("setColumnHidden", () => {
 				[7, 9],
 			]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

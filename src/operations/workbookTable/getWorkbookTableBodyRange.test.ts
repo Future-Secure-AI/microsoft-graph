@@ -4,13 +4,13 @@ import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 import createWorkbookTable from "./createWorkbookTable.ts";
 import getWorkbookTableBodyRange from "./getWorkbookTableBodyRange.ts";
-import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 
 describe("getWorkbookTableBodyRange", () => {
 	it("can retrieve the data body range of a table", async () => {
@@ -42,7 +42,7 @@ describe("getWorkbookTableBodyRange", () => {
 				["Value9", "Value10", "Value11", "Value12"],
 			]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

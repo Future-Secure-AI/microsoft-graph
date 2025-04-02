@@ -5,7 +5,7 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import clearWorkbookRange from "./clearWorkbookRange.ts";
@@ -41,7 +41,7 @@ describe("clearWorkbookRange", () => {
 			const clearedRange = await getWorkbookWorksheetRange(rangeRef);
 			expect(clearedRange.values).toEqual(clearedValues);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -65,7 +65,7 @@ describe("clearWorkbookRange", () => {
 
 			expect(clearedRange.values).toEqual(clearedValues);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

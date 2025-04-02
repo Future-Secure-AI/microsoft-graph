@@ -8,8 +8,8 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
 import getRangeLastUsedCell from "./getRangeLastUsedCell.ts";
+import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 describe("getRangeLastUsedCell", () => {
 	it("should return the last used cell value", async () => {
@@ -37,7 +37,7 @@ describe("getRangeLastUsedCell", () => {
 			expect(result.value).toBe(4);
 			expect(result.address).toBe("B2");
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -66,7 +66,7 @@ describe("getRangeLastUsedCell", () => {
 			expect(result.value).toBe(3);
 			expect(result.address).toBe("A2");
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -91,7 +91,7 @@ describe("getRangeLastUsedCell", () => {
 			const result = await getRangeLastUsedCell(rangeRef);
 			expect(result).toBeNull();
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

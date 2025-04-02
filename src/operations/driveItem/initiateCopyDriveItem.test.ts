@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createFolder from "../drive/createFolder.ts";
 import getDriveItemByPath from "./getDriveItemByPath.ts";
 import initiateCopyDriveItem from "./initiateCopyDriveItem.ts";
@@ -26,8 +26,8 @@ describe("initiateCopyDriveItem", () => {
 			const copyFolder = await getDriveItemByPath(driveRef, copyPath);
 			expect(copyFolder.webUrl?.endsWith(copyPath)).toBeTruthy();
 		} finally {
-			await deleteDriveItemWithRetry(srcFolder);
-			await deleteDriveItemWithRetry(dstFolder);
+			await tryDeleteDriveItem(srcFolder);
+			await tryDeleteDriveItem(dstFolder);
 		}
 	});
 });

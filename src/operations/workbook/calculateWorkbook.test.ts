@@ -2,7 +2,7 @@ import { describe, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "./calculateWorkbook.ts";
 import createWorkbook from "./createWorkbook.ts";
 
@@ -18,7 +18,7 @@ describe("calculateWorkbook", () => {
 		try {
 			await calculateWorkbook(workbook, "Recalculate");
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -30,7 +30,7 @@ describe("calculateWorkbook", () => {
 		try {
 			await calculateWorkbook(workbook, "Full");
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -43,7 +43,7 @@ describe("calculateWorkbook", () => {
 		try {
 			await calculateWorkbook(workbook, "FullRebuild");
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

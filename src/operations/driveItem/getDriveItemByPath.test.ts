@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createFolder from "../drive/createFolder.ts";
 import getDriveItemByPath from "./getDriveItemByPath.ts";
 
@@ -17,7 +17,7 @@ describe("getDriveItemByPath", () => {
 		expect(retrievedFolder.id).toBe(folder.id);
 		expect(retrievedFolder.name).toBe(folderName);
 
-		await deleteDriveItemWithRetry(folder);
+		await tryDeleteDriveItem(folder);
 	});
 
 	it("throws an error when trying to retrieve a non-existent item by path", async () => {

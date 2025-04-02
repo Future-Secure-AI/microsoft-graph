@@ -4,8 +4,8 @@ import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import getWorkbookWorksheetByName from "../../tasks/getWorkbookWorksheetByName.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
@@ -26,7 +26,7 @@ describe("updateWorkbookWorksheet", () => {
 			const updatedWorksheet = await getWorkbookWorksheetByName(workbook, newName);
 			expect(updatedWorksheet.name).toBe(newName);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -42,7 +42,7 @@ describe("updateWorkbookWorksheet", () => {
 			const updatedWorksheet = await getWorkbookWorksheetByName(worksheet, worksheetName);
 			expect(updatedWorksheet.visibility).toBe("Hidden");
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });

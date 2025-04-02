@@ -5,7 +5,7 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../services/workbookWorksheet.ts";
-import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
+import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import getWorkbookVisibleRange from "./getWorkbookVisibleRange.ts";
@@ -31,7 +31,7 @@ describe("getWorkbookRangeVisible", () => {
 			const visibleView = await getWorkbookVisibleRange(rangeRef);
 			expect(visibleView).toBeDefined();
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -47,7 +47,7 @@ describe("getWorkbookRangeVisible", () => {
 			const [_, __, visibleView] = await sequential(updateWorkbookRange(rangeRef, { values: values }), calculateWorkbook(workbook), getWorkbookVisibleRange(rangeRef));
 			expect(visibleView).toBeDefined();
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -81,7 +81,7 @@ describe("getWorkbookRangeVisible", () => {
 				[7, 9],
 			]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 
@@ -116,7 +116,7 @@ describe("getWorkbookRangeVisible", () => {
 				[7, 8, 9],
 			]);
 		} finally {
-			await deleteDriveItemWithRetry(workbook);
+			await tryDeleteDriveItem(workbook);
 		}
 	});
 });
