@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -233,6 +233,10 @@
       "import": "./dist/models/WorkbookSessionId.js",
       "types": "./dist/models/WorkbookSessionId.d.ts"
     },
+    "./models/WorkbookTableColumnRef": {
+      "import": "./dist/models/WorkbookTableColumnRef.js",
+      "types": "./dist/models/WorkbookTableColumnRef.d.ts"
+    },
     "./models/WorkbookTableId": {
       "import": "./dist/models/WorkbookTableId.js",
       "types": "./dist/models/WorkbookTableId.d.ts"
@@ -369,6 +373,14 @@
       "import": "./dist/operations/workbookSession/refreshWorkbookSession.js",
       "types": "./dist/operations/workbookSession/refreshWorkbookSession.d.ts"
     },
+    "./operations/workbookTable/applyWorkbookTableColumnFilter": {
+      "import": "./dist/operations/workbookTable/applyWorkbookTableColumnFilter.js",
+      "types": "./dist/operations/workbookTable/applyWorkbookTableColumnFilter.d.ts"
+    },
+    "./operations/workbookTable/clearWorkbookTableFilters": {
+      "import": "./dist/operations/workbookTable/clearWorkbookTableFilters.js",
+      "types": "./dist/operations/workbookTable/clearWorkbookTableFilters.d.ts"
+    },
     "./operations/workbookTable/createWorkbookTable": {
       "import": "./dist/operations/workbookTable/createWorkbookTable.js",
       "types": "./dist/operations/workbookTable/createWorkbookTable.d.ts"
@@ -380,6 +392,10 @@
     "./operations/workbookTable/getWorkbookTableBodyRange": {
       "import": "./dist/operations/workbookTable/getWorkbookTableBodyRange.js",
       "types": "./dist/operations/workbookTable/getWorkbookTableBodyRange.d.ts"
+    },
+    "./operations/workbookTable/getWorkbookTableBodyVisibleRange": {
+      "import": "./dist/operations/workbookTable/getWorkbookTableBodyVisibleRange.js",
+      "types": "./dist/operations/workbookTable/getWorkbookTableBodyVisibleRange.d.ts"
     },
     "./operations/workbookTable/getWorkbookTableHeaderRange": {
       "import": "./dist/operations/workbookTable/getWorkbookTableHeaderRange.js",
@@ -408,6 +424,14 @@
     "./operations/workbookWorksheet/getWorkbookWorksheetRange": {
       "import": "./dist/operations/workbookWorksheet/getWorkbookWorksheetRange.js",
       "types": "./dist/operations/workbookWorksheet/getWorkbookWorksheetRange.d.ts"
+    },
+    "./operations/workbookWorksheet/getWorkbookWorksheetUsedRange": {
+      "import": "./dist/operations/workbookWorksheet/getWorkbookWorksheetUsedRange.js",
+      "types": "./dist/operations/workbookWorksheet/getWorkbookWorksheetUsedRange.d.ts"
+    },
+    "./operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange": {
+      "import": "./dist/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.js",
+      "types": "./dist/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.d.ts"
     },
     "./operations/workbookWorksheet/listWorkbookWorksheets": {
       "import": "./dist/operations/workbookWorksheet/listWorkbookWorksheets.js",
@@ -501,6 +525,10 @@
       "import": "./dist/services/workbookTable.js",
       "types": "./dist/services/workbookTable.d.ts"
     },
+    "./services/workbookTableColumn": {
+      "import": "./dist/services/workbookTableColumn.js",
+      "types": "./dist/services/workbookTableColumn.d.ts"
+    },
     "./services/workbookWorksheet": {
       "import": "./dist/services/workbookWorksheet.js",
       "types": "./dist/services/workbookWorksheet.d.ts"
@@ -544,6 +572,10 @@
     "./tasks/setWorkbookTableBodyVisibleRows": {
       "import": "./dist/tasks/setWorkbookTableBodyVisibleRows.js",
       "types": "./dist/tasks/setWorkbookTableBodyVisibleRows.d.ts"
+    },
+    "./tasks/tryDeleteDriveItem": {
+      "import": "./dist/tasks/tryDeleteDriveItem.js",
+      "types": "./dist/tasks/tryDeleteDriveItem.d.ts"
     }
   }
 }
