@@ -35,12 +35,12 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 			});
 
 			await setRowHidden(createWorkbookRangeRef(worksheetRef, "A3:A3"), true);
-			await calculateWorkbook(workbook);
 
 			await setWorkbookTableBodyVisibleRows(table, [
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
 			]);
+			await calculateWorkbook(workbook);
 
 			const visibleBodyRange = await getWorkbookTableBodyVisibleRange(table);
 			expect(visibleBodyRange.values).toEqual([
@@ -73,13 +73,14 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 			});
 
 			await setRowHidden(createWorkbookRangeRef(worksheetRef, "A3:A3"), true);
-			await calculateWorkbook(workbook);
 
 			await setWorkbookTableBodyVisibleRows(table, [
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
 				["NewValue9", "NewValue10", "NewValue11", "NewValue12"],
 			]);
+
+			await calculateWorkbook(workbook);
 
 			const visibleBodyRange = await getWorkbookTableBodyVisibleRange(table);
 			expect(visibleBodyRange.values).toEqual([
