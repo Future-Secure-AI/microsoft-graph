@@ -55,19 +55,19 @@ export function decomposeAddress(address: Address): AddressComponents {
  * @throws InvalidArgumentError if the components are invalid.
  */
 export function composeAddress(components: AddressComponents): Address {
-	if (isSingleColumn(components) && isMaxRows(components)) {
+	if (isSingleColumn(components) && isAllRows(components)) {
 		return composeColumnAddress(components.startColumn);
 	}
 
-	if (isSingleRow(components) && isMaxColumns(components)) {
+	if (isSingleRow(components) && isAllColumns(components)) {
 		return composeRowAddress(components.startRow);
 	}
 
-	if (isMaxRows(components)) {
+	if (isAllRows(components)) {
 		return composeColumnRangeAddress(components.startColumn, components.endColumn);
 	}
 
-	if (isMaxColumns(components)) {
+	if (isAllColumns(components)) {
 		return composeRowRangeAddress(components.startRow, components.endRow);
 	}
 
@@ -181,11 +181,11 @@ export function getLastColumnAddress(address: Address): Address {
 export function offsetAddress(address: Address, columnOffset: number, rowOffset: number): Address {
 	const components = decomposeAddress(address);
 
-	if (isMaxRows(components) && rowOffset !== 0) {
+	if (isAllRows(components) && rowOffset !== 0) {
 		throw new UnsupportedAddressTypeError("All rows are selected. Cannot offset rows.");
 	}
 
-	if (isMaxColumns(components) && columnOffset !== 0) {
+	if (isAllColumns(components) && columnOffset !== 0) {
 		throw new UnsupportedAddressTypeError("All columns are selected. Cannot offset columns.");
 	}
 
@@ -248,6 +248,62 @@ export function isAddressOverlapping(address1: Address, address2: Address): bool
 	return components1.startColumn <= components2.endColumn && components1.endColumn >= components2.startColumn && rowAddressToOffset(components1.startRow) <= rowAddressToOffset(components2.endRow) && rowAddressToOffset(components1.endRow) >= rowAddressToOffset(components2.startRow);
 }
 
+export function isSingleRowAddress(address: Address): boolean {
+	const components = decomposeAddress(address);
+	return isSingleRow(components);
+}
+
+export function isSingleColumnAddress(address: Address): boolean {
+	const components = decomposeAddress(address);
+	return isSingleColumn(components);
+}
+
+export function isAllColumnsAddress(address: Address): boolean {
+	const components = decomposeAddress(address);
+	return isAllColumns(components);
+}
+
+export function isAllRowsAddress(address: Address): boolean {
+	const components = decomposeAddress(address);
+	return isAllRows(components);
+}
+
+/**
+ * Checks if the address components represent a single row.
+ * @param components - The address components to check.
+ * @returns True if the components represent a single row, otherwise false.
+ */
+function isSingleRow(components: AddressComponents): boolean {
+	return components.startRow === components.endRow;
+}
+
+/**
+ * Checks if the address components represent a single column.
+ * @param components - The address components to check.
+ * @returns True if the components represent a single column, otherwise false.
+ */
+function isSingleColumn(components: AddressComponents): boolean {
+	return components.startColumn === components.endColumn;
+}
+
+/**
+ * Checks if the address components represent all columns.
+ * @param components - The address components to check.
+ * @returns True if the components represent all columns, otherwise false.
+ */
+function isAllColumns(components: AddressComponents): boolean {
+	return components.startColumn === firstColumn && components.endColumn === lastColumn;
+}
+
+/**
+ * Checks if the address components represent all rows.
+ * @param components - The address components to check.
+ * @returns True if the components represent all rows, otherwise false.
+ */
+function isAllRows(components: AddressComponents): boolean {
+	return components.startRow === firstRow && components.endRow === lastRow;
+}
+
 function composeCellRangeAddress(startColumn: string, startRow: string, endColumn: string, endRow: string): CellRangeAddress {
 	return `${startColumn}${startRow}:${endColumn}${endRow}` as CellRangeAddress;
 }
@@ -270,20 +326,4 @@ function composeRowAddress(startRow: string): RowAddress {
 
 function composeColumnAddress(startColumn: string): ColumnAddress {
 	return startColumn as ColumnAddress;
-}
-
-function isSingleRow(components: AddressComponents) {
-	return components.startRow === components.endRow;
-}
-
-function isSingleColumn(components: AddressComponents) {
-	return components.startColumn === components.endColumn;
-}
-
-function isMaxColumns(components: AddressComponents) {
-	return components.startColumn === firstColumn && components.endColumn === lastColumn;
-}
-
-function isMaxRows(components: AddressComponents) {
-	return components.startRow === firstRow && components.endRow === lastRow;
 }

@@ -1,7 +1,24 @@
 import { describe, expect, it } from "vitest";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
-import { composeAddress, decomposeAddress, decrementRowAddress, getFirstCellAddress, getFirstColumnAddress, getFirstRowAddress, getLastCellAddress, getLastColumnAddress, getLastRowAddress, incrementRowAddress, isAddressOverlapping, offsetAddress } from "./addressManipulation.ts";
+import {
+	composeAddress,
+	decomposeAddress,
+	decrementRowAddress,
+	getFirstCellAddress,
+	getFirstColumnAddress,
+	getFirstRowAddress,
+	getLastCellAddress,
+	getLastColumnAddress,
+	getLastRowAddress,
+	incrementRowAddress,
+	isAddressOverlapping,
+	isAllColumnsAddress,
+	isAllRowsAddress,
+	isSingleColumnAddress,
+	isSingleRowAddress,
+	offsetAddress,
+} from "./addressManipulation.ts";
 
 describe("getFirstCellAddress", () => {
 	it("should return the start cell of a range address", () => {
@@ -377,5 +394,53 @@ describe("isAddressOverlapping", () => {
 		expect(isAddressOverlapping("A1", "B2")).toBe(false); // No overlap
 		expect(isAddressOverlapping("A1", "A2")).toBe(false); // Different rows
 		expect(isAddressOverlapping("A1", "B1")).toBe(false); // Different columns
+	});
+});
+
+describe("isSingleRowAddress", () => {
+	it("should return true for single row addresses", () => {
+		expect(isSingleRowAddress("1" as RowAddress)).toBe(true);
+		expect(isSingleRowAddress("A1:A1" as CellRangeAddress)).toBe(true);
+	});
+
+	it("should return false for multi-row addresses", () => {
+		expect(isSingleRowAddress("1:2" as RowRangeAddress)).toBe(false);
+		expect(isSingleRowAddress("A1:A2" as CellRangeAddress)).toBe(false);
+	});
+});
+
+describe("isSingleColumnAddress", () => {
+	it("should return true for single column addresses", () => {
+		expect(isSingleColumnAddress("A" as ColumnAddress)).toBe(true);
+		expect(isSingleColumnAddress("A1:A1" as CellRangeAddress)).toBe(true);
+	});
+
+	it("should return false for multi-column addresses", () => {
+		expect(isSingleColumnAddress("A:B" as ColumnRangeAddress)).toBe(false);
+		expect(isSingleColumnAddress("A1:B1" as CellRangeAddress)).toBe(false);
+	});
+});
+
+describe("isAllColumnsAddress", () => {
+	it("should return true for addresses spanning all columns", () => {
+		expect(isAllColumnsAddress("1" as RowAddress)).toBe(true);
+		expect(isAllColumnsAddress("1:10" as RowRangeAddress)).toBe(true);
+	});
+
+	it("should return false for addresses not spanning all columns", () => {
+		expect(isAllColumnsAddress("A" as ColumnAddress)).toBe(false);
+		expect(isAllColumnsAddress("A1:B1" as CellRangeAddress)).toBe(false);
+	});
+});
+
+describe("isAllRowsAddress", () => {
+	it("should return true for addresses spanning all rows", () => {
+		expect(isAllRowsAddress("A" as ColumnAddress)).toBe(true);
+		expect(isAllRowsAddress("A:C" as ColumnRangeAddress)).toBe(true);
+	});
+
+	it("should return false for addresses not spanning all rows", () => {
+		expect(isAllRowsAddress("1" as RowAddress)).toBe(false);
+		expect(isAllRowsAddress("A1:A10" as CellRangeAddress)).toBe(false);
 	});
 });
