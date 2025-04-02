@@ -8,8 +8,8 @@ import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../se
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
-import getWorkbookUsedRange from "./getWorkbookUsedRange.ts";
-import updateWorkbookRange from "./updateWorkbookRange.ts";
+import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
+import getWorkbookUsedRange from "./getWorkbookWorksheetUsedRange.ts";
 
 const values = [
 	[1, 2],

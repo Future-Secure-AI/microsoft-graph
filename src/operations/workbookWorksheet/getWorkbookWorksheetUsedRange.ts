@@ -9,9 +9,13 @@ import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
 /**
- * @deprecated Use `getWorkbookWorksheetUsedRange` instead.
+ * Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank.
+ *
+ * @param worksheetRef - A reference to the worksheet, optionally including session information.
+ * @returns The used range of the worksheet, including its metadata and reference information.
+ * @see https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */
-export default function getWorkbookUsedRange(worksheetRef: WorkbookWorksheetRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {
+export default function getWorkbookWorksheetUsedRange(worksheetRef: WorkbookWorksheetRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {
 	return operation({
 		contextId: worksheetRef.contextId,
 		method: "GET",
