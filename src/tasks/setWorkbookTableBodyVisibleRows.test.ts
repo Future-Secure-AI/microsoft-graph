@@ -3,13 +3,13 @@ import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import createWorkbookTable from "../operations/workbookTable/createWorkbookTable.ts";
+import getWorkbookTableBodyVisibleRange from "../operations/workbookTable/getWorkbookTableBodyVisibleRange.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createDefaultWorkbookWorksheetRef } from "../services/workbookWorksheet.ts";
 import deleteDriveItemWithRetry from "./deleteDriveItemWithRetry.ts";
-import { getWorkbookTableVisibleBody } from "./getWorkbookTableVisibleBody.ts";
 import setRowHidden from "./setRowHidden.ts";
 import { setWorkbookTableBodyVisibleRows } from "./setWorkbookTableBodyVisibleRows.ts";
 
@@ -42,7 +42,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
 			]);
 
-			const visibleBodyRange = await getWorkbookTableVisibleBody(table);
+			const visibleBodyRange = await getWorkbookTableBodyVisibleRange(table);
 			expect(visibleBodyRange.values).toEqual([
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
 				["OldValue5", "OldValue6", "OldValue7", "OldValue8"],
@@ -81,7 +81,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 				["NewValue9", "NewValue10", "NewValue11", "NewValue12"],
 			]);
 
-			const visibleBodyRange = await getWorkbookTableVisibleBody(table);
+			const visibleBodyRange = await getWorkbookTableBodyVisibleRange(table);
 			expect(visibleBodyRange.values).toEqual([
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
 				["OldValue5", "OldValue6", "OldValue7", "OldValue8"],

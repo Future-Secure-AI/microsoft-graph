@@ -6,12 +6,13 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookTableColumnRef } from "../../services/workbookTableColumn.ts";
 import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
 import deleteDriveItemWithRetry from "../../tasks/deleteDriveItemWithRetry.ts";
-import { getWorkbookTableVisibleBody } from "../../tasks/getWorkbookTableVisibleBody.ts";
+import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 import applyWorkbookTableColumnFilter from "./applyWorkbookTableColumnFilter.ts";
 import clearWorkbookTableColumnFilters from "./clearWorkbookTableFilters.ts";
 import createWorkbookTable from "./createWorkbookTable.ts";
+import getWorkbookTableBodyVisibleRange from "./getWorkbookTableBodyVisibleRange.ts";
 
 describe("clearWorkbookTableFilters", () => {
 	it("can clear all filters from a workbook table", async () => {
@@ -41,7 +42,9 @@ describe("clearWorkbookTableFilters", () => {
 
 			await clearWorkbookTableColumnFilters(table);
 
-			const visible = await getWorkbookTableVisibleBody(table);
+			await calculateWorkbook(workbook);
+
+			const visible = await getWorkbookTableBodyVisibleRange(table);
 
 			expect(visible.values).toEqual([
 				[1, 2, 3, 4],

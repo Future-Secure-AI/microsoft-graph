@@ -13,8 +13,8 @@ import applyWorkbookTableColumnFilter from "./applyWorkbookTableColumnFilter.ts"
 import createWorkbookTable from "./createWorkbookTable.ts";
 import getWorkbookTableBodyVisibleRange from "./getWorkbookTableBodyVisibleRange.ts";
 
-describe("applyWorkbookTableColumnFilter", () => {
-	it("can apply a filter to a workbook table column", async () => {
+describe("getWorkbookTableBodyVisibleRange", () => {
+	it("can retrieve the visible body range of a table from an existing workbook", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -38,7 +38,6 @@ describe("applyWorkbookTableColumnFilter", () => {
 				filterOn: "custom",
 				criterion1: ">5",
 			});
-
 			await calculateWorkbook(workbook);
 
 			const visible = await getWorkbookTableBodyVisibleRange(table);

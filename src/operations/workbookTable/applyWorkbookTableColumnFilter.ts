@@ -9,6 +9,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  *
  * @param columnRef - A reference to the table column.
  * @param criteria - The filter criteria to apply.
+ * @remarks If you intend to immediately read the visible range from this table after changing the filter you must perform a `calculateWorksheet` otherwise the changes may not yet have taken effect.
  * @see https://learn.microsoft.com/en-us/graph/api/filter-apply
  */
 export default function applyWorkbookTableColumnFilter(columnRef: WorkbookTableColumnRef, criteria: WorkbookFilterCriteria): GraphOperation<void> {
