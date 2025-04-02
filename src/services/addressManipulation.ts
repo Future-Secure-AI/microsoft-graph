@@ -248,58 +248,58 @@ export function isAddressOverlapping(address1: Address, address2: Address): bool
 	return components1.startColumn <= components2.endColumn && components1.endColumn >= components2.startColumn && rowAddressToOffset(components1.startRow) <= rowAddressToOffset(components2.endRow) && rowAddressToOffset(components1.endRow) >= rowAddressToOffset(components2.startRow);
 }
 
+/**
+ * Checks if the address components represent a single row.
+ * @param address - The address to check.
+ * @returns True if the components represent a single riw, otherwise false.
+ */
 export function isSingleRowAddress(address: Address): boolean {
 	const components = decomposeAddress(address);
 	return isSingleRow(components);
 }
 
+/**
+ * Checks if the address components represent a single column.
+ * @param address - The address to check.
+ * @returns True if the components represent single columns, otherwise false.
+ */
 export function isSingleColumnAddress(address: Address): boolean {
 	const components = decomposeAddress(address);
 	return isSingleColumn(components);
 }
 
+/**
+ * Checks if the address components represent all columns.
+ * @param address - The address to check.
+ * @returns True if the components represent all columns, otherwise false.
+ */
 export function isAllColumnsAddress(address: Address): boolean {
 	const components = decomposeAddress(address);
 	return isAllColumns(components);
 }
 
+/**
+ * Checks if the address components represent all rows.
+ * @param address - The address to check.
+ * @returns True if the components represent all rows, otherwise false.
+ */
 export function isAllRowsAddress(address: Address): boolean {
 	const components = decomposeAddress(address);
 	return isAllRows(components);
 }
 
-/**
- * Checks if the address components represent a single row.
- * @param components - The address components to check.
- * @returns True if the components represent a single row, otherwise false.
- */
 function isSingleRow(components: AddressComponents): boolean {
 	return components.startRow === components.endRow;
 }
 
-/**
- * Checks if the address components represent a single column.
- * @param components - The address components to check.
- * @returns True if the components represent a single column, otherwise false.
- */
 function isSingleColumn(components: AddressComponents): boolean {
 	return components.startColumn === components.endColumn;
 }
 
-/**
- * Checks if the address components represent all columns.
- * @param components - The address components to check.
- * @returns True if the components represent all columns, otherwise false.
- */
 function isAllColumns(components: AddressComponents): boolean {
 	return components.startColumn === firstColumn && components.endColumn === lastColumn;
 }
 
-/**
- * Checks if the address components represent all rows.
- * @param components - The address components to check.
- * @returns True if the components represent all rows, otherwise false.
- */
 function isAllRows(components: AddressComponents): boolean {
 	return components.startRow === firstRow && components.endRow === lastRow;
 }
