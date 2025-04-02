@@ -14,8 +14,8 @@ Something like this, but whatever works in your context.
 const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as TenantId;
 const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as ClientId;
 const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as ClientSecret;
-const siteId = getEnvironmentVariable("SHAREPOINT_SITE_ID") as SiteId;
-const driveId = getEnvironmentVariable("SHAREPOINT_DRIVE_ID") as DriveId;
+const siteId = getEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
+const driveId = getEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
 ```
 
 ### Get reference to drive
