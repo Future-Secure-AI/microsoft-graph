@@ -1,6 +1,8 @@
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
+import type { RowRangeAddress } from "../models/Address.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
+import { decomposeAddress } from "../services/addressManipulation.ts";
 
 /**
  * Hide or show one or more rows.
@@ -10,6 +12,9 @@ import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange
  * @returns The updated workbook range.
  */
 export default async function setRowHidden(rangeRef: WorkbookRangeRef, hidden: boolean): Promise<WorkbookRange & WorkbookRangeRef> {
+	const components = decomposeAddress(rangeRef.address);
+	rangeRef.address = `${components.startRow}:${components.endRow}` as RowRangeAddress; // Workaround API explicitly wanting a range
+
 	return await updateWorkbookRange(rangeRef, {
 		rowHidden: hidden,
 	});

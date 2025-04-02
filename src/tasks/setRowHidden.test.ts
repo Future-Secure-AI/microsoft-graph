@@ -12,7 +12,7 @@ import setRowHidden from "./setRowHidden.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 describe("setRowHidden", () => {
-	it("hides a row in an existing workbook", async () => {
+	it("hides a single row in an existing workbook", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -29,7 +29,7 @@ describe("setRowHidden", () => {
 				],
 			});
 
-			const hiddenRange = createWorkbookRangeRef(worksheetRef, "2:2");
+			const hiddenRange = createWorkbookRangeRef(worksheetRef, "2");
 			await setRowHidden(hiddenRange, true);
 			await calculateWorkbook(workbook);
 
@@ -38,6 +38,34 @@ describe("setRowHidden", () => {
 				[1, 2, 3],
 				[7, 8, 9],
 			]);
+		} finally {
+			await tryDeleteDriveItem(workbook);
+		}
+	});
+
+	it("hides multiple rows in an existing workbook", async () => {
+		const workbookName = generateTempFileName("xlsx");
+		const workbookPath = driveItemPath(workbookName);
+		const driveRef = getDefaultDriveRef();
+		const workbook = await createWorkbook(driveRef, workbookPath);
+		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+
+		try {
+			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
+			await updateWorkbookRange(rangeRef, {
+				values: [
+					[1, 2, 3],
+					[4, 5, 6],
+					[7, 8, 9],
+				],
+			});
+
+			const hiddenRange = createWorkbookRangeRef(worksheetRef, "2:3");
+			await setRowHidden(hiddenRange, true);
+			await calculateWorkbook(workbook);
+
+			const visibleView = await getWorkbookVisibleRange(rangeRef);
+			expect(visibleView.values).toEqual([[1, 2, 3]]);
 		} finally {
 			await tryDeleteDriveItem(workbook);
 		}
