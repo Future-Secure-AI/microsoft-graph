@@ -35,16 +35,30 @@ const folder = await createFolder(driveRef, "folder-name");
 const workbook = await createWorkbookAndStartSession(folder, "workbook-name");
 ```
 
-### Update range
+## Getting worksheet
 ```typescript
-const worksheet = await getWorkbookWorksheetByName(workbook, "Sheet1");
+const workbook = await getWorkbookWorksheetByName(workbook, "Sheet1");
+
+// OR this cheat to get the default sheet for a newly-created book
+const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
+```
+
+### Writing values to a range
+```typescript
 const rangeRef = createWorkbookRangeRef(worksheet, "A1:B2");
-await updateWorkbookRange(rangeRef, {
-	values: [
-		[1, 2],
-		[3, 4]
-	]
-});
+await setWorkbookRangeValues(rangeRef, [
+	[1, 2],
+	[3, 4],
+	[5, 6],
+]);
+```
+
+### Reading values from a range
+```typescript
+for await (const rowValues of iterateWorkbookRangeValues(rangeRef)) {
+	// This automatically uses multiple requests if the range is too big for a single request
+	debug(` ${rowValues}`);
+}
 ```
 
 ### List files
