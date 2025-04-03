@@ -11,7 +11,7 @@ import setWorkbookRangeValues from "./setWorkbookRangeValues.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 describe("iterateWorkbookRangeValues", () => {
-	it("happy path", async () => {
+	it("Single request", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -30,8 +30,33 @@ describe("iterateWorkbookRangeValues", () => {
 
 			let idx = 0;
 			for await (const row of iterateWorkbookRangeValues(rangeRef)) {
-				expect(row).toEqual(values[idx]);
-				idx++;
+				expect(row).toEqual(values[idx++]);
+			}
+		} finally {
+			await tryDeleteDriveItem(workbook);
+		}
+	});
+
+	it("Multiple requests", async () => {
+		const workbookName = generateTempFileName("xlsx");
+		const workbookPath = driveItemPath(workbookName);
+		const driveRef = getDefaultDriveRef();
+		const workbook = await createWorkbook(driveRef, workbookPath);
+		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+
+		try {
+			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
+			const values = [
+				[1, 2, 3],
+				[4, 5, 6],
+				[7, 8, 9],
+			];
+			await setWorkbookRangeValues(rangeRef, values);
+			await calculateWorkbook(workbook);
+
+			let idx = 0;
+			for await (const row of iterateWorkbookRangeValues(rangeRef, 1)) {
+				expect(row).toEqual(values[idx++]);
 			}
 		} finally {
 			await tryDeleteDriveItem(workbook);
