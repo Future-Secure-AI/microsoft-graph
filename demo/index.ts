@@ -1,13 +1,9 @@
-import { ClientId } from "../src/models/ClientId.ts";
-import { ClientSecret } from "../src/models/ClientSecret.ts";
-import { DriveId } from "../src/models/DriveId.ts";
-import { HttpProxy } from "../src/models/HttpProxy.ts";
-import { SiteId } from "../src/models/SiteId.ts";
-import { TenantId } from "../src/models/TenantId.ts";
-import createFolder from "../src/operations/drive/createFolder.ts";
-import deleteDriveItem from "../src/operations/driveItem/deleteDriveItem.ts";
-import listDriveItems from "../src/operations/driveItem/listDriveItems.ts";
-import updateWorkbookRange from "../src/operations/workbookRange/updateWorkbookRange.ts";
+import type { ClientId } from "../src/models/ClientId.ts";
+import type { ClientSecret } from "../src/models/ClientSecret.ts";
+import type { DriveId } from "../src/models/DriveId.ts";
+import type { HttpProxy } from "../src/models/HttpProxy.ts";
+import type { SiteId } from "../src/models/SiteId.ts";
+import type { TenantId } from "../src/models/TenantId.ts";
 import { register } from "../src/services/context.ts";
 import { createDriveRef } from "../src/services/drive.ts";
 import { workbookFileExtension } from "../src/services/driveItem.ts";
@@ -17,8 +13,10 @@ import { generateTempFileName } from "../src/services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../src/services/workbookRange.ts";
 import createWorkbookAndStartSession from "../src/tasks/createWorkbookAndStartSession.ts";
 import getWorkbookWorksheetByName from "../src/tasks/getWorkbookWorksheetByName.ts";
+import iterateWorkbookRangeValues from "../src/tasks/iterateWorkbookRangeValues.ts";
 import safeDeleteWorkbook from "../src/tasks/safeDeleteWorkbook.ts";
-import { debug, info, } from "./log.ts";
+import setWorkbookRangeValues from "../src/tasks/setWorkbookRangeValues.ts";
+import { debug, info } from "./log.ts";
 
 info("Loading envs...");
 const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as TenantId;
@@ -33,29 +31,24 @@ const contextRef = register(tenantId, clientId, clientSecret, httpProxy);
 const siteRef = createSiteRef(contextRef, siteId);
 const driveRef = createDriveRef(siteRef, driveId);
 
-info("Creating folder...");
-const folder = await createFolder(driveRef, generateTempFileName());
-
 info("Creating workbook...");
-const workbook = await createWorkbookAndStartSession(folder, generateTempFileName(workbookFileExtension));
+const workbook = await createWorkbookAndStartSession(driveRef, generateTempFileName(workbookFileExtension));
 
-info("Updating range...");
+info("Setting range...");
 const worksheet = await getWorkbookWorksheetByName(workbook, "Sheet1");
-const rangeRef = createWorkbookRangeRef(worksheet, "A1:B2");
-await updateWorkbookRange(rangeRef, {
-	values: [
-		[1, 2],
-		[3, 4]
-	]
-});
+const rangeRef = createWorkbookRangeRef(worksheet, "A1:B3");
+await setWorkbookRangeValues(rangeRef, [
+	[1, 2],
+	[3, 4],
+	[5, 6],
+]);
 
-info("Listing files...");
-for (const item of await listDriveItems(folder)) {
-	debug(` - ${item.name}`);
+info("Iterating range...");
+for await (const rowValues of iterateWorkbookRangeValues(rangeRef)) {
+	debug(` ${rowValues}`);
 }
 
 info("Cleanup...");
-await safeDeleteWorkbook(workbook); // Closes session and waits for unlock
-await deleteDriveItem(folder);
+await safeDeleteWorkbook(workbook);
 
 info("Done.");

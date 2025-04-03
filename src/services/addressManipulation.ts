@@ -288,6 +288,26 @@ export function isAllRowsAddress(address: Address): boolean {
 	return isAllRows(components);
 }
 
+/**
+ * Counts the number of rows in a given address.
+ * @param address - The address to analyze.
+ * @returns The number of rows in the address.
+ */
+export function countAddressRows(address: Address): number {
+	const components = decomposeAddress(address);
+	return rowAddressToOffset(components.endRow) - rowAddressToOffset(components.startRow) + 1;
+}
+
+/**
+ * Counts the number of columns in a given address.
+ * @param address - The address to analyze.
+ * @returns The number of columns in the address.
+ */
+export function countAddressColumns(address: Address): number {
+	const components = decomposeAddress(address);
+	return columnAddressToOffset(components.endColumn) - columnAddressToOffset(components.startColumn) + 1;
+}
+
 function isSingleRow(components: AddressComponents): boolean {
 	return components.startRow === components.endRow;
 }

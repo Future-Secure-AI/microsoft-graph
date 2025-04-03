@@ -3,6 +3,8 @@ import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
 import {
 	composeAddress,
+	countAddressColumns,
+	countAddressRows,
 	decomposeAddress,
 	decrementRowAddress,
 	getFirstCellAddress,
@@ -442,5 +444,49 @@ describe("isAllRowsAddress", () => {
 	it("should return false for addresses not spanning all rows", () => {
 		expect(isAllRowsAddress("1" as RowAddress)).toBe(false);
 		expect(isAllRowsAddress("A1:A10" as CellRangeAddress)).toBe(false);
+	});
+});
+
+describe("countAddressRows", () => {
+	it("should return the correct number of rows for a cell range", () => {
+		expect(countAddressRows("A1:C5")).toBe(5);
+	});
+
+	it("should return the correct number of rows for a row range", () => {
+		expect(countAddressRows("1:5")).toBe(5);
+	});
+
+	it("should return 1 for a single cell address", () => {
+		expect(countAddressRows("A1")).toBe(1);
+	});
+
+	it("should return the correct number of rows for a column address", () => {
+		expect(countAddressRows("A")).toBe(1048576);
+	});
+
+	it("should return the correct number of rows for a column range address", () => {
+		expect(countAddressRows("A:C")).toBe(1048576);
+	});
+});
+
+describe("countAddressColumns", () => {
+	it("should return the correct number of columns for a cell range", () => {
+		expect(countAddressColumns("A1:C5")).toBe(3);
+	});
+
+	it("should return the correct number of columns for a column range", () => {
+		expect(countAddressColumns("A:C")).toBe(3);
+	});
+
+	it("should return 1 for a single cell address", () => {
+		expect(countAddressColumns("A1")).toBe(1);
+	});
+
+	it("should return the correct number of columns for a row address", () => {
+		expect(countAddressColumns("1")).toBe(16384);
+	});
+
+	it("should return the correct number of columns for a row range address", () => {
+		expect(countAddressColumns("1:5")).toBe(16384);
 	});
 });
