@@ -35,7 +35,7 @@ const workbook = await createWorkbookAndStartSession(driveRef, generateTempFileN
 info("Getting worksheet...");
 const worksheetRef = createDefaultWorkbookWorksheetRef(workbook); // OR `await getWorkbookWorksheetByName(workbook, "Sheet1");` to get one by name
 
-info("Writing values to arange...");
+info("Writing values to range...");
 const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B3");
 await setWorkbookRangeValues(rangeRef, [
 	[1, 2],
