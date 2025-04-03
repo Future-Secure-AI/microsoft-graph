@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -109,6 +109,14 @@
       "import": "./dist/models/Cell.js",
       "types": "./dist/models/Cell.d.ts"
     },
+    "./models/CellRangeValues": {
+      "import": "./dist/models/CellRangeValues.js",
+      "types": "./dist/models/CellRangeValues.d.ts"
+    },
+    "./models/CellValue": {
+      "import": "./dist/models/CellValue.js",
+      "types": "./dist/models/CellValue.d.ts"
+    },
     "./models/ClientId": {
       "import": "./dist/models/ClientId.js",
       "types": "./dist/models/ClientId.d.ts"
@@ -192,6 +200,10 @@
     "./models/RowOffset": {
       "import": "./dist/models/RowOffset.js",
       "types": "./dist/models/RowOffset.d.ts"
+    },
+    "./models/RowRangeValues": {
+      "import": "./dist/models/RowRangeValues.js",
+      "types": "./dist/models/RowRangeValues.d.ts"
     },
     "./models/Scope": {
       "import": "./dist/models/Scope.js",
@@ -565,6 +577,10 @@
       "import": "./dist/tasks/getWorkbookWorksheetByName.js",
       "types": "./dist/tasks/getWorkbookWorksheetByName.d.ts"
     },
+    "./tasks/iterateWorkbookRangeValues": {
+      "import": "./dist/tasks/iterateWorkbookRangeValues.js",
+      "types": "./dist/tasks/iterateWorkbookRangeValues.d.ts"
+    },
     "./tasks/safeDeleteWorkbook": {
       "import": "./dist/tasks/safeDeleteWorkbook.js",
       "types": "./dist/tasks/safeDeleteWorkbook.d.ts"
@@ -576,6 +592,10 @@
     "./tasks/setRowHidden": {
       "import": "./dist/tasks/setRowHidden.js",
       "types": "./dist/tasks/setRowHidden.d.ts"
+    },
+    "./tasks/setWorkbookRangeValues": {
+      "import": "./dist/tasks/setWorkbookRangeValues.js",
+      "types": "./dist/tasks/setWorkbookRangeValues.d.ts"
     },
     "./tasks/setWorkbookTableBodyVisibleRows": {
       "import": "./dist/tasks/setWorkbookTableBodyVisibleRows.js",
