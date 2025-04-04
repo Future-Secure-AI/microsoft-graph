@@ -1,10 +1,10 @@
-import { readdirSync, readFileSync, statSync, writeFileSync } from 'fs';
-import { join } from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 
 const esmDir = './dist/esm';
 const cjsDir = './dist/cjs';
 const pkgPath = './package.json';
-const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
 
 const exportsMap = {
   ".": {
@@ -14,21 +14,21 @@ const exportsMap = {
   }
 };
 
-function isTestFile(fileName) {
+function isTestFile(fileName: string): boolean {
   return fileName.endsWith('.test.js') || fileName.endsWith('.spec.js');
 }
 
-function isTestDir(path) {
+function isTestDir(path: string): boolean {
   return /\/(__tests__|__mocks__)(\/|$)/.test(path.replace(/\\/g, '/'));
 }
 
-function walk(dir, currentRelPath = '') {
-  const entries = readdirSync(dir);
+function walk(dir: string, currentRelPath = ''): void {
+  const entries = fs.readdirSync(dir);
 
   for (const entry of entries) {
-    const fullPath = join(dir, entry);
-    const stats = statSync(fullPath);
-    const relPath = join(currentRelPath, entry);
+    const fullPath = path.join(dir, entry);
+    const stats = fs.statSync(fullPath);
+    const relPath = path.join(currentRelPath, entry);
 
     if (stats.isDirectory()) {
       if (!isTestDir(relPath)) {
@@ -54,5 +54,28 @@ walk(esmDir); // Use esmDir to determine what gets exported
 
 pkg.exports = exportsMap;
 
-writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
+fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
 console.log("✅ package.json exports updated with", Object.keys(exportsMap).length, "entries");
+
+// Generate package.json for CJS modules
+const cjsPackageJson = {
+  type: "commonjs"
+};
+
+// Generate package.json for ESM modules
+const esmPackageJson = {
+  type: "module"
+};
+
+// Write the package.json files
+fs.writeFileSync(
+  path.join(process.cwd(), 'dist', 'cjs', 'package.json'),
+  JSON.stringify(cjsPackageJson, null, 2)
+);
+
+fs.writeFileSync(
+  path.join(process.cwd(), 'dist', 'esm', 'package.json'),
+  JSON.stringify(esmPackageJson, null, 2)
+);
+
+console.log('✅ Generated package.json files in dist folders');
