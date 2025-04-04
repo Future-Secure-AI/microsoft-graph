@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.7.4",
+  "version": "2.7.5",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -696,6 +696,396 @@
       "import": "./dist/esm/tasks/tryDeleteDriveItem.js",
       "require": "./dist/cjs/tasks/tryDeleteDriveItem.js",
       "types": "./dist/esm/tasks/tryDeleteDriveItem.d.ts"
+    },
+    "./dist/cjs/errors/BadTemplateError.js": {
+      "require": "./dist/cjs/errors/BadTemplateError.js"
+    },
+    "./dist/cjs/errors/ContextNotRegisteredError.js": {
+      "require": "./dist/cjs/errors/ContextNotRegisteredError.js"
+    },
+    "./dist/cjs/errors/EnvironmentVariableMissingError.js": {
+      "require": "./dist/cjs/errors/EnvironmentVariableMissingError.js"
+    },
+    "./dist/cjs/errors/InconsistentContextError.js": {
+      "require": "./dist/cjs/errors/InconsistentContextError.js"
+    },
+    "./dist/cjs/errors/InvalidArgumentError.js": {
+      "require": "./dist/cjs/errors/InvalidArgumentError.js"
+    },
+    "./dist/cjs/errors/NeverError.js": {
+      "require": "./dist/cjs/errors/NeverError.js"
+    },
+    "./dist/cjs/errors/NotFoundError.js": {
+      "require": "./dist/cjs/errors/NotFoundError.js"
+    },
+    "./dist/cjs/errors/NotImplementedError.js": {
+      "require": "./dist/cjs/errors/NotImplementedError.js"
+    },
+    "./dist/cjs/errors/ProtocolError.js": {
+      "require": "./dist/cjs/errors/ProtocolError.js"
+    },
+    "./dist/cjs/errors/RequestFailedError.js": {
+      "require": "./dist/cjs/errors/RequestFailedError.js"
+    },
+    "./dist/cjs/errors/UnsupportedAddressTypeError.js": {
+      "require": "./dist/cjs/errors/UnsupportedAddressTypeError.js"
+    },
+    "./dist/cjs/graphApi.js": {
+      "require": "./dist/cjs/graphApi.js"
+    },
+    "./dist/cjs/models/AccessToken.js": {
+      "require": "./dist/cjs/models/AccessToken.js"
+    },
+    "./dist/cjs/models/Address.js": {
+      "require": "./dist/cjs/models/Address.js"
+    },
+    "./dist/cjs/models/CellRangeValues.js": {
+      "require": "./dist/cjs/models/CellRangeValues.js"
+    },
+    "./dist/cjs/models/CellValue.js": {
+      "require": "./dist/cjs/models/CellValue.js"
+    },
+    "./dist/cjs/models/ClientId.js": {
+      "require": "./dist/cjs/models/ClientId.js"
+    },
+    "./dist/cjs/models/ClientSecret.js": {
+      "require": "./dist/cjs/models/ClientSecret.js"
+    },
+    "./dist/cjs/models/ColumnOffset.js": {
+      "require": "./dist/cjs/models/ColumnOffset.js"
+    },
+    "./dist/cjs/models/Context.js": {
+      "require": "./dist/cjs/models/Context.js"
+    },
+    "./dist/cjs/models/ContextId.js": {
+      "require": "./dist/cjs/models/ContextId.js"
+    },
+    "./dist/cjs/models/ContextRef.js": {
+      "require": "./dist/cjs/models/ContextRef.js"
+    },
+    "./dist/cjs/models/DriveId.js": {
+      "require": "./dist/cjs/models/DriveId.js"
+    },
+    "./dist/cjs/models/DriveItemId.js": {
+      "require": "./dist/cjs/models/DriveItemId.js"
+    },
+    "./dist/cjs/models/DriveItemPath.js": {
+      "require": "./dist/cjs/models/DriveItemPath.js"
+    },
+    "./dist/cjs/models/DriveItemRef.js": {
+      "require": "./dist/cjs/models/DriveItemRef.js"
+    },
+    "./dist/cjs/models/DriveRef.js": {
+      "require": "./dist/cjs/models/DriveRef.js"
+    },
+    "./dist/cjs/models/GraphOperation.js": {
+      "require": "./dist/cjs/models/GraphOperation.js"
+    },
+    "./dist/cjs/models/GraphOperationDefinition.js": {
+      "require": "./dist/cjs/models/GraphOperationDefinition.js"
+    },
+    "./dist/cjs/models/HostName.js": {
+      "require": "./dist/cjs/models/HostName.js"
+    },
+    "./dist/cjs/models/HttpProxy.js": {
+      "require": "./dist/cjs/models/HttpProxy.js"
+    },
+    "./dist/cjs/models/RowOffset.js": {
+      "require": "./dist/cjs/models/RowOffset.js"
+    },
+    "./dist/cjs/models/RowRangeValues.js": {
+      "require": "./dist/cjs/models/RowRangeValues.js"
+    },
+    "./dist/cjs/models/Scope.js": {
+      "require": "./dist/cjs/models/Scope.js"
+    },
+    "./dist/cjs/models/SiteId.js": {
+      "require": "./dist/cjs/models/SiteId.js"
+    },
+    "./dist/cjs/models/SiteName.js": {
+      "require": "./dist/cjs/models/SiteName.js"
+    },
+    "./dist/cjs/models/SiteRef.js": {
+      "require": "./dist/cjs/models/SiteRef.js"
+    },
+    "./dist/cjs/models/TenantId.js": {
+      "require": "./dist/cjs/models/TenantId.js"
+    },
+    "./dist/cjs/models/WorkbookNamedRangeRef.js": {
+      "require": "./dist/cjs/models/WorkbookNamedRangeRef.js"
+    },
+    "./dist/cjs/models/WorkbookRangeName.js": {
+      "require": "./dist/cjs/models/WorkbookRangeName.js"
+    },
+    "./dist/cjs/models/WorkbookRangeRef.js": {
+      "require": "./dist/cjs/models/WorkbookRangeRef.js"
+    },
+    "./dist/cjs/models/WorkbookRef.js": {
+      "require": "./dist/cjs/models/WorkbookRef.js"
+    },
+    "./dist/cjs/models/WorkbookSessionId.js": {
+      "require": "./dist/cjs/models/WorkbookSessionId.js"
+    },
+    "./dist/cjs/models/WorkbookTableColumnRef.js": {
+      "require": "./dist/cjs/models/WorkbookTableColumnRef.js"
+    },
+    "./dist/cjs/models/WorkbookTableId.js": {
+      "require": "./dist/cjs/models/WorkbookTableId.js"
+    },
+    "./dist/cjs/models/WorkbookTableRef.js": {
+      "require": "./dist/cjs/models/WorkbookTableRef.js"
+    },
+    "./dist/cjs/models/WorkbookWorksheetId.js": {
+      "require": "./dist/cjs/models/WorkbookWorksheetId.js"
+    },
+    "./dist/cjs/models/WorkbookWorksheetName.js": {
+      "require": "./dist/cjs/models/WorkbookWorksheetName.js"
+    },
+    "./dist/cjs/models/WorkbookWorksheetRef.js": {
+      "require": "./dist/cjs/models/WorkbookWorksheetRef.js"
+    },
+    "./dist/cjs/operations/drive/createFolder.js": {
+      "require": "./dist/cjs/operations/drive/createFolder.js"
+    },
+    "./dist/cjs/operations/drive/listDrives.js": {
+      "require": "./dist/cjs/operations/drive/listDrives.js"
+    },
+    "./dist/cjs/operations/driveItem/deleteDriveItem.js": {
+      "require": "./dist/cjs/operations/driveItem/deleteDriveItem.js"
+    },
+    "./dist/cjs/operations/driveItem/getDriveItem.js": {
+      "require": "./dist/cjs/operations/driveItem/getDriveItem.js"
+    },
+    "./dist/cjs/operations/driveItem/getDriveItemByPath.js": {
+      "require": "./dist/cjs/operations/driveItem/getDriveItemByPath.js"
+    },
+    "./dist/cjs/operations/driveItem/getDriveItemContent.js": {
+      "require": "./dist/cjs/operations/driveItem/getDriveItemContent.js"
+    },
+    "./dist/cjs/operations/driveItem/initiateCopyDriveItem.js": {
+      "require": "./dist/cjs/operations/driveItem/initiateCopyDriveItem.js"
+    },
+    "./dist/cjs/operations/driveItem/listDriveItems.js": {
+      "require": "./dist/cjs/operations/driveItem/listDriveItems.js"
+    },
+    "./dist/cjs/operations/site/getSite.js": {
+      "require": "./dist/cjs/operations/site/getSite.js"
+    },
+    "./dist/cjs/operations/site/getSiteByName.js": {
+      "require": "./dist/cjs/operations/site/getSiteByName.js"
+    },
+    "./dist/cjs/operations/site/listSites.js": {
+      "require": "./dist/cjs/operations/site/listSites.js"
+    },
+    "./dist/cjs/operations/site/searchSites.js": {
+      "require": "./dist/cjs/operations/site/searchSites.js"
+    },
+    "./dist/cjs/operations/user/userSendMail.js": {
+      "require": "./dist/cjs/operations/user/userSendMail.js"
+    },
+    "./dist/cjs/operations/workbook/calculateWorkbook.js": {
+      "require": "./dist/cjs/operations/workbook/calculateWorkbook.js"
+    },
+    "./dist/cjs/operations/workbook/createWorkbook.js": {
+      "require": "./dist/cjs/operations/workbook/createWorkbook.js"
+    },
+    "./dist/cjs/operations/workbook/deleteWorkbook.js": {
+      "require": "./dist/cjs/operations/workbook/deleteWorkbook.js"
+    },
+    "./dist/cjs/operations/workbookRange/clearWorkbookRange.js": {
+      "require": "./dist/cjs/operations/workbookRange/clearWorkbookRange.js"
+    },
+    "./dist/cjs/operations/workbookRange/deleteWorkbookRange.js": {
+      "require": "./dist/cjs/operations/workbookRange/deleteWorkbookRange.js"
+    },
+    "./dist/cjs/operations/workbookRange/getWorkbookNamedRange.js": {
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookNamedRange.js"
+    },
+    "./dist/cjs/operations/workbookRange/getWorkbookRangeFormat.js": {
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookRangeFormat.js"
+    },
+    "./dist/cjs/operations/workbookRange/getWorkbookUsedRange.js": {
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookUsedRange.js"
+    },
+    "./dist/cjs/operations/workbookRange/getWorkbookVisibleRange.js": {
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookVisibleRange.js"
+    },
+    "./dist/cjs/operations/workbookRange/getWorkbookWorksheetRange.js": {
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookWorksheetRange.js"
+    },
+    "./dist/cjs/operations/workbookRange/insertWorkbookCells.js": {
+      "require": "./dist/cjs/operations/workbookRange/insertWorkbookCells.js"
+    },
+    "./dist/cjs/operations/workbookRange/updateWorkbookNamedRange.js": {
+      "require": "./dist/cjs/operations/workbookRange/updateWorkbookNamedRange.js"
+    },
+    "./dist/cjs/operations/workbookRange/updateWorkbookRange.js": {
+      "require": "./dist/cjs/operations/workbookRange/updateWorkbookRange.js"
+    },
+    "./dist/cjs/operations/workbookSession/closeWorkbookSession.js": {
+      "require": "./dist/cjs/operations/workbookSession/closeWorkbookSession.js"
+    },
+    "./dist/cjs/operations/workbookSession/createWorkbookSession.js": {
+      "require": "./dist/cjs/operations/workbookSession/createWorkbookSession.js"
+    },
+    "./dist/cjs/operations/workbookSession/refreshWorkbookSession.js": {
+      "require": "./dist/cjs/operations/workbookSession/refreshWorkbookSession.js"
+    },
+    "./dist/cjs/operations/workbookTable/applyWorkbookTableColumnFilter.js": {
+      "require": "./dist/cjs/operations/workbookTable/applyWorkbookTableColumnFilter.js"
+    },
+    "./dist/cjs/operations/workbookTable/clearWorkbookTableFilters.js": {
+      "require": "./dist/cjs/operations/workbookTable/clearWorkbookTableFilters.js"
+    },
+    "./dist/cjs/operations/workbookTable/createWorkbookTable.js": {
+      "require": "./dist/cjs/operations/workbookTable/createWorkbookTable.js"
+    },
+    "./dist/cjs/operations/workbookTable/deleteWorkbookTable.js": {
+      "require": "./dist/cjs/operations/workbookTable/deleteWorkbookTable.js"
+    },
+    "./dist/cjs/operations/workbookTable/deleteWorkbookTablePreservingValues.js": {
+      "require": "./dist/cjs/operations/workbookTable/deleteWorkbookTablePreservingValues.js"
+    },
+    "./dist/cjs/operations/workbookTable/getWorkbookTable.js": {
+      "require": "./dist/cjs/operations/workbookTable/getWorkbookTable.js"
+    },
+    "./dist/cjs/operations/workbookTable/getWorkbookTableBodyRange.js": {
+      "require": "./dist/cjs/operations/workbookTable/getWorkbookTableBodyRange.js"
+    },
+    "./dist/cjs/operations/workbookTable/getWorkbookTableBodyVisibleRange.js": {
+      "require": "./dist/cjs/operations/workbookTable/getWorkbookTableBodyVisibleRange.js"
+    },
+    "./dist/cjs/operations/workbookTable/getWorkbookTableHeaderRange.js": {
+      "require": "./dist/cjs/operations/workbookTable/getWorkbookTableHeaderRange.js"
+    },
+    "./dist/cjs/operations/workbookTable/listWorkbookTableColumns.js": {
+      "require": "./dist/cjs/operations/workbookTable/listWorkbookTableColumns.js"
+    },
+    "./dist/cjs/operations/workbookTable/listWorkbookTableRows.js": {
+      "require": "./dist/cjs/operations/workbookTable/listWorkbookTableRows.js"
+    },
+    "./dist/cjs/operations/workbookTable/listWorkbookTables.js": {
+      "require": "./dist/cjs/operations/workbookTable/listWorkbookTables.js"
+    },
+    "./dist/cjs/operations/workbookWorksheet/createWorkbookWorksheet.js": {
+      "require": "./dist/cjs/operations/workbookWorksheet/createWorkbookWorksheet.js"
+    },
+    "./dist/cjs/operations/workbookWorksheet/deleteWorkbookWorksheet.js": {
+      "require": "./dist/cjs/operations/workbookWorksheet/deleteWorkbookWorksheet.js"
+    },
+    "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRange.js": {
+      "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRange.js"
+    },
+    "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.js": {
+      "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.js"
+    },
+    "./dist/cjs/operations/workbookWorksheet/listWorkbookWorksheets.js": {
+      "require": "./dist/cjs/operations/workbookWorksheet/listWorkbookWorksheets.js"
+    },
+    "./dist/cjs/operations/workbookWorksheet/updateWorkbookWorksheet.js": {
+      "require": "./dist/cjs/operations/workbookWorksheet/updateWorkbookWorksheet.js"
+    },
+    "./dist/cjs/services/accessToken.js": {
+      "require": "./dist/cjs/services/accessToken.js"
+    },
+    "./dist/cjs/services/addressManipulation.js": {
+      "require": "./dist/cjs/services/addressManipulation.js"
+    },
+    "./dist/cjs/services/addressOffset.js": {
+      "require": "./dist/cjs/services/addressOffset.js"
+    },
+    "./dist/cjs/services/context.js": {
+      "require": "./dist/cjs/services/context.js"
+    },
+    "./dist/cjs/services/drive.js": {
+      "require": "./dist/cjs/services/drive.js"
+    },
+    "./dist/cjs/services/driveItem.js": {
+      "require": "./dist/cjs/services/driveItem.js"
+    },
+    "./dist/cjs/services/environmentVariable.js": {
+      "require": "./dist/cjs/services/environmentVariable.js"
+    },
+    "./dist/cjs/services/httpAgent.js": {
+      "require": "./dist/cjs/services/httpAgent.js"
+    },
+    "./dist/cjs/services/httpStatus.js": {
+      "require": "./dist/cjs/services/httpStatus.js"
+    },
+    "./dist/cjs/services/operationId.js": {
+      "require": "./dist/cjs/services/operationId.js"
+    },
+    "./dist/cjs/services/random.js": {
+      "require": "./dist/cjs/services/random.js"
+    },
+    "./dist/cjs/services/sharepointUrl.js": {
+      "require": "./dist/cjs/services/sharepointUrl.js"
+    },
+    "./dist/cjs/services/site.js": {
+      "require": "./dist/cjs/services/site.js"
+    },
+    "./dist/cjs/services/sleep.js": {
+      "require": "./dist/cjs/services/sleep.js"
+    },
+    "./dist/cjs/services/stringCaseConversion.js": {
+      "require": "./dist/cjs/services/stringCaseConversion.js"
+    },
+    "./dist/cjs/services/templatedPaths.js": {
+      "require": "./dist/cjs/services/templatedPaths.js"
+    },
+    "./dist/cjs/services/temporaryFiles.js": {
+      "require": "./dist/cjs/services/temporaryFiles.js"
+    },
+    "./dist/cjs/services/workbookRange.js": {
+      "require": "./dist/cjs/services/workbookRange.js"
+    },
+    "./dist/cjs/services/workbookTable.js": {
+      "require": "./dist/cjs/services/workbookTable.js"
+    },
+    "./dist/cjs/services/workbookTableColumn.js": {
+      "require": "./dist/cjs/services/workbookTableColumn.js"
+    },
+    "./dist/cjs/services/workbookWorksheet.js": {
+      "require": "./dist/cjs/services/workbookWorksheet.js"
+    },
+    "./dist/cjs/tasks/createWorkbookAndStartSession.js": {
+      "require": "./dist/cjs/tasks/createWorkbookAndStartSession.js"
+    },
+    "./dist/cjs/tasks/deleteDriveItemWithRetry.js": {
+      "require": "./dist/cjs/tasks/deleteDriveItemWithRetry.js"
+    },
+    "./dist/cjs/tasks/downloadDriveItemContent.js": {
+      "require": "./dist/cjs/tasks/downloadDriveItemContent.js"
+    },
+    "./dist/cjs/tasks/getRangeLastUsedCell.js": {
+      "require": "./dist/cjs/tasks/getRangeLastUsedCell.js"
+    },
+    "./dist/cjs/tasks/getWorkbookTableVisibleBody.js": {
+      "require": "./dist/cjs/tasks/getWorkbookTableVisibleBody.js"
+    },
+    "./dist/cjs/tasks/getWorkbookWorksheetByName.js": {
+      "require": "./dist/cjs/tasks/getWorkbookWorksheetByName.js"
+    },
+    "./dist/cjs/tasks/iterateWorkbookRangeValues.js": {
+      "require": "./dist/cjs/tasks/iterateWorkbookRangeValues.js"
+    },
+    "./dist/cjs/tasks/safeDeleteWorkbook.js": {
+      "require": "./dist/cjs/tasks/safeDeleteWorkbook.js"
+    },
+    "./dist/cjs/tasks/setColumnHidden.js": {
+      "require": "./dist/cjs/tasks/setColumnHidden.js"
+    },
+    "./dist/cjs/tasks/setRowHidden.js": {
+      "require": "./dist/cjs/tasks/setRowHidden.js"
+    },
+    "./dist/cjs/tasks/setWorkbookRangeValues.js": {
+      "require": "./dist/cjs/tasks/setWorkbookRangeValues.js"
+    },
+    "./dist/cjs/tasks/setWorkbookTableBodyVisibleRows.js": {
+      "require": "./dist/cjs/tasks/setWorkbookTableBodyVisibleRows.js"
+    },
+    "./dist/cjs/tasks/tryDeleteDriveItem.js": {
+      "require": "./dist/cjs/tasks/tryDeleteDriveItem.js"
     }
   }
 }

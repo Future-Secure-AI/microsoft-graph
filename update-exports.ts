@@ -58,6 +58,18 @@ function walk(dir: string, currentRelPath = ''): void {
 
 walk(esmDir); // Use esmDir to determine what gets exported
 
+function addCjsOnlyExports() {
+  const cjsEntries = Object.keys(exportsMap).filter((key) => key !== ".");
+  for (const entry of cjsEntries) {
+    const cjsOnlyPath = exportsMap[entry].require.replace('./dist/cjs/', './dist/cjs/');
+    exportsMap[cjsOnlyPath] = {
+      require: exportsMap[entry].require
+    };
+  }
+}
+
+addCjsOnlyExports();
+
 pkg.exports = exportsMap;
 
 fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
