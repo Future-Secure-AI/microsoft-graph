@@ -40,11 +40,17 @@ function walk(dir: string, currentRelPath = ''): void {
       !isTestFile(entry) &&
       !isTestDir(relPath)
     ) {
-      const exportSubpath = './' + relPath.replace(/\.js$/, '').replace(/\\/g, '/');
-      exportsMap[exportSubpath] = {
-        import: `./dist/esm/${relPath.replace(/\\/g, '/')}`,
-        require: `./dist/cjs/${relPath.replace(/\\/g, '/')}`,
-        types: `./dist/esm/${relPath.replace(/\.js$/, '.d.ts').replace(/\\/g, '/')}`
+      // Create a clean path without 'dist/esm' or 'dist/cjs'
+      const cleanRelPath = relPath.replace(/\\/g, '/');
+      const moduleBasePath = cleanRelPath.replace(/\.js$/, '');
+      
+      // Create a clean export path for the module (without dist)
+      const exportPath = `./${moduleBasePath}`;
+      
+      exportsMap[exportPath] = {
+        import: `./dist/esm/${cleanRelPath}`,
+        require: `./dist/cjs/${cleanRelPath}`,
+        types: `./dist/esm/${cleanRelPath.replace(/\.js$/, '.d.ts')}`
       };
     }
   }
