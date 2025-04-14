@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.7.6",
+  "version": "2.7.7",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -117,6 +117,11 @@
       "require": "./dist/cjs/models/Address.js",
       "types": "./dist/esm/models/Address.d.ts"
     },
+    "./models/Cartesian": {
+      "import": "./dist/esm/models/Cartesian.js",
+      "require": "./dist/cjs/models/Cartesian.js",
+      "types": "./dist/esm/models/Cartesian.d.ts"
+    },
     "./models/CellRangeValues": {
       "import": "./dist/esm/models/CellRangeValues.js",
       "require": "./dist/cjs/models/CellRangeValues.js",
@@ -136,6 +141,11 @@
       "import": "./dist/esm/models/ClientSecret.js",
       "require": "./dist/cjs/models/ClientSecret.js",
       "types": "./dist/esm/models/ClientSecret.d.ts"
+    },
+    "./models/ColumnName": {
+      "import": "./dist/esm/models/ColumnName.js",
+      "require": "./dist/cjs/models/ColumnName.js",
+      "types": "./dist/esm/models/ColumnName.d.ts"
     },
     "./models/ColumnOffset": {
       "import": "./dist/esm/models/ColumnOffset.js",
@@ -542,6 +552,11 @@
       "require": "./dist/cjs/services/addressOffset.js",
       "types": "./dist/esm/services/addressOffset.d.ts"
     },
+    "./services/cartesianAddress": {
+      "import": "./dist/esm/services/cartesianAddress.js",
+      "require": "./dist/cjs/services/cartesianAddress.js",
+      "types": "./dist/esm/services/cartesianAddress.d.ts"
+    },
     "./services/context": {
       "import": "./dist/esm/services/context.js",
       "require": "./dist/cjs/services/context.js",
@@ -767,6 +782,11 @@
       "import": "./dist/esm/models/Address.js",
       "types": "./dist/esm/models/Address.d.ts"
     },
+    "./dist/cjs/models/Cartesian.js": {
+      "require": "./dist/cjs/models/Cartesian.js",
+      "import": "./dist/esm/models/Cartesian.js",
+      "types": "./dist/esm/models/Cartesian.d.ts"
+    },
     "./dist/cjs/models/CellRangeValues.js": {
       "require": "./dist/cjs/models/CellRangeValues.js",
       "import": "./dist/esm/models/CellRangeValues.js",
@@ -786,6 +806,11 @@
       "require": "./dist/cjs/models/ClientSecret.js",
       "import": "./dist/esm/models/ClientSecret.js",
       "types": "./dist/esm/models/ClientSecret.d.ts"
+    },
+    "./dist/cjs/models/ColumnName.js": {
+      "require": "./dist/cjs/models/ColumnName.js",
+      "import": "./dist/esm/models/ColumnName.js",
+      "types": "./dist/esm/models/ColumnName.d.ts"
     },
     "./dist/cjs/models/ColumnOffset.js": {
       "require": "./dist/cjs/models/ColumnOffset.js",
@@ -1191,6 +1216,11 @@
       "require": "./dist/cjs/services/addressOffset.js",
       "import": "./dist/esm/services/addressOffset.js",
       "types": "./dist/esm/services/addressOffset.d.ts"
+    },
+    "./dist/cjs/services/cartesianAddress.js": {
+      "require": "./dist/cjs/services/cartesianAddress.js",
+      "import": "./dist/esm/services/cartesianAddress.js",
+      "types": "./dist/esm/services/cartesianAddress.d.ts"
     },
     "./dist/cjs/services/context.js": {
       "require": "./dist/cjs/services/context.js",
