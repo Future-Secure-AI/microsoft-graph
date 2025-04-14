@@ -3,6 +3,12 @@ import type { Cartesian } from "../models/Cartesian.ts";
 import { composeAddress, decomposeAddress } from "./addressManipulation.ts";
 import { columnAddressToOffset, columnOffsetToAddress, rowAddressToOffset, rowOffsetToAddress } from "./addressOffset.ts";
 
+/**
+ * Converts a cell range address to Cartesian coordinates.
+ *
+ * @param {Address} address - The cell range address (e.g., "A1:C3").
+ * @returns {Cartesian} The Cartesian representation of the address, with start and end coordinates.
+ */
 export function addressToCartesian(address: Address): Cartesian {
 	const components = decomposeAddress(address);
 
@@ -15,6 +21,12 @@ export function addressToCartesian(address: Address): Cartesian {
 	return { ax, ay, bx, by };
 }
 
+/**
+ * Converts Cartesian coordinates to a cell range address.
+ *
+ * @param {Cartesian} cartesian - The Cartesian coordinates, including start (ax, ay) and end (bx, by).
+ * @returns {Address} The cell range address (e.g., "A1:C3").
+ */
 export function cartesianToAddress(cartesian: Cartesian): Address {
 	const startColumn = columnOffsetToAddress(cartesian.ax);
 	const startRow = rowOffsetToAddress(cartesian.ay);
