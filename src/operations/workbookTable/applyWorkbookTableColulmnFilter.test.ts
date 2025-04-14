@@ -27,14 +27,14 @@ describe("applyWorkbookTableColumnFilter", () => {
 
 			await updateWorkbookRange(rangeRef, {
 				values: [
-					["A", "B", "C", "D"],
+					["Alpha", "Beta", "Delta", "Gamma"],
 					[1, 2, 3, 4],
 					[5, 6, 7, 8],
 					[9, 10, 11, 12],
 				],
 			});
 
-			await applyWorkbookTableColumnFilter(createWorkbookTableColumnRef(table, "A"), {
+			await applyWorkbookTableColumnFilter(createWorkbookTableColumnRef(table, "Alpha"), {
 				filterOn: "custom",
 				criterion1: ">5",
 			});
