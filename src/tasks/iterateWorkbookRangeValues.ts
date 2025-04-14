@@ -4,7 +4,7 @@ import type { RowRangeValues } from "../models/RowRangeValues.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { composeAddress, decomposeAddress } from "../services/addressManipulation.ts";
-import { columnAddressToOffset, offsetToRowAddress, rowAddressToOffset } from "../services/addressOffset.ts";
+import { columnAddressToOffset, rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /**
@@ -40,8 +40,8 @@ export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRang
 		const requestStartRowOffset = chunkRowOffset;
 		const requestEndRowOffset = Math.min(chunkRowOffset + rowsPerRequest - 1, rangeEndRowOffset) as RowOffset;
 
-		const chunkStartRow = offsetToRowAddress(requestStartRowOffset);
-		const chunkEndRow = offsetToRowAddress(requestEndRowOffset);
+		const chunkStartRow = rowOffsetToAddress(requestStartRowOffset);
+		const chunkEndRow = rowOffsetToAddress(requestEndRowOffset);
 
 		const requestAddress = composeAddress({
 			startRow: chunkStartRow,

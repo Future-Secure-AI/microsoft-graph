@@ -3,7 +3,7 @@ import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.t
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
-import { columnAddressToOffset, offsetToColumnAddress, offsetToRowAddress, rowAddressToOffset } from "./addressOffset.ts";
+import { columnAddressToOffset, columnOffsetToAddress, rowAddressToOffset, rowOffsetToAddress } from "./addressOffset.ts";
 
 const firstColumn: ColumnAddress = "A";
 const lastColumn: ColumnAddress = "XFD";
@@ -196,8 +196,8 @@ export function offsetAddress(address: Address, columnOffset: number, rowOffset:
 		throw new InvalidArgumentError(`Row offset out of bounds: ${newStartRowIndex + 1} to ${newEndRowIndex + 1}`);
 	}
 
-	const newStartRow = offsetToRowAddress(newStartRowIndex as RowOffset);
-	const newEndRow = offsetToRowAddress(newEndRowIndex as RowOffset);
+	const newStartRow = rowOffsetToAddress(newStartRowIndex as RowOffset);
+	const newEndRow = rowOffsetToAddress(newEndRowIndex as RowOffset);
 
 	const newStartColumnIndex = columnAddressToOffset(components.startColumn) + columnOffset;
 	const newEndColumnIndex = columnAddressToOffset(components.endColumn) + columnOffset;
@@ -206,8 +206,8 @@ export function offsetAddress(address: Address, columnOffset: number, rowOffset:
 		throw new InvalidArgumentError(`Column offset out of bounds: ${newStartColumnIndex + 1} to ${newEndColumnIndex + 1}`);
 	}
 
-	const newStartColumn = offsetToColumnAddress(newStartColumnIndex as ColumnOffset);
-	const newEndColumn = offsetToColumnAddress(newEndColumnIndex as ColumnOffset);
+	const newStartColumn = columnOffsetToAddress(newStartColumnIndex as ColumnOffset);
+	const newEndColumn = columnOffsetToAddress(newEndColumnIndex as ColumnOffset);
 
 	return composeAddress({
 		startColumn: newStartColumn as ColumnAddress,

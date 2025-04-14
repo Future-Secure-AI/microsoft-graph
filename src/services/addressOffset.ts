@@ -20,7 +20,7 @@ export function columnAddressToOffset(column: ColumnAddress): ColumnOffset {
  * @param offset - The zero-based column offset.
  * @returns The column address.
  */
-export function offsetToColumnAddress(offset: ColumnOffset): ColumnAddress {
+export function columnOffsetToAddress(offset: ColumnOffset): ColumnAddress {
 	let result = "";
 	let currentOffset = offset + 1;
 	while (currentOffset > 0) {
@@ -29,6 +29,11 @@ export function offsetToColumnAddress(offset: ColumnOffset): ColumnAddress {
 		currentOffset = Math.floor(currentOffset / 26);
 	}
 	return result as ColumnAddress;
+}
+
+/** @deprecated Use columnAddressToOffset instead. */
+export function offsetToColumnAddress(offset: ColumnOffset): ColumnAddress {
+	return columnOffsetToAddress(offset);
 }
 
 /**
@@ -45,6 +50,11 @@ export function rowAddressToOffset(row: RowAddress): RowOffset {
  * @param offset - The zero-based row offset.
  * @returns The row address.
  */
-export function offsetToRowAddress(offset: RowOffset): RowAddress {
+export function rowOffsetToAddress(offset: RowOffset): RowAddress {
 	return (offset + 1).toString() as RowAddress;
+}
+
+/** @deprecated Use rowOffsetToAddress instead. */
+export function offsetToRowAddress(offset: RowOffset): RowAddress {
+	return rowOffsetToAddress(offset);
 }
