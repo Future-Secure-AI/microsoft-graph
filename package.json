@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.7.8",
+  "version": "2.8.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -382,6 +382,11 @@
       "require": "./dist/cjs/operations/workbook/deleteWorkbook.js",
       "types": "./dist/esm/operations/workbook/deleteWorkbook.d.ts"
     },
+    "./operations/workbookRange/autoFitWorkbookRangeColumns": {
+      "import": "./dist/esm/operations/workbookRange/autoFitWorkbookRangeColumns.js",
+      "require": "./dist/cjs/operations/workbookRange/autoFitWorkbookRangeColumns.js",
+      "types": "./dist/esm/operations/workbookRange/autoFitWorkbookRangeColumns.d.ts"
+    },
     "./operations/workbookRange/clearWorkbookRange": {
       "import": "./dist/esm/operations/workbookRange/clearWorkbookRange.js",
       "require": "./dist/cjs/operations/workbookRange/clearWorkbookRange.js",
@@ -396,6 +401,16 @@
       "import": "./dist/esm/operations/workbookRange/getWorkbookNamedRange.js",
       "require": "./dist/cjs/operations/workbookRange/getWorkbookNamedRange.js",
       "types": "./dist/esm/operations/workbookRange/getWorkbookNamedRange.d.ts"
+    },
+    "./operations/workbookRange/getWorkbookRangeFill": {
+      "import": "./dist/esm/operations/workbookRange/getWorkbookRangeFill.js",
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookRangeFill.js",
+      "types": "./dist/esm/operations/workbookRange/getWorkbookRangeFill.d.ts"
+    },
+    "./operations/workbookRange/getWorkbookRangeFont": {
+      "import": "./dist/esm/operations/workbookRange/getWorkbookRangeFont.js",
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookRangeFont.js",
+      "types": "./dist/esm/operations/workbookRange/getWorkbookRangeFont.d.ts"
     },
     "./operations/workbookRange/getWorkbookRangeFormat": {
       "import": "./dist/esm/operations/workbookRange/getWorkbookRangeFormat.js",
@@ -421,6 +436,21 @@
       "import": "./dist/esm/operations/workbookRange/insertWorkbookCells.js",
       "require": "./dist/cjs/operations/workbookRange/insertWorkbookCells.js",
       "types": "./dist/esm/operations/workbookRange/insertWorkbookCells.d.ts"
+    },
+    "./operations/workbookRange/setWorkbookRangeFill": {
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFill.js",
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeFill.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeFill.d.ts"
+    },
+    "./operations/workbookRange/setWorkbookRangeFont": {
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFont.js",
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeFont.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeFont.d.ts"
+    },
+    "./operations/workbookRange/setWorkbookRangeFormat": {
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFormat.js",
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeFormat.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeFormat.d.ts"
     },
     "./operations/workbookRange/updateWorkbookNamedRange": {
       "import": "./dist/esm/operations/workbookRange/updateWorkbookNamedRange.js",
@@ -1052,6 +1082,11 @@
       "import": "./dist/esm/operations/workbook/deleteWorkbook.js",
       "types": "./dist/esm/operations/workbook/deleteWorkbook.d.ts"
     },
+    "./dist/cjs/operations/workbookRange/autoFitWorkbookRangeColumns.js": {
+      "require": "./dist/cjs/operations/workbookRange/autoFitWorkbookRangeColumns.js",
+      "import": "./dist/esm/operations/workbookRange/autoFitWorkbookRangeColumns.js",
+      "types": "./dist/esm/operations/workbookRange/autoFitWorkbookRangeColumns.d.ts"
+    },
     "./dist/cjs/operations/workbookRange/clearWorkbookRange.js": {
       "require": "./dist/cjs/operations/workbookRange/clearWorkbookRange.js",
       "import": "./dist/esm/operations/workbookRange/clearWorkbookRange.js",
@@ -1066,6 +1101,16 @@
       "require": "./dist/cjs/operations/workbookRange/getWorkbookNamedRange.js",
       "import": "./dist/esm/operations/workbookRange/getWorkbookNamedRange.js",
       "types": "./dist/esm/operations/workbookRange/getWorkbookNamedRange.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/getWorkbookRangeFill.js": {
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookRangeFill.js",
+      "import": "./dist/esm/operations/workbookRange/getWorkbookRangeFill.js",
+      "types": "./dist/esm/operations/workbookRange/getWorkbookRangeFill.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/getWorkbookRangeFont.js": {
+      "require": "./dist/cjs/operations/workbookRange/getWorkbookRangeFont.js",
+      "import": "./dist/esm/operations/workbookRange/getWorkbookRangeFont.js",
+      "types": "./dist/esm/operations/workbookRange/getWorkbookRangeFont.d.ts"
     },
     "./dist/cjs/operations/workbookRange/getWorkbookRangeFormat.js": {
       "require": "./dist/cjs/operations/workbookRange/getWorkbookRangeFormat.js",
@@ -1091,6 +1136,21 @@
       "require": "./dist/cjs/operations/workbookRange/insertWorkbookCells.js",
       "import": "./dist/esm/operations/workbookRange/insertWorkbookCells.js",
       "types": "./dist/esm/operations/workbookRange/insertWorkbookCells.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/setWorkbookRangeFill.js": {
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeFill.js",
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFill.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeFill.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/setWorkbookRangeFont.js": {
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeFont.js",
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFont.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeFont.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/setWorkbookRangeFormat.js": {
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeFormat.js",
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFormat.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeFormat.d.ts"
     },
     "./dist/cjs/operations/workbookRange/updateWorkbookNamedRange.js": {
       "require": "./dist/cjs/operations/workbookRange/updateWorkbookNamedRange.js",

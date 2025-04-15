@@ -6,11 +6,11 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
-import getWorkbookRangeFormat from "./getWorkbookRangeFormat.ts";
-import setWorkbookRangeFormat from "./setWorkbookRangeFormat.ts";
+import getWorkbookRangeFont from "./getWorkbookRangeFont.ts";
+import setWorkbookRangeFont from "./setWorkbookRangeFont.ts";
 
-describe("getWorkbookRangeFormat", () => {
-	it("can retrieve the general format of a workbook range", async () => {
+describe("getWorkbookRangeFont", () => {
+	it("can retrieve the font format of a workbook range", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
@@ -20,12 +20,14 @@ describe("getWorkbookRangeFormat", () => {
 			const worksheet = await createWorkbookWorksheet(workbook);
 			const rangeRef = createWorkbookRangeRef(worksheet, "A1:B2");
 
-			await setWorkbookRangeFormat(rangeRef, {
-				wrapText: true,
+			await setWorkbookRangeFont(rangeRef, {
+				bold: true,
+				color: "#0000FF",
 			});
 
-			const format = await getWorkbookRangeFormat(rangeRef);
-			expect(format.wrapText).toBe(true);
+			const font = await getWorkbookRangeFont(rangeRef);
+			expect(font.bold).toBe(true);
+			expect(font.color).toBe("#0000FF");
 		} finally {
 			await tryDeleteDriveItem(workbook);
 		}
