@@ -39,7 +39,7 @@
   "dependencies": {
     "@azure/identity": "^4.8.0",
     "https-proxy-agent": "^7.0.6",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^2.6.6"
   },
   "exports": {
     ".": {
