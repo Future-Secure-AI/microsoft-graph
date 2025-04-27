@@ -4,7 +4,7 @@ import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
- * Autofit the columns in a range.
+ * Auto-fit the columns in a range.
  *
  * @param rangeRef - A reference to the range, optionally including session information.
  * @returns Nothing.

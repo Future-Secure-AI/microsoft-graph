@@ -10,7 +10,7 @@ import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorkshee
 import autoFitWorkbookRangeColumns from "./autoFitWorkbookRangeColumns.ts";
 
 describe("autoFitWorkbookRangeColumns", () => {
-	it("can autofit columns in a specific range", async () => {
+	it("can auto-fit columns in a specific range", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
