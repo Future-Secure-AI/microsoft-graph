@@ -1,5 +1,4 @@
-import type { Response } from "node-fetch";
-import fetch, { type RequestInit } from "node-fetch";
+import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
 import InconsistentContextError from "./errors/InconsistentContextError.ts";
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import NeverError from "./errors/NeverError.ts";
@@ -79,17 +78,17 @@ type BodyError = {
 async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
 	const context = getContext(definition.contextId);
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
-	const agent = tryGetHttpAgent(context.httpProxy);
+	const httpAgent = tryGetHttpAgent(context.httpProxy);
 
-	const response = await innerFetch({
+	const response = await innerFetch<T>({
 		url: `${endpoint}${definition.path}`,
 		method: definition.method,
 		headers: {
 			authorization: createAuthorizationHeader(accessToken),
 			...headersToObject(definition.headers),
 		},
-		body: definition.body === null ? null : JSON.stringify(definition.body),
-		agent,
+		data: definition.body === null ? null : definition.body,
+		httpAgent,
 	});
 
 	return definition.responseTransform(response);
@@ -115,7 +114,7 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 
 	const context = getContext(contextId);
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
-	const agent = tryGetHttpAgent(context.httpProxy);
+	const httpAgent = tryGetHttpAgent(context.httpProxy);
 
 	const body = await innerFetch<BatchReplyPayload>({
 		url: batchEndpoint,
@@ -125,7 +124,7 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 			accept: "application/json",
 			"content-type": "application/json",
 		},
-		body: JSON.stringify({
+		data: {
 			requests: ops.map((op, index) => ({
 				id: operationIndexToId(index),
 				method: op.method,
@@ -134,8 +133,8 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 				body: op.body === null ? undefined : op.body,
 				dependsOn: op.dependsOn?.map((id) => id.toString()),
 			})),
-		}),
-		agent,
+		},
+		httpAgent,
 	});
 
 	const responses: unknown[] = [];
@@ -165,33 +164,55 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 }
 
 /** Execute request, supporting GraphAPI retry logic */
-async function innerFetch<T>(args: RequestInit & { url: string }): Promise<T> {
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: This function does need to be simplified, though it is a TODO for another day
+async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 	const { url, ...options } = args;
 
+	if (!url) {
+		throw new Error("URL is required for request");
+	}
+
 	let retryAfterMilliseconds = defaultRetryDelayMilliseconds;
-	let response: Response | null = null;
+	let response: AxiosResponse | null = null;
 	let attempts = 0; // Track the number of attempts
+
+	const instance = axios.create({
+		httpsAgent: options.httpAgent,
+	});
 
 	while (attempts < maxRetries) {
 		// Retry at most 3 times
-		response = await fetch(url, options);
+		try {
+			response = await instance({
+				url,
+				...options,
+			});
+			break; // If successful, exit the loop
+		} catch (error) {
+			if (axios.isAxiosError(error) && error.response) {
+				response = error.response;
 
-		if (!(isHttpTooManyRequests(response.status) || isServiceUnavailable(response.status))) {
-			break;
+				if (!(isHttpTooManyRequests(response.status) || isServiceUnavailable(response.status))) {
+					throw error; // Don't retry for other error codes
+				}
+
+				const requestedRetryAfterSeconds = Number.parseInt(response.headers["retry-after"] ?? "0", 10);
+				if (requestedRetryAfterSeconds) {
+					retryAfterMilliseconds = requestedRetryAfterSeconds * 1000;
+				}
+
+				await sleep(retryAfterMilliseconds);
+				retryAfterMilliseconds *= consecutiveRetryDelayMultiplier;
+				attempts++; // Increment the attempt counter
+
+				if (attempts >= maxRetries) {
+					RequestFailedError.throw(`GraphAPI fetch exceed retry limit of ${maxRetries} attempts.`, args);
+				}
+			} else {
+				// For non-Axios errors or errors without response, just throw
+				throw error;
+			}
 		}
-
-		const requestedRetryAfterSeconds = Number.parseInt(response.headers.get("Retry-After") ?? "0", 10);
-		if (requestedRetryAfterSeconds) {
-			retryAfterMilliseconds = requestedRetryAfterSeconds * 1000;
-		}
-
-		await sleep(retryAfterMilliseconds);
-		retryAfterMilliseconds *= consecutiveRetryDelayMultiplier;
-		attempts++; // Increment the attempt counter
-	}
-
-	if (attempts >= maxRetries) {
-		RequestFailedError.throw(`GraphAPI fetch exceed retry limit of ${maxRetries} attempts.`, args);
 	}
 
 	if (!response) {
@@ -202,20 +223,17 @@ async function innerFetch<T>(args: RequestInit & { url: string }): Promise<T> {
 		RequestFailedError.throw("GraphAPI fetch failed after 3 retries due to too many requests.", args);
 	}
 
-	const replyContentType = response.headers.get("content-type")?.toLowerCase();
-	const body = replyContentType?.startsWith("application/json") ? await response.json() : null;
-
 	if (!isHttpOk(response.status)) {
-		const bodyError = body as BodyError;
+		const bodyError = response.data as BodyError;
 		let errorMessage = `${response.status} '${response.statusText}'`;
 		if (bodyError?.error) {
 			errorMessage += `: [${bodyError.error.code}] '${bodyError.error.message}'`;
 		}
 
-		RequestFailedError.throw(`GraphAPI fetch failed: ${errorMessage}`, args, body);
+		RequestFailedError.throw(`GraphAPI fetch failed: ${errorMessage}`, args, response.data);
 	}
 
-	return body as T;
+	return response.data as T;
 }
 
 function normalizeBatchBody(contentType: string | undefined, body: unknown): unknown {

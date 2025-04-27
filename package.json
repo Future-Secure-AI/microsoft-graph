@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.8.0",
+  "version": "2.9.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -38,8 +38,8 @@
   },
   "dependencies": {
     "@azure/identity": "^4.8.0",
-    "https-proxy-agent": "^7.0.6",
-    "node-fetch": "^2.6.6"
+    "axios": "^1.7.9",
+    "https-proxy-agent": "^7.0.6"
   },
   "exports": {
     ".": {

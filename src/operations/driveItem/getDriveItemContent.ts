@@ -1,9 +1,10 @@
-import fetch from "node-fetch";
+import axios from "axios";
 import { authenticationScope, endpoint } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import { getCurrentAccessToken } from "../../services/accessToken.ts";
 import { getContext } from "../../services/context.ts";
 import { tryGetHttpAgent } from "../../services/httpAgent.ts";
+import { isHttpOk } from "../../services/httpStatus.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
@@ -19,18 +20,31 @@ export default async function getDriveItemContent(itemRef: DriveItemRef): Promis
 	const url = `${endpoint}${generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/content", itemRef)}`;
 	const context = getContext(itemRef.contextId);
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
-	const agent = tryGetHttpAgent(context.httpProxy);
+	const httpAgent = tryGetHttpAgent(context.httpProxy);
 
-	const response = await fetch(url, {
+	const response = await axios({
+		url,
+		method: "GET",
 		headers: {
 			authorization: `Bearer ${accessToken}`,
 		},
-		agent,
+		responseType: "arraybuffer",
+		httpsAgent: httpAgent,
 	});
 
-	if (!response.ok) {
+	if (!isHttpOk(response.status)) {
 		throw new Error(`Failed to download file: ${response.status} ${response.statusText}`);
 	}
 
-	return await response.arrayBuffer();
+	if (!Buffer.isBuffer(response.data)) {
+		throw new Error(`Unexpected response type: ${typeof response.data}`);
+	}
+
+	const buffer = response.data.buffer.slice(response.data.byteOffset, response.data.byteOffset + response.data.byteLength);
+
+	if (!(buffer instanceof ArrayBuffer)) {
+		throw new Error("Failed to convert Buffer to ArrayBuffer");
+	}
+
+	return buffer;
 }
