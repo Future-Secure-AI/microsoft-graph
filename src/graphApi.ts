@@ -10,7 +10,7 @@ import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { getContext } from "./services/context.ts";
 import { tryGetHttpAgent } from "./services/httpAgent.ts";
-import { isHttpOk, isHttpTooManyRequests, isServiceUnavailable } from "./services/httpStatus.ts";
+import { isGatewayTimeout, isHttpOk, isHttpTooManyRequests, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
 
@@ -181,7 +181,6 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 	});
 
 	while (attempts < maxRetries) {
-		// Retry at most 3 times
 		try {
 			response = await instance({
 				url,
@@ -192,7 +191,7 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 			if (axios.isAxiosError(error) && error.response) {
 				response = error.response;
 
-				if (!(isHttpTooManyRequests(response.status) || isServiceUnavailable(response.status))) {
+				if (!(isHttpTooManyRequests(response.status) || isServiceUnavailable(response.status) || isGatewayTimeout(response.status))) {
 					throw error; // Don't retry for other error codes
 				}
 

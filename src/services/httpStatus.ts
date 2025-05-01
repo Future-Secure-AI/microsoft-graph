@@ -24,3 +24,12 @@ export function isHttpTooManyRequests(status: number): boolean {
 export function isServiceUnavailable(status: number): boolean {
 	return status === 503;
 }
+
+/**
+ * Checks if the HTTP status code indicates a gateway has timed out.
+ * @param status - The HTTP status code.
+ * @returns True if the status code is 504, otherwise false.
+ */
+export function isGatewayTimeout(status: number): boolean {
+	return status === 504;
+}
