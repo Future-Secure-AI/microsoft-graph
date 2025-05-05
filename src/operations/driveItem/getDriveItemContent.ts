@@ -3,7 +3,6 @@ import { authenticationScope, endpoint } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import { getCurrentAccessToken } from "../../services/accessToken.ts";
 import { getContext } from "../../services/context.ts";
-import { tryGetHttpAgent } from "../../services/httpAgent.ts";
 import { isHttpOk } from "../../services/httpStatus.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
@@ -20,7 +19,6 @@ export default async function getDriveItemContent(itemRef: DriveItemRef): Promis
 	const url = `${endpoint}${generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/content", itemRef)}`;
 	const context = getContext(itemRef.contextId);
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
-	const httpAgent = tryGetHttpAgent(context.httpProxy);
 
 	const response = await axios({
 		url,
@@ -29,7 +27,6 @@ export default async function getDriveItemContent(itemRef: DriveItemRef): Promis
 			authorization: `Bearer ${accessToken}`,
 		},
 		responseType: "arraybuffer",
-		httpsAgent: httpAgent,
 	});
 
 	if (!isHttpOk(response.status)) {

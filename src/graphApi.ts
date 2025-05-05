@@ -1,4 +1,5 @@
-import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
+import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from "axios";
+import { HttpsProxyAgent } from "https-proxy-agent";
 import InconsistentContextError from "./errors/InconsistentContextError.ts";
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import NeverError from "./errors/NeverError.ts";
@@ -9,7 +10,6 @@ import type { GraphHeaders, GraphOperation, GraphOperationDefinition } from "./m
 import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { getContext } from "./services/context.ts";
-import { tryGetHttpAgent } from "./services/httpAgent.ts";
 import { isGatewayTimeout, isHttpOk, isHttpTooManyRequests, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
@@ -78,7 +78,6 @@ type BodyError = {
 async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
 	const context = getContext(definition.contextId);
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
-	const httpAgent = tryGetHttpAgent(context.httpProxy);
 
 	const response = await innerFetch<T>({
 		url: `${endpoint}${definition.path}`,
@@ -88,7 +87,6 @@ async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
 			...headersToObject(definition.headers),
 		},
 		data: definition.body === null ? null : definition.body,
-		httpAgent,
 	});
 
 	return definition.responseTransform(response);
@@ -114,7 +112,6 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 
 	const context = getContext(contextId);
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
-	const httpAgent = tryGetHttpAgent(context.httpProxy);
 
 	const body = await innerFetch<BatchReplyPayload>({
 		url: batchEndpoint,
@@ -134,7 +131,6 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 				dependsOn: op.dependsOn?.map((id) => id.toString()),
 			})),
 		},
-		httpAgent,
 	});
 
 	const responses: unknown[] = [];
@@ -176,9 +172,20 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 	let response: AxiosResponse | null = null;
 	let attempts = 0; // Track the number of attempts
 
-	const instance = axios.create({
-		httpsAgent: options.httpAgent,
-	});
+	// TODO: Tidy this proxy work-around:
+	let instance: AxiosInstance;
+	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+	const httpsProxy = process.env["HTTPS_PROXY"];
+	if (httpsProxy) {
+		instance = axios.create({
+			proxy: false,
+			httpsAgent: new HttpsProxyAgent(httpsProxy),
+		});
+	} else {
+		instance = axios.create({
+			httpsAgent: options.httpAgent,
+		});
+	}
 
 	while (attempts < maxRetries) {
 		try {

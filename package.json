@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.9.1",
+  "version": "2.9.3",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -606,11 +606,6 @@
       "import": "./dist/esm/services/environmentVariable.js",
       "require": "./dist/cjs/services/environmentVariable.js",
       "types": "./dist/esm/services/environmentVariable.d.ts"
-    },
-    "./services/httpAgent": {
-      "import": "./dist/esm/services/httpAgent.js",
-      "require": "./dist/cjs/services/httpAgent.js",
-      "types": "./dist/esm/services/httpAgent.d.ts"
     },
     "./services/httpStatus": {
       "import": "./dist/esm/services/httpStatus.js",
@@ -1306,11 +1301,6 @@
       "require": "./dist/cjs/services/environmentVariable.js",
       "import": "./dist/esm/services/environmentVariable.js",
       "types": "./dist/esm/services/environmentVariable.d.ts"
-    },
-    "./dist/cjs/services/httpAgent.js": {
-      "require": "./dist/cjs/services/httpAgent.js",
-      "import": "./dist/esm/services/httpAgent.js",
-      "types": "./dist/esm/services/httpAgent.d.ts"
     },
     "./dist/cjs/services/httpStatus.js": {
       "require": "./dist/cjs/services/httpStatus.js",

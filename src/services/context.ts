@@ -4,7 +4,6 @@ import type { ClientSecret } from "../models/ClientSecret.ts";
 import type { Context } from "../models/Context.ts";
 import type { ContextId } from "../models/ContextId.ts";
 import type { ContextRef } from "../models/ContextRef.ts";
-import type { HttpProxy } from "../models/HttpProxy.ts";
 import type { TenantId } from "../models/TenantId.ts";
 import { getEnvironmentVariable } from "./environmentVariable.ts";
 import { generateRandomString } from "./random.ts";
@@ -16,17 +15,15 @@ const contexts: Record<ContextId, Context> = {};
  * @param tenantId - The tenant ID.
  * @param clientId - The client ID.
  * @param clientSecret - The client secret.
- * @param httpProxy - Optional HTTP proxy configuration.
  * @returns A reference to the registered context.
  */
-export function register(tenantId: TenantId, clientId: ClientId, clientSecret: ClientSecret, httpProxy?: HttpProxy | undefined): ContextRef {
+export function register(tenantId: TenantId, clientId: ClientId, clientSecret: ClientSecret): ContextRef {
 	const contextId = generateContextId();
 
 	const context: Context = {
 		tenantId,
 		clientId,
 		clientSecret,
-		httpProxy,
 	};
 
 	contexts[contextId] = context;
@@ -69,9 +66,8 @@ export function getDefaultContextRef(): ContextRef {
 	const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as TenantId;
 	const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as ClientId;
 	const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as ClientSecret;
-	const httpProxy = (getEnvironmentVariable("HTTP_PROXY", "") || undefined) as HttpProxy | undefined;
 
-	const contextRef = register(tenantId, clientId, clientSecret, httpProxy);
+	const contextRef = register(tenantId, clientId, clientSecret);
 
 	return contextRef;
 }

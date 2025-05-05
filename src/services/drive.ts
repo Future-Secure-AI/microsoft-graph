@@ -3,7 +3,6 @@ import type { ClientId } from "../models/ClientId.ts";
 import type { ClientSecret } from "../models/ClientSecret.ts";
 import type { DriveId } from "../models/DriveId.ts";
 import type { DriveRef } from "../models/DriveRef.ts";
-import type { HttpProxy } from "../models/HttpProxy.ts";
 import type { SiteId } from "../models/SiteId.ts";
 import type { SiteRef } from "../models/SiteRef.ts";
 import type { TenantId } from "../models/TenantId.ts";
@@ -41,9 +40,8 @@ export function getDefaultDriveRef(): DriveRef {
 	const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as ClientSecret;
 	const siteId = getEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
 	const driveId = getEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
-	const httpProxy = (getEnvironmentVariable("HTTP_PROXY", "") || undefined) as HttpProxy | undefined;
 
-	const contextRef = register(tenantId, clientId, clientSecret, httpProxy);
+	const contextRef = register(tenantId, clientId, clientSecret);
 	const siteRef = createSiteRef(contextRef, siteId);
 	const driveRef = createDriveRef(siteRef, driveId);
 
