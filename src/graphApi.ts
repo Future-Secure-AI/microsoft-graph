@@ -222,11 +222,7 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 	}
 
 	if (!response) {
-		throw new NeverError("Response is null. Should be impossible");
-	}
-
-	if (isHttpTooManyRequests(response.status)) {
-		RequestFailedError.throw("GraphAPI fetch failed after 3 retries due to too many requests.", args);
+		throw new NeverError("Response is empty.");
 	}
 
 	if (!isHttpOk(response.status)) {
