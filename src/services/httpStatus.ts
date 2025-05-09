@@ -3,8 +3,26 @@
  * @param status - The HTTP status code.
  * @returns True if the status code is in the range 200-299, otherwise false.
  */
-export function isHttpOk(status: number): boolean {
+export function isHttpSuccess(status: number): boolean {
 	return status >= 200 && status < 300;
+}
+
+/**
+ * Checks if the HTTP status code is OK
+ * @param status - The HTTP status code.
+ * @returns True if the status code is 200, otherwise false.
+ */
+export function isHttpOk(status: number): boolean {
+	return status === 200;
+}
+
+/**
+ * Checks if the HTTP status code indicates not found.
+ * @param status - The HTTP status code.
+ * @returns True if the status code is 404, otherwise false.
+ */
+export function isHttpNotFound(status: number): boolean {
+	return status === 404;
 }
 
 /**

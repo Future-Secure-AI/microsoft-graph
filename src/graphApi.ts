@@ -10,7 +10,7 @@ import type { GraphHeaders, GraphOperation, GraphOperationDefinition } from "./m
 import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { getContext } from "./services/context.ts";
-import { isGatewayTimeout, isHttpOk, isHttpTooManyRequests, isServiceUnavailable } from "./services/httpStatus.ts";
+import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
 
@@ -145,7 +145,7 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 		if (!op) {
 			throw new ProtocolError("Reference to operation that was not submitted in the batch");
 		}
-		if (!isHttpOk(r.status)) {
+		if (!isHttpSuccess(r.status)) {
 			const bodyError = body as BodyError;
 			let errorMessage = `${r.status}`;
 			if (bodyError?.error) {
@@ -225,7 +225,7 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 		throw new NeverError("Response is empty.");
 	}
 
-	if (!isHttpOk(response.status)) {
+	if (!isHttpSuccess(response.status)) {
 		const bodyError = response.data as BodyError;
 		let errorMessage = `${response.status} '${response.statusText}'`;
 		if (bodyError?.error) {

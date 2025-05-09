@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.9.3",
+  "version": "2.10.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -316,6 +316,11 @@
       "import": "./dist/esm/operations/driveItem/deleteDriveItem.js",
       "require": "./dist/cjs/operations/driveItem/deleteDriveItem.js",
       "types": "./dist/esm/operations/driveItem/deleteDriveItem.d.ts"
+    },
+    "./operations/driveItem/existsDriveItem": {
+      "import": "./dist/esm/operations/driveItem/existsDriveItem.js",
+      "require": "./dist/cjs/operations/driveItem/existsDriveItem.js",
+      "types": "./dist/esm/operations/driveItem/existsDriveItem.d.ts"
     },
     "./operations/driveItem/getDriveItem": {
       "import": "./dist/esm/operations/driveItem/getDriveItem.js",
@@ -1011,6 +1016,11 @@
       "require": "./dist/cjs/operations/driveItem/deleteDriveItem.js",
       "import": "./dist/esm/operations/driveItem/deleteDriveItem.js",
       "types": "./dist/esm/operations/driveItem/deleteDriveItem.d.ts"
+    },
+    "./dist/cjs/operations/driveItem/existsDriveItem.js": {
+      "require": "./dist/cjs/operations/driveItem/existsDriveItem.js",
+      "import": "./dist/esm/operations/driveItem/existsDriveItem.js",
+      "types": "./dist/esm/operations/driveItem/existsDriveItem.d.ts"
     },
     "./dist/cjs/operations/driveItem/getDriveItem.js": {
       "require": "./dist/cjs/operations/driveItem/getDriveItem.js",

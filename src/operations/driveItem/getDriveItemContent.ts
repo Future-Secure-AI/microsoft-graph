@@ -3,7 +3,7 @@ import { authenticationScope, endpoint } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import { getCurrentAccessToken } from "../../services/accessToken.ts";
 import { getContext } from "../../services/context.ts";
-import { isHttpOk } from "../../services/httpStatus.ts";
+import { isHttpSuccess } from "../../services/httpStatus.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
@@ -29,7 +29,7 @@ export default async function getDriveItemContent(itemRef: DriveItemRef): Promis
 		responseType: "arraybuffer",
 	});
 
-	if (!isHttpOk(response.status)) {
+	if (!isHttpSuccess(response.status)) {
 		throw new Error(`Failed to download file: ${response.status} ${response.statusText}`);
 	}
 
