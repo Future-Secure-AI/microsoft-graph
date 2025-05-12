@@ -5,7 +5,7 @@ export type GraphMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 export type GraphPath = string & { __brand: "Path" };
 export type GraphHeaders = {
 	"workbook-session-id"?: WorkbookSessionId | undefined;
-	"content-type"?: "application/json" | "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" | undefined;
+	"content-type"?: string | undefined;
 };
 
 // @ts-ignore: Type used to match response
