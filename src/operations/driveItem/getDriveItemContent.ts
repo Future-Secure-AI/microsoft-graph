@@ -1,8 +1,8 @@
-import axios from "axios";
 import { authenticationScope, endpoint } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import { getCurrentAccessToken } from "../../services/accessToken.ts";
 import { getContext } from "../../services/context.ts";
+import { executeHttpRequest } from "../../services/http.ts";
 import { isHttpSuccess } from "../../services/httpStatus.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
@@ -20,7 +20,7 @@ export default async function getDriveItemContent(itemRef: DriveItemRef): Promis
 	const context = getContext(itemRef.contextId);
 	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
 
-	const response = await axios({
+	const response = await executeHttpRequest({
 		url,
 		method: "GET",
 		headers: {

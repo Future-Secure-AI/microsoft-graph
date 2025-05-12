@@ -1,5 +1,4 @@
-import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from "axios";
-import { HttpsProxyAgent } from "https-proxy-agent";
+import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
 import InconsistentContextError from "./errors/InconsistentContextError.ts";
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
 import NeverError from "./errors/NeverError.ts";
@@ -13,6 +12,7 @@ import { getContext } from "./services/context.ts";
 import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
+import { executeHttpRequest } from "./services/http.ts";
 
 export const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 export const endpoint = "https://graph.microsoft.com/v1.0";
@@ -172,24 +172,9 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 	let response: AxiosResponse | null = null;
 	let attempts = 0; // Track the number of attempts
 
-	// TODO: Tidy this proxy work-around:
-	let instance: AxiosInstance;
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	const httpsProxy = process.env["HTTPS_PROXY"];
-	if (httpsProxy) {
-		instance = axios.create({
-			proxy: false,
-			httpsAgent: new HttpsProxyAgent(httpsProxy),
-		});
-	} else {
-		instance = axios.create({
-			httpsAgent: options.httpAgent,
-		});
-	}
-
 	while (attempts < maxRetries) {
 		try {
-			response = await instance({
+			response = await executeHttpRequest({
 				url,
 				...options,
 			});
