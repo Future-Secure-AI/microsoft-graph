@@ -78,15 +78,16 @@ export function inferRangeObject(values: CellRangeValues): unknown[] {
  * The first row of the 2D array contains the keys as headers.
  *
  * @param {unknown[]} objs - An array of objects to convert.
+ * @param {string[] | null} header - Optional header row. If not provided, it will be inferred from the object keys.
  * @returns {CellRangeValues} A 2D array where the first row is the header and subsequent rows are the object values.
  */
-export function inferObjectRange(objs: unknown[]): CellRangeValues {
+export function inferObjectRange(objs: unknown[], header: string[] | null = null): CellRangeValues {
 	if (objs.length === 0) {
 		return [];
 	}
 
-	const header = Array.from(new Set(objs.flatMap((obj) => Object.keys(obj as Record<string, unknown>))));
-	const rows = objs.map((obj) => header.map((key) => (obj as Record<string, unknown>)[key] as CellValue));
+	const usedHeader = header ?? Array.from(new Set(objs.flatMap((obj) => Object.keys(obj as Record<string, unknown>))));
+	const rows = objs.map((obj) => usedHeader.map((key) => (obj as Record<string, unknown>)[key] as CellValue));
 
-	return [header, ...rows];
+	return [usedHeader, ...rows];
 }

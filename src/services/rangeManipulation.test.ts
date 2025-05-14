@@ -69,6 +69,26 @@ describe("inferObjectRange", () => {
 		]);
 	});
 
+	it("should use provided headers when specified", () => {
+		const objs = [
+			{ name: "Alice", age: 25 },
+			{ name: "Bob", age: 30 },
+		];
+		expect(inferObjectRange(objs, ["name"])).toEqual([["name"], ["Alice"], ["Bob"]]);
+	});
+
+	it("should handle provided headers that don't exist in objects", () => {
+		const objs = [
+			{ name: "Alice", age: 25 },
+			{ name: "Bob", age: 30 },
+		];
+		expect(inferObjectRange(objs, ["name", "gender", "age"])).toEqual([
+			["name", "gender", "age"],
+			["Alice", undefined, 25],
+			["Bob", undefined, 30],
+		]);
+	});
+
 	it("should return an empty array for an empty input", () => {
 		expect(inferObjectRange([])).toEqual([]);
 	});
