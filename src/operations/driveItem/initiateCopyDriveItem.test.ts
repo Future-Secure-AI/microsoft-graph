@@ -30,4 +30,27 @@ describe("initiateCopyDriveItem", () => {
 			await tryDeleteDriveItem(dstFolder);
 		}
 	});
+
+	it("can copy an item to the drive root", async () => {
+		const driveRef = getDefaultDriveRef();
+
+		const srcFolderName = generateTempFileName();
+		const srcFolder = await createFolder(driveRef, srcFolderName);
+
+		try {
+			const copiedItemName = `${srcFolderName}-root-copy`;
+			await initiateCopyDriveItem(srcFolder, driveRef, copiedItemName);
+
+			const copyPath = driveItemPath(copiedItemName);
+			const copiedFolder = await getDriveItemByPath(driveRef, copyPath);
+
+			expect(copiedFolder).toBeTruthy();
+			expect(copiedFolder.name).toBe(copiedItemName);
+			expect(copiedFolder.webUrl?.endsWith(copiedItemName)).toBeTruthy();
+
+			await tryDeleteDriveItem(copiedFolder);
+		} finally {
+			await tryDeleteDriveItem(srcFolder);
+		}
+	});
 });

@@ -1,5 +1,6 @@
 import { operation } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
+import type { DriveRef } from "../../models/DriveRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
@@ -7,12 +8,12 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * Initiate an asynchronous copy of an item. NOTE: The copied file may not be immediately available and polling is required.
  *
  * @param srcFileRef - A reference to the source file to be copied.
- * @param dstFolderRef - A reference to the destination folder.
+ * @param dstFolderRef - A reference to the destination folder or site (if targeting root).
  * @param dstFileName - The name of the copied file.
  * @returns Nothing. The copied file may not be immediately available, and polling is required.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */
-export default function initiateCopyDriveItem(srcFileRef: DriveItemRef, dstFolderRef: DriveItemRef, dstFileName: string): GraphOperation<void> {
+export default function initiateCopyDriveItem(srcFileRef: DriveItemRef, dstFolderRef: DriveRef | DriveItemRef, dstFileName: string): GraphOperation<void> {
 	return operation({
 		contextId: srcFileRef.contextId,
 		method: "POST",
@@ -25,7 +26,7 @@ export default function initiateCopyDriveItem(srcFileRef: DriveItemRef, dstFolde
 			parentReference: {
 				siteId: dstFolderRef.siteId,
 				driveId: dstFolderRef.driveId,
-				id: dstFolderRef.itemId,
+				id: "itemId" in dstFolderRef ? dstFolderRef.itemId : undefined,
 			},
 		},
 		responseTransform: () => undefined,

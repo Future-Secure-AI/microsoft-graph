@@ -74,3 +74,23 @@ export function createDriveItemRef(driveRef: DriveRef, itemId: DriveItemId | und
 		itemId,
 	};
 }
+
+/**
+ * Splits a drive item path into its folder path and file name.
+ * @param filePath - The full path of the file.
+ * @returns An object containing the folder path and file name.
+ */
+export function splitDriveItemPath(filePath: DriveItemPath): { folderPath: DriveItemPath; fileName: string } {
+	if (!filePath.startsWith("/")) {
+		throw new InvalidArgumentError("File path must start with a '/'");
+	}
+	const pos = filePath.lastIndexOf("/");
+
+	const fileName = filePath.substring(pos + 1);
+	const folderPath = (pos === 0 ? "/" : filePath.substring(0, pos)) as DriveItemPath;
+
+	return {
+		folderPath,
+		fileName,
+	};
+}
