@@ -9,10 +9,10 @@ import type { GraphHeaders, GraphOperation, GraphOperationDefinition } from "./m
 import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { getContext } from "./services/context.ts";
+import { executeHttpRequest } from "./services/http.ts";
 import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
-import { executeHttpRequest } from "./services/http.ts";
 
 export const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 export const endpoint = "https://graph.microsoft.com/v1.0";
@@ -170,21 +170,21 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 
 	let retryAfterMilliseconds = defaultRetryDelayMilliseconds;
 	let response: AxiosResponse | null = null;
-	let attempts = 0; // Track the number of attempts
+	let retry = 0;
 
-	while (attempts < maxRetries) {
+	while (retry < maxRetries) {
 		try {
 			response = await executeHttpRequest({
 				url,
 				...options,
 			});
-			break; // If successful, exit the loop
+			break;
 		} catch (error) {
 			if (axios.isAxiosError(error) && error.response) {
 				response = error.response;
 
 				if (!(isHttpTooManyRequests(response.status) || isServiceUnavailable(response.status) || isGatewayTimeout(response.status))) {
-					throw error; // Don't retry for other error codes
+					throw error;
 				}
 
 				const requestedRetryAfterSeconds = Number.parseInt(response.headers["retry-after"] ?? "0", 10);
@@ -194,13 +194,12 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 
 				await sleep(retryAfterMilliseconds);
 				retryAfterMilliseconds *= consecutiveRetryDelayMultiplier;
-				attempts++; // Increment the attempt counter
+				retry++;
 
-				if (attempts >= maxRetries) {
+				if (retry >= maxRetries) {
 					RequestFailedError.throw(`GraphAPI fetch exceed retry limit of ${maxRetries} attempts.`, args);
 				}
 			} else {
-				// For non-Axios errors or errors without response, just throw
 				throw error;
 			}
 		}
