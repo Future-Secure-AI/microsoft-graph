@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.11.3",
+  "version": "2.13.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -96,6 +96,11 @@
       "import": "./dist/esm/errors/RequestFailedError.js",
       "require": "./dist/cjs/errors/RequestFailedError.js",
       "types": "./dist/esm/errors/RequestFailedError.d.ts"
+    },
+    "./errors/TimeoutError": {
+      "import": "./dist/esm/errors/TimeoutError.js",
+      "require": "./dist/cjs/errors/TimeoutError.js",
+      "types": "./dist/esm/errors/TimeoutError.d.ts"
     },
     "./errors/UnsupportedAddressTypeError": {
       "import": "./dist/esm/errors/UnsupportedAddressTypeError.js",
@@ -692,6 +697,11 @@
       "require": "./dist/cjs/services/workbookWorksheet.js",
       "types": "./dist/esm/services/workbookWorksheet.d.ts"
     },
+    "./tasks/copyDriveItem": {
+      "import": "./dist/esm/tasks/copyDriveItem.js",
+      "require": "./dist/cjs/tasks/copyDriveItem.js",
+      "types": "./dist/esm/tasks/copyDriveItem.d.ts"
+    },
     "./tasks/createWorkbookAndStartSession": {
       "import": "./dist/esm/tasks/createWorkbookAndStartSession.js",
       "require": "./dist/cjs/tasks/createWorkbookAndStartSession.js",
@@ -806,6 +816,11 @@
       "require": "./dist/cjs/errors/RequestFailedError.js",
       "import": "./dist/esm/errors/RequestFailedError.js",
       "types": "./dist/esm/errors/RequestFailedError.d.ts"
+    },
+    "./dist/cjs/errors/TimeoutError.js": {
+      "require": "./dist/cjs/errors/TimeoutError.js",
+      "import": "./dist/esm/errors/TimeoutError.js",
+      "types": "./dist/esm/errors/TimeoutError.d.ts"
     },
     "./dist/cjs/errors/UnsupportedAddressTypeError.js": {
       "require": "./dist/cjs/errors/UnsupportedAddressTypeError.js",
@@ -1401,6 +1416,11 @@
       "require": "./dist/cjs/services/workbookWorksheet.js",
       "import": "./dist/esm/services/workbookWorksheet.js",
       "types": "./dist/esm/services/workbookWorksheet.d.ts"
+    },
+    "./dist/cjs/tasks/copyDriveItem.js": {
+      "require": "./dist/cjs/tasks/copyDriveItem.js",
+      "import": "./dist/esm/tasks/copyDriveItem.js",
+      "types": "./dist/esm/tasks/copyDriveItem.d.ts"
     },
     "./dist/cjs/tasks/createWorkbookAndStartSession.js": {
       "require": "./dist/cjs/tasks/createWorkbookAndStartSession.js",
