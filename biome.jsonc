@@ -7,7 +7,7 @@
 		"defaultBranch": "main"
 	},
 	"files": {
-		"include": ["src/*.ts", "demo/*.ts"],
+		"include": ["*.ts"],
 		"maxSize": 2097152 // 2MB to cover generated models
 	},
 	"formatter": {
