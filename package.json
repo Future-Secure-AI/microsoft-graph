@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.13.1",
+  "version": "2.14.1",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -3641,6 +3641,31 @@
       "import": "./dist/esm/tasks/setWorkbookTableBodyVisibleRows.js",
       "require": "./dist/cjs/tasks/setWorkbookTableBodyVisibleRows.js",
       "types": "./dist/esm/tasks/setWorkbookTableBodyVisibleRows.d.ts"
+    },
+    "./tryCloseWorkbookSession": {
+      "import": "./dist/esm/tasks/tryCloseWorkbookSession.js",
+      "require": "./dist/cjs/tasks/tryCloseWorkbookSession.js",
+      "types": "./dist/esm/tasks/tryCloseWorkbookSession.d.ts"
+    },
+    "./dist/cjs/tasks/tryCloseWorkbookSession.js": {
+      "import": "./dist/esm/tasks/tryCloseWorkbookSession.js",
+      "require": "./dist/cjs/tasks/tryCloseWorkbookSession.js",
+      "types": "./dist/esm/tasks/tryCloseWorkbookSession.d.ts"
+    },
+    "./dist/cjs/tasks/tryCloseWorkbookSession": {
+      "import": "./dist/esm/tasks/tryCloseWorkbookSession.js",
+      "require": "./dist/cjs/tasks/tryCloseWorkbookSession.js",
+      "types": "./dist/esm/tasks/tryCloseWorkbookSession.d.ts"
+    },
+    "./tasks/tryCloseWorkbookSession": {
+      "import": "./dist/esm/tasks/tryCloseWorkbookSession.js",
+      "require": "./dist/cjs/tasks/tryCloseWorkbookSession.js",
+      "types": "./dist/esm/tasks/tryCloseWorkbookSession.d.ts"
+    },
+    "./tasks/tryCloseWorkbookSession.js": {
+      "import": "./dist/esm/tasks/tryCloseWorkbookSession.js",
+      "require": "./dist/cjs/tasks/tryCloseWorkbookSession.js",
+      "types": "./dist/esm/tasks/tryCloseWorkbookSession.d.ts"
     },
     "./tryDeleteDriveItem": {
       "import": "./dist/esm/tasks/tryDeleteDriveItem.js",
