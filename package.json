@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.14.1",
+  "version": "2.15.1",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -1567,30 +1567,30 @@
       "require": "./dist/cjs/operations/driveItem/initiateCopyDriveItem.js",
       "types": "./dist/esm/operations/driveItem/initiateCopyDriveItem.d.ts"
     },
-    "./listDriveItems": {
-      "import": "./dist/esm/operations/driveItem/listDriveItems.js",
-      "require": "./dist/cjs/operations/driveItem/listDriveItems.js",
-      "types": "./dist/esm/operations/driveItem/listDriveItems.d.ts"
+    "./listDriveItemChildren": {
+      "import": "./dist/esm/operations/driveItem/listDriveItemChildren.js",
+      "require": "./dist/cjs/operations/driveItem/listDriveItemChildren.js",
+      "types": "./dist/esm/operations/driveItem/listDriveItemChildren.d.ts"
     },
-    "./dist/cjs/operations/driveItem/listDriveItems.js": {
-      "import": "./dist/esm/operations/driveItem/listDriveItems.js",
-      "require": "./dist/cjs/operations/driveItem/listDriveItems.js",
-      "types": "./dist/esm/operations/driveItem/listDriveItems.d.ts"
+    "./dist/cjs/operations/driveItem/listDriveItemChildren.js": {
+      "import": "./dist/esm/operations/driveItem/listDriveItemChildren.js",
+      "require": "./dist/cjs/operations/driveItem/listDriveItemChildren.js",
+      "types": "./dist/esm/operations/driveItem/listDriveItemChildren.d.ts"
     },
-    "./dist/cjs/operations/driveItem/listDriveItems": {
-      "import": "./dist/esm/operations/driveItem/listDriveItems.js",
-      "require": "./dist/cjs/operations/driveItem/listDriveItems.js",
-      "types": "./dist/esm/operations/driveItem/listDriveItems.d.ts"
+    "./dist/cjs/operations/driveItem/listDriveItemChildren": {
+      "import": "./dist/esm/operations/driveItem/listDriveItemChildren.js",
+      "require": "./dist/cjs/operations/driveItem/listDriveItemChildren.js",
+      "types": "./dist/esm/operations/driveItem/listDriveItemChildren.d.ts"
     },
-    "./operations/driveItem/listDriveItems": {
-      "import": "./dist/esm/operations/driveItem/listDriveItems.js",
-      "require": "./dist/cjs/operations/driveItem/listDriveItems.js",
-      "types": "./dist/esm/operations/driveItem/listDriveItems.d.ts"
+    "./operations/driveItem/listDriveItemChildren": {
+      "import": "./dist/esm/operations/driveItem/listDriveItemChildren.js",
+      "require": "./dist/cjs/operations/driveItem/listDriveItemChildren.js",
+      "types": "./dist/esm/operations/driveItem/listDriveItemChildren.d.ts"
     },
-    "./operations/driveItem/listDriveItems.js": {
-      "import": "./dist/esm/operations/driveItem/listDriveItems.js",
-      "require": "./dist/cjs/operations/driveItem/listDriveItems.js",
-      "types": "./dist/esm/operations/driveItem/listDriveItems.d.ts"
+    "./operations/driveItem/listDriveItemChildren.js": {
+      "import": "./dist/esm/operations/driveItem/listDriveItemChildren.js",
+      "require": "./dist/cjs/operations/driveItem/listDriveItemChildren.js",
+      "types": "./dist/esm/operations/driveItem/listDriveItemChildren.d.ts"
     },
     "./moveDriveItem": {
       "import": "./dist/esm/operations/driveItem/moveDriveItem.js",
@@ -3516,6 +3516,31 @@
       "import": "./dist/esm/tasks/iterateWorkbookRangeValues.js",
       "require": "./dist/cjs/tasks/iterateWorkbookRangeValues.js",
       "types": "./dist/esm/tasks/iterateWorkbookRangeValues.d.ts"
+    },
+    "./listDriveItems": {
+      "import": "./dist/esm/tasks/listDriveItems.js",
+      "require": "./dist/cjs/tasks/listDriveItems.js",
+      "types": "./dist/esm/tasks/listDriveItems.d.ts"
+    },
+    "./dist/cjs/tasks/listDriveItems.js": {
+      "import": "./dist/esm/tasks/listDriveItems.js",
+      "require": "./dist/cjs/tasks/listDriveItems.js",
+      "types": "./dist/esm/tasks/listDriveItems.d.ts"
+    },
+    "./dist/cjs/tasks/listDriveItems": {
+      "import": "./dist/esm/tasks/listDriveItems.js",
+      "require": "./dist/cjs/tasks/listDriveItems.js",
+      "types": "./dist/esm/tasks/listDriveItems.d.ts"
+    },
+    "./tasks/listDriveItems": {
+      "import": "./dist/esm/tasks/listDriveItems.js",
+      "require": "./dist/cjs/tasks/listDriveItems.js",
+      "types": "./dist/esm/tasks/listDriveItems.d.ts"
+    },
+    "./tasks/listDriveItems.js": {
+      "import": "./dist/esm/tasks/listDriveItems.js",
+      "require": "./dist/cjs/tasks/listDriveItems.js",
+      "types": "./dist/esm/tasks/listDriveItems.d.ts"
     },
     "./safeDeleteWorkbook": {
       "import": "./dist/esm/tasks/safeDeleteWorkbook.js",

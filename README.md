@@ -4,6 +4,9 @@ This is an extensible library that allows access to Microsoft's GraphAPI, includ
 
 Note that this is a THIRD PARTY library and not associated with Microsoft.
 
+## Breaking changes
+2.15.0 has a path change for `listDriveItems`. It's now in `tasks/listDriveItems`. This is part of a fix that prevented `listDriveItems` from returning the first 200 items only.
+
 ## Usage
 Install the NPM package `npm i microsoft-graph`, then:
 

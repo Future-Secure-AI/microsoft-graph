@@ -8,40 +8,41 @@ import { createDriveItemRef } from "../../services/driveItem.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 export type ListDriveItemResponse = {
-	"@odata.context": string;
-	value: DriveItem[];
-	"@odata.nextLink"?: string;
+	value: (DriveItem & DriveItemRef)[];
+	"@odata.nextLink": string | null;
 };
 
 /**
  * Retrieve the metadata for items in a drive or folder.
  *
  * @param parentRef - A reference to the parent drive or folder. Defaults to the root drive.
+ * @param take - The maximum number of items to retrieve. Defaults to 1000.
  * @returns An array of drive items, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-list-children
  */
-export default function listDriveItems(parentRef: DriveRef | DriveItemRef): GraphOperation<(DriveItem & DriveItemRef)[]> {
+export default function listDriveItemChildren(parentRef: DriveRef | DriveItemRef, take = 1000): GraphOperation<ListDriveItemResponse> {
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 
 	return operation({
 		contextId: parentRef.contextId,
 		method: "GET",
-		path: generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}/children`, parentRef),
+		path: generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}/children?$top=${take}`, parentRef),
 		headers: {},
 		body: null,
 		responseTransform: (response) => {
-			const list = response as ListDriveItemResponse;
+			const result = response as ListDriveItemResponse;
 
-			const items = list.value.map((item) => {
-				const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
+			return {
+				value: result.value.map((item) => {
+					const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
 
-				return {
-					...item,
-					...itemRef,
-				};
-			});
-
-			return items;
+					return {
+						...item,
+						...itemRef,
+					};
+				}),
+				"@odata.nextLink": result["@odata.nextLink"] ?? null,
+			};
 		},
 	});
 }
