@@ -442,6 +442,31 @@
       "require": "./dist/cjs/models/Cartesian.js",
       "types": "./dist/esm/models/Cartesian.d.ts"
     },
+    "./Cell": {
+      "import": "./dist/esm/models/Cell.js",
+      "require": "./dist/cjs/models/Cell.js",
+      "types": "./dist/esm/models/Cell.d.ts"
+    },
+    "./dist/cjs/models/Cell.js": {
+      "import": "./dist/esm/models/Cell.js",
+      "require": "./dist/cjs/models/Cell.js",
+      "types": "./dist/esm/models/Cell.d.ts"
+    },
+    "./dist/cjs/models/Cell": {
+      "import": "./dist/esm/models/Cell.js",
+      "require": "./dist/cjs/models/Cell.js",
+      "types": "./dist/esm/models/Cell.d.ts"
+    },
+    "./models/Cell": {
+      "import": "./dist/esm/models/Cell.js",
+      "require": "./dist/cjs/models/Cell.js",
+      "types": "./dist/esm/models/Cell.d.ts"
+    },
+    "./models/Cell.js": {
+      "import": "./dist/esm/models/Cell.js",
+      "require": "./dist/cjs/models/Cell.js",
+      "types": "./dist/esm/models/Cell.d.ts"
+    },
     "./CellRangeValues": {
       "import": "./dist/esm/models/CellRangeValues.js",
       "require": "./dist/cjs/models/CellRangeValues.js",
@@ -891,6 +916,31 @@
       "import": "./dist/esm/models/HttpProxy.js",
       "require": "./dist/cjs/models/HttpProxy.js",
       "types": "./dist/esm/models/HttpProxy.d.ts"
+    },
+    "./NumberFormat": {
+      "import": "./dist/esm/models/NumberFormat.js",
+      "require": "./dist/cjs/models/NumberFormat.js",
+      "types": "./dist/esm/models/NumberFormat.d.ts"
+    },
+    "./dist/cjs/models/NumberFormat.js": {
+      "import": "./dist/esm/models/NumberFormat.js",
+      "require": "./dist/cjs/models/NumberFormat.js",
+      "types": "./dist/esm/models/NumberFormat.d.ts"
+    },
+    "./dist/cjs/models/NumberFormat": {
+      "import": "./dist/esm/models/NumberFormat.js",
+      "require": "./dist/cjs/models/NumberFormat.js",
+      "types": "./dist/esm/models/NumberFormat.d.ts"
+    },
+    "./models/NumberFormat": {
+      "import": "./dist/esm/models/NumberFormat.js",
+      "require": "./dist/cjs/models/NumberFormat.js",
+      "types": "./dist/esm/models/NumberFormat.d.ts"
+    },
+    "./models/NumberFormat.js": {
+      "import": "./dist/esm/models/NumberFormat.js",
+      "require": "./dist/cjs/models/NumberFormat.js",
+      "types": "./dist/esm/models/NumberFormat.d.ts"
     },
     "./RowOffset": {
       "import": "./dist/esm/models/RowOffset.js",
@@ -2667,6 +2717,31 @@
       "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRange.js",
       "types": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRange.d.ts"
     },
+    "./getWorkbookWorksheetUsedRangeAddress": {
+      "import": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "types": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.d.ts"
+    },
+    "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js": {
+      "import": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "types": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.d.ts"
+    },
+    "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress": {
+      "import": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "types": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.d.ts"
+    },
+    "./operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress": {
+      "import": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "types": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.d.ts"
+    },
+    "./operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js": {
+      "import": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.js",
+      "types": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.d.ts"
+    },
     "./getWorkbookWorksheetUsedVisibleRange": {
       "import": "./dist/esm/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.js",
       "require": "./dist/cjs/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.js",
@@ -3491,6 +3566,31 @@
       "import": "./dist/esm/tasks/getWorkbookWorksheetByName.js",
       "require": "./dist/cjs/tasks/getWorkbookWorksheetByName.js",
       "types": "./dist/esm/tasks/getWorkbookWorksheetByName.d.ts"
+    },
+    "./iterateWorkbookRange": {
+      "import": "./dist/esm/tasks/iterateWorkbookRange.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRange.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRange.d.ts"
+    },
+    "./dist/cjs/tasks/iterateWorkbookRange.js": {
+      "import": "./dist/esm/tasks/iterateWorkbookRange.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRange.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRange.d.ts"
+    },
+    "./dist/cjs/tasks/iterateWorkbookRange": {
+      "import": "./dist/esm/tasks/iterateWorkbookRange.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRange.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRange.d.ts"
+    },
+    "./tasks/iterateWorkbookRange": {
+      "import": "./dist/esm/tasks/iterateWorkbookRange.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRange.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRange.d.ts"
+    },
+    "./tasks/iterateWorkbookRange.js": {
+      "import": "./dist/esm/tasks/iterateWorkbookRange.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRange.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRange.d.ts"
     },
     "./iterateWorkbookRangeValues": {
       "import": "./dist/esm/tasks/iterateWorkbookRangeValues.js",
