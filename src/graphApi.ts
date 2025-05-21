@@ -47,7 +47,7 @@ export async function sequential<T extends GraphOperation<unknown>[]>(...operati
 }
 
 const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
-const maxRetries = 3;
+const maxRetries = 5;
 const defaultRetryDelayMilliseconds = 1000;
 const consecutiveRetryDelayMultiplier = 2;
 
