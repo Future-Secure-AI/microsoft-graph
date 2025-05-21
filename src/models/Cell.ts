@@ -1,5 +1,5 @@
 import type { CellValue } from "../models/CellValue.ts";
-import type { NumberFormat } from "../services/source.ts";
+import type { NumberFormat } from "./NumberFormat.ts";
 
 export type Cell = {
 	text: string;

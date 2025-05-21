@@ -1,12 +1,12 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Cell } from "../models/Cell.ts";
+import type { NumberFormat } from "../models/NumberFormat.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { RowRangeValues } from "../models/RowRangeValues.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { composeAddress, countAddressColumns, decomposeAddress } from "../services/addressManipulation.ts";
 import { columnAddressToOffset, rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";
-import type { NumberFormat } from "../services/source.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /**
