@@ -29,6 +29,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@microsoft/microsoft-graph-types": "^2.40.0",
+    "@types/lodash": "^4.17.15",
     "@types/node": "^22.13.14",
     "globals": "^16.0.0",
     "npm-check-updates": "^17.1.16",
@@ -39,7 +40,8 @@
   "dependencies": {
     "@azure/identity": "^4.8.0",
     "axios": "^1.7.9",
-    "https-proxy-agent": "^7.0.6"
+    "https-proxy-agent": "^7.0.6",
+    "lodash": "^4.17.21"
   },
   "exports": {
     ".": {
