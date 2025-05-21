@@ -1,10 +1,12 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import type { Cell } from "../models/Cell.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { RowRangeValues } from "../models/RowRangeValues.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
-import { composeAddress, decomposeAddress } from "../services/addressManipulation.ts";
+import { composeAddress, countAddressColumns, decomposeAddress } from "../services/addressManipulation.ts";
 import { columnAddressToOffset, rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";
+import type { NumberFormat } from "../services/source.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /**
@@ -21,9 +23,8 @@ const maxCellsPerRequest = 10_000;
  * @param rangeRef - A reference to the workbook range to iterate over.
  * @param overwriteRowsPerRequest - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
  * @returns An async iterable that yields rows of range values.
- * @deprecated Use `iterateWorkbookRange` instead.
  */
-export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<RowRangeValues> {
+export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<Cell[]> {
 	const address = rangeRef.address;
 	const components = decomposeAddress(address);
 	const columnsPerRow = columnAddressToOffset(components.endColumn) - columnAddressToOffset(components.startColumn) + 1;
@@ -31,6 +32,7 @@ export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRang
 	if (overwriteRowsPerRequest !== null && overwriteRowsPerRequest < 1) {
 		throw new InvalidArgumentError("overwriteRowsPerRequest must be greater than 0");
 	}
+	const columnCount = countAddressColumns(address);
 
 	const rowsPerRequest = overwriteRowsPerRequest ?? Math.floor(maxCellsPerRequest / columnsPerRow);
 
@@ -54,9 +56,17 @@ export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRang
 		const requestRef = createWorkbookRangeRef(rangeRef, requestAddress);
 
 		const range = await getWorkbookWorksheetRange(requestRef);
+		const values = range.values as RowRangeValues[];
+		const text = range.text as string[][];
+		const numberFormat = range.numberFormat as NumberFormat[][];
+		const rowCount = values.length;
 
-		for (const row of range.values) {
-			yield row as RowRangeValues;
+		for (let r = 0; r < rowCount; r++) {
+			yield Array.from({ length: columnCount }, (_, c) => ({
+				text: text[r]?.[c] ?? "",
+				value: values[r]?.[c] ?? "",
+				numberFormat: numberFormat?.[r]?.[c] ?? ("" as NumberFormat),
+			}));
 		}
 	}
 }
