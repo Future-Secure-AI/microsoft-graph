@@ -75,13 +75,6 @@ export function composeAddress(components: AddressComponents): Address {
 		return composeCellAddress(components.startColumn, components.startRow);
 	}
 
-	if (components.startColumn > components.endColumn) {
-		throw new InvalidArgumentError("Invalid address. End column is before start column.");
-	}
-	if (components.startRow > components.endRow) {
-		throw new InvalidArgumentError("Invalid address. End row is before start row.");
-	}
-
 	return composeCellRangeAddress(components.startColumn, components.startRow, components.endColumn, components.endRow);
 }
 
