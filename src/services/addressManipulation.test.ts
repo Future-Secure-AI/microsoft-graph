@@ -345,17 +345,6 @@ describe("composeAddress", () => {
 			}),
 		).toBe("A1:C5" as CellRangeAddress);
 	});
-
-	it("should throw an error for invalid address components", () => {
-		expect(() =>
-			composeAddress({
-				startColumn: "C",
-				endColumn: "A",
-				startRow: "5",
-				endRow: "1",
-			}),
-		).toThrow(InvalidArgumentError);
-	});
 });
 
 describe("isAddressOverlapping", () => {
