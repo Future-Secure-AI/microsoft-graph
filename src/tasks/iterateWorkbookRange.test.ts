@@ -30,7 +30,8 @@ describe("iterateWorkbookRange", () => {
 			await calculateWorkbook(workbook);
 
 			let idx = 0;
-			for await (const row of iterateWorkbookRange(rangeRef)) {
+			for await (const { offset, row } of iterateWorkbookRange(rangeRef)) {
+				expect(offset).toEqual(idx);
 				expect(row.map((x) => x.value)).toEqual(values[idx]);
 				expect(row.map((x) => x.text)).toEqual(values[idx].map((x) => x.toString()));
 				expect(row.map((x) => x.numberFormat)).toEqual(values[idx].map(() => generalNumberFormat));
@@ -59,7 +60,8 @@ describe("iterateWorkbookRange", () => {
 			await calculateWorkbook(workbook);
 
 			let idx = 0;
-			for await (const row of iterateWorkbookRange(rangeRef)) {
+			for await (const { offset, row } of iterateWorkbookRange(rangeRef)) {
+				expect(offset).toEqual(idx);
 				expect(row.map((x) => x.value)).toEqual(values[idx]);
 				expect(row.map((x) => x.text)).toEqual(values[idx].map((x) => x.toString()));
 				expect(row.map((x) => x.numberFormat)).toEqual(values[idx].map(() => generalNumberFormat));

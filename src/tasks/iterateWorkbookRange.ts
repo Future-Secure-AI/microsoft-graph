@@ -24,7 +24,7 @@ const maxCellsPerRequest = 10_000;
  * @param overwriteRowsPerRequest - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
  * @returns An async iterable that yields rows of range values.
  */
-export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<Cell[]> {
+export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<{ rowOffset: RowOffset; row: Cell[] }> {
 	const address = rangeRef.address;
 	const components = decomposeAddress(address);
 	const columnsPerRow = columnAddressToOffset(components.endColumn) - columnAddressToOffset(components.startColumn) + 1;
@@ -38,6 +38,8 @@ export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, 
 
 	const rangeStartRowOffset = rowAddressToOffset(components.startRow);
 	const rangeEndRowOffset = rowAddressToOffset(components.endRow);
+
+	let offset = 0 as RowOffset;
 
 	for (let chunkRowOffset = rangeStartRowOffset; chunkRowOffset <= rangeEndRowOffset; chunkRowOffset = (chunkRowOffset + rowsPerRequest) as RowOffset) {
 		const requestStartRowOffset = chunkRowOffset;
@@ -62,11 +64,18 @@ export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, 
 		const rowCount = values.length;
 
 		for (let r = 0; r < rowCount; r++) {
-			yield Array.from({ length: columnCount }, (_, c) => ({
+			const row = Array.from({ length: columnCount }, (_, c) => ({
 				text: text[r]?.[c] ?? "",
 				value: values[r]?.[c] ?? "",
 				numberFormat: numberFormat?.[r]?.[c] ?? ("" as NumberFormat),
 			}));
+
+			yield {
+				rowOffset: offset,
+				row,
+			};
+
+			offset++;
 		}
 	}
 }

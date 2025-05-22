@@ -31,7 +31,7 @@ export function columnOffsetToAddress(offset: ColumnOffset): ColumnAddress {
 	return result as ColumnAddress;
 }
 
-/** @deprecated Use columnAddressToOffset instead. */
+/** @deprecated Use columnOffsetToAddress instead. */
 export function offsetToColumnAddress(offset: ColumnOffset): ColumnAddress {
 	return columnOffsetToAddress(offset);
 }

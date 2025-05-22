@@ -1,107 +1,90 @@
-import { isEqual } from "lodash";
+import InvalidOperationError from "../errors/InvalidOperationError.ts";
 import NeverError from "../errors/NeverError.ts";
 import type { Cell } from "../models/Cell.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
+import type { CellValue } from "../models/CellValue.ts";
+import type { ColumnHeading } from "../models/ColumnHeading.ts";
+import type { ColumnOffset } from "../models/ColumnOffset.ts";
+import type { Item } from "../models/Item.ts";
+import type { RecordBase } from "../models/RecordBase.ts";
+import type { RowNumber } from "../models/RowNumber.ts";
+import type { RowOffset } from "../models/RowOffset.ts";
+import type { Source } from "../models/source.ts";
+import type { SourceDecoder } from "../models/SourceDecoder.ts";
+import type { SourceEncoder } from "../models/SourceEncoder.ts";
+import type { SourceRow } from "../models/SourceRow.ts";
 import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
+import deleteWorkbookRange from "../operations/workbookRange/deleteWorkbookRange.ts";
+import insertWorkbookCells from "../operations/workbookRange/insertWorkbookCells.ts";
+import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
+import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import getWorkbookWorksheetUsedRangeAddress from "../operations/workbookWorksheet/getWorkbookWorksheetUsedRangeAddress.ts";
 import iterateWorkbookRange from "../tasks/iterateWorkbookRange.ts";
+import { countAddressColumns, countAddressRows } from "./addressManipulation.ts";
+import { rowOffsetToAddress } from "./addressOffset.ts";
+import { addressToCartesian, cartesianToAddress } from "./cartesianAddress.ts";
 import { createWorkbookRangeRef } from "./workbookRange.ts";
 
-export type ColumnHeading = string & {
-	__brand: "ColumnHeading";
-};
-
-export type SourceRow = Record<ColumnHeading, Cell>;
-
-export type ItemId = number & {
-	__brand: "ItemId";
-};
-
-export type RowNumber = number & {
-	__brand: "RowNumber";
-};
-
-export type Source<T> = {
-	rangeRef: WorkbookRangeRef;
-	head: ColumnHeading[] | null;
-	coding: {
-		decode: (row: SourceRow) => T;
-		encode: (record: T) => SourceRow;
-	};
-	cache: Item<T>[];
-} & AsyncIterable<Item<T>>;
-
-export type Item<T> = {
-	id: ItemId;
-	rowNumber: RowNumber;
-	record: T;
-};
-
-export type NumberFormat = string & {
-	__brand: "NumberFormat";
-};
-
-export const generalNumberFormat = "General" as NumberFormat;
-
-export async function defineSource<T>(worksheetRef: WorkbookWorksheetRef, decode: (row: SourceRow) => T, encode: (record: T) => SourceRow): Promise<Source<T>> {
+export async function defineSource<T extends RecordBase>(worksheetRef: WorkbookWorksheetRef, decode: SourceDecoder<T>, encode: SourceEncoder<T>): Promise<Source<T>> {
 	const usedRange = await getWorkbookWorksheetUsedRangeAddress(worksheetRef);
 	const rangeRef = createWorkbookRangeRef(worksheetRef, usedRange);
 
-	const coding = {
-		decode,
-		encode,
-	};
-	const head: ColumnHeading[] = [];
-
-	const cache: Item<T>[] = [];
-
-	return {
+	const source: Source<T> = {
 		rangeRef,
-		coding,
-		head,
-		cache,
-		async *[Symbol.asyncIterator]() {
+		coding: {
+			decode,
+			encode,
+		},
+		head: [],
+		async *[Symbol.asyncIterator](): AsyncGenerator<Item<T>> {
 			let hasHead = false;
 
-			let index = 0;
-			const id = 0 as ItemId;
-			for await (const row of iterateWorkbookRange(rangeRef)) {
-				if (hasHead) {
-					const sourceRow = head.reduce((acc, heading, index) => {
-						const cell = row[index];
-						if (!cell) {
-							throw new NeverError(`Cell at index ${index} is undefined`);
-						}
-						acc[heading] = cell;
-						return acc;
-					}, {} as SourceRow);
-
-					const record = decode(sourceRow);
-
-					let item = cache[index];
-					if (!(item && isEqual(item.record, record))) {
-						const rowNumber = (index + 1) as RowNumber;
-
-						item = cache[index] = {
-							id,
-							rowNumber,
-							record,
-						} satisfies Item<T>;
-					}
-
-					yield item;
-				} else {
-					head.splice(0, head.length);
-					head.push(...(row.map((cell) => cell.text) as ColumnHeading[]));
+			for await (const { rowOffset, row } of iterateWorkbookRange(rangeRef)) {
+				if (!hasHead) {
+					source.head.splice(0, source.head.length);
+					source.head.push(...(row.map((cell) => cell.text) as ColumnHeading[]));
 					hasHead = true;
+					continue;
 				}
-				index++;
+
+				const record = rowToRecord<T>(row, source);
+				const rowNumber = rowOffsetToNumber(rowOffset);
+
+				yield {
+					rowOffset,
+					rowNumber,
+					record,
+				};
 			}
 		},
 	};
+
+	return source;
 }
 
-export async function readAllItems<T>(source: Source<T>): Promise<Item<T>[]> {
+export async function initializeSource<T extends RecordBase>(source: Source<T>, empty: T): Promise<void> {
+	if (!isEmpty(source)) {
+		throw new InvalidOperationError("Cannot initialize source with non-empty worksheet.");
+	}
+
+	source.head = Object.keys(empty) as ColumnHeading[];
+
+	const address = cartesianToAddress({
+		ax: 0 as ColumnOffset,
+		bx: (source.head.length - 1) as ColumnOffset,
+		ay: 0 as RowOffset,
+		by: 0 as RowOffset,
+	});
+	source.rangeRef = createWorkbookRangeRef(source.rangeRef, address);
+
+	await updateWorkbookRange(source.rangeRef, {
+		values: [source.head],
+	});
+	await setWorkbookRangeFont(source.rangeRef, {
+		bold: true,
+	});
+}
+
+export async function readAllItems<T extends RecordBase>(source: Source<T>): Promise<Item<T>[]> {
 	const result: Item<T>[] = [];
 	for await (const item of source) {
 		result.push(item);
@@ -109,14 +92,112 @@ export async function readAllItems<T>(source: Source<T>): Promise<Item<T>[]> {
 	return result;
 }
 
-export async function createItem<T>(source: Source<T>, record: T, before: ItemId | null = null): Promise<Item<T>> {
-	// TODO
+export async function createItem<T extends RecordBase>(source: Source<T>, record: T, after: RowOffset = 0 as RowOffset): Promise<Item<T>> {
+	if (!isInitialized(source)) {
+		throw new InvalidOperationError("Source not initialized.");
+	}
+
+	await insertWorkbookCells(source.rangeRef, rowOffsetToAddress(after), "Down");
+
+	const row = recordToRow(record, source);
+
+	const address = cartesianToAddress({
+		ax: 0 as ColumnOffset,
+		bx: (row.length - 1) as ColumnOffset,
+		ay: after,
+		by: after,
+	});
+	const rangeRef = createWorkbookRangeRef(source.rangeRef, address);
+	await updateWorkbookRange(rangeRef, {
+		values: [row],
+	});
+
+	const { ax, bx, ay, by } = addressToCartesian(source.rangeRef.address);
+	source.rangeRef.address = cartesianToAddress({
+		ax,
+		bx,
+		ay,
+		by: (by + 1) as RowOffset,
+	});
+
+	return {
+		rowOffset: after,
+		rowNumber: rowOffsetToNumber(after),
+		record,
+	};
 }
 
-export async function updateItem<T>(source: Source<T>, id: ItemId, record: T): Promise<void> {
-	// TODO
+export async function updateItem<T extends RecordBase>(source: Source<T>, offset: RowOffset, record: T): Promise<void> {
+	if (!isInitialized(source)) {
+		throw new InvalidOperationError("Source not initialized.");
+	}
+
+	const row = recordToRow(record, source);
+
+	const address = cartesianToAddress({
+		ax: 0 as ColumnOffset,
+		bx: (row.length - 1) as ColumnOffset,
+		ay: offset,
+		by: offset,
+	});
+
+	const rangeRef = createWorkbookRangeRef(source.rangeRef, address);
+	await updateWorkbookRange(rangeRef, {
+		values: [row],
+	});
+
 }
 
-export async function deleteItem<T>(source: Source<T>, id: ItemId): Promise<void> {
-	// TODO
+export async function deleteItem<T extends RecordBase>(source: Source<T>, offset: RowOffset): Promise<void> {
+	if (!isInitialized(source)) {
+		throw new InvalidOperationError("Source not initialized.");
+	}
+	const rangeRef = createWorkbookRangeRef(source.rangeRef, rowOffsetToAddress(offset));
+	await deleteWorkbookRange(rangeRef, "Up");
+
+	const { ax, bx, ay, by } = addressToCartesian(source.rangeRef.address);
+	source.rangeRef.address = cartesianToAddress({
+		ax,
+		bx,
+		ay,
+		by: (by - 1) as RowOffset,
+	});
+}
+
+function rowToRecord<T extends RecordBase>(row: Cell[], source: Source<T>): T {
+	const sourceRow = source.head.reduce((acc, heading, columnIndex) => {
+		const cell = row[columnIndex];
+		if (!cell) {
+			throw new NeverError(`Cell at index ${columnIndex} is undefined`);
+		}
+		acc[heading] = cell;
+		return acc;
+	}, {} as SourceRow);
+
+	const record = source.coding.decode(sourceRow);
+	return record;
+}
+
+function recordToRow<T extends RecordBase>(record: T, source: Source<T>): CellValue[] {
+	const sourceRow = source.coding.encode(record);
+	const row = source.head.map((heading) => {
+		const cell = sourceRow[heading];
+		if (cell === undefined) {
+			throw new NeverError(`Cell at index ${heading} is undefined`);
+		}
+		return cell;
+	});
+	return row;
+}
+
+function rowOffsetToNumber(offset: RowOffset): RowNumber {
+	return (offset + 1) as RowNumber;
+}
+
+function isEmpty<T extends RecordBase>(source: Source<T>) {
+	return countAddressRows(source.rangeRef.address) <= 1 && countAddressColumns(source.rangeRef.address) <= 1;
+}
+
+function isInitialized<T extends RecordBase>(source: Source<T>) {
+	return source.head.length > 0;
 }
