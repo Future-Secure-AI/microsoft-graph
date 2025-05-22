@@ -1,8 +1,7 @@
 import InvalidOperationError from "../errors/InvalidOperationError.ts";
 import NeverError from "../errors/NeverError.ts";
 import type { Cell } from "../models/Cell.ts";
-import type { CellValue } from "../models/CellValue.ts";
-import type { ColumnHeading } from "../models/ColumnHeading.ts";
+import type { ColumnName } from "../models/ColumnName.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { Item } from "../models/Item.ts";
 import type { RecordBase } from "../models/RecordBase.ts";
@@ -40,8 +39,7 @@ export async function defineSource<T extends RecordBase>(worksheetRef: WorkbookW
 
 			for await (const { rowOffset, row } of iterateWorkbookRange(rangeRef)) {
 				if (!hasHead) {
-					source.head.splice(0, source.head.length);
-					source.head.push(...(row.map((cell) => cell.text) as ColumnHeading[]));
+					source.head = row.map((cell) => cell.text) as ColumnName[];
 					hasHead = true;
 					continue;
 				}
@@ -66,7 +64,7 @@ export async function initializeSource<T extends RecordBase>(source: Source<T>, 
 		throw new InvalidOperationError("Cannot initialize source with non-empty worksheet.");
 	}
 
-	source.head = Object.keys(empty) as ColumnHeading[];
+	source.head = Object.keys(empty) as ColumnName[];
 
 	const address = cartesianToAddress({
 		ax: 0 as ColumnOffset,
@@ -145,7 +143,6 @@ export async function updateItem<T extends RecordBase>(source: Source<T>, offset
 	await updateWorkbookRange(rangeRef, {
 		values: [row],
 	});
-
 }
 
 export async function deleteItem<T extends RecordBase>(source: Source<T>, offset: RowOffset): Promise<void> {
@@ -178,7 +175,7 @@ function rowToRecord<T extends RecordBase>(row: Cell[], source: Source<T>): T {
 	return record;
 }
 
-function recordToRow<T extends RecordBase>(record: T, source: Source<T>): CellValue[] {
+function recordToRow<T extends RecordBase>(record: T, source: Source<T>): Cell[] {
 	const sourceRow = source.coding.encode(record);
 	const row = source.head.map((heading) => {
 		const cell = sourceRow[heading];
@@ -201,3 +198,5 @@ function isEmpty<T extends RecordBase>(source: Source<T>) {
 function isInitialized<T extends RecordBase>(source: Source<T>) {
 	return source.head.length > 0;
 }
+
+// TODO: Tidy Cell/CellValue types

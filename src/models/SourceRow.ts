@@ -1,4 +1,4 @@
 import type { Cell } from "../models/Cell.ts";
-import type { ColumnHeading } from "../models/ColumnHeading.ts";
+import type { ColumnName } from "../models/ColumnName.ts";
 
-export type SourceRow = Record<ColumnHeading, Cell>;
+export type SourceRow = Record<ColumnName, Cell>;

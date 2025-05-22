@@ -1,4 +1,4 @@
 import type { RecordBase } from "./RecordBase.ts";
-import type { SourceRowValue } from "./SourceRowValue.ts";
+import type { SourceRow } from "./SourceRow.ts";
 
-export type SourceEncoder<T extends RecordBase> = (record: T) => SourceRowValue;
+export type SourceEncoder<T extends RecordBase> = (record: T) => SourceRow;
