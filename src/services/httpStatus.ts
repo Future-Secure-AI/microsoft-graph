@@ -51,3 +51,12 @@ export function isServiceUnavailable(status: number): boolean {
 export function isGatewayTimeout(status: number): boolean {
 	return status === 504;
 }
+
+/**
+ * Checks if the HTTP status code indicates the resource is locked
+ * @param status - The HTTP status code.
+ * @returns True if the status code is 423, otherwise false.
+ */
+export function isLocked(status: number): boolean {
+	return status === 423;
+}
