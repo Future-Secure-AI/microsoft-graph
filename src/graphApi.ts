@@ -10,7 +10,7 @@ import type { Scope } from "./models/Scope.ts";
 import { getCurrentAccessToken } from "./services/accessToken.ts";
 import { getContext } from "./services/context.ts";
 import { executeHttpRequest } from "./services/http.ts";
-import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isLocked, isServiceUnavailable } from "./services/httpStatus.ts";
+import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
 

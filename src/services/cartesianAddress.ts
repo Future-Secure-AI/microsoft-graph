@@ -28,7 +28,7 @@ export function addressToCartesian(address: Address): Cartesian {
  * @param {Cartesian} cartesian - The Cartesian coordinates, including start (ax, ay) and end (bx, by).
  * @returns {Address} The cell range address (e.g., "A1:C3").
  */
-export function cartesianToAddress({ ax, ay, bx, by }: Cartesian): Address { // TODO: xa, xb, ya, yb ?
+export function cartesianToAddress({ ax, ay, bx, by }: Cartesian): Address {
 	const startColumn = columnOffsetToAddress(ax);
 	const startRow = rowOffsetToAddress(ay);
 	const endColumn = columnOffsetToAddress(bx);
