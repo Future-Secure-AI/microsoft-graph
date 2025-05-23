@@ -9,22 +9,22 @@ import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
-import getWorkbookWorksheetUsedRangeAddress from "./getWorkbookWorksheetUsedRangeAddress.ts";
+import getWorkbookWorksheetUsedRangeRef from "./getWorkbookWorksheetUsedRangeRef.ts";
 
 const values = [
 	[1, 2],
 	[3, 4],
 ];
 
-describe("getWorkbookWorksheetUsedRangeAddress", () => {
+describe("getWorkbookWorksheetUsedRangeRef", () => {
 	it("can retrieve the used range from an existing workbook", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
 		const workbook = await createWorkbook(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-		const inputAddress = "A1:B2" as CellRangeAddress;
-		const rangeRef = createWorkbookRangeRef(worksheetRef, inputAddress);
+		const address = "A1:B2" as CellRangeAddress;
+		const rangeRef = createWorkbookRangeRef(worksheetRef, address);
 
 		try {
 			await updateWorkbookRange(rangeRef, {
@@ -33,8 +33,8 @@ describe("getWorkbookWorksheetUsedRangeAddress", () => {
 
 			await calculateWorkbook(workbook);
 
-			const outputAddress = await getWorkbookWorksheetUsedRangeAddress(worksheetRef);
-			expect(outputAddress).toEqual(inputAddress);
+			const usedRangeRef = await getWorkbookWorksheetUsedRangeRef(worksheetRef);
+			expect(usedRangeRef.address).toEqual(address);
 		} finally {
 			await tryDeleteDriveItem(workbook);
 		}

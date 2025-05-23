@@ -35,7 +35,7 @@ export type AddressComponents = {
 export function decomposeAddress(address: Address): AddressComponents {
 	const match = address.match(addressPattern);
 	if (!match?.groups) {
-		throw new InvalidArgumentError(`Invalid address format. Must match pattern '${addressPattern}'`);
+		throw new InvalidArgumentError(`Invalid address '${address}'. Must match pattern '${addressPattern}'`);
 	}
 
 	const groups = match.groups as AddressParsedComponents;
