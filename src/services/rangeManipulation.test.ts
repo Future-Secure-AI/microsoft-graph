@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import type { ColumnOffset } from "../models/ColumnOffset.ts";
+import type { RowOffset } from "../models/RowOffset.ts";
 import { inferObjectRange, inferRangeAddress, inferRangeObject } from "./rangeManipulation.ts";
 
 describe("inferRangeAddress", () => {
@@ -18,6 +20,37 @@ describe("inferRangeAddress", () => {
 
 	it("should return 'A1' for an empty array", () => {
 		expect(inferRangeAddress([])).toBe("A1");
+	});
+	
+	it("should apply rowOffset and columnOffset correctly", () => {
+		expect(
+			inferRangeAddress(
+				[
+					[1, 2],
+					[3, 4],
+				],
+				2 as RowOffset,
+				3 as ColumnOffset,
+			),
+		).toBe("D3:E4");
+		expect(inferRangeAddress([[1]], 5 as RowOffset, 5 as ColumnOffset)).toBe("F6");
+	});
+
+	it("should handle large offsets", () => {
+		expect(inferRangeAddress([[1, 2]], 100 as RowOffset, 25 as ColumnOffset)).toBe("Z101:AA101");
+	});
+
+	it("should handle single row and single column arrays with offsets", () => {
+		expect(inferRangeAddress([[1, 2, 3]], 1 as RowOffset, 1 as ColumnOffset)).toBe("B2:D2");
+		expect(inferRangeAddress([[1], [2], [3]], 2 as RowOffset, 0 as ColumnOffset)).toBe("A3:A5");
+	});
+
+	it("should throw if a row is empty but others are not", () => {
+		expect(() => inferRangeAddress([[1, 2], []])).toThrow("All rows must have the same number of columns");
+	});
+
+	it("should handle array with all empty rows as 'A1'", () => {
+		expect(inferRangeAddress([[]])).toBe("A1");
 	});
 });
 

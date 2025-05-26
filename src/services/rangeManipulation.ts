@@ -10,13 +10,15 @@ import { cartesianToAddress } from "./cartesianAddress.ts";
  * Converts a 2D array of cell values into range address in the upper left.
  *
  * @param {CellRangeValues} values - A 2D array representing cell values.
+ * @param {RowOffset} [rowOffset=0] - The row offset to apply to the range address.
+ * @param {ColumnOffset} [columnOffset=0] - The column offset to apply to the range address.
  * @returns {Address} The default cell range address (e.g., "A1:C3").
  * @throws {InvalidArgumentError} If rows have inconsistent column counts.
  */
-export function inferRangeAddress(values: CellRangeValues): Address {
+export function inferRangeAddress(values: CellRangeValues, rowOffset: RowOffset = 0 as RowOffset, columnOffset: ColumnOffset = 0 as ColumnOffset): Address {
 	const first = values[0];
 
-	if (!first) {
+	if (!first || first.length === 0) {
 		return "A1";
 	}
 
@@ -29,16 +31,13 @@ export function inferRangeAddress(values: CellRangeValues): Address {
 	const rowCount = values.length;
 	const columnCount = first.length;
 
-	const startRow = 0 as RowOffset;
-	const startColumn = 0 as ColumnOffset;
-
-	const endRow = (rowCount - 1) as RowOffset;
-	const endColumn = (columnCount - 1) as ColumnOffset;
+	const endRow = (rowOffset + rowCount - 1) as RowOffset;
+	const endColumn = (columnOffset + columnCount - 1) as ColumnOffset;
 
 	return cartesianToAddress({
-		ax: startColumn,
-		ay: startRow,
+		ax: columnOffset,
 		bx: endColumn,
+		ay: rowOffset,
 		by: endRow,
 	});
 }
