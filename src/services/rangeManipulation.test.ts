@@ -21,7 +21,7 @@ describe("inferRangeAddress", () => {
 	it("should return 'A1' for an empty array", () => {
 		expect(inferRangeAddress([])).toBe("A1");
 	});
-	
+
 	it("should apply rowOffset and columnOffset correctly", () => {
 		expect(
 			inferRangeAddress(
