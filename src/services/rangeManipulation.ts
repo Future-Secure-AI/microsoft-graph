@@ -1,6 +1,5 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Address } from "../models/Address.ts";
-import type { CellRangeValues } from "../models/CellRangeValues.ts";
 import type { CellValue } from "../models/CellValue.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
@@ -9,13 +8,13 @@ import { cartesianToAddress } from "./cartesianAddress.ts";
 /**
  * Converts a 2D array of cell values into range address in the upper left.
  *
- * @param {CellRangeValues} values - A 2D array representing cell values.
+ * @param {CellValue[][]} values - A 2D array representing cell values.
  * @param {RowOffset} [rowOffset=0] - The row offset to apply to the range address.
  * @param {ColumnOffset} [columnOffset=0] - The column offset to apply to the range address.
  * @returns {Address} The default cell range address (e.g., "A1:C3").
  * @throws {InvalidArgumentError} If rows have inconsistent column counts.
  */
-export function inferRangeAddress(values: CellRangeValues, rowOffset: RowOffset = 0 as RowOffset, columnOffset: ColumnOffset = 0 as ColumnOffset): Address {
+export function inferRangeAddress(values: CellValue[][], rowOffset: RowOffset = 0 as RowOffset, columnOffset: ColumnOffset = 0 as ColumnOffset): Address {
 	const first = values[0];
 
 	if (!first || first.length === 0) {
@@ -46,11 +45,11 @@ export function inferRangeAddress(values: CellRangeValues, rowOffset: RowOffset 
  * Converts a 2D array of cell values into an array of objects.
  * Assumes the first row is a header and uses it as keys for the objects.
  *
- * @param {CellRangeValues} values - A 2D array representing cell values.
+ * @param {CellValue[][]} values - A 2D array representing cell values.
  * @returns {unknown[]} An array of objects where each object represents a row.
  * @throws {InvalidArgumentError} If rows have inconsistent column counts or no header row is present.
  */
-export function inferRangeObject(values: CellRangeValues): unknown[] {
+export function inferRangeObject(values: CellValue[][]): unknown[] {
 	const [header, ...rows] = values;
 
 	if (!header) {
@@ -78,9 +77,9 @@ export function inferRangeObject(values: CellRangeValues): unknown[] {
  *
  * @param {unknown[]} objs - An array of objects to convert.
  * @param {string[] | null} header - Optional header row. If not provided, it will be inferred from the object keys.
- * @returns {CellRangeValues} A 2D array where the first row is the header and subsequent rows are the object values.
+ * @returns {CellValue[][]} A 2D array where the first row is the header and subsequent rows are the object values.
  */
-export function inferObjectRange(objs: unknown[], header: string[] | null = null): CellRangeValues {
+export function inferObjectRange(objs: unknown[], header: string[] | null = null): CellValue[][] {
 	if (objs.length === 0) {
 		return [];
 	}

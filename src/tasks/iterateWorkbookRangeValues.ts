@@ -1,6 +1,6 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import type { CellValue } from "../models/CellValue.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
-import type { RowRangeValues } from "../models/RowRangeValues.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { composeAddress, decomposeAddress } from "../services/addressManipulation.ts";
@@ -23,7 +23,7 @@ const maxCellsPerRequest = 10_000;
  * @returns An async iterable that yields rows of range values.
  * @deprecated Use `iterateWorkbookRange` instead.
  */
-export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<RowRangeValues> {
+export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<CellValue[]> {
 	const address = rangeRef.address;
 	const components = decomposeAddress(address);
 	const columnsPerRow = columnAddressToOffset(components.endColumn) - columnAddressToOffset(components.startColumn) + 1;
@@ -56,7 +56,7 @@ export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRang
 		const range = await getWorkbookWorksheetRange(requestRef);
 
 		for (const row of range.values) {
-			yield row as RowRangeValues;
+			yield row satisfies CellValue[];
 		}
 	}
 }

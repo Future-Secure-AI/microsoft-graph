@@ -59,7 +59,7 @@ export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, 
 		const requestRef = createWorkbookRangeRef(rangeRef, requestAddress);
 
 		const range = await getWorkbookWorksheetRange(requestRef);
-		const values = range.values as CellValue[][];
+		const values = range.values satisfies CellValue[][];
 		const text = range.text as CellText[][];
 		const numberFormat = range.numberFormat as NumberFormat[][];
 		const rowCount = values.length;
