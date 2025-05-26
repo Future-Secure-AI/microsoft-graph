@@ -12,7 +12,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-autofitcolumns
  */
 export default function autoFitWorkbookRangeColumns(rangeRef: WorkbookRangeRef): GraphOperation<void> {
-	const address = normalizeAddress(rangeRef.address);
+	const address = normalizeAddress(rangeRef.address, true);
 
 	return operation({
 		contextId: rangeRef.contextId,

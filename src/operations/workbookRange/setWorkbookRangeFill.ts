@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @see https://learn.microsoft.com/en-us/graph/api/rangefill-update
  */
 export default function setWorkbookRangeFill(rangeRef: WorkbookRangeRef, format: WorkbookRangeFill): GraphOperation<void> {
-	const address = normalizeAddress(rangeRef.address);
+	const address = normalizeAddress(rangeRef.address, true);
 
 	return operation({
 		contextId: rangeRef.contextId,

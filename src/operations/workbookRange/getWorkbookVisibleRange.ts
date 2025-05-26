@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @see https://learn.microsoft.com/en-us/graph/api/workbookrange-visibleview
  */
 export default function getWorkbookVisibleRange(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRangeView & WorkbookRangeRef> {
-	const address = normalizeAddress(rangeRef.address);
+	const address = normalizeAddress(rangeRef.address, true);
 
 	// TODO: Should be a visible ref type?
 	return operation({

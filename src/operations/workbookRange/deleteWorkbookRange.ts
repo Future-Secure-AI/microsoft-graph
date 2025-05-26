@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @see https://learn.microsoft.com/en-us/graph/api/range-clear
  */
 export default function deleteWorkbookRange(rangeRef: WorkbookRangeRef, shift: "Up" | "Left"): GraphOperation<void> {
-	const address = normalizeAddress(rangeRef.address);
+	const address = normalizeAddress(rangeRef.address, true);
 
 	return operation({
 		contextId: rangeRef.contextId,
