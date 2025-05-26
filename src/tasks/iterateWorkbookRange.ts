@@ -1,8 +1,8 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { Cell } from "../models/Cell.ts";
 import type { CellText } from "../models/CellText.ts";
 import type { CellValue } from "../models/CellValue.ts";
 import type { NumberFormat } from "../models/NumberFormat.ts";
+import type { Row } from "../models/Row.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
@@ -25,7 +25,7 @@ const maxCellsPerRequest = 10_000;
  * @param overwriteRowsPerRequest - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
  * @returns An async iterable that yields rows of range values.
  */
-export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<{ rowOffset: RowOffset; row: Cell[] }> {
+export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<{ rowOffset: RowOffset; row: Row }> {
 	const address = rangeRef.address;
 	const components = decomposeAddress(address);
 	const columnsPerRow = columnAddressToOffset(components.endColumn) - columnAddressToOffset(components.startColumn) + 1;

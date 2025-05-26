@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.19.0",
+  "version": "2.19.1",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -494,30 +494,30 @@
       "require": "./dist/cjs/models/Cell.js",
       "types": "./dist/esm/models/Cell.d.ts"
     },
-    "./CellRangeValues": {
-      "import": "./dist/esm/models/CellRangeValues.js",
-      "require": "./dist/cjs/models/CellRangeValues.js",
-      "types": "./dist/esm/models/CellRangeValues.d.ts"
+    "./CellText": {
+      "import": "./dist/esm/models/CellText.js",
+      "require": "./dist/cjs/models/CellText.js",
+      "types": "./dist/esm/models/CellText.d.ts"
     },
-    "./dist/cjs/models/CellRangeValues.js": {
-      "import": "./dist/esm/models/CellRangeValues.js",
-      "require": "./dist/cjs/models/CellRangeValues.js",
-      "types": "./dist/esm/models/CellRangeValues.d.ts"
+    "./dist/cjs/models/CellText.js": {
+      "import": "./dist/esm/models/CellText.js",
+      "require": "./dist/cjs/models/CellText.js",
+      "types": "./dist/esm/models/CellText.d.ts"
     },
-    "./dist/cjs/models/CellRangeValues": {
-      "import": "./dist/esm/models/CellRangeValues.js",
-      "require": "./dist/cjs/models/CellRangeValues.js",
-      "types": "./dist/esm/models/CellRangeValues.d.ts"
+    "./dist/cjs/models/CellText": {
+      "import": "./dist/esm/models/CellText.js",
+      "require": "./dist/cjs/models/CellText.js",
+      "types": "./dist/esm/models/CellText.d.ts"
     },
-    "./models/CellRangeValues": {
-      "import": "./dist/esm/models/CellRangeValues.js",
-      "require": "./dist/cjs/models/CellRangeValues.js",
-      "types": "./dist/esm/models/CellRangeValues.d.ts"
+    "./models/CellText": {
+      "import": "./dist/esm/models/CellText.js",
+      "require": "./dist/cjs/models/CellText.js",
+      "types": "./dist/esm/models/CellText.d.ts"
     },
-    "./models/CellRangeValues.js": {
-      "import": "./dist/esm/models/CellRangeValues.js",
-      "require": "./dist/cjs/models/CellRangeValues.js",
-      "types": "./dist/esm/models/CellRangeValues.d.ts"
+    "./models/CellText.js": {
+      "import": "./dist/esm/models/CellText.js",
+      "require": "./dist/cjs/models/CellText.js",
+      "types": "./dist/esm/models/CellText.d.ts"
     },
     "./CellValue": {
       "import": "./dist/esm/models/CellValue.js",
@@ -1019,6 +1019,31 @@
       "require": "./dist/cjs/models/RecordBase.js",
       "types": "./dist/esm/models/RecordBase.d.ts"
     },
+    "./Row": {
+      "import": "./dist/esm/models/Row.js",
+      "require": "./dist/cjs/models/Row.js",
+      "types": "./dist/esm/models/Row.d.ts"
+    },
+    "./dist/cjs/models/Row.js": {
+      "import": "./dist/esm/models/Row.js",
+      "require": "./dist/cjs/models/Row.js",
+      "types": "./dist/esm/models/Row.d.ts"
+    },
+    "./dist/cjs/models/Row": {
+      "import": "./dist/esm/models/Row.js",
+      "require": "./dist/cjs/models/Row.js",
+      "types": "./dist/esm/models/Row.d.ts"
+    },
+    "./models/Row": {
+      "import": "./dist/esm/models/Row.js",
+      "require": "./dist/cjs/models/Row.js",
+      "types": "./dist/esm/models/Row.d.ts"
+    },
+    "./models/Row.js": {
+      "import": "./dist/esm/models/Row.js",
+      "require": "./dist/cjs/models/Row.js",
+      "types": "./dist/esm/models/Row.d.ts"
+    },
     "./RowNumber": {
       "import": "./dist/esm/models/RowNumber.js",
       "require": "./dist/cjs/models/RowNumber.js",
@@ -1068,31 +1093,6 @@
       "import": "./dist/esm/models/RowOffset.js",
       "require": "./dist/cjs/models/RowOffset.js",
       "types": "./dist/esm/models/RowOffset.d.ts"
-    },
-    "./RowRangeValues": {
-      "import": "./dist/esm/models/RowRangeValues.js",
-      "require": "./dist/cjs/models/RowRangeValues.js",
-      "types": "./dist/esm/models/RowRangeValues.d.ts"
-    },
-    "./dist/cjs/models/RowRangeValues.js": {
-      "import": "./dist/esm/models/RowRangeValues.js",
-      "require": "./dist/cjs/models/RowRangeValues.js",
-      "types": "./dist/esm/models/RowRangeValues.d.ts"
-    },
-    "./dist/cjs/models/RowRangeValues": {
-      "import": "./dist/esm/models/RowRangeValues.js",
-      "require": "./dist/cjs/models/RowRangeValues.js",
-      "types": "./dist/esm/models/RowRangeValues.d.ts"
-    },
-    "./models/RowRangeValues": {
-      "import": "./dist/esm/models/RowRangeValues.js",
-      "require": "./dist/cjs/models/RowRangeValues.js",
-      "types": "./dist/esm/models/RowRangeValues.d.ts"
-    },
-    "./models/RowRangeValues.js": {
-      "import": "./dist/esm/models/RowRangeValues.js",
-      "require": "./dist/cjs/models/RowRangeValues.js",
-      "types": "./dist/esm/models/RowRangeValues.d.ts"
     },
     "./Scope": {
       "import": "./dist/esm/models/Scope.js",

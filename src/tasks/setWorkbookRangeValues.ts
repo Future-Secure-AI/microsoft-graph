@@ -1,5 +1,5 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { CellRangeValues } from "../models/CellRangeValues.ts";
+import type { CellValue } from "../models/CellValue.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import { countAddressColumns, countAddressRows } from "../services/addressManipulation.ts";
@@ -11,7 +11,7 @@ import { countAddressColumns, countAddressRows } from "../services/addressManipu
  * @param {CellRangeValues} values - The values to set in the specified workbook range. Must match the range's dimensions.
  * @returns Nothing
  */
-export default async function setWorkbookRangeValues(rangeRef: WorkbookRangeRef, values: CellRangeValues) {
+export default async function setWorkbookRangeValues(rangeRef: WorkbookRangeRef, values: CellValue[][]) {
 	const rowCount = countAddressRows(rangeRef.address);
 	if (values.length !== rowCount) {
 		throw new InvalidArgumentError(`The number of rows in the values array (${values.length}) does not match the number of rows in the range (${rowCount}).`);
