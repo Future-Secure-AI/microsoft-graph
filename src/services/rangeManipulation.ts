@@ -18,7 +18,12 @@ export function inferRangeAddress(values: CellValue[][], rowOffset: RowOffset = 
 	const first = values[0];
 
 	if (!first || first.length === 0) {
-		return "A1";
+		return cartesianToAddress({
+			ax: columnOffset,
+			bx: columnOffset,
+			ay: rowOffset,
+			by: rowOffset,
+		});
 	}
 
 	for (const row of values) {
@@ -38,6 +43,33 @@ export function inferRangeAddress(values: CellValue[][], rowOffset: RowOffset = 
 		bx: endColumn,
 		ay: rowOffset,
 		by: endRow,
+	});
+}
+
+/**
+ * Converts a 2D array of cell values into a row address in the upper left.
+ *
+ * @param {CellValue[]} row - A single row of cell values.
+ * @param {RowOffset} [rowOffset=0] - The row offset to apply to the address.
+ * @param {ColumnOffset} [columnOffset=0] - The column offset to apply to the address.
+ * @returns {Address} The default cell range address for the row (e.g., "A1").
+ */
+export function inferRowAddress(row: CellValue[], rowOffset: RowOffset = 0 as RowOffset, columnOffset: ColumnOffset = 0 as ColumnOffset): Address {
+	if (row.length === 0) {
+		return cartesianToAddress({
+			ax: columnOffset,
+			bx: columnOffset,
+			ay: rowOffset,
+			by: rowOffset,
+		});
+	}
+
+	const endColumn = (columnOffset + row.length - 1) as ColumnOffset;
+	return cartesianToAddress({
+		ax: columnOffset,
+		bx: endColumn,
+		ay: rowOffset,
+		by: rowOffset,
 	});
 }
 

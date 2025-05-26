@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
-import { inferObjectRange, inferRangeAddress, inferRangeObject } from "./rangeManipulation.ts";
+import { inferObjectRange, inferRangeAddress, inferRangeObject, inferRowAddress } from "./rangeManipulation.ts";
 
 describe("inferRangeAddress", () => {
 	it("should return the correct address for a valid 2D array", () => {
@@ -20,6 +20,10 @@ describe("inferRangeAddress", () => {
 
 	it("should return 'A1' for an empty array", () => {
 		expect(inferRangeAddress([])).toBe("A1");
+	});
+
+	it("should return the correct address for an empty array with offset", () => {
+		expect(inferRangeAddress([], 2 as RowOffset, 3 as ColumnOffset)).toBe("D3");
 	});
 
 	it("should apply rowOffset and columnOffset correctly", () => {
@@ -124,5 +128,31 @@ describe("inferObjectRange", () => {
 
 	it("should return an empty array for an empty input", () => {
 		expect(inferObjectRange([])).toEqual([]);
+	});
+});
+
+describe("inferRowAddress", () => {
+	it("should return the correct address for a non-empty row with no offset", () => {
+		expect(inferRowAddress([1, 2, 3])).toBe("A1:C1");
+	});
+
+	it("should return the correct address for a non-empty row with row and column offsets", () => {
+		expect(inferRowAddress([1, 2, 3], 2 as RowOffset, 3 as ColumnOffset)).toBe("D3:F3");
+	});
+
+	it("should return the correct address for a single cell row with no offset", () => {
+		expect(inferRowAddress([1])).toBe("A1");
+	});
+
+	it("should return the correct address for a single cell row with offset", () => {
+		expect(inferRowAddress([1], 5 as RowOffset, 5 as ColumnOffset)).toBe("F6");
+	});
+
+	it("should return the correct address for an empty row with no offset", () => {
+		expect(inferRowAddress([])).toBe("A1");
+	});
+
+	it("should return the correct address for an empty row with offset", () => {
+		expect(inferRowAddress([], 10 as RowOffset, 2 as ColumnOffset)).toBe("C11");
 	});
 });
