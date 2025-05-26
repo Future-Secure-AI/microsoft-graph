@@ -1,8 +1,9 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Cell } from "../models/Cell.ts";
+import type { CellText } from "../models/CellText.ts";
+import type { CellValue } from "../models/CellValue.ts";
 import type { NumberFormat } from "../models/NumberFormat.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
-import type { RowRangeValues } from "../models/RowRangeValues.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { composeAddress, countAddressColumns, decomposeAddress } from "../services/addressManipulation.ts";
@@ -58,14 +59,14 @@ export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, 
 		const requestRef = createWorkbookRangeRef(rangeRef, requestAddress);
 
 		const range = await getWorkbookWorksheetRange(requestRef);
-		const values = range.values as RowRangeValues[];
-		const text = range.text as string[][];
+		const values = range.values as CellValue[][];
+		const text = range.text as CellText[][];
 		const numberFormat = range.numberFormat as NumberFormat[][];
 		const rowCount = values.length;
 
 		for (let r = 0; r < rowCount; r++) {
 			const row = Array.from({ length: columnCount }, (_, c) => ({
-				text: text[r]?.[c] ?? "",
+				text: text[r]?.[c] ?? ("" as CellText),
 				value: values[r]?.[c] ?? "",
 				numberFormat: numberFormat?.[r]?.[c] ?? ("" as NumberFormat),
 			}));
