@@ -5,6 +5,7 @@ import type { Address, CellRangeAddress } from "../../models/Address.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
+import { normalizeAddress } from "../../services/addressManipulation.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
@@ -21,7 +22,7 @@ export default function insertWorkbookCells(worksheetRef: WorkbookWorksheetRef, 
 	return operation({
 		contextId: worksheetRef.contextId,
 		method: "POST",
-		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${address}')/insert`, worksheetRef),
+		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${normalizeAddress(address)}')/insert`, worksheetRef),
 		headers: {
 			"workbook-session-id": worksheetRef.sessionId,
 			"content-type": "application/json",

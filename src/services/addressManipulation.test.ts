@@ -291,6 +291,20 @@ describe("composeAddress", () => {
 		).toBe("A" as ColumnAddress);
 	});
 
+	it("should create a column address with forced range", () => {
+		expect(
+			composeAddress(
+				{
+					startColumn: "A",
+					endColumn: "A",
+					startRow: "1",
+					endRow: "1048576",
+				},
+				true,
+			),
+		).toBe("A:A" as ColumnAddress);
+	});
+
 	it("should create a row address", () => {
 		expect(
 			composeAddress({
@@ -300,6 +314,20 @@ describe("composeAddress", () => {
 				endRow: "5",
 			}),
 		).toBe("5" as RowAddress);
+	});
+
+	it("should create a row address with forced range", () => {
+		expect(
+			composeAddress(
+				{
+					startColumn: "A",
+					endColumn: "XFD",
+					startRow: "5",
+					endRow: "5",
+				},
+				true,
+			),
+		).toBe("5:5" as RowAddress);
 	});
 
 	it("should create a cell address", () => {
@@ -477,5 +505,32 @@ describe("countAddressColumns", () => {
 
 	it("should return the correct number of columns for a row range address", () => {
 		expect(countAddressColumns("1:5")).toBe(16384);
+	});
+});
+
+describe("Sheet name with single quotes", () => {
+	it("should parse addresses with single-quoted sheet names", () => {
+		expect(getFirstCellAddress("'Sheet 1'!A1:B2" as CellRangeAddress)).toBe("A1" as CellAddress);
+		expect(getLastCellAddress("'Sheet 1'!A1:B2" as CellRangeAddress)).toBe("B2" as CellAddress);
+		expect(getFirstCellAddress("'My Sheet'!C" as ColumnAddress)).toBe("C1" as CellAddress);
+		expect(getLastCellAddress("'My Sheet'!3" as RowAddress)).toBe("XFD3" as CellAddress);
+		expect(getFirstCellAddress("'Data 2025'!1:10" as RowRangeAddress)).toBe("A1" as CellAddress);
+		expect(getLastCellAddress("'Data 2025'!A:Z" as ColumnRangeAddress)).toBe("Z1048576" as CellAddress);
+	});
+
+	it("should decompose addresses with single-quoted sheet names", () => {
+		expect(decomposeAddress("'Sheet 1'!A1:C5" as Address)).toEqual({
+			startColumn: "A",
+			endColumn: "C",
+			startRow: "1",
+			endRow: "5",
+		});
+		// Should also work for just a single cell
+		expect(decomposeAddress("'Sheet 1'!B3" as Address)).toEqual({
+			startColumn: "B",
+			endColumn: "B",
+			startRow: "3",
+			endRow: "3",
+		});
 	});
 });

@@ -10,7 +10,7 @@ const lastColumn: ColumnAddress = "XFD";
 const firstRow: RowAddress = "1";
 const lastRow: RowAddress = "1048576";
 
-const addressPattern = /^(?<sheet>[A-Za-z0-9_]+!)?(?:(?<startColumn>[A-Z]+)?(?<startRow>\d+)?(?::(?<endColumn>[A-Z]+)?(?<endRow>\d+)?)?)$/;
+const addressPattern = /^(?<sheet>(?:'[^']+'|[A-Za-z0-9_]+)!)?(?:(?<startColumn>[A-Z]+)?(?<startRow>\d+)?(?::(?<endColumn>[A-Z]+)?(?<endRow>\d+)?)?)$/;
 
 type AddressParsedComponents = {
 	startColumn: ColumnAddress | undefined;
@@ -25,6 +25,16 @@ export type AddressComponents = {
 	startRow: RowAddress;
 	endRow: RowAddress;
 };
+
+/**
+ * Fixes address, removing an optional sheet prefix and ensuring it is a valid range.
+ * @param address - The address to normalize.
+ * @param forceRange - If true, forces the address to be a range even if it represents a single cell or row/column. This is useful to workaround API quirks.
+ * @returns
+ */
+export function normalizeAddress(address: Address, forceRange = false): Address {
+	return composeAddress(decomposeAddress(address), forceRange);
+}
 
 /**
  * Decomposes an address into its components (start and end columns/rows).
@@ -51,15 +61,16 @@ export function decomposeAddress(address: Address): AddressComponents {
 /**
  * Composes an address from its components.
  * @param components - The address components.
+ * @param forceRange - If true, forces the address to be a range even if it represents a single cell or row/column. Used to workaround API quirks
  * @returns The composed address.
  * @throws InvalidArgumentError if the components are invalid.
  */
-export function composeAddress(components: AddressComponents): Address {
-	if (isSingleColumn(components) && isAllRows(components)) {
+export function composeAddress(components: AddressComponents, forceRange = false): Address {
+	if (!forceRange && isSingleColumn(components) && isAllRows(components)) {
 		return composeColumnAddress(components.startColumn);
 	}
 
-	if (isSingleRow(components) && isAllColumns(components)) {
+	if (!forceRange && isSingleRow(components) && isAllColumns(components)) {
 		return composeRowAddress(components.startRow);
 	}
 
