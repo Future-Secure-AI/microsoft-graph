@@ -1,0 +1,66 @@
+import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import type { Row } from "../models/Row.ts";
+import type { RowOffset } from "../models/RowOffset.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
+import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
+import { maxCellsPerRequest } from "../services/batch.ts";
+import { addressToCartesian, cartesianToAddress } from "../services/cartesianAddress.ts";
+import { createWorkbookRangeRef } from "../services/workbookRange.ts";
+
+/**
+ * Write rows to a workbook range. Uses batching to handle large datasets efficiently.
+ * @param originRef The reference to the workbook range where rows will be written. Only the upper-left is used as an origin point.
+ * @param rows An iterable or async iterable of rows to write. Each row is an array of cells.
+ * @param overrideMaxRowsPerUnderlyingRead Optional maximum number of rows to write in a single underlying read. If not provided, it will be automatically calculated based on a safe value.
+ */
+export async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Row> | AsyncIterable<Row>, overrideMaxRowsPerUnderlyingRead: number | null = null): Promise<void> {
+	let maxRowsPerUnderlyingRead: number | null = overrideMaxRowsPerUnderlyingRead;
+	let cellsPerRow: number | null = null;
+	let rowsCompleted = 0;
+	const batch: Row[] = [];
+
+	for await (const row of rows) {
+		if (cellsPerRow === null) {
+			cellsPerRow = row.length;
+		} else if (cellsPerRow !== row.length) {
+			throw new InvalidArgumentError("Not all rows have the same number of cells. Ensure all rows are consistent in length.");
+		}
+
+		if (maxRowsPerUnderlyingRead === null) {
+			maxRowsPerUnderlyingRead = Math.max(1, Math.floor(maxCellsPerRequest / cellsPerRow)); // Excel supports up to 16k columns, which exceeds the assumed 10k cell limit per write. This might not be a problem, but not worth spending time checking this currently either.
+		}
+
+		if (batch.push(row) >= maxRowsPerUnderlyingRead) {
+			rowsCompleted += await flushBatch(batch, originRef, rowsCompleted);
+		}
+	}
+
+	await flushBatch(batch, originRef, rowsCompleted);
+}
+
+async function flushBatch(batch: Row[], originRef: WorkbookRangeRef, rowsCompleted: number): Promise<number> {
+	if (batch.length === 0) {
+		return 0;
+	}
+
+	const { ay, ax, bx } = addressToCartesian(originRef.address);
+
+	const count = batch.length;
+
+	const address = cartesianToAddress({
+		ay: (rowsCompleted + ay) as RowOffset,
+		by: (rowsCompleted + ay + count - 1) as RowOffset,
+		ax,
+		bx,
+	});
+
+	const rangeRef = createWorkbookRangeRef(originRef, address);
+	await updateWorkbookRange(rangeRef, {
+		values: batch.map((r) => r.map((c) => c.value)),
+		text: batch.map((r) => r.map((c) => c.text)),
+		numberFormat: batch.map((r) => r.map((c) => c.numberFormat)),
+	});
+
+	batch.length = 0;
+	return count;
+}

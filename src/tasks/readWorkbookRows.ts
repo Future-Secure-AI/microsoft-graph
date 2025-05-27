@@ -8,33 +8,30 @@ import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { composeAddress, countAddressColumns, decomposeAddress } from "../services/addressManipulation.ts";
 import { columnAddressToOffset, rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";
-import { maxCellsPerRequest } from "../services/batch.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
+import { maxCellsPerRequest } from "../services/batch.ts";
 
 /**
  * Iterates over the values of a workbook range in chunks, fetching data in manageable sizes.
  *
  * @param rangeRef - A reference to the workbook range to iterate over.
- * @param overwriteRowsPerRequest - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
+ * @param overwriteMaxRowsPerChunk - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
  * @returns An async iterable that yields rows of range values.
- * @deprecated Use `readWorkbookRows` instead.
  */
-export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<{ rowOffset: RowOffset; row: Row }> {
+export default async function* readWorkbookRows(rangeRef: WorkbookRangeRef, overwriteMaxRowsPerChunk: number | null = null): AsyncIterable<Row> {
 	const address = rangeRef.address;
 	const components = decomposeAddress(address);
 	const columnsPerRow = columnAddressToOffset(components.endColumn) - columnAddressToOffset(components.startColumn) + 1;
 
-	if (overwriteRowsPerRequest !== null && overwriteRowsPerRequest < 1) {
+	if (overwriteMaxRowsPerChunk !== null && overwriteMaxRowsPerChunk < 1) {
 		throw new InvalidArgumentError("overwriteRowsPerRequest must be greater than 0");
 	}
 	const columnCount = countAddressColumns(address);
 
-	const rowsPerRequest = overwriteRowsPerRequest ?? Math.floor(maxCellsPerRequest / columnsPerRow);
+	const rowsPerRequest = overwriteMaxRowsPerChunk ?? Math.floor(maxCellsPerRequest / columnsPerRow);
 
 	const rangeStartRowOffset = rowAddressToOffset(components.startRow);
 	const rangeEndRowOffset = rowAddressToOffset(components.endRow);
-
-	let offset = 0 as RowOffset;
 
 	for (let chunkRowOffset = rangeStartRowOffset; chunkRowOffset <= rangeEndRowOffset; chunkRowOffset = (chunkRowOffset + rowsPerRequest) as RowOffset) {
 		const requestStartRowOffset = chunkRowOffset;
@@ -65,12 +62,7 @@ export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, 
 				numberFormat: numberFormat?.[r]?.[c] ?? ("" as NumberFormat),
 			}));
 
-			yield {
-				rowOffset: offset,
-				row,
-			};
-
-			offset++;
+			yield row;
 		}
 	}
 }

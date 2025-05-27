@@ -5,15 +5,8 @@ import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { composeAddress, decomposeAddress } from "../services/addressManipulation.ts";
 import { columnAddressToOffset, rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";
+import { maxCellsPerRequest } from "../services/batch.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
-
-/**
- * Maximum number of cells that can be retrieved in a single request, unless overwritten.
- * @remarks The Microsoft Graph API documentation does not specify a fixed maximum number of cells that can be retrieved in a single request.
- * However, it mentions that large ranges may result in errors due to resource constraints. Additionally, discussions in developer
- * communities suggest that requests exceeding 10,000 cells may encounter issues.
- */
-const maxCellsPerRequest = 10_000;
 
 /**
  * Iterates over the values of a workbook range in chunks, fetching data in manageable sizes.
@@ -21,7 +14,7 @@ const maxCellsPerRequest = 10_000;
  * @param rangeRef - A reference to the workbook range to iterate over.
  * @param overwriteRowsPerRequest - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
  * @returns An async iterable that yields rows of range values.
- * @deprecated Use `iterateWorkbookRange` instead.
+ * @deprecated Use `readWorkbookRows` instead.
  */
 export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<CellValue[]> {
 	const address = rangeRef.address;
