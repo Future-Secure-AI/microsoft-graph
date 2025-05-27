@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.19.1",
+  "version": "2.20.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -3119,6 +3119,31 @@
       "require": "./dist/cjs/services/addressOffset.js",
       "types": "./dist/esm/services/addressOffset.d.ts"
     },
+    "./batch": {
+      "import": "./dist/esm/services/batch.js",
+      "require": "./dist/cjs/services/batch.js",
+      "types": "./dist/esm/services/batch.d.ts"
+    },
+    "./dist/cjs/services/batch.js": {
+      "import": "./dist/esm/services/batch.js",
+      "require": "./dist/cjs/services/batch.js",
+      "types": "./dist/esm/services/batch.d.ts"
+    },
+    "./dist/cjs/services/batch": {
+      "import": "./dist/esm/services/batch.js",
+      "require": "./dist/cjs/services/batch.js",
+      "types": "./dist/esm/services/batch.d.ts"
+    },
+    "./services/batch": {
+      "import": "./dist/esm/services/batch.js",
+      "require": "./dist/cjs/services/batch.js",
+      "types": "./dist/esm/services/batch.d.ts"
+    },
+    "./services/batch.js": {
+      "import": "./dist/esm/services/batch.js",
+      "require": "./dist/cjs/services/batch.js",
+      "types": "./dist/esm/services/batch.d.ts"
+    },
     "./cartesianAddress": {
       "import": "./dist/esm/services/cartesianAddress.js",
       "require": "./dist/cjs/services/cartesianAddress.js",
@@ -3143,6 +3168,31 @@
       "import": "./dist/esm/services/cartesianAddress.js",
       "require": "./dist/cjs/services/cartesianAddress.js",
       "types": "./dist/esm/services/cartesianAddress.d.ts"
+    },
+    "./cellText": {
+      "import": "./dist/esm/services/cellText.js",
+      "require": "./dist/cjs/services/cellText.js",
+      "types": "./dist/esm/services/cellText.d.ts"
+    },
+    "./dist/cjs/services/cellText.js": {
+      "import": "./dist/esm/services/cellText.js",
+      "require": "./dist/cjs/services/cellText.js",
+      "types": "./dist/esm/services/cellText.d.ts"
+    },
+    "./dist/cjs/services/cellText": {
+      "import": "./dist/esm/services/cellText.js",
+      "require": "./dist/cjs/services/cellText.js",
+      "types": "./dist/esm/services/cellText.d.ts"
+    },
+    "./services/cellText": {
+      "import": "./dist/esm/services/cellText.js",
+      "require": "./dist/cjs/services/cellText.js",
+      "types": "./dist/esm/services/cellText.d.ts"
+    },
+    "./services/cellText.js": {
+      "import": "./dist/esm/services/cellText.js",
+      "require": "./dist/cjs/services/cellText.js",
+      "types": "./dist/esm/services/cellText.d.ts"
     },
     "./context": {
       "import": "./dist/esm/services/context.js",
@@ -3919,6 +3969,31 @@
       "require": "./dist/cjs/tasks/listDriveItems.js",
       "types": "./dist/esm/tasks/listDriveItems.d.ts"
     },
+    "./readWorkbookRows": {
+      "import": "./dist/esm/tasks/readWorkbookRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRows.d.ts"
+    },
+    "./dist/cjs/tasks/readWorkbookRows.js": {
+      "import": "./dist/esm/tasks/readWorkbookRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRows.d.ts"
+    },
+    "./dist/cjs/tasks/readWorkbookRows": {
+      "import": "./dist/esm/tasks/readWorkbookRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRows.d.ts"
+    },
+    "./tasks/readWorkbookRows": {
+      "import": "./dist/esm/tasks/readWorkbookRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRows.d.ts"
+    },
+    "./tasks/readWorkbookRows.js": {
+      "import": "./dist/esm/tasks/readWorkbookRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRows.d.ts"
+    },
     "./safeDeleteWorkbook": {
       "import": "./dist/esm/tasks/safeDeleteWorkbook.js",
       "require": "./dist/cjs/tasks/safeDeleteWorkbook.js",
@@ -4093,6 +4168,31 @@
       "import": "./dist/esm/tasks/tryDeleteDriveItem.js",
       "require": "./dist/cjs/tasks/tryDeleteDriveItem.js",
       "types": "./dist/esm/tasks/tryDeleteDriveItem.d.ts"
+    },
+    "./writeWorkbookRows": {
+      "import": "./dist/esm/tasks/writeWorkbookRows.js",
+      "require": "./dist/cjs/tasks/writeWorkbookRows.js",
+      "types": "./dist/esm/tasks/writeWorkbookRows.d.ts"
+    },
+    "./dist/cjs/tasks/writeWorkbookRows.js": {
+      "import": "./dist/esm/tasks/writeWorkbookRows.js",
+      "require": "./dist/cjs/tasks/writeWorkbookRows.js",
+      "types": "./dist/esm/tasks/writeWorkbookRows.d.ts"
+    },
+    "./dist/cjs/tasks/writeWorkbookRows": {
+      "import": "./dist/esm/tasks/writeWorkbookRows.js",
+      "require": "./dist/cjs/tasks/writeWorkbookRows.js",
+      "types": "./dist/esm/tasks/writeWorkbookRows.d.ts"
+    },
+    "./tasks/writeWorkbookRows": {
+      "import": "./dist/esm/tasks/writeWorkbookRows.js",
+      "require": "./dist/cjs/tasks/writeWorkbookRows.js",
+      "types": "./dist/esm/tasks/writeWorkbookRows.d.ts"
+    },
+    "./tasks/writeWorkbookRows.js": {
+      "import": "./dist/esm/tasks/writeWorkbookRows.js",
+      "require": "./dist/cjs/tasks/writeWorkbookRows.js",
+      "types": "./dist/esm/tasks/writeWorkbookRows.d.ts"
     }
   }
 }
