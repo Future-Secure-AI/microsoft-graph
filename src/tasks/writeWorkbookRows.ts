@@ -1,5 +1,5 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { Row } from "../models/Row.ts";
+import type { Cell } from "../models/Cell.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
@@ -13,11 +13,11 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
  * @param rows An iterable or async iterable of rows to write. Each row is an array of cells.
  * @param overrideMaxRowsPerUnderlyingRead Optional maximum number of rows to write in a single underlying read. If not provided, it will be automatically calculated based on a safe value.
  */
-export async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Row> | AsyncIterable<Row>, overrideMaxRowsPerUnderlyingRead: number | null = null): Promise<void> {
+export async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, overrideMaxRowsPerUnderlyingRead: number | null = null): Promise<void> {
 	let maxRowsPerUnderlyingRead: number | null = overrideMaxRowsPerUnderlyingRead;
 	let cellsPerRow: number | null = null;
 	let rowsCompleted = 0;
-	const batch: Row[] = [];
+	const batch: Partial<Cell>[][] = [];
 
 	for await (const row of rows) {
 		if (cellsPerRow === null) {
@@ -38,7 +38,7 @@ export async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Itera
 	await flushBatch(batch, originRef, rowsCompleted);
 }
 
-async function flushBatch(batch: Row[], originRef: WorkbookRangeRef, rowsCompleted: number): Promise<number> {
+async function flushBatch(batch: Partial<Cell>[][], originRef: WorkbookRangeRef, rowsCompleted: number): Promise<number> {
 	if (batch.length === 0) {
 		return 0;
 	}

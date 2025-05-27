@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
+import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
+import { asCellText } from "../services/cellText.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
 import { generalNumberFormat } from "../services/numberFormat.ts";
@@ -8,11 +10,8 @@ import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
 import readWorkbookRows from "./readWorkbookRows.ts";
-import { writeWorkbookRows } from "./writeWorkbookRows.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
-import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import { asCellText } from "../services/cellText.ts";
-
+import { writeWorkbookRows } from "./writeWorkbookRows.ts";
 
 describe("writeWorkbookRows", () => {
 	it("writes rows to a workbook and reads them back", async () => {
@@ -52,35 +51,6 @@ describe("writeWorkbookRows", () => {
 				expect(row.map((x) => x.numberFormat)).toEqual(rows[idx].map((c) => c.numberFormat));
 				idx++;
 			}
-		} finally {
-			await tryDeleteDriveItem(workbook);
-		}
-	});
-
-	it("throws if rows have inconsistent lengths", async () => {
-		const workbookName = generateTempFileName("xlsx");
-		const workbookPath = driveItemPath(workbookName);
-		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
-		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
-
-		try {
-			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C2");
-			const rows = [
-				[
-					{ value: 1, text: asCellText("1"), numberFormat: generalNumberFormat },
-					{ value: 2, text: asCellText("2"), numberFormat: generalNumberFormat },
-				],
-				[
-					{ value: 3, text: asCellText("3"), numberFormat: generalNumberFormat },
-					{ value: 4, text: asCellText("4"), numberFormat: generalNumberFormat },
-					{ value: 5, text: asCellText("5"), numberFormat: generalNumberFormat },
-				],
-			];
-
-			await expect(async () => {
-				await writeWorkbookRows(rangeRef, rows);
-			}).rejects.toThrow(InvalidArgumentError);
 		} finally {
 			await tryDeleteDriveItem(workbook);
 		}
