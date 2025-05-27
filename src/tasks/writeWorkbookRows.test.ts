@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import { asCellText } from "../services/cellText.ts";
@@ -72,6 +71,49 @@ describe("writeWorkbookRows", () => {
 			]);
 
 			await writeWorkbookRows(rangeRef, rows, 5); // Force small batch size
+			await calculateWorkbook(workbook);
+
+			let idx = 0;
+			for await (const row of readWorkbookRows(rangeRef)) {
+				expect(row.map((x) => x.value)).toEqual(rows[idx].map((c) => c.value));
+				expect(row.map((x) => x.text)).toEqual(rows[idx].map((c) => c.text));
+				expect(row.map((x) => x.numberFormat)).toEqual(rows[idx].map((c) => c.numberFormat));
+				idx++;
+			}
+		} finally {
+			await tryDeleteDriveItem(workbook);
+		}
+	});
+
+	it("writes rows to a workbook from an iterator and reads them back", async () => {
+		const workbookName = generateTempFileName("xlsx");
+		const workbookPath = driveItemPath(workbookName);
+		const driveRef = getDefaultDriveRef();
+		const workbook = await createWorkbook(driveRef, workbookPath);
+		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+
+		function* rowGenerator() {
+			yield [
+				{ value: 10, text: asCellText("10"), numberFormat: generalNumberFormat },
+				{ value: 20, text: asCellText("20"), numberFormat: generalNumberFormat },
+				{ value: 30, text: asCellText("30"), numberFormat: generalNumberFormat },
+			];
+			yield [
+				{ value: 40, text: asCellText("40"), numberFormat: generalNumberFormat },
+				{ value: 50, text: asCellText("50"), numberFormat: generalNumberFormat },
+				{ value: 60, text: asCellText("60"), numberFormat: generalNumberFormat },
+			];
+			yield [
+				{ value: 70, text: asCellText("70"), numberFormat: generalNumberFormat },
+				{ value: 80, text: asCellText("80"), numberFormat: generalNumberFormat },
+				{ value: 90, text: asCellText("90"), numberFormat: generalNumberFormat },
+			];
+		}
+
+		try {
+			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
+			const rows = Array.from(rowGenerator());
+			await writeWorkbookRows(rangeRef, rowGenerator());
 			await calculateWorkbook(workbook);
 
 			let idx = 0;
