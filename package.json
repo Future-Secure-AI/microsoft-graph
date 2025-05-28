@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.20.0",
+  "version": "2.20.1",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

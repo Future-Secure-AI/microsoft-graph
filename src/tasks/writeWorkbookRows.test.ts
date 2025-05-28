@@ -10,7 +10,7 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
 import readWorkbookRows from "./readWorkbookRows.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
-import { writeWorkbookRows } from "./writeWorkbookRows.ts";
+import writeWorkbookRows from "./writeWorkbookRows.ts";
 
 describe("writeWorkbookRows", () => {
 	it("writes rows to a workbook and reads them back", async () => {
