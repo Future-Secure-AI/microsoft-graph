@@ -21,7 +21,7 @@ describe("writeWorkbookRows", () => {
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 
 		try {
-			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
+			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1");
 			const rows = [
 				[
 					{ value: 1, text: asCellText("1"), numberFormat: generalNumberFormat },
@@ -43,8 +43,9 @@ describe("writeWorkbookRows", () => {
 			await writeWorkbookRows(rangeRef, rows);
 			await calculateWorkbook(workbook);
 
+			const readRangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
 			let idx = 0;
-			for await (const row of readWorkbookRows(rangeRef)) {
+			for await (const row of readWorkbookRows(readRangeRef)) {
 				expect(row.map((x) => x.value)).toEqual(rows[idx].map((c) => c.value));
 				expect(row.map((x) => x.text)).toEqual(rows[idx].map((c) => c.text));
 				expect(row.map((x) => x.numberFormat)).toEqual(rows[idx].map((c) => c.numberFormat));
@@ -63,7 +64,7 @@ describe("writeWorkbookRows", () => {
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 
 		try {
-			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C20");
+			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1");
 			const rows = Array.from({ length: 20 }, (_, i) => [
 				{ value: i, text: asCellText(i.toString()), numberFormat: generalNumberFormat },
 				{ value: i + 1, text: asCellText((i + 1).toString()), numberFormat: generalNumberFormat },
@@ -73,8 +74,9 @@ describe("writeWorkbookRows", () => {
 			await writeWorkbookRows(rangeRef, rows, 5); // Force small batch size
 			await calculateWorkbook(workbook);
 
+			const readRangeRef = createWorkbookRangeRef(worksheetRef, "A1:C20");
 			let idx = 0;
-			for await (const row of readWorkbookRows(rangeRef)) {
+			for await (const row of readWorkbookRows(readRangeRef)) {
 				expect(row.map((x) => x.value)).toEqual(rows[idx].map((c) => c.value));
 				expect(row.map((x) => x.text)).toEqual(rows[idx].map((c) => c.text));
 				expect(row.map((x) => x.numberFormat)).toEqual(rows[idx].map((c) => c.numberFormat));

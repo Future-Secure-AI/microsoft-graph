@@ -1,5 +1,6 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Cell } from "../models/Cell.ts";
+import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
@@ -39,19 +40,20 @@ export default async function writeWorkbookRows(originRef: WorkbookRangeRef, row
 }
 
 async function flushBatch(batch: Partial<Cell>[][], originRef: WorkbookRangeRef, rowsCompleted: number): Promise<number> {
-	if (batch.length === 0) {
+	const first = batch[0];
+	if (!first) {
 		return 0;
 	}
 
-	const { ay, ax, bx } = addressToCartesian(originRef.address);
+	const { ay, ax } = addressToCartesian(originRef.address);
 
 	const count = batch.length;
 
 	const address = cartesianToAddress({
-		ay: (rowsCompleted + ay) as RowOffset,
-		by: (rowsCompleted + ay + count - 1) as RowOffset,
+		ay: (ay + rowsCompleted) as RowOffset,
+		by: (ay + rowsCompleted + count - 1) as RowOffset,
 		ax,
-		bx,
+		bx: (ax + first.length - 1) as ColumnOffset,
 	});
 
 	const rangeRef = createWorkbookRangeRef(originRef, address);
