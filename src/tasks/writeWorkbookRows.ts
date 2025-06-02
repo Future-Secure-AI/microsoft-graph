@@ -14,7 +14,7 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
  * @param rows An iterable or async iterable of rows to write. Each row is an array of cells.
  * @param overrideMaxRowsPerUnderlyingRead Optional maximum number of rows to write in a single underlying read. If not provided, it will be automatically calculated based on a safe value.
  */
-export default async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, overrideMaxRowsPerUnderlyingRead: number | null = null): Promise<void> {
+export default async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, overrideMaxRowsPerUnderlyingRead: number | null = null): Promise<number> {
 	let maxRowsPerUnderlyingRead: number | null = overrideMaxRowsPerUnderlyingRead;
 	let cellsPerRow: number | null = null;
 	let rowsCompleted = 0;
@@ -36,7 +36,9 @@ export default async function writeWorkbookRows(originRef: WorkbookRangeRef, row
 		}
 	}
 
-	await flushBatch(batch, originRef, rowsCompleted);
+	rowsCompleted += await flushBatch(batch, originRef, rowsCompleted);
+
+	return rowsCompleted;
 }
 
 async function flushBatch(batch: Partial<Cell>[][], originRef: WorkbookRangeRef, rowsCompleted: number): Promise<number> {

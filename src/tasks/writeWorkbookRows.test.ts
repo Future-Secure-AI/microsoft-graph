@@ -40,7 +40,8 @@ describe("writeWorkbookRows", () => {
 				],
 			];
 
-			await writeWorkbookRows(rangeRef, rows);
+			const count = await writeWorkbookRows(rangeRef, rows);
+			expect(count).toBe(rows.length);
 			await calculateWorkbook(workbook);
 
 			const readRangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
@@ -115,7 +116,8 @@ describe("writeWorkbookRows", () => {
 		try {
 			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
 			const rows = Array.from(rowGenerator());
-			await writeWorkbookRows(rangeRef, rowGenerator());
+			const count = await writeWorkbookRows(rangeRef, rowGenerator());
+			expect(count).toBe(rows.length);
 			await calculateWorkbook(workbook);
 
 			let idx = 0;
