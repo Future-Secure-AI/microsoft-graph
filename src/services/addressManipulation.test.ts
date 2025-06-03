@@ -20,6 +20,7 @@ import {
 	isSingleColumnAddress,
 	isSingleRowAddress,
 	offsetAddress,
+	subaddress,
 } from "./addressManipulation.ts";
 
 describe("getFirstCellAddress", () => {
@@ -532,5 +533,66 @@ describe("Sheet name with single quotes", () => {
 			startRow: "3",
 			endRow: "3",
 		});
+	});
+});
+
+describe("subaddress", () => {
+	it("should return the same address if no skip/take is given", () => {
+		expect(subaddress("A1:C5")).toBe("A1:C5");
+	});
+
+	it("should skip first N rows", () => {
+		expect(subaddress("A1:C5", 2)).toBe("A3:C5");
+		expect(subaddress("B2:D10", 3)).toBe("B5:D10");
+	});
+
+	it("should skip last N rows with negative skipRows", () => {
+		expect(subaddress("A1:C5", -2)).toBe("A4:C5");
+		expect(subaddress("B2:D10", -3)).toBe("B8:D10");
+	});
+
+	it("should take first N rows after skipping", () => {
+		expect(subaddress("A1:C5", 0, 2)).toBe("A1:C2");
+		expect(subaddress("B2:D10", 0, 3)).toBe("B2:D4");
+	});
+
+	it("should take last N rows with negative takeRows", () => {
+		expect(subaddress("A1:C5", 0, -1)).toBe("A1:C4");
+		expect(subaddress("B2:D10", 0, -3)).toBe("B2:D7");
+	});
+
+	it("should skip and take rows together", () => {
+		expect(subaddress("A1:C5", 1, 2)).toBe("A2:C3");
+		expect(subaddress("B2:D10", 2, 3)).toBe("B4:D6");
+	});
+
+	it("should skip and take columns", () => {
+		expect(subaddress("A1:C5", 0, Number.POSITIVE_INFINITY, 1, 1)).toBe("B1:B5");
+		expect(subaddress("B2:E10", 0, Number.POSITIVE_INFINITY, 2, 2)).toBe("D2:E10");
+	});
+
+	it("should skip and take columns from end", () => {
+		expect(subaddress("A1:C5", 0, Number.POSITIVE_INFINITY, -2, 1)).toBe("B1:B5");
+		expect(subaddress("B2:E10", 0, Number.POSITIVE_INFINITY, -3, 2)).toBe("C2:D10");
+	});
+
+	it("should throw if requested rows exceed available", () => {
+		expect(() => subaddress("A1:C5", 10)).toThrow(InvalidArgumentError);
+		expect(() => subaddress("A1:C5", -10)).toThrow(InvalidArgumentError);
+	});
+
+	it("should throw if requested columns exceed available", () => {
+		expect(() => subaddress("A1:C5", 0, Number.POSITIVE_INFINITY, 10)).toThrow(InvalidArgumentError);
+		expect(() => subaddress("A1:C5", 0, Number.POSITIVE_INFINITY, -10)).toThrow(InvalidArgumentError);
+	});
+
+	it("should work for single cell address", () => {
+		expect(subaddress("A1")).toBe("A1");
+		expect(subaddress("A1", 0, 1, 0, 1)).toBe("A1");
+	});
+
+	it("should work for row and column addresses", () => {
+		expect(subaddress("A", 2)).toBe("A3:A1048576");
+		expect(subaddress("1", 0, Number.POSITIVE_INFINITY, 2)).toBe("C1:XFD1");
 	});
 });

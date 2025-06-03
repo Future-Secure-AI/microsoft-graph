@@ -3,7 +3,9 @@ import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.t
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import { columnAddressToOffset, columnOffsetToAddress, rowAddressToOffset, rowOffsetToAddress } from "./addressOffset.ts";
+import { addressToCartesian, cartesianToAddress } from "./cartesianAddress.ts";
 
 const firstColumn: ColumnAddress = "A";
 const lastColumn: ColumnAddress = "XFD";
@@ -310,6 +312,105 @@ export function countAddressRows(address: Address): number {
 export function countAddressColumns(address: Address): number {
 	const components = decomposeAddress(address);
 	return columnAddressToOffset(components.endColumn) - columnAddressToOffset(components.startColumn) + 1;
+}
+
+/**
+ * Extracts a subrange from a spreadsheet-style A1 range (e.g., "A1:D10"),
+ * allowing skip and take semantics on both rows and columns.
+ *
+ * Supports negative values for `skipRows` and `skipCols` to count from the end.
+ * Supports negative values for `takeRows` and `takeCols` to exclude from the end after skipping.
+ *
+ * @param address - The original range in A1 notation (e.g., "A1:D10").
+ * @param skipRows - Number of rows to skip. If negative, skips that many rows from the end. Default is 0.
+ * @param takeRows - Number of rows to take after skipping. If negative, excludes that many rows from the end of the remaining rows. Default is Infinity.
+ * @param skipCols - Number of columns to skip. If negative, skips that many columns from the end. Default is 0.
+ * @param takeCols - Number of columns to take after skipping. If negative, excludes that many columns from the end of the remaining columns. Default is Infinity.
+ * @returns A new A1-style range representing the sliced subrange (e.g., "B2:C5").
+ *
+ * @example
+ * subaddress("A1:D10", -1, 1); // Last row: "A10:D10"
+ * subaddress("A1:D10", -2, 1); // Second last row: "A9:D9"
+ * subaddress("A1:D10", 0, -1); // All but last row: "A1:D9"
+ * subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
+ */
+export function subaddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
+	const { ax, bx, ay, by } = addressToCartesian(address);
+
+	let startRow: number = ay;
+	let endRow: number = by;
+
+	if (!Number.isSafeInteger(skipRows)) {
+		throw new InvalidArgumentError(`skipRows must be a safe integer, got ${skipRows}`);
+	}
+
+	if (skipRows > 0) {
+		startRow = ay + skipRows;
+	} else if (skipRows < 0) {
+		startRow = by + skipRows + 1;
+	}
+
+	if (!Number.isFinite(takeRows)) {
+		// do nothing
+	} else if (!Number.isSafeInteger(takeRows)) {
+		throw new InvalidArgumentError(`takeRows must be a safe integer or infinite, got ${takeRows}`);
+	} else if (takeRows >= 0) {
+		endRow = startRow + takeRows - 1;
+	} else if (takeRows < 0) {
+		endRow += takeRows;
+	}
+
+	let startCol: number = ax;
+	let endCol: number = bx;
+
+	if (!Number.isSafeInteger(skipCols)) {
+		throw new InvalidArgumentError(`skipCols must be a safe integer, got ${skipCols}`);
+	}
+
+	if (skipCols > 0) {
+		startCol = ax + skipCols;
+	} else if (skipCols < 0) {
+		startCol = bx + skipCols + 1;
+	}
+
+	if (!Number.isFinite(takeCols)) {
+		// do nothing
+	} else if (!Number.isSafeInteger(takeCols)) {
+		throw new InvalidArgumentError(`takeCols must be a safe integer or infinite, got ${takeCols}`);
+	} else if (takeCols >= 0) {
+		endCol = startCol + takeCols - 1;
+	} else if (takeCols < 0) {
+		endCol += takeCols;
+	}
+
+	if (startRow < ay || endRow > by || startRow > endRow || startCol < ax || endCol > bx || startCol > endCol) {
+		throw new InvalidArgumentError(`Requested subaddress is out of bounds: rows [${startRow + 1},${endRow + 1}], cols [${startCol + 1},${endCol + 1}] in range.`);
+	}
+
+	return cartesianToAddress({
+		ay: startRow as RowOffset,
+		by: endRow as RowOffset,
+		ax: startCol as ColumnOffset,
+		bx: endCol as ColumnOffset,
+	});
+}
+
+/**
+ * Extracts a subrange from a WorkbookRangeRef using skip/take semantics.
+ * @param rangeRef Range reference to extract the sub-range from.
+ * @param skipRows Number of rows to skip. If negative, skips from the end. Default 0.
+ * @param takeRows Number of rows to take after skipping. If negative, excludes from the end. Default Infinity.
+ * @param skipCols Number of columns to skip. If negative, skips from the end. Default 0.
+ * @param takeCols Number of columns to take after skipping. If negative, excludes from the end. Default Infinity.
+ * @returns Extracted sub-range reference.
+ * @throws InvalidArgumentError if the requested rows or columns exceed the available range.
+ */
+export function subrange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
+	const address = subaddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
+	return {
+		...rangeRef,
+		address,
+	};
 }
 
 function isSingleRow(components: AddressComponents): boolean {

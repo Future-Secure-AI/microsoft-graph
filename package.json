@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.21.0",
+  "version": "2.22.1",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -719,6 +719,131 @@
       "require": "./dist/cjs/models/ContextRef.js",
       "types": "./dist/esm/models/ContextRef.d.ts"
     },
+    "./DataSource": {
+      "import": "./dist/esm/models/DataSource.js",
+      "require": "./dist/cjs/models/DataSource.js",
+      "types": "./dist/esm/models/DataSource.d.ts"
+    },
+    "./dist/cjs/models/DataSource.js": {
+      "import": "./dist/esm/models/DataSource.js",
+      "require": "./dist/cjs/models/DataSource.js",
+      "types": "./dist/esm/models/DataSource.d.ts"
+    },
+    "./dist/cjs/models/DataSource": {
+      "import": "./dist/esm/models/DataSource.js",
+      "require": "./dist/cjs/models/DataSource.js",
+      "types": "./dist/esm/models/DataSource.d.ts"
+    },
+    "./models/DataSource": {
+      "import": "./dist/esm/models/DataSource.js",
+      "require": "./dist/cjs/models/DataSource.js",
+      "types": "./dist/esm/models/DataSource.d.ts"
+    },
+    "./models/DataSource.js": {
+      "import": "./dist/esm/models/DataSource.js",
+      "require": "./dist/cjs/models/DataSource.js",
+      "types": "./dist/esm/models/DataSource.d.ts"
+    },
+    "./DataSourceDecoder": {
+      "import": "./dist/esm/models/DataSourceDecoder.js",
+      "require": "./dist/cjs/models/DataSourceDecoder.js",
+      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
+    },
+    "./dist/cjs/models/DataSourceDecoder.js": {
+      "import": "./dist/esm/models/DataSourceDecoder.js",
+      "require": "./dist/cjs/models/DataSourceDecoder.js",
+      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
+    },
+    "./dist/cjs/models/DataSourceDecoder": {
+      "import": "./dist/esm/models/DataSourceDecoder.js",
+      "require": "./dist/cjs/models/DataSourceDecoder.js",
+      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
+    },
+    "./models/DataSourceDecoder": {
+      "import": "./dist/esm/models/DataSourceDecoder.js",
+      "require": "./dist/cjs/models/DataSourceDecoder.js",
+      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
+    },
+    "./models/DataSourceDecoder.js": {
+      "import": "./dist/esm/models/DataSourceDecoder.js",
+      "require": "./dist/cjs/models/DataSourceDecoder.js",
+      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
+    },
+    "./DataSourceEncoder": {
+      "import": "./dist/esm/models/DataSourceEncoder.js",
+      "require": "./dist/cjs/models/DataSourceEncoder.js",
+      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
+    },
+    "./dist/cjs/models/DataSourceEncoder.js": {
+      "import": "./dist/esm/models/DataSourceEncoder.js",
+      "require": "./dist/cjs/models/DataSourceEncoder.js",
+      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
+    },
+    "./dist/cjs/models/DataSourceEncoder": {
+      "import": "./dist/esm/models/DataSourceEncoder.js",
+      "require": "./dist/cjs/models/DataSourceEncoder.js",
+      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
+    },
+    "./models/DataSourceEncoder": {
+      "import": "./dist/esm/models/DataSourceEncoder.js",
+      "require": "./dist/cjs/models/DataSourceEncoder.js",
+      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
+    },
+    "./models/DataSourceEncoder.js": {
+      "import": "./dist/esm/models/DataSourceEncoder.js",
+      "require": "./dist/cjs/models/DataSourceEncoder.js",
+      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
+    },
+    "./DataSourceIndex": {
+      "import": "./dist/esm/models/DataSourceIndex.js",
+      "require": "./dist/cjs/models/DataSourceIndex.js",
+      "types": "./dist/esm/models/DataSourceIndex.d.ts"
+    },
+    "./dist/cjs/models/DataSourceIndex.js": {
+      "import": "./dist/esm/models/DataSourceIndex.js",
+      "require": "./dist/cjs/models/DataSourceIndex.js",
+      "types": "./dist/esm/models/DataSourceIndex.d.ts"
+    },
+    "./dist/cjs/models/DataSourceIndex": {
+      "import": "./dist/esm/models/DataSourceIndex.js",
+      "require": "./dist/cjs/models/DataSourceIndex.js",
+      "types": "./dist/esm/models/DataSourceIndex.d.ts"
+    },
+    "./models/DataSourceIndex": {
+      "import": "./dist/esm/models/DataSourceIndex.js",
+      "require": "./dist/cjs/models/DataSourceIndex.js",
+      "types": "./dist/esm/models/DataSourceIndex.d.ts"
+    },
+    "./models/DataSourceIndex.js": {
+      "import": "./dist/esm/models/DataSourceIndex.js",
+      "require": "./dist/cjs/models/DataSourceIndex.js",
+      "types": "./dist/esm/models/DataSourceIndex.d.ts"
+    },
+    "./DataSourceRow": {
+      "import": "./dist/esm/models/DataSourceRow.js",
+      "require": "./dist/cjs/models/DataSourceRow.js",
+      "types": "./dist/esm/models/DataSourceRow.d.ts"
+    },
+    "./dist/cjs/models/DataSourceRow.js": {
+      "import": "./dist/esm/models/DataSourceRow.js",
+      "require": "./dist/cjs/models/DataSourceRow.js",
+      "types": "./dist/esm/models/DataSourceRow.d.ts"
+    },
+    "./dist/cjs/models/DataSourceRow": {
+      "import": "./dist/esm/models/DataSourceRow.js",
+      "require": "./dist/cjs/models/DataSourceRow.js",
+      "types": "./dist/esm/models/DataSourceRow.d.ts"
+    },
+    "./models/DataSourceRow": {
+      "import": "./dist/esm/models/DataSourceRow.js",
+      "require": "./dist/cjs/models/DataSourceRow.js",
+      "types": "./dist/esm/models/DataSourceRow.d.ts"
+    },
+    "./models/DataSourceRow.js": {
+      "import": "./dist/esm/models/DataSourceRow.js",
+      "require": "./dist/cjs/models/DataSourceRow.js",
+      "types": "./dist/esm/models/DataSourceRow.d.ts"
+    },
     "./DriveId": {
       "import": "./dist/esm/models/DriveId.js",
       "require": "./dist/cjs/models/DriveId.js",
@@ -994,6 +1119,31 @@
       "require": "./dist/cjs/models/NumberFormat.js",
       "types": "./dist/esm/models/NumberFormat.d.ts"
     },
+    "./RangeOperationCallback": {
+      "import": "./dist/esm/models/RangeOperationCallback.js",
+      "require": "./dist/cjs/models/RangeOperationCallback.js",
+      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
+    },
+    "./dist/cjs/models/RangeOperationCallback.js": {
+      "import": "./dist/esm/models/RangeOperationCallback.js",
+      "require": "./dist/cjs/models/RangeOperationCallback.js",
+      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
+    },
+    "./dist/cjs/models/RangeOperationCallback": {
+      "import": "./dist/esm/models/RangeOperationCallback.js",
+      "require": "./dist/cjs/models/RangeOperationCallback.js",
+      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
+    },
+    "./models/RangeOperationCallback": {
+      "import": "./dist/esm/models/RangeOperationCallback.js",
+      "require": "./dist/cjs/models/RangeOperationCallback.js",
+      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
+    },
+    "./models/RangeOperationCallback.js": {
+      "import": "./dist/esm/models/RangeOperationCallback.js",
+      "require": "./dist/cjs/models/RangeOperationCallback.js",
+      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
+    },
     "./RecordBase": {
       "import": "./dist/esm/models/RecordBase.js",
       "require": "./dist/cjs/models/RecordBase.js",
@@ -1193,106 +1343,6 @@
       "import": "./dist/esm/models/SiteRef.js",
       "require": "./dist/cjs/models/SiteRef.js",
       "types": "./dist/esm/models/SiteRef.d.ts"
-    },
-    "./Source": {
-      "import": "./dist/esm/models/Source.js",
-      "require": "./dist/cjs/models/Source.js",
-      "types": "./dist/esm/models/Source.d.ts"
-    },
-    "./dist/cjs/models/Source.js": {
-      "import": "./dist/esm/models/Source.js",
-      "require": "./dist/cjs/models/Source.js",
-      "types": "./dist/esm/models/Source.d.ts"
-    },
-    "./dist/cjs/models/Source": {
-      "import": "./dist/esm/models/Source.js",
-      "require": "./dist/cjs/models/Source.js",
-      "types": "./dist/esm/models/Source.d.ts"
-    },
-    "./models/Source": {
-      "import": "./dist/esm/models/Source.js",
-      "require": "./dist/cjs/models/Source.js",
-      "types": "./dist/esm/models/Source.d.ts"
-    },
-    "./models/Source.js": {
-      "import": "./dist/esm/models/Source.js",
-      "require": "./dist/cjs/models/Source.js",
-      "types": "./dist/esm/models/Source.d.ts"
-    },
-    "./SourceDecoder": {
-      "import": "./dist/esm/models/SourceDecoder.js",
-      "require": "./dist/cjs/models/SourceDecoder.js",
-      "types": "./dist/esm/models/SourceDecoder.d.ts"
-    },
-    "./dist/cjs/models/SourceDecoder.js": {
-      "import": "./dist/esm/models/SourceDecoder.js",
-      "require": "./dist/cjs/models/SourceDecoder.js",
-      "types": "./dist/esm/models/SourceDecoder.d.ts"
-    },
-    "./dist/cjs/models/SourceDecoder": {
-      "import": "./dist/esm/models/SourceDecoder.js",
-      "require": "./dist/cjs/models/SourceDecoder.js",
-      "types": "./dist/esm/models/SourceDecoder.d.ts"
-    },
-    "./models/SourceDecoder": {
-      "import": "./dist/esm/models/SourceDecoder.js",
-      "require": "./dist/cjs/models/SourceDecoder.js",
-      "types": "./dist/esm/models/SourceDecoder.d.ts"
-    },
-    "./models/SourceDecoder.js": {
-      "import": "./dist/esm/models/SourceDecoder.js",
-      "require": "./dist/cjs/models/SourceDecoder.js",
-      "types": "./dist/esm/models/SourceDecoder.d.ts"
-    },
-    "./SourceEncoder": {
-      "import": "./dist/esm/models/SourceEncoder.js",
-      "require": "./dist/cjs/models/SourceEncoder.js",
-      "types": "./dist/esm/models/SourceEncoder.d.ts"
-    },
-    "./dist/cjs/models/SourceEncoder.js": {
-      "import": "./dist/esm/models/SourceEncoder.js",
-      "require": "./dist/cjs/models/SourceEncoder.js",
-      "types": "./dist/esm/models/SourceEncoder.d.ts"
-    },
-    "./dist/cjs/models/SourceEncoder": {
-      "import": "./dist/esm/models/SourceEncoder.js",
-      "require": "./dist/cjs/models/SourceEncoder.js",
-      "types": "./dist/esm/models/SourceEncoder.d.ts"
-    },
-    "./models/SourceEncoder": {
-      "import": "./dist/esm/models/SourceEncoder.js",
-      "require": "./dist/cjs/models/SourceEncoder.js",
-      "types": "./dist/esm/models/SourceEncoder.d.ts"
-    },
-    "./models/SourceEncoder.js": {
-      "import": "./dist/esm/models/SourceEncoder.js",
-      "require": "./dist/cjs/models/SourceEncoder.js",
-      "types": "./dist/esm/models/SourceEncoder.d.ts"
-    },
-    "./SourceRow": {
-      "import": "./dist/esm/models/SourceRow.js",
-      "require": "./dist/cjs/models/SourceRow.js",
-      "types": "./dist/esm/models/SourceRow.d.ts"
-    },
-    "./dist/cjs/models/SourceRow.js": {
-      "import": "./dist/esm/models/SourceRow.js",
-      "require": "./dist/cjs/models/SourceRow.js",
-      "types": "./dist/esm/models/SourceRow.d.ts"
-    },
-    "./dist/cjs/models/SourceRow": {
-      "import": "./dist/esm/models/SourceRow.js",
-      "require": "./dist/cjs/models/SourceRow.js",
-      "types": "./dist/esm/models/SourceRow.d.ts"
-    },
-    "./models/SourceRow": {
-      "import": "./dist/esm/models/SourceRow.js",
-      "require": "./dist/cjs/models/SourceRow.js",
-      "types": "./dist/esm/models/SourceRow.d.ts"
-    },
-    "./models/SourceRow.js": {
-      "import": "./dist/esm/models/SourceRow.js",
-      "require": "./dist/cjs/models/SourceRow.js",
-      "types": "./dist/esm/models/SourceRow.d.ts"
     },
     "./SourceRowValue": {
       "import": "./dist/esm/models/SourceRowValue.js",
@@ -3269,6 +3319,31 @@
       "require": "./dist/cjs/services/context.js",
       "types": "./dist/esm/services/context.d.ts"
     },
+    "./dataSource": {
+      "import": "./dist/esm/services/dataSource.js",
+      "require": "./dist/cjs/services/dataSource.js",
+      "types": "./dist/esm/services/dataSource.d.ts"
+    },
+    "./dist/cjs/services/dataSource.js": {
+      "import": "./dist/esm/services/dataSource.js",
+      "require": "./dist/cjs/services/dataSource.js",
+      "types": "./dist/esm/services/dataSource.d.ts"
+    },
+    "./dist/cjs/services/dataSource": {
+      "import": "./dist/esm/services/dataSource.js",
+      "require": "./dist/cjs/services/dataSource.js",
+      "types": "./dist/esm/services/dataSource.d.ts"
+    },
+    "./services/dataSource": {
+      "import": "./dist/esm/services/dataSource.js",
+      "require": "./dist/cjs/services/dataSource.js",
+      "types": "./dist/esm/services/dataSource.d.ts"
+    },
+    "./services/dataSource.js": {
+      "import": "./dist/esm/services/dataSource.js",
+      "require": "./dist/cjs/services/dataSource.js",
+      "types": "./dist/esm/services/dataSource.d.ts"
+    },
     "./drive": {
       "import": "./dist/esm/services/drive.js",
       "require": "./dist/cjs/services/drive.js",
@@ -3568,31 +3643,6 @@
       "import": "./dist/esm/services/sleep.js",
       "require": "./dist/cjs/services/sleep.js",
       "types": "./dist/esm/services/sleep.d.ts"
-    },
-    "./source": {
-      "import": "./dist/esm/services/source.js",
-      "require": "./dist/cjs/services/source.js",
-      "types": "./dist/esm/services/source.d.ts"
-    },
-    "./dist/cjs/services/source.js": {
-      "import": "./dist/esm/services/source.js",
-      "require": "./dist/cjs/services/source.js",
-      "types": "./dist/esm/services/source.d.ts"
-    },
-    "./dist/cjs/services/source": {
-      "import": "./dist/esm/services/source.js",
-      "require": "./dist/cjs/services/source.js",
-      "types": "./dist/esm/services/source.d.ts"
-    },
-    "./services/source": {
-      "import": "./dist/esm/services/source.js",
-      "require": "./dist/cjs/services/source.js",
-      "types": "./dist/esm/services/source.d.ts"
-    },
-    "./services/source.js": {
-      "import": "./dist/esm/services/source.js",
-      "require": "./dist/cjs/services/source.js",
-      "types": "./dist/esm/services/source.d.ts"
     },
     "./stringCaseConversion": {
       "import": "./dist/esm/services/stringCaseConversion.js",
