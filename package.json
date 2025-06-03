@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.20.4",
+  "version": "2.21.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -2369,6 +2369,31 @@
       "require": "./dist/cjs/operations/workbookRange/insertWorkbookCells.js",
       "types": "./dist/esm/operations/workbookRange/insertWorkbookCells.d.ts"
     },
+    "./mergeWorkbookRange": {
+      "import": "./dist/esm/operations/workbookRange/mergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/mergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/mergeWorkbookRange.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/mergeWorkbookRange.js": {
+      "import": "./dist/esm/operations/workbookRange/mergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/mergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/mergeWorkbookRange.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/mergeWorkbookRange": {
+      "import": "./dist/esm/operations/workbookRange/mergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/mergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/mergeWorkbookRange.d.ts"
+    },
+    "./operations/workbookRange/mergeWorkbookRange": {
+      "import": "./dist/esm/operations/workbookRange/mergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/mergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/mergeWorkbookRange.d.ts"
+    },
+    "./operations/workbookRange/mergeWorkbookRange.js": {
+      "import": "./dist/esm/operations/workbookRange/mergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/mergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/mergeWorkbookRange.d.ts"
+    },
     "./setWorkbookRangeFill": {
       "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFill.js",
       "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeFill.js",
@@ -2443,6 +2468,31 @@
       "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFormat.js",
       "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeFormat.js",
       "types": "./dist/esm/operations/workbookRange/setWorkbookRangeFormat.d.ts"
+    },
+    "./unmergeWorkbookRange": {
+      "import": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/unmergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/unmergeWorkbookRange.js": {
+      "import": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/unmergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/unmergeWorkbookRange": {
+      "import": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/unmergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.d.ts"
+    },
+    "./operations/workbookRange/unmergeWorkbookRange": {
+      "import": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/unmergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.d.ts"
+    },
+    "./operations/workbookRange/unmergeWorkbookRange.js": {
+      "import": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.js",
+      "require": "./dist/cjs/operations/workbookRange/unmergeWorkbookRange.js",
+      "types": "./dist/esm/operations/workbookRange/unmergeWorkbookRange.d.ts"
     },
     "./updateWorkbookNamedRange": {
       "import": "./dist/esm/operations/workbookRange/updateWorkbookNamedRange.js",
