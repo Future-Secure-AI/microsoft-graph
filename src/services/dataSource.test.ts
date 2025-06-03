@@ -1,19 +1,24 @@
 // import { describe, expect, it } from "vitest";
 // import type { ColumnName } from "../models/ColumnName.ts";
-// import type { RowOffset } from "../models/RowOffset.ts";
-// import type { Source } from "../models/Source.ts";
-// import type { SourceRow } from "../models/SourceRow.ts";
+// import type { DataSource } from "../models/DataSource.ts";
+// import type { DataSourceIndex } from "../models/DataSourceIndex.ts";
+// import type { DataSourceRow } from "../models/DataSourceRow.ts";
 // import createWorkbook from "../operations/workbook/createWorkbook.ts";
 // import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 // import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 // import createWorkbookWorksheet from "../operations/workbookWorksheet/createWorkbookWorksheet.ts";
-// import { generalNumberFormat } from "../services/numberFormat.ts";
 // import tryDeleteDriveItem from "../tasks/tryDeleteDriveItem.ts";
+// import { createItem, defineDataSource, deleteItem, initializeDataSource, readAllItems, updateItem } from "./dataSource.ts";
 // import { getDefaultDriveRef } from "./drive.ts";
 // import { driveItemPath } from "./driveItem.ts";
-// import { createItem, defineSource, deleteItem, initializeSource, readAllItems, updateItem } from "./source.ts";
+// import { generalNumberFormat } from "./numberFormat.ts";
 // import { generateTempFileName } from "./temporaryFiles.ts";
 // import { createWorkbookRangeRef } from "./workbookRange.ts";
+
+// // Helper to cast string to CellText
+// function asCellText(text: string): import("../models/CellText.ts").CellText {
+// 	return text as unknown as import("../models/CellText.ts").CellText;
+// }
 
 // type TestRecord = {
 // 	id: number;
@@ -32,13 +37,13 @@
 // const testRecord5: TestRecord = { id: 5, name: "New Item 5", active: false };
 
 // const worksheetData = [
-// 	[idAttribute, nameAttribute, activeAttribute], // Header row
+// 	[idAttribute, nameAttribute, activeAttribute],
 // 	[testRecord1.id, testRecord1.name, testRecord1.active],
 // 	[testRecord2.id, testRecord2.name, testRecord2.active],
 // 	[testRecord3.id, testRecord3.name, testRecord3.active],
 // ];
 
-// const decode = (row: SourceRow): TestRecord => {
+// const decode = (row: DataSourceRow): TestRecord => {
 // 	return {
 // 		id: Number(row[idAttribute].value),
 // 		name: String(row[nameAttribute].value),
@@ -46,59 +51,60 @@
 // 	};
 // };
 
-// const encode = (record: TestRecord): SourceRow => {
+// const encode = (record: TestRecord): DataSourceRow => {
 // 	return {
 // 		[idAttribute]: {
-// 			text: record.id.toString(),
+// 			text: asCellText(record.id.toString()),
 // 			value: record.id,
 // 			numberFormat: generalNumberFormat,
 // 		},
 // 		[nameAttribute]: {
-// 			text: record.name,
+// 			text: asCellText(record.name),
 // 			value: record.name,
 // 			numberFormat: generalNumberFormat,
 // 		},
 // 		[activeAttribute]: {
-// 			text: record.active.toString(),
+// 			text: asCellText(record.active.toString()),
 // 			value: record.active,
 // 			numberFormat: generalNumberFormat,
 // 		},
 // 	};
 // };
 
-// async function prepareSource(filled: boolean): Promise<Source<TestRecord>> {
+// async function prepareSource(filled: boolean): Promise<DataSource<TestRecord>> {
 // 	const workbookName = generateTempFileName("xlsx");
 // 	const workbookPath = driveItemPath(workbookName);
 // 	const driveRef = getDefaultDriveRef();
 // 	const workbook = await createWorkbook(driveRef, workbookPath);
 // 	const worksheetRef = await createWorkbookWorksheet(workbook);
 
+// 	let rangeRef: import("../models/WorkbookRangeRef.ts").WorkbookRangeRef;
 // 	if (filled) {
-// 		const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C4");
+// 		rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C4");
 // 		await updateWorkbookRange(rangeRef, {
 // 			values: worksheetData,
 // 		});
+// 	} else {
+// 		rangeRef = createWorkbookRangeRef(worksheetRef, "A1:A1");
 // 	}
 
-// 	const source = defineSource<TestRecord>(worksheetRef, decode, encode);
-
+// 	const source = await defineDataSource<TestRecord>(rangeRef, decode, encode);
 // 	return source;
 // }
 
-// async function cleanupSource(source: Source<TestRecord>): Promise<void> {
+// async function cleanupSource(source: DataSource<TestRecord>): Promise<void> {
 // 	await tryDeleteDriveItem(source.rangeRef);
 // }
 
-// describe("defineSource", () => {
+// describe("defineDataSource", () => {
 // 	it("can create a source on a populated sheet", async () => {
 // 		const source = await prepareSource(true);
 // 		try {
 // 			expect(source.coding.encode).toBe(encode);
 // 			expect(source.coding.decode).toBe(decode);
-// 			expect(source.head).toEqual([idAttribute, nameAttribute, activeAttribute]);
 // 			expect(source.rangeRef.address).toBe("A1:C4");
 // 		} finally {
-// 			// await cleanupSource(source);
+// 			await cleanupSource(source);
 // 		}
 // 	});
 
@@ -107,8 +113,7 @@
 // 		try {
 // 			expect(source.coding.encode).toBe(encode);
 // 			expect(source.coding.decode).toBe(decode);
-// 			expect(source.head).toEqual([]);
-// 			// The address will be the default for an empty worksheet, implementation dependent
+// 			expect(source.rangeRef.address).toBe("A1:A1");
 // 		} finally {
 // 			await cleanupSource(source);
 // 		}
@@ -116,20 +121,21 @@
 // });
 
 // describe("initializeSource", () => {
-// 	it("can initialize on a populated sheet (should not, can not initialize)", async () => {
-// 		const source = await prepareSource(true);
+// 	it("can initialize on an empty range", async () => {
+// 		const source = await prepareSource(false);
 // 		try {
-// 			await expect(initializeSource(source, testRecord1)).rejects.toThrowError("Cannot initialize source with non-empty worksheet.");
+// 			await initializeDataSource(source, testRecord1);
+// 			expect(source.head).toEqual([idAttribute, nameAttribute, activeAttribute]);
+// 			// TODO: Check header created
 // 		} finally {
 // 			await cleanupSource(source);
 // 		}
 // 	});
 
-// 	it("can initialize on an empty sheet", async () => {
-// 		const source = await prepareSource(false);
+// 	it("can not initialize on a populated range", async () => {
+// 		const source = await prepareSource(true);
 // 		try {
-// 			await initializeSource(source, testRecord1);
-// 			expect(source.head).toEqual([idAttribute, nameAttribute, activeAttribute]);
+// 			await expect(initializeDataSource(source, testRecord1)).rejects.toThrowError("Cannot initialize source with non-empty worksheet.");
 // 		} finally {
 // 			await cleanupSource(source);
 // 		}
@@ -153,7 +159,7 @@
 // 	it("can return an empty array when source is empty", async () => {
 // 		const source = await prepareSource(false);
 // 		try {
-// 			await initializeSource(source, testRecord1);
+// 			await initializeDataSource(source, testRecord1);
 // 			const records = await readAllItems(source);
 // 			expect(records).toEqual([]);
 // 		} finally {
@@ -167,7 +173,7 @@
 // 		const source = await prepareSource(true);
 // 		try {
 // 			const newRecord = testRecord4;
-// 			await createItem(source, newRecord, 1 as RowOffset);
+// 			await createItem(source, newRecord, 1 as DataSourceIndex);
 // 			const rangeRef = createWorkbookRangeRef(source.rangeRef, "A2:C2");
 // 			const range = await getWorkbookWorksheetRange(rangeRef);
 // 			expect(Number(range.values[0][0])).toBe(newRecord.id);
@@ -180,8 +186,11 @@
 
 // 	it("can not createItem if not initialized", async () => {
 // 		const source = await prepareSource(true);
-// 		await cleanupSource(source); // Clean up after test
-// 		await expect(createItem(source, testRecord1, 1 as RowOffset)).rejects.toThrowError("Source not initialized.");
+// 		try {
+// 			await expect(createItem(source, testRecord1, 1 as DataSourceIndex)).rejects.toThrowError("Source not initialized.");
+// 		} finally {
+// 			await cleanupSource(source);
+// 		}
 // 	});
 // });
 
@@ -190,7 +199,7 @@
 // 		const source = await prepareSource(true);
 // 		try {
 // 			const updatedRecord = testRecord5;
-// 			await updateItem(source, 2 as RowOffset, updatedRecord);
+// 			await updateItem(source, 2 as DataSourceIndex, updatedRecord);
 // 			const rangeRef = createWorkbookRangeRef(source.rangeRef, "A3:C3");
 // 			const range = await getWorkbookWorksheetRange(rangeRef);
 // 			expect(Number(range.values[0][0])).toBe(updatedRecord.id);
@@ -204,7 +213,7 @@
 // 	it("can not updateItem if not initialized", async () => {
 // 		const source = await prepareSource(true);
 // 		await cleanupSource(source);
-// 		await expect(updateItem(source, 1 as RowOffset, testRecord1)).rejects.toThrowError("Source not initialized.");
+// 		await expect(updateItem(source, 1 as DataSourceIndex, testRecord1)).rejects.toThrowError("Source not initialized.");
 // 	});
 // });
 
@@ -212,7 +221,7 @@
 // 	it("can delete a record at a given offset", async () => {
 // 		const source = await prepareSource(true);
 // 		try {
-// 			await deleteItem(source, 2 as RowOffset);
+// 			await deleteItem(source, 2 as DataSourceIndex);
 // 			const records = await readAllItems(source);
 // 			expect(records.length).toBe(2);
 // 			expect(records[0].record).toEqual(testRecord1);
@@ -225,6 +234,6 @@
 // 	it("can not deleteItem if not initialized", async () => {
 // 		const source = await prepareSource(true);
 // 		await cleanupSource(source);
-// 		await expect(deleteItem(source, 1 as RowOffset)).rejects.toThrowError("Source not initialized.");
+// 		await expect(deleteItem(source, 1 as DataSourceIndex)).rejects.toThrowError("Source not initialized.");
 // 	});
 // });

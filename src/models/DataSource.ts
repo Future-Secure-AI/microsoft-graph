@@ -1,15 +1,15 @@
 import type { ColumnName } from "./ColumnName.ts";
+import type { DataSourceDecoder } from "./DataSourceDecoder.ts";
+import type { DataSourceEncoder } from "./DataSourceEncoder.ts";
 import type { Item } from "./Item.ts";
 import type { RecordBase } from "./RecordBase.ts";
-import type { SourceDecoder } from "./SourceDecoder.ts";
-import type { SourceEncoder } from "./SourceEncoder.ts";
 import type { WorkbookRangeRef } from "./WorkbookRangeRef.ts";
 
-export type Source<T extends RecordBase> = {
+export type DataSource<T extends RecordBase> = {
 	rangeRef: WorkbookRangeRef;
 	head: ColumnName[];
 	coding: {
-		decode: SourceDecoder<T>;
-		encode: SourceEncoder<T>;
+		decode: DataSourceDecoder<T>;
+		encode: DataSourceEncoder<T> | null;
 	};
 } & AsyncIterable<Item<T>>;
