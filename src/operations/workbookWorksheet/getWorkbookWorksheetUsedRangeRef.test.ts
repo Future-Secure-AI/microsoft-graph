@@ -34,7 +34,7 @@ describe("getWorkbookWorksheetUsedRangeRef", () => {
 			await calculateWorkbook(workbook);
 
 			const usedRangeRef = await getWorkbookWorksheetUsedRangeRef(worksheetRef);
-			expect(usedRangeRef.address).toEqual(address);
+			expect(usedRangeRef.address).toBe(address);
 		} finally {
 			await tryDeleteDriveItem(workbook);
 		}
