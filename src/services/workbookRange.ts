@@ -1,3 +1,4 @@
+import ProtocolError from "../errors/ProtocolError.ts";
 import type { Address } from "../models/Address.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
@@ -9,9 +10,13 @@ import { normalizeAddress } from "./addressManipulation.ts";
  * @param address - The address of the range.
  * @returns A reference to the workbook range.
  */
-export function createWorkbookRangeRef(worksheetRef: WorkbookWorksheetRef, address: Address): WorkbookRangeRef {
+export function createWorkbookRangeRef(worksheetRef: WorkbookWorksheetRef, address: Address | undefined): WorkbookRangeRef {
+	if (!address) {
+		throw new ProtocolError("Address missing.");
+	}
+
 	const normalizedAddress = normalizeAddress(address);
-	
+
 	return {
 		context: worksheetRef.context,
 		siteId: worksheetRef.siteId,

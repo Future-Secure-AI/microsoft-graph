@@ -3,7 +3,7 @@ import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import createWorkbookTable from "../operations/workbookTable/createWorkbookTable.ts";
-import getWorkbookTableBodyVisibleRange from "../operations/workbookTable/getWorkbookTableBodyVisibleRange.ts";
+import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTableBodyRange.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
@@ -42,8 +42,8 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 			]);
 			await calculateWorkbook(workbook);
 
-			const visibleBodyRange = await getWorkbookTableBodyVisibleRange(table);
-			expect(visibleBodyRange.values).toEqual([
+			const bodyRange = await getWorkbookTableBodyRange(table);
+			expect(bodyRange.values).toEqual([
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
 				["OldValue5", "OldValue6", "OldValue7", "OldValue8"],
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
@@ -82,8 +82,8 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 
 			await calculateWorkbook(workbook);
 
-			const visibleBodyRange = await getWorkbookTableBodyVisibleRange(table);
-			expect(visibleBodyRange.values).toEqual([
+			const bodyRange = await getWorkbookTableBodyRange(table);
+			expect(bodyRange.values).toEqual([
 				["NewValue1", "NewValue2", "NewValue3", "NewValue4"],
 				["OldValue5", "OldValue6", "OldValue7", "OldValue8"],
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
