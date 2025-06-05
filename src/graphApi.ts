@@ -6,15 +6,11 @@ import ProtocolError from "./errors/ProtocolError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
 import type { AccessToken } from "./models/AccessToken.ts";
 import type { GraphHeaders, GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
-import type { Scope } from "./models/Scope.ts";
-import { getCurrentAccessToken } from "./services/accessToken.ts";
-import { getContext } from "./services/context.ts";
 import { executeHttpRequest } from "./services/http.ts";
 import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
 
-export const authenticationScope = "https://graph.microsoft.com/.default" as Scope;
 export const endpoint = "https://graph.microsoft.com/v1.0";
 export const batchEndpoint = `${endpoint}/$batch`;
 
@@ -76,9 +72,7 @@ type BodyError = {
 };
 
 async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
-	const context = getContext(definition.contextId);
-	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
-
+	const accessToken = await definition.context.generateAccessToken();
 	const response = await innerFetch<T>({
 		url: `${endpoint}${definition.path}`,
 		method: definition.method,
@@ -104,14 +98,13 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 		throw new NeverError("First op not found. Should be impossible");
 	}
 
-	const contextId = firstOp.contextId;
+	const context = firstOp.context;
 
-	if (ops.some((op) => op.contextId !== contextId)) {
-		throw new InconsistentContextError("All operations in a batch must share the same contextId.");
+	if (ops.some((op) => op.context !== context)) {
+		throw new InconsistentContextError("All operations in a batch must share the same context.");
 	}
 
-	const context = getContext(contextId);
-	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
+	const accessToken = await context.generateAccessToken();
 
 	const body = await innerFetch<BatchReplyPayload>({
 		url: batchEndpoint,

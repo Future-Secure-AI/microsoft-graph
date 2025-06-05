@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function getSite(siteRef: SiteRef): GraphOperation<Site & SiteRef> {
 	return operation({
-		contextId: siteRef.contextId,
+		context: siteRef.context,
 		method: "GET",
 		path: generatePath("/sites/{site-id}", siteRef),
 		headers: {},

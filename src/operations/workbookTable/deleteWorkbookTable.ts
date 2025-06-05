@@ -14,7 +14,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function deleteWorkbookTable(tableRef: WorkbookTableRef): GraphOperation<void> {
 	return operation({
-		contextId: tableRef.contextId,
+		context: tableRef.context,
 		method: "DELETE",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/tables/{table-id}", tableRef),
 		headers: {

@@ -19,7 +19,7 @@ export default function setWorkbookRangeFormat(rangeRef: WorkbookRangeRef, forma
 	const address = normalizeAddress(rangeRef.address, true);
 
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "PATCH",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${address}')/format`, rangeRef),
 		headers: {

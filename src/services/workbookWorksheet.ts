@@ -22,7 +22,7 @@ export function createWorkbookWorksheetRef(workbookRef: WorkbookRef, worksheetId
 	}
 
 	return {
-		contextId: workbookRef.contextId,
+		context: workbookRef.context,
 		siteId: workbookRef.siteId,
 		driveId: workbookRef.driveId,
 		itemId: workbookRef.itemId,

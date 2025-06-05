@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function unmergeWorkbookRange(rangeRef: WorkbookRangeRef): GraphOperation<void> {
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "POST",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${normalizeAddress(rangeRef.address)}')/unmerge`, rangeRef),
 		headers: {

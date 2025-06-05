@@ -1,5 +1,5 @@
 import ProtocolError from "../errors/ProtocolError.ts";
-import type { ContextRef } from "../models/ContextRef.ts";
+import type { Context } from "../models/Context.ts";
 import type { SiteId } from "../models/SiteId.ts";
 import type { SiteRef } from "../models/SiteRef.ts";
 import { getDefaultContextRef } from "./context.ts";
@@ -7,18 +7,18 @@ import { getEnvironmentVariable } from "./environmentVariable.ts";
 
 /**
  * Creates a reference to a site.
- * @param contextRef - The reference to the context.
+ * @param context - The reference to the context.
  * @param siteId - The ID of the site.
  * @returns A reference to the site.
  * @throws ProtocolError if the site ID is missing.
  */
-export function createSiteRef(contextRef: ContextRef, siteId: SiteId | undefined): SiteRef {
+export function createSiteRef(context: Context, siteId: SiteId | undefined): SiteRef {
 	if (!siteId) {
 		throw new ProtocolError("SiteID is missing");
 	}
 
 	return {
-		contextId: contextRef.contextId,
+		context,
 		siteId,
 	};
 }

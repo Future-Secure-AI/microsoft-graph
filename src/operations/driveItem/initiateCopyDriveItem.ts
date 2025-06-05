@@ -15,7 +15,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function initiateCopyDriveItem(srcFileRef: DriveItemRef, dstFolderRef: DriveRef | DriveItemRef, dstFileName: string): GraphOperation<void> {
 	return operation({
-		contextId: srcFileRef.contextId,
+		context: srcFileRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/copy", srcFileRef),
 		headers: {

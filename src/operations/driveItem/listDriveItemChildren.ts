@@ -24,7 +24,7 @@ export default function listDriveItemChildren(parentRef: DriveRef | DriveItemRef
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 
 	return operation({
-		contextId: parentRef.contextId,
+		context: parentRef.context,
 		method: "GET",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}/children?$top=${take}`, parentRef),
 		headers: {},

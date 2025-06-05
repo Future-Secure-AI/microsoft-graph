@@ -17,7 +17,7 @@ import { createWorkbookTableRef } from "../../services/workbookTable.ts";
  */
 export default function createWorkbookTable(rangeRef: WorkbookRangeRef, hasHeaders: boolean): GraphOperation<WorkbookTable & WorkbookTableRef> {
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables/add", rangeRef),
 		headers: {

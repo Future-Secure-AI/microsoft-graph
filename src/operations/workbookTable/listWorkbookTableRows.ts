@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function listWorkbookTableRows(tableRef: WorkbookTableRef): GraphOperation<WorkbookTableRow[]> {
 	return operation({
-		contextId: tableRef.contextId,
+		context: tableRef.context,
 		method: "GET",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/tables/{table-id}/rows", tableRef),
 		headers: {

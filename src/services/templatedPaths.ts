@@ -11,7 +11,7 @@ const argumentPattern = /\{([a-z-]+)\}/g;
  * @returns The generated Graph API path.
  * @throws BadTemplateError if the template is invalid or required arguments are missing.
  */
-export function generatePath(template: string, args: Record<string, string | undefined>): GraphPath {
+export function generatePath(template: string, args: Record<string, unknown>): GraphPath {
 	if (!template.startsWith("/")) {
 		throw new BadTemplateError(`Path template '${template}' must start with a slash.`);
 	}
@@ -22,9 +22,12 @@ export function generatePath(template: string, args: Record<string, string | und
 	return template.replace(argumentPattern, (_: string, match: string): string => {
 		const camelCaseKey = kebabToCamelCase(match);
 		const value = args[camelCaseKey as keyof typeof args];
-		if (value === undefined) {
+		if (value === undefined || value === null) {
 			throw new BadTemplateError(`Path template references argument '${camelCaseKey}' however no such argument provided.`);
 		}
-		return encodeURIComponent(value);
+		if (typeof value !== "string" && typeof value !== "number") {
+			throw new BadTemplateError(`Path template references argument '${camelCaseKey}' which is of type ${typeof value}, but only strings and numbers are allowed.`);
+		}
+		return encodeURIComponent(value.toString());
 	}) as GraphPath;
 }

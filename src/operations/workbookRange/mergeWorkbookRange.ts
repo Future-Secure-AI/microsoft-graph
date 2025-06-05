@@ -14,7 +14,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function mergeWorkbookRange(rangeRef: WorkbookRangeRef, across = false): GraphOperation<void> {
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "POST",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${normalizeAddress(rangeRef.address)}')/merge`, rangeRef),
 		headers: {

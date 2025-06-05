@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function calculateWorkbook(workbookRef: WorkbookRef, calculationType: "Recalculate" | "Full" | "FullRebuild" = "Recalculate"): GraphOperation<void> {
 	return operation({
-		contextId: workbookRef.contextId,
+		context: workbookRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/application/calculate", workbookRef),
 		headers: {

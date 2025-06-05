@@ -16,7 +16,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function listDrives(siteRef: SiteRef): GraphOperation<(DriveItem & DriveRef)[]> {
 	return operation({
-		contextId: siteRef.contextId,
+		context: siteRef.context,
 		method: "GET",
 		path: generatePath("/sites/{site-id}/drives", siteRef),
 		headers: {},

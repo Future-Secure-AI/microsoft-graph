@@ -20,7 +20,7 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
  */
 export default function insertWorkbookCells(worksheetRef: WorkbookWorksheetRef, address: Address, shift: "Down" | "Right"): GraphOperation<WorkbookRange & WorkbookRangeRef> {
 	return operation({
-		contextId: worksheetRef.contextId,
+		context: worksheetRef.context,
 		method: "POST",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${normalizeAddress(address)}')/insert`, worksheetRef),
 		headers: {

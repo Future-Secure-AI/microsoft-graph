@@ -26,7 +26,7 @@ export default function createWorkbook(parentRef: DriveRef | DriveItemRef, itemP
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 
 	return operation({
-		contextId: parentRef.contextId,
+		context: parentRef.context,
 		method: "PUT",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}:/${itemPath}:/content`, parentRef),
 		headers: {

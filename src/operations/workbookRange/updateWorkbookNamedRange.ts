@@ -14,7 +14,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function updateWorkbookNamedRange(rangeRef: WorkbookNamedRangeRef, value: WorkbookRange): GraphOperation<void> {
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "PATCH",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/names/{range-name}/range", rangeRef),
 		headers: {

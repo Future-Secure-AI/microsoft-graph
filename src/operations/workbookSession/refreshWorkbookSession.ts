@@ -17,7 +17,7 @@ export default function refreshWorkbookSession(workbookRef: WorkbookRef): GraphO
 		throw new InvalidArgumentError("Workbook session ID is required to refresh a session.");
 	}
 	return operation({
-		contextId: workbookRef.contextId,
+		context: workbookRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/refreshSession", workbookRef),
 		headers: {

@@ -11,7 +11,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function clearWorkbookTableColumnFilters(tableRef: WorkbookTableRef): GraphOperation<void> {
 	return operation({
-		contextId: tableRef.contextId,
+		context: tableRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables/{table-id}/clearFilters", tableRef),
 		headers: {

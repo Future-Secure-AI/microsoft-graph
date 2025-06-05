@@ -68,7 +68,7 @@ export function createDriveItemRef(driveRef: DriveRef, itemId: DriveItemId | und
 	}
 
 	return {
-		contextId: driveRef.contextId,
+		context: driveRef.context,
 		siteId: driveRef.siteId,
 		driveId: driveRef.driveId,
 		itemId,

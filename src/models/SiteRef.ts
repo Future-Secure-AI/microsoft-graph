@@ -1,6 +1,7 @@
-import type { ContextRef } from "./ContextRef.ts";
+import type { Context } from "./Context.ts";
 import type { SiteId } from "./SiteId.ts";
 
-export type SiteRef = ContextRef & {
+export type SiteRef = {
+	context: Context;
 	siteId: SiteId;
 };

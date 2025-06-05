@@ -16,7 +16,7 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
  */
 export default function getWorkbookTableBodyVisibleRange(tableRef: WorkbookTableRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {
 	return operation({
-		contextId: tableRef.contextId,
+		context: tableRef.context,
 		method: "GET",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables/{table-id}/dataBodyRange/visibleView", tableRef),
 		headers: {

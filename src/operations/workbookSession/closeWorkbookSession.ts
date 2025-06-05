@@ -17,7 +17,7 @@ export default function closeWorkbookSession(workbookRef: WorkbookRef): GraphOpe
 		throw new InvalidArgumentError("Workbook session ID is required to close a session.");
 	}
 	return operation({
-		contextId: workbookRef.contextId,
+		context: workbookRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/closeSession", workbookRef),
 		headers: {

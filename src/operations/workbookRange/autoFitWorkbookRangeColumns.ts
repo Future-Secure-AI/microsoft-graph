@@ -15,7 +15,7 @@ export default function autoFitWorkbookRangeColumns(rangeRef: WorkbookRangeRef):
 	const address = normalizeAddress(rangeRef.address, true);
 
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "POST",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${address}')/format/autofitcolumns`, rangeRef),
 		headers: {

@@ -14,7 +14,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function applyWorkbookTableColumnFilter(columnRef: WorkbookTableColumnRef, criteria: WorkbookFilterCriteria): GraphOperation<void> {
 	return operation({
-		contextId: columnRef.contextId,
+		context: columnRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables/{table-id}/columns/{column}/filter/apply", columnRef),
 		headers: {

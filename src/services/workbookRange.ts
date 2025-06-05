@@ -10,7 +10,7 @@ import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
  */
 export function createWorkbookRangeRef(worksheetRef: WorkbookWorksheetRef, address: Address): WorkbookRangeRef {
 	return {
-		contextId: worksheetRef.contextId,
+		context: worksheetRef.context,
 		siteId: worksheetRef.siteId,
 		driveId: worksheetRef.driveId,
 		itemId: worksheetRef.itemId,

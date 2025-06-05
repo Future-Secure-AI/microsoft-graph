@@ -12,7 +12,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function deleteDriveItem(itemRef: DriveItemRef): GraphOperation<void> {
 	return operation({
-		contextId: itemRef.contextId,
+		context: itemRef.context,
 		method: "DELETE",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}", itemRef),
 		headers: {},

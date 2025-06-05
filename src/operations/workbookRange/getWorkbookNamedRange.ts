@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function getWorkbookNamedRange(rangeRef: WorkbookNamedRangeRef): GraphOperation<WorkbookRange & WorkbookNamedRangeRef> {
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "GET",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/names/{range-name}/range", rangeRef),
 		headers: {

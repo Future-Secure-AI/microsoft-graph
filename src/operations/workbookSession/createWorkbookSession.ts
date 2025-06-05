@@ -16,7 +16,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function createWorkbookSession(itemRef: DriveItemRef, persistChanges = true): GraphOperation<WorkbookRef> {
 	return operation({
-		contextId: itemRef.contextId,
+		context: itemRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/createSession", itemRef),
 		headers: {

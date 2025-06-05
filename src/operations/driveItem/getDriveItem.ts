@@ -13,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function getDriveItem(itemRef: DriveItemRef): GraphOperation<DriveItem & DriveItemRef> {
 	return operation({
-		contextId: itemRef.contextId,
+		context: itemRef.context,
 		method: "GET",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}", itemRef),
 		headers: {},

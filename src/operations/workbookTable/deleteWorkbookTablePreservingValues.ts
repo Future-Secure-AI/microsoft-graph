@@ -11,7 +11,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function deleteWorkbookTablePreservingValues(tableRef: WorkbookTableRef): GraphOperation<void> {
 	return operation({
-		contextId: tableRef.contextId,
+		context: tableRef.context,
 		method: "POST",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/tables/{table-id}/convertToRange", tableRef),
 		headers: {

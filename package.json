@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.22.3",
+  "version": "2.23.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -419,6 +419,31 @@
       "require": "./dist/cjs/models/AccessToken.js",
       "types": "./dist/esm/models/AccessToken.d.ts"
     },
+    "./AccessTokenGenerator": {
+      "import": "./dist/esm/models/AccessTokenGenerator.js",
+      "require": "./dist/cjs/models/AccessTokenGenerator.js",
+      "types": "./dist/esm/models/AccessTokenGenerator.d.ts"
+    },
+    "./dist/cjs/models/AccessTokenGenerator.js": {
+      "import": "./dist/esm/models/AccessTokenGenerator.js",
+      "require": "./dist/cjs/models/AccessTokenGenerator.js",
+      "types": "./dist/esm/models/AccessTokenGenerator.d.ts"
+    },
+    "./dist/cjs/models/AccessTokenGenerator": {
+      "import": "./dist/esm/models/AccessTokenGenerator.js",
+      "require": "./dist/cjs/models/AccessTokenGenerator.js",
+      "types": "./dist/esm/models/AccessTokenGenerator.d.ts"
+    },
+    "./models/AccessTokenGenerator": {
+      "import": "./dist/esm/models/AccessTokenGenerator.js",
+      "require": "./dist/cjs/models/AccessTokenGenerator.js",
+      "types": "./dist/esm/models/AccessTokenGenerator.d.ts"
+    },
+    "./models/AccessTokenGenerator.js": {
+      "import": "./dist/esm/models/AccessTokenGenerator.js",
+      "require": "./dist/cjs/models/AccessTokenGenerator.js",
+      "types": "./dist/esm/models/AccessTokenGenerator.d.ts"
+    },
     "./Address": {
       "import": "./dist/esm/models/Address.js",
       "require": "./dist/cjs/models/Address.js",
@@ -668,56 +693,6 @@
       "import": "./dist/esm/models/Context.js",
       "require": "./dist/cjs/models/Context.js",
       "types": "./dist/esm/models/Context.d.ts"
-    },
-    "./ContextId": {
-      "import": "./dist/esm/models/ContextId.js",
-      "require": "./dist/cjs/models/ContextId.js",
-      "types": "./dist/esm/models/ContextId.d.ts"
-    },
-    "./dist/cjs/models/ContextId.js": {
-      "import": "./dist/esm/models/ContextId.js",
-      "require": "./dist/cjs/models/ContextId.js",
-      "types": "./dist/esm/models/ContextId.d.ts"
-    },
-    "./dist/cjs/models/ContextId": {
-      "import": "./dist/esm/models/ContextId.js",
-      "require": "./dist/cjs/models/ContextId.js",
-      "types": "./dist/esm/models/ContextId.d.ts"
-    },
-    "./models/ContextId": {
-      "import": "./dist/esm/models/ContextId.js",
-      "require": "./dist/cjs/models/ContextId.js",
-      "types": "./dist/esm/models/ContextId.d.ts"
-    },
-    "./models/ContextId.js": {
-      "import": "./dist/esm/models/ContextId.js",
-      "require": "./dist/cjs/models/ContextId.js",
-      "types": "./dist/esm/models/ContextId.d.ts"
-    },
-    "./ContextRef": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
-    },
-    "./dist/cjs/models/ContextRef.js": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
-    },
-    "./dist/cjs/models/ContextRef": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
-    },
-    "./models/ContextRef": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
-    },
-    "./models/ContextRef.js": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
     },
     "./DataSource": {
       "import": "./dist/esm/models/DataSource.js",

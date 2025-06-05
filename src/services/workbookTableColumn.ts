@@ -15,7 +15,7 @@ export function createWorkbookTableColumnRef(tableRef: WorkbookTableRef, column:
 	}
 
 	return {
-		contextId: tableRef.contextId,
+		context: tableRef.context,
 		siteId: tableRef.siteId,
 		driveId: tableRef.driveId,
 		itemId: tableRef.itemId,

@@ -17,7 +17,7 @@ export default function getWorkbookVisibleRange(rangeRef: WorkbookRangeRef): Gra
 
 	// TODO: Should be a visible ref type?
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "GET",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${address}')/visibleView`, rangeRef),
 		headers: {

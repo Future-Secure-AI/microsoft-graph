@@ -17,7 +17,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function updateWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden" }): GraphOperation<WorkbookWorksheet & WorkbookWorksheetRef> {
 	return operation({
-		contextId: worksheetRef.contextId,
+		context: worksheetRef.context,
 		method: "PATCH",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}", worksheetRef),
 		headers: {

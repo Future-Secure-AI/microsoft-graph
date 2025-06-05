@@ -1,8 +1,6 @@
-import { authenticationScope, endpoint } from "../../graphApi.ts";
+import { endpoint } from "../../graphApi.ts";
 import type { DriveItemPath } from "../../models/DriveItemPath.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
-import { getCurrentAccessToken } from "../../services/accessToken.ts";
-import { getContext } from "../../services/context.ts";
 import { executeHttpRequest } from "../../services/http.ts";
 import { isHttpNotFound, isHttpOk } from "../../services/httpStatus.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
@@ -16,8 +14,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 export default async function existsDriveItem(driveRef: DriveRef, itemPath: DriveItemPath): Promise<boolean> {
 	// Note this method doesn't match the standard pattern since the batching library doesn't support non-JSON return types.
 	const url = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef)}`;
-	const context = getContext(driveRef.contextId);
-	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
+	const accessToken = await driveRef.context.generateAccessToken();
 
 	const response = await executeHttpRequest({
 		url,

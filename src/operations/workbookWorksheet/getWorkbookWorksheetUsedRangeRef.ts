@@ -17,7 +17,7 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
  */
 export default function getWorkbookWorksheetUsedRangeRef(worksheetRef: WorkbookWorksheetRef): GraphOperation<WorkbookRangeRef> {
 	return operation({
-		contextId: worksheetRef.contextId,
+		context: worksheetRef.context,
 		method: "GET",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range/usedRange?$select=address", worksheetRef),
 		headers: {

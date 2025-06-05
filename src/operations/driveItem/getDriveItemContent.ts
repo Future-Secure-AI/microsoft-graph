@@ -1,7 +1,5 @@
-import { authenticationScope, endpoint } from "../../graphApi.ts";
+import { endpoint } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
-import { getCurrentAccessToken } from "../../services/accessToken.ts";
-import { getContext } from "../../services/context.ts";
 import { executeHttpRequest } from "../../services/http.ts";
 import { isHttpSuccess } from "../../services/httpStatus.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
@@ -17,8 +15,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 export default async function getDriveItemContent(itemRef: DriveItemRef): Promise<ArrayBuffer> {
 	// Note this method doesn't match the standard pattern since the batching library doesn't support non-JSON return types, and there appears to be no value in adding support.
 	const url = `${endpoint}${generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/content", itemRef)}`;
-	const context = getContext(itemRef.contextId);
-	const accessToken = await getCurrentAccessToken(context.tenantId, context.clientId, context.clientSecret, authenticationScope);
+	const accessToken = await itemRef.context.generateAccessToken();
 
 	const response = await executeHttpRequest({
 		url,

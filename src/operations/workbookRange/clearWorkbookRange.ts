@@ -16,7 +16,7 @@ export default function clearWorkbookRange(rangeRef: WorkbookRangeRef, applyTo: 
 	const address = normalizeAddress(rangeRef.address, true);
 
 	return operation({
-		contextId: rangeRef.contextId,
+		context: rangeRef.context,
 		method: "POST",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='${address}')/clear`, rangeRef),
 		headers: {

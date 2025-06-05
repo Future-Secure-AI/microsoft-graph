@@ -19,7 +19,7 @@ export default function createFolder(parentRef: DriveRef | DriveItemRef, folderN
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 
 	return operation({
-		contextId: parentRef.contextId,
+		context: parentRef.context,
 		method: "POST",
 		path: generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}/children`, parentRef),
 		headers: {

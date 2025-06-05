@@ -15,7 +15,7 @@ export function createWorkbookTableRef(worksheetRef: WorkbookWorksheetRef, table
 	}
 
 	return {
-		contextId: worksheetRef.contextId,
+		context: worksheetRef.context,
 		siteId: worksheetRef.siteId,
 		driveId: worksheetRef.driveId,
 		itemId: worksheetRef.itemId,

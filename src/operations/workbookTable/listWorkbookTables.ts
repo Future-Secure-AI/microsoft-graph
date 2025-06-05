@@ -16,7 +16,7 @@ import { createWorkbookTableRef } from "../../services/workbookTable.ts";
  */
 export default function listWorkbookTables(worksheetRef: WorkbookWorksheetRef): GraphOperation<(WorkbookTable & WorkbookRef)[]> {
 	return operation({
-		contextId: worksheetRef.contextId,
+		context: worksheetRef.context,
 		method: "GET",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/tables", worksheetRef),
 		headers: {

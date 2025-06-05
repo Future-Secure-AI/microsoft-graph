@@ -12,7 +12,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export default function deleteWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef): GraphOperation<void> {
 	return operation({
-		contextId: worksheetRef.contextId,
+		context: worksheetRef.context,
 		method: "DELETE",
 		path: generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}", worksheetRef),
 		headers: {
