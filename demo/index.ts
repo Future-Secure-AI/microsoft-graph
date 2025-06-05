@@ -40,9 +40,9 @@ await setWorkbookRangeValues(rangeRef, [
 ]);
 
 info("Reading range...");
-for await (const rowValues of readWorkbookRows(rangeRef)) {
+for await (const row of readWorkbookRows(rangeRef)) {
 	// This automatically uses multiple requests if the range is too big for a single request
-	debug(` ${rowValues}`);
+	debug(` ${row.map((cell) => cell.value).join(", ")}`);
 }
 
 info("Cleanup...");
