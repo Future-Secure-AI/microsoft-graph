@@ -12,6 +12,11 @@ const lastColumn: ColumnAddress = "XFD";
 const firstRow: RowAddress = "1";
 const lastRow: RowAddress = "1048576";
 
+const firstColumnOffset = columnAddressToOffset(firstColumn);
+const lastColumnOffset = columnAddressToOffset(lastColumn);
+const firstRowOffset = rowAddressToOffset(firstRow);
+const lastRowOffset = rowAddressToOffset(lastRow);
+
 const addressPattern = /^(?<sheet>(?:'[^']+'|[A-Za-z0-9_]+)!)?(?:(?<startColumn>[A-Z]+)?(?<startRow>\d+)?(?::(?<endColumn>[A-Z]+)?(?<endRow>\d+)?)?)$/;
 
 type AddressParsedComponents = {
@@ -315,7 +320,67 @@ export function countAddressColumns(address: Address): number {
 }
 
 /**
- * Extracts a subrange from a spreadsheet-style A1 range (e.g., "A1:D10"),
+ * Creates a range from a single cell address, extending by the specified number of rows and columns.
+ * If rows/cols is positive, the cell is the start of the range; if negative, the cell is the end of the range.
+ *
+ * @param cell - The cell address to use as the anchor.
+ * @param rows - The number of rows for the range. Positive: cell is start; Negative: cell is end.
+ * @param cols - The number of columns for the range. Positive: cell is start; Negative: cell is end.
+ * @returns The created address range.
+ *
+ * @throws {InvalidArgumentError} If the resulting address is out of bounds.
+ *
+ * @example
+ * // Creates a 2x2 range starting at B2
+ * cellToRangeAddress("B2", 2, 2); // "B2:C3"
+ * // Creates a 2x2 range ending at B2
+ * cellToRangeAddress("B2", -2, -2); // "A1:B2"
+ * // Creates a 2x2 range starting at C3, extending 2 rows down and 2 columns left
+ * cellToRangeAddress("B2", 2, -2)).toBe("A2:B3")
+ */
+export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number): Address {
+	const { ax, ay } = addressToCartesian(cell);
+
+	// Determine start and end coordinates
+	let startCol: number;
+	let endCol: number;
+	let startRow: number;
+	let endRow: number;
+
+	if (rows > 0) {
+		startRow = ay;
+		endRow = ay + rows - 1;
+	} else if (rows < -1) {
+		startRow = ay + rows + 1;
+		endRow = ay;
+	} else {
+		throw new InvalidArgumentError("rows must not be zero or -1");
+	}
+
+	if (cols > 0) {
+		startCol = ax;
+		endCol = ax + cols - 1;
+	} else if (cols < -1) {
+		startCol = ax + cols + 1;
+		endCol = ax;
+	} else {
+		throw new InvalidArgumentError("cols must not be zero or -1");
+	}
+
+	if (Math.min(startCol, endCol) < firstColumnOffset || Math.max(startCol, endCol) > lastColumnOffset || Math.min(startRow, endRow) < firstRowOffset || Math.max(startRow, endRow) > lastRowOffset) {
+		throw new InvalidArgumentError(`Resulting address is out of bounds: rows [${Math.min(startRow, endRow) + 1},${Math.max(startRow, endRow) + 1}], cols [${Math.min(startCol, endCol) + 1},${Math.max(startCol, endCol) + 1}]`);
+	}
+
+	return cartesianToAddress({
+		ax: Math.min(startCol, endCol) as ColumnOffset,
+		bx: Math.max(startCol, endCol) as ColumnOffset,
+		ay: Math.min(startRow, endRow) as RowOffset,
+		by: Math.max(startRow, endRow) as RowOffset,
+	});
+}
+
+/**
+ * Extracts a sub-address from a spreadsheet-style A1 range (e.g., "A1:D10"),
  * allowing skip and take semantics on both rows and columns.
  *
  * Supports negative values for `skipRows` and `skipCols` to count from the end.
@@ -334,54 +399,11 @@ export function countAddressColumns(address: Address): number {
  * subaddress("A1:D10", 0, -1); // All but last row: "A1:D9"
  * subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
  */
-export function subaddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
+export function subAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
 	const { ax, bx, ay, by } = addressToCartesian(address);
 
-	let startRow: number = ay;
-	let endRow: number = by;
-
-	if (!Number.isSafeInteger(skipRows)) {
-		throw new InvalidArgumentError(`skipRows must be a safe integer, got ${skipRows}`);
-	}
-
-	if (skipRows > 0) {
-		startRow = ay + skipRows;
-	} else if (skipRows < 0) {
-		startRow = by + skipRows + 1;
-	}
-
-	if (!Number.isFinite(takeRows)) {
-		// do nothing
-	} else if (!Number.isSafeInteger(takeRows)) {
-		throw new InvalidArgumentError(`takeRows must be a safe integer or infinite, got ${takeRows}`);
-	} else if (takeRows >= 0) {
-		endRow = startRow + takeRows - 1;
-	} else if (takeRows < 0) {
-		endRow += takeRows;
-	}
-
-	let startCol: number = ax;
-	let endCol: number = bx;
-
-	if (!Number.isSafeInteger(skipCols)) {
-		throw new InvalidArgumentError(`skipCols must be a safe integer, got ${skipCols}`);
-	}
-
-	if (skipCols > 0) {
-		startCol = ax + skipCols;
-	} else if (skipCols < 0) {
-		startCol = bx + skipCols + 1;
-	}
-
-	if (!Number.isFinite(takeCols)) {
-		// do nothing
-	} else if (!Number.isSafeInteger(takeCols)) {
-		throw new InvalidArgumentError(`takeCols must be a safe integer or infinite, got ${takeCols}`);
-	} else if (takeCols >= 0) {
-		endCol = startCol + takeCols - 1;
-	} else if (takeCols < 0) {
-		endCol += takeCols;
-	}
+	const [startRow, endRow] = slice(ay, by, skipRows, takeRows);
+	const [startCol, endCol] = slice(ax, bx, skipCols, takeCols);
 
 	if (startRow < ay || endRow > by || startRow > endRow || startCol < ax || endCol > bx || startCol > endCol) {
 		throw new InvalidArgumentError(`Requested subaddress is out of bounds: rows [${startRow + 1},${endRow + 1}], cols [${startCol + 1},${endCol + 1}] in range.`);
@@ -393,10 +415,31 @@ export function subaddress(address: Address, skipRows = 0, takeRows = Number.POS
 		ax: startCol as ColumnOffset,
 		bx: endCol as ColumnOffset,
 	});
+
+	function slice(start: number, end: number, skip: number, take: number): [number, number] {
+		let s = start;
+		let e = end;
+
+		if (skip > 0) {
+			s = start + skip;
+		} else if (skip < 0) {
+			s = end + skip + 1;
+		}
+
+		if (!Number.isFinite(take)) {
+			// do nothing
+		} else if (take >= 0) {
+			e = s + take - 1;
+		} else if (take < 0) {
+			e += take;
+		}
+
+		return [s, e];
+	}
 }
 
 /**
- * Extracts a subrange from a WorkbookRangeRef using skip/take semantics.
+ * Extracts a sub-range from a WorkbookRangeRef using skip/take semantics.
  * @param rangeRef Range reference to extract the sub-range from.
  * @param skipRows Number of rows to skip. If negative, skips from the end. Default 0.
  * @param takeRows Number of rows to take after skipping. If negative, excludes from the end. Default Infinity.
@@ -405,8 +448,8 @@ export function subaddress(address: Address, skipRows = 0, takeRows = Number.POS
  * @returns Extracted sub-range reference.
  * @throws InvalidArgumentError if the requested rows or columns exceed the available range.
  */
-export function subrange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
-	const address = subaddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
+export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
+	const address = subAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
 	return {
 		...rangeRef,
 		address,

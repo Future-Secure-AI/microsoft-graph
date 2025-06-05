@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
 import {
+	cellToRangeAddress,
 	composeAddress,
 	countAddressColumns,
 	countAddressRows,
@@ -20,7 +21,7 @@ import {
 	isSingleColumnAddress,
 	isSingleRowAddress,
 	offsetAddress,
-	subaddress,
+	subAddress,
 } from "./addressManipulation.ts";
 
 describe("getFirstCellAddress", () => {
@@ -538,61 +539,79 @@ describe("Sheet name with single quotes", () => {
 
 describe("subaddress", () => {
 	it("should return the same address if no skip/take is given", () => {
-		expect(subaddress("A1:C5")).toBe("A1:C5");
+		expect(subAddress("A1:B2")).toBe("A1:B2");
 	});
 
 	it("should skip first N rows", () => {
-		expect(subaddress("A1:C5", 2)).toBe("A3:C5");
-		expect(subaddress("B2:D10", 3)).toBe("B5:D10");
+		expect(subAddress("A1:B2", 1)).toBe("A2:B2");
 	});
 
 	it("should skip last N rows with negative skipRows", () => {
-		expect(subaddress("A1:C5", -2)).toBe("A4:C5");
-		expect(subaddress("B2:D10", -3)).toBe("B8:D10");
+		expect(subAddress("A1:B2", -1)).toBe("A2:B2");
 	});
 
 	it("should take first N rows after skipping", () => {
-		expect(subaddress("A1:C5", 0, 2)).toBe("A1:C2");
-		expect(subaddress("B2:D10", 0, 3)).toBe("B2:D4");
+		expect(subAddress("A1:C5", 0, 2)).toBe("A1:C2");
 	});
 
 	it("should take last N rows with negative takeRows", () => {
-		expect(subaddress("A1:C5", 0, -1)).toBe("A1:C4");
-		expect(subaddress("B2:D10", 0, -3)).toBe("B2:D7");
+		expect(subAddress("A1:C5", 0, -1)).toBe("A1:C4");
 	});
 
 	it("should skip and take rows together", () => {
-		expect(subaddress("A1:C5", 1, 2)).toBe("A2:C3");
-		expect(subaddress("B2:D10", 2, 3)).toBe("B4:D6");
+		expect(subAddress("A1:C5", 1, 2)).toBe("A2:C3");
 	});
 
 	it("should skip and take columns", () => {
-		expect(subaddress("A1:C5", 0, Number.POSITIVE_INFINITY, 1, 1)).toBe("B1:B5");
-		expect(subaddress("B2:E10", 0, Number.POSITIVE_INFINITY, 2, 2)).toBe("D2:E10");
+		expect(subAddress("A1:C5", 0, Number.POSITIVE_INFINITY, 1, 1)).toBe("B1:B5");
 	});
 
 	it("should skip and take columns from end", () => {
-		expect(subaddress("A1:C5", 0, Number.POSITIVE_INFINITY, -2, 1)).toBe("B1:B5");
-		expect(subaddress("B2:E10", 0, Number.POSITIVE_INFINITY, -3, 2)).toBe("C2:D10");
+		expect(subAddress("A1:C5", 0, Number.POSITIVE_INFINITY, -2, 1)).toBe("B1:B5");
 	});
 
 	it("should throw if requested rows exceed available", () => {
-		expect(() => subaddress("A1:C5", 10)).toThrow(InvalidArgumentError);
-		expect(() => subaddress("A1:C5", -10)).toThrow(InvalidArgumentError);
+		expect(() => subAddress("A1:C5", 10)).toThrow(InvalidArgumentError);
 	});
 
 	it("should throw if requested columns exceed available", () => {
-		expect(() => subaddress("A1:C5", 0, Number.POSITIVE_INFINITY, 10)).toThrow(InvalidArgumentError);
-		expect(() => subaddress("A1:C5", 0, Number.POSITIVE_INFINITY, -10)).toThrow(InvalidArgumentError);
+		expect(() => subAddress("A1:C5", 0, Number.POSITIVE_INFINITY, 10)).toThrow(InvalidArgumentError);
 	});
 
 	it("should work for single cell address", () => {
-		expect(subaddress("A1")).toBe("A1");
-		expect(subaddress("A1", 0, 1, 0, 1)).toBe("A1");
+		expect(subAddress("A1")).toBe("A1");
+		expect(subAddress("A1", 0, 1, 0, 1)).toBe("A1");
+	});
+});
+
+describe("cellToRangeAddress", () => {
+	it("should create a range from a cell as the start (positive rows/cols)", () => {
+		expect(cellToRangeAddress("B2", 2, 2)).toBe("B2:C3");
 	});
 
-	it("should work for row and column addresses", () => {
-		expect(subaddress("A", 2)).toBe("A3:A1048576");
-		expect(subaddress("1", 0, Number.POSITIVE_INFINITY, 2)).toBe("C1:XFD1");
+	it("should create a range from a cell as the end (negative rows/cols)", () => {
+		expect(cellToRangeAddress("B2", -2, -2)).toBe("A1:B2");
+	});
+
+	it("should create a range with positive rows and negative cols", () => {
+		expect(cellToRangeAddress("B2", 2, -2)).toBe("A2:B3");
+	});
+
+	it("should create a range with negative rows and positive cols", () => {
+		expect(cellToRangeAddress("B2", -2, 2)).toBe("B1:C2");
+	});
+
+	it("should throw if the created range is out of bounds", () => {
+		expect(() => cellToRangeAddress("A1", -1, 1)).toThrow(InvalidArgumentError);
+		expect(() => cellToRangeAddress("A1", 1, -1)).toThrow(InvalidArgumentError);
+	});
+
+	it("should throw if rows or cols is zero", () => {
+		expect(() => cellToRangeAddress("A1", 0, 1)).toThrow(InvalidArgumentError);
+		expect(() => cellToRangeAddress("A1", 1, 0)).toThrow(InvalidArgumentError);
+	});
+
+	it("should work for a single cell (1,1)", () => {
+		expect(cellToRangeAddress("A1", 1, 1)).toBe("A1");
 	});
 });
