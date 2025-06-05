@@ -694,6 +694,31 @@
       "require": "./dist/cjs/models/Context.js",
       "types": "./dist/esm/models/Context.d.ts"
     },
+    "./ContextRef": {
+      "import": "./dist/esm/models/ContextRef.js",
+      "require": "./dist/cjs/models/ContextRef.js",
+      "types": "./dist/esm/models/ContextRef.d.ts"
+    },
+    "./dist/cjs/models/ContextRef.js": {
+      "import": "./dist/esm/models/ContextRef.js",
+      "require": "./dist/cjs/models/ContextRef.js",
+      "types": "./dist/esm/models/ContextRef.d.ts"
+    },
+    "./dist/cjs/models/ContextRef": {
+      "import": "./dist/esm/models/ContextRef.js",
+      "require": "./dist/cjs/models/ContextRef.js",
+      "types": "./dist/esm/models/ContextRef.d.ts"
+    },
+    "./models/ContextRef": {
+      "import": "./dist/esm/models/ContextRef.js",
+      "require": "./dist/cjs/models/ContextRef.js",
+      "types": "./dist/esm/models/ContextRef.d.ts"
+    },
+    "./models/ContextRef.js": {
+      "import": "./dist/esm/models/ContextRef.js",
+      "require": "./dist/cjs/models/ContextRef.js",
+      "types": "./dist/esm/models/ContextRef.d.ts"
+    },
     "./DataSource": {
       "import": "./dist/esm/models/DataSource.js",
       "require": "./dist/cjs/models/DataSource.js",
