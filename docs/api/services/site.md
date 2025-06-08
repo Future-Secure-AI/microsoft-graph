@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/site
+[Microsoft Graph SDK](../README.md) / services/site
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createSiteRef**(`contextRef`, `siteId`): [`SiteRef`](../models/SiteRef.md#siteref)
 
-Defined in: [src/services/site.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/site.ts#L15)
+Defined in: [src/services/site.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/site.ts#L15)
 
 Creates a reference to a site.
 
@@ -33,7 +33,7 @@ ProtocolError if the site ID is missing.
 
 > **getDefaultSiteRef**(): [`SiteRef`](../models/SiteRef.md#siteref)
 
-Defined in: [src/services/site.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/site.ts#L31)
+Defined in: [src/services/site.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/site.ts#L31)
 
 Retrieves the opinionated default site reference. NOT RECOMMENDED FOR PRODUCTION USE
 

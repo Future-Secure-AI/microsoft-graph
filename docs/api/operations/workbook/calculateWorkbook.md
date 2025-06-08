@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbook/calculateWorkbook
+[Microsoft Graph SDK](../../README.md) / operations/workbook/calculateWorkbook
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **calculateWorkbook**(`workbookRef`, `calculationType`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbook/calculateWorkbook.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbook/calculateWorkbook.ts#L14)
+Defined in: [src/operations/workbook/calculateWorkbook.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/calculateWorkbook.ts#L14)
 
 Recalculate a workbook.
 
@@ -33,7 +33,7 @@ https://learn.microsoft.com/en-us/graph/api/workbookapplication-calculate
 
 > **recalculateWorkbook**(`workbookRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbook/calculateWorkbook.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbook/calculateWorkbook.ts#L35)
+Defined in: [src/operations/workbook/calculateWorkbook.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/calculateWorkbook.ts#L35)
 
 #### Parameters
 

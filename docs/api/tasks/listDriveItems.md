@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/listDriveItems
+[Microsoft Graph SDK](../README.md) / tasks/listDriveItems
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **listDriveItems**(`parentRef`, `pageSize`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object`[]\>
 
-Defined in: [src/tasks/listDriveItems.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/listDriveItems.ts#L9)
+Defined in: [src/tasks/listDriveItems.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/listDriveItems.ts#L9)
 
 #### Parameters
 

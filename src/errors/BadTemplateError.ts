@@ -1,5 +1,6 @@
 /**
- * Template did not match the expected format.
+ * Error thrown when a template did not match the expected format.
+ * @module BadTemplateError
  * @category Errors
  */
 export default class BadTemplateError extends Error {

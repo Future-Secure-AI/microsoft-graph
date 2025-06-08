@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/site/getSiteByName
+[Microsoft Graph SDK](../../README.md) / operations/site/getSiteByName
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **getSiteByName**(`contextRef`, `hostName`, `siteName`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)\>
 
-Defined in: [src/operations/site/getSiteByName.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/site/getSiteByName.ts#L21)
+Defined in: [src/operations/site/getSiteByName.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/getSiteByName.ts#L21)
 
 Get a site by its name.
 

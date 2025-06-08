@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookWorksheet/createWorkbookWorksheet
+[Microsoft Graph SDK](../../README.md) / operations/workbookWorksheet/createWorkbookWorksheet
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createWorkbookWorksheet**(`workbookRef`, `name?`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookWorksheet/createWorkbookWorksheet.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookWorksheet/createWorkbookWorksheet.ts#L19)
+Defined in: [src/operations/workbookWorksheet/createWorkbookWorksheet.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/createWorkbookWorksheet.ts#L19)
 
 Create a new worksheet in a workbook, optionally with a defined name.
 

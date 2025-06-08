@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookTable/applyWorkbookTableColumnFilter
+[Microsoft Graph SDK](../../README.md) / operations/workbookTable/applyWorkbookTableColumnFilter
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **applyWorkbookTableColumnFilter**(`columnRef`, `criteria`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookTable/applyWorkbookTableColumnFilter.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookTable/applyWorkbookTableColumnFilter.ts#L15)
+Defined in: [src/operations/workbookTable/applyWorkbookTableColumnFilter.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/applyWorkbookTableColumnFilter.ts#L15)
 
 Apply a filter to a workbook table column.
 

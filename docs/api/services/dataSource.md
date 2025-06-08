@@ -1,1 +1,1 @@
-[Microsoft Graph SDK](../modules.md) / services/dataSource
+[Microsoft Graph SDK](../README.md) / services/dataSource

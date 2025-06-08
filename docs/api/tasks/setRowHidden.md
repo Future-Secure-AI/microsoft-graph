@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/setRowHidden
+[Microsoft Graph SDK](../README.md) / tasks/setRowHidden
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **setRowHidden**(`rangeRef`, `hidden`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`WorkbookRange` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/tasks/setRowHidden.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/setRowHidden.ts#L14)
+Defined in: [src/tasks/setRowHidden.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/setRowHidden.ts#L14)
 
 Hide or show one or more rows.
 

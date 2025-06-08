@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbook/deleteWorkbook
+[Microsoft Graph SDK](../../README.md) / operations/workbook/deleteWorkbook
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **deleteWorkbook**(`workbookRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbook/deleteWorkbook.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbook/deleteWorkbook.ts#L12)
+Defined in: [src/operations/workbook/deleteWorkbook.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/deleteWorkbook.ts#L12)
 
 Delete a workbook.
 

@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookRange/insertWorkbookCells
+[Microsoft Graph SDK](../../README.md) / operations/workbookRange/insertWorkbookCells
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **insertWorkbookCells**(`worksheetRef`, `address`, `shift`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookRange/insertWorkbookCells.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookRange/insertWorkbookCells.ts#L21)
+Defined in: [src/operations/workbookRange/insertWorkbookCells.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/insertWorkbookCells.ts#L21)
 
 Insert a new blank range at a specified address, shifting existing cells. Use `updateWorkbookRange` afterward to set content.
 

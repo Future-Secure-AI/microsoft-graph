@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookTable/getWorkbookTableBodyVisibleRange
+[Microsoft Graph SDK](../../README.md) / operations/workbookTable/getWorkbookTableBodyVisibleRange
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **getWorkbookTableBodyVisibleRange**(`tableRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookRange`\>
 
-Defined in: [src/operations/workbookTable/getWorkbookTableBodyVisibleRange.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookTable/getWorkbookTableBodyVisibleRange.ts#L14)
+Defined in: [src/operations/workbookTable/getWorkbookTableBodyVisibleRange.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/getWorkbookTableBodyVisibleRange.ts#L14)
 
 Retrieve the visible data body range of a table.
 

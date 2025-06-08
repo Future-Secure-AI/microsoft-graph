@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/context
+[Microsoft Graph SDK](../README.md) / services/context
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createAccessTokenContext**(`accessToken`): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/context.ts#L26)
+Defined in: [src/services/context.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L26)
 
 Create a context using a static access token.
 
@@ -30,7 +30,7 @@ You must manually handle renewal of the access token with this approach.
 
 > **createClientSecretContext**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/context.ts#L14)
+Defined in: [src/services/context.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L14)
 
 Create a context using the client secret credential.
 
@@ -53,7 +53,7 @@ Create a context using the client secret credential.
 
 > **createContext**(`accessTokenGenerator`): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:34](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/context.ts#L34)
+Defined in: [src/services/context.ts:34](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L34)
 
 Create a context using a given access token generator.
 
@@ -73,7 +73,7 @@ Create a context using a given access token generator.
 
 > **createDefaultClientSecretContext**(): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:45](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/context.ts#L45)
+Defined in: [src/services/context.ts:45](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L45)
 
 Create a context using the client secret credential using environment variables AZURE_TENANT_ID, AZURE_CLIENT_ID and AZURE_CLIENT_SECRET.
 
@@ -87,7 +87,7 @@ Create a context using the client secret credential using environment variables 
 
 > **getDefaultContextRef**(): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:56](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/context.ts#L56)
+Defined in: [src/services/context.ts:56](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L56)
 
 #### Returns
 
@@ -103,7 +103,7 @@ Use `createDefaultClientSecretContext()` instead.
 
 > **register**(`tenantId`, `clientId`, `clientSecret`): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:63](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/context.ts#L63)
+Defined in: [src/services/context.ts:63](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L63)
 
 #### Parameters
 

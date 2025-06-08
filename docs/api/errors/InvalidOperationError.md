@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/InvalidOperationError
+[Microsoft Graph SDK](../README.md) / errors/InvalidOperationError
 
 ## Classes
 
 ### InvalidOperationError
 
-Defined in: [src/errors/InvalidOperationError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InvalidOperationError.ts#L1)
+Defined in: [src/errors/InvalidOperationError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidOperationError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/InvalidOperationError.ts:1](https://github.com/Future-Se
 
 > **new InvalidOperationError**(`message?`): [`InvalidOperationError`](#invalidoperationerror)
 
-Defined in: [src/errors/InvalidOperationError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InvalidOperationError.ts#L2)
+Defined in: [src/errors/InvalidOperationError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidOperationError.ts#L2)
 
 ###### Parameters
 

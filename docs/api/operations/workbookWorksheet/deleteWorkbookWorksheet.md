@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookWorksheet/deleteWorkbookWorksheet
+[Microsoft Graph SDK](../../README.md) / operations/workbookWorksheet/deleteWorkbookWorksheet
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **deleteWorkbookWorksheet**(`worksheetRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookWorksheet/deleteWorkbookWorksheet.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookWorksheet/deleteWorkbookWorksheet.ts#L13)
+Defined in: [src/operations/workbookWorksheet/deleteWorkbookWorksheet.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/deleteWorkbookWorksheet.ts#L13)
 
 Permanently delete a worksheet.
 

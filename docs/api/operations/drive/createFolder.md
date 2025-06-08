@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/drive/createFolder
+[Microsoft Graph SDK](../../README.md) / operations/drive/createFolder
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createFolder**(`parentRef`, `folderName`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object`\>
 
-Defined in: [src/operations/drive/createFolder.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/drive/createFolder.ts#L18)
+Defined in: [src/operations/drive/createFolder.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/drive/createFolder.ts#L18)
 
 Create a folder in the root of a drive, or in a folder. If it already exists do nothing.
 

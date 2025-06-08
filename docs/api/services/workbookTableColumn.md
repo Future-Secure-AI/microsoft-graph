@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/workbookTableColumn
+[Microsoft Graph SDK](../README.md) / services/workbookTableColumn
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createWorkbookTableColumnRef**(`tableRef`, `column`): [`WorkbookTableColumnRef`](../models/WorkbookTableColumnRef.md#workbooktablecolumnref)
 
-Defined in: [src/services/workbookTableColumn.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/workbookTableColumn.ts#L12)
+Defined in: [src/services/workbookTableColumn.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookTableColumn.ts#L12)
 
 Creates a reference to a workbook table column.
 

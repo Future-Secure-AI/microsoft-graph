@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookRange/setWorkbookRangeFormat
+[Microsoft Graph SDK](../../README.md) / operations/workbookRange/setWorkbookRangeFormat
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **setWorkbookRangeFormat**(`rangeRef`, `format`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookRange/setWorkbookRangeFormat.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookRange/setWorkbookRangeFormat.ts#L18)
+Defined in: [src/operations/workbookRange/setWorkbookRangeFormat.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/setWorkbookRangeFormat.ts#L18)
 
 Update the general format of a workbook range.
 

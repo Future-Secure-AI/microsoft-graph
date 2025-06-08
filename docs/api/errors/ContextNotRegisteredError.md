@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/ContextNotRegisteredError
+[Microsoft Graph SDK](../README.md) / errors/ContextNotRegisteredError
 
 ## Classes
 
 ### ContextNotRegisteredError
 
-Defined in: [src/errors/ContextNotRegisteredError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/ContextNotRegisteredError.ts#L1)
+Defined in: [src/errors/ContextNotRegisteredError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ContextNotRegisteredError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/ContextNotRegisteredError.ts:1](https://github.com/Futur
 
 > **new ContextNotRegisteredError**(`message`): [`ContextNotRegisteredError`](#contextnotregisterederror)
 
-Defined in: [src/errors/ContextNotRegisteredError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/ContextNotRegisteredError.ts#L2)
+Defined in: [src/errors/ContextNotRegisteredError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ContextNotRegisteredError.ts#L2)
 
 ###### Parameters
 

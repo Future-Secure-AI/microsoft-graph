@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/writeWorkbookRows
+[Microsoft Graph SDK](../README.md) / tasks/writeWorkbookRows
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **writeWorkbookRows**(`originRef`, `rows`, `overrideMaxRowsPerUnderlyingRead`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`number`\>
 
-Defined in: [src/tasks/writeWorkbookRows.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/writeWorkbookRows.ts#L17)
+Defined in: [src/tasks/writeWorkbookRows.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/writeWorkbookRows.ts#L17)
 
 Write rows to a workbook range. Uses batching to handle large datasets efficiently.
 

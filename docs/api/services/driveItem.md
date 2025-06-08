@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/driveItem
+[Microsoft Graph SDK](../README.md) / services/driveItem
 
 ## Variables
 
@@ -6,7 +6,7 @@
 
 > `const` **rootDriveItemPath**: [`DriveItemPath`](../models/DriveItemPath.md#driveitempath)
 
-Defined in: [src/services/driveItem.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/driveItem.ts#L14)
+Defined in: [src/services/driveItem.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L14)
 
 ***
 
@@ -14,7 +14,7 @@ Defined in: [src/services/driveItem.ts:14](https://github.com/Future-Secure-AI/m
 
 > `const` **workbookFileExtension**: `"xlsx"` = `"xlsx"`
 
-Defined in: [src/services/driveItem.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/driveItem.ts#L12)
+Defined in: [src/services/driveItem.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L12)
 
 ## Functions
 
@@ -22,7 +22,7 @@ Defined in: [src/services/driveItem.ts:12](https://github.com/Future-Secure-AI/m
 
 > **createDriveItemRef**(`driveRef`, `itemId`): [`DriveItemRef`](../models/DriveItemRef.md#driveitemref)
 
-Defined in: [src/services/driveItem.ts:65](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/driveItem.ts#L65)
+Defined in: [src/services/driveItem.ts:65](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L65)
 
 Creates a reference to a drive item.
 
@@ -49,7 +49,7 @@ ProtocolError if the item ID is missing.
 
 > **driveItemPath**(...`segments`): [`DriveItemPath`](../models/DriveItemPath.md#driveitempath)
 
-Defined in: [src/services/driveItem.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/driveItem.ts#L22)
+Defined in: [src/services/driveItem.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L22)
 
 Creates a drive item path from a given set of segments.
 
@@ -75,7 +75,7 @@ InvalidArgumentError if a segment is invalid or the path exceeds 400 characters.
 
 > **splitDriveItemPath**(`filePath`): `object`
 
-Defined in: [src/services/driveItem.ts:83](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/driveItem.ts#L83)
+Defined in: [src/services/driveItem.ts:83](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L83)
 
 Splits a drive item path into its folder path and file name.
 

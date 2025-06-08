@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/iterateWorkbookRange
+[Microsoft Graph SDK](../README.md) / tasks/iterateWorkbookRange
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **iterateWorkbookRange**(`rangeRef`, `overwriteRowsPerRequest`): `AsyncIterable`\<\{ `row`: [`Row`](../models/Row.md#row); `rowOffset`: [`RowOffset`](../models/RowOffset.md#rowoffset); \}\>
 
-Defined in: [src/tasks/iterateWorkbookRange.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/iterateWorkbookRange.ts#L22)
+Defined in: [src/tasks/iterateWorkbookRange.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateWorkbookRange.ts#L22)
 
 Iterates over the values of a workbook range in chunks, fetching data in manageable sizes.
 

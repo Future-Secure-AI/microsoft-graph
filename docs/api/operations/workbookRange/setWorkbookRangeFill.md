@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookRange/setWorkbookRangeFill
+[Microsoft Graph SDK](../../README.md) / operations/workbookRange/setWorkbookRangeFill
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **setWorkbookRangeFill**(`rangeRef`, `format`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookRange/setWorkbookRangeFill.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookRange/setWorkbookRangeFill.ts#L15)
+Defined in: [src/operations/workbookRange/setWorkbookRangeFill.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/setWorkbookRangeFill.ts#L15)
 
 Update the fill format of a workbook range.
 

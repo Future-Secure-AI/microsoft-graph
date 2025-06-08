@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbook/createWorkbook
+[Microsoft Graph SDK](../../README.md) / operations/workbook/createWorkbook
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createWorkbook**(`parentRef`, `itemPath`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbook/createWorkbook.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbook/createWorkbook.ts#L22)
+Defined in: [src/operations/workbook/createWorkbook.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/createWorkbook.ts#L22)
 
 Create a new blank workbook.
 

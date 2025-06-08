@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/safeDeleteWorkbook
+[Microsoft Graph SDK](../README.md) / tasks/safeDeleteWorkbook
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **safeDeleteWorkbook**(`workbookRef`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/safeDeleteWorkbook.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/safeDeleteWorkbook.ts#L12)
+Defined in: [src/tasks/safeDeleteWorkbook.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/safeDeleteWorkbook.ts#L12)
 
 Safely delete a workbook by first closing any open sessions and then deleting it with a back-off retry to allow for any outstanding locks to be closed.
 

@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/site/getSite
+[Microsoft Graph SDK](../../README.md) / operations/site/getSite
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **getSite**(`siteRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)\>
 
-Defined in: [src/operations/site/getSite.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/site/getSite.ts#L14)
+Defined in: [src/operations/site/getSite.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/getSite.ts#L14)
 
 Retrieve properties for a site resource.
 

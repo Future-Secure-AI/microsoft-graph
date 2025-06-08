@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/downloadDriveItemContent
+[Microsoft Graph SDK](../README.md) / tasks/downloadDriveItemContent
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **downloadDriveItemContent**(`itemRef`, `localFilePath`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/downloadDriveItemContent.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/downloadDriveItemContent.ts#L12)
+Defined in: [src/tasks/downloadDriveItemContent.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/downloadDriveItemContent.ts#L12)
 
 Download a DriveItem and save it as a local file.
 

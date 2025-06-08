@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/ProtocolError
+[Microsoft Graph SDK](../README.md) / errors/ProtocolError
 
 ## Classes
 
 ### ProtocolError
 
-Defined in: [src/errors/ProtocolError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/ProtocolError.ts#L1)
+Defined in: [src/errors/ProtocolError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ProtocolError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/ProtocolError.ts:1](https://github.com/Future-Secure-AI/
 
 > **new ProtocolError**(`message`): [`ProtocolError`](#protocolerror)
 
-Defined in: [src/errors/ProtocolError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/ProtocolError.ts#L2)
+Defined in: [src/errors/ProtocolError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ProtocolError.ts#L2)
 
 ###### Parameters
 
@@ -190,7 +190,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 > `static` **throwIfFalsy**(`value`, `message`): `void`
 
-Defined in: [src/errors/ProtocolError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/ProtocolError.ts#L7)
+Defined in: [src/errors/ProtocolError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ProtocolError.ts#L7)
 
 ###### Parameters
 

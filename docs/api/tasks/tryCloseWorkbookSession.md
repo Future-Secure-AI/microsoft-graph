@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/tryCloseWorkbookSession
+[Microsoft Graph SDK](../README.md) / tasks/tryCloseWorkbookSession
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **tryCloseWorkbookSession**(`workbookRef`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`boolean`\>
 
-Defined in: [src/tasks/tryCloseWorkbookSession.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/tryCloseWorkbookSession.ts#L10)
+Defined in: [src/tasks/tryCloseWorkbookSession.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/tryCloseWorkbookSession.ts#L10)
 
 Try and close a workbook session. Do not error if not possible
 

@@ -48,14 +48,3 @@ for (const item of await listDriveItems(folder)) {
 await safeDeleteWorkbook(workbook); // Closes session and waits for unlock
 await deleteDriveItem(folder);
 ```
-
-From here, have a look at:
-* [`/docs`](https://github.com/ProspectSafe/microsoft-graph/tree/main/docs) for more general documentation and advice.
-* [`/src/operations`](https://github.com/ProspectSafe/microsoft-graph/tree/main/src/operations) for other supported GraphAPI operations.
-* [`/src/tasks`](https://github.com/ProspectSafe/microsoft-graph/tree/main/src/tasks) for supported tasks that make use of multiple operations. 
-* [`/src/services`](https://github.com/ProspectSafe/microsoft-graph/tree/main/src/services) for a bunch of helpers that make life generally easier.
-
-That's it!
-
-## Extension
-If you require more operations you can either raise an [issue](https://github.com/ProspectSafe/microsoft-graph/issues), or [raise a pull-request](CONTRIBUTING.md).

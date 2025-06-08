@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookWorksheet/listWorkbookWorksheets
+[Microsoft Graph SDK](../../README.md) / operations/workbookWorksheet/listWorkbookWorksheets
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **listWorkbookWorksheets**(`workbookRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`[]\>
 
-Defined in: [src/operations/workbookWorksheet/listWorkbookWorksheets.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookWorksheet/listWorkbookWorksheets.ts#L18)
+Defined in: [src/operations/workbookWorksheet/listWorkbookWorksheets.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/listWorkbookWorksheets.ts#L18)
 
 Retrieve a list of worksheets in a workbook.
 

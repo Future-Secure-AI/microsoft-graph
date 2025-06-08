@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/setWorkbookTableBodyVisibleRows
+[Microsoft Graph SDK](../README.md) / tasks/setWorkbookTableBodyVisibleRows
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **setWorkbookTableBodyVisibleRows**(`tableRef`, `values`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/setWorkbookTableBodyVisibleRows.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/setWorkbookTableBodyVisibleRows.ts#L20)
+Defined in: [src/tasks/setWorkbookTableBodyVisibleRows.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/setWorkbookTableBodyVisibleRows.ts#L20)
 
 Overwrite visible rows of a workbook table with the provided 2D array of values, inserting new rows at the end if needed.
 THIS IS SLOW as it must check each row's visibility.

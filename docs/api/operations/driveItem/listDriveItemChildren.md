@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/driveItem/listDriveItemChildren
+[Microsoft Graph SDK](../../README.md) / operations/driveItem/listDriveItemChildren
 
 ## Type Aliases
 
@@ -6,14 +6,14 @@
 
 > **ListDriveItemResponse** = `object`
 
-Defined in: [src/operations/driveItem/listDriveItemChildren.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/driveItem/listDriveItemChildren.ts#L10)
+Defined in: [src/operations/driveItem/listDriveItemChildren.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItemChildren.ts#L10)
 
 #### Properties
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="odatanextlink"></a> `@odata.nextLink` | `string` \| `null` | [src/operations/driveItem/listDriveItemChildren.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/driveItem/listDriveItemChildren.ts#L12) |
-| <a id="value"></a> `value` | `DriveItem` & [`DriveItemRef`](../../models/DriveItemRef.md#driveitemref)[] | [src/operations/driveItem/listDriveItemChildren.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/driveItem/listDriveItemChildren.ts#L11) |
+| <a id="odatanextlink"></a> `@odata.nextLink` | `string` \| `null` | [src/operations/driveItem/listDriveItemChildren.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItemChildren.ts#L12) |
+| <a id="value"></a> `value` | `DriveItem` & [`DriveItemRef`](../../models/DriveItemRef.md#driveitemref)[] | [src/operations/driveItem/listDriveItemChildren.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItemChildren.ts#L11) |
 
 ## Functions
 
@@ -21,7 +21,7 @@ Defined in: [src/operations/driveItem/listDriveItemChildren.ts:10](https://githu
 
 > **listDriveItemChildren**(`parentRef`, `take`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<[`ListDriveItemResponse`](#listdriveitemresponse)\>
 
-Defined in: [src/operations/driveItem/listDriveItemChildren.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/driveItem/listDriveItemChildren.ts#L23)
+Defined in: [src/operations/driveItem/listDriveItemChildren.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItemChildren.ts#L23)
 
 Retrieve the metadata for items in a drive or folder.
 

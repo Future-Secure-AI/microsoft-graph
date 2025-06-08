@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/getWorkbookWorksheetByName
+[Microsoft Graph SDK](../README.md) / tasks/getWorkbookWorksheetByName
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **getWorkbookWorksheetByName**(`workbookRef`, `name`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`WorkbookWorksheet` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/tasks/getWorkbookWorksheetByName.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/getWorkbookWorksheetByName.ts#L15)
+Defined in: [src/tasks/getWorkbookWorksheetByName.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/getWorkbookWorksheetByName.ts#L15)
 
 Get a worksheet by its name. Throws an error if not found.
 

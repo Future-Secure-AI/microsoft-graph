@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookRange/updateWorkbookNamedRange
+[Microsoft Graph SDK](../../README.md) / operations/workbookRange/updateWorkbookNamedRange
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **updateWorkbookNamedRange**(`rangeRef`, `value`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookRange/updateWorkbookNamedRange.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookRange/updateWorkbookNamedRange.ts#L15)
+Defined in: [src/operations/workbookRange/updateWorkbookNamedRange.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/updateWorkbookNamedRange.ts#L15)
 
 Update a range that has been defined using the "named range" functionality. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values.
 

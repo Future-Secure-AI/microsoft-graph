@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/random
+[Microsoft Graph SDK](../README.md) / services/random
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **generateRandomString**(`length`): `string`
 
-Defined in: [src/services/random.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/random.ts#L10)
+Defined in: [src/services/random.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/random.ts#L10)
 
 Generates a random alphanumeric string of the specified length.
 

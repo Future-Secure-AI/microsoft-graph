@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/driveItem/getDriveItemContent
+[Microsoft Graph SDK](../../README.md) / operations/driveItem/getDriveItemContent
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **getDriveItemContent**(`itemRef`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)\>
 
-Defined in: [src/operations/driveItem/getDriveItemContent.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/driveItem/getDriveItemContent.ts#L15)
+Defined in: [src/operations/driveItem/getDriveItemContent.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/getDriveItemContent.ts#L15)
 
 Download the content of a drive item.
 

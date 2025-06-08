@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/site/searchSites
+[Microsoft Graph SDK](../../README.md) / operations/site/searchSites
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **searchSites**(`contextRef`, `search`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)[]\>
 
-Defined in: [src/operations/site/searchSites.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/site/searchSites.ts#L18)
+Defined in: [src/operations/site/searchSites.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/searchSites.ts#L18)
 
 Find accessible sites that match the provided keywords.
 

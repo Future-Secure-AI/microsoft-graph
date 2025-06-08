@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / models/WorkbookTableRef
+[Microsoft Graph SDK](../README.md) / models/WorkbookTableRef
 
 ## Type Aliases
 
@@ -6,7 +6,7 @@
 
 > **WorkbookTableRef** = [`WorkbookWorksheetRef`](WorkbookWorksheetRef.md#workbookworksheetref) & `object`
 
-Defined in: [src/models/WorkbookTableRef.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/WorkbookTableRef.ts#L4)
+Defined in: [src/models/WorkbookTableRef.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookTableRef.ts#L4)
 
 #### Type declaration
 

@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookTable/getWorkbookTableHeaderRange
+[Microsoft Graph SDK](../../README.md) / operations/workbookTable/getWorkbookTableHeaderRange
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **getWorkbookTableHeaderRange**(`tableRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookTable/getWorkbookTableHeaderRange.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookTable/getWorkbookTableHeaderRange.ts#L18)
+Defined in: [src/operations/workbookTable/getWorkbookTableHeaderRange.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/getWorkbookTableHeaderRange.ts#L18)
 
 Retrieve the header row range of a table.
 

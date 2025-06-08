@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/driveItem/initiateCopyDriveItem
+[Microsoft Graph SDK](../../README.md) / operations/driveItem/initiateCopyDriveItem
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **initiateCopyDriveItem**(`srcFileRef`, `dstFolderRef`, `dstFileName`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/driveItem/initiateCopyDriveItem.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/driveItem/initiateCopyDriveItem.ts#L16)
+Defined in: [src/operations/driveItem/initiateCopyDriveItem.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/initiateCopyDriveItem.ts#L16)
 
 Initiate an asynchronous copy of an item. NOTE: The copied file may not be immediately available and polling is required.
 

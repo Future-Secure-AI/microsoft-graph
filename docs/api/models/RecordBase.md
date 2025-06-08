@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / models/RecordBase
+[Microsoft Graph SDK](../README.md) / models/RecordBase
 
 ## Type Aliases
 
@@ -6,4 +6,4 @@
 
 > **RecordBase** = [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, [`CellValue`](CellValue.md#cellvalue)\>
 
-Defined in: [src/models/RecordBase.ts:3](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/RecordBase.ts#L3)
+Defined in: [src/models/RecordBase.ts:3](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/RecordBase.ts#L3)

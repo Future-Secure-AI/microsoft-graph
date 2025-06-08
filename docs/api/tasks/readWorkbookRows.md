@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/readWorkbookRows
+[Microsoft Graph SDK](../README.md) / tasks/readWorkbookRows
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **readWorkbookRows**(`rangeRef`, `overwriteMaxRowsPerChunk`): `AsyncIterable`\<[`Row`](../models/Row.md#row)\>
 
-Defined in: [src/tasks/readWorkbookRows.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/readWorkbookRows.ts#L21)
+Defined in: [src/tasks/readWorkbookRows.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/readWorkbookRows.ts#L21)
 
 Iterates over the values of a workbook range in chunks, fetching data in manageable sizes.
 

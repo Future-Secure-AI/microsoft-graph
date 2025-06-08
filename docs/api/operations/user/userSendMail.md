@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/user/userSendMail
+[Microsoft Graph SDK](../../README.md) / operations/user/userSendMail
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **userSendMail**(`context`, `sender`, `message`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/user/userSendMail.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/user/userSendMail.ts#L21)
+Defined in: [src/operations/user/userSendMail.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/user/userSendMail.ts#L21)
 
 Send an email.
 

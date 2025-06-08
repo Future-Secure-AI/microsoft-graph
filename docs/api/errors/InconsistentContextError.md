@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/InconsistentContextError
+[Microsoft Graph SDK](../README.md) / errors/InconsistentContextError
 
 ## Classes
 
 ### InconsistentContextError
 
-Defined in: [src/errors/InconsistentContextError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InconsistentContextError.ts#L1)
+Defined in: [src/errors/InconsistentContextError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InconsistentContextError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/InconsistentContextError.ts:1](https://github.com/Future
 
 > **new InconsistentContextError**(`message`): [`InconsistentContextError`](#inconsistentcontexterror)
 
-Defined in: [src/errors/InconsistentContextError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InconsistentContextError.ts#L2)
+Defined in: [src/errors/InconsistentContextError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InconsistentContextError.ts#L2)
 
 ###### Parameters
 

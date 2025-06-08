@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookSession/closeWorkbookSession
+[Microsoft Graph SDK](../../README.md) / operations/workbookSession/closeWorkbookSession
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **closeWorkbookSession**(`workbookRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookSession/closeWorkbookSession.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookSession/closeWorkbookSession.ts#L15)
+Defined in: [src/operations/workbookSession/closeWorkbookSession.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/closeWorkbookSession.ts#L15)
 
 Close an existing workbook session.
 

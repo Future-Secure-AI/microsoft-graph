@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / models/Address
+[Microsoft Graph SDK](../README.md) / models/Address
 
 ## Type Aliases
 
@@ -6,7 +6,7 @@
 
 > **Address** = [`ColumnAddress`](#columnaddress) \| [`RowAddress`](#rowaddress) \| [`ColumnRangeAddress`](#columnrangeaddress) \| [`RowRangeAddress`](#rowrangeaddress) \| [`CellRangeAddress`](#cellrangeaddress) \| [`CellAddress`](#celladdress)
 
-Defined in: [src/models/Address.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/Address.ts#L10)
+Defined in: [src/models/Address.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L10)
 
 ***
 
@@ -14,7 +14,7 @@ Defined in: [src/models/Address.ts:10](https://github.com/Future-Secure-AI/micro
 
 > **CellAddress** = `` `${ColumnAddress}${RowAddress}` ``
 
-Defined in: [src/models/Address.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/Address.ts#L7)
+Defined in: [src/models/Address.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L7)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [src/models/Address.ts:7](https://github.com/Future-Secure-AI/micros
 
 > **CellRangeAddress** = `` `${CellAddress}:${CellAddress}` ``
 
-Defined in: [src/models/Address.ts:8](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/Address.ts#L8)
+Defined in: [src/models/Address.ts:8](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L8)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [src/models/Address.ts:8](https://github.com/Future-Secure-AI/micros
 
 > **ColumnAddress** = `` `${Uppercase<string>}` ``
 
-Defined in: [src/models/Address.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/Address.ts#L1)
+Defined in: [src/models/Address.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L1)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [src/models/Address.ts:1](https://github.com/Future-Secure-AI/micros
 
 > **ColumnRangeAddress** = `` `${CellAddress}:${CellAddress}` ``
 
-Defined in: [src/models/Address.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/Address.ts#L2)
+Defined in: [src/models/Address.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L2)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [src/models/Address.ts:2](https://github.com/Future-Secure-AI/micros
 
 > **RowAddress** = `` `${number}` ``
 
-Defined in: [src/models/Address.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/Address.ts#L4)
+Defined in: [src/models/Address.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L4)
 
 ***
 
@@ -54,4 +54,4 @@ Defined in: [src/models/Address.ts:4](https://github.com/Future-Secure-AI/micros
 
 > **RowRangeAddress** = `` `${RowAddress}:${RowAddress}` ``
 
-Defined in: [src/models/Address.ts:5](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/models/Address.ts#L5)
+Defined in: [src/models/Address.ts:5](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L5)

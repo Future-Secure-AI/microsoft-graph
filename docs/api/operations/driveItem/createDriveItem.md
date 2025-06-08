@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/driveItem/createDriveItem
+[Microsoft Graph SDK](../../README.md) / operations/driveItem/createDriveItem
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createDriveItem**(`parentRef`, `itemPath`, `contextType`, `content`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object`\>
 
-Defined in: [src/operations/driveItem/createDriveItem.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/driveItem/createDriveItem.ts#L19)
+Defined in: [src/operations/driveItem/createDriveItem.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItem.ts#L19)
 
 Creates new drive item in the specified parent drive or folder. If the file already exists, it will be replaced.
 

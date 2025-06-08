@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef
+[Microsoft Graph SDK](../../README.md) / operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **getWorkbookWorksheetUsedRangeRef**(`worksheetRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<[`WorkbookRangeRef`](../../models/WorkbookRangeRef.md#workbookrangeref)\>
 
-Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts#L18)
+Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts#L18)
 
 Retrieve the address of the used range in a worksheet, ignoring trailing rows and columns that are blank.
 

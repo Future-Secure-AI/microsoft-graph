@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/cartesianAddress
+[Microsoft Graph SDK](../README.md) / services/cartesianAddress
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **addressToCartesian**(`address`): [`Cartesian`](../models/Cartesian.md#cartesian)
 
-Defined in: [src/services/cartesianAddress.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/cartesianAddress.ts#L13)
+Defined in: [src/services/cartesianAddress.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cartesianAddress.ts#L13)
 
 Converts a cell range address to Cartesian coordinates.
 
@@ -28,7 +28,7 @@ The Cartesian representation of the address, with start and end coordinates.
 
 > **cartesianToAddress**(`cartesian`): [`Address`](../models/Address.md#address)
 
-Defined in: [src/services/cartesianAddress.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/cartesianAddress.ts#L31)
+Defined in: [src/services/cartesianAddress.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cartesianAddress.ts#L31)
 
 Converts Cartesian coordinates to a cell range address.
 

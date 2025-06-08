@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/workbookTable
+[Microsoft Graph SDK](../README.md) / services/workbookTable
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createWorkbookTableRef**(`worksheetRef`, `tableId`): [`WorkbookTableRef`](../models/WorkbookTableRef.md#workbooktableref)
 
-Defined in: [src/services/workbookTable.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/workbookTable.ts#L12)
+Defined in: [src/services/workbookTable.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookTable.ts#L12)
 
 Creates a reference to a workbook table.
 

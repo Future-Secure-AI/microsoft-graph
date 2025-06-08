@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/RequestFailedError
+[Microsoft Graph SDK](../README.md) / errors/RequestFailedError
 
 ## Classes
 
 ### RequestFailedError
 
-Defined in: [src/errors/RequestFailedError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/RequestFailedError.ts#L1)
+Defined in: [src/errors/RequestFailedError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/RequestFailedError.ts:1](https://github.com/Future-Secur
 
 > **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
 
-Defined in: [src/errors/RequestFailedError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/RequestFailedError.ts#L2)
+Defined in: [src/errors/RequestFailedError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L2)
 
 ###### Parameters
 
@@ -190,7 +190,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 > `static` **throw**(`message`, `request`, `response?`): `never`
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
 
 ###### Parameters
 

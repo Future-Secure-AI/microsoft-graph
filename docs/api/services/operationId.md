@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/operationId
+[Microsoft Graph SDK](../README.md) / services/operationId
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **operationIdToIndex**(`id`): `number`
 
-Defined in: [src/services/operationId.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/operationId.ts#L15)
+Defined in: [src/services/operationId.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationId.ts#L15)
 
 Converts an operation ID to an operation index.
 
@@ -28,7 +28,7 @@ The operation index as a number.
 
 > **operationIndexToId**(`index`): `string`
 
-Defined in: [src/services/operationId.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/operationId.ts#L6)
+Defined in: [src/services/operationId.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationId.ts#L6)
 
 Converts an operation index to an operation ID.
 

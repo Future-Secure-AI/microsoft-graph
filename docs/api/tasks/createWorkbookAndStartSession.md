@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/createWorkbookAndStartSession
+[Microsoft Graph SDK](../README.md) / tasks/createWorkbookAndStartSession
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createWorkbookAndStartSession**(`parentRef`, `itemPath`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Workbook` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object` & `object`\>
 
-Defined in: [src/tasks/createWorkbookAndStartSession.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/createWorkbookAndStartSession.ts#L16)
+Defined in: [src/tasks/createWorkbookAndStartSession.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/createWorkbookAndStartSession.ts#L16)
 
 Create a new workbook and open a session for that workbook in a single operation.
 

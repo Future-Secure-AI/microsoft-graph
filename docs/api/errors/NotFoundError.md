@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/NotFoundError
+[Microsoft Graph SDK](../README.md) / errors/NotFoundError
 
 ## Classes
 
 ### NotFoundError
 
-Defined in: [src/errors/NotFoundError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/NotFoundError.ts#L1)
+Defined in: [src/errors/NotFoundError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotFoundError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/NotFoundError.ts:1](https://github.com/Future-Secure-AI/
 
 > **new NotFoundError**(`message`): [`NotFoundError`](#notfounderror)
 
-Defined in: [src/errors/NotFoundError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/NotFoundError.ts#L2)
+Defined in: [src/errors/NotFoundError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotFoundError.ts#L2)
 
 ###### Parameters
 

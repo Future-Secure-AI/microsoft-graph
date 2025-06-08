@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / tasks/setWorkbookRangeValues
+[Microsoft Graph SDK](../README.md) / tasks/setWorkbookRangeValues
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **setWorkbookRangeValues**(`rangeRef`, `values`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/setWorkbookRangeValues.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/tasks/setWorkbookRangeValues.ts#L14)
+Defined in: [src/tasks/setWorkbookRangeValues.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/setWorkbookRangeValues.ts#L14)
 
 Sets the values of a specified workbook range.
 

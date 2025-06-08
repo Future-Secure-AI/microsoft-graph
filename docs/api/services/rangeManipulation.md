@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/rangeManipulation
+[Microsoft Graph SDK](../README.md) / services/rangeManipulation
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **inferObjectRange**(`objs`, `header`): [`CellValue`](../models/CellValue.md#cellvalue)[][]
 
-Defined in: [src/services/rangeManipulation.ts:114](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/rangeManipulation.ts#L114)
+Defined in: [src/services/rangeManipulation.ts:114](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/rangeManipulation.ts#L114)
 
 Converts an array of objects into a 2D array of cell values.
 The first row of the 2D array contains the keys as headers.
@@ -30,7 +30,7 @@ A 2D array where the first row is the header and subsequent rows are the object 
 
 > **inferRangeAddress**(`values`, `rowOffset?`, `columnOffset?`): [`Address`](../models/Address.md#address)
 
-Defined in: [src/services/rangeManipulation.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/rangeManipulation.ts#L17)
+Defined in: [src/services/rangeManipulation.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/rangeManipulation.ts#L17)
 
 Converts a 2D array of cell values into range address in the upper left.
 
@@ -58,7 +58,7 @@ If rows have inconsistent column counts.
 
 > **inferRangeObject**(`values`): `unknown`[]
 
-Defined in: [src/services/rangeManipulation.ts:84](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/rangeManipulation.ts#L84)
+Defined in: [src/services/rangeManipulation.ts:84](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/rangeManipulation.ts#L84)
 
 Converts a 2D array of cell values into an array of objects.
 Assumes the first row is a header and uses it as keys for the objects.
@@ -85,7 +85,7 @@ If rows have inconsistent column counts or no header row is present.
 
 > **inferRowAddress**(`row`, `rowOffset?`, `columnOffset?`): [`Address`](../models/Address.md#address)
 
-Defined in: [src/services/rangeManipulation.ts:57](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/rangeManipulation.ts#L57)
+Defined in: [src/services/rangeManipulation.ts:57](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/rangeManipulation.ts#L57)
 
 Converts a 2D array of cell values into a row address in the upper left.
 

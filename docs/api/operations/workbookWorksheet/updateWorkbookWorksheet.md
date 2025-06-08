@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookWorksheet/updateWorkbookWorksheet
+[Microsoft Graph SDK](../../README.md) / operations/workbookWorksheet/updateWorkbookWorksheet
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **updateWorkbookWorksheet**(`worksheetRef`, `updates`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookWorksheet/updateWorkbookWorksheet.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookWorksheet/updateWorkbookWorksheet.ts#L18)
+Defined in: [src/operations/workbookWorksheet/updateWorkbookWorksheet.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/updateWorkbookWorksheet.ts#L18)
 
 Update the name, position, and/or visibility of a worksheet.
 

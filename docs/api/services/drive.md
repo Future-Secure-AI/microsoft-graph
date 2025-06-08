@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/drive
+[Microsoft Graph SDK](../README.md) / services/drive
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **createClientSecretContextWithDriveRef**(`tenantId`, `clientId`, `clientSecret`, `siteId`, `driveId`): [`DriveRef`](../models/DriveRef.md#driveref)
 
-Defined in: [src/services/drive.ts:33](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/drive.ts#L33)
+Defined in: [src/services/drive.ts:33](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L33)
 
 Creates a context with a reference to a drive.
 
@@ -30,7 +30,7 @@ Creates a context with a reference to a drive.
 
 > **createDriveRef**(`siteRef`, `driveId`): [`DriveRef`](../models/DriveRef.md#driveref)
 
-Defined in: [src/services/drive.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/drive.ts#L20)
+Defined in: [src/services/drive.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L20)
 
 Creates a reference to a drive.
 
@@ -57,7 +57,7 @@ ProtocolError if the drive ID is missing.
 
 > **getDefaultDriveRef**(): [`DriveRef`](../models/DriveRef.md#driveref)
 
-Defined in: [src/services/drive.ts:46](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/drive.ts#L46)
+Defined in: [src/services/drive.ts:46](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L46)
 
 Retrieves the opinionated default drive reference. NOT RECOMMENDED FOR PRODUCTION USE.
 

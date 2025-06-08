@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/EnvironmentVariableMissingError
+[Microsoft Graph SDK](../README.md) / errors/EnvironmentVariableMissingError
 
 ## Classes
 
 ### EnvironmentVariableMissingError
 
-Defined in: [src/errors/EnvironmentVariableMissingError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/EnvironmentVariableMissingError.ts#L1)
+Defined in: [src/errors/EnvironmentVariableMissingError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/EnvironmentVariableMissingError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/EnvironmentVariableMissingError.ts:1](https://github.com
 
 > **new EnvironmentVariableMissingError**(`env`): [`EnvironmentVariableMissingError`](#environmentvariablemissingerror)
 
-Defined in: [src/errors/EnvironmentVariableMissingError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/EnvironmentVariableMissingError.ts#L2)
+Defined in: [src/errors/EnvironmentVariableMissingError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/EnvironmentVariableMissingError.ts#L2)
 
 ###### Parameters
 

@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../../modules.md) / operations/workbookRange/getWorkbookRangeFont
+[Microsoft Graph SDK](../../README.md) / operations/workbookRange/getWorkbookRangeFont
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **getWorkbookRangeFont**(`rangeRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookRangeFont` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookRange/getWorkbookRangeFont.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookRange/getWorkbookRangeFont.ts#L17)
+Defined in: [src/operations/workbookRange/getWorkbookRangeFont.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookRangeFont.ts#L17)
 
 Retrieve the font format of a workbook range.
 

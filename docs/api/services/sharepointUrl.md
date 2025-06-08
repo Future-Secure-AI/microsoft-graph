@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/sharepointUrl
+[Microsoft Graph SDK](../README.md) / services/sharepointUrl
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **parseSharepointUrl**(`url`): `object`
 
-Defined in: [src/services/sharepointUrl.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/sharepointUrl.ts#L12)
+Defined in: [src/services/sharepointUrl.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/sharepointUrl.ts#L12)
 
 Parses a SharePoint document URL to extract the site name, host name, and item ID.
 

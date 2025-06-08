@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/NeverError
+[Microsoft Graph SDK](../README.md) / errors/NeverError
 
 ## Classes
 
 ### NeverError
 
-Defined in: [src/errors/NeverError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/NeverError.ts#L1)
+Defined in: [src/errors/NeverError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NeverError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/NeverError.ts:1](https://github.com/Future-Secure-AI/mic
 
 > **new NeverError**(`message?`): [`NeverError`](#nevererror)
 
-Defined in: [src/errors/NeverError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/NeverError.ts#L2)
+Defined in: [src/errors/NeverError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NeverError.ts#L2)
 
 ###### Parameters
 

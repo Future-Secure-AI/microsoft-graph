@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/NotImplementedError
+[Microsoft Graph SDK](../README.md) / errors/NotImplementedError
 
 ## Classes
 
 ### NotImplementedError
 
-Defined in: [src/errors/NotImplementedError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/NotImplementedError.ts#L1)
+Defined in: [src/errors/NotImplementedError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotImplementedError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/NotImplementedError.ts:1](https://github.com/Future-Secu
 
 > **new NotImplementedError**(`message?`): [`NotImplementedError`](#notimplementederror)
 
-Defined in: [src/errors/NotImplementedError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/NotImplementedError.ts#L2)
+Defined in: [src/errors/NotImplementedError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotImplementedError.ts#L2)
 
 ###### Parameters
 

@@ -1,4 +1,4 @@
-[Microsoft Graph SDK](../modules.md) / services/stringCaseConversion
+[Microsoft Graph SDK](../README.md) / services/stringCaseConversion
 
 ## Functions
 
@@ -6,7 +6,7 @@
 
 > **kebabToCamelCase**(`str`): `string`
 
-Defined in: [src/services/stringCaseConversion.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/services/stringCaseConversion.ts#L6)
+Defined in: [src/services/stringCaseConversion.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/stringCaseConversion.ts#L6)
 
 Converts a kebab-case string to camelCase.
 

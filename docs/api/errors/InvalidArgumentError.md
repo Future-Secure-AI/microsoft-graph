@@ -1,10 +1,10 @@
-[Microsoft Graph SDK](../modules.md) / errors/InvalidArgumentError
+[Microsoft Graph SDK](../README.md) / errors/InvalidArgumentError
 
 ## Classes
 
 ### InvalidArgumentError
 
-Defined in: [src/errors/InvalidArgumentError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InvalidArgumentError.ts#L1)
+Defined in: [src/errors/InvalidArgumentError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L1)
 
 #### Extends
 
@@ -16,7 +16,7 @@ Defined in: [src/errors/InvalidArgumentError.ts:1](https://github.com/Future-Sec
 
 > **new InvalidArgumentError**(`message`): [`InvalidArgumentError`](#invalidargumenterror)
 
-Defined in: [src/errors/InvalidArgumentError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InvalidArgumentError.ts#L2)
+Defined in: [src/errors/InvalidArgumentError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L2)
 
 ###### Parameters
 
@@ -190,7 +190,7 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 > `static` **throwIfFalsy**(`value`, `message`): `void`
 
-Defined in: [src/errors/InvalidArgumentError.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InvalidArgumentError.ts#L19)
+Defined in: [src/errors/InvalidArgumentError.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L19)
 
 ###### Parameters
 
@@ -207,7 +207,7 @@ Defined in: [src/errors/InvalidArgumentError.ts:19](https://github.com/Future-Se
 
 > `static` **throwIfGreater**(`value`, `max`, `message`): `void`
 
-Defined in: [src/errors/InvalidArgumentError.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InvalidArgumentError.ts#L13)
+Defined in: [src/errors/InvalidArgumentError.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L13)
 
 ###### Parameters
 
@@ -225,7 +225,7 @@ Defined in: [src/errors/InvalidArgumentError.ts:13](https://github.com/Future-Se
 
 > `static` **throwIfOutside**(`value`, `min`, `max`, `message`): `void`
 
-Defined in: [src/errors/InvalidArgumentError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/errors/InvalidArgumentError.ts#L7)
+Defined in: [src/errors/InvalidArgumentError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L7)
 
 ###### Parameters
 
