@@ -1,0 +1,95 @@
+[Microsoft Graph SDK](modules.md) / graphApi
+
+## Variables
+
+### batchEndpoint
+
+> `const` **batchEndpoint**: `"https://graph.microsoft.com/v1.0/$batch"`
+
+Defined in: [src/graphApi.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/graphApi.ts#L15)
+
+***
+
+### endpoint
+
+> `const` **endpoint**: `"https://graph.microsoft.com/v1.0"` = `"https://graph.microsoft.com/v1.0"`
+
+Defined in: [src/graphApi.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/graphApi.ts#L14)
+
+## Functions
+
+### operation()
+
+> **operation**\<`T`\>(`definition`): [`GraphOperation`](models/GraphOperation.md#graphoperation)\<`T`\>
+
+Defined in: [src/graphApi.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/graphApi.ts#L18)
+
+Define a operation, which can either be `await`d to execute independently, or passed with other operations ot `parallel` or `sequential` to execute as part of a batch.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `definition` | [`GraphOperationDefinition`](models/GraphOperation.md#graphoperationdefinition)\<`T`\> |
+
+#### Returns
+
+[`GraphOperation`](models/GraphOperation.md#graphoperation)\<`T`\>
+
+***
+
+### parallel()
+
+> **parallel**\<`T`\>(...`operations`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`OperationResponse`\<`T`\>\>
+
+Defined in: [src/graphApi.ts:29](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/graphApi.ts#L29)
+
+Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* [`GraphOperation`](models/GraphOperation.md#graphoperation)\<`unknown`\>[] |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`operations` | `T` |
+
+#### Returns
+
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`OperationResponse`\<`T`\>\>
+
+***
+
+### sequential()
+
+> **sequential**\<`T`\>(...`operations`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`OperationResponse`\<`T`\>\>
+
+Defined in: [src/graphApi.ts:36](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/graphApi.ts#L36)
+
+Execute a batch of GraphAPI operations sequentially.
+
+#### Type Parameters
+
+| Type Parameter |
+| ------ |
+| `T` *extends* [`GraphOperation`](models/GraphOperation.md#graphoperation)\<`unknown`\>[] |
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| ...`operations` | `T` |
+
+#### Returns
+
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`OperationResponse`\<`T`\>\>

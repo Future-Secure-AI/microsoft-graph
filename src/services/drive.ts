@@ -41,7 +41,7 @@ export function createClientSecretContextWithDriveRef(tenantId: TenantId, client
  * Retrieves the opinionated default drive reference. NOT RECOMMENDED FOR PRODUCTION USE.
  * @returns A reference to the default drive.
  * @remarks This method is opinionated and not recommended for production use.
- * @obsolete Use `createClientSecretContextWithDriveRef()` instead.
+ * @deprecated Use `createClientSecretContextWithDriveRef()` instead.
  */
 export function getDefaultDriveRef(): DriveRef {
 	const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as TenantId;

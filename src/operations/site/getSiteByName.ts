@@ -12,7 +12,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Get a site by its name.
  *
- * @param context - A reference to the context.
+ * @param contextRef - A reference to the context.
  * @param hostName - The host name of the site.
  * @param siteName - The name of the site.
  * @returns The specified site, including its metadata and reference information.

@@ -1,0 +1,29 @@
+[Microsoft Graph SDK](../../modules.md) / operations/driveItem/initiateCopyDriveItem
+
+## Functions
+
+### initiateCopyDriveItem()
+
+> **initiateCopyDriveItem**(`srcFileRef`, `dstFolderRef`, `dstFileName`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+
+Defined in: [src/operations/driveItem/initiateCopyDriveItem.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/driveItem/initiateCopyDriveItem.ts#L16)
+
+Initiate an asynchronous copy of an item. NOTE: The copied file may not be immediately available and polling is required.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `srcFileRef` | [`DriveItemRef`](../../models/DriveItemRef.md#driveitemref) | A reference to the source file to be copied. |
+| `dstFolderRef` | [`DriveRef`](../../models/DriveRef.md#driveref) \| [`DriveItemRef`](../../models/DriveItemRef.md#driveitemref) | A reference to the destination folder or site (if targeting root). |
+| `dstFileName` | `string` | The name of the copied file. |
+
+#### Returns
+
+[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+
+Nothing. The copied file may not be immediately available, and polling is required.
+
+#### See
+
+https://learn.microsoft.com/en-us/graph/api/driveitem-copy

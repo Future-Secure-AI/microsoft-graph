@@ -1,0 +1,27 @@
+[Microsoft Graph SDK](../../modules.md) / operations/workbookWorksheet/getWorkbookWorksheetUsedRange
+
+## Functions
+
+### getWorkbookWorksheetUsedRange()
+
+> **getWorkbookWorksheetUsedRange**(`worksheetRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+
+Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedRange.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/6f587d043e8277194e9b2feca914ab2cba9d258d/src/operations/workbookWorksheet/getWorkbookWorksheetUsedRange.ts#L18)
+
+Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `worksheetRef` | [`WorkbookWorksheetRef`](../../models/WorkbookWorksheetRef.md#workbookworksheetref) | A reference to the worksheet, optionally including session information. |
+
+#### Returns
+
+[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+
+The used range of the worksheet, including its metadata and reference information.
+
+#### See
+
+https://learn.microsoft.com/en-us/graph/api/range-usedrange

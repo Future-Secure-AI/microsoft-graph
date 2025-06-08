@@ -1,0 +1,26 @@
+{
+	"$schema": "https://typedoc.org/schema.json",
+	"plugin": ["typedoc-plugin-rename-defaults", "typedoc-plugin-include-example", "typedoc-plugin-mdn-links", "typedoc-plugin-dt-links", "typedoc-plugin-markdown"],
+	"out": "docs/api",
+	"name": "Microsoft Graph SDK",
+	"entryPointStrategy": "expand",
+	"exclude": ["**/*+(.test).ts"],
+	// "mergeReadme": true,
+	// "readme": "none",
+	"router": "module",
+	"hideGenerator": true,
+	"hidePageHeader": true,
+	"hidePageTitle": true,
+	"parametersFormat": "table",
+	"typeAliasPropertiesFormat": "table",
+	"enumMembersFormat": "table",
+	"propertyMembersFormat": "table",
+	"visibilityFilters": {
+		"protected": false,
+		"private": false,
+		"inherited": true,
+		"external": false,
+		"@alpha": false,
+		"@beta": false
+	}
+}

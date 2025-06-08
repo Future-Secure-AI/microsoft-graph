@@ -51,14 +51,14 @@ export function createDefaultClientSecretContext(): ContextRef {
 }
 
 /**
- @obsolete Use `createDefaultClientSecretContext()` instead.
+ @deprecated Use `createDefaultClientSecretContext()` instead.
  */
 export function getDefaultContextRef(): ContextRef {
 	return createDefaultClientSecretContext();
 }
 
 /**
- * @obsolete Use `createClientSecretContext()` instead.
+ * @deprecated Use `createClientSecretContext()` instead.
  */
 export function register(tenantId: TenantId, clientId: ClientId, clientSecret: ClientSecret): ContextRef {
 	return createClientSecretContext(tenantId, clientId, clientSecret);
