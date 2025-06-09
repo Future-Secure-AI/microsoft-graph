@@ -1,3 +1,4 @@
+// TODO: Move to Site.ts
 /**
  * Identifier for a site.
  * @module SiteId

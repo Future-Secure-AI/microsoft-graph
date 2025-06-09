@@ -1,3 +1,4 @@
+// TODO: Move to Site.ts
 /**
  * Name of a site.
  * @module SiteName

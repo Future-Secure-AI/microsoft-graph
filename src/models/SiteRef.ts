@@ -1,3 +1,4 @@
+// TODO: Move to Site.ts
 /**
  * Reference to a site.
  * @module SiteRef
