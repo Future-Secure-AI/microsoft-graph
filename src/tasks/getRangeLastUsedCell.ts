@@ -1,4 +1,12 @@
+/**
+ * @module getRangeLastUsedCell
+ * @category Tasks
+ * @hidden
+ */
+
 import ProtocolError from "../errors/ProtocolError.ts";
+import type { CellAddress } from "../models/Address.ts";
+import type { CellValue } from "../models/CellValue.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
@@ -9,13 +17,12 @@ import { getFirstCellAddress, offsetAddress } from "../services/addressManipulat
  * Get the last used cell (i.e., the most lower-right cell) in a given range.
  *
  * @param rangeRef - A reference to the workbook range to search.
- * @throws {ProtocolError} If the range's row or column counts, or values, are missing.
+ * @throws {@link ProtocolError} Server returns an unexpected value.
  * @returns The last used cell's value and address, or `null` if no cells are used.
+ * @deprecated Use `getWorkbookWorksheetUsedRangeRef` and `subAddress` instead.
+ * @hidden
  */
-export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): Promise<{ value: string | number | boolean | null; address: string } | null> {
-	// TODO: Consider adding chunking if the range is too large
-	// TODO: Reduce cells returned by using "used range"?
-
+export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): Promise<{ value: CellValue; address: CellAddress } | null> {
 	const range = await getWorkbookWorksheetRange(rangeRef);
 
 	const { rowCount, columnCount } = range;
@@ -42,7 +49,7 @@ export default async function getRangeLastUsedCell(rangeRef: WorkbookRangeRef): 
 
 			if (cell !== null && cell !== "") {
 				const firstCellAddress = getFirstCellAddress(rangeRef.address);
-				const lastUsedCellAddress = offsetAddress(firstCellAddress, columnIndex, rowIndex);
+				const lastUsedCellAddress = offsetAddress(firstCellAddress, columnIndex, rowIndex) as CellAddress;
 
 				return {
 					value: cell,

@@ -1,3 +1,9 @@
+/**
+ * @module iterateWorkbookRangeValues
+ * @category Tasks
+ * @hidden
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { CellValue } from "../models/CellValue.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
@@ -15,6 +21,7 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
  * @param overwriteRowsPerRequest - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
  * @returns An async iterable that yields rows of range values.
  * @deprecated Use `readWorkbookRows` instead.
+ * @hidden
  */
 export default async function* iterateWorkbookRangeValues(rangeRef: WorkbookRangeRef, overwriteRowsPerRequest: number | null = null): AsyncIterable<CellValue[]> {
 	const address = rangeRef.address;

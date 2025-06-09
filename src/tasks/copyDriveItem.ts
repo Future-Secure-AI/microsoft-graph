@@ -1,3 +1,9 @@
+/**
+ * Copy a drive item.
+ * @module copyDriveItem
+ * @category Tasks
+ */
+
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import RequestTimeoutError from "../errors/RequestTimeoutError.ts";
 import type { DriveItemPath } from "../models/DriveItemPath.ts";
@@ -9,12 +15,15 @@ import { splitDriveItemPath } from "../services/driveItem.ts";
 import { sleep } from "../services/sleep.ts";
 
 /**
- * Copy a drive item, blocking and polling for completion.
- *
- * @param srcFileRef - A reference to the source file to be copied.
- * @param dstFilePath - Destination file path
- * @param timeoutMs - Timeout in milliseconds for the copy operation.
- * @returns
+ * Copy a drive item.
+ * 
+ * @remarks The underlying GraphAPI operation is asynchronous, so this function will block until the copy operation is complete or the timeout is reached.
+ * @param srcFileRef A reference to the source file to be copied.
+ * @param dstDriveRef Destination drive
+ * @param dstFilePath Destination path where the item should be copied to.
+ * @param timeoutMs Timeout in milliseconds for the copy operation.
+ * @returns Reference to the new drive item.
+ * @throws {@link RequestTimeoutError} If the copy operation does not complete within the specified timeout.
  */
 export default async function copyDriveItem(srcFileRef: DriveItemRef, dstDriveRef: DriveRef, dstFilePath: DriveItemPath, timeoutMs = 16000): Promise<DriveItem & DriveItemRef> {
 	const { folderPath, fileName } = splitDriveItemPath(dstFilePath);

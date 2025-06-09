@@ -1,3 +1,9 @@
+/**
+ * Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed.
+ * @module setWorkbookTableBodyVisibleRows
+ * @category Tasks
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
@@ -9,13 +15,13 @@ import { getFirstRowAddress, incrementRowAddress, isAddressOverlapping } from ".
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /**
- * Overwrite visible rows of a workbook table with the provided 2D array of values, inserting new rows at the end if needed.
- * THIS IS SLOW as it must check each row's visibility.
+ * Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed.
  *
- * @param tableRef - A reference to the workbook table.
- * @param values - A 2D array of strings representing the values to set in the visible rows of the table.
- * @throws {InvalidArgumentError} If the number of columns in any row of `values` does not match the table's column count.
- * @returns Void when the operation is complete.
+ * @param tableRef Reference to the workbook table.
+ * @param values 2D array of strings representing the values to set in the visible rows of the table.
+ * @throws {@link InvalidArgumentError} If the number of columns in any row of `values` does not match the table's column count.
+ * @returns Nothing
+ * @remarks THIS FUNCTION IS SLOW, as it must check each row's visibility.
  */
 export async function setWorkbookTableBodyVisibleRows(tableRef: WorkbookTableRef, values: string[][]): Promise<void> {
 	const visibleRange = await getWorkbookTableBodyRange(tableRef);

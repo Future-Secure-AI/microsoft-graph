@@ -1,3 +1,9 @@
+/**
+ * List drive items in a drive or a drive item.
+ * @module listDriveItems
+ * @category Tasks
+ */
+
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import type { DriveItemId } from "../models/DriveItemId.ts";
 import type { DriveItemRef } from "../models/DriveItemRef.ts";
@@ -6,7 +12,15 @@ import listDriveItemChildren, { type ListDriveItemResponse } from "../operations
 import { createDriveItemRef } from "../services/driveItem.ts";
 import { executeHttpRequest } from "../services/http.ts";
 
+/**
+ * List drive items in a drive or a drive item.
+ * @param parentRef Parent drive or folder reference.
+ * @param pageSize Number of items to fetch per request.
+ * @returns
+ * @remarks `pageSize` should only be set for advanced performance tuning.
+ */
 export default async function listDriveItems(parentRef: DriveRef | DriveItemRef, pageSize = 1000): Promise<(DriveItem & DriveItemRef)[]> {
+	// TODO: Make async iterable
 	const output: (DriveItem & DriveItemRef)[] = [];
 
 	let result = await listDriveItemChildren(parentRef, pageSize);

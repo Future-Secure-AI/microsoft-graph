@@ -1,3 +1,9 @@
+/**
+ * Iterates over the rows in a given worksheet range.
+ * @module readWorkbookRows
+ * @category Tasks
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { CellText } from "../models/CellText.ts";
 import type { CellValue } from "../models/CellValue.ts";
@@ -8,15 +14,16 @@ import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { composeAddress, countAddressColumns, decomposeAddress } from "../services/addressManipulation.ts";
 import { columnAddressToOffset, rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";
-import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
+import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /**
- * Iterates over the values of a workbook range in chunks, fetching data in manageable sizes.
+ * Iterates over the rows in a given worksheet range.
  *
- * @param rangeRef - A reference to the workbook range to iterate over.
- * @param overwriteMaxRowsPerChunk - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
+ * @param rangeRef Reference to the workbook range to iterate over.
+ * @param overwriteMaxRowsPerChunk Overwrite the number of rows per underlying request. DO NOT SET EXCEPT FOR ADVANCED TUNING.
  * @returns An async iterable that yields rows of range values.
+ * @throws {@link InvalidArgumentError} If `overwriteMaxRowsPerChunk` is set to a value less than 1.
  */
 export default async function* readWorkbookRows(rangeRef: WorkbookRangeRef, overwriteMaxRowsPerChunk: number | null = null): AsyncIterable<Row> {
 	const address = rangeRef.address;

@@ -1,3 +1,9 @@
+/**
+ * Create a new workbook and open a session for that workbook.
+ * @module createWorkbookAndStartSession
+ * @category Tasks
+ */
+
 import type { Workbook } from "@microsoft/microsoft-graph-types";
 import type { DriveItemPath } from "../models/DriveItemPath.ts";
 import type { DriveItemRef } from "../models/DriveItemRef.ts";
@@ -7,7 +13,7 @@ import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import createWorkbookSession from "../operations/workbookSession/createWorkbookSession.ts";
 
 /**
- * Create a new workbook and open a session for that workbook in a single operation.
+ * Create a new workbook and open a session for that workbook/
  *
  * @param parentRef - A reference to the drive or driveItem where the workbook will be created.
  * @param itemPath - The path of the new workbook within the drive.

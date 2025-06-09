@@ -208,28 +208,28 @@ await deleteDriveItem(folder);
 | [services/workbookTable](services/workbookTable.md) | - |
 | [services/workbookTableColumn](services/workbookTableColumn.md) | - |
 | [services/workbookWorksheet](services/workbookWorksheet.md) | - |
-| [tasks/copyDriveItem](tasks/copyDriveItem.md) | - |
-| [tasks/createWorkbookAndStartSession](tasks/createWorkbookAndStartSession.md) | - |
-| [tasks/deleteDriveItemWithRetry](tasks/deleteDriveItemWithRetry.md) | - |
-| [tasks/downloadDriveItemContent](tasks/downloadDriveItemContent.md) | - |
-| [tasks/getRangeLastUsedCell](tasks/getRangeLastUsedCell.md) | - |
-| [tasks/getWorkbookTableVisibleBody](tasks/getWorkbookTableVisibleBody.md) | - |
-| [tasks/getWorkbookWorksheetByName](tasks/getWorkbookWorksheetByName.md) | - |
-| [tasks/iterateWorkbookRange](tasks/iterateWorkbookRange.md) | - |
-| [tasks/iterateWorkbookRangeValues](tasks/iterateWorkbookRangeValues.md) | - |
-| [tasks/listDriveItems](tasks/listDriveItems.md) | - |
-| [tasks/readWorkbookRows](tasks/readWorkbookRows.md) | - |
-| [tasks/safeDeleteWorkbook](tasks/safeDeleteWorkbook.md) | - |
-| [tasks/setColumnHidden](tasks/setColumnHidden.md) | - |
-| [tasks/setRowHidden](tasks/setRowHidden.md) | - |
-| [tasks/setWorkbookRangeValues](tasks/setWorkbookRangeValues.md) | - |
-| [tasks/setWorkbookTableBodyVisibleRows](tasks/setWorkbookTableBodyVisibleRows.md) | - |
-| [tasks/tryCloseWorkbookSession](tasks/tryCloseWorkbookSession.md) | - |
-| [tasks/tryDeleteDriveItem](tasks/tryDeleteDriveItem.md) | - |
-| [tasks/writeWorkbookRows](tasks/writeWorkbookRows.md) | - |
 
 ## Services
 
 | Module | Description |
 | ------ | ------ |
 | [operationInvoker](operationInvoker.md) | Invoke operations, potentially as parallel or sequential batches. |
+
+## Tasks
+
+| Module | Description |
+| ------ | ------ |
+| [copyDriveItem](copyDriveItem.md) | Copy a drive item. |
+| [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
+| [deleteDriveItemWithRetry](deleteDriveItemWithRetry.md) | Delete a drive item, avoiding locking issues through automatic retries. |
+| [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
+| [getWorkbookWorksheetByName](getWorkbookWorksheetByName.md) | Get a worksheet by its name. |
+| [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
+| [readWorkbookRows](readWorkbookRows.md) | Iterates over the rows in a given worksheet range. |
+| [safeDeleteWorkbook](safeDeleteWorkbook.md) | Safely delete a workbook by first closing any open sessions and then deleting it. |
+| [setColumnHidden](setColumnHidden.md) | Set one or more columns visibility. |
+| [setRowHidden](setRowHidden.md) | Set one or more rows visibility. |
+| [setWorkbookTableBodyVisibleRows](setWorkbookTableBodyVisibleRows.md) | Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed. |
+| [tryCloseWorkbookSession](tryCloseWorkbookSession.md) | Try and close a workbook session. |
+| [tryDeleteDriveItem](tryDeleteDriveItem.md) | Attempts to delete a drive item, returning success status. |
+| [writeWorkbookRows](writeWorkbookRows.md) | Write rows to a workbook range. |

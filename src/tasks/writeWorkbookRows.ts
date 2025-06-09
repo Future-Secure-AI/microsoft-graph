@@ -1,3 +1,8 @@
+/**
+ * Write rows to a workbook range.
+ * @module writeWorkbookRows
+ * @category Tasks
+ */
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Cell } from "../models/Cell.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
@@ -9,13 +14,14 @@ import { addressToCartesian, cartesianToAddress } from "../services/cartesianAdd
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 
 /**
- * Write rows to a workbook range. Uses batching to handle large datasets efficiently.
+ * Write rows to a workbook range.
  * @param originRef The reference to the workbook range where rows will be written. Only the upper-left is used as an origin point.
  * @param rows An iterable or async iterable of rows to write. Each row is an array of cells.
- * @param overrideMaxRowsPerUnderlyingRead Optional maximum number of rows to write in a single underlying read. If not provided, it will be automatically calculated based on a safe value.
+ * @param overwriteMaxRowsPerChunk Overwrite the number of rows per underlying request. DO NOT SET EXCEPT FOR ADVANCED TUNING.
+ * @returns Number of rows written.
  */
-export default async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, overrideMaxRowsPerUnderlyingRead: number | null = null): Promise<number> {
-	let maxRowsPerUnderlyingRead: number | null = overrideMaxRowsPerUnderlyingRead;
+export default async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, overwriteMaxRowsPerChunk: number | null = null): Promise<number> {
+	let maxRowsPerUnderlyingRead: number | null = overwriteMaxRowsPerChunk;
 	let cellsPerRow: number | null = null;
 	let rowsCompleted = 0;
 	const batch: Partial<Cell>[][] = [];
