@@ -11,8 +11,7 @@ import deleteDriveItem from "../driveItem/deleteDriveItem.ts";
 /**
  * Delete a workbook.
  * @param workbookRef Reference to the workbook to be deleted.
- * @returns Nothing.
- * @remarks This is an alias for `deleteDriveItem`, as workbooks are treated as drive items in Microsoft Graph.
+ *  * @remarks This is an alias for `deleteDriveItem`, as workbooks are treated as drive items in Microsoft Graph.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete
  */
 export default function deleteWorkbook(workbookRef: WorkbookRef): GraphOperation<void> {

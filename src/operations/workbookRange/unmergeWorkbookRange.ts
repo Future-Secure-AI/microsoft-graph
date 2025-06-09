@@ -13,8 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Unmerge a merged range of cells in a worksheet.
  * @param rangeRef Reference to the worksheet range.
- * @returns Nothing
- * @see https://learn.microsoft.com/en-us/graph/api/range-unmerge
+ *  * @see https://learn.microsoft.com/en-us/graph/api/range-unmerge
  */
 export default function unmergeWorkbookRange(rangeRef: WorkbookRangeRef): GraphOperation<void> {
 	return operation({

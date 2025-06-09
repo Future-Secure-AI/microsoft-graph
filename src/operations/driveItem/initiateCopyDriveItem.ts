@@ -15,7 +15,6 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @param srcFileRef Reference to the source file to be copied.
  * @param dstFolderRef Reference to the destination folder or site (if targeting root).
  * @param dstFileName Name of the created file.
- * @returns Nothing. The copied file may not be immediately available, and polling is required.
  * @remarks The copied file may not be immediately available and polling is required. YOU PROBABLY WANT `copyDriveItem` INSTEAD.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */

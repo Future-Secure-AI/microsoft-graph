@@ -12,8 +12,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Permanently delete a worksheet.
  * @param worksheetRef Reference to the worksheet to be deleted.
- * @returns Nothing.
- * @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete
+ *  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete
  */
 export default function deleteWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef): GraphOperation<void> {
 	return operation({

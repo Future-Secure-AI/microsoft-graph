@@ -14,8 +14,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * Clear a range - content, formatting, or both.
  * @param rangeRef Reference to the range to be cleared.
  * @param applyTo What to clear - "All", "Formats", or "Contents".
- * @returns Nothing.
- * @see https://learn.microsoft.com/en-us/graph/api/range-delete
+ *  * @see https://learn.microsoft.com/en-us/graph/api/range-delete
  */
 export default function clearWorkbookRange(rangeRef: WorkbookRangeRef, applyTo: "All" | "Formats" | "Contents" = "All"): GraphOperation<void> {
 	const address = normalizeAddress(rangeRef.address, true);

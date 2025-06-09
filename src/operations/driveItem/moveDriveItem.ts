@@ -15,8 +15,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @param srcFileRef Reference to the source file to be copied.
  * @param dstFolderRef Reference to the destination folder or site (if targeting root).
  * @param dstFileName Name of the copied file.
- * @returns Nothing.
- * @see https://learn.microsoft.com/en-us/graph/api/driveitem-move
+ *  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-move
  */
 export default function moveDriveItem(srcFileRef: DriveItemRef, dstFolderRef: DriveRef | DriveItemRef, dstFileName: string): GraphOperation<void> {
 	return operation({

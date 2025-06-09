@@ -14,8 +14,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * Delete a range.
  * @param rangeRef Reference to the range to be deleted.
  * @param shift Direction to shift existing cells after deletion - "Up" or "Left".
- * @returns Nothing.
- * @see https://learn.microsoft.com/en-us/graph/api/range-clear
+ *  * @see https://learn.microsoft.com/en-us/graph/api/range-clear
  */
 export default function deleteWorkbookRange(rangeRef: WorkbookRangeRef, shift: "Up" | "Left"): GraphOperation<void> {
 	const address = normalizeAddress(rangeRef.address, true);

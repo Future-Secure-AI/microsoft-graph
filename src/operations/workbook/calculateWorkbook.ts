@@ -13,8 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * Recalculate a workbook.
  * @param workbookRef Reference to the workbook to be recalculated.
  * @param calculationType Type of recalculation to perform. Can be "Recalculate", "Full", or "FullRebuild".
- * @returns Nothing.
- * @see https://learn.microsoft.com/en-us/graph/api/workbookapplication-calculate
+ *  * @see https://learn.microsoft.com/en-us/graph/api/workbookapplication-calculate
  */
 export default function calculateWorkbook(workbookRef: WorkbookRef, calculationType: "Recalculate" | "Full" | "FullRebuild" = "Recalculate"): GraphOperation<void> {
 	return operation({
@@ -35,8 +34,7 @@ export default function calculateWorkbook(workbookRef: WorkbookRef, calculationT
  * @deprecated Use calculateWorkbook instead.
  *
  * @param workbookRef Reference to the workbook to be recalculated.
- * @returns Nothing.
- */
+ *  */
 export function recalculateWorkbook(workbookRef: WorkbookRef): GraphOperation<void> {
 	return calculateWorkbook(workbookRef, "Recalculate");
 }

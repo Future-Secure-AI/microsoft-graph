@@ -21,8 +21,7 @@ const emailPattern = /^[a-zA-Z0-9._\-@]+$/; // Basic, but intended just to avoid
  * @param context Reference to the context.
  * @param sender - The email address of the sender or NULL for the current user. Must match a valid email address in this tenant.
  * @param message - The email message to be sent.
- * @returns Nothing.
- * @throws InvalidArgumentError if the sender email address does not match the required pattern.
+ *  * @throws InvalidArgumentError if the sender email address does not match the required pattern.
  * @see https://learn.microsoft.com/en-us/graph/api/user-sendmail
  */
 export default function userSendMail(context: Context, sender: string | null, message: Message): GraphOperation<void> {

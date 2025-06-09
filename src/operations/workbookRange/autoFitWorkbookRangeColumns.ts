@@ -13,8 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Auto-fit the columns in a range.
  * @param rangeRef Reference to the range.
- * @returns Nothing.
- * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-autofitcolumns
+ *  * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-autofitcolumns
  */
 export default function autoFitWorkbookRangeColumns(rangeRef: WorkbookRangeRef): GraphOperation<void> {
 	const address = normalizeAddress(rangeRef.address, true);

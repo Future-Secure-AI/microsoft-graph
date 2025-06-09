@@ -13,8 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Refresh a workbook session.
  * @param workbookRef Reference to the workbook.
- * @returns Nothing.
- * @throws {@link InvalidArgumentError} if the session ID is not provided.
+ *  * @throws {@link InvalidArgumentError} if the session ID is not provided.
  * @see https://learn.microsoft.com/en-us/graph/api/workbook-refreshsession
  */
 export default function refreshWorkbookSession(workbookRef: WorkbookRef): GraphOperation<void> {

@@ -20,8 +20,7 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
  * @param tableRef Reference to the workbook table.
  * @param values 2D array of strings representing the values to set in the visible rows of the table.
  * @throws {@link InvalidArgumentError} If the number of columns in any row of `values` does not match the table's column count.
- * @returns Nothing
- * @remarks THIS FUNCTION IS SLOW, as it must check each row's visibility.
+ *  * @remarks THIS FUNCTION IS SLOW, as it must check each row's visibility.
  */
 export async function setWorkbookTableBodyVisibleRows(tableRef: WorkbookTableRef, values: string[][]): Promise<void> {
 	const visibleRange = await getWorkbookTableBodyRange(tableRef);

@@ -15,8 +15,7 @@ import { countAddressColumns, countAddressRows } from "../services/addressManipu
  *
  * @param {WorkbookRangeRef} rangeRef Reference to the workbook range to update.
  * @param {CellRangeValues} values - The values to set in the specified workbook range. Must match the range's dimensions.
- * @returns Nothing
- * @deprecated Use `writeWorkbookRows` instead.
+ *  * @deprecated Use `writeWorkbookRows` instead.
  * @hidden
  */
 export default async function setWorkbookRangeValues(rangeRef: WorkbookRangeRef, values: CellValue[][]) {
