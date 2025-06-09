@@ -12,7 +12,7 @@ This is a string that represents the text displayed in the cell, which may diffe
 
 > **CellText** = `string` & `object`
 
-Defined in: [src/models/CellText.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/CellText.ts#L7)
+Defined in: [src/models/CellText.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/CellText.ts#L9)
 
 #### Type declaration
 

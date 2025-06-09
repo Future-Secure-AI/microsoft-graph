@@ -1,3 +1,5 @@
+// TODO: Move to `Cell.ts` at next major version.
+
 /**
  * CellValue represents the value of a cell in a spreadsheet.
  * @module CellValue

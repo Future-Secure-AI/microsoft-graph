@@ -6,7 +6,7 @@
 
 > **getCurrentAccessToken**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccessToken`](../AccessToken.md#accesstoken)\>
 
-Defined in: src/services/azureApplicationCredentials.ts:16
+Defined in: [src/services/azureApplicationCredentials.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/azureApplicationCredentials.ts#L16)
 
 Retrieves the current access token for a given client and scope.
 If a valid token is cached, it will be returned; otherwise, a new token will be requested.

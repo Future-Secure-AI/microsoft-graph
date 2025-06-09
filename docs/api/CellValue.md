@@ -12,4 +12,4 @@ CellValue represents the value of a cell in a spreadsheet.
 
 > **CellValue** = `string` \| `number` \| `boolean`
 
-Defined in: [src/models/CellValue.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/CellValue.ts#L7)
+Defined in: [src/models/CellValue.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/CellValue.ts#L9)
