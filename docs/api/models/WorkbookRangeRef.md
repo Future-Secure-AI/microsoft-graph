@@ -12,4 +12,4 @@ Defined in: [src/models/WorkbookRangeRef.ts:4](https://github.com/Future-Secure-
 
 ##### address
 
-> **address**: [`Address`](Address.md#address)
+> **address**: [`Address`](../Address.md#address)

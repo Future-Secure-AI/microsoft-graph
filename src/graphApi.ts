@@ -6,6 +6,7 @@ import ProtocolError from "./errors/ProtocolError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
 import type { AccessToken } from "./models/AccessToken.ts";
 import type { GraphHeaders, GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
+import type { OperationResponse } from "./models/OperationResponse.ts";
 import { executeHttpRequest } from "./services/http.ts";
 import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isServiceUnavailable } from "./services/httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
@@ -58,10 +59,6 @@ type BatchReplyPayload = {
 
 type BatchGraphOperationDefinition<T> = GraphOperationDefinition<T> & {
 	dependsOn?: number[] | undefined;
-};
-
-type OperationResponse<T> = {
-	[K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
 };
 
 type BodyError = {

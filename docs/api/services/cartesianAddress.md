@@ -14,7 +14,7 @@ Converts a cell range address to Cartesian coordinates.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The cell range address (e.g., "A1:C3"). |
+| `address` | [`Address`](../Address.md#address) | The cell range address (e.g., "A1:C3"). |
 
 #### Returns
 
@@ -26,7 +26,7 @@ The Cartesian representation of the address, with start and end coordinates.
 
 ### cartesianToAddress()
 
-> **cartesianToAddress**(`cartesian`): [`Address`](../models/Address.md#address)
+> **cartesianToAddress**(`cartesian`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/cartesianAddress.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cartesianAddress.ts#L31)
 
@@ -40,6 +40,6 @@ Converts Cartesian coordinates to a cell range address.
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The cell range address (e.g., "A1:C3").

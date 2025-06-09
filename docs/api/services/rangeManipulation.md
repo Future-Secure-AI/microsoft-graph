@@ -28,7 +28,7 @@ A 2D array where the first row is the header and subsequent rows are the object 
 
 ### inferRangeAddress()
 
-> **inferRangeAddress**(`values`, `rowOffset?`, `columnOffset?`): [`Address`](../models/Address.md#address)
+> **inferRangeAddress**(`values`, `rowOffset?`, `columnOffset?`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/rangeManipulation.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/rangeManipulation.ts#L17)
 
@@ -44,7 +44,7 @@ Converts a 2D array of cell values into range address in the upper left.
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The default cell range address (e.g., "A1:C3").
 
@@ -83,7 +83,7 @@ If rows have inconsistent column counts or no header row is present.
 
 ### inferRowAddress()
 
-> **inferRowAddress**(`row`, `rowOffset?`, `columnOffset?`): [`Address`](../models/Address.md#address)
+> **inferRowAddress**(`row`, `rowOffset?`, `columnOffset?`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/rangeManipulation.ts:57](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/rangeManipulation.ts#L57)
 
@@ -99,6 +99,6 @@ Converts a 2D array of cell values into a row address in the upper left.
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The default cell range address for the row (e.g., "A1").

@@ -6,7 +6,7 @@ Error thrown when path template did not match the expected format.
 
 ### BadPathTemplateError
 
-Defined in: src/errors/BadPathTemplateError.ts:6
+Defined in: [src/errors/BadPathTemplateError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/BadPathTemplateError.ts#L6)
 
 #### Extends
 
@@ -18,7 +18,7 @@ Defined in: src/errors/BadPathTemplateError.ts:6
 
 > **new BadPathTemplateError**(`message`): [`BadPathTemplateError`](#badpathtemplateerror)
 
-Defined in: src/errors/BadPathTemplateError.ts:7
+Defined in: [src/errors/BadPathTemplateError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/BadPathTemplateError.ts#L7)
 
 ###### Parameters
 

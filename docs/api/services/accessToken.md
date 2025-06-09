@@ -4,7 +4,7 @@
 
 ### getCurrentAccessToken()
 
-> **getCurrentAccessToken**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccessToken`](../models/AccessToken.md#accesstoken)\>
+> **getCurrentAccessToken**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccessToken`](../AccessToken.md#accesstoken)\>
 
 Defined in: [src/services/accessToken.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/accessToken.ts#L19)
 
@@ -22,6 +22,6 @@ If a valid token is cached, it will be returned; otherwise, a new token will be 
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccessToken`](../models/AccessToken.md#accesstoken)\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccessToken`](../AccessToken.md#accesstoken)\>
 
 A promise that resolves to the access token.

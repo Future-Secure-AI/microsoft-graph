@@ -15,7 +15,7 @@ Insert a new blank range at a specified address, shifting existing cells. Use `u
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `worksheetRef` | [`WorkbookWorksheetRef`](../../models/WorkbookWorksheetRef.md#workbookworksheetref) | A reference to the worksheet where the range will be inserted, optionally including session information. |
-| `address` | [`Address`](../../models/Address.md#address) | The address where the new range will be inserted. |
+| `address` | [`Address`](../../Address.md#address) | The address where the new range will be inserted. |
 | `shift` | `"Down"` \| `"Right"` | The direction to shift existing cells. Can be "Down" or "Right". |
 
 #### Returns

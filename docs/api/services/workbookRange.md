@@ -15,7 +15,7 @@ Creates a reference to a workbook range.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `worksheetRef` | [`WorkbookWorksheetRef`](../models/WorkbookWorksheetRef.md#workbookworksheetref) | The reference to the worksheet containing the range. |
-| `address` | `undefined` \| [`Address`](../models/Address.md#address) | The address of the range. |
+| `address` | `undefined` \| [`Address`](../Address.md#address) | The address of the range. |
 
 #### Returns
 

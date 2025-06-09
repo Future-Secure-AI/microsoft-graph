@@ -6,7 +6,7 @@ Error thrown when a request exceeds the allowed time limit.
 
 ### RequestTimeoutError
 
-Defined in: src/errors/RequestTimeoutError.ts:6
+Defined in: [src/errors/RequestTimeoutError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestTimeoutError.ts#L6)
 
 #### Extends
 
@@ -18,7 +18,7 @@ Defined in: src/errors/RequestTimeoutError.ts:6
 
 > **new RequestTimeoutError**(`message`): [`RequestTimeoutError`](#requesttimeouterror)
 
-Defined in: src/errors/RequestTimeoutError.ts:7
+Defined in: [src/errors/RequestTimeoutError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestTimeoutError.ts#L7)
 
 ###### Parameters
 

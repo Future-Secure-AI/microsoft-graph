@@ -14,7 +14,7 @@ Create a context using a static access token.
 
 | Parameter | Type |
 | ------ | ------ |
-| `accessToken` | [`AccessToken`](../models/AccessToken.md#accesstoken) |
+| `accessToken` | [`AccessToken`](../AccessToken.md#accesstoken) |
 
 #### Returns
 

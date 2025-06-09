@@ -66,15 +66,20 @@ await deleteDriveItem(folder);
 | [RequestTimeoutError](RequestTimeoutError.md) | Error thrown when a request exceeds the allowed time limit. |
 | [UnsupportedAddressTypeError](UnsupportedAddressTypeError.md) | Error thrown when a given address does not confirm to any known address type. |
 
+## Models
+
+| Module | Description |
+| ------ | ------ |
+| [AccessToken](AccessToken.md) | Token sent to server to authenticate a request. |
+| [Address](Address.md) | Address of a set of cells in a spreadsheet. |
+
 ## Other
 
 | Module | Description |
 | ------ | ------ |
 | [graphApi](graphApi.md) | - |
 | [index](index.md) | - |
-| [models/AccessToken](models/AccessToken.md) | - |
 | [models/AccessTokenGenerator](models/AccessTokenGenerator.md) | - |
-| [models/Address](models/Address.md) | - |
 | [models/Cartesian](models/Cartesian.md) | - |
 | [models/Cell](models/Cell.md) | - |
 | [models/CellText](models/CellText.md) | - |
@@ -101,6 +106,7 @@ await deleteDriveItem(folder);
 | [models/HttpProxy](models/HttpProxy.md) | - |
 | [models/Item](models/Item.md) | - |
 | [models/NumberFormat](models/NumberFormat.md) | - |
+| [models/OperationResponse](models/OperationResponse.md) | - |
 | [models/RangeOperationCallback](models/RangeOperationCallback.md) | - |
 | [models/RecordBase](models/RecordBase.md) | - |
 | [models/Row](models/Row.md) | - |

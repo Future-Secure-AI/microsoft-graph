@@ -12,16 +12,16 @@ Defined in: [src/services/addressManipulation.ts:29](https://github.com/Future-S
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="endcolumn"></a> `endColumn` | [`ColumnAddress`](../models/Address.md#columnaddress) | [src/services/addressManipulation.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L31) |
-| <a id="endrow"></a> `endRow` | [`RowAddress`](../models/Address.md#rowaddress) | [src/services/addressManipulation.ts:33](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L33) |
-| <a id="startcolumn"></a> `startColumn` | [`ColumnAddress`](../models/Address.md#columnaddress) | [src/services/addressManipulation.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L30) |
-| <a id="startrow"></a> `startRow` | [`RowAddress`](../models/Address.md#rowaddress) | [src/services/addressManipulation.ts:32](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L32) |
+| <a id="endcolumn"></a> `endColumn` | [`ColumnAddress`](../Address.md#columnaddress) | [src/services/addressManipulation.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L31) |
+| <a id="endrow"></a> `endRow` | [`RowAddress`](../Address.md#rowaddress) | [src/services/addressManipulation.ts:33](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L33) |
+| <a id="startcolumn"></a> `startColumn` | [`ColumnAddress`](../Address.md#columnaddress) | [src/services/addressManipulation.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L30) |
+| <a id="startrow"></a> `startRow` | [`RowAddress`](../Address.md#rowaddress) | [src/services/addressManipulation.ts:32](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L32) |
 
 ## Functions
 
 ### cellToRangeAddress()
 
-> **cellToRangeAddress**(`cell`, `rows`, `cols`): [`Address`](../models/Address.md#address)
+> **cellToRangeAddress**(`cell`, `rows`, `cols`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:341](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L341)
 
@@ -38,7 +38,7 @@ If rows/cols is positive, the cell is the start of the range; if negative, the c
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The created address range.
 
@@ -61,7 +61,7 @@ cellToRangeAddress("B2", 2, -2)).toBe("A2:B3")
 
 ### composeAddress()
 
-> **composeAddress**(`components`, `forceRange`): [`Address`](../models/Address.md#address)
+> **composeAddress**(`components`, `forceRange`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:75](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L75)
 
@@ -76,7 +76,7 @@ Composes an address from its components.
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The composed address.
 
@@ -98,7 +98,7 @@ Counts the number of columns in a given address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to analyze. |
+| `address` | [`Address`](../Address.md#address) | The address to analyze. |
 
 #### Returns
 
@@ -120,7 +120,7 @@ Counts the number of rows in a given address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to analyze. |
+| `address` | [`Address`](../Address.md#address) | The address to analyze. |
 
 #### Returns
 
@@ -142,7 +142,7 @@ Decomposes an address into its components (start and end columns/rows).
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to decompose. |
+| `address` | [`Address`](../Address.md#address) | The address to decompose. |
 
 #### Returns
 
@@ -158,7 +158,7 @@ InvalidArgumentError if the address format is invalid.
 
 ### decrementRowAddress()
 
-> **decrementRowAddress**(`address`): [`Address`](../models/Address.md#address)
+> **decrementRowAddress**(`address`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:245](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L245)
 
@@ -168,11 +168,11 @@ Decrements the row address by one.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to decrement. |
+| `address` | [`Address`](../Address.md#address) | The address to decrement. |
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The decremented address.
 
@@ -190,7 +190,7 @@ Gets the first cell address from a given address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to analyze. |
+| `address` | [`Address`](../Address.md#address) | The address to analyze. |
 
 #### Returns
 
@@ -202,7 +202,7 @@ The first cell address.
 
 ### getFirstColumnAddress()
 
-> **getFirstColumnAddress**(`address`): [`Address`](../models/Address.md#address)
+> **getFirstColumnAddress**(`address`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:156](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L156)
 
@@ -212,11 +212,11 @@ Gets the first column address from a given address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to analyze. |
+| `address` | [`Address`](../Address.md#address) | The address to analyze. |
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The first column address.
 
@@ -224,7 +224,7 @@ The first column address.
 
 ### getFirstRowAddress()
 
-> **getFirstRowAddress**(`address`): [`Address`](../models/Address.md#address)
+> **getFirstRowAddress**(`address`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:124](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L124)
 
@@ -234,11 +234,11 @@ Gets the first row address from a given address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to analyze. |
+| `address` | [`Address`](../Address.md#address) | The address to analyze. |
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The first row address.
 
@@ -256,7 +256,7 @@ Gets the last cell address from a given address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to analyze. |
+| `address` | [`Address`](../Address.md#address) | The address to analyze. |
 
 #### Returns
 
@@ -268,7 +268,7 @@ The last cell address.
 
 ### getLastColumnAddress()
 
-> **getLastColumnAddress**(`address`): [`Address`](../models/Address.md#address)
+> **getLastColumnAddress**(`address`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:172](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L172)
 
@@ -278,11 +278,11 @@ Gets the last column address from a given address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to analyze. |
+| `address` | [`Address`](../Address.md#address) | The address to analyze. |
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The last column address.
 
@@ -290,7 +290,7 @@ The last column address.
 
 ### getLastRowAddress()
 
-> **getLastRowAddress**(`address`): [`Address`](../models/Address.md#address)
+> **getLastRowAddress**(`address`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:140](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L140)
 
@@ -300,11 +300,11 @@ Gets the last row address from a given address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to analyze. |
+| `address` | [`Address`](../Address.md#address) | The address to analyze. |
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The last row address.
 
@@ -312,7 +312,7 @@ The last row address.
 
 ### incrementRowAddress()
 
-> **incrementRowAddress**(`address`): [`Address`](../models/Address.md#address)
+> **incrementRowAddress**(`address`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:236](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L236)
 
@@ -322,11 +322,11 @@ Increments the row address by one.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to increment. |
+| `address` | [`Address`](../Address.md#address) | The address to increment. |
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The incremented address.
 
@@ -344,8 +344,8 @@ Checks if two addresses overlap.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address1` | [`Address`](../models/Address.md#address) | The first address. |
-| `address2` | [`Address`](../models/Address.md#address) | The second address. |
+| `address1` | [`Address`](../Address.md#address) | The first address. |
+| `address2` | [`Address`](../Address.md#address) | The second address. |
 
 #### Returns
 
@@ -367,7 +367,7 @@ Checks if the address components represent all columns.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to check. |
+| `address` | [`Address`](../Address.md#address) | The address to check. |
 
 #### Returns
 
@@ -389,7 +389,7 @@ Checks if the address components represent all rows.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to check. |
+| `address` | [`Address`](../Address.md#address) | The address to check. |
 
 #### Returns
 
@@ -411,7 +411,7 @@ Checks if the address components represent a single column.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to check. |
+| `address` | [`Address`](../Address.md#address) | The address to check. |
 
 #### Returns
 
@@ -433,7 +433,7 @@ Checks if the address components represent a single row.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to check. |
+| `address` | [`Address`](../Address.md#address) | The address to check. |
 
 #### Returns
 
@@ -445,7 +445,7 @@ True if the components represent a single riw, otherwise false.
 
 ### normalizeAddress()
 
-> **normalizeAddress**(`address`, `forceRange`): [`Address`](../models/Address.md#address)
+> **normalizeAddress**(`address`, `forceRange`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:42](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L42)
 
@@ -455,18 +455,18 @@ Fixes address, removing an optional sheet prefix and ensuring it is a valid rang
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | `undefined` | The address to normalize. |
+| `address` | [`Address`](../Address.md#address) | `undefined` | The address to normalize. |
 | `forceRange` | `boolean` | `false` | If true, forces the address to be a range even if it represents a single cell or row/column. This is useful to workaround API quirks. |
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 ***
 
 ### offsetAddress()
 
-> **offsetAddress**(`address`, `columnOffset`, `rowOffset`): [`Address`](../models/Address.md#address)
+> **offsetAddress**(`address`, `columnOffset`, `rowOffset`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:192](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L192)
 
@@ -476,13 +476,13 @@ Offsets an address by the specified column and row offsets.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | The address to offset. |
+| `address` | [`Address`](../Address.md#address) | The address to offset. |
 | `columnOffset` | `number` | The column offset. |
 | `rowOffset` | `number` | The row offset. |
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 The offset address.
 
@@ -498,7 +498,7 @@ InvalidArgumentError if the offset is out of bounds.
 
 ### subAddress()
 
-> **subAddress**(`address`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`Address`](../models/Address.md#address)
+> **subAddress**(`address`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`Address`](../Address.md#address)
 
 Defined in: [src/services/addressManipulation.ts:402](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L402)
 
@@ -512,7 +512,7 @@ Supports negative values for `takeRows` and `takeCols` to exclude from the end a
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `address` | [`Address`](../models/Address.md#address) | `undefined` | The original range in A1 notation (e.g., "A1:D10"). |
+| `address` | [`Address`](../Address.md#address) | `undefined` | The original range in A1 notation (e.g., "A1:D10"). |
 | `skipRows` | `number` | `0` | Number of rows to skip. If negative, skips that many rows from the end. Default is 0. |
 | `takeRows` | `number` | `Number.POSITIVE_INFINITY` | Number of rows to take after skipping. If negative, excludes that many rows from the end of the remaining rows. Default is Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip. If negative, skips that many columns from the end. Default is 0. |
@@ -520,7 +520,7 @@ Supports negative values for `takeRows` and `takeCols` to exclude from the end a
 
 #### Returns
 
-[`Address`](../models/Address.md#address)
+[`Address`](../Address.md#address)
 
 A new A1-style range representing the sliced subrange (e.g., "B2:C5").
 
