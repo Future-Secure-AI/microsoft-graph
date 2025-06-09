@@ -17,12 +17,8 @@
 	"enumMembersFormat": "table",
 	"propertyMembersFormat": "table",
 	"gitRevision": "main",
-	"visibilityFilters": {
-		"protected": false,
-		"private": false,
-		"inherited": true,
-		"external": false,
-		"@alpha": false,
-		"@beta": false
-	}
+	"excludeInternal": true,
+	"excludePrivate": true,
+	"excludeProtected": true,
+	"excludeReferences": true,
 }
