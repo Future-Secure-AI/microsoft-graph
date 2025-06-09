@@ -1,17 +1,15 @@
 import type { AccessToken } from "../models/AccessToken.ts";
 import type { AccessTokenGenerator } from "../models/AccessTokenGenerator.ts";
-import type { ClientId } from "../models/ClientId.ts";
-import type { ClientSecret } from "../models/ClientSecret.ts";
+import type { AzureClientId, AzureClientSecret, AzureTenantId, Scope } from "../models/AzureApplicationCredentials.ts";
 import type { ContextRef } from "../models/ContextRef.ts";
-import type { Scope } from "../models/Scope.ts";
-import type { TenantId } from "../models/TenantId.ts";
-import { getCurrentAccessToken } from "./accessToken.ts";
+import { getCurrentAccessToken } from "./azureApplicationCredentials.ts";
 import { getEnvironmentVariable } from "./environmentVariable.ts";
+("../models/Scope.ts");
 
 const defaultScope = "https://graph.microsoft.com/.default" as Scope;
 
 /** Create a context using the client secret credential. */
-export function createClientSecretContext(tenantId: TenantId, clientId: ClientId, clientSecret: ClientSecret, scope: Scope = defaultScope): ContextRef {
+export function createClientSecretContext(tenantId: AzureTenantId, clientId: AzureClientId, clientSecret: AzureClientSecret, scope: Scope = defaultScope): ContextRef {
 	const generateAccessToken: AccessTokenGenerator = async () => {
 		return await getCurrentAccessToken(tenantId, clientId, clientSecret, scope);
 	};
@@ -43,9 +41,9 @@ export function createContext(accessTokenGenerator: AccessTokenGenerator): Conte
 
 /** Create a context using the client secret credential using environment variables AZURE_TENANT_ID, AZURE_CLIENT_ID and AZURE_CLIENT_SECRET. */
 export function createDefaultClientSecretContext(): ContextRef {
-	const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as TenantId;
-	const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as ClientId;
-	const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as ClientSecret;
+	const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as AzureTenantId;
+	const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as AzureClientId;
+	const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as AzureClientSecret;
 
 	return createClientSecretContext(tenantId, clientId, clientSecret);
 }
@@ -60,6 +58,6 @@ export function getDefaultContextRef(): ContextRef {
 /**
  * @deprecated Use `createClientSecretContext()` instead.
  */
-export function register(tenantId: TenantId, clientId: ClientId, clientSecret: ClientSecret): ContextRef {
+export function register(tenantId: AzureTenantId, clientId: AzureClientId, clientSecret: AzureClientSecret): ContextRef {
 	return createClientSecretContext(tenantId, clientId, clientSecret);
 }

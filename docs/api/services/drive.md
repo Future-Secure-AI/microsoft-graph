@@ -6,7 +6,7 @@
 
 > **createClientSecretContextWithDriveRef**(`tenantId`, `clientId`, `clientSecret`, `siteId`, `driveId`): [`DriveRef`](../models/DriveRef.md#driveref)
 
-Defined in: [src/services/drive.ts:33](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L33)
+Defined in: [src/services/drive.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L31)
 
 Creates a context with a reference to a drive.
 
@@ -14,9 +14,9 @@ Creates a context with a reference to a drive.
 
 | Parameter | Type |
 | ------ | ------ |
-| `tenantId` | [`TenantId`](../models/TenantId.md#tenantid) |
-| `clientId` | [`ClientId`](../models/ClientId.md#clientid) |
-| `clientSecret` | [`ClientSecret`](../models/ClientSecret.md#clientsecret) |
+| `tenantId` | [`AzureTenantId`](../AzureApplicationCredentials.md#azuretenantid) |
+| `clientId` | [`AzureClientId`](../AzureApplicationCredentials.md#azureclientid) |
+| `clientSecret` | [`AzureClientSecret`](../AzureApplicationCredentials.md#azureclientsecret) |
 | `siteId` | [`SiteId`](../models/SiteId.md#siteid) |
 | `driveId` | [`DriveId`](../models/DriveId.md#driveid) |
 
@@ -30,7 +30,7 @@ Creates a context with a reference to a drive.
 
 > **createDriveRef**(`siteRef`, `driveId`): [`DriveRef`](../models/DriveRef.md#driveref)
 
-Defined in: [src/services/drive.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L20)
+Defined in: [src/services/drive.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L18)
 
 Creates a reference to a drive.
 
@@ -57,7 +57,7 @@ ProtocolError if the drive ID is missing.
 
 > **getDefaultDriveRef**(): [`DriveRef`](../models/DriveRef.md#driveref)
 
-Defined in: [src/services/drive.ts:46](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L46)
+Defined in: [src/services/drive.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L44)
 
 Retrieves the opinionated default drive reference. NOT RECOMMENDED FOR PRODUCTION USE.
 

@@ -73,6 +73,7 @@ await deleteDriveItem(folder);
 | [AccessToken](AccessToken.md) | Token sent to server to authenticate a request. |
 | [AccessTokenGenerator](AccessTokenGenerator.md) | Callback function that generates an access token. |
 | [Address](Address.md) | Address of a set of cells in a spreadsheet. |
+| [AzureApplicationCredentials](AzureApplicationCredentials.md) | Credentials used to authenticate an application with Azure. |
 | [Cartesian](Cartesian.md) | Cartesian coordinates of a set of cells in a spreadsheet. |
 | [Cell](Cell.md) | A cell in a workbook. |
 | [CellText](CellText.md) | Text content of a cell in a worksheet. |
@@ -84,8 +85,6 @@ await deleteDriveItem(folder);
 | ------ | ------ |
 | [graphApi](graphApi.md) | - |
 | [index](index.md) | - |
-| [models/ClientId](models/ClientId.md) | - |
-| [models/ClientSecret](models/ClientSecret.md) | - |
 | [models/ColumnName](models/ColumnName.md) | - |
 | [models/ColumnOffset](models/ColumnOffset.md) | - |
 | [models/Context](models/Context.md) | - |
@@ -112,12 +111,10 @@ await deleteDriveItem(folder);
 | [models/Row](models/Row.md) | - |
 | [models/RowNumber](models/RowNumber.md) | - |
 | [models/RowOffset](models/RowOffset.md) | - |
-| [models/Scope](models/Scope.md) | - |
 | [models/SiteId](models/SiteId.md) | - |
 | [models/SiteName](models/SiteName.md) | - |
 | [models/SiteRef](models/SiteRef.md) | - |
 | [models/SourceRowValue](models/SourceRowValue.md) | - |
-| [models/TenantId](models/TenantId.md) | - |
 | [models/WorkbookNamedRangeRef](models/WorkbookNamedRangeRef.md) | - |
 | [models/WorkbookRangeName](models/WorkbookRangeName.md) | - |
 | [models/WorkbookRangeRef](models/WorkbookRangeRef.md) | - |
@@ -188,9 +185,9 @@ await deleteDriveItem(folder);
 | [operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange](operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.md) | - |
 | [operations/workbookWorksheet/listWorkbookWorksheets](operations/workbookWorksheet/listWorkbookWorksheets.md) | - |
 | [operations/workbookWorksheet/updateWorkbookWorksheet](operations/workbookWorksheet/updateWorkbookWorksheet.md) | - |
-| [services/accessToken](services/accessToken.md) | - |
 | [services/addressManipulation](services/addressManipulation.md) | - |
 | [services/addressOffset](services/addressOffset.md) | - |
+| [services/azureApplicationCredentials](services/azureApplicationCredentials.md) | - |
 | [services/batch](services/batch.md) | - |
 | [services/cartesianAddress](services/cartesianAddress.md) | - |
 | [services/cellText](services/cellText.md) | - |

@@ -1,11 +1,9 @@
 import ProtocolError from "../errors/ProtocolError.ts";
-import type { ClientId } from "../models/ClientId.ts";
-import type { ClientSecret } from "../models/ClientSecret.ts";
+import type { AzureClientId, AzureClientSecret, AzureTenantId } from "../models/AzureApplicationCredentials.ts";
 import type { DriveId } from "../models/DriveId.ts";
 import type { DriveRef } from "../models/DriveRef.ts";
 import type { SiteId } from "../models/SiteId.ts";
 import type { SiteRef } from "../models/SiteRef.ts";
-import type { TenantId } from "../models/TenantId.ts";
 import { createClientSecretContext, register } from "./context.ts";
 import { getEnvironmentVariable } from "./environmentVariable.ts";
 import { createSiteRef } from "./site.ts";
@@ -30,7 +28,7 @@ export function createDriveRef(siteRef: SiteRef, driveId: DriveId | undefined): 
 }
 
 /** Creates a context with a reference to a drive. */
-export function createClientSecretContextWithDriveRef(tenantId: TenantId, clientId: ClientId, clientSecret: ClientSecret, siteId: SiteId, driveId: DriveId): DriveRef {
+export function createClientSecretContextWithDriveRef(tenantId: AzureTenantId, clientId: AzureClientId, clientSecret: AzureClientSecret, siteId: SiteId, driveId: DriveId): DriveRef {
 	const context = createClientSecretContext(tenantId, clientId, clientSecret);
 	const siteRef = createSiteRef(context, siteId);
 	const driveRef = createDriveRef(siteRef, driveId);
@@ -44,9 +42,9 @@ export function createClientSecretContextWithDriveRef(tenantId: TenantId, client
  * @deprecated Use `createClientSecretContextWithDriveRef()` instead.
  */
 export function getDefaultDriveRef(): DriveRef {
-	const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as TenantId;
-	const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as ClientId;
-	const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as ClientSecret;
+	const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as AzureTenantId;
+	const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as AzureClientId;
+	const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as AzureClientSecret;
 	const siteId = getEnvironmentVariable("SHAREPOINT_DEFAULT_SITE_ID") as SiteId;
 	const driveId = getEnvironmentVariable("SHAREPOINT_DEFAULT_DRIVE_ID") as DriveId;
 

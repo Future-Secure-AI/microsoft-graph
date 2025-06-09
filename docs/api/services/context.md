@@ -6,7 +6,7 @@
 
 > **createAccessTokenContext**(`accessToken`): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L26)
+Defined in: [src/services/context.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L24)
 
 Create a context using a static access token.
 
@@ -30,7 +30,7 @@ You must manually handle renewal of the access token with this approach.
 
 > **createClientSecretContext**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L14)
+Defined in: [src/services/context.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L12)
 
 Create a context using the client secret credential.
 
@@ -38,10 +38,10 @@ Create a context using the client secret credential.
 
 | Parameter | Type | Default value |
 | ------ | ------ | ------ |
-| `tenantId` | [`TenantId`](../models/TenantId.md#tenantid) | `undefined` |
-| `clientId` | [`ClientId`](../models/ClientId.md#clientid) | `undefined` |
-| `clientSecret` | [`ClientSecret`](../models/ClientSecret.md#clientsecret) | `undefined` |
-| `scope` | [`Scope`](../models/Scope.md#scope) | `defaultScope` |
+| `tenantId` | [`AzureTenantId`](../AzureApplicationCredentials.md#azuretenantid) | `undefined` |
+| `clientId` | [`AzureClientId`](../AzureApplicationCredentials.md#azureclientid) | `undefined` |
+| `clientSecret` | [`AzureClientSecret`](../AzureApplicationCredentials.md#azureclientsecret) | `undefined` |
+| `scope` | [`Scope`](../AzureApplicationCredentials.md#scope) | `defaultScope` |
 
 #### Returns
 
@@ -53,7 +53,7 @@ Create a context using the client secret credential.
 
 > **createContext**(`accessTokenGenerator`): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:34](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L34)
+Defined in: [src/services/context.ts:32](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L32)
 
 Create a context using a given access token generator.
 
@@ -73,7 +73,7 @@ Create a context using a given access token generator.
 
 > **createDefaultClientSecretContext**(): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:45](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L45)
+Defined in: [src/services/context.ts:43](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L43)
 
 Create a context using the client secret credential using environment variables AZURE_TENANT_ID, AZURE_CLIENT_ID and AZURE_CLIENT_SECRET.
 
@@ -87,7 +87,7 @@ Create a context using the client secret credential using environment variables 
 
 > **getDefaultContextRef**(): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:56](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L56)
+Defined in: [src/services/context.ts:54](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L54)
 
 #### Returns
 
@@ -103,15 +103,15 @@ Use `createDefaultClientSecretContext()` instead.
 
 > **register**(`tenantId`, `clientId`, `clientSecret`): [`ContextRef`](../models/ContextRef.md#contextref)
 
-Defined in: [src/services/context.ts:63](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L63)
+Defined in: [src/services/context.ts:61](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L61)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `tenantId` | [`TenantId`](../models/TenantId.md#tenantid) |
-| `clientId` | [`ClientId`](../models/ClientId.md#clientid) |
-| `clientSecret` | [`ClientSecret`](../models/ClientSecret.md#clientsecret) |
+| `tenantId` | [`AzureTenantId`](../AzureApplicationCredentials.md#azuretenantid) |
+| `clientId` | [`AzureClientId`](../AzureApplicationCredentials.md#azureclientid) |
+| `clientSecret` | [`AzureClientSecret`](../AzureApplicationCredentials.md#azureclientsecret) |
 
 #### Returns
 

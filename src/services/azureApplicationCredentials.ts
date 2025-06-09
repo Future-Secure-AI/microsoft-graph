@@ -1,9 +1,6 @@
 import { ClientSecretCredential, type AccessToken as InnerAccessToken } from "@azure/identity";
 import type { AccessToken } from "../models/AccessToken.ts";
-import type { ClientId } from "../models/ClientId.ts";
-import type { ClientSecret } from "../models/ClientSecret.ts";
-import type { Scope } from "../models/Scope.ts";
-import type { TenantId } from "../models/TenantId.ts";
+import type { AzureClientId, AzureClientSecret, AzureTenantId, Scope } from "../models/AzureApplicationCredentials.ts";
 
 const innerTokenCache: Record<CacheKey, InnerAccessToken> = {};
 
@@ -16,7 +13,7 @@ const innerTokenCache: Record<CacheKey, InnerAccessToken> = {};
  * @param scope - The scope for which the token is requested.
  * @returns A promise that resolves to the access token.
  */
-export async function getCurrentAccessToken(tenantId: TenantId, clientId: ClientId, clientSecret: ClientSecret, scope: Scope): Promise<AccessToken> {
+export async function getCurrentAccessToken(tenantId: AzureTenantId, clientId: AzureClientId, clientSecret: AzureClientSecret, scope: Scope): Promise<AccessToken> {
 	const cacheKey = createCacheKey(tenantId, clientId, scope);
 	let innerToken = innerTokenCache[cacheKey];
 
@@ -33,6 +30,6 @@ type CacheKey = string & {
 	__brand: "CacheKey";
 };
 
-function createCacheKey(tenantId: TenantId, clientId: ClientId, scope: Scope): CacheKey {
+function createCacheKey(tenantId: AzureTenantId, clientId: AzureClientId, scope: Scope): CacheKey {
 	return `${tenantId}/${clientId}/${scope}` as CacheKey;
 }
