@@ -4,7 +4,7 @@
 
 ### ~~iterateWorkbookRangeValues()~~
 
-> **iterateWorkbookRangeValues**(`rangeRef`, `overwriteRowsPerRequest`): `AsyncIterable`\<[`CellValue`](../models/CellValue.md#cellvalue)[]\>
+> **iterateWorkbookRangeValues**(`rangeRef`, `overwriteRowsPerRequest`): `AsyncIterable`\<[`CellValue`](../CellValue.md#cellvalue)[]\>
 
 Defined in: [src/tasks/iterateWorkbookRangeValues.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateWorkbookRangeValues.ts#L19)
 
@@ -19,7 +19,7 @@ Iterates over the values of a workbook range in chunks, fetching data in managea
 
 #### Returns
 
-`AsyncIterable`\<[`CellValue`](../models/CellValue.md#cellvalue)[]\>
+`AsyncIterable`\<[`CellValue`](../CellValue.md#cellvalue)[]\>
 
 An async iterable that yields rows of range values.
 

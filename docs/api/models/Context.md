@@ -12,4 +12,4 @@ Defined in: [src/models/Context.ts:3](https://github.com/Future-Secure-AI/micros
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="generateaccesstoken"></a> `generateAccessToken` | [`AccessTokenGenerator`](AccessTokenGenerator.md#accesstokengenerator) | [src/models/Context.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Context.ts#L4) |
+| <a id="generateaccesstoken"></a> `generateAccessToken` | [`AccessTokenGenerator`](../AccessTokenGenerator.md#accesstokengenerator) | [src/models/Context.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Context.ts#L4) |

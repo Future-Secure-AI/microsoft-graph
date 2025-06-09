@@ -4,7 +4,7 @@
 
 ### addressToCartesian()
 
-> **addressToCartesian**(`address`): [`Cartesian`](../models/Cartesian.md#cartesian)
+> **addressToCartesian**(`address`): [`Cartesian`](../Cartesian.md#cartesian)
 
 Defined in: [src/services/cartesianAddress.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cartesianAddress.ts#L13)
 
@@ -18,7 +18,7 @@ Converts a cell range address to Cartesian coordinates.
 
 #### Returns
 
-[`Cartesian`](../models/Cartesian.md#cartesian)
+[`Cartesian`](../Cartesian.md#cartesian)
 
 The Cartesian representation of the address, with start and end coordinates.
 
@@ -36,7 +36,7 @@ Converts Cartesian coordinates to a cell range address.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `cartesian` | [`Cartesian`](../models/Cartesian.md#cartesian) | The Cartesian coordinates, including start (ax, ay) and end (bx, by). |
+| `cartesian` | [`Cartesian`](../Cartesian.md#cartesian) | The Cartesian coordinates, including start (ax, ay) and end (bx, by). |
 
 #### Returns
 

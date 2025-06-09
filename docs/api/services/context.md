@@ -61,7 +61,7 @@ Create a context using a given access token generator.
 
 | Parameter | Type |
 | ------ | ------ |
-| `accessTokenGenerator` | [`AccessTokenGenerator`](../models/AccessTokenGenerator.md#accesstokengenerator) |
+| `accessTokenGenerator` | [`AccessTokenGenerator`](../AccessTokenGenerator.md#accesstokengenerator) |
 
 #### Returns
 

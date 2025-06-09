@@ -15,7 +15,7 @@ Sets the values of a specified workbook range.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookRangeRef`](../models/WorkbookRangeRef.md#workbookrangeref) | A reference to the workbook range to update. |
-| `values` | [`CellValue`](../models/CellValue.md#cellvalue)[][] | The values to set in the specified workbook range. Must match the range's dimensions. |
+| `values` | [`CellValue`](../CellValue.md#cellvalue)[][] | The values to set in the specified workbook range. Must match the range's dimensions. |
 
 #### Returns
 

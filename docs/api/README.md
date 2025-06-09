@@ -71,7 +71,12 @@ await deleteDriveItem(folder);
 | Module | Description |
 | ------ | ------ |
 | [AccessToken](AccessToken.md) | Token sent to server to authenticate a request. |
+| [AccessTokenGenerator](AccessTokenGenerator.md) | Callback function that generates an access token. |
 | [Address](Address.md) | Address of a set of cells in a spreadsheet. |
+| [Cartesian](Cartesian.md) | Cartesian coordinates of a set of cells in a spreadsheet. |
+| [Cell](Cell.md) | A cell in a workbook. |
+| [CellText](CellText.md) | Text content of a cell in a worksheet. |
+| [CellValue](CellValue.md) | CellValue represents the value of a cell in a spreadsheet. |
 
 ## Other
 
@@ -79,11 +84,6 @@ await deleteDriveItem(folder);
 | ------ | ------ |
 | [graphApi](graphApi.md) | - |
 | [index](index.md) | - |
-| [models/AccessTokenGenerator](models/AccessTokenGenerator.md) | - |
-| [models/Cartesian](models/Cartesian.md) | - |
-| [models/Cell](models/Cell.md) | - |
-| [models/CellText](models/CellText.md) | - |
-| [models/CellValue](models/CellValue.md) | - |
 | [models/ClientId](models/ClientId.md) | - |
 | [models/ClientSecret](models/ClientSecret.md) | - |
 | [models/ColumnName](models/ColumnName.md) | - |
