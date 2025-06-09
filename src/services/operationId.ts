@@ -1,4 +1,10 @@
 /**
+ * Utilities for converting between operation IDs and indexes.
+ * @module operationId
+ * @category Services
+ */
+
+/**
  * Converts an operation index to an operation ID.
  * @param index - The operation index.
  * @returns The operation ID as a string.

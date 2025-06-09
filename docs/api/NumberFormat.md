@@ -1,21 +1,67 @@
-[Microsoft Graph SDK](README.md) / NumberFormat
+[Microsoft Graph SDK](README.md) / numberFormat
 
-Format to be applied to a cell value to convert it to text to display to the user.
+Spreadsheet number format constants for Microsoft Graph API.
 
-## See
+## Variables
 
-[Cell](Cell.md) for a more comprehensive representation of a cell, which includes text and formatting.
+### accountingNumberFormat
 
-## Type Aliases
+> `const` **accountingNumberFormat**: [`NumberFormat`](NumberFormat-1.md#numberformat)
 
-### NumberFormat
+Defined in: [src/services/numberFormat.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L12)
 
-> **NumberFormat** = `string` & `object`
+***
 
-Defined in: [src/models/NumberFormat.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/NumberFormat.ts#L9)
+### currencyNumberFormat
 
-#### Type declaration
+> `const` **currencyNumberFormat**: [`NumberFormat`](NumberFormat-1.md#numberformat)
 
-##### \_\_brand
+Defined in: [src/services/numberFormat.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L11)
 
-> **\_\_brand**: `"NumberFormat"`
+***
+
+### dateShortNumberFormat
+
+> `const` **dateShortNumberFormat**: [`NumberFormat`](NumberFormat-1.md#numberformat)
+
+Defined in: [src/services/numberFormat.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L14)
+
+***
+
+### generalNumberFormat
+
+> `const` **generalNumberFormat**: [`NumberFormat`](NumberFormat-1.md#numberformat)
+
+Defined in: [src/services/numberFormat.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L9)
+
+***
+
+### numberNumberFormat
+
+> `const` **numberNumberFormat**: [`NumberFormat`](NumberFormat-1.md#numberformat)
+
+Defined in: [src/services/numberFormat.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L10)
+
+***
+
+### percentageNumberFormat
+
+> `const` **percentageNumberFormat**: [`NumberFormat`](NumberFormat-1.md#numberformat)
+
+Defined in: [src/services/numberFormat.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L13)
+
+***
+
+### textNumberFormat
+
+> `const` **textNumberFormat**: [`NumberFormat`](NumberFormat-1.md#numberformat)
+
+Defined in: [src/services/numberFormat.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L16)
+
+***
+
+### timeNumberFormat
+
+> `const` **timeNumberFormat**: [`NumberFormat`](NumberFormat-1.md#numberformat)
+
+Defined in: [src/services/numberFormat.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L15)

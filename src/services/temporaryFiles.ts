@@ -1,3 +1,9 @@
+/**
+ * Utilities for generating temporary file names for use with Drive Items.
+ * @module temporaryFiles
+ * @category Services
+ */
+
 import type { DriveItemPath } from "../models/DriveItemPath.ts";
 import { generateRandomString } from "./random.ts";
 

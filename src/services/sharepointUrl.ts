@@ -1,3 +1,9 @@
+/**
+ * Utilities for parsing and extracting information from SharePoint URLs.
+ * @module sharepointUrl
+ * @category Services
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { DriveItemId } from "../models/DriveItemId.ts";
 import type { HostName } from "../models/HostName.ts";

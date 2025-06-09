@@ -1,21 +1,23 @@
-[Microsoft Graph SDK](README.md) / CellText
+[Microsoft Graph SDK](README.md) / cellText
 
-Text content of a cell in a worksheet.
+Utilities for working with cell text values in spreadsheets.
 
-## Remarks
+## Functions
 
-This is a string that represents the text displayed in the cell, which may differ from the actual value of the cell (e.g., due to formatting).
+### asCellText()
 
-## Type Aliases
+> **asCellText**(`text`): [`CellText`](CellText-1.md#celltext)
 
-### CellText
+Defined in: [src/services/cellText.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellText.ts#L12)
 
-> **CellText** = `string` & `object`
+Casts a string to CellText.
 
-Defined in: [src/models/CellText.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/CellText.ts#L9)
+#### Parameters
 
-#### Type declaration
+| Parameter | Type |
+| ------ | ------ |
+| `text` | `string` |
 
-##### \_\_brand
+#### Returns
 
-> **\_\_brand**: `"CellText"`
+[`CellText`](CellText-1.md#celltext)

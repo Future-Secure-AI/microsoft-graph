@@ -1,3 +1,9 @@
+/**
+ * Utilities for inferring and manipulating spreadsheet ranges and objects.
+ * @module rangeManipulation
+ * @category Services
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Address } from "../models/Address.ts";
 import type { CellValue } from "../models/CellValue.ts";

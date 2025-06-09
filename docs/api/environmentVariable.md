@@ -1,4 +1,6 @@
-[Microsoft Graph SDK](../README.md) / services/environmentVariable
+[Microsoft Graph SDK](README.md) / environmentVariable
+
+Utilities for accessing environment variables with error handling and fallbacks.
 
 ## Functions
 
@@ -6,7 +8,7 @@
 
 > **bindEnvironmentVariable**(`env`, `fallbackValue`): () => `unknown`
 
-Defined in: [src/services/environmentVariable.ts:29](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/environmentVariable.ts#L29)
+Defined in: [src/services/environmentVariable.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/environmentVariable.ts#L35)
 
 Binds an environment variable to a function that retrieves its value.
 
@@ -33,7 +35,7 @@ A function that retrieves the value of the environment variable or the fallback 
 
 > **getEnvironmentVariable**(`env`, `fallbackValue`): `unknown`
 
-Defined in: [src/services/environmentVariable.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/environmentVariable.ts#L10)
+Defined in: [src/services/environmentVariable.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/environmentVariable.ts#L16)
 
 Retrieves the value of an environment variable.
 

@@ -1,3 +1,9 @@
+/**
+ * Utilities for converting between A1 addresses and Cartesian coordinates.
+ * @module cartesianAddress
+ * @category Services
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Address } from "../models/Address.ts";
 import type { Cartesian } from "../models/Cartesian.ts";

@@ -1,3 +1,9 @@
+/**
+ * Utilities for converting between spreadsheet column/row addresses and offsets.
+ * @module addressOffset
+ * @category Services
+ */
+
 import type { ColumnAddress, RowAddress } from "../models/Address.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";

@@ -14,4 +14,4 @@ Defined in: [src/models/ContextRef.ts:9](https://github.com/Future-Secure-AI/mic
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="context"></a> `context` | [`Context`](Context.md#context) | [src/models/ContextRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/ContextRef.ts#L10) |
+| <a id="context"></a> `context` | [`Context`](Context-1.md#context) | [src/models/ContextRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/ContextRef.ts#L10) |

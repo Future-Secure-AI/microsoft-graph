@@ -73,14 +73,14 @@ await deleteDriveItem(folder);
 | [AccessToken](AccessToken.md) | Token sent to server to authenticate a request. |
 | [AccessTokenGenerator](AccessTokenGenerator.md) | Callback function that generates an access token. |
 | [Address](Address.md) | Address of a set of cells in a spreadsheet. |
-| [AzureApplicationCredentials](AzureApplicationCredentials.md) | Credentials used to authenticate an application with Azure. |
+| [AzureApplicationCredentials](AzureApplicationCredentials-1.md) | Credentials used to authenticate an application with Azure. |
 | [Cartesian](Cartesian.md) | Cartesian coordinates of a set of cells in a spreadsheet. |
 | [Cell](Cell.md) | Cell in a worksheet. |
-| [CellText](CellText.md) | Text content of a cell in a worksheet. |
+| [CellText](CellText-1.md) | Text content of a cell in a worksheet. |
 | [CellValue](CellValue.md) | CellValue represents the value of a cell in a spreadsheet. |
 | [ColumnName](ColumnName.md) | Name of a column, as configured by the user. |
 | [ColumnOffset](ColumnOffset.md) | Zero-based index representing the position of a column in a range. |
-| [Context](Context.md) | Context of requests. |
+| [Context](Context-1.md) | Context of requests. |
 | [ContextRef](ContextRef.md) | Reference to a context |
 | [DriveId](DriveId.md) | Identifier for a drive. |
 | [DriveItemId](DriveItemId.md) | Identifier for an item in a drive. |
@@ -89,8 +89,8 @@ await deleteDriveItem(folder);
 | [DriveRef](DriveRef.md) | Reference to a drive. |
 | [GraphOperation](GraphOperation.md) | An atomic operation to be performed against the Microsoft Graph API. |
 | [HostName](HostName.md) | Name of a remote host, resolvable by DNS. |
-| [Http](Http.md) | HTTP models for handling HTTP requests and responses. |
-| [NumberFormat](NumberFormat.md) | Format to be applied to a cell value to convert it to text to display to the user. |
+| [Http](Http-1.md) | HTTP models for handling HTTP requests and responses. |
+| [NumberFormat](NumberFormat-1.md) | Format to be applied to a cell value to convert it to text to display to the user. |
 | [Row](Row.md) | A linear sequency of cells in a worksheet. |
 | [RowNumber](RowNumber.md) | Row number as it appears in Excel. |
 | [RowOffset](RowOffset.md) | Zero-based index representing the position of a row in a range. |
@@ -185,39 +185,39 @@ await deleteDriveItem(folder);
 | [models/RangeOperationCallback](models/RangeOperationCallback.md) | - |
 | [models/RecordBase](models/RecordBase.md) | - |
 | [models/SourceRowValue](models/SourceRowValue.md) | - |
-| [services/addressManipulation](services/addressManipulation.md) | - |
-| [services/addressOffset](services/addressOffset.md) | - |
-| [services/azureApplicationCredentials](services/azureApplicationCredentials.md) | - |
-| [services/batch](services/batch.md) | - |
-| [services/cartesianAddress](services/cartesianAddress.md) | - |
-| [services/cellText](services/cellText.md) | - |
-| [services/context](services/context.md) | - |
 | [services/dataSource](services/dataSource.md) | - |
-| [services/drive](services/drive.md) | - |
-| [services/driveItem](services/driveItem.md) | - |
-| [services/environmentVariable](services/environmentVariable.md) | - |
-| [services/http](services/http.md) | - |
-| [services/httpStatus](services/httpStatus.md) | - |
-| [services/numberFormat](services/numberFormat.md) | - |
-| [services/operationId](services/operationId.md) | - |
-| [services/random](services/random.md) | - |
-| [services/rangeManipulation](services/rangeManipulation.md) | - |
-| [services/sharepointUrl](services/sharepointUrl.md) | - |
-| [services/site](services/site.md) | - |
-| [services/sleep](services/sleep.md) | - |
-| [services/stringCaseConversion](services/stringCaseConversion.md) | - |
-| [services/templatedPaths](services/templatedPaths.md) | - |
-| [services/temporaryFiles](services/temporaryFiles.md) | - |
-| [services/workbookRange](services/workbookRange.md) | - |
-| [services/workbookTable](services/workbookTable.md) | - |
-| [services/workbookTableColumn](services/workbookTableColumn.md) | - |
-| [services/workbookWorksheet](services/workbookWorksheet.md) | - |
 
 ## Services
 
 | Module | Description |
 | ------ | ------ |
+| [addressManipulation](addressManipulation.md) | Utilities for manipulating and analyzing spreadsheet-style addresses (A1 notation). |
+| [addressOffset](addressOffset.md) | Utilities for converting between spreadsheet column/row addresses and offsets. |
+| [azureApplicationCredentials](azureApplicationCredentials.md) | Azure application credential helpers for authentication and token management. |
+| [batch](batch.md) | Constants and helpers for batching Microsoft Graph API requests. |
+| [cartesianAddress](cartesianAddress.md) | Utilities for converting between A1 addresses and Cartesian coordinates. |
+| [cellText](cellText.md) | Utilities for working with cell text values in spreadsheets. |
+| [context](context.md) | Context creation and management utilities for Microsoft Graph API authentication. |
+| [drive](drive.md) | Utilities for working with Microsoft Graph Drive references and operations. |
+| [driveItem](driveItem.md) | Utilities for working with Microsoft Graph Drive Items (files and folders). |
+| [environmentVariable](environmentVariable.md) | Utilities for accessing environment variables with error handling and fallbacks. |
+| [http](http.md) | HTTP request utilities for Microsoft Graph API, with proxy support. |
+| [httpStatus](httpStatus.md) | Utilities for analyzing HTTP status codes for Microsoft Graph API responses. |
+| [numberFormat](numberFormat.md) | Spreadsheet number format constants for Microsoft Graph API. |
+| [operationId](operationId.md) | Utilities for converting between operation IDs and indexes. |
 | [operationInvoker](operationInvoker.md) | Invoke operations, potentially as parallel or sequential batches. |
+| [random](random.md) | Utilities for generating random values for spreadsheet and API operations. |
+| [rangeManipulation](rangeManipulation.md) | Utilities for inferring and manipulating spreadsheet ranges and objects. |
+| [sharepointUrl](sharepointUrl.md) | Utilities for parsing and extracting information from SharePoint URLs. |
+| [site](site.md) | Utilities for working with Microsoft Graph Site references and operations. |
+| [sleep](sleep.md) | Utility for pausing execution (sleep) in async workflows. |
+| [stringCaseConversion](stringCaseConversion.md) | Utilities for converting string case styles (e.g., kebab-case to camelCase). |
+| [templatedPaths](templatedPaths.md) | Utilities for generating and parsing templated HTTP paths. |
+| [temporaryFiles](temporaryFiles.md) | Utilities for generating temporary file names for use with Drive Items. |
+| [workbookRange](workbookRange.md) | Utilities for working with workbook ranges and references. |
+| [workbookTable](workbookTable.md) | Utilities for creating and working with workbook table references. |
+| [workbookTableColumn](workbookTableColumn.md) | Utilities for creating and working with workbook table column references. |
+| [workbookWorksheet](workbookWorksheet.md) | Utilities for creating and working with workbook worksheet references. |
 
 ## Tasks
 

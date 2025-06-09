@@ -1,4 +1,10 @@
 /**
+ * Utilities for converting string case styles (e.g., kebab-case to camelCase).
+ * @module stringCaseConversion
+ * @category Services
+ */
+
+/**
  * Converts a kebab-case string to camelCase.
  * @param str - The kebab-case string.
  * @returns The camelCase string.

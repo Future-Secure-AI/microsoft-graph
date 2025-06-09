@@ -1,3 +1,9 @@
+/**
+ * Utilities for creating and working with workbook table column references.
+ * @module workbookTableColumn
+ * @category Services
+ */
+
 import type { ColumnName } from "../models/ColumnName.ts";
 import type { WorkbookTableColumnRef } from "../models/WorkbookTableColumnRef.ts";
 import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";

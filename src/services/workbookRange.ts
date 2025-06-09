@@ -1,3 +1,9 @@
+/**
+ * Utilities for working with workbook ranges and references.
+ * @module workbookRange
+ * @category Services
+ */
+
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { Address } from "../models/Address.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";

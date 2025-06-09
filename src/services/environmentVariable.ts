@@ -1,3 +1,9 @@
+/**
+ * Utilities for accessing environment variables with error handling and fallbacks.
+ * @module environmentVariable
+ * @category Services
+ */
+
 import EnvironmentVariableMissingError from "../errors/EnvironmentVariableMissingError.ts";
 
 /**

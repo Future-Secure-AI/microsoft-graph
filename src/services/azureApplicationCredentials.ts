@@ -1,3 +1,9 @@
+/**
+ * Azure application credential helpers for authentication and token management.
+ * @module azureApplicationCredentials
+ * @category Services
+ */
+
 import { ClientSecretCredential, type AccessToken as InnerAccessToken } from "@azure/identity";
 import type { AccessToken } from "../models/AccessToken.ts";
 import type { AzureClientId, AzureClientSecret, AzureTenantId, Scope } from "../models/AzureApplicationCredentials.ts";

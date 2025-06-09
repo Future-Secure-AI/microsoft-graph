@@ -1,3 +1,9 @@
+/**
+ * Utilities for working with Microsoft Graph Drive Items (files and folders).
+ * @module driveItem
+ * @category Services
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { DriveItemId } from "../models/DriveItemId.ts";

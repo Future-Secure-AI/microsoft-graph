@@ -1,3 +1,9 @@
+/**
+ * Utilities for working with cell text values in spreadsheets.
+ * @module cellText
+ * @category Services
+ */
+
 import type { CellText } from "../models/CellText.ts";
 
 /**

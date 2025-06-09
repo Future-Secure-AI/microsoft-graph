@@ -1,3 +1,9 @@
+/**
+ * Utilities for creating and working with workbook worksheet references.
+ * @module workbookWorksheet
+ * @category Services
+ */
+
 import type { WorkbookRef } from "../models/WorkbookRef.ts";
 import type { WorkbookWorksheetId } from "../models/WorkbookWorksheetId.ts";
 import type { WorkbookWorksheetName } from "../models/WorkbookWorksheetName.ts";

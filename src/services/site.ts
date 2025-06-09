@@ -1,3 +1,9 @@
+/**
+ * Utilities for working with Microsoft Graph Site references and operations.
+ * @module site
+ * @category Services
+ */
+
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { ContextRef } from "../models/ContextRef.ts";
 import type { SiteId } from "../models/SiteId.ts";

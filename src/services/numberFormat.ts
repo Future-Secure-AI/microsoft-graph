@@ -1,3 +1,9 @@
+/**
+ * Spreadsheet number format constants for Microsoft Graph API.
+ * @module numberFormat
+ * @category Services
+ */
+
 import type { NumberFormat } from "../models/NumberFormat.ts";
 
 export const generalNumberFormat = "General" as NumberFormat;

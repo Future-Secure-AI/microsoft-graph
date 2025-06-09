@@ -16,7 +16,7 @@ Send an email.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `context` | [`Context`](Context.md#context) | Reference to the context. |
+| `context` | [`Context`](Context-1.md#context) | Reference to the context. |
 | `sender` | `null` \| `string` | The email address of the sender or NULL for the current user. Must match a valid email address in this tenant. |
 | `message` | `Message` | The email message to be sent. |
 

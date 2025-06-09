@@ -1,3 +1,9 @@
+/**
+ * Utilities for generating and parsing templated HTTP paths.
+ * @module templatedPaths
+ * @category Services
+ */
+
 import BadPathTemplateError from "../errors/BadPathTemplateError.ts";
 import type { HttpPath } from "../models/Http.ts";
 import { kebabToCamelCase } from "./stringCaseConversion.ts";

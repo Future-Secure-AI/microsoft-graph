@@ -1,3 +1,9 @@
+/**
+ * Context creation and management utilities for Microsoft Graph API authentication.
+ * @module context
+ * @category Services
+ */
+
 import type { AccessToken } from "../models/AccessToken.ts";
 import type { AccessTokenGenerator } from "../models/AccessTokenGenerator.ts";
 import type { AzureClientId, AzureClientSecret, AzureTenantId, Scope } from "../models/AzureApplicationCredentials.ts";

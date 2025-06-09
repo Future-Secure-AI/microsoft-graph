@@ -1,3 +1,9 @@
+/**
+ * Utilities for generating random values for spreadsheet and API operations.
+ * @module random
+ * @category Services
+ */
+
 import { randomInt } from "node:crypto";
 
 const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

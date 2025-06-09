@@ -1,4 +1,10 @@
 /**
+ * Utilities for analyzing HTTP status codes for Microsoft Graph API responses.
+ * @module httpStatus
+ * @category Services
+ */
+
+/**
  * Checks if the HTTP status code indicates a successful response.
  * @param status - The HTTP status code.
  * @returns True if the status code is in the range 200-299, otherwise false.

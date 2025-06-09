@@ -1,12 +1,14 @@
-[Microsoft Graph SDK](../README.md) / services/templatedPaths
+[Microsoft Graph SDK](README.md) / templatedPaths
+
+Utilities for generating and parsing templated HTTP paths.
 
 ## Functions
 
 ### generatePath()
 
-> **generatePath**(`template`, `args`): [`HttpPath`](../Http.md#httppath)
+> **generatePath**(`template`, `args`): [`HttpPath`](Http-1.md#httppath)
 
-Defined in: [src/services/templatedPaths.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/templatedPaths.ts#L14)
+Defined in: [src/services/templatedPaths.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/templatedPaths.ts#L20)
 
 Generates a HTTP path based on a template and arguments. Arguments are automatically escaped.
 
@@ -19,7 +21,7 @@ Generates a HTTP path based on a template and arguments. Arguments are automatic
 
 #### Returns
 
-[`HttpPath`](../Http.md#httppath)
+[`HttpPath`](Http-1.md#httppath)
 
 The generated Graph API path.
 

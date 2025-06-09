@@ -1,3 +1,9 @@
+/**
+ * Utilities for working with Microsoft Graph Drive references and operations.
+ * @module drive
+ * @category Services
+ */
+
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { AzureClientId, AzureClientSecret, AzureTenantId } from "../models/AzureApplicationCredentials.ts";
 import type { DriveId } from "../models/DriveId.ts";

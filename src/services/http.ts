@@ -1,3 +1,9 @@
+/**
+ * HTTP request utilities for Microsoft Graph API, with proxy support.
+ * @module http
+ * @category Services
+ */
+
 import axios, { type AxiosInstance, type AxiosRequestConfig, type CreateAxiosDefaults } from "axios";
 import { HttpsProxyAgent } from "https-proxy-agent";
 

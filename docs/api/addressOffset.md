@@ -1,12 +1,14 @@
-[Microsoft Graph SDK](../README.md) / services/addressOffset
+[Microsoft Graph SDK](README.md) / addressOffset
+
+Utilities for converting between spreadsheet column/row addresses and offsets.
 
 ## Functions
 
 ### columnAddressToOffset()
 
-> **columnAddressToOffset**(`column`): [`ColumnOffset`](../ColumnOffset.md#columnoffset)
+> **columnAddressToOffset**(`column`): [`ColumnOffset`](ColumnOffset.md#columnoffset)
 
-Defined in: [src/services/addressOffset.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L10)
+Defined in: [src/services/addressOffset.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L16)
 
 Converts a column address (e.g., "A") to a zero-based column offset.
 
@@ -18,7 +20,7 @@ Converts a column address (e.g., "A") to a zero-based column offset.
 
 #### Returns
 
-[`ColumnOffset`](../ColumnOffset.md#columnoffset)
+[`ColumnOffset`](ColumnOffset.md#columnoffset)
 
 The zero-based column offset.
 
@@ -28,7 +30,7 @@ The zero-based column offset.
 
 > **columnOffsetToAddress**(`offset`): [`Uppercase`](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html#uppercasestringtype)\<`string`\>
 
-Defined in: [src/services/addressOffset.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L23)
+Defined in: [src/services/addressOffset.ts:29](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L29)
 
 Converts a zero-based column offset to a column address (e.g., "A").
 
@@ -36,7 +38,7 @@ Converts a zero-based column offset to a column address (e.g., "A").
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `offset` | [`ColumnOffset`](../ColumnOffset.md#columnoffset) | The zero-based column offset. |
+| `offset` | [`ColumnOffset`](ColumnOffset.md#columnoffset) | The zero-based column offset. |
 
 #### Returns
 
@@ -50,13 +52,13 @@ The column address.
 
 > **offsetToColumnAddress**(`offset`): [`Uppercase`](https://www.typescriptlang.org/docs/handbook/2/template-literal-types.html#uppercasestringtype)\<`string`\>
 
-Defined in: [src/services/addressOffset.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L35)
+Defined in: [src/services/addressOffset.ts:41](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L41)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `offset` | [`ColumnOffset`](../ColumnOffset.md#columnoffset) |
+| `offset` | [`ColumnOffset`](ColumnOffset.md#columnoffset) |
 
 #### Returns
 
@@ -72,13 +74,13 @@ Use columnOffsetToAddress instead.
 
 > **offsetToRowAddress**(`offset`): `` `${number}` ``
 
-Defined in: [src/services/addressOffset.ts:58](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L58)
+Defined in: [src/services/addressOffset.ts:64](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L64)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `offset` | [`RowOffset`](../RowOffset.md#rowoffset) |
+| `offset` | [`RowOffset`](RowOffset.md#rowoffset) |
 
 #### Returns
 
@@ -92,9 +94,9 @@ Use rowOffsetToAddress instead.
 
 ### rowAddressToOffset()
 
-> **rowAddressToOffset**(`row`): [`RowOffset`](../RowOffset.md#rowoffset)
+> **rowAddressToOffset**(`row`): [`RowOffset`](RowOffset.md#rowoffset)
 
-Defined in: [src/services/addressOffset.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L44)
+Defined in: [src/services/addressOffset.ts:50](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L50)
 
 Converts a row address (e.g., "1") to a zero-based row offset.
 
@@ -106,7 +108,7 @@ Converts a row address (e.g., "1") to a zero-based row offset.
 
 #### Returns
 
-[`RowOffset`](../RowOffset.md#rowoffset)
+[`RowOffset`](RowOffset.md#rowoffset)
 
 The zero-based row offset.
 
@@ -116,7 +118,7 @@ The zero-based row offset.
 
 > **rowOffsetToAddress**(`offset`): `` `${number}` ``
 
-Defined in: [src/services/addressOffset.ts:53](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L53)
+Defined in: [src/services/addressOffset.ts:59](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L59)
 
 Converts a zero-based row offset to a row address (e.g., "1").
 
@@ -124,7 +126,7 @@ Converts a zero-based row offset to a row address (e.g., "1").
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `offset` | [`RowOffset`](../RowOffset.md#rowoffset) | The zero-based row offset. |
+| `offset` | [`RowOffset`](RowOffset.md#rowoffset) | The zero-based row offset. |
 
 #### Returns
 

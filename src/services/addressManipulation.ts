@@ -1,3 +1,9 @@
+/**
+ * Utilities for manipulating and analyzing spreadsheet-style addresses (A1 notation).
+ * @module addressManipulation
+ * @category Services
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.ts";
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";

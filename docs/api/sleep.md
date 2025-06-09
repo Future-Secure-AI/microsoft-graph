@@ -1,4 +1,6 @@
-[Microsoft Graph SDK](../README.md) / services/sleep
+[Microsoft Graph SDK](README.md) / sleep
+
+Utility for pausing execution (sleep) in async workflows.
 
 ## Functions
 
@@ -6,7 +8,7 @@
 
 > **sleep**(`ms`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/services/sleep.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/sleep.ts#L6)
+Defined in: [src/services/sleep.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/sleep.ts#L12)
 
 Pauses execution for the specified number of milliseconds.
 
