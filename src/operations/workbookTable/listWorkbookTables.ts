@@ -10,7 +10,7 @@ import { createWorkbookTableRef } from "../../services/workbookTable.ts";
 /**
  * Retrieve a list of tables in a worksheet.
  *
- * @param worksheetRef - A reference to the worksheet, optionally including session information.
+ * @param worksheetRef Reference to the worksheet, optionally including session information.
  * @returns An array of tables, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-list-tables
  */

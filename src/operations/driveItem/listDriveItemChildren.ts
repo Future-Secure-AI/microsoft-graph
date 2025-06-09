@@ -1,3 +1,9 @@
+/**
+ * Retrieve the metadata for items in a drive or folder.
+ * @module listDriveItemChildren
+ * @category Operations
+ */
+
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { DriveItemId } from "../../models/DriveItemId.ts";
@@ -14,8 +20,7 @@ export type ListDriveItemResponse = {
 
 /**
  * Retrieve the metadata for items in a drive or folder.
- *
- * @param parentRef - A reference to the parent drive or folder. Defaults to the root drive.
+ * @param parentRef Reference to the parent drive or folder. Defaults to the root drive.
  * @param take - The maximum number of items to retrieve. Defaults to 1000.
  * @returns An array of drive items, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-list-children

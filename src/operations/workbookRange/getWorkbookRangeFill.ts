@@ -1,3 +1,9 @@
+/**
+ * Retrieve the fill format of a workbook range.
+ * @module getWorkbookRangeFill
+ * @category Operations
+ */
+
 // https://learn.microsoft.com/en-us/graph/api/rangefill-get
 
 import type { WorkbookRangeFill } from "@microsoft/microsoft-graph-types";
@@ -10,7 +16,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Retrieve the fill format of a workbook range.
  *
- * @param rangeRef - A reference to the range, optionally including session information.
+ * @param rangeRef Reference to the range, optionally including session information.
  * @returns The fill format of the specified range, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/rangefill-get
  */

@@ -1,3 +1,9 @@
+/**
+ * Update a range, including values and formatting. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values.
+ * @module updateWorkbookRange
+ * @category Operations
+ */
+
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -8,7 +14,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Update a range, including values and formatting. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values.
  *
- * @param rangeRef - A reference to the range to be updated, optionally including session information.
+ * @param rangeRef Reference to the range to be updated, optionally including session information.
  * @param update - The updated properties for the range.
  * @returns The updated range, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/range-update

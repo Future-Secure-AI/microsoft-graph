@@ -7,7 +7,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Auto-fit the columns in a range.
  *
- * @param rangeRef - A reference to the range, optionally including session information.
+ * @param rangeRef Reference to the range, optionally including session information.
  * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-autofitcolumns
  */

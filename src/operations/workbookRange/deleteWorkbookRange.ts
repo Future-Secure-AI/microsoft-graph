@@ -1,3 +1,9 @@
+/**
+ * Delete a range.
+ * @module deleteWorkbookRange
+ * @category Operations
+ */
+
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
@@ -7,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Delete a range.
  *
- * @param rangeRef - A reference to the range to be deleted, optionally including session information.
+ * @param rangeRef Reference to the range to be deleted, optionally including session information.
  * @param shift - The direction to shift existing cells after deletion. Can be "Up" or "Left".
  * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/range-clear

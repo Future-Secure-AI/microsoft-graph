@@ -1,3 +1,9 @@
+/**
+ * Retrieve a list of rows in a table.
+ * @module listWorkbookTableRows
+ * @category Operations
+ */
+
 import type { WorkbookTableRow } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -7,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Retrieve a list of rows in a table.
  *
- * @param tableRef - A reference to the table, optionally including session information.
+ * @param tableRef Reference to the table, optionally including session information.
  * @returns An array of rows in the specified table.
  * @see https://learn.microsoft.com/en-us/graph/api/tablerow-list
  */

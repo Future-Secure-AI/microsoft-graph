@@ -1,3 +1,9 @@
+/**
+ * Merge a range of cells in a worksheet.
+ * @module mergeWorkbookRange
+ * @category Operations
+ */
+
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";

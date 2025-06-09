@@ -15,7 +15,7 @@ import createWorkbookSession from "../operations/workbookSession/createWorkbookS
 /**
  * Create a new workbook and open a session for that workbook/
  *
- * @param parentRef - A reference to the drive or driveItem where the workbook will be created.
+ * @param parentRef Reference to the drive or driveItem where the workbook will be created.
  * @param itemPath - The path of the new workbook within the drive.
  * @returns The created workbook and session details.
  */

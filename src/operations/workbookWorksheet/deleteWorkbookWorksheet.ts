@@ -6,7 +6,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Permanently delete a worksheet.
  *
- * @param worksheetRef - A reference to the worksheet to be deleted, optionally including session information.
+ * @param worksheetRef Reference to the worksheet to be deleted, optionally including session information.
  * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete
  */

@@ -1,3 +1,9 @@
+/**
+ * Retrieve properties for a site resource.
+ * @module getSite
+ * @category Operations
+ */
+
 import type { Site } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -7,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Retrieve properties for a site resource.
  *
- * @param siteRef - A reference to the site.
+ * @param siteRef Reference to the site.
  * @returns The specified site, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/site-get
  */

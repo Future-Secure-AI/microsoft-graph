@@ -8,7 +8,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Fetch a range, including values and formatting.
  *
- * @param rangeRef - A reference to the range to be fetched, optionally including session information.
+ * @param rangeRef Reference to the range to be fetched, optionally including session information.
  * @returns The fetched range, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/range-get
  */

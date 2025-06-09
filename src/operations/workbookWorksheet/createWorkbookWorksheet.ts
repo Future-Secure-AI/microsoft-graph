@@ -11,7 +11,7 @@ import { createWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts"
 /**
  * Create a new worksheet in a workbook, optionally with a defined name.
  *
- * @param workbookRef - A reference to the workbook where the worksheet will be created, optionally including session information.
+ * @param workbookRef Reference to the workbook where the worksheet will be created, optionally including session information.
  * @param name - (Optional) The name of the new worksheet.
  * @returns The newly created worksheet, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheetcollection-add

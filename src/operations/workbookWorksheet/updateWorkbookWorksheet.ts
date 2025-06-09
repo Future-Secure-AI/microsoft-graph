@@ -7,7 +7,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Update the name, position, and/or visibility of a worksheet.
  *
- * @param worksheetRef - A reference to the worksheet to be updated, optionally including session information.
+ * @param worksheetRef Reference to the worksheet to be updated, optionally including session information.
  * @param updates - An object containing the properties to update:
  *   - `name` (optional): The new name for the worksheet.
  *   - `position` (optional): The new position of the worksheet in the workbook.

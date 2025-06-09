@@ -9,7 +9,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Delete a workbook table. All data in the table will be cleared.
  *
- * @param tableRef - A reference to the table, optionally including session information.
+ * @param tableRef Reference to the table, optionally including session information.
  * @see https://learn.microsoft.com/en-us/graph/api/table-delete
  */
 export default function deleteWorkbookTable(tableRef: WorkbookTableRef): GraphOperation<void> {

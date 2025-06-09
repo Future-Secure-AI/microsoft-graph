@@ -1,3 +1,9 @@
+/**
+ * Moves a file to a new location in the same drive.
+ * @module moveDriveItem
+ * @category Operations
+ */
+
 import { operation } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
@@ -6,11 +12,10 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Moves a file to a new location in the same drive.
- *
- * @param srcFileRef - A reference to the source file to be copied.
- * @param dstFolderRef - A reference to the destination folder or site (if targeting root).
- * @param dstFileName - The name of the copied file.
- * @returns new DriveItemRef.
+ * @param srcFileRef Reference to the source file to be copied.
+ * @param dstFolderRef Reference to the destination folder or site (if targeting root).
+ * @param dstFileName Name of the copied file.
+ * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-move
  */
 export default function moveDriveItem(srcFileRef: DriveItemRef, dstFolderRef: DriveRef | DriveItemRef, dstFileName: string): GraphOperation<void> {

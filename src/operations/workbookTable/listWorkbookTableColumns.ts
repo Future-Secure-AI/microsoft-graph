@@ -1,3 +1,9 @@
+/**
+ * Retrieve a list of columns in a table.
+ * @module listWorkbookTableColumns
+ * @category Operations
+ */
+
 import type { WorkbookTableColumn } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -7,7 +13,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Retrieve a list of columns in a table.
  *
- * @param tableRef - A reference to the table, optionally including session information.
+ * @param tableRef Reference to the table, optionally including session information.
  * @returns An array of columns in the specified table.
  * @see https://learn.microsoft.com/en-us/graph/api/tablecolumn-list
  */

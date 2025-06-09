@@ -6,7 +6,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Clear all filters from a workbook table.
  *
- * @param tableRef - A reference to the table, optionally including session information.
+ * @param tableRef Reference to the table, optionally including session information.
  * @see https://learn.microsoft.com/en-us/graph/api/table-clearfilters
  */
 export default function clearWorkbookTableColumnFilters(tableRef: WorkbookTableRef): GraphOperation<void> {

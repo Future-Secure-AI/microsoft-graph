@@ -1,3 +1,9 @@
+/**
+ * Creates new drive item in the specified parent drive or folder.
+ * @module createDriveItem
+ * @category Operations
+ */
+
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { DriveItemId } from "../../models/DriveItemId.ts";
@@ -9,11 +15,11 @@ import { createDriveItemRef } from "../../services/driveItem.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
- * Creates new drive item in the specified parent drive or folder. If the file already exists, it will be replaced.
- *
- * @param parentRef - A reference to the parent drive or folder where the workbook will be created.
- * @param itemPath - The path (including the filename) for the new workbook.
- * @returns The newly created workbook, including its metadata and reference information.
+ * Creates new drive item in the specified parent drive or folder.
+ * @param parentRef Reference to the parent drive or folder where the drive item will be created.
+ * @param itemPath Path (including the filename) for the new drive item.
+ * @returns The newly created drive item.
+ * @remarks If the file already exists, it will be replaced.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-put-content
  */
 export default function createDriveItem(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath, contextType: string, content: ArrayBuffer): GraphOperation<DriveItem & DriveItemRef> {

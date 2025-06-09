@@ -1,3 +1,9 @@
+/**
+ * Create a new blank workbook.
+ * @module createWorkbook
+ * @category Operations
+ */
+
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import { operation } from "../../graphApi.ts";
@@ -12,11 +18,10 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Create a new blank workbook.
- *
- * @param parentRef - A reference to the parent drive or folder where the workbook will be created.
- * @param itemPath - The path (including the filename) for the new workbook. Must end with `.xlsx`.
- * @returns The newly created workbook, including its metadata and reference information.
- * @throws InvalidArgumentError if the item path does not end with `.xlsx`.
+ * @param parentRef Reference to the parent drive or folder where the workbook will be created.
+ * @param itemPath Path (including the filename) for the new workbook. Must end with `.xlsx`.
+ * @returns Newly created workbook.
+ * @throws {@link InvalidArgumentError} if the item path does not end with `.xlsx`.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-put-content
  */
 export default function createWorkbook(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath): GraphOperation<DriveItem & WorkbookRef> {

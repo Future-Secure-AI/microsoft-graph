@@ -1,6 +1,6 @@
 /**
  * Pauses execution for the specified number of milliseconds.
- * @param ms - The number of milliseconds to sleep.
+ * @param ms - Number of milliseconds to sleep.
  * @returns A promise that resolves after the specified time.
  */
 export function sleep(ms: number): Promise<void> {

@@ -8,7 +8,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Update the fill format of a workbook range.
  *
- * @param rangeRef - A reference to the range to be formatted, optionally including session information.
+ * @param rangeRef Reference to the range to be formatted, optionally including session information.
  * @param format - The fill format properties to apply to the range.
  * @see https://learn.microsoft.com/en-us/graph/api/rangefill-update
  */

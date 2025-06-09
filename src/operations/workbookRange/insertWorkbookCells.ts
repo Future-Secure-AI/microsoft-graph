@@ -1,3 +1,9 @@
+/**
+ * Insert a new blank range at a specified address, shifting existing cells. Use `updateWorkbookRange` afterward to set content.
+ * @module insertWorkbookCells
+ * @category Operations
+ */
+
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import { operation } from "../../graphApi.ts";
@@ -12,7 +18,7 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 /**
  * Insert a new blank range at a specified address, shifting existing cells. Use `updateWorkbookRange` afterward to set content.
  *
- * @param worksheetRef - A reference to the worksheet where the range will be inserted, optionally including session information.
+ * @param worksheetRef Reference to the worksheet where the range will be inserted, optionally including session information.
  * @param address - The address where the new range will be inserted.
  * @param shift - The direction to shift existing cells. Can be "Down" or "Right".
  * @returns The newly inserted range, including its metadata and reference information.

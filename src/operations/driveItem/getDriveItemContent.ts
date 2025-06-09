@@ -7,7 +7,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Download the content of a drive item.
  *
- * @param itemRef - A reference to the drive item to be downloaded.
+ * @param itemRef Reference to the drive item to be downloaded.
  * @returns The content of the drive item as an ArrayBuffer.
  * @throws Error if the download fails.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-get-content

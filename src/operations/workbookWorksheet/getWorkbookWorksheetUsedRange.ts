@@ -11,7 +11,7 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 /**
  * Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank.
  *
- * @param worksheetRef - A reference to the worksheet, optionally including session information.
+ * @param worksheetRef Reference to the worksheet, optionally including session information.
  * @returns The used range of the worksheet, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */

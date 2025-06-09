@@ -10,7 +10,7 @@ import { createWorkbookTableRef } from "../../services/workbookTable.ts";
 /**
  * Create a new table in a worksheet.
  *
- * @param rangeRef - A reference to the range where the table will be created, optionally including session information.
+ * @param rangeRef Reference to the range where the table will be created, optionally including session information.
  * @param hasHeaders - A boolean indicating whether the table has headers.
  * @returns The newly created table, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-post-tables

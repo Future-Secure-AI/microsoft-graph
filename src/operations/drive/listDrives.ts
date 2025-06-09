@@ -1,3 +1,9 @@
+/**
+ * Retrieve the list of accessible Drives in a Site.
+ * @module listDrives
+ * @category Operations
+ */
+
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { DriveId } from "../../models/DriveId.ts";
@@ -9,8 +15,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve the list of accessible Drives in a Site.
- *
- * @param siteRef - A reference to the site.
+ * @param siteRef Reference to the site.
  * @returns An array of drives available for the specified site, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/drive-list
  */

@@ -7,7 +7,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Close an existing workbook session.
  *
- * @param workbookRef - A reference to the workbook, optionally including session information. The session ID is required.
+ * @param workbookRef Reference to the workbook, optionally including session information. The session ID is required.
  * @returns Nothing.
  * @throws InvalidArgumentError if the session ID is not provided.
  * @see https://learn.microsoft.com/en-us/graph/api/workbook-closesession

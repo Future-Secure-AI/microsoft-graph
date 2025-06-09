@@ -324,8 +324,8 @@ export function countAddressColumns(address: Address): number {
  * If rows/cols is positive, the cell is the start of the range; if negative, the cell is the end of the range.
  *
  * @param cell - The cell address to use as the anchor.
- * @param rows - The number of rows for the range. Positive: cell is start; Negative: cell is end.
- * @param cols - The number of columns for the range. Positive: cell is start; Negative: cell is end.
+ * @param rows - Number of rows for the range. Positive: cell is start; Negative: cell is end.
+ * @param cols - Number of columns for the range. Positive: cell is start; Negative: cell is end.
  * @returns The created address range.
  *
  * @throws {InvalidArgumentError} If the resulting address is out of bounds.

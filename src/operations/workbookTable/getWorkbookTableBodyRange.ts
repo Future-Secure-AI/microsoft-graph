@@ -11,7 +11,7 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 /**
  * Retrieve the data body range of a table.
  *
- * @param tableRef - A reference to the table, optionally including session information.
+ * @param tableRef Reference to the table, optionally including session information.
  * @returns The data body range of the specified table, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/table-databodyrange
  */

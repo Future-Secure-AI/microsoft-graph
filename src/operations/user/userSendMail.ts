@@ -1,3 +1,9 @@
+/**
+ * Send an email.
+ * @module userSendMail
+ * @category Operations
+ */
+
 import type { Message } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import { operation } from "../../graphApi.ts";
@@ -12,7 +18,7 @@ const emailPattern = /^[a-zA-Z0-9._\-@]+$/; // Basic, but intended just to avoid
 /**
  * Send an email.
  *
- * @param context - A reference to the context.
+ * @param context Reference to the context.
  * @param sender - The email address of the sender or NULL for the current user. Must match a valid email address in this tenant.
  * @param message - The email message to be sent.
  * @returns Nothing.

@@ -1,3 +1,9 @@
+/**
+ * Get a site by its name.
+ * @module getSiteByName
+ * @category Operations
+ */
+
 import type { Site } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { ContextRef } from "../../models/ContextRef.ts";
@@ -12,9 +18,9 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Get a site by its name.
  *
- * @param contextRef - A reference to the context.
+ * @param contextRef Reference to the context.
  * @param hostName - The host name of the site.
- * @param siteName - The name of the site.
+ * @param siteName - Name of the site.
  * @returns The specified site, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/site-getbypath
  */

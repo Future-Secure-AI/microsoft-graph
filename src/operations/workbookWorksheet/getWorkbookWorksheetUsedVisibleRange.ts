@@ -10,7 +10,7 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 /**
  * Retrieve the visible (not hidden) range in a worksheet.
  *
- * @param worksheetRef - A reference to the worksheet, optionally including session information.
+ * @param worksheetRef Reference to the worksheet, optionally including session information.
  * @returns The visible range of the worksheet, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */

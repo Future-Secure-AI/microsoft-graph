@@ -1,3 +1,9 @@
+/**
+ * List accessible sites.
+ * @module listSites
+ * @category Operations
+ */
+
 import type { Site } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { ContextRef } from "../../models/ContextRef.ts";
@@ -10,7 +16,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * List accessible sites.
  *
- * @param contextRef - A reference to the context.
+ * @param contextRef Reference to the context.
  * @returns An array of sites, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/site-list
  */

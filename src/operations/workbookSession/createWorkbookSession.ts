@@ -8,7 +8,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Create a new workbook session.
  *
- * @param itemRef - A reference to the workbook item, optionally including session information.
+ * @param itemRef Reference to the workbook item, optionally including session information.
  * @param persistChanges - A boolean indicating whether changes should persist across sessions. Defaults to true.
  * @returns A reference to the workbook, including the session ID.
  * @see https://learn.microsoft.com/en-us/graph/api/workbook-createsession

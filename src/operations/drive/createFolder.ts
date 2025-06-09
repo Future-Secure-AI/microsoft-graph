@@ -9,9 +9,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Create a folder in the root of a drive, or in a folder. If it already exists do nothing.
- *
- * @param parentRef - A reference to the parent drive or folder where the folder will be created.
- * @param folderName - The name of the folder to be created.
+ * @param parentRef Reference to the parent drive or folder where the folder will be created.
+ * @param folderName Name of the folder to be created.
  * @returns The newly created folder, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
  */

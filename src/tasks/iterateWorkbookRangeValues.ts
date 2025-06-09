@@ -17,7 +17,7 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 /**
  * Iterates over the values of a workbook range in chunks, fetching data in manageable sizes.
  *
- * @param rangeRef - A reference to the workbook range to iterate over.
+ * @param rangeRef Reference to the workbook range to iterate over.
  * @param overwriteRowsPerRequest - Optional. The number of rows to fetch per request. If omitted, it is automatically calculated.
  * @returns An async iterable that yields rows of range values.
  * @deprecated Use `readWorkbookRows` instead.

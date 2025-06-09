@@ -16,7 +16,7 @@ import { getFirstCellAddress, offsetAddress } from "../services/addressManipulat
 /**
  * Get the last used cell (i.e., the most lower-right cell) in a given range.
  *
- * @param rangeRef - A reference to the workbook range to search.
+ * @param rangeRef Reference to the workbook range to search.
  * @throws {@link ProtocolError} Server returns an unexpected value.
  * @returns The last used cell's value and address, or `null` if no cells are used.
  * @deprecated Use `getWorkbookWorksheetUsedRangeRef` and `subAddress` instead.

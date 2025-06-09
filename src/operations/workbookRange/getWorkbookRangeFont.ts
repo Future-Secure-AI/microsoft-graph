@@ -1,3 +1,9 @@
+/**
+ * Retrieve the font format of a workbook range.
+ * @module getWorkbookRangeFont
+ * @category Operations
+ */
+
 // https://learn.microsoft.com/en-us/graph/api/rangefont-get
 
 import type { WorkbookRangeFont } from "@microsoft/microsoft-graph-types";
@@ -10,7 +16,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Retrieve the font format of a workbook range.
  *
- * @param rangeRef - A reference to the range, optionally including session information.
+ * @param rangeRef Reference to the range, optionally including session information.
  * @returns The font format of the specified range, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/rangefont-get
  */

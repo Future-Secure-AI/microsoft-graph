@@ -7,7 +7,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Retrieve a range that has been defined using the "named range" functionality.
  *
- * @param rangeRef - A reference to the named range, optionally including session information.
+ * @param rangeRef Reference to the named range, optionally including session information.
  * @returns The specified named range, including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/range-get
  */

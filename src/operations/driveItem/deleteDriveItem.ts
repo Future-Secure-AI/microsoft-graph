@@ -1,3 +1,9 @@
+/**
+ * Delete an item from a drive.
+ * @module deleteDriveItem
+ * @category Operations
+ */
+
 import { operation } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -5,8 +11,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Delete an item from a drive.
- *
- * @param itemRef - A reference to the drive item to be deleted.
+ * @param itemRef Reference to the drive item to be deleted.
  * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-delete
  */

@@ -7,7 +7,7 @@ const argumentPattern = /\{([a-z-]+)\}/g;
 /**
  * Generates a HTTP path based on a template and arguments. Arguments are automatically escaped.
  * @param template - The path template, which must start with a slash.
- * @param args - A record of arguments to replace placeholders in the template.
+ * @param args Record of arguments to replace placeholders in the template.
  * @returns The generated Graph API path.
  * @throws BadTemplateError if the template is invalid or required arguments are missing.
  */

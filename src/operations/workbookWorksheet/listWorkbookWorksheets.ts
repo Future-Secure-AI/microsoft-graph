@@ -11,7 +11,7 @@ import { createWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts"
 /**
  * Retrieve a list of worksheets in a workbook.
  *
- * @param workbookRef - A reference to the workbook, optionally including session information.
+ * @param workbookRef Reference to the workbook, optionally including session information.
  * @returns An array of worksheets, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-list
  */

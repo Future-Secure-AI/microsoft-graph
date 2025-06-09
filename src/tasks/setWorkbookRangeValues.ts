@@ -13,7 +13,7 @@ import { countAddressColumns, countAddressRows } from "../services/addressManipu
 /**
  * Sets the values of a specified workbook range.
  *
- * @param {WorkbookRangeRef} rangeRef - A reference to the workbook range to update.
+ * @param {WorkbookRangeRef} rangeRef Reference to the workbook range to update.
  * @param {CellRangeValues} values - The values to set in the specified workbook range. Must match the range's dimensions.
  * @returns Nothing
  * @deprecated Use `writeWorkbookRows` instead.

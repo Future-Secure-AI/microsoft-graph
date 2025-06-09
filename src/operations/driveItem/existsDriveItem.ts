@@ -8,7 +8,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 /**
  * Check if a given drive item exists.
  *
- * @param driveRef - A reference to the drive item to be downloaded.
+ * @param driveRef Reference to the drive item to be downloaded.
  * @returns If the drive item exists.
  */
 export default async function existsDriveItem(driveRef: DriveRef, itemPath: DriveItemPath): Promise<boolean> {
