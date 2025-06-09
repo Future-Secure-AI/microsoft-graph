@@ -39,8 +39,8 @@ Converts a 2D array of cell values into range address in the upper left.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `values` | [`CellValue`](../CellValue.md#cellvalue)[][] | A 2D array representing cell values. |
-| `rowOffset?` | [`RowOffset`](../models/RowOffset.md#rowoffset) | The row offset to apply to the range address. |
-| `columnOffset?` | [`ColumnOffset`](../models/ColumnOffset.md#columnoffset) | The column offset to apply to the range address. |
+| `rowOffset?` | [`RowOffset`](../RowOffset.md#rowoffset) | The row offset to apply to the range address. |
+| `columnOffset?` | [`ColumnOffset`](../ColumnOffset.md#columnoffset) | The column offset to apply to the range address. |
 
 #### Returns
 
@@ -94,8 +94,8 @@ Converts a 2D array of cell values into a row address in the upper left.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `row` | [`CellValue`](../CellValue.md#cellvalue)[] | A single row of cell values. |
-| `rowOffset?` | [`RowOffset`](../models/RowOffset.md#rowoffset) | The row offset to apply to the address. |
-| `columnOffset?` | [`ColumnOffset`](../models/ColumnOffset.md#columnoffset) | The column offset to apply to the address. |
+| `rowOffset?` | [`RowOffset`](../RowOffset.md#rowoffset) | The row offset to apply to the address. |
+| `columnOffset?` | [`ColumnOffset`](../ColumnOffset.md#columnoffset) | The column offset to apply to the address. |
 
 #### Returns
 

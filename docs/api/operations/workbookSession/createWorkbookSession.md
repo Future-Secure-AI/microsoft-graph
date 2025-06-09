@@ -4,7 +4,7 @@
 
 ### createWorkbookSession()
 
-> **createWorkbookSession**(`itemRef`, `persistChanges`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<[`WorkbookRef`](../../models/WorkbookRef.md#workbookref)\>
+> **createWorkbookSession**(`itemRef`, `persistChanges`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<[`WorkbookRef`](../../models/WorkbookRef.md#workbookref)\>
 
 Defined in: [src/operations/workbookSession/createWorkbookSession.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/createWorkbookSession.ts#L17)
 
@@ -14,12 +14,12 @@ Create a new workbook session.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `itemRef` | [`DriveItemRef`](../../models/DriveItemRef.md#driveitemref) | `undefined` | A reference to the workbook item, optionally including session information. |
+| `itemRef` | [`DriveItemRef`](../../DriveItemRef.md#driveitemref) | `undefined` | A reference to the workbook item, optionally including session information. |
 | `persistChanges` | `boolean` | `true` | A boolean indicating whether changes should persist across sessions. Defaults to true. |
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<[`WorkbookRef`](../../models/WorkbookRef.md#workbookref)\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<[`WorkbookRef`](../../models/WorkbookRef.md#workbookref)\>
 
 A reference to the workbook, including the session ID.
 

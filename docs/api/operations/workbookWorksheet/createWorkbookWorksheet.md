@@ -4,7 +4,7 @@
 
 ### createWorkbookWorksheet()
 
-> **createWorkbookWorksheet**(`workbookRef`, `name?`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
+> **createWorkbookWorksheet**(`workbookRef`, `name?`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookWorksheet/createWorkbookWorksheet.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/createWorkbookWorksheet.ts#L19)
 
@@ -19,7 +19,7 @@ Create a new worksheet in a workbook, optionally with a defined name.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
 The newly created worksheet, including its metadata and reference information.
 

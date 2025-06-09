@@ -12,7 +12,7 @@ Defined in: [src/tasks/listDriveItems.ts:9](https://github.com/Future-Secure-AI/
 
 | Parameter | Type | Default value |
 | ------ | ------ | ------ |
-| `parentRef` | [`DriveRef`](../models/DriveRef.md#driveref) \| [`DriveItemRef`](../models/DriveItemRef.md#driveitemref) | `undefined` |
+| `parentRef` | [`DriveRef`](../DriveRef.md#driveref) \| [`DriveItemRef`](../DriveItemRef.md#driveitemref) | `undefined` |
 | `pageSize` | `number` | `1000` |
 
 #### Returns

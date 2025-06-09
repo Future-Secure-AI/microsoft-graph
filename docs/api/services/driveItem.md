@@ -4,7 +4,7 @@
 
 ### rootDriveItemPath
 
-> `const` **rootDriveItemPath**: [`DriveItemPath`](../models/DriveItemPath.md#driveitempath)
+> `const` **rootDriveItemPath**: [`DriveItemPath`](../DriveItemPath.md#driveitempath)
 
 Defined in: [src/services/driveItem.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L14)
 
@@ -20,7 +20,7 @@ Defined in: [src/services/driveItem.ts:12](https://github.com/Future-Secure-AI/m
 
 ### createDriveItemRef()
 
-> **createDriveItemRef**(`driveRef`, `itemId`): [`DriveItemRef`](../models/DriveItemRef.md#driveitemref)
+> **createDriveItemRef**(`driveRef`, `itemId`): [`DriveItemRef`](../DriveItemRef.md#driveitemref)
 
 Defined in: [src/services/driveItem.ts:65](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L65)
 
@@ -30,12 +30,12 @@ Creates a reference to a drive item.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveRef` | [`DriveRef`](../models/DriveRef.md#driveref) | The reference to the drive. |
-| `itemId` | `undefined` \| [`DriveItemId`](../models/DriveItemId.md#driveitemid) | The ID of the drive item. |
+| `driveRef` | [`DriveRef`](../DriveRef.md#driveref) | The reference to the drive. |
+| `itemId` | `undefined` \| [`DriveItemId`](../DriveItemId.md#driveitemid) | The ID of the drive item. |
 
 #### Returns
 
-[`DriveItemRef`](../models/DriveItemRef.md#driveitemref)
+[`DriveItemRef`](../DriveItemRef.md#driveitemref)
 
 A reference to the drive item.
 
@@ -47,7 +47,7 @@ ProtocolError if the item ID is missing.
 
 ### driveItemPath()
 
-> **driveItemPath**(...`segments`): [`DriveItemPath`](../models/DriveItemPath.md#driveitempath)
+> **driveItemPath**(...`segments`): [`DriveItemPath`](../DriveItemPath.md#driveitempath)
 
 Defined in: [src/services/driveItem.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L22)
 
@@ -61,7 +61,7 @@ Creates a drive item path from a given set of segments.
 
 #### Returns
 
-[`DriveItemPath`](../models/DriveItemPath.md#driveitempath)
+[`DriveItemPath`](../DriveItemPath.md#driveitempath)
 
 The constructed drive item path.
 
@@ -83,7 +83,7 @@ Splits a drive item path into its folder path and file name.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `filePath` | [`DriveItemPath`](../models/DriveItemPath.md#driveitempath) | The full path of the file. |
+| `filePath` | [`DriveItemPath`](../DriveItemPath.md#driveitempath) | The full path of the file. |
 
 #### Returns
 
@@ -97,4 +97,4 @@ An object containing the folder path and file name.
 
 ##### folderPath
 
-> **folderPath**: [`DriveItemPath`](../models/DriveItemPath.md#driveitempath)
+> **folderPath**: [`DriveItemPath`](../DriveItemPath.md#driveitempath)

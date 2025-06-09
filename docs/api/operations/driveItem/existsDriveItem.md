@@ -14,8 +14,8 @@ Check if a given drive item exists.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveRef` | [`DriveRef`](../../models/DriveRef.md#driveref) | A reference to the drive item to be downloaded. |
-| `itemPath` | [`DriveItemPath`](../../models/DriveItemPath.md#driveitempath) | - |
+| `driveRef` | [`DriveRef`](../../DriveRef.md#driveref) | A reference to the drive item to be downloaded. |
+| `itemPath` | [`DriveItemPath`](../../DriveItemPath.md#driveitempath) | - |
 
 #### Returns
 

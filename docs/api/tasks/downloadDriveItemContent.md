@@ -14,7 +14,7 @@ Download a DriveItem and save it as a local file.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `itemRef` | [`DriveItemRef`](../models/DriveItemRef.md#driveitemref) | A reference to the DriveItem to download. |
+| `itemRef` | [`DriveItemRef`](../DriveItemRef.md#driveitemref) | A reference to the DriveItem to download. |
 | `localFilePath` | `string` | The local file path where the content should be saved. |
 
 #### Returns

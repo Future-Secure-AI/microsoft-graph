@@ -4,7 +4,7 @@
 
 ### WorkbookRef
 
-> **WorkbookRef** = [`DriveItemRef`](DriveItemRef.md#driveitemref) & `object`
+> **WorkbookRef** = [`DriveItemRef`](../DriveItemRef.md#driveitemref) & `object`
 
 Defined in: [src/models/WorkbookRef.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookRef.ts#L4)
 

@@ -4,7 +4,7 @@
 
 ### deleteWorkbookTablePreservingValues()
 
-> **deleteWorkbookTablePreservingValues**(`tableRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **deleteWorkbookTablePreservingValues**(`tableRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookTable/deleteWorkbookTablePreservingValues.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/deleteWorkbookTablePreservingValues.ts#L12)
 
@@ -18,7 +18,7 @@ Converts the table into a normal range of cells. All data is preserved.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 #### See
 

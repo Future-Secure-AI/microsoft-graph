@@ -4,7 +4,7 @@
 
 ### generatePath()
 
-> **generatePath**(`template`, `args`): [`GraphPath`](../models/GraphOperation.md#graphpath)
+> **generatePath**(`template`, `args`): [`HttpPath`](../Http.md#httppath)
 
 Defined in: [src/services/templatedPaths.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/templatedPaths.ts#L14)
 
@@ -19,7 +19,7 @@ Generates a HTTP path based on a template and arguments. Arguments are automatic
 
 #### Returns
 
-[`GraphPath`](../models/GraphOperation.md#graphpath)
+[`HttpPath`](../Http.md#httppath)
 
 The generated Graph API path.
 

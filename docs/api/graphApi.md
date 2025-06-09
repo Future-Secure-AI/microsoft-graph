@@ -6,7 +6,7 @@
 
 > `const` **batchEndpoint**: `"https://graph.microsoft.com/v1.0/$batch"`
 
-Defined in: [src/graphApi.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L16)
+Defined in: [src/graphApi.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L17)
 
 ***
 
@@ -14,15 +14,15 @@ Defined in: [src/graphApi.ts:16](https://github.com/Future-Secure-AI/microsoft-g
 
 > `const` **endpoint**: `"https://graph.microsoft.com/v1.0"` = `"https://graph.microsoft.com/v1.0"`
 
-Defined in: [src/graphApi.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L15)
+Defined in: [src/graphApi.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L16)
 
 ## Functions
 
 ### operation()
 
-> **operation**\<`T`\>(`definition`): [`GraphOperation`](models/GraphOperation.md#graphoperation)\<`T`\>
+> **operation**\<`T`\>(`definition`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`T`\>
 
-Defined in: [src/graphApi.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L19)
+Defined in: [src/graphApi.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L20)
 
 Define a operation, which can either be `await`d to execute independently, or passed with other operations ot `parallel` or `sequential` to execute as part of a batch.
 
@@ -36,11 +36,11 @@ Define a operation, which can either be `await`d to execute independently, or pa
 
 | Parameter | Type |
 | ------ | ------ |
-| `definition` | [`GraphOperationDefinition`](models/GraphOperation.md#graphoperationdefinition)\<`T`\> |
+| `definition` | [`GraphOperationDefinition`](GraphOperation.md#graphoperationdefinition)\<`T`\> |
 
 #### Returns
 
-[`GraphOperation`](models/GraphOperation.md#graphoperation)\<`T`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`T`\>
 
 ***
 
@@ -48,7 +48,7 @@ Define a operation, which can either be `await`d to execute independently, or pa
 
 > **parallel**\<`T`\>(...`operations`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`OperationResponse`](models/OperationResponse.md#operationresponse)\<`T`\>\>
 
-Defined in: [src/graphApi.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L30)
+Defined in: [src/graphApi.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L31)
 
 Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time.
 
@@ -56,7 +56,7 @@ Execute a batch of GraphAPI operations in parallel. Provides the best performanc
 
 | Type Parameter |
 | ------ |
-| `T` *extends* [`GraphOperation`](models/GraphOperation.md#graphoperation)\<`unknown`\>[] |
+| `T` *extends* [`GraphOperation`](GraphOperation.md#graphoperation)\<`unknown`\>[] |
 
 #### Parameters
 
@@ -74,7 +74,7 @@ Execute a batch of GraphAPI operations in parallel. Provides the best performanc
 
 > **sequential**\<`T`\>(...`operations`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`OperationResponse`](models/OperationResponse.md#operationresponse)\<`T`\>\>
 
-Defined in: [src/graphApi.ts:37](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L37)
+Defined in: [src/graphApi.ts:38](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/graphApi.ts#L38)
 
 Execute a batch of GraphAPI operations sequentially.
 
@@ -82,7 +82,7 @@ Execute a batch of GraphAPI operations sequentially.
 
 | Type Parameter |
 | ------ |
-| `T` *extends* [`GraphOperation`](models/GraphOperation.md#graphoperation)\<`unknown`\>[] |
+| `T` *extends* [`GraphOperation`](GraphOperation.md#graphoperation)\<`unknown`\>[] |
 
 #### Parameters
 

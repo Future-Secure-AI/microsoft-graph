@@ -5,7 +5,8 @@ import NeverError from "./errors/NeverError.ts";
 import ProtocolError from "./errors/ProtocolError.ts";
 import RequestFailedError from "./errors/RequestFailedError.ts";
 import type { AccessToken } from "./models/AccessToken.ts";
-import type { GraphHeaders, GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
+import type { GraphOperation, GraphOperationDefinition } from "./models/GraphOperation.ts";
+import type { HttpHeaders } from "./models/Http.ts";
 import type { OperationResponse } from "./models/OperationResponse.ts";
 import { executeHttpRequest } from "./services/http.ts";
 import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isServiceUnavailable } from "./services/httpStatus.ts";
@@ -234,6 +235,6 @@ function createAuthorizationHeader(accessToken: AccessToken): string {
 	return `Bearer ${accessToken}`;
 }
 
-function headersToObject(obj: GraphHeaders): Record<string, string> {
+function headersToObject(obj: HttpHeaders): Record<string, string> {
 	return Object.fromEntries(Object.entries(obj).filter(([_, v]) => v !== undefined)) as Record<string, string>;
 }

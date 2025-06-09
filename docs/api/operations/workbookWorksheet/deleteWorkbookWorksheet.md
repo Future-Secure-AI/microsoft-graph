@@ -4,7 +4,7 @@
 
 ### deleteWorkbookWorksheet()
 
-> **deleteWorkbookWorksheet**(`worksheetRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **deleteWorkbookWorksheet**(`worksheetRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookWorksheet/deleteWorkbookWorksheet.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/deleteWorkbookWorksheet.ts#L13)
 
@@ -18,7 +18,7 @@ Permanently delete a worksheet.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

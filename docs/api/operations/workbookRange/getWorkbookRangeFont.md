@@ -4,7 +4,7 @@
 
 ### getWorkbookRangeFont()
 
-> **getWorkbookRangeFont**(`rangeRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookRangeFont` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookRangeFont**(`rangeRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookRangeFont` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookRange/getWorkbookRangeFont.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookRangeFont.ts#L17)
 
@@ -18,7 +18,7 @@ Retrieve the font format of a workbook range.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookRangeFont` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookRangeFont` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 The font format of the specified range, including its metadata and reference information.
 

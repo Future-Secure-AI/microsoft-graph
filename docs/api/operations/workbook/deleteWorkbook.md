@@ -4,7 +4,7 @@
 
 ### deleteWorkbook()
 
-> **deleteWorkbook**(`workbookRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **deleteWorkbook**(`workbookRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbook/deleteWorkbook.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/deleteWorkbook.ts#L12)
 
@@ -18,7 +18,7 @@ Delete a workbook.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

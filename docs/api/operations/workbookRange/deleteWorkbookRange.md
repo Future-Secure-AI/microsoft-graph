@@ -4,7 +4,7 @@
 
 ### deleteWorkbookRange()
 
-> **deleteWorkbookRange**(`rangeRef`, `shift`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **deleteWorkbookRange**(`rangeRef`, `shift`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookRange/deleteWorkbookRange.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/deleteWorkbookRange.ts#L15)
 
@@ -19,7 +19,7 @@ Delete a range.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

@@ -4,7 +4,7 @@
 
 ### getWorkbookTable()
 
-> **getWorkbookTable**(`tableRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookTable**(`tableRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookTable/getWorkbookTable.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/getWorkbookTable.ts#L14)
 
@@ -18,7 +18,7 @@ Retrieve a table by its ID.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 The specified table, including its metadata and reference information.
 

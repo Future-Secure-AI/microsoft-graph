@@ -4,7 +4,7 @@
 
 ### autoFitWorkbookRangeColumns()
 
-> **autoFitWorkbookRangeColumns**(`rangeRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **autoFitWorkbookRangeColumns**(`rangeRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookRange/autoFitWorkbookRangeColumns.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/autoFitWorkbookRangeColumns.ts#L14)
 
@@ -18,7 +18,7 @@ Auto-fit the columns in a range.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

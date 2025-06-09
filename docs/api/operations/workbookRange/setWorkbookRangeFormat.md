@@ -4,7 +4,7 @@
 
 ### setWorkbookRangeFormat()
 
-> **setWorkbookRangeFormat**(`rangeRef`, `format`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **setWorkbookRangeFormat**(`rangeRef`, `format`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookRange/setWorkbookRangeFormat.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/setWorkbookRangeFormat.ts#L18)
 
@@ -19,7 +19,7 @@ Update the general format of a workbook range.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 #### See
 

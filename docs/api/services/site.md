@@ -14,7 +14,7 @@ Creates a reference to a site.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `contextRef` | [`ContextRef`](../models/ContextRef.md#contextref) | The reference to the context. |
+| `contextRef` | [`ContextRef`](../ContextRef.md#contextref) | The reference to the context. |
 | `siteId` | `undefined` \| [`SiteId`](../models/SiteId.md#siteid) | The ID of the site. |
 
 #### Returns

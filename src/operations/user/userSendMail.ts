@@ -2,7 +2,8 @@ import type { Message } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import { operation } from "../../graphApi.ts";
 import type { Context } from "../../models/Context.ts";
-import type { GraphOperation, GraphPath } from "../../models/GraphOperation.ts";
+import type { GraphOperation } from "../../models/GraphOperation.ts";
+import type { HttpPath } from "../../models/Http.ts";
 
 // Overview of SendMail process: https://learn.microsoft.com/en-us/graph/outlook-things-to-know-about-send-mail
 
@@ -28,7 +29,7 @@ export default function userSendMail(context: Context, sender: string | null, me
 	return operation({
 		context,
 		method: "POST",
-		path: path as GraphPath,
+		path: path as HttpPath,
 		headers: {
 			"content-type": "application/json",
 		},

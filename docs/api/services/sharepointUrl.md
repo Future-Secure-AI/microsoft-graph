@@ -24,11 +24,11 @@ An object containing the host name, site name, and item ID.
 
 ##### hostName
 
-> **hostName**: [`HostName`](../models/HostName.md#hostname)
+> **hostName**: [`HostName`](../HostName.md#hostname)
 
 ##### itemId
 
-> **itemId**: [`DriveItemId`](../models/DriveItemId.md#driveitemid)
+> **itemId**: [`DriveItemId`](../DriveItemId.md#driveitemid)
 
 ##### siteName
 

@@ -4,7 +4,7 @@
 
 ### calculateWorkbook()
 
-> **calculateWorkbook**(`workbookRef`, `calculationType`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **calculateWorkbook**(`workbookRef`, `calculationType`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbook/calculateWorkbook.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/calculateWorkbook.ts#L14)
 
@@ -19,7 +19,7 @@ Recalculate a workbook.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 
@@ -31,7 +31,7 @@ https://learn.microsoft.com/en-us/graph/api/workbookapplication-calculate
 
 ### ~~recalculateWorkbook()~~
 
-> **recalculateWorkbook**(`workbookRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **recalculateWorkbook**(`workbookRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbook/calculateWorkbook.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/calculateWorkbook.ts#L35)
 
@@ -43,7 +43,7 @@ Defined in: [src/operations/workbook/calculateWorkbook.ts:35](https://github.com
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

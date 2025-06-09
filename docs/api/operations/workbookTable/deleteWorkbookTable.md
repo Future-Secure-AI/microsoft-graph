@@ -4,7 +4,7 @@
 
 ### deleteWorkbookTable()
 
-> **deleteWorkbookTable**(`tableRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **deleteWorkbookTable**(`tableRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookTable/deleteWorkbookTable.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/deleteWorkbookTable.ts#L15)
 
@@ -18,7 +18,7 @@ Delete a workbook table. All data in the table will be cleared.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 #### See
 

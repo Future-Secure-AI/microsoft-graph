@@ -14,7 +14,7 @@ Download the content of a drive item.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `itemRef` | [`DriveItemRef`](../../models/DriveItemRef.md#driveitemref) | A reference to the drive item to be downloaded. |
+| `itemRef` | [`DriveItemRef`](../../DriveItemRef.md#driveitemref) | A reference to the drive item to be downloaded. |
 
 #### Returns
 

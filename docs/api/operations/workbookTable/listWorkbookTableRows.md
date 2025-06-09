@@ -4,7 +4,7 @@
 
 ### listWorkbookTableRows()
 
-> **listWorkbookTableRows**(`tableRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTableRow`[]\>
+> **listWorkbookTableRows**(`tableRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTableRow`[]\>
 
 Defined in: [src/operations/workbookTable/listWorkbookTableRows.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/listWorkbookTableRows.ts#L14)
 
@@ -18,7 +18,7 @@ Retrieve a list of rows in a table.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTableRow`[]\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTableRow`[]\>
 
 An array of rows in the specified table.
 

@@ -4,7 +4,7 @@
 
 ### clearWorkbookRange()
 
-> **clearWorkbookRange**(`rangeRef`, `applyTo`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **clearWorkbookRange**(`rangeRef`, `applyTo`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookRange/clearWorkbookRange.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/clearWorkbookRange.ts#L15)
 
@@ -19,7 +19,7 @@ Clear a range - content, formatting, or both.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

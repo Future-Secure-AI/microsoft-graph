@@ -4,7 +4,7 @@
 
 ### applyWorkbookTableColumnFilter()
 
-> **applyWorkbookTableColumnFilter**(`columnRef`, `criteria`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **applyWorkbookTableColumnFilter**(`columnRef`, `criteria`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookTable/applyWorkbookTableColumnFilter.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/applyWorkbookTableColumnFilter.ts#L15)
 
@@ -19,7 +19,7 @@ Apply a filter to a workbook table column.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 #### Remarks
 

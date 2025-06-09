@@ -4,7 +4,7 @@
 
 ### columnAddressToOffset()
 
-> **columnAddressToOffset**(`column`): [`ColumnOffset`](../models/ColumnOffset.md#columnoffset)
+> **columnAddressToOffset**(`column`): [`ColumnOffset`](../ColumnOffset.md#columnoffset)
 
 Defined in: [src/services/addressOffset.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L10)
 
@@ -18,7 +18,7 @@ Converts a column address (e.g., "A") to a zero-based column offset.
 
 #### Returns
 
-[`ColumnOffset`](../models/ColumnOffset.md#columnoffset)
+[`ColumnOffset`](../ColumnOffset.md#columnoffset)
 
 The zero-based column offset.
 
@@ -36,7 +36,7 @@ Converts a zero-based column offset to a column address (e.g., "A").
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `offset` | [`ColumnOffset`](../models/ColumnOffset.md#columnoffset) | The zero-based column offset. |
+| `offset` | [`ColumnOffset`](../ColumnOffset.md#columnoffset) | The zero-based column offset. |
 
 #### Returns
 
@@ -56,7 +56,7 @@ Defined in: [src/services/addressOffset.ts:35](https://github.com/Future-Secure-
 
 | Parameter | Type |
 | ------ | ------ |
-| `offset` | [`ColumnOffset`](../models/ColumnOffset.md#columnoffset) |
+| `offset` | [`ColumnOffset`](../ColumnOffset.md#columnoffset) |
 
 #### Returns
 
@@ -78,7 +78,7 @@ Defined in: [src/services/addressOffset.ts:58](https://github.com/Future-Secure-
 
 | Parameter | Type |
 | ------ | ------ |
-| `offset` | [`RowOffset`](../models/RowOffset.md#rowoffset) |
+| `offset` | [`RowOffset`](../RowOffset.md#rowoffset) |
 
 #### Returns
 
@@ -92,7 +92,7 @@ Use rowOffsetToAddress instead.
 
 ### rowAddressToOffset()
 
-> **rowAddressToOffset**(`row`): [`RowOffset`](../models/RowOffset.md#rowoffset)
+> **rowAddressToOffset**(`row`): [`RowOffset`](../RowOffset.md#rowoffset)
 
 Defined in: [src/services/addressOffset.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressOffset.ts#L44)
 
@@ -106,7 +106,7 @@ Converts a row address (e.g., "1") to a zero-based row offset.
 
 #### Returns
 
-[`RowOffset`](../models/RowOffset.md#rowoffset)
+[`RowOffset`](../RowOffset.md#rowoffset)
 
 The zero-based row offset.
 
@@ -124,7 +124,7 @@ Converts a zero-based row offset to a row address (e.g., "1").
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `offset` | [`RowOffset`](../models/RowOffset.md#rowoffset) | The zero-based row offset. |
+| `offset` | [`RowOffset`](../RowOffset.md#rowoffset) | The zero-based row offset. |
 
 #### Returns
 

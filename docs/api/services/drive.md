@@ -4,7 +4,7 @@
 
 ### createClientSecretContextWithDriveRef()
 
-> **createClientSecretContextWithDriveRef**(`tenantId`, `clientId`, `clientSecret`, `siteId`, `driveId`): [`DriveRef`](../models/DriveRef.md#driveref)
+> **createClientSecretContextWithDriveRef**(`tenantId`, `clientId`, `clientSecret`, `siteId`, `driveId`): [`DriveRef`](../DriveRef.md#driveref)
 
 Defined in: [src/services/drive.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L31)
 
@@ -18,17 +18,17 @@ Creates a context with a reference to a drive.
 | `clientId` | [`AzureClientId`](../AzureApplicationCredentials.md#azureclientid) |
 | `clientSecret` | [`AzureClientSecret`](../AzureApplicationCredentials.md#azureclientsecret) |
 | `siteId` | [`SiteId`](../models/SiteId.md#siteid) |
-| `driveId` | [`DriveId`](../models/DriveId.md#driveid) |
+| `driveId` | [`DriveId`](../DriveId.md#driveid) |
 
 #### Returns
 
-[`DriveRef`](../models/DriveRef.md#driveref)
+[`DriveRef`](../DriveRef.md#driveref)
 
 ***
 
 ### createDriveRef()
 
-> **createDriveRef**(`siteRef`, `driveId`): [`DriveRef`](../models/DriveRef.md#driveref)
+> **createDriveRef**(`siteRef`, `driveId`): [`DriveRef`](../DriveRef.md#driveref)
 
 Defined in: [src/services/drive.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L18)
 
@@ -39,11 +39,11 @@ Creates a reference to a drive.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `siteRef` | [`SiteRef`](../models/SiteRef.md#siteref) | The reference to the site. |
-| `driveId` | `undefined` \| [`DriveId`](../models/DriveId.md#driveid) | The ID of the drive. |
+| `driveId` | `undefined` \| [`DriveId`](../DriveId.md#driveid) | The ID of the drive. |
 
 #### Returns
 
-[`DriveRef`](../models/DriveRef.md#driveref)
+[`DriveRef`](../DriveRef.md#driveref)
 
 A reference to the drive.
 
@@ -55,7 +55,7 @@ ProtocolError if the drive ID is missing.
 
 ### ~~getDefaultDriveRef()~~
 
-> **getDefaultDriveRef**(): [`DriveRef`](../models/DriveRef.md#driveref)
+> **getDefaultDriveRef**(): [`DriveRef`](../DriveRef.md#driveref)
 
 Defined in: [src/services/drive.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L44)
 
@@ -63,7 +63,7 @@ Retrieves the opinionated default drive reference. NOT RECOMMENDED FOR PRODUCTIO
 
 #### Returns
 
-[`DriveRef`](../models/DriveRef.md#driveref)
+[`DriveRef`](../DriveRef.md#driveref)
 
 A reference to the default drive.
 

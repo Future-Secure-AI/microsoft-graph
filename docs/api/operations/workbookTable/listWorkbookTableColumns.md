@@ -4,7 +4,7 @@
 
 ### listWorkbookTableColumns()
 
-> **listWorkbookTableColumns**(`tableRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTableColumn`[]\>
+> **listWorkbookTableColumns**(`tableRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTableColumn`[]\>
 
 Defined in: [src/operations/workbookTable/listWorkbookTableColumns.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/listWorkbookTableColumns.ts#L14)
 
@@ -18,7 +18,7 @@ Retrieve a list of columns in a table.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTableColumn`[]\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTableColumn`[]\>
 
 An array of columns in the specified table.
 

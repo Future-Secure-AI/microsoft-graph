@@ -4,7 +4,7 @@
 
 ### clearWorkbookTableColumnFilters()
 
-> **clearWorkbookTableColumnFilters**(`tableRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **clearWorkbookTableColumnFilters**(`tableRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookTable/clearWorkbookTableFilters.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/clearWorkbookTableFilters.ts#L12)
 
@@ -18,7 +18,7 @@ Clear all filters from a workbook table.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 #### See
 

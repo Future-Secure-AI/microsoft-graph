@@ -4,7 +4,7 @@
 
 ### generateTempFileName()
 
-> **generateTempFileName**(`extension`): [`DriveItemPath`](../models/DriveItemPath.md#driveitempath)
+> **generateTempFileName**(`extension`): [`DriveItemPath`](../DriveItemPath.md#driveitempath)
 
 Defined in: [src/services/temporaryFiles.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/temporaryFiles.ts#L9)
 
@@ -18,6 +18,6 @@ Generates a temporary file name with the specified extension.
 
 #### Returns
 
-[`DriveItemPath`](../models/DriveItemPath.md#driveitempath)
+[`DriveItemPath`](../DriveItemPath.md#driveitempath)
 
 A temporary file name.

@@ -12,4 +12,4 @@ Defined in: [src/models/WorkbookTableColumnRef.ts:4](https://github.com/Future-S
 
 ##### column
 
-> **column**: [`ColumnName`](ColumnName.md#columnname)
+> **column**: [`ColumnName`](../ColumnName.md#columnname)

@@ -4,7 +4,7 @@
 
 ### setWorkbookRangeFont()
 
-> **setWorkbookRangeFont**(`rangeRef`, `format`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **setWorkbookRangeFont**(`rangeRef`, `format`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookRange/setWorkbookRangeFont.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/setWorkbookRangeFont.ts#L15)
 
@@ -19,7 +19,7 @@ Update the font format of a workbook range.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 #### See
 

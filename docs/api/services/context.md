@@ -4,7 +4,7 @@
 
 ### createAccessTokenContext()
 
-> **createAccessTokenContext**(`accessToken`): [`ContextRef`](../models/ContextRef.md#contextref)
+> **createAccessTokenContext**(`accessToken`): [`ContextRef`](../ContextRef.md#contextref)
 
 Defined in: [src/services/context.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L24)
 
@@ -18,7 +18,7 @@ Create a context using a static access token.
 
 #### Returns
 
-[`ContextRef`](../models/ContextRef.md#contextref)
+[`ContextRef`](../ContextRef.md#contextref)
 
 #### Remarks
 
@@ -28,7 +28,7 @@ You must manually handle renewal of the access token with this approach.
 
 ### createClientSecretContext()
 
-> **createClientSecretContext**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`ContextRef`](../models/ContextRef.md#contextref)
+> **createClientSecretContext**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`ContextRef`](../ContextRef.md#contextref)
 
 Defined in: [src/services/context.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L12)
 
@@ -45,13 +45,13 @@ Create a context using the client secret credential.
 
 #### Returns
 
-[`ContextRef`](../models/ContextRef.md#contextref)
+[`ContextRef`](../ContextRef.md#contextref)
 
 ***
 
 ### createContext()
 
-> **createContext**(`accessTokenGenerator`): [`ContextRef`](../models/ContextRef.md#contextref)
+> **createContext**(`accessTokenGenerator`): [`ContextRef`](../ContextRef.md#contextref)
 
 Defined in: [src/services/context.ts:32](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L32)
 
@@ -65,13 +65,13 @@ Create a context using a given access token generator.
 
 #### Returns
 
-[`ContextRef`](../models/ContextRef.md#contextref)
+[`ContextRef`](../ContextRef.md#contextref)
 
 ***
 
 ### createDefaultClientSecretContext()
 
-> **createDefaultClientSecretContext**(): [`ContextRef`](../models/ContextRef.md#contextref)
+> **createDefaultClientSecretContext**(): [`ContextRef`](../ContextRef.md#contextref)
 
 Defined in: [src/services/context.ts:43](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L43)
 
@@ -79,19 +79,19 @@ Create a context using the client secret credential using environment variables 
 
 #### Returns
 
-[`ContextRef`](../models/ContextRef.md#contextref)
+[`ContextRef`](../ContextRef.md#contextref)
 
 ***
 
 ### ~~getDefaultContextRef()~~
 
-> **getDefaultContextRef**(): [`ContextRef`](../models/ContextRef.md#contextref)
+> **getDefaultContextRef**(): [`ContextRef`](../ContextRef.md#contextref)
 
 Defined in: [src/services/context.ts:54](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L54)
 
 #### Returns
 
-[`ContextRef`](../models/ContextRef.md#contextref)
+[`ContextRef`](../ContextRef.md#contextref)
 
 #### Deprecated
 
@@ -101,7 +101,7 @@ Use `createDefaultClientSecretContext()` instead.
 
 ### ~~register()~~
 
-> **register**(`tenantId`, `clientId`, `clientSecret`): [`ContextRef`](../models/ContextRef.md#contextref)
+> **register**(`tenantId`, `clientId`, `clientSecret`): [`ContextRef`](../ContextRef.md#contextref)
 
 Defined in: [src/services/context.ts:61](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L61)
 
@@ -115,7 +115,7 @@ Defined in: [src/services/context.ts:61](https://github.com/Future-Secure-AI/mic
 
 #### Returns
 
-[`ContextRef`](../models/ContextRef.md#contextref)
+[`ContextRef`](../ContextRef.md#contextref)
 
 #### Deprecated
 

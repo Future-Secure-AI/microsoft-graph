@@ -4,7 +4,7 @@
 
 ### getDriveItemByPath()
 
-> **getDriveItemByPath**(`driveRef`, `itemPath`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object`\>
+> **getDriveItemByPath**(`driveRef`, `itemPath`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object`\>
 
 Defined in: [src/operations/driveItem/getDriveItemByPath.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/getDriveItemByPath.ts#L19)
 
@@ -14,12 +14,12 @@ Retrieve the metadata for an item in a drive by file path.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveRef` | [`DriveRef`](../../models/DriveRef.md#driveref) | A reference to the drive containing the item. |
-| `itemPath` | [`DriveItemPath`](../../models/DriveItemPath.md#driveitempath) | The file path of the item within the drive. |
+| `driveRef` | [`DriveRef`](../../DriveRef.md#driveref) | A reference to the drive containing the item. |
+| `itemPath` | [`DriveItemPath`](../../DriveItemPath.md#driveitempath) | The file path of the item within the drive. |
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object`\>
 
 The metadata of the specified drive item, including its reference information.
 

@@ -4,7 +4,7 @@
 
 ### refreshWorkbookSession()
 
-> **refreshWorkbookSession**(`workbookRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **refreshWorkbookSession**(`workbookRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookSession/refreshWorkbookSession.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/refreshWorkbookSession.ts#L15)
 
@@ -18,7 +18,7 @@ Refresh a workbook session.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

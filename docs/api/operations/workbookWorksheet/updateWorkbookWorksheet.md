@@ -4,7 +4,7 @@
 
 ### updateWorkbookWorksheet()
 
-> **updateWorkbookWorksheet**(`worksheetRef`, `updates`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
+> **updateWorkbookWorksheet**(`worksheetRef`, `updates`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookWorksheet/updateWorkbookWorksheet.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/updateWorkbookWorksheet.ts#L18)
 
@@ -22,7 +22,7 @@ Update the name, position, and/or visibility of a worksheet.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
 The updated worksheet, including its reference information.
 

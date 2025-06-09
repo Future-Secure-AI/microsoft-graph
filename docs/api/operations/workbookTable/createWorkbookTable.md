@@ -4,7 +4,7 @@
 
 ### createWorkbookTable()
 
-> **createWorkbookTable**(`rangeRef`, `hasHeaders`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **createWorkbookTable**(`rangeRef`, `hasHeaders`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookTable/createWorkbookTable.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/createWorkbookTable.ts#L18)
 
@@ -19,7 +19,7 @@ Create a new table in a worksheet.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 The newly created table, including its metadata and reference information.
 

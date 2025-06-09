@@ -1,5 +1,5 @@
 import BadPathTemplateError from "../errors/BadPathTemplateError.ts";
-import type { GraphPath } from "../models/GraphOperation.ts";
+import type { HttpPath } from "../models/Http.ts";
 import { kebabToCamelCase } from "./stringCaseConversion.ts";
 
 const argumentPattern = /\{([a-z-]+)\}/g;
@@ -11,7 +11,7 @@ const argumentPattern = /\{([a-z-]+)\}/g;
  * @returns The generated Graph API path.
  * @throws BadTemplateError if the template is invalid or required arguments are missing.
  */
-export function generatePath(template: string, args: Record<string, unknown>): GraphPath {
+export function generatePath(template: string, args: Record<string, unknown>): HttpPath {
 	if (!template.startsWith("/")) {
 		throw new BadPathTemplateError(`Path template '${template}' must start with a slash.`);
 	}
@@ -29,5 +29,5 @@ export function generatePath(template: string, args: Record<string, unknown>): G
 			throw new BadPathTemplateError(`Path template references argument '${camelCaseKey}' which is of type ${typeof value}, but only strings and numbers are allowed.`);
 		}
 		return encodeURIComponent(value.toString());
-	}) as GraphPath;
+	}) as HttpPath;
 }

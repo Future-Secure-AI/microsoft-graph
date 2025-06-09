@@ -78,6 +78,19 @@ await deleteDriveItem(folder);
 | [Cell](Cell.md) | A cell in a workbook. |
 | [CellText](CellText.md) | Text content of a cell in a worksheet. |
 | [CellValue](CellValue.md) | CellValue represents the value of a cell in a spreadsheet. |
+| [ColumnName](ColumnName.md) | Name of a column, as configured by the user. |
+| [ColumnOffset](ColumnOffset.md) | Zero-based index representing the position of a column in a range. |
+| [Context](Context.md) | Context of requests. |
+| [ContextRef](ContextRef.md) | Reference to a context |
+| [DriveId](DriveId.md) | Identifier for a drive. |
+| [DriveItemId](DriveItemId.md) | Identifier for an item in a drive. |
+| [DriveItemPath](DriveItemPath.md) | Path of an item in a drive. |
+| [DriveItemRef](DriveItemRef.md) | Reference to an item in a drive. |
+| [DriveRef](DriveRef.md) | Reference to a drive. |
+| [GraphOperation](GraphOperation.md) | An atomic operation to be performed against the Microsoft Graph API. |
+| [HostName](HostName.md) | Name of a remote host, resolvable by DNS. |
+| [Http](Http.md) | HTTP models for handling HTTP requests and responses. |
+| [RowOffset](RowOffset.md) | Zero-based index representing the position of a row in a range. |
 
 ## Other
 
@@ -85,24 +98,11 @@ await deleteDriveItem(folder);
 | ------ | ------ |
 | [graphApi](graphApi.md) | - |
 | [index](index.md) | - |
-| [models/ColumnName](models/ColumnName.md) | - |
-| [models/ColumnOffset](models/ColumnOffset.md) | - |
-| [models/Context](models/Context.md) | - |
-| [models/ContextRef](models/ContextRef.md) | - |
 | [models/DataSource](models/DataSource.md) | - |
 | [models/DataSourceDecoder](models/DataSourceDecoder.md) | - |
 | [models/DataSourceEncoder](models/DataSourceEncoder.md) | - |
 | [models/DataSourceIndex](models/DataSourceIndex.md) | - |
 | [models/DataSourceRow](models/DataSourceRow.md) | - |
-| [models/DriveId](models/DriveId.md) | - |
-| [models/DriveItemId](models/DriveItemId.md) | - |
-| [models/DriveItemPath](models/DriveItemPath.md) | - |
-| [models/DriveItemRef](models/DriveItemRef.md) | - |
-| [models/DriveRef](models/DriveRef.md) | - |
-| [models/GraphOperation](models/GraphOperation.md) | - |
-| [models/GraphOperationDefinition](models/GraphOperationDefinition.md) | - |
-| [models/HostName](models/HostName.md) | - |
-| [models/HttpProxy](models/HttpProxy.md) | - |
 | [models/Item](models/Item.md) | - |
 | [models/NumberFormat](models/NumberFormat.md) | - |
 | [models/OperationResponse](models/OperationResponse.md) | - |
@@ -110,7 +110,6 @@ await deleteDriveItem(folder);
 | [models/RecordBase](models/RecordBase.md) | - |
 | [models/Row](models/Row.md) | - |
 | [models/RowNumber](models/RowNumber.md) | - |
-| [models/RowOffset](models/RowOffset.md) | - |
 | [models/SiteId](models/SiteId.md) | - |
 | [models/SiteName](models/SiteName.md) | - |
 | [models/SiteRef](models/SiteRef.md) | - |

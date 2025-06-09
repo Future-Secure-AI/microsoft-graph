@@ -4,7 +4,7 @@
 
 ### listWorkbookTables()
 
-> **listWorkbookTables**(`worksheetRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object`[]\>
+> **listWorkbookTables**(`worksheetRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object`[]\>
 
 Defined in: [src/operations/workbookTable/listWorkbookTables.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/listWorkbookTables.ts#L17)
 
@@ -18,7 +18,7 @@ Retrieve a list of tables in a worksheet.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object`[]\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object`[]\>
 
 An array of tables, each including its metadata and reference information.
 

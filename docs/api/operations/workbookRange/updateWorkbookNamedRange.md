@@ -4,7 +4,7 @@
 
 ### updateWorkbookNamedRange()
 
-> **updateWorkbookNamedRange**(`rangeRef`, `value`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **updateWorkbookNamedRange**(`rangeRef`, `value`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookRange/updateWorkbookNamedRange.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/updateWorkbookNamedRange.ts#L15)
 
@@ -19,7 +19,7 @@ Update a range that has been defined using the "named range" functionality. Prop
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

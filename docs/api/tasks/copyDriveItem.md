@@ -14,9 +14,9 @@ Copy a drive item, blocking and polling for completion.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `srcFileRef` | [`DriveItemRef`](../models/DriveItemRef.md#driveitemref) | `undefined` | A reference to the source file to be copied. |
-| `dstDriveRef` | [`DriveRef`](../models/DriveRef.md#driveref) | `undefined` | - |
-| `dstFilePath` | [`DriveItemPath`](../models/DriveItemPath.md#driveitempath) | `undefined` | Destination file path |
+| `srcFileRef` | [`DriveItemRef`](../DriveItemRef.md#driveitemref) | `undefined` | A reference to the source file to be copied. |
+| `dstDriveRef` | [`DriveRef`](../DriveRef.md#driveref) | `undefined` | - |
+| `dstFilePath` | [`DriveItemPath`](../DriveItemPath.md#driveitempath) | `undefined` | Destination file path |
 | `timeoutMs` | `number` | `16000` | Timeout in milliseconds for the copy operation. |
 
 #### Returns

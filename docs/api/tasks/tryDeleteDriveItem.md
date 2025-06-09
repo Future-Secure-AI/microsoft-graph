@@ -14,7 +14,7 @@ Attempts to delete a DriveItem, returning a boolean indicating success or failur
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveItemRef` | [`DriveItemRef`](../models/DriveItemRef.md#driveitemref) | A reference to the DriveItem to delete. |
+| `driveItemRef` | [`DriveItemRef`](../DriveItemRef.md#driveitemref) | A reference to the DriveItem to delete. |
 
 #### Returns
 

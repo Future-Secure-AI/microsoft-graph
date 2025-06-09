@@ -4,7 +4,7 @@
 
 ### closeWorkbookSession()
 
-> **closeWorkbookSession**(`workbookRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **closeWorkbookSession**(`workbookRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookSession/closeWorkbookSession.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/closeWorkbookSession.ts#L15)
 
@@ -18,7 +18,7 @@ Close an existing workbook session.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

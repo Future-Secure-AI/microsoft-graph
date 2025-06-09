@@ -14,8 +14,8 @@ Create a new workbook and open a session for that workbook in a single operation
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `parentRef` | [`DriveRef`](../models/DriveRef.md#driveref) \| [`DriveItemRef`](../models/DriveItemRef.md#driveitemref) | A reference to the drive or driveItem where the workbook will be created. |
-| `itemPath` | [`DriveItemPath`](../models/DriveItemPath.md#driveitempath) | The path of the new workbook within the drive. |
+| `parentRef` | [`DriveRef`](../DriveRef.md#driveref) \| [`DriveItemRef`](../DriveItemRef.md#driveitemref) | A reference to the drive or driveItem where the workbook will be created. |
+| `itemPath` | [`DriveItemPath`](../DriveItemPath.md#driveitempath) | The path of the new workbook within the drive. |
 
 #### Returns
 

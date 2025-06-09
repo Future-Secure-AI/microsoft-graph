@@ -1,4 +1,4 @@
-import type { Cell } from "./Cell.ts";
-import type { ColumnName } from "./ColumnName.ts";
+// import type { Cell } from "./Cell.ts";
+// import type { ColumnName } from "./ColumnName.ts";
 
-export type DataSourceRow = Record<ColumnName, Cell>;
+// export type DataSourceRow = Record<ColumnName, Cell>;

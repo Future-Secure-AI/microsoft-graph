@@ -15,7 +15,7 @@ Creates a reference to a workbook table column.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `tableRef` | [`WorkbookTableRef`](../models/WorkbookTableRef.md#workbooktableref) | The reference to the worksheet containing the table. |
-| `column` | `undefined` \| `string` \| [`ColumnName`](../models/ColumnName.md#columnname) | Name of the table column |
+| `column` | `undefined` \| `string` \| [`ColumnName`](../ColumnName.md#columnname) | Name of the table column |
 
 #### Returns
 

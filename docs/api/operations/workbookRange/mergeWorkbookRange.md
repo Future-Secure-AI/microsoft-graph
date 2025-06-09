@@ -4,7 +4,7 @@
 
 ### mergeWorkbookRange()
 
-> **mergeWorkbookRange**(`rangeRef`, `across`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **mergeWorkbookRange**(`rangeRef`, `across`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookRange/mergeWorkbookRange.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/mergeWorkbookRange.ts#L15)
 
@@ -19,7 +19,7 @@ Merge a range of cells in a worksheet.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 The merged range, including its metadata and reference information.
 

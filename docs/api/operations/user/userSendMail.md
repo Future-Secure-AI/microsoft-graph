@@ -4,9 +4,9 @@
 
 ### userSendMail()
 
-> **userSendMail**(`context`, `sender`, `message`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **userSendMail**(`context`, `sender`, `message`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/user/userSendMail.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/user/userSendMail.ts#L21)
+Defined in: [src/operations/user/userSendMail.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/user/userSendMail.ts#L22)
 
 Send an email.
 
@@ -14,13 +14,13 @@ Send an email.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `context` | [`Context`](../../models/Context.md#context) | A reference to the context. |
+| `context` | [`Context`](../../Context.md#context) | A reference to the context. |
 | `sender` | `null` \| `string` | The email address of the sender or NULL for the current user. Must match a valid email address in this tenant. |
 | `message` | `Message` | The email message to be sent. |
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Nothing.
 

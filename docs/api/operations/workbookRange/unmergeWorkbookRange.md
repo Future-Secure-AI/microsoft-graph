@@ -4,7 +4,7 @@
 
 ### unmergeWorkbookRange()
 
-> **unmergeWorkbookRange**(`rangeRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+> **unmergeWorkbookRange**(`rangeRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 Defined in: [src/operations/workbookRange/unmergeWorkbookRange.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/unmergeWorkbookRange.ts#L14)
 
@@ -18,7 +18,7 @@ Unmerge a merged range of cells in a worksheet.
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`void`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`void`\>
 
 A void GraphOperation indicating completion.
 

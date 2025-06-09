@@ -4,7 +4,7 @@
 
 ### listSites()
 
-> **listSites**(`contextRef`): [`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)[]\>
+> **listSites**(`contextRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)[]\>
 
 Defined in: [src/operations/site/listSites.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/listSites.ts#L17)
 
@@ -14,11 +14,11 @@ List accessible sites.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `contextRef` | [`ContextRef`](../../models/ContextRef.md#contextref) | A reference to the context. |
+| `contextRef` | [`ContextRef`](../../ContextRef.md#contextref) | A reference to the context. |
 
 #### Returns
 
-[`GraphOperation`](../../models/GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)[]\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)[]\>
 
 An array of sites, each including its metadata and reference information.
 
