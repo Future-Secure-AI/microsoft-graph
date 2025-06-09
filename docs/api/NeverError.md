@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/NotFoundError
+[Microsoft Graph SDK](README.md) / NeverError
+
+Error thrown when a theoretically impossible state is encountered. This is akin to a panic.
 
 ## Classes
 
-### NotFoundError
+### NeverError
 
-Defined in: [src/errors/NotFoundError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotFoundError.ts#L1)
+Defined in: [src/errors/NeverError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NeverError.ts#L6)
 
 #### Extends
 
@@ -14,19 +16,19 @@ Defined in: [src/errors/NotFoundError.ts:1](https://github.com/Future-Secure-AI/
 
 ##### Constructor
 
-> **new NotFoundError**(`message`): [`NotFoundError`](#notfounderror)
+> **new NeverError**(`message?`): [`NeverError`](#nevererror)
 
-Defined in: [src/errors/NotFoundError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotFoundError.ts#L2)
+Defined in: [src/errors/NeverError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NeverError.ts#L7)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `message` | `string` |
+| `message?` | `string` |
 
 ###### Returns
 
-[`NotFoundError`](#notfounderror)
+[`NeverError`](#nevererror)
 
 ###### Overrides
 

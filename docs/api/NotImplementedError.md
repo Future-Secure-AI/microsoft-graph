@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/InvalidOperationError
+[Microsoft Graph SDK](README.md) / NotImplementedError
+
+Error thrown when a requested feature or functionality is not yet implemented.
 
 ## Classes
 
-### InvalidOperationError
+### NotImplementedError
 
-Defined in: [src/errors/InvalidOperationError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidOperationError.ts#L1)
+Defined in: [src/errors/NotImplementedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotImplementedError.ts#L6)
 
 #### Extends
 
@@ -14,9 +16,9 @@ Defined in: [src/errors/InvalidOperationError.ts:1](https://github.com/Future-Se
 
 ##### Constructor
 
-> **new InvalidOperationError**(`message?`): [`InvalidOperationError`](#invalidoperationerror)
+> **new NotImplementedError**(`message?`): [`NotImplementedError`](#notimplementederror)
 
-Defined in: [src/errors/InvalidOperationError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidOperationError.ts#L2)
+Defined in: [src/errors/NotImplementedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotImplementedError.ts#L7)
 
 ###### Parameters
 
@@ -26,7 +28,7 @@ Defined in: [src/errors/InvalidOperationError.ts:2](https://github.com/Future-Se
 
 ###### Returns
 
-[`InvalidOperationError`](#invalidoperationerror)
+[`NotImplementedError`](#notimplementederror)
 
 ###### Overrides
 

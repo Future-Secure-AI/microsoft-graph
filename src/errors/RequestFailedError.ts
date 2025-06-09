@@ -1,3 +1,8 @@
+/**
+ * Error thrown when a request to the server fails.
+ * @module RequestFailedError
+ * @category Errors
+ */
 export default class RequestFailedError extends Error {
 	public constructor(message: string) {
 		super(message);

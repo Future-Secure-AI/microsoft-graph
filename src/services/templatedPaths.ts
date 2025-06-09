@@ -1,4 +1,4 @@
-import BadPathTemplateError from "../errors/BadTemplateError.ts";
+import BadPathTemplateError from "../errors/BadPathTemplateError.ts";
 import type { GraphPath } from "../models/GraphOperation.ts";
 import { kebabToCamelCase } from "./stringCaseConversion.ts";
 

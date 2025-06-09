@@ -1,5 +1,5 @@
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
-import TimeoutError from "../errors/TimeoutError.ts";
+import RequestTimeoutError from "../errors/RequestTimeoutError.ts";
 import type { DriveItemPath } from "../models/DriveItemPath.ts";
 import type { DriveItemRef } from "../models/DriveItemRef.ts";
 import type { DriveRef } from "../models/DriveRef.ts";
@@ -31,7 +31,7 @@ export default async function copyDriveItem(srcFileRef: DriveItemRef, dstDriveRe
 		} catch (_) {
 			const elapsedTime = Date.now() - start;
 			if (elapsedTime + delay > timeoutMs) {
-				throw new TimeoutError(`Timeout while copying ${srcFileRef.itemId} to ${dstFilePath}`);
+				throw new RequestTimeoutError(`Timeout while copying ${srcFileRef.itemId} to ${dstFilePath}`);
 			}
 			await sleep(delay);
 			delay = Math.min(delay * 2, timeoutMs - (Date.now() - start)); // Double the delay but don't exceed remaining time

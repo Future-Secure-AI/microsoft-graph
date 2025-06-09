@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/NeverError
+[Microsoft Graph SDK](README.md) / InvalidArgumentError
+
+Error thrown when a function is called with one or more invalid arguments.
 
 ## Classes
 
-### NeverError
+### InvalidArgumentError
 
-Defined in: [src/errors/NeverError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NeverError.ts#L1)
+Defined in: [src/errors/InvalidArgumentError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L6)
 
 #### Extends
 
@@ -14,19 +16,19 @@ Defined in: [src/errors/NeverError.ts:1](https://github.com/Future-Secure-AI/mic
 
 ##### Constructor
 
-> **new NeverError**(`message?`): [`NeverError`](#nevererror)
+> **new InvalidArgumentError**(`message`): [`InvalidArgumentError`](#invalidargumenterror)
 
-Defined in: [src/errors/NeverError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NeverError.ts#L2)
+Defined in: [src/errors/InvalidArgumentError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L7)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `message?` | `string` |
+| `message` | `string` |
 
 ###### Returns
 
-[`NeverError`](#nevererror)
+[`InvalidArgumentError`](#invalidargumenterror)
 
 ###### Overrides
 
@@ -185,3 +187,57 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 ###### Inherited from
 
 `Error.prepareStackTrace`
+
+##### throwIfFalsy()
+
+> `static` **throwIfFalsy**(`value`, `message`): `void`
+
+Defined in: [src/errors/InvalidArgumentError.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L24)
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `unknown` |
+| `message` | `string` |
+
+###### Returns
+
+`void`
+
+##### throwIfGreater()
+
+> `static` **throwIfGreater**(`value`, `max`, `message`): `void`
+
+Defined in: [src/errors/InvalidArgumentError.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L18)
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
+| `max` | `number` |
+| `message` | `string` |
+
+###### Returns
+
+`void`
+
+##### throwIfOutside()
+
+> `static` **throwIfOutside**(`value`, `min`, `max`, `message`): `void`
+
+Defined in: [src/errors/InvalidArgumentError.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L12)
+
+###### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `value` | `number` |
+| `min` | `number` |
+| `max` | `number` |
+| `message` | `string` |
+
+###### Returns
+
+`void`

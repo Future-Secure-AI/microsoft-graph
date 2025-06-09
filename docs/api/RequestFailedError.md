@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/ProtocolError
+[Microsoft Graph SDK](README.md) / RequestFailedError
+
+Error thrown when a request to the server fails.
 
 ## Classes
 
-### ProtocolError
+### RequestFailedError
 
-Defined in: [src/errors/ProtocolError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ProtocolError.ts#L1)
+Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
 
 #### Extends
 
@@ -14,9 +16,9 @@ Defined in: [src/errors/ProtocolError.ts:1](https://github.com/Future-Secure-AI/
 
 ##### Constructor
 
-> **new ProtocolError**(`message`): [`ProtocolError`](#protocolerror)
+> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
 
-Defined in: [src/errors/ProtocolError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ProtocolError.ts#L2)
+Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
 
 ###### Parameters
 
@@ -26,7 +28,7 @@ Defined in: [src/errors/ProtocolError.ts:2](https://github.com/Future-Secure-AI/
 
 ###### Returns
 
-[`ProtocolError`](#protocolerror)
+[`RequestFailedError`](#requestfailederror)
 
 ###### Overrides
 
@@ -186,19 +188,20 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 `Error.prepareStackTrace`
 
-##### throwIfFalsy()
+##### throw()
 
-> `static` **throwIfFalsy**(`value`, `message`): `void`
+> `static` **throw**(`message`, `request`, `response?`): `never`
 
-Defined in: [src/errors/ProtocolError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ProtocolError.ts#L7)
+Defined in: [src/errors/RequestFailedError.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L12)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `value` | `unknown` |
 | `message` | `string` |
+| `request` | `unknown` |
+| `response?` | `unknown` |
 
 ###### Returns
 
-`void`
+`never`

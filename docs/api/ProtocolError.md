@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/RequestFailedError
+[Microsoft Graph SDK](README.md) / ProtocolError
+
+Error thrown when a response from the server does not conform to the expected protocol.
 
 ## Classes
 
-### RequestFailedError
+### ProtocolError
 
-Defined in: [src/errors/RequestFailedError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L1)
+Defined in: [src/errors/ProtocolError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ProtocolError.ts#L6)
 
 #### Extends
 
@@ -14,9 +16,9 @@ Defined in: [src/errors/RequestFailedError.ts:1](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new ProtocolError**(`message`): [`ProtocolError`](#protocolerror)
 
-Defined in: [src/errors/RequestFailedError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L2)
+Defined in: [src/errors/ProtocolError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ProtocolError.ts#L7)
 
 ###### Parameters
 
@@ -26,7 +28,7 @@ Defined in: [src/errors/RequestFailedError.ts:2](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`ProtocolError`](#protocolerror)
 
 ###### Overrides
 
@@ -185,21 +187,3 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 ###### Inherited from
 
 `Error.prepareStackTrace`
-
-##### throw()
-
-> `static` **throw**(`message`, `request`, `response?`): `never`
-
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
-
-###### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `message` | `string` |
-| `request` | `unknown` |
-| `response?` | `unknown` |
-
-###### Returns
-
-`never`

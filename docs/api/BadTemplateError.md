@@ -1,12 +1,12 @@
 [Microsoft Graph SDK](README.md) / BadTemplateError
 
-Error thrown when a template did not match the expected format.
+Error thrown when path template did not match the expected format.
 
 ## Classes
 
-### BadTemplateError
+### BadPathTemplateError
 
-Defined in: [src/errors/BadTemplateError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/BadTemplateError.ts#L6)
+Defined in: src/errors/BadPathTemplateError.ts:6
 
 #### Extends
 
@@ -16,9 +16,9 @@ Defined in: [src/errors/BadTemplateError.ts:6](https://github.com/Future-Secure-
 
 ##### Constructor
 
-> **new BadTemplateError**(`message`): [`BadTemplateError`](#badtemplateerror)
+> **new BadPathTemplateError**(`message`): [`BadPathTemplateError`](#badpathtemplateerror)
 
-Defined in: [src/errors/BadTemplateError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/BadTemplateError.ts#L7)
+Defined in: src/errors/BadPathTemplateError.ts:7
 
 ###### Parameters
 
@@ -28,7 +28,7 @@ Defined in: [src/errors/BadTemplateError.ts:7](https://github.com/Future-Secure-
 
 ###### Returns
 
-[`BadTemplateError`](#badtemplateerror)
+[`BadPathTemplateError`](#badpathtemplateerror)
 
 ###### Overrides
 

@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/InvalidArgumentError
+[Microsoft Graph SDK](README.md) / InvalidOperationError
+
+Error thrown when a function is called when the system is in an unexpected state.
 
 ## Classes
 
-### InvalidArgumentError
+### InvalidOperationError
 
-Defined in: [src/errors/InvalidArgumentError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L1)
+Defined in: [src/errors/InvalidOperationError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidOperationError.ts#L6)
 
 #### Extends
 
@@ -14,19 +16,19 @@ Defined in: [src/errors/InvalidArgumentError.ts:1](https://github.com/Future-Sec
 
 ##### Constructor
 
-> **new InvalidArgumentError**(`message`): [`InvalidArgumentError`](#invalidargumenterror)
+> **new InvalidOperationError**(`message?`): [`InvalidOperationError`](#invalidoperationerror)
 
-Defined in: [src/errors/InvalidArgumentError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L2)
+Defined in: [src/errors/InvalidOperationError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidOperationError.ts#L7)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `message` | `string` |
+| `message?` | `string` |
 
 ###### Returns
 
-[`InvalidArgumentError`](#invalidargumenterror)
+[`InvalidOperationError`](#invalidoperationerror)
 
 ###### Overrides
 
@@ -185,57 +187,3 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 ###### Inherited from
 
 `Error.prepareStackTrace`
-
-##### throwIfFalsy()
-
-> `static` **throwIfFalsy**(`value`, `message`): `void`
-
-Defined in: [src/errors/InvalidArgumentError.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L19)
-
-###### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `value` | `unknown` |
-| `message` | `string` |
-
-###### Returns
-
-`void`
-
-##### throwIfGreater()
-
-> `static` **throwIfGreater**(`value`, `max`, `message`): `void`
-
-Defined in: [src/errors/InvalidArgumentError.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L13)
-
-###### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `value` | `number` |
-| `max` | `number` |
-| `message` | `string` |
-
-###### Returns
-
-`void`
-
-##### throwIfOutside()
-
-> `static` **throwIfOutside**(`value`, `min`, `max`, `message`): `void`
-
-Defined in: [src/errors/InvalidArgumentError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InvalidArgumentError.ts#L7)
-
-###### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `value` | `number` |
-| `min` | `number` |
-| `max` | `number` |
-| `message` | `string` |
-
-###### Returns
-
-`void`

@@ -53,24 +53,23 @@ await deleteDriveItem(folder);
 
 | Module | Description |
 | ------ | ------ |
-| [BadTemplateError](BadTemplateError.md) | Error thrown when a template did not match the expected format. |
+| [BadTemplateError](BadTemplateError.md) | Error thrown when path template did not match the expected format. |
+| [EnvironmentVariableMissingError](EnvironmentVariableMissingError.md) | Error thrown when a required environment variable is not set, empty or whitespace. |
+| [InconsistentContextError](InconsistentContextError.md) | Error thrown when batched operations are performed with an inconsistent context (ie, different authentication). |
+| [InvalidArgumentError](InvalidArgumentError.md) | Error thrown when a function is called with one or more invalid arguments. |
+| [InvalidOperationError](InvalidOperationError.md) | Error thrown when a function is called when the system is in an unexpected state. |
+| [NeverError](NeverError.md) | Error thrown when a theoretically impossible state is encountered. This is akin to a panic. |
+| [NotFoundError](NotFoundError.md) | Error thrown when a requested resource is not found. |
+| [NotImplementedError](NotImplementedError.md) | Error thrown when a requested feature or functionality is not yet implemented. |
+| [ProtocolError](ProtocolError.md) | Error thrown when a response from the server does not conform to the expected protocol. |
+| [RequestFailedError](RequestFailedError.md) | Error thrown when a request to the server fails. |
+| [RequestTimeoutError](RequestTimeoutError.md) | Error thrown when a request exceeds the allowed time limit. |
+| [UnsupportedAddressTypeError](UnsupportedAddressTypeError.md) | Error thrown when a given address does not confirm to any known address type. |
 
 ## Other
 
 | Module | Description |
 | ------ | ------ |
-| [errors/ContextNotRegisteredError](errors/ContextNotRegisteredError.md) | - |
-| [errors/EnvironmentVariableMissingError](errors/EnvironmentVariableMissingError.md) | - |
-| [errors/InconsistentContextError](errors/InconsistentContextError.md) | - |
-| [errors/InvalidArgumentError](errors/InvalidArgumentError.md) | - |
-| [errors/InvalidOperationError](errors/InvalidOperationError.md) | - |
-| [errors/NeverError](errors/NeverError.md) | - |
-| [errors/NotFoundError](errors/NotFoundError.md) | - |
-| [errors/NotImplementedError](errors/NotImplementedError.md) | - |
-| [errors/ProtocolError](errors/ProtocolError.md) | - |
-| [errors/RequestFailedError](errors/RequestFailedError.md) | - |
-| [errors/TimeoutError](errors/TimeoutError.md) | - |
-| [errors/UnsupportedAddressTypeError](errors/UnsupportedAddressTypeError.md) | - |
 | [graphApi](graphApi.md) | - |
 | [index](index.md) | - |
 | [models/AccessToken](models/AccessToken.md) | - |

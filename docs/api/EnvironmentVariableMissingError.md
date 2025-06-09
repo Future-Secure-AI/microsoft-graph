@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/EnvironmentVariableMissingError
+[Microsoft Graph SDK](README.md) / EnvironmentVariableMissingError
+
+Error thrown when a required environment variable is not set, empty or whitespace.
 
 ## Classes
 
 ### EnvironmentVariableMissingError
 
-Defined in: [src/errors/EnvironmentVariableMissingError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/EnvironmentVariableMissingError.ts#L1)
+Defined in: [src/errors/EnvironmentVariableMissingError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/EnvironmentVariableMissingError.ts#L6)
 
 #### Extends
 
@@ -16,7 +18,7 @@ Defined in: [src/errors/EnvironmentVariableMissingError.ts:1](https://github.com
 
 > **new EnvironmentVariableMissingError**(`env`): [`EnvironmentVariableMissingError`](#environmentvariablemissingerror)
 
-Defined in: [src/errors/EnvironmentVariableMissingError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/EnvironmentVariableMissingError.ts#L2)
+Defined in: [src/errors/EnvironmentVariableMissingError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/EnvironmentVariableMissingError.ts#L7)
 
 ###### Parameters
 

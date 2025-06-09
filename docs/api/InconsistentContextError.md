@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/ContextNotRegisteredError
+[Microsoft Graph SDK](README.md) / InconsistentContextError
+
+Error thrown when batched operations are performed with an inconsistent context (ie, different authentication).
 
 ## Classes
 
-### ContextNotRegisteredError
+### InconsistentContextError
 
-Defined in: [src/errors/ContextNotRegisteredError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ContextNotRegisteredError.ts#L1)
+Defined in: [src/errors/InconsistentContextError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InconsistentContextError.ts#L6)
 
 #### Extends
 
@@ -14,9 +16,9 @@ Defined in: [src/errors/ContextNotRegisteredError.ts:1](https://github.com/Futur
 
 ##### Constructor
 
-> **new ContextNotRegisteredError**(`message`): [`ContextNotRegisteredError`](#contextnotregisterederror)
+> **new InconsistentContextError**(`message`): [`InconsistentContextError`](#inconsistentcontexterror)
 
-Defined in: [src/errors/ContextNotRegisteredError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ContextNotRegisteredError.ts#L2)
+Defined in: [src/errors/InconsistentContextError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InconsistentContextError.ts#L7)
 
 ###### Parameters
 
@@ -26,7 +28,7 @@ Defined in: [src/errors/ContextNotRegisteredError.ts:2](https://github.com/Futur
 
 ###### Returns
 
-[`ContextNotRegisteredError`](#contextnotregisterederror)
+[`InconsistentContextError`](#inconsistentcontexterror)
 
 ###### Overrides
 

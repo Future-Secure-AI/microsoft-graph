@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/NotImplementedError
+[Microsoft Graph SDK](README.md) / UnsupportedAddressTypeError
+
+Error thrown when a given address does not confirm to any known address type.
 
 ## Classes
 
-### NotImplementedError
+### UnsupportedAddressTypeError
 
-Defined in: [src/errors/NotImplementedError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotImplementedError.ts#L1)
+Defined in: [src/errors/UnsupportedAddressTypeError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnsupportedAddressTypeError.ts#L6)
 
 #### Extends
 
@@ -14,19 +16,19 @@ Defined in: [src/errors/NotImplementedError.ts:1](https://github.com/Future-Secu
 
 ##### Constructor
 
-> **new NotImplementedError**(`message?`): [`NotImplementedError`](#notimplementederror)
+> **new UnsupportedAddressTypeError**(`message`): [`UnsupportedAddressTypeError`](#unsupportedaddresstypeerror)
 
-Defined in: [src/errors/NotImplementedError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotImplementedError.ts#L2)
+Defined in: [src/errors/UnsupportedAddressTypeError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnsupportedAddressTypeError.ts#L7)
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `message?` | `string` |
+| `message` | `string` |
 
 ###### Returns
 
-[`NotImplementedError`](#notimplementederror)
+[`UnsupportedAddressTypeError`](#unsupportedaddresstypeerror)
 
 ###### Overrides
 

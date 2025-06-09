@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/UnsupportedAddressTypeError
+[Microsoft Graph SDK](README.md) / RequestTimeoutError
+
+Error thrown when a request exceeds the allowed time limit.
 
 ## Classes
 
-### UnsupportedAddressTypeError
+### RequestTimeoutError
 
-Defined in: [src/errors/UnsupportedAddressTypeError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnsupportedAddressTypeError.ts#L1)
+Defined in: src/errors/RequestTimeoutError.ts:6
 
 #### Extends
 
@@ -14,9 +16,9 @@ Defined in: [src/errors/UnsupportedAddressTypeError.ts:1](https://github.com/Fut
 
 ##### Constructor
 
-> **new UnsupportedAddressTypeError**(`message`): [`UnsupportedAddressTypeError`](#unsupportedaddresstypeerror)
+> **new RequestTimeoutError**(`message`): [`RequestTimeoutError`](#requesttimeouterror)
 
-Defined in: [src/errors/UnsupportedAddressTypeError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnsupportedAddressTypeError.ts#L2)
+Defined in: src/errors/RequestTimeoutError.ts:7
 
 ###### Parameters
 
@@ -26,7 +28,7 @@ Defined in: [src/errors/UnsupportedAddressTypeError.ts:2](https://github.com/Fut
 
 ###### Returns
 
-[`UnsupportedAddressTypeError`](#unsupportedaddresstypeerror)
+[`RequestTimeoutError`](#requesttimeouterror)
 
 ###### Overrides
 

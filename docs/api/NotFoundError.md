@@ -1,10 +1,12 @@
-[Microsoft Graph SDK](../README.md) / errors/InconsistentContextError
+[Microsoft Graph SDK](README.md) / NotFoundError
+
+Error thrown when a requested resource is not found.
 
 ## Classes
 
-### InconsistentContextError
+### NotFoundError
 
-Defined in: [src/errors/InconsistentContextError.ts:1](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InconsistentContextError.ts#L1)
+Defined in: [src/errors/NotFoundError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotFoundError.ts#L6)
 
 #### Extends
 
@@ -14,9 +16,9 @@ Defined in: [src/errors/InconsistentContextError.ts:1](https://github.com/Future
 
 ##### Constructor
 
-> **new InconsistentContextError**(`message`): [`InconsistentContextError`](#inconsistentcontexterror)
+> **new NotFoundError**(`message`): [`NotFoundError`](#notfounderror)
 
-Defined in: [src/errors/InconsistentContextError.ts:2](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InconsistentContextError.ts#L2)
+Defined in: [src/errors/NotFoundError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/NotFoundError.ts#L7)
 
 ###### Parameters
 
@@ -26,7 +28,7 @@ Defined in: [src/errors/InconsistentContextError.ts:2](https://github.com/Future
 
 ###### Returns
 
-[`InconsistentContextError`](#inconsistentcontexterror)
+[`NotFoundError`](#notfounderror)
 
 ###### Overrides
 
