@@ -123,12 +123,6 @@
 | [updateWorkbookWorksheet](updateWorkbookWorksheet.md) | Update the name, position, and/or visibility of a worksheet. |
 | [userSendMail](userSendMail.md) | Send an email. |
 
-## Other
-
-| Module | Description |
-| ------ | ------ |
-| [services/dataSource](services/dataSource.md) | - |
-
 ## Services
 
 | Module | Description |

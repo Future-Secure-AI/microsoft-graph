@@ -10,7 +10,7 @@ Copy a drive item.
 
 > **copyDriveItem**(`srcFileRef`, `dstDriveRef`, `dstFilePath`, `timeoutMs`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object`\>
 
-Defined in: [src/tasks/copyDriveItem.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/copyDriveItem.ts#L28)
+Defined in: [src/tasks/copyDriveItem.ts:27](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/copyDriveItem.ts#L27)
 
 Copy a drive item.
 
