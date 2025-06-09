@@ -8,45 +8,42 @@ This is an extensible library that allows access to Microsoft's GraphAPI, includ
 Install the NPM package `npm i microsoft-graph`, then:
 
 ```typescript
-// Get a reference to a drive you want to work with
+console.info("Loading envs...");
+const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as AzureTenantId;
+const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as AzureClientId;
+const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as AzureClientSecret;
+const siteId = getEnvironmentVariable("SHAREPOINT_SITE_ID") as SiteId;
+const driveId = getEnvironmentVariable("SHAREPOINT_DRIVE_ID") as DriveId;
+
+console.info("Get drive...");
 const contextRef = createClientSecretContext(tenantId, clientId, clientSecret);
 const siteRef = createSiteRef(contextRef, siteId);
 const driveRef = createDriveRef(siteRef, driveId);
 
-// Create a folder
-const folder = await createFolder(driveRef, "folder-name");
+console.info("Creating workbook...");
+const workbook = await createWorkbookAndStartSession(driveRef, generateTempFileName(workbookFileExtension));
+try {
+	console.info("Getting worksheet...");
+	const worksheetRef = createDefaultWorkbookWorksheetRef(workbook); // OR `await getWorkbookWorksheetByName(workbook, "Sheet1");` to get one by name
 
-// Create a workbook and start a session on it
-const workbook = await createWorkbookAndStartSession(folder, "workbook-name");
+	console.info("Writing values to range...");
+	const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B3");
+	await writeWorkbookRows(rangeRef, [
+		[{ value: 1 }, { value: 2 }],
+		[{ value: 3 }, { value: 4 }],
+		[{ value: 5 }, { value: 6 }],
+	]);
 
-// Get a worksheet
-const workbook = await getWorkbookWorksheetByName(workbook, "Sheet1");
-
-// OR this cheat to get the default sheet for a newly-created book
-const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
-
-// Write values to a range
-const rangeRef = createWorkbookRangeRef(worksheet, "A1:B2");
-await setWorkbookRangeValues(rangeRef, [
-	[1, 2],
-	[3, 4],
-	[5, 6],
-]);
-
-// Read values from a range
-for await (const rowValues of iterateWorkbookRangeValues(rangeRef)) {
-	// This automatically uses multiple requests if the range is too big for a single request
-	debug(` ${rowValues}`);
+	console.info("Reading range...");
+	for await (const row of readWorkbookRows(rangeRef)) {
+		console.debug(` ${row.map((cell) => cell.value).join(", ")}`);
+	}
+} finally {
+	console.info("Cleanup...");
+	await safeDeleteWorkbook(workbook);
 }
 
-// List files
-for (const item of await listDriveItems(folder)) {
-	console.debug(` - ${item.name}`);
-}
-
-// Cleanup
-await safeDeleteWorkbook(workbook); // Closes session and waits for unlock
-await deleteDriveItem(folder);
+console.info("Done.");
 ```
 
 ## Further reading
