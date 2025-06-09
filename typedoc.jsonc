@@ -4,6 +4,7 @@
 	"out": "docs/api",
 	"name": "Microsoft Graph SDK",
 	"entryPointStrategy": "expand",
+	"entryPoints": ["src/**/*.ts"],
 	"exclude": ["**/*.test.ts", "**/index.ts"],
 	"mergeReadme": true,
 	"router": "module",

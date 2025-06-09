@@ -172,21 +172,6 @@ await deleteDriveItem(folder);
 | [updateWorkbookWorksheet](updateWorkbookWorksheet.md) | Update the name, position, and/or visibility of a worksheet. |
 | [userSendMail](userSendMail.md) | Send an email. |
 
-## Other
-
-| Module | Description |
-| ------ | ------ |
-| [models/DataSource](models/DataSource.md) | - |
-| [models/DataSourceDecoder](models/DataSourceDecoder.md) | - |
-| [models/DataSourceEncoder](models/DataSourceEncoder.md) | - |
-| [models/DataSourceIndex](models/DataSourceIndex.md) | - |
-| [models/DataSourceRow](models/DataSourceRow.md) | - |
-| [models/Item](models/Item.md) | - |
-| [models/RangeOperationCallback](models/RangeOperationCallback.md) | - |
-| [models/RecordBase](models/RecordBase.md) | - |
-| [models/SourceRowValue](models/SourceRowValue.md) | - |
-| [services/dataSource](services/dataSource.md) | - |
-
 ## Services
 
 | Module | Description |
