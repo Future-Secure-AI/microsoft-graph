@@ -1,3 +1,9 @@
+/**
+ * Update the font format of a workbook range.
+ * @module setWorkbookRangeFont
+ * @category Operations
+ */
+
 import type { WorkbookRangeFont } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -7,9 +13,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Update the font format of a workbook range.
- *
- * @param rangeRef Reference to the range to be formatted, optionally including session information.
- * @param format - The font format properties to apply to the range.
+ * @param rangeRef Reference to the range to be formatted.
+ * @param format Font format properties to apply to the range.
  * @see https://learn.microsoft.com/en-us/graph/api/rangefont-update
  */
 export default function setWorkbookRangeFont(rangeRef: WorkbookRangeRef, format: WorkbookRangeFont): GraphOperation<void> {

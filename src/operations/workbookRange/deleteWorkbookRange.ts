@@ -12,9 +12,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Delete a range.
- *
- * @param rangeRef Reference to the range to be deleted, optionally including session information.
- * @param shift - The direction to shift existing cells after deletion. Can be "Up" or "Left".
+ * @param rangeRef Reference to the range to be deleted.
+ * @param shift Direction to shift existing cells after deletion - "Up" or "Left".
  * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/range-clear
  */

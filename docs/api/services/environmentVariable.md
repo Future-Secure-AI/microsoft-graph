@@ -14,7 +14,7 @@ Binds an environment variable to a function that retrieves its value.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `env` | `string` | `undefined` | The name of the environment variable. |
+| `env` | `string` | `undefined` | Name of the environment variable. |
 | `fallbackValue` | `null` \| `string` | `null` | The fallback value to use if the environment variable is not set. Defaults to null. |
 
 #### Returns
@@ -41,7 +41,7 @@ Retrieves the value of an environment variable.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `env` | `string` | `undefined` | The name of the environment variable. |
+| `env` | `string` | `undefined` | Name of the environment variable. |
 | `fallbackValue` | `null` \| `string` | `null` | The fallback value to use if the environment variable is not set. Defaults to null. |
 
 #### Returns

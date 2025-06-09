@@ -12,9 +12,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Clear a range - content, formatting, or both.
- *
- * @param rangeRef Reference to the range to be cleared, optionally including session information.
- * @param applyTo - Specifies what to clear. Can be "All", "Formats", or "Contents". Defaults to "All".
+ * @param rangeRef Reference to the range to be cleared.
+ * @param applyTo What to clear - "All", "Formats", or "Contents".
  * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/range-delete
  */

@@ -15,9 +15,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve the fill format of a workbook range.
- *
- * @param rangeRef Reference to the range, optionally including session information.
- * @returns The fill format of the specified range, including its metadata and reference information.
+ * @param rangeRef Reference to the range.
+ * @returns Fill format of the specified range.
  * @see https://learn.microsoft.com/en-us/graph/api/rangefill-get
  */
 export default function getWorkbookRangeFill(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRangeFill & WorkbookRangeRef> {

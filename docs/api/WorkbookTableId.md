@@ -8,7 +8,7 @@ Identifier for a table in a worksheet.
 
 > **WorkbookTableId** = `string` & `object`
 
-Defined in: [src/models/WorkbookTableId.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookTableId.ts#L6)
+Defined in: [src/models/WorkbookTableId.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookTableId.ts#L7)
 
 #### Type declaration
 

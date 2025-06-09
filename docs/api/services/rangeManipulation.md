@@ -15,7 +15,7 @@ The first row of the 2D array contains the keys as headers.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `objs` | `unknown`[] | `undefined` | An array of objects to convert. |
+| `objs` | `unknown`[] | `undefined` | Array of objects to convert. |
 | `header` | `null` \| `string`[] | `null` | Optional header row. If not provided, it will be inferred from the object keys. |
 
 #### Returns
@@ -73,7 +73,7 @@ Assumes the first row is a header and uses it as keys for the objects.
 
 `unknown`[]
 
-An array of objects where each object represents a row.
+Array of objects where each object represents a row.
 
 #### Throws
 

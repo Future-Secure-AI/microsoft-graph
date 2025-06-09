@@ -15,9 +15,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * List accessible sites.
- *
  * @param contextRef Reference to the context.
- * @returns An array of sites, each including its metadata and reference information.
+ * @returns Array of sites, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/site-list
  */
 export default function listSites(contextRef: ContextRef): GraphOperation<(Site & SiteRef)[]> {

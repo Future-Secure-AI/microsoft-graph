@@ -15,9 +15,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve the font format of a workbook range.
- *
- * @param rangeRef Reference to the range, optionally including session information.
- * @returns The font format of the specified range, including its metadata and reference information.
+ * @param rangeRef Reference to the range.
+ * @returns Font format of the specified range.
  * @see https://learn.microsoft.com/en-us/graph/api/rangefont-get
  */
 export default function getWorkbookRangeFont(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRangeFont & WorkbookRangeRef> {

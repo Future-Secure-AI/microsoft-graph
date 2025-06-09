@@ -12,10 +12,9 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Merge a range of cells in a worksheet.
- *
- * @param rangeRef - Reference to the worksheet range.
- * @param across - If true, merge cells in each row of the specified range as separate merged cells. If false or omitted, merge all cells in the range into a single cell.
- * @returns The merged range, including its metadata and reference information.
+ * @param rangeRef Reference to the worksheet range.
+ * @param across If true, merge cells in each row of the specified range as separate merged cells. If false or omitted, merge all cells in the range into a single cell.
+ * @returns The merged range.
  * @see https://learn.microsoft.com/en-us/graph/api/range-merge
  */
 export default function mergeWorkbookRange(rangeRef: WorkbookRangeRef, across = false): GraphOperation<void> {

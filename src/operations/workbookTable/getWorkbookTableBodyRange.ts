@@ -1,3 +1,9 @@
+/**
+ * Retrieve the data body range of a workbook table.
+ * @module getWorkbookTableBodyRange
+ * @category Operations
+ */
+
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import { operation } from "../../graphApi.ts";
@@ -9,10 +15,9 @@ import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
 /**
- * Retrieve the data body range of a table.
- *
- * @param tableRef Reference to the table, optionally including session information.
- * @returns The data body range of the specified table, including its metadata and reference information.
+ * Retrieve the data body range of a workbook table.
+ * @param tableRef Reference to the table.
+ * @returns Data body range of the specified table.
  * @see https://learn.microsoft.com/en-us/graph/api/table-databodyrange
  */
 export default function getWorkbookTableBodyRange(tableRef: WorkbookTableRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {

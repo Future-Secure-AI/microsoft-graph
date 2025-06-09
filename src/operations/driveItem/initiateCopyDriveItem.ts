@@ -1,5 +1,5 @@
 /**
- * Initiate an asynchronous copy of an item. NOTE: The copied file may not be immediately available and polling is required.
+ * Initiate an asynchronous copy of an item.
  * @module initiateCopyDriveItem
  * @category Operations
  */
@@ -16,7 +16,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @param dstFolderRef Reference to the destination folder or site (if targeting root).
  * @param dstFileName Name of the created file.
  * @returns Nothing. The copied file may not be immediately available, and polling is required.
- * @remarks The copied file may not be immediately available and polling is required. You probably want `copyDriveItem` instead.
+ * @remarks The copied file may not be immediately available and polling is required. YOU PROBABLY WANT `copyDriveItem` INSTEAD.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-copy
  */
 export default function initiateCopyDriveItem(srcFileRef: DriveItemRef, dstFolderRef: DriveRef | DriveItemRef, dstFileName: string): GraphOperation<void> {

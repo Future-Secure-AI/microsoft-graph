@@ -1,3 +1,9 @@
+/**
+ * Create a new worksheet in a workbook, optionally with a defined name.
+ * @module createWorkbookWorksheet
+ * @category Operations
+ */
+
 import type { WorkbookWorksheet } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -10,10 +16,9 @@ import { createWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts"
 
 /**
  * Create a new worksheet in a workbook, optionally with a defined name.
- *
- * @param workbookRef Reference to the workbook where the worksheet will be created, optionally including session information.
- * @param name - (Optional) The name of the new worksheet.
- * @returns The newly created worksheet, including its metadata and reference information.
+ * @param workbookRef Reference to the workbook where the worksheet will be created.
+ * @param name (Optional) The name of the new worksheet.
+ * @returns The newly created worksheet.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheetcollection-add
  */
 export default function createWorkbookWorksheet(workbookRef: WorkbookRef, name?: WorkbookWorksheetName): GraphOperation<WorkbookWorksheet & WorkbookWorksheetRef> {

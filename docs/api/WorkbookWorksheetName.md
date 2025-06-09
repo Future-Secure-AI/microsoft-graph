@@ -8,7 +8,7 @@ Name of a worksheet in a workbook.
 
 > **WorkbookWorksheetName** = `string` & `object`
 
-Defined in: [src/models/WorkbookWorksheetName.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheetName.ts#L6)
+Defined in: [src/models/WorkbookWorksheetName.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheetName.ts#L7)
 
 #### Type declaration
 

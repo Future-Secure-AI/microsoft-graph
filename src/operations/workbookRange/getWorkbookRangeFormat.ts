@@ -13,9 +13,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve the format of a workbook range.
- *
- * @param rangeRef Reference to the range, optionally including session information.
- * @returns The format of the specified range, including its metadata and reference information.
+ * @param rangeRef Reference to the range.
+ * @returns Format of the specified range.
  * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-get
  */
 export default function getWorkbookRangeFormat(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRangeFormat & WorkbookRangeRef> {

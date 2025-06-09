@@ -8,11 +8,11 @@ Reference to a site.
 
 > **SiteRef** = `object`
 
-Defined in: [src/models/SiteRef.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteRef.ts#L9)
+Defined in: [src/models/SiteRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteRef.ts#L10)
 
 #### Properties
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="context"></a> `context` | [`Context`](Context.md#context) | [src/models/SiteRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteRef.ts#L10) |
-| <a id="siteid"></a> `siteId` | [`SiteId`](SiteId.md#siteid) | [src/models/SiteRef.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteRef.ts#L11) |
+| <a id="context"></a> `context` | [`Context`](Context.md#context) | [src/models/SiteRef.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteRef.ts#L11) |
+| <a id="siteid"></a> `siteId` | [`SiteId`](SiteId.md#siteid) | [src/models/SiteRef.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteRef.ts#L12) |

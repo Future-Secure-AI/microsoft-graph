@@ -17,11 +17,10 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Get a site by its name.
- *
  * @param contextRef Reference to the context.
- * @param hostName - The host name of the site.
- * @param siteName - Name of the site.
- * @returns The specified site, including its metadata and reference information.
+ * @param hostName Host name of the site.
+ * @param siteName Name of the site.
+ * @returns The specified site.
  * @see https://learn.microsoft.com/en-us/graph/api/site-getbypath
  */
 export default function getSiteByName(contextRef: ContextRef, hostName: HostName, siteName: SiteName): GraphOperation<Site & SiteRef> {

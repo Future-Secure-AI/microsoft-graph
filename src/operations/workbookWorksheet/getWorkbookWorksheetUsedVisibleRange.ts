@@ -1,3 +1,9 @@
+/**
+ * Retrieve the visible (not hidden) range in a worksheet.
+ * @module getWorkbookWorksheetUsedVisibleRange
+ * @category Operations
+ */
+
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { CellRangeAddress } from "../../models/Address.ts";
@@ -9,9 +15,8 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
 /**
  * Retrieve the visible (not hidden) range in a worksheet.
- *
- * @param worksheetRef Reference to the worksheet, optionally including session information.
- * @returns The visible range of the worksheet, including its metadata and reference information.
+ * @param worksheetRef Reference to the worksheet.
+ * @returns The visible range of the worksheet.
  * @see https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */
 export default function getWorkbookWorksheetUsedVisibleRange(worksheetRef: WorkbookWorksheetRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {

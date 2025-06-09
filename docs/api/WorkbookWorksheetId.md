@@ -8,7 +8,7 @@ Identifier for a worksheet in a workbook.
 
 > **WorkbookWorksheetId** = `string` & `object`
 
-Defined in: [src/models/WorkbookWorksheetId.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheetId.ts#L6)
+Defined in: [src/models/WorkbookWorksheetId.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheetId.ts#L7)
 
 #### Type declaration
 

@@ -8,7 +8,7 @@ Identifier for a drive.
 
 > **DriveId** = `string` & `object`
 
-Defined in: [src/models/DriveId.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveId.ts#L6)
+Defined in: [src/models/DriveId.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveId.ts#L7)
 
 #### Type declaration
 

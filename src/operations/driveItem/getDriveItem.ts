@@ -12,7 +12,6 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve the metadata for an item in a drive.
- *
  * @param itemRef Reference to the drive item.
  * @returns The metadata of the specified drive item, including its reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-get

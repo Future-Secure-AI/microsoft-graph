@@ -78,7 +78,7 @@ export function inferRowAddress(row: CellValue[], rowOffset: RowOffset = 0 as Ro
  * Assumes the first row is a header and uses it as keys for the objects.
  *
  * @param {CellValue[][]} values - A 2D array representing cell values.
- * @returns {unknown[]} An array of objects where each object represents a row.
+ * @returns {unknown[]} Array of objects where each object represents a row.
  * @throws {InvalidArgumentError} If rows have inconsistent column counts or no header row is present.
  */
 export function inferRangeObject(values: CellValue[][]): unknown[] {
@@ -107,7 +107,7 @@ export function inferRangeObject(values: CellValue[][]): unknown[] {
  * Converts an array of objects into a 2D array of cell values.
  * The first row of the 2D array contains the keys as headers.
  *
- * @param {unknown[]} objs - An array of objects to convert.
+ * @param {unknown[]} objs - Array of objects to convert.
  * @param {string[] | null} header - Optional header row. If not provided, it will be inferred from the object keys.
  * @returns {CellValue[][]} A 2D array where the first row is the header and subsequent rows are the object values.
  */

@@ -1,3 +1,8 @@
+/**
+ * @module getWorkbookUsedRange
+ * @category Operations
+ * @hidden
+ */
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import { operation } from "../../graphApi.ts";

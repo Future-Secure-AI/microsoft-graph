@@ -12,9 +12,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve properties for a site resource.
- *
  * @param siteRef Reference to the site.
- * @returns The specified site, including its metadata and reference information.
+ * @returns The specified site.
  * @see https://learn.microsoft.com/en-us/graph/api/site-get
  */
 export default function getSite(siteRef: SiteRef): GraphOperation<Site & SiteRef> {

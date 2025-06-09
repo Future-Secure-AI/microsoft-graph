@@ -8,7 +8,7 @@ Reference to a range in a worksheet.
 
 > **WorkbookRangeRef** = [`WorkbookWorksheetRef`](WorkbookWorksheetRef.md#workbookworksheetref) & `object`
 
-Defined in: [src/models/WorkbookRangeRef.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookRangeRef.ts#L9)
+Defined in: [src/models/WorkbookRangeRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookRangeRef.ts#L10)
 
 #### Type declaration
 

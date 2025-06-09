@@ -1,3 +1,9 @@
+/**
+ * Find accessible sites that match the provided keywords.
+ * @module searchSites
+ * @category Operations
+ */
+
 import type { Site } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { ContextRef } from "../../models/ContextRef.ts";
@@ -9,10 +15,9 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Find accessible sites that match the provided keywords.
- *
  * @param contextRef Reference to the context.
- * @param search - The search keywords to find matching sites.
- * @returns An array of sites that match the search criteria, each including its metadata and reference information.
+ * @param search Search keywords to find matching sites.
+ * @returns Array of sites that match the search criteria, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/site-search
  */
 export default function searchSites(contextRef: ContextRef, search: string): GraphOperation<(Site & SiteRef)[]> {

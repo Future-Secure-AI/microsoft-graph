@@ -1,3 +1,9 @@
+/**
+ * Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank.
+ * @module getWorkbookWorksheetUsedRange
+ * @category Operations
+ */
+
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import { operation } from "../../graphApi.ts";
@@ -10,9 +16,8 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
 /**
  * Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank.
- *
- * @param worksheetRef Reference to the worksheet, optionally including session information.
- * @returns The used range of the worksheet, including its metadata and reference information.
+ * @param worksheetRef Reference to the worksheet.
+ * @returns Used range of the worksheet.
  * @see https://learn.microsoft.com/en-us/graph/api/range-usedrange
  */
 export default function getWorkbookWorksheetUsedRange(worksheetRef: WorkbookWorksheetRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {

@@ -1,3 +1,9 @@
+/**
+ * Update the fill format of a workbook range.
+ * @module setWorkbookRangeFill
+ * @category Operations
+ */
+
 import type { WorkbookRangeFill } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -7,9 +13,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Update the fill format of a workbook range.
- *
- * @param rangeRef Reference to the range to be formatted, optionally including session information.
- * @param format - The fill format properties to apply to the range.
+ * @param rangeRef Reference to the range to be formatted.
+ * @param format Fill format properties to apply to the range.
  * @see https://learn.microsoft.com/en-us/graph/api/rangefill-update
  */
 export default function setWorkbookRangeFill(rangeRef: WorkbookRangeRef, format: WorkbookRangeFill): GraphOperation<void> {

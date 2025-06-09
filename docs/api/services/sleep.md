@@ -14,7 +14,7 @@ Pauses execution for the specified number of milliseconds.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `ms` | `number` | The number of milliseconds to sleep. |
+| `ms` | `number` | Number of milliseconds to sleep. |
 
 #### Returns
 

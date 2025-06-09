@@ -1,3 +1,9 @@
+/**
+ * Clear all filters from a workbook table.
+ * @module clearWorkbookTableColumnFilters
+ * @category Operations
+ */
+
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
@@ -5,8 +11,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Clear all filters from a workbook table.
- *
- * @param tableRef Reference to the table, optionally including session information.
+ * @param tableRef Reference to the table.
  * @see https://learn.microsoft.com/en-us/graph/api/table-clearfilters
  */
 export default function clearWorkbookTableColumnFilters(tableRef: WorkbookTableRef): GraphOperation<void> {

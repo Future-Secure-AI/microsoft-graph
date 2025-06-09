@@ -1,5 +1,8 @@
-// https://learn.microsoft.com/en-us/graph/api/table-delete
-// DELETE /sites/{site-id}/drives/{drive-id/items/{item-id}/workbook/tables/{table-id}
+/**
+ * Delete a workbook table. All data in the table will be cleared.
+ * @module deleteWorkbookTable
+ * @category Operations
+ */
 
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -8,8 +11,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Delete a workbook table. All data in the table will be cleared.
- *
- * @param tableRef Reference to the table, optionally including session information.
+ * @param tableRef Reference to the table.
  * @see https://learn.microsoft.com/en-us/graph/api/table-delete
  */
 export default function deleteWorkbookTable(tableRef: WorkbookTableRef): GraphOperation<void> {

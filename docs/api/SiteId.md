@@ -8,7 +8,7 @@ Identifier for a site.
 
 > **SiteId** = `string` & `object`
 
-Defined in: [src/models/SiteId.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteId.ts#L6)
+Defined in: [src/models/SiteId.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteId.ts#L7)
 
 #### Type declaration
 

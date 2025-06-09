@@ -8,7 +8,7 @@ Name of a site.
 
 > **SiteName** = `string` & `object`
 
-Defined in: [src/models/SiteName.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteName.ts#L6)
+Defined in: [src/models/SiteName.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/SiteName.ts#L7)
 
 #### Type declaration
 

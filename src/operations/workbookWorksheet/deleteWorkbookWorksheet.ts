@@ -1,3 +1,9 @@
+/**
+ * Permanently delete a worksheet.
+ * @module deleteWorkbookWorksheet
+ * @category Operations
+ */
+
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
@@ -5,8 +11,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Permanently delete a worksheet.
- *
- * @param worksheetRef Reference to the worksheet to be deleted, optionally including session information.
+ * @param worksheetRef Reference to the worksheet to be deleted.
  * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-delete
  */

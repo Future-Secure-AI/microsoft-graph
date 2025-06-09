@@ -8,7 +8,7 @@ Reference to a workbook.
 
 > **WorkbookRef** = [`DriveItemRef`](DriveItemRef.md#driveitemref) & `object`
 
-Defined in: [src/models/WorkbookRef.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookRef.ts#L9)
+Defined in: [src/models/WorkbookRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookRef.ts#L10)
 
 #### Type declaration
 

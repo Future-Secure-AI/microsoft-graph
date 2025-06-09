@@ -1,3 +1,9 @@
+/**
+ * Retrieve a list of tables in a worksheet.
+ * @module listWorkbookTables
+ * @category Operations
+ */
+
 import type { WorkbookTable } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -9,9 +15,8 @@ import { createWorkbookTableRef } from "../../services/workbookTable.ts";
 
 /**
  * Retrieve a list of tables in a worksheet.
- *
- * @param worksheetRef Reference to the worksheet, optionally including session information.
- * @returns An array of tables, each including its metadata and reference information.
+ * @param worksheetRef Reference to the worksheet.
+ * @returns Array of tables, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-list-tables
  */
 export default function listWorkbookTables(worksheetRef: WorkbookWorksheetRef): GraphOperation<(WorkbookTable & WorkbookRef)[]> {

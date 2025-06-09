@@ -1,3 +1,9 @@
+/**
+ * Create a new table in a worksheet.
+ * @module createWorkbookTable
+ * @category Operations
+ */
+
 import type { WorkbookTable } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -9,10 +15,9 @@ import { createWorkbookTableRef } from "../../services/workbookTable.ts";
 
 /**
  * Create a new table in a worksheet.
- *
- * @param rangeRef Reference to the range where the table will be created, optionally including session information.
- * @param hasHeaders - A boolean indicating whether the table has headers.
- * @returns The newly created table, including its metadata and reference information.
+ * @param rangeRef Reference to the range where the table will be created.
+ * @param hasHeaders If the table has headers.
+ * @returns The newly created table.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-post-tables
  */
 export default function createWorkbookTable(rangeRef: WorkbookRangeRef, hasHeaders: boolean): GraphOperation<WorkbookTable & WorkbookTableRef> {

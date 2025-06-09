@@ -1,3 +1,9 @@
+/**
+ * Create a folder in the root of a drive, or in a folder. If it already exists do nothing.
+ * @module createFolder
+ * @category Operations
+ */
+
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { DriveItemId } from "../../models/DriveItemId.ts";
@@ -11,7 +17,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * Create a folder in the root of a drive, or in a folder. If it already exists do nothing.
  * @param parentRef Reference to the parent drive or folder where the folder will be created.
  * @param folderName Name of the folder to be created.
- * @returns The newly created folder, including its metadata and reference information.
+ * @returns The newly created folder.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
  */
 export default function createFolder(parentRef: DriveRef | DriveItemRef, folderName: string): GraphOperation<DriveItem & DriveItemRef> {

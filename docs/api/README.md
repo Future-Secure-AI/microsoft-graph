@@ -109,6 +109,69 @@ await deleteDriveItem(folder);
 | [WorkbookWorksheetName](WorkbookWorksheetName.md) | Name of a worksheet in a workbook. |
 | [WorkbookWorksheetRef](WorkbookWorksheetRef.md) | Reference to a worksheet in a workbook. |
 
+## Operations
+
+| Module | Description |
+| ------ | ------ |
+| [applyWorkbookTableColumnFilter](applyWorkbookTableColumnFilter.md) | Apply a filter to a workbook table column. |
+| [autoFitWorkbookRangeColumns](autoFitWorkbookRangeColumns.md) | Auto-fit the columns in a range. |
+| [calculateWorkbook](calculateWorkbook.md) | Recalculate a workbook. |
+| [clearWorkbookRange](clearWorkbookRange.md) | Clear a range - content, formatting, or both. |
+| [clearWorkbookTableColumnFilters](clearWorkbookTableColumnFilters.md) | Clear all filters from a workbook table. |
+| [closeWorkbookSession](closeWorkbookSession.md) | Close an existing workbook session. |
+| [createDriveItem](createDriveItem.md) | Creates new drive item in the specified parent drive or folder. |
+| [createFolder](createFolder.md) | Create a folder in the root of a drive, or in a folder. If it already exists do nothing. |
+| [createWorkbook](createWorkbook.md) | Create a new blank workbook. |
+| [createWorkbookSession](createWorkbookSession.md) | Create a new workbook session. |
+| [createWorkbookTable](createWorkbookTable.md) | Create a new table in a worksheet. |
+| [createWorkbookWorksheet](createWorkbookWorksheet.md) | Create a new worksheet in a workbook, optionally with a defined name. |
+| [deleteDriveItem](deleteDriveItem.md) | Delete an item from a drive. |
+| [deleteWorkbook](deleteWorkbook.md) | Delete a workbook. |
+| [deleteWorkbookRange](deleteWorkbookRange.md) | Delete a range. |
+| [deleteWorkbookTable](deleteWorkbookTable.md) | Delete a workbook table. All data in the table will be cleared. |
+| [deleteWorkbookTablePreservingValues](deleteWorkbookTablePreservingValues.md) | Converts the table into a normal range of cells. All data is preserved. |
+| [deleteWorkbookWorksheet](deleteWorkbookWorksheet.md) | Permanently delete a worksheet. |
+| [existsDriveItem](existsDriveItem.md) | Check if a given drive item exists. |
+| [getDriveItem](getDriveItem.md) | Retrieve the metadata for an item in a drive. |
+| [getDriveItemByPath](getDriveItemByPath.md) | Retrieve the metadata for an item in a drive by file path. |
+| [getDriveItemContent](getDriveItemContent.md) | Download the content of a drive item. |
+| [getSite](getSite.md) | Retrieve properties for a site resource. |
+| [getSiteByName](getSiteByName.md) | Get a site by its name. |
+| [getWorkbookNamedRange](getWorkbookNamedRange.md) | Retrieve a named range. |
+| [getWorkbookRangeFill](getWorkbookRangeFill.md) | Retrieve the fill format of a workbook range. |
+| [getWorkbookRangeFont](getWorkbookRangeFont.md) | Retrieve the font format of a workbook range. |
+| [getWorkbookRangeFormat](getWorkbookRangeFormat.md) | Retrieve the format of a workbook range. |
+| [getWorkbookTable](getWorkbookTable.md) | Retrieve a workbook table. |
+| [getWorkbookTableBodyRange](getWorkbookTableBodyRange.md) | Retrieve the data body range of a workbook table. |
+| [getWorkbookTableBodyVisibleRange](getWorkbookTableBodyVisibleRange.md) | Retrieve the visible data body range of a table. |
+| [getWorkbookTableHeaderRange](getWorkbookTableHeaderRange.md) | Retrieve the header row range of a table. |
+| [getWorkbookVisibleRange](getWorkbookVisibleRange.md) | Retrieve the visible view of a range. |
+| [getWorkbookWorksheetRange](getWorkbookWorksheetRange.md) | Fetch a range. |
+| [getWorkbookWorksheetUsedRange](getWorkbookWorksheetUsedRange.md) | Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank. |
+| [getWorkbookWorksheetUsedRangeRef](getWorkbookWorksheetUsedRangeRef.md) | Retrieve the address of the used range in a worksheet, ignoring trailing rows and columns that are blank. |
+| [getWorkbookWorksheetUsedVisibleRange](getWorkbookWorksheetUsedVisibleRange.md) | Retrieve the visible (not hidden) range in a worksheet. |
+| [initiateCopyDriveItem](initiateCopyDriveItem.md) | Initiate an asynchronous copy of an item. |
+| [insertWorkbookCells](insertWorkbookCells.md) | Insert a new blank range at a specified address, shifting existing cells. |
+| [listDriveItemChildren](listDriveItemChildren.md) | Retrieve the metadata for items in a drive or folder. |
+| [listDrives](listDrives.md) | Retrieve the list of accessible Drives in a Site. |
+| [listSites](listSites.md) | List accessible sites. |
+| [listWorkbookTableColumns](listWorkbookTableColumns.md) | Retrieve a list of columns in a table. |
+| [listWorkbookTableRows](listWorkbookTableRows.md) | Retrieve a list of rows in a table. |
+| [listWorkbookTables](listWorkbookTables.md) | Retrieve a list of tables in a worksheet. |
+| [listWorkbookWorksheets](listWorkbookWorksheets.md) | Retrieve a list of worksheets in a workbook. |
+| [mergeWorkbookRange](mergeWorkbookRange.md) | Merge a range of cells in a worksheet. |
+| [moveDriveItem](moveDriveItem.md) | Moves a file to a new location in the same drive. |
+| [refreshWorkbookSession](refreshWorkbookSession.md) | Refresh a workbook session. |
+| [searchSites](searchSites.md) | Find accessible sites that match the provided keywords. |
+| [setWorkbookRangeFill](setWorkbookRangeFill.md) | Update the fill format of a workbook range. |
+| [setWorkbookRangeFont](setWorkbookRangeFont.md) | Update the font format of a workbook range. |
+| [setWorkbookRangeFormat](setWorkbookRangeFormat.md) | Update the general format of a workbook range. |
+| [unmergeWorkbookRange](unmergeWorkbookRange.md) | Unmerge a merged range of cells in a worksheet. |
+| [updateWorkbookNamedRange](updateWorkbookNamedRange.md) | Update a named range. |
+| [updateWorkbookRange](updateWorkbookRange.md) | Update a range, including values and formatting. |
+| [updateWorkbookWorksheet](updateWorkbookWorksheet.md) | Update the name, position, and/or visibility of a worksheet. |
+| [userSendMail](userSendMail.md) | Send an email. |
+
 ## Other
 
 | Module | Description |
@@ -122,65 +185,6 @@ await deleteDriveItem(folder);
 | [models/RangeOperationCallback](models/RangeOperationCallback.md) | - |
 | [models/RecordBase](models/RecordBase.md) | - |
 | [models/SourceRowValue](models/SourceRowValue.md) | - |
-| [operations/drive/createFolder](operations/drive/createFolder.md) | - |
-| [operations/drive/listDrives](operations/drive/listDrives.md) | - |
-| [operations/driveItem/createDriveItem](operations/driveItem/createDriveItem.md) | - |
-| [operations/driveItem/deleteDriveItem](operations/driveItem/deleteDriveItem.md) | - |
-| [operations/driveItem/existsDriveItem](operations/driveItem/existsDriveItem.md) | - |
-| [operations/driveItem/getDriveItem](operations/driveItem/getDriveItem.md) | - |
-| [operations/driveItem/getDriveItemByPath](operations/driveItem/getDriveItemByPath.md) | - |
-| [operations/driveItem/getDriveItemContent](operations/driveItem/getDriveItemContent.md) | - |
-| [operations/driveItem/initiateCopyDriveItem](operations/driveItem/initiateCopyDriveItem.md) | - |
-| [operations/driveItem/listDriveItemChildren](operations/driveItem/listDriveItemChildren.md) | - |
-| [operations/driveItem/moveDriveItem](operations/driveItem/moveDriveItem.md) | - |
-| [operations/site/getSite](operations/site/getSite.md) | - |
-| [operations/site/getSiteByName](operations/site/getSiteByName.md) | - |
-| [operations/site/listSites](operations/site/listSites.md) | - |
-| [operations/site/searchSites](operations/site/searchSites.md) | - |
-| [operations/user/userSendMail](operations/user/userSendMail.md) | - |
-| [operations/workbook/calculateWorkbook](operations/workbook/calculateWorkbook.md) | - |
-| [operations/workbook/createWorkbook](operations/workbook/createWorkbook.md) | - |
-| [operations/workbook/deleteWorkbook](operations/workbook/deleteWorkbook.md) | - |
-| [operations/workbookRange/autoFitWorkbookRangeColumns](operations/workbookRange/autoFitWorkbookRangeColumns.md) | - |
-| [operations/workbookRange/clearWorkbookRange](operations/workbookRange/clearWorkbookRange.md) | - |
-| [operations/workbookRange/deleteWorkbookRange](operations/workbookRange/deleteWorkbookRange.md) | - |
-| [operations/workbookRange/getWorkbookNamedRange](operations/workbookRange/getWorkbookNamedRange.md) | - |
-| [operations/workbookRange/getWorkbookRangeFill](operations/workbookRange/getWorkbookRangeFill.md) | - |
-| [operations/workbookRange/getWorkbookRangeFont](operations/workbookRange/getWorkbookRangeFont.md) | - |
-| [operations/workbookRange/getWorkbookRangeFormat](operations/workbookRange/getWorkbookRangeFormat.md) | - |
-| [operations/workbookRange/getWorkbookUsedRange](operations/workbookRange/getWorkbookUsedRange.md) | - |
-| [operations/workbookRange/getWorkbookVisibleRange](operations/workbookRange/getWorkbookVisibleRange.md) | - |
-| [operations/workbookRange/getWorkbookWorksheetRange](operations/workbookRange/getWorkbookWorksheetRange.md) | - |
-| [operations/workbookRange/insertWorkbookCells](operations/workbookRange/insertWorkbookCells.md) | - |
-| [operations/workbookRange/mergeWorkbookRange](operations/workbookRange/mergeWorkbookRange.md) | - |
-| [operations/workbookRange/setWorkbookRangeFill](operations/workbookRange/setWorkbookRangeFill.md) | - |
-| [operations/workbookRange/setWorkbookRangeFont](operations/workbookRange/setWorkbookRangeFont.md) | - |
-| [operations/workbookRange/setWorkbookRangeFormat](operations/workbookRange/setWorkbookRangeFormat.md) | - |
-| [operations/workbookRange/unmergeWorkbookRange](operations/workbookRange/unmergeWorkbookRange.md) | - |
-| [operations/workbookRange/updateWorkbookNamedRange](operations/workbookRange/updateWorkbookNamedRange.md) | - |
-| [operations/workbookRange/updateWorkbookRange](operations/workbookRange/updateWorkbookRange.md) | - |
-| [operations/workbookSession/closeWorkbookSession](operations/workbookSession/closeWorkbookSession.md) | - |
-| [operations/workbookSession/createWorkbookSession](operations/workbookSession/createWorkbookSession.md) | - |
-| [operations/workbookSession/refreshWorkbookSession](operations/workbookSession/refreshWorkbookSession.md) | - |
-| [operations/workbookTable/applyWorkbookTableColumnFilter](operations/workbookTable/applyWorkbookTableColumnFilter.md) | - |
-| [operations/workbookTable/clearWorkbookTableFilters](operations/workbookTable/clearWorkbookTableFilters.md) | - |
-| [operations/workbookTable/createWorkbookTable](operations/workbookTable/createWorkbookTable.md) | - |
-| [operations/workbookTable/deleteWorkbookTable](operations/workbookTable/deleteWorkbookTable.md) | - |
-| [operations/workbookTable/deleteWorkbookTablePreservingValues](operations/workbookTable/deleteWorkbookTablePreservingValues.md) | - |
-| [operations/workbookTable/getWorkbookTable](operations/workbookTable/getWorkbookTable.md) | - |
-| [operations/workbookTable/getWorkbookTableBodyRange](operations/workbookTable/getWorkbookTableBodyRange.md) | - |
-| [operations/workbookTable/getWorkbookTableBodyVisibleRange](operations/workbookTable/getWorkbookTableBodyVisibleRange.md) | - |
-| [operations/workbookTable/getWorkbookTableHeaderRange](operations/workbookTable/getWorkbookTableHeaderRange.md) | - |
-| [operations/workbookTable/listWorkbookTableColumns](operations/workbookTable/listWorkbookTableColumns.md) | - |
-| [operations/workbookTable/listWorkbookTableRows](operations/workbookTable/listWorkbookTableRows.md) | - |
-| [operations/workbookTable/listWorkbookTables](operations/workbookTable/listWorkbookTables.md) | - |
-| [operations/workbookWorksheet/createWorkbookWorksheet](operations/workbookWorksheet/createWorkbookWorksheet.md) | - |
-| [operations/workbookWorksheet/deleteWorkbookWorksheet](operations/workbookWorksheet/deleteWorkbookWorksheet.md) | - |
-| [operations/workbookWorksheet/getWorkbookWorksheetUsedRange](operations/workbookWorksheet/getWorkbookWorksheetUsedRange.md) | - |
-| [operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef](operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.md) | - |
-| [operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange](operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.md) | - |
-| [operations/workbookWorksheet/listWorkbookWorksheets](operations/workbookWorksheet/listWorkbookWorksheets.md) | - |
-| [operations/workbookWorksheet/updateWorkbookWorksheet](operations/workbookWorksheet/updateWorkbookWorksheet.md) | - |
 | [services/addressManipulation](services/addressManipulation.md) | - |
 | [services/addressOffset](services/addressOffset.md) | - |
 | [services/azureApplicationCredentials](services/azureApplicationCredentials.md) | - |

@@ -1,5 +1,5 @@
 /**
- * Update a range, including values and formatting. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values.
+ * Update a range, including values and formatting.
  * @module updateWorkbookRange
  * @category Operations
  */
@@ -12,11 +12,12 @@ import { normalizeAddress } from "../../services/addressManipulation.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
- * Update a range, including values and formatting. Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values.
+ * Update a range.
  *
- * @param rangeRef Reference to the range to be updated, optionally including session information.
+ * @param rangeRef Reference to the range to be updated.
  * @param update - The updated properties for the range.
- * @returns The updated range, including its metadata and reference information.
+ * @returns The updated range.
+ * @remarks Properties that aren't included in the request maintain their previous values or are recalculated based on changes to other property values.
  * @see https://learn.microsoft.com/en-us/graph/api/range-update
  */
 export default function updateWorkbookRange(rangeRef: WorkbookRangeRef, update: WorkbookRange): GraphOperation<WorkbookRange & WorkbookRangeRef> {

@@ -1,3 +1,9 @@
+/**
+ * Auto-fit the columns in a range.
+ * @module autoFitWorkbookRangeColumns
+ * @category Operations
+ */
+
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
@@ -6,8 +12,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Auto-fit the columns in a range.
- *
- * @param rangeRef Reference to the range, optionally including session information.
+ * @param rangeRef Reference to the range.
  * @returns Nothing.
  * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-autofitcolumns
  */

@@ -33,8 +33,8 @@ If rows/cols is positive, the cell is the start of the range; if negative, the c
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `cell` | `` `${Uppercase<string>}${number}` `` | The cell address to use as the anchor. |
-| `rows` | `number` | The number of rows for the range. Positive: cell is start; Negative: cell is end. |
-| `cols` | `number` | The number of columns for the range. Positive: cell is start; Negative: cell is end. |
+| `rows` | `number` | Number of rows for the range. Positive: cell is start; Negative: cell is end. |
+| `cols` | `number` | Number of columns for the range. Positive: cell is start; Negative: cell is end. |
 
 #### Returns
 

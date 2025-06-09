@@ -8,7 +8,7 @@ import closeWorkbookSession from "../operations/workbookSession/closeWorkbookSes
 
 /**
  * Try and close a workbook session.
- * @param workbookRef Reference to the workbook, optionally including session information. The session ID is required.
+ * @param workbookRef Reference to the workbook. The session ID is required.
  * @returns If the session was closed, false if it was not possible to close the session.
  * @remarks Does not error if the session is already closed or expired.
  **/

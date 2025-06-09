@@ -8,7 +8,7 @@ Reference to a worksheet in a workbook.
 
 > **WorkbookWorksheetRef** = [`WorkbookRef`](WorkbookRef.md#workbookref) & `object`
 
-Defined in: [src/models/WorkbookWorksheetRef.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheetRef.ts#L9)
+Defined in: [src/models/WorkbookWorksheetRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheetRef.ts#L10)
 
 #### Type declaration
 

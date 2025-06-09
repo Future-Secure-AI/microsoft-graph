@@ -1,5 +1,8 @@
-// PATCH /sites/{site-id}/drives/{drive-id}/items/{item-id}/workbook/worksheets/{worksheet-id}/range(address='{address}')/format
-// https://learn.microsoft.com/en-us/graph/api/rangeformat-update
+/**
+ * Update the general format of a workbook range.
+ * @module setWorkbookRangeFormat
+ * @category Operations
+ */
 
 import type { WorkbookRangeFormat } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
@@ -10,9 +13,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Update the general format of a workbook range.
- *
- * @param rangeRef Reference to the range to be formatted, optionally including session information.
- * @param format - The general format properties to apply to the range.
+ * @param rangeRef Reference to the range to be formatted.
+ * @param format General format properties to apply to the range.
  * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-update
  */
 export default function setWorkbookRangeFormat(rangeRef: WorkbookRangeRef, format: WorkbookRangeFormat): GraphOperation<void> {
@@ -30,5 +32,3 @@ export default function setWorkbookRangeFormat(rangeRef: WorkbookRangeRef, forma
 		responseTransform: () => undefined,
 	});
 }
-
-// /format/font > WorkbookChartFont

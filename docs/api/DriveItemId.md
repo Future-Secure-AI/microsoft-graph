@@ -8,7 +8,7 @@ Identifier for an item in a drive.
 
 > **DriveItemId** = `string` & `object`
 
-Defined in: [src/models/DriveItemId.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItemId.ts#L6)
+Defined in: [src/models/DriveItemId.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItemId.ts#L7)
 
 #### Type declaration
 

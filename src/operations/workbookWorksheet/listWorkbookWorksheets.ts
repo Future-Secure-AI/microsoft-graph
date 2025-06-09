@@ -1,3 +1,9 @@
+/**
+ * Retrieve a list of worksheets in a workbook.
+ * @module listWorkbookWorksheets
+ * @category Operations
+ */
+
 import type { WorkbookWorksheet } from "@microsoft/microsoft-graph-types";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import { operation } from "../../graphApi.ts";
@@ -10,9 +16,8 @@ import { createWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts"
 
 /**
  * Retrieve a list of worksheets in a workbook.
- *
- * @param workbookRef Reference to the workbook, optionally including session information.
- * @returns An array of worksheets, each including its metadata and reference information.
+ * @param workbookRef Reference to the workbook.
+ * @returns Array of worksheets, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-list
  */
 export default function listWorkbookWorksheets(workbookRef: WorkbookRef): GraphOperation<(WorkbookWorksheet & WorkbookWorksheetRef)[]> {

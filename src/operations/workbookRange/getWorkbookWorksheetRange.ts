@@ -1,3 +1,9 @@
+/**
+ * Fetch a range.
+ * @module getWorkbookWorksheetRange
+ * @category Operations
+ */
+
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -6,10 +12,9 @@ import { normalizeAddress } from "../../services/addressManipulation.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
- * Fetch a range, including values and formatting.
- *
- * @param rangeRef Reference to the range to be fetched, optionally including session information.
- * @returns The fetched range, including its metadata and reference information.
+ * Fetch a range.
+ * @param rangeRef Reference to the range to be fetched.
+ * @returns The fetched range, including values and formatting
  * @see https://learn.microsoft.com/en-us/graph/api/range-get
  */
 export default function getWorkbookWorksheetRange(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {

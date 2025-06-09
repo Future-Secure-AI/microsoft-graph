@@ -12,9 +12,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve a list of columns in a table.
- *
- * @param tableRef Reference to the table, optionally including session information.
- * @returns An array of columns in the specified table.
+ * @param tableRef Reference to the table.
+ * @returns Array of columns in the specified table.
  * @see https://learn.microsoft.com/en-us/graph/api/tablecolumn-list
  */
 export default function listWorkbookTableColumns(tableRef: WorkbookTableRef): GraphOperation<WorkbookTableColumn[]> {

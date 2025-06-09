@@ -1,3 +1,9 @@
+/**
+ * Unmerge a merged range of cells in a worksheet.
+ * @module unmergeWorkbookRange
+ * @category Operations
+ */
+
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
@@ -6,9 +12,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Unmerge a merged range of cells in a worksheet.
- *
- * @param rangeRef - Reference to the worksheet range.
- * @returns A void GraphOperation indicating completion.
+ * @param rangeRef Reference to the worksheet range.
+ * @returns Nothing
  * @see https://learn.microsoft.com/en-us/graph/api/range-unmerge
  */
 export default function unmergeWorkbookRange(rangeRef: WorkbookRangeRef): GraphOperation<void> {

@@ -1,0 +1,29 @@
+[Microsoft Graph SDK](README.md) / getWorkbookWorksheetUsedVisibleRange
+
+Retrieve the visible (not hidden) range in a worksheet.
+
+## Functions
+
+### getWorkbookWorksheetUsedVisibleRange()
+
+> **getWorkbookWorksheetUsedVisibleRange**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+
+Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.ts#L22)
+
+Retrieve the visible (not hidden) range in a worksheet.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheetRef.md#workbookworksheetref) | Reference to the worksheet. |
+
+#### Returns
+
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+
+The visible range of the worksheet.
+
+#### See
+
+https://learn.microsoft.com/en-us/graph/api/range-usedrange

@@ -1,3 +1,9 @@
+/**
+ * Retrieve the visible data body range of a table.
+ * @module getWorkbookTableBodyVisibleRange
+ * @category Operations
+ */
+
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -6,9 +12,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve the visible data body range of a table.
- *
- * @param tableRef Reference to the table, optionally including session information.
- * @returns The data body range of the specified table, including its metadata and reference information.
+ * @param tableRef Reference to the table.
+ * @returns Data body range of the specified table.
  * @see https://learn.microsoft.com/en-us/graph/api/table-databodyrange
  */
 export default function getWorkbookTableBodyVisibleRange(tableRef: WorkbookTableRef): GraphOperation<WorkbookRange> {

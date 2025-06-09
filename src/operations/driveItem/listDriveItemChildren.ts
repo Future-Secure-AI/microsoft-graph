@@ -21,8 +21,8 @@ export type ListDriveItemResponse = {
 /**
  * Retrieve the metadata for items in a drive or folder.
  * @param parentRef Reference to the parent drive or folder. Defaults to the root drive.
- * @param take - The maximum number of items to retrieve. Defaults to 1000.
- * @returns An array of drive items, each including its metadata and reference information.
+ * @param take Maximum number of items to retrieve. Defaults to 1000.
+ * @returns Array of drive items, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-list-children
  */
 export default function listDriveItemChildren(parentRef: DriveRef | DriveItemRef, take = 1000): GraphOperation<ListDriveItemResponse> {

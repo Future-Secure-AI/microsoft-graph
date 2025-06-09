@@ -1,3 +1,9 @@
+/**
+ * Download the content of a drive item.
+ * @module getDriveItemContent
+ * @category Operations
+ */
+
 import { endpoint } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import { executeHttpRequest } from "../../services/http.ts";

@@ -1,5 +1,5 @@
 /**
- * Retrieve a table by its ID.
+ * Retrieve a workbook table.
  * @module getWorkbookTable
  * @category Operations
  */
@@ -11,10 +11,9 @@ import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
- * Retrieve a table by its ID.
- *
- * @param tableRef Reference to the table, optionally including session information.
- * @returns The specified table, including its metadata and reference information.
+ * Retrieve a workbook table.
+ * @param tableRef Reference to the table.
+ * @returns The specified table.
  * @see https://learn.microsoft.com/en-us/graph/api/table-get
  */
 export default function getWorkbookTable(tableRef: WorkbookTableRef): GraphOperation<WorkbookTable & WorkbookTableRef> {

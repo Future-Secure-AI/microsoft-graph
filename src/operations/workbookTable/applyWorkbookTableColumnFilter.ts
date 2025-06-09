@@ -1,3 +1,9 @@
+/**
+ * Apply a filter to a workbook table column.
+ * @module applyWorkbookTableColumnFilter
+ * @category Operations
+ */
+
 import type { WorkbookFilterCriteria } from "@microsoft/microsoft-graph-types";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -6,9 +12,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Apply a filter to a workbook table column.
- *
  * @param columnRef Reference to the table column.
- * @param criteria - The filter criteria to apply.
+ * @param criteria Filter criteria to apply.
  * @remarks If you intend to immediately read the visible range from this table after changing the filter you must perform a `calculateWorksheet` otherwise the changes may not yet have taken effect.
  * @see https://learn.microsoft.com/en-us/graph/api/filter-apply
  */

@@ -16,9 +16,8 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 
 /**
  * Retrieve the header row range of a table.
- *
- * @param tableRef Reference to the table, optionally including session information.
- * @returns The header row range of the specified table, including its metadata and reference information.
+ * @param tableRef Reference to the table.
+ * @returns The header row range of the specified table.
  * @see https://learn.microsoft.com/en-us/graph/api/table-headerrowrange
  */
 export default function getWorkbookTableHeaderRange(tableRef: WorkbookTableRef): GraphOperation<WorkbookRange & WorkbookRangeRef> {

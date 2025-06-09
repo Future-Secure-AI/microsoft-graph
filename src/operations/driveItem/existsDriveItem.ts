@@ -1,3 +1,9 @@
+/**
+ * Check if a given drive item exists.
+ * @module existsDriveItem
+ * @category Operations
+ */
+
 import { endpoint } from "../../graphApi.ts";
 import type { DriveItemPath } from "../../models/DriveItemPath.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
@@ -7,7 +13,6 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Check if a given drive item exists.
- *
  * @param driveRef Reference to the drive item to be downloaded.
  * @returns If the drive item exists.
  */

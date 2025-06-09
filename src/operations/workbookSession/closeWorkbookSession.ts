@@ -1,3 +1,9 @@
+/**
+ * Close an existing workbook session.
+ * @module closeWorkbookSession
+ * @category Operations
+ */
+
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -6,10 +12,9 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Close an existing workbook session.
- *
- * @param workbookRef Reference to the workbook, optionally including session information. The session ID is required.
+ * @param workbookRef Reference to the workbook.
  * @returns Nothing.
- * @throws InvalidArgumentError if the session ID is not provided.
+ * @throws {@link InvalidArgumentError} if the session ID is not provided.
  * @see https://learn.microsoft.com/en-us/graph/api/workbook-closesession
  */
 export default function closeWorkbookSession(workbookRef: WorkbookRef): GraphOperation<void> {

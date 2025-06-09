@@ -15,7 +15,7 @@ Generates a HTTP path based on a template and arguments. Arguments are automatic
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `template` | `string` | The path template, which must start with a slash. |
-| `args` | [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `unknown`\> | A record of arguments to replace placeholders in the template. |
+| `args` | [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, `unknown`\> | Record of arguments to replace placeholders in the template. |
 
 #### Returns
 
