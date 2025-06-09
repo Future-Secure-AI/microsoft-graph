@@ -10,7 +10,7 @@ Delete a workbook.
 
 > **deleteWorkbook**(`workbookRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbook/deleteWorkbook.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/deleteWorkbook.ts#L18)
+Defined in: [src/operations/workbook/deleteWorkbook.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/deleteWorkbook.ts#L17)
 
 Delete a workbook.
 
@@ -18,13 +18,11 @@ Delete a workbook.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook to be deleted. |
+| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook to be deleted. * |
 
 #### Returns
 
 [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
-
-Nothing.
 
 #### Remarks
 

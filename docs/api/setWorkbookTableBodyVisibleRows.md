@@ -10,7 +10,7 @@ Set visible rows of a workbook table with the provided 2D array of values, ignor
 
 > **setWorkbookTableBodyVisibleRows**(`tableRef`, `values`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/setWorkbookTableBodyVisibleRows.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/setWorkbookTableBodyVisibleRows.ts#L26)
+Defined in: [src/tasks/setWorkbookTableBodyVisibleRows.ts:25](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/setWorkbookTableBodyVisibleRows.ts#L25)
 
 Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed.
 
@@ -25,11 +25,10 @@ Set visible rows of a workbook table with the provided 2D array of values, ignor
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Nothing
-
 #### Throws
 
 [InvalidArgumentError](InvalidArgumentError.md) If the number of columns in any row of `values` does not match the table's column count.
+ *
 
 #### Remarks
 

@@ -57,55 +57,30 @@
       "require": "./dist/cjs/index.js",
       "types": "./dist/esm/index.d.ts"
     },
-    "./BadTemplateError": {
-      "import": "./dist/esm/errors/BadTemplateError.js",
-      "require": "./dist/cjs/errors/BadTemplateError.js",
-      "types": "./dist/esm/errors/BadTemplateError.d.ts"
+    "./BadPathTemplateError": {
+      "import": "./dist/esm/errors/BadPathTemplateError.js",
+      "require": "./dist/cjs/errors/BadPathTemplateError.js",
+      "types": "./dist/esm/errors/BadPathTemplateError.d.ts"
     },
-    "./dist/cjs/errors/BadTemplateError.js": {
-      "import": "./dist/esm/errors/BadTemplateError.js",
-      "require": "./dist/cjs/errors/BadTemplateError.js",
-      "types": "./dist/esm/errors/BadTemplateError.d.ts"
+    "./dist/cjs/errors/BadPathTemplateError.js": {
+      "import": "./dist/esm/errors/BadPathTemplateError.js",
+      "require": "./dist/cjs/errors/BadPathTemplateError.js",
+      "types": "./dist/esm/errors/BadPathTemplateError.d.ts"
     },
-    "./dist/cjs/errors/BadTemplateError": {
-      "import": "./dist/esm/errors/BadTemplateError.js",
-      "require": "./dist/cjs/errors/BadTemplateError.js",
-      "types": "./dist/esm/errors/BadTemplateError.d.ts"
+    "./dist/cjs/errors/BadPathTemplateError": {
+      "import": "./dist/esm/errors/BadPathTemplateError.js",
+      "require": "./dist/cjs/errors/BadPathTemplateError.js",
+      "types": "./dist/esm/errors/BadPathTemplateError.d.ts"
     },
-    "./errors/BadTemplateError": {
-      "import": "./dist/esm/errors/BadTemplateError.js",
-      "require": "./dist/cjs/errors/BadTemplateError.js",
-      "types": "./dist/esm/errors/BadTemplateError.d.ts"
+    "./errors/BadPathTemplateError": {
+      "import": "./dist/esm/errors/BadPathTemplateError.js",
+      "require": "./dist/cjs/errors/BadPathTemplateError.js",
+      "types": "./dist/esm/errors/BadPathTemplateError.d.ts"
     },
-    "./errors/BadTemplateError.js": {
-      "import": "./dist/esm/errors/BadTemplateError.js",
-      "require": "./dist/cjs/errors/BadTemplateError.js",
-      "types": "./dist/esm/errors/BadTemplateError.d.ts"
-    },
-    "./ContextNotRegisteredError": {
-      "import": "./dist/esm/errors/ContextNotRegisteredError.js",
-      "require": "./dist/cjs/errors/ContextNotRegisteredError.js",
-      "types": "./dist/esm/errors/ContextNotRegisteredError.d.ts"
-    },
-    "./dist/cjs/errors/ContextNotRegisteredError.js": {
-      "import": "./dist/esm/errors/ContextNotRegisteredError.js",
-      "require": "./dist/cjs/errors/ContextNotRegisteredError.js",
-      "types": "./dist/esm/errors/ContextNotRegisteredError.d.ts"
-    },
-    "./dist/cjs/errors/ContextNotRegisteredError": {
-      "import": "./dist/esm/errors/ContextNotRegisteredError.js",
-      "require": "./dist/cjs/errors/ContextNotRegisteredError.js",
-      "types": "./dist/esm/errors/ContextNotRegisteredError.d.ts"
-    },
-    "./errors/ContextNotRegisteredError": {
-      "import": "./dist/esm/errors/ContextNotRegisteredError.js",
-      "require": "./dist/cjs/errors/ContextNotRegisteredError.js",
-      "types": "./dist/esm/errors/ContextNotRegisteredError.d.ts"
-    },
-    "./errors/ContextNotRegisteredError.js": {
-      "import": "./dist/esm/errors/ContextNotRegisteredError.js",
-      "require": "./dist/cjs/errors/ContextNotRegisteredError.js",
-      "types": "./dist/esm/errors/ContextNotRegisteredError.d.ts"
+    "./errors/BadPathTemplateError.js": {
+      "import": "./dist/esm/errors/BadPathTemplateError.js",
+      "require": "./dist/cjs/errors/BadPathTemplateError.js",
+      "types": "./dist/esm/errors/BadPathTemplateError.d.ts"
     },
     "./EnvironmentVariableMissingError": {
       "import": "./dist/esm/errors/EnvironmentVariableMissingError.js",
@@ -332,30 +307,30 @@
       "require": "./dist/cjs/errors/RequestFailedError.js",
       "types": "./dist/esm/errors/RequestFailedError.d.ts"
     },
-    "./TimeoutError": {
-      "import": "./dist/esm/errors/TimeoutError.js",
-      "require": "./dist/cjs/errors/TimeoutError.js",
-      "types": "./dist/esm/errors/TimeoutError.d.ts"
+    "./RequestTimeoutError": {
+      "import": "./dist/esm/errors/RequestTimeoutError.js",
+      "require": "./dist/cjs/errors/RequestTimeoutError.js",
+      "types": "./dist/esm/errors/RequestTimeoutError.d.ts"
     },
-    "./dist/cjs/errors/TimeoutError.js": {
-      "import": "./dist/esm/errors/TimeoutError.js",
-      "require": "./dist/cjs/errors/TimeoutError.js",
-      "types": "./dist/esm/errors/TimeoutError.d.ts"
+    "./dist/cjs/errors/RequestTimeoutError.js": {
+      "import": "./dist/esm/errors/RequestTimeoutError.js",
+      "require": "./dist/cjs/errors/RequestTimeoutError.js",
+      "types": "./dist/esm/errors/RequestTimeoutError.d.ts"
     },
-    "./dist/cjs/errors/TimeoutError": {
-      "import": "./dist/esm/errors/TimeoutError.js",
-      "require": "./dist/cjs/errors/TimeoutError.js",
-      "types": "./dist/esm/errors/TimeoutError.d.ts"
+    "./dist/cjs/errors/RequestTimeoutError": {
+      "import": "./dist/esm/errors/RequestTimeoutError.js",
+      "require": "./dist/cjs/errors/RequestTimeoutError.js",
+      "types": "./dist/esm/errors/RequestTimeoutError.d.ts"
     },
-    "./errors/TimeoutError": {
-      "import": "./dist/esm/errors/TimeoutError.js",
-      "require": "./dist/cjs/errors/TimeoutError.js",
-      "types": "./dist/esm/errors/TimeoutError.d.ts"
+    "./errors/RequestTimeoutError": {
+      "import": "./dist/esm/errors/RequestTimeoutError.js",
+      "require": "./dist/cjs/errors/RequestTimeoutError.js",
+      "types": "./dist/esm/errors/RequestTimeoutError.d.ts"
     },
-    "./errors/TimeoutError.js": {
-      "import": "./dist/esm/errors/TimeoutError.js",
-      "require": "./dist/cjs/errors/TimeoutError.js",
-      "types": "./dist/esm/errors/TimeoutError.d.ts"
+    "./errors/RequestTimeoutError.js": {
+      "import": "./dist/esm/errors/RequestTimeoutError.js",
+      "require": "./dist/cjs/errors/RequestTimeoutError.js",
+      "types": "./dist/esm/errors/RequestTimeoutError.d.ts"
     },
     "./UnsupportedAddressTypeError": {
       "import": "./dist/esm/errors/UnsupportedAddressTypeError.js",
@@ -477,6 +452,31 @@
       "require": "./dist/cjs/models/Address.js",
       "types": "./dist/esm/models/Address.d.ts"
     },
+    "./AzureApplicationCredentials": {
+      "import": "./dist/esm/models/AzureApplicationCredentials.js",
+      "require": "./dist/cjs/models/AzureApplicationCredentials.js",
+      "types": "./dist/esm/models/AzureApplicationCredentials.d.ts"
+    },
+    "./dist/cjs/models/AzureApplicationCredentials.js": {
+      "import": "./dist/esm/models/AzureApplicationCredentials.js",
+      "require": "./dist/cjs/models/AzureApplicationCredentials.js",
+      "types": "./dist/esm/models/AzureApplicationCredentials.d.ts"
+    },
+    "./dist/cjs/models/AzureApplicationCredentials": {
+      "import": "./dist/esm/models/AzureApplicationCredentials.js",
+      "require": "./dist/cjs/models/AzureApplicationCredentials.js",
+      "types": "./dist/esm/models/AzureApplicationCredentials.d.ts"
+    },
+    "./models/AzureApplicationCredentials": {
+      "import": "./dist/esm/models/AzureApplicationCredentials.js",
+      "require": "./dist/cjs/models/AzureApplicationCredentials.js",
+      "types": "./dist/esm/models/AzureApplicationCredentials.d.ts"
+    },
+    "./models/AzureApplicationCredentials.js": {
+      "import": "./dist/esm/models/AzureApplicationCredentials.js",
+      "require": "./dist/cjs/models/AzureApplicationCredentials.js",
+      "types": "./dist/esm/models/AzureApplicationCredentials.d.ts"
+    },
     "./Cartesian": {
       "import": "./dist/esm/models/Cartesian.js",
       "require": "./dist/cjs/models/Cartesian.js",
@@ -577,56 +577,6 @@
       "require": "./dist/cjs/models/CellValue.js",
       "types": "./dist/esm/models/CellValue.d.ts"
     },
-    "./ClientId": {
-      "import": "./dist/esm/models/ClientId.js",
-      "require": "./dist/cjs/models/ClientId.js",
-      "types": "./dist/esm/models/ClientId.d.ts"
-    },
-    "./dist/cjs/models/ClientId.js": {
-      "import": "./dist/esm/models/ClientId.js",
-      "require": "./dist/cjs/models/ClientId.js",
-      "types": "./dist/esm/models/ClientId.d.ts"
-    },
-    "./dist/cjs/models/ClientId": {
-      "import": "./dist/esm/models/ClientId.js",
-      "require": "./dist/cjs/models/ClientId.js",
-      "types": "./dist/esm/models/ClientId.d.ts"
-    },
-    "./models/ClientId": {
-      "import": "./dist/esm/models/ClientId.js",
-      "require": "./dist/cjs/models/ClientId.js",
-      "types": "./dist/esm/models/ClientId.d.ts"
-    },
-    "./models/ClientId.js": {
-      "import": "./dist/esm/models/ClientId.js",
-      "require": "./dist/cjs/models/ClientId.js",
-      "types": "./dist/esm/models/ClientId.d.ts"
-    },
-    "./ClientSecret": {
-      "import": "./dist/esm/models/ClientSecret.js",
-      "require": "./dist/cjs/models/ClientSecret.js",
-      "types": "./dist/esm/models/ClientSecret.d.ts"
-    },
-    "./dist/cjs/models/ClientSecret.js": {
-      "import": "./dist/esm/models/ClientSecret.js",
-      "require": "./dist/cjs/models/ClientSecret.js",
-      "types": "./dist/esm/models/ClientSecret.d.ts"
-    },
-    "./dist/cjs/models/ClientSecret": {
-      "import": "./dist/esm/models/ClientSecret.js",
-      "require": "./dist/cjs/models/ClientSecret.js",
-      "types": "./dist/esm/models/ClientSecret.d.ts"
-    },
-    "./models/ClientSecret": {
-      "import": "./dist/esm/models/ClientSecret.js",
-      "require": "./dist/cjs/models/ClientSecret.js",
-      "types": "./dist/esm/models/ClientSecret.d.ts"
-    },
-    "./models/ClientSecret.js": {
-      "import": "./dist/esm/models/ClientSecret.js",
-      "require": "./dist/cjs/models/ClientSecret.js",
-      "types": "./dist/esm/models/ClientSecret.d.ts"
-    },
     "./ColumnName": {
       "import": "./dist/esm/models/ColumnName.js",
       "require": "./dist/cjs/models/ColumnName.js",
@@ -726,131 +676,6 @@
       "import": "./dist/esm/models/ContextRef.js",
       "require": "./dist/cjs/models/ContextRef.js",
       "types": "./dist/esm/models/ContextRef.d.ts"
-    },
-    "./DataSource": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./dist/cjs/models/DataSource.js": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./dist/cjs/models/DataSource": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./models/DataSource": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./models/DataSource.js": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./DataSourceDecoder": {
-      "import": "./dist/esm/models/DataSourceDecoder.js",
-      "require": "./dist/cjs/models/DataSourceDecoder.js",
-      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
-    },
-    "./dist/cjs/models/DataSourceDecoder.js": {
-      "import": "./dist/esm/models/DataSourceDecoder.js",
-      "require": "./dist/cjs/models/DataSourceDecoder.js",
-      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
-    },
-    "./dist/cjs/models/DataSourceDecoder": {
-      "import": "./dist/esm/models/DataSourceDecoder.js",
-      "require": "./dist/cjs/models/DataSourceDecoder.js",
-      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
-    },
-    "./models/DataSourceDecoder": {
-      "import": "./dist/esm/models/DataSourceDecoder.js",
-      "require": "./dist/cjs/models/DataSourceDecoder.js",
-      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
-    },
-    "./models/DataSourceDecoder.js": {
-      "import": "./dist/esm/models/DataSourceDecoder.js",
-      "require": "./dist/cjs/models/DataSourceDecoder.js",
-      "types": "./dist/esm/models/DataSourceDecoder.d.ts"
-    },
-    "./DataSourceEncoder": {
-      "import": "./dist/esm/models/DataSourceEncoder.js",
-      "require": "./dist/cjs/models/DataSourceEncoder.js",
-      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
-    },
-    "./dist/cjs/models/DataSourceEncoder.js": {
-      "import": "./dist/esm/models/DataSourceEncoder.js",
-      "require": "./dist/cjs/models/DataSourceEncoder.js",
-      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
-    },
-    "./dist/cjs/models/DataSourceEncoder": {
-      "import": "./dist/esm/models/DataSourceEncoder.js",
-      "require": "./dist/cjs/models/DataSourceEncoder.js",
-      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
-    },
-    "./models/DataSourceEncoder": {
-      "import": "./dist/esm/models/DataSourceEncoder.js",
-      "require": "./dist/cjs/models/DataSourceEncoder.js",
-      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
-    },
-    "./models/DataSourceEncoder.js": {
-      "import": "./dist/esm/models/DataSourceEncoder.js",
-      "require": "./dist/cjs/models/DataSourceEncoder.js",
-      "types": "./dist/esm/models/DataSourceEncoder.d.ts"
-    },
-    "./DataSourceIndex": {
-      "import": "./dist/esm/models/DataSourceIndex.js",
-      "require": "./dist/cjs/models/DataSourceIndex.js",
-      "types": "./dist/esm/models/DataSourceIndex.d.ts"
-    },
-    "./dist/cjs/models/DataSourceIndex.js": {
-      "import": "./dist/esm/models/DataSourceIndex.js",
-      "require": "./dist/cjs/models/DataSourceIndex.js",
-      "types": "./dist/esm/models/DataSourceIndex.d.ts"
-    },
-    "./dist/cjs/models/DataSourceIndex": {
-      "import": "./dist/esm/models/DataSourceIndex.js",
-      "require": "./dist/cjs/models/DataSourceIndex.js",
-      "types": "./dist/esm/models/DataSourceIndex.d.ts"
-    },
-    "./models/DataSourceIndex": {
-      "import": "./dist/esm/models/DataSourceIndex.js",
-      "require": "./dist/cjs/models/DataSourceIndex.js",
-      "types": "./dist/esm/models/DataSourceIndex.d.ts"
-    },
-    "./models/DataSourceIndex.js": {
-      "import": "./dist/esm/models/DataSourceIndex.js",
-      "require": "./dist/cjs/models/DataSourceIndex.js",
-      "types": "./dist/esm/models/DataSourceIndex.d.ts"
-    },
-    "./DataSourceRow": {
-      "import": "./dist/esm/models/DataSourceRow.js",
-      "require": "./dist/cjs/models/DataSourceRow.js",
-      "types": "./dist/esm/models/DataSourceRow.d.ts"
-    },
-    "./dist/cjs/models/DataSourceRow.js": {
-      "import": "./dist/esm/models/DataSourceRow.js",
-      "require": "./dist/cjs/models/DataSourceRow.js",
-      "types": "./dist/esm/models/DataSourceRow.d.ts"
-    },
-    "./dist/cjs/models/DataSourceRow": {
-      "import": "./dist/esm/models/DataSourceRow.js",
-      "require": "./dist/cjs/models/DataSourceRow.js",
-      "types": "./dist/esm/models/DataSourceRow.d.ts"
-    },
-    "./models/DataSourceRow": {
-      "import": "./dist/esm/models/DataSourceRow.js",
-      "require": "./dist/cjs/models/DataSourceRow.js",
-      "types": "./dist/esm/models/DataSourceRow.d.ts"
-    },
-    "./models/DataSourceRow.js": {
-      "import": "./dist/esm/models/DataSourceRow.js",
-      "require": "./dist/cjs/models/DataSourceRow.js",
-      "types": "./dist/esm/models/DataSourceRow.d.ts"
     },
     "./DriveId": {
       "import": "./dist/esm/models/DriveId.js",
@@ -1002,31 +827,6 @@
       "require": "./dist/cjs/models/GraphOperation.js",
       "types": "./dist/esm/models/GraphOperation.d.ts"
     },
-    "./GraphOperationDefinition": {
-      "import": "./dist/esm/models/GraphOperationDefinition.js",
-      "require": "./dist/cjs/models/GraphOperationDefinition.js",
-      "types": "./dist/esm/models/GraphOperationDefinition.d.ts"
-    },
-    "./dist/cjs/models/GraphOperationDefinition.js": {
-      "import": "./dist/esm/models/GraphOperationDefinition.js",
-      "require": "./dist/cjs/models/GraphOperationDefinition.js",
-      "types": "./dist/esm/models/GraphOperationDefinition.d.ts"
-    },
-    "./dist/cjs/models/GraphOperationDefinition": {
-      "import": "./dist/esm/models/GraphOperationDefinition.js",
-      "require": "./dist/cjs/models/GraphOperationDefinition.js",
-      "types": "./dist/esm/models/GraphOperationDefinition.d.ts"
-    },
-    "./models/GraphOperationDefinition": {
-      "import": "./dist/esm/models/GraphOperationDefinition.js",
-      "require": "./dist/cjs/models/GraphOperationDefinition.js",
-      "types": "./dist/esm/models/GraphOperationDefinition.d.ts"
-    },
-    "./models/GraphOperationDefinition.js": {
-      "import": "./dist/esm/models/GraphOperationDefinition.js",
-      "require": "./dist/cjs/models/GraphOperationDefinition.js",
-      "types": "./dist/esm/models/GraphOperationDefinition.d.ts"
-    },
     "./HostName": {
       "import": "./dist/esm/models/HostName.js",
       "require": "./dist/cjs/models/HostName.js",
@@ -1052,55 +852,30 @@
       "require": "./dist/cjs/models/HostName.js",
       "types": "./dist/esm/models/HostName.d.ts"
     },
-    "./HttpProxy": {
-      "import": "./dist/esm/models/HttpProxy.js",
-      "require": "./dist/cjs/models/HttpProxy.js",
-      "types": "./dist/esm/models/HttpProxy.d.ts"
+    "./Http": {
+      "import": "./dist/esm/models/Http.js",
+      "require": "./dist/cjs/models/Http.js",
+      "types": "./dist/esm/models/Http.d.ts"
     },
-    "./dist/cjs/models/HttpProxy.js": {
-      "import": "./dist/esm/models/HttpProxy.js",
-      "require": "./dist/cjs/models/HttpProxy.js",
-      "types": "./dist/esm/models/HttpProxy.d.ts"
+    "./dist/cjs/models/Http.js": {
+      "import": "./dist/esm/models/Http.js",
+      "require": "./dist/cjs/models/Http.js",
+      "types": "./dist/esm/models/Http.d.ts"
     },
-    "./dist/cjs/models/HttpProxy": {
-      "import": "./dist/esm/models/HttpProxy.js",
-      "require": "./dist/cjs/models/HttpProxy.js",
-      "types": "./dist/esm/models/HttpProxy.d.ts"
+    "./dist/cjs/models/Http": {
+      "import": "./dist/esm/models/Http.js",
+      "require": "./dist/cjs/models/Http.js",
+      "types": "./dist/esm/models/Http.d.ts"
     },
-    "./models/HttpProxy": {
-      "import": "./dist/esm/models/HttpProxy.js",
-      "require": "./dist/cjs/models/HttpProxy.js",
-      "types": "./dist/esm/models/HttpProxy.d.ts"
+    "./models/Http": {
+      "import": "./dist/esm/models/Http.js",
+      "require": "./dist/cjs/models/Http.js",
+      "types": "./dist/esm/models/Http.d.ts"
     },
-    "./models/HttpProxy.js": {
-      "import": "./dist/esm/models/HttpProxy.js",
-      "require": "./dist/cjs/models/HttpProxy.js",
-      "types": "./dist/esm/models/HttpProxy.d.ts"
-    },
-    "./Item": {
-      "import": "./dist/esm/models/Item.js",
-      "require": "./dist/cjs/models/Item.js",
-      "types": "./dist/esm/models/Item.d.ts"
-    },
-    "./dist/cjs/models/Item.js": {
-      "import": "./dist/esm/models/Item.js",
-      "require": "./dist/cjs/models/Item.js",
-      "types": "./dist/esm/models/Item.d.ts"
-    },
-    "./dist/cjs/models/Item": {
-      "import": "./dist/esm/models/Item.js",
-      "require": "./dist/cjs/models/Item.js",
-      "types": "./dist/esm/models/Item.d.ts"
-    },
-    "./models/Item": {
-      "import": "./dist/esm/models/Item.js",
-      "require": "./dist/cjs/models/Item.js",
-      "types": "./dist/esm/models/Item.d.ts"
-    },
-    "./models/Item.js": {
-      "import": "./dist/esm/models/Item.js",
-      "require": "./dist/cjs/models/Item.js",
-      "types": "./dist/esm/models/Item.d.ts"
+    "./models/Http.js": {
+      "import": "./dist/esm/models/Http.js",
+      "require": "./dist/cjs/models/Http.js",
+      "types": "./dist/esm/models/Http.d.ts"
     },
     "./NumberFormat": {
       "import": "./dist/esm/models/NumberFormat.js",
@@ -1126,56 +901,6 @@
       "import": "./dist/esm/models/NumberFormat.js",
       "require": "./dist/cjs/models/NumberFormat.js",
       "types": "./dist/esm/models/NumberFormat.d.ts"
-    },
-    "./RangeOperationCallback": {
-      "import": "./dist/esm/models/RangeOperationCallback.js",
-      "require": "./dist/cjs/models/RangeOperationCallback.js",
-      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
-    },
-    "./dist/cjs/models/RangeOperationCallback.js": {
-      "import": "./dist/esm/models/RangeOperationCallback.js",
-      "require": "./dist/cjs/models/RangeOperationCallback.js",
-      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
-    },
-    "./dist/cjs/models/RangeOperationCallback": {
-      "import": "./dist/esm/models/RangeOperationCallback.js",
-      "require": "./dist/cjs/models/RangeOperationCallback.js",
-      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
-    },
-    "./models/RangeOperationCallback": {
-      "import": "./dist/esm/models/RangeOperationCallback.js",
-      "require": "./dist/cjs/models/RangeOperationCallback.js",
-      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
-    },
-    "./models/RangeOperationCallback.js": {
-      "import": "./dist/esm/models/RangeOperationCallback.js",
-      "require": "./dist/cjs/models/RangeOperationCallback.js",
-      "types": "./dist/esm/models/RangeOperationCallback.d.ts"
-    },
-    "./RecordBase": {
-      "import": "./dist/esm/models/RecordBase.js",
-      "require": "./dist/cjs/models/RecordBase.js",
-      "types": "./dist/esm/models/RecordBase.d.ts"
-    },
-    "./dist/cjs/models/RecordBase.js": {
-      "import": "./dist/esm/models/RecordBase.js",
-      "require": "./dist/cjs/models/RecordBase.js",
-      "types": "./dist/esm/models/RecordBase.d.ts"
-    },
-    "./dist/cjs/models/RecordBase": {
-      "import": "./dist/esm/models/RecordBase.js",
-      "require": "./dist/cjs/models/RecordBase.js",
-      "types": "./dist/esm/models/RecordBase.d.ts"
-    },
-    "./models/RecordBase": {
-      "import": "./dist/esm/models/RecordBase.js",
-      "require": "./dist/cjs/models/RecordBase.js",
-      "types": "./dist/esm/models/RecordBase.d.ts"
-    },
-    "./models/RecordBase.js": {
-      "import": "./dist/esm/models/RecordBase.js",
-      "require": "./dist/cjs/models/RecordBase.js",
-      "types": "./dist/esm/models/RecordBase.d.ts"
     },
     "./Row": {
       "import": "./dist/esm/models/Row.js",
@@ -1252,31 +977,6 @@
       "require": "./dist/cjs/models/RowOffset.js",
       "types": "./dist/esm/models/RowOffset.d.ts"
     },
-    "./Scope": {
-      "import": "./dist/esm/models/Scope.js",
-      "require": "./dist/cjs/models/Scope.js",
-      "types": "./dist/esm/models/Scope.d.ts"
-    },
-    "./dist/cjs/models/Scope.js": {
-      "import": "./dist/esm/models/Scope.js",
-      "require": "./dist/cjs/models/Scope.js",
-      "types": "./dist/esm/models/Scope.d.ts"
-    },
-    "./dist/cjs/models/Scope": {
-      "import": "./dist/esm/models/Scope.js",
-      "require": "./dist/cjs/models/Scope.js",
-      "types": "./dist/esm/models/Scope.d.ts"
-    },
-    "./models/Scope": {
-      "import": "./dist/esm/models/Scope.js",
-      "require": "./dist/cjs/models/Scope.js",
-      "types": "./dist/esm/models/Scope.d.ts"
-    },
-    "./models/Scope.js": {
-      "import": "./dist/esm/models/Scope.js",
-      "require": "./dist/cjs/models/Scope.js",
-      "types": "./dist/esm/models/Scope.d.ts"
-    },
     "./SiteId": {
       "import": "./dist/esm/models/SiteId.js",
       "require": "./dist/cjs/models/SiteId.js",
@@ -1351,56 +1051,6 @@
       "import": "./dist/esm/models/SiteRef.js",
       "require": "./dist/cjs/models/SiteRef.js",
       "types": "./dist/esm/models/SiteRef.d.ts"
-    },
-    "./SourceRowValue": {
-      "import": "./dist/esm/models/SourceRowValue.js",
-      "require": "./dist/cjs/models/SourceRowValue.js",
-      "types": "./dist/esm/models/SourceRowValue.d.ts"
-    },
-    "./dist/cjs/models/SourceRowValue.js": {
-      "import": "./dist/esm/models/SourceRowValue.js",
-      "require": "./dist/cjs/models/SourceRowValue.js",
-      "types": "./dist/esm/models/SourceRowValue.d.ts"
-    },
-    "./dist/cjs/models/SourceRowValue": {
-      "import": "./dist/esm/models/SourceRowValue.js",
-      "require": "./dist/cjs/models/SourceRowValue.js",
-      "types": "./dist/esm/models/SourceRowValue.d.ts"
-    },
-    "./models/SourceRowValue": {
-      "import": "./dist/esm/models/SourceRowValue.js",
-      "require": "./dist/cjs/models/SourceRowValue.js",
-      "types": "./dist/esm/models/SourceRowValue.d.ts"
-    },
-    "./models/SourceRowValue.js": {
-      "import": "./dist/esm/models/SourceRowValue.js",
-      "require": "./dist/cjs/models/SourceRowValue.js",
-      "types": "./dist/esm/models/SourceRowValue.d.ts"
-    },
-    "./TenantId": {
-      "import": "./dist/esm/models/TenantId.js",
-      "require": "./dist/cjs/models/TenantId.js",
-      "types": "./dist/esm/models/TenantId.d.ts"
-    },
-    "./dist/cjs/models/TenantId.js": {
-      "import": "./dist/esm/models/TenantId.js",
-      "require": "./dist/cjs/models/TenantId.js",
-      "types": "./dist/esm/models/TenantId.d.ts"
-    },
-    "./dist/cjs/models/TenantId": {
-      "import": "./dist/esm/models/TenantId.js",
-      "require": "./dist/cjs/models/TenantId.js",
-      "types": "./dist/esm/models/TenantId.d.ts"
-    },
-    "./models/TenantId": {
-      "import": "./dist/esm/models/TenantId.js",
-      "require": "./dist/cjs/models/TenantId.js",
-      "types": "./dist/esm/models/TenantId.d.ts"
-    },
-    "./models/TenantId.js": {
-      "import": "./dist/esm/models/TenantId.js",
-      "require": "./dist/cjs/models/TenantId.js",
-      "types": "./dist/esm/models/TenantId.d.ts"
     },
     "./WorkbookNamedRangeRef": {
       "import": "./dist/esm/models/WorkbookNamedRangeRef.js",
@@ -3152,31 +2802,6 @@
       "require": "./dist/cjs/operations/workbookWorksheet/updateWorkbookWorksheet.js",
       "types": "./dist/esm/operations/workbookWorksheet/updateWorkbookWorksheet.d.ts"
     },
-    "./accessToken": {
-      "import": "./dist/esm/services/accessToken.js",
-      "require": "./dist/cjs/services/accessToken.js",
-      "types": "./dist/esm/services/accessToken.d.ts"
-    },
-    "./dist/cjs/services/accessToken.js": {
-      "import": "./dist/esm/services/accessToken.js",
-      "require": "./dist/cjs/services/accessToken.js",
-      "types": "./dist/esm/services/accessToken.d.ts"
-    },
-    "./dist/cjs/services/accessToken": {
-      "import": "./dist/esm/services/accessToken.js",
-      "require": "./dist/cjs/services/accessToken.js",
-      "types": "./dist/esm/services/accessToken.d.ts"
-    },
-    "./services/accessToken": {
-      "import": "./dist/esm/services/accessToken.js",
-      "require": "./dist/cjs/services/accessToken.js",
-      "types": "./dist/esm/services/accessToken.d.ts"
-    },
-    "./services/accessToken.js": {
-      "import": "./dist/esm/services/accessToken.js",
-      "require": "./dist/cjs/services/accessToken.js",
-      "types": "./dist/esm/services/accessToken.d.ts"
-    },
     "./addressManipulation": {
       "import": "./dist/esm/services/addressManipulation.js",
       "require": "./dist/cjs/services/addressManipulation.js",
@@ -3226,6 +2851,31 @@
       "import": "./dist/esm/services/addressOffset.js",
       "require": "./dist/cjs/services/addressOffset.js",
       "types": "./dist/esm/services/addressOffset.d.ts"
+    },
+    "./azureApplicationCredentials": {
+      "import": "./dist/esm/services/azureApplicationCredentials.js",
+      "require": "./dist/cjs/services/azureApplicationCredentials.js",
+      "types": "./dist/esm/services/azureApplicationCredentials.d.ts"
+    },
+    "./dist/cjs/services/azureApplicationCredentials.js": {
+      "import": "./dist/esm/services/azureApplicationCredentials.js",
+      "require": "./dist/cjs/services/azureApplicationCredentials.js",
+      "types": "./dist/esm/services/azureApplicationCredentials.d.ts"
+    },
+    "./dist/cjs/services/azureApplicationCredentials": {
+      "import": "./dist/esm/services/azureApplicationCredentials.js",
+      "require": "./dist/cjs/services/azureApplicationCredentials.js",
+      "types": "./dist/esm/services/azureApplicationCredentials.d.ts"
+    },
+    "./services/azureApplicationCredentials": {
+      "import": "./dist/esm/services/azureApplicationCredentials.js",
+      "require": "./dist/cjs/services/azureApplicationCredentials.js",
+      "types": "./dist/esm/services/azureApplicationCredentials.d.ts"
+    },
+    "./services/azureApplicationCredentials.js": {
+      "import": "./dist/esm/services/azureApplicationCredentials.js",
+      "require": "./dist/cjs/services/azureApplicationCredentials.js",
+      "types": "./dist/esm/services/azureApplicationCredentials.d.ts"
     },
     "./batch": {
       "import": "./dist/esm/services/batch.js",

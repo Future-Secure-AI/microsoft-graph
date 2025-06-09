@@ -16,7 +16,6 @@ import { sleep } from "../services/sleep.ts";
 
 /**
  * Copy a drive item.
- * 
  * @remarks The underlying GraphAPI operation is asynchronous, so this function will block until the copy operation is complete or the timeout is reached.
  * @param srcFileRef A reference to the source file to be copied.
  * @param dstDriveRef Destination drive

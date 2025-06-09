@@ -10,7 +10,7 @@ Delete a drive item, avoiding locking issues through automatic retries.
 
 > **deleteDriveItemWithRetry**(`driveItemRef`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/deleteDriveItemWithRetry.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/deleteDriveItemWithRetry.ts#L18)
+Defined in: [src/tasks/deleteDriveItemWithRetry.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/deleteDriveItemWithRetry.ts#L17)
 
 Delete a drive item, avoiding locking issues through automatic retries.
 
@@ -18,13 +18,11 @@ Delete a drive item, avoiding locking issues through automatic retries.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveItemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the DriveItem to delete. |
+| `driveItemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the DriveItem to delete. * |
 
 #### Returns
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
-
-Nothing
 
 #### Remarks
 

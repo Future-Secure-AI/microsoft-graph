@@ -10,7 +10,7 @@ Initiate an asynchronous copy of an item.
 
 > **initiateCopyDriveItem**(`srcFileRef`, `dstFolderRef`, `dstFileName`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/driveItem/initiateCopyDriveItem.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/initiateCopyDriveItem.ts#L22)
+Defined in: [src/operations/driveItem/initiateCopyDriveItem.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/initiateCopyDriveItem.ts#L21)
 
 Initiate an asynchronous copy of an item.
 
@@ -25,8 +25,6 @@ Initiate an asynchronous copy of an item.
 #### Returns
 
 [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
-
-Nothing. The copied file may not be immediately available, and polling is required.
 
 #### Remarks
 

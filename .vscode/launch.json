@@ -1,15 +1,15 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Run",
-      "runtimeExecutable": "npx",
-      "runtimeArgs": ["tsx", "demo/index.ts"],
-      "cwd": "${workspaceFolder}",
-      "skipFiles": ["<node_internals>/**"],
-      "autoAttachChildProcesses": true
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Run",
+			"runtimeExecutable": "npx",
+			"runtimeArgs": ["tsx", "demo/index.ts"],
+			"cwd": "${workspaceFolder}",
+			"skipFiles": ["<node_internals>/**"],
+			"autoAttachChildProcesses": true
+		}
+	]
 }

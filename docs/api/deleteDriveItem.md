@@ -10,7 +10,7 @@ Delete an item from a drive.
 
 > **deleteDriveItem**(`itemRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/driveItem/deleteDriveItem.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/deleteDriveItem.ts#L18)
+Defined in: [src/operations/driveItem/deleteDriveItem.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/deleteDriveItem.ts#L17)
 
 Delete an item from a drive.
 
@@ -18,13 +18,11 @@ Delete an item from a drive.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `itemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the drive item to be deleted. |
+| `itemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the drive item to be deleted. * |
 
 #### Returns
 
 [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
-
-Nothing.
 
 #### See
 

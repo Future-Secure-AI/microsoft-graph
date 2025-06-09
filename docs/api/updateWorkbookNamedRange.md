@@ -10,7 +10,7 @@ Update a named range.
 
 > **updateWorkbookNamedRange**(`rangeRef`, `value`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookRange/updateWorkbookNamedRange.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/updateWorkbookNamedRange.ts#L21)
+Defined in: [src/operations/workbookRange/updateWorkbookNamedRange.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/updateWorkbookNamedRange.ts#L20)
 
 Update a named range.
 
@@ -19,13 +19,11 @@ Update a named range.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookNamedRangeRef`](WorkbookNamedRangeRef.md#workbooknamedrangeref) | Reference to the named range to be updated. |
-| `value` | `WorkbookRange` | The updated properties for the named range. |
+| `value` | `WorkbookRange` | The updated properties for the named range. * |
 
 #### Returns
 
 [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
-
-Nothing.
 
 #### Remarks
 

@@ -10,7 +10,7 @@ Refresh a workbook session.
 
 > **refreshWorkbookSession**(`workbookRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookSession/refreshWorkbookSession.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/refreshWorkbookSession.ts#L20)
+Defined in: [src/operations/workbookSession/refreshWorkbookSession.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/refreshWorkbookSession.ts#L19)
 
 Refresh a workbook session.
 
@@ -18,13 +18,11 @@ Refresh a workbook session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook. |
+| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook. * |
 
 #### Returns
 
 [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
-
-Nothing.
 
 #### Throws
 

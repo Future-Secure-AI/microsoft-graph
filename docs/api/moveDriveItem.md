@@ -10,7 +10,7 @@ Moves a file to a new location in the same drive.
 
 > **moveDriveItem**(`srcFileRef`, `dstFolderRef`, `dstFileName`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/driveItem/moveDriveItem.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/moveDriveItem.ts#L21)
+Defined in: [src/operations/driveItem/moveDriveItem.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/moveDriveItem.ts#L20)
 
 Moves a file to a new location in the same drive.
 
@@ -20,13 +20,11 @@ Moves a file to a new location in the same drive.
 | ------ | ------ | ------ |
 | `srcFileRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the source file to be copied. |
 | `dstFolderRef` | [`DriveRef`](DriveRef.md#driveref) \| [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the destination folder or site (if targeting root). |
-| `dstFileName` | `string` | Name of the copied file. |
+| `dstFileName` | `string` | Name of the copied file. * |
 
 #### Returns
 
 [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
-
-Nothing.
 
 #### See
 

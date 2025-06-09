@@ -10,7 +10,7 @@ Close an existing workbook session.
 
 > **closeWorkbookSession**(`workbookRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: [src/operations/workbookSession/closeWorkbookSession.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/closeWorkbookSession.ts#L20)
+Defined in: [src/operations/workbookSession/closeWorkbookSession.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/closeWorkbookSession.ts#L19)
 
 Close an existing workbook session.
 
@@ -18,13 +18,11 @@ Close an existing workbook session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook. |
+| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook. * |
 
 #### Returns
 
 [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
-
-Nothing.
 
 #### Throws
 
