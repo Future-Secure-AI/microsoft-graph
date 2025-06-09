@@ -113,7 +113,6 @@ await deleteDriveItem(folder);
 
 | Module | Description |
 | ------ | ------ |
-| [index](index.md) | - |
 | [models/DataSource](models/DataSource.md) | - |
 | [models/DataSourceDecoder](models/DataSourceDecoder.md) | - |
 | [models/DataSourceEncoder](models/DataSourceEncoder.md) | - |

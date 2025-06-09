@@ -4,9 +4,8 @@
 	"out": "docs/api",
 	"name": "Microsoft Graph SDK",
 	"entryPointStrategy": "expand",
-	"exclude": ["**/*+(.test).ts"],
+	"exclude": ["**/*.test.ts", "**/index.ts"],
 	"mergeReadme": true,
-	// "readme": "none",
 	"router": "module",
 	"hideGenerator": true,
 	"hidePageHeader": true,
@@ -20,5 +19,5 @@
 	"excludeInternal": true,
 	"excludePrivate": true,
 	"excludeProtected": true,
-	"excludeReferences": true,
+	"excludeReferences": true
 }
