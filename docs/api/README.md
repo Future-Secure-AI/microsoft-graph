@@ -113,7 +113,6 @@ await deleteDriveItem(folder);
 
 | Module | Description |
 | ------ | ------ |
-| [graphApi](graphApi.md) | - |
 | [index](index.md) | - |
 | [models/DataSource](models/DataSource.md) | - |
 | [models/DataSourceDecoder](models/DataSourceDecoder.md) | - |
@@ -229,3 +228,9 @@ await deleteDriveItem(folder);
 | [tasks/tryCloseWorkbookSession](tasks/tryCloseWorkbookSession.md) | - |
 | [tasks/tryDeleteDriveItem](tasks/tryDeleteDriveItem.md) | - |
 | [tasks/writeWorkbookRows](tasks/writeWorkbookRows.md) | - |
+
+## Services
+
+| Module | Description |
+| ------ | ------ |
+| [operationInvoker](operationInvoker.md) | Invoke operations, potentially as parallel or sequential batches. |

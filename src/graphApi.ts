@@ -1,3 +1,10 @@
+// TODO: Move to `services/operationInvoker.ts` at next major version.
+
+/**
+ * Invoke operations, potentially as parallel or sequential batches.
+ * @module operationInvoker
+ * @category Services
+ **/
 import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
 import InconsistentContextError from "./errors/InconsistentContextError.ts";
 import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
@@ -12,10 +19,22 @@ import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isSer
 import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
 import { sleep } from "./services/sleep.ts";
 
+/**
+ * Endpoint for submitting individual requests.
+ * @internal
+ */
 export const endpoint = "https://graph.microsoft.com/v1.0";
+
+/**
+ * Endpoint for submitting batch requests.
+ * @internal
+ */
 export const batchEndpoint = `${endpoint}/$batch`;
 
-/** Define a operation, which can either be `await`d to execute independently, or passed with other operations ot `parallel` or `sequential` to execute as part of a batch. */
+/**
+ * Define a operation.
+ * @remarks Operations can be `await`d to execute independently, or passed with others as arguments to `parallel` or `sequential` to execute as part of a batch.
+ */
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
 	const single = async <T>(definition: GraphOperationDefinition<T>): Promise<T> => {
 		return await executeSingle<T>(definition);
@@ -26,14 +45,19 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
 	return op;
 }
 
-/** Execute a batch of GraphAPI operations in parallel. Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time. */
+/**
+ * Execute a batch of GraphAPI operations in parallel.
+ * @remarks Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time.
+ */
 export async function parallel<T extends GraphOperation<unknown>[]>(...operations: T): Promise<OperationResponse<T>> {
 	const definitions = operations.map((op) => op.definition) as BatchGraphOperationDefinition<unknown>[];
 
 	return (await executeBatch(...definitions)) as OperationResponse<T>;
 }
 
-/** Execute a batch of GraphAPI operations sequentially. */
+/**
+ * Execute a batch of GraphAPI operations sequentially.
+ */
 export async function sequential<T extends GraphOperation<unknown>[]>(...operations: T): Promise<OperationResponse<T>> {
 	const definitions = operations.map((definition, index) => ({
 		...definition.definition,
