@@ -22,6 +22,7 @@ import {
 	isSingleRowAddress,
 	offsetAddress,
 	subAddress,
+	superAddress,
 } from "./addressManipulation.ts";
 
 describe("getFirstCellAddress", () => {
@@ -537,7 +538,7 @@ describe("Sheet name with single quotes", () => {
 	});
 });
 
-describe("subaddress", () => {
+describe("subAddress", () => {
 	it("should return the same address if no skip/take is given", () => {
 		expect(subAddress("A1:B2")).toBe("A1:B2");
 	});
@@ -581,6 +582,29 @@ describe("subaddress", () => {
 	it("should work for single cell address", () => {
 		expect(subAddress("A1")).toBe("A1");
 		expect(subAddress("A1", 0, 1, 0, 1)).toBe("A1");
+	});
+});
+
+describe("superAddress", () => {
+	it("should extend below and right when take is large", () => {
+		expect(superAddress("A1:B2", 1, 2, 1, 2)).toBe("B2:C3");
+	});
+
+	it("should work for single cell", () => {
+		expect(superAddress("B2", 1, 1, 1, 1)).toBe("C3");
+	});
+
+	it("should extend above and left when skip is negative", () => {
+		expect(superAddress("B2:C3", -1, 2, -1, 2)).toBe("A1:B2");
+	});
+
+	it("should allow negative take to shrink from the end", () => {
+		expect(superAddress("A1:D10", 0, -1)).toBe("A1:D9");
+		expect(superAddress("A1:D10", 0, Number.POSITIVE_INFINITY, 0, -2)).toBe("A1:B10");
+	});
+
+	it("should allow both skip and take to be negative (extend above, shrink below)", () => {
+		expect(superAddress("B2:C3", -1, 2, -1, 2)).toBe("A1:B2");
 	});
 });
 

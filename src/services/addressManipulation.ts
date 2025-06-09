@@ -438,6 +438,49 @@ export function subAddress(address: Address, skipRows = 0, takeRows = Number.POS
 }
 
 /**
+ * Returns a super-address that extends the given address by skipping/taking rows/columns, possibly outside the original bounds.
+ * Negative skip moves the start above/left of the original range (not from the end).
+ *
+ * @param address - The original range in A1 notation (e.g., "A1:D10").
+ * @param skipRows - Number of rows to skip (can be negative to extend above).
+ * @param takeRows - Number of rows to take after skipping. If negative, excludes from the end. Default is Infinity.
+ * @param skipCols - Number of columns to skip (can be negative to extend left).
+ * @param takeCols - Number of columns to take after skipping. If negative, excludes from the end. Default is Infinity.
+ * @returns A new A1-style range representing the superrange (may extend outside original bounds).
+ *
+ * @example
+ * superAddress("B2:C3", -1, 4, -1, 4) // "A1:D5"
+ */
+export function superAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
+	const { ax, bx, ay, by } = addressToCartesian(address);
+
+	const [startRow, endRow] = superSlice(ay, by, skipRows, takeRows);
+	const [startCol, endCol] = superSlice(ax, bx, skipCols, takeCols);
+
+	return cartesianToAddress({
+		ay: startRow as RowOffset,
+		by: endRow as RowOffset,
+		ax: startCol as ColumnOffset,
+		bx: endCol as ColumnOffset,
+	});
+
+	function superSlice(start: number, end: number, skip: number, take: number): [number, number] {
+		const s = start + skip;
+		let e = end;
+
+		if (!Number.isFinite(take)) {
+			// do nothing
+		} else if (take >= 0) {
+			e = s + take - 1;
+		} else if (take < 0) {
+			e += take;
+		}
+
+		return [s, e];
+	}
+}
+
+/**
  * Extracts a sub-range from a WorkbookRangeRef using skip/take semantics.
  * @param rangeRef Range reference to extract the sub-range from.
  * @param skipRows Number of rows to skip. If negative, skips from the end. Default 0.
@@ -449,6 +492,25 @@ export function subAddress(address: Address, skipRows = 0, takeRows = Number.POS
  */
 export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
 	const address = subAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
+	return {
+		...rangeRef,
+		address,
+	};
+}
+
+/**
+ * Returns a super-range from a WorkbookRangeRef using skip/take semantics, possibly extending outside the original bounds.
+ * Negative skip moves the start above/left of the original range (not from the end).
+ *
+ * @param rangeRef Range reference to extend.
+ * @param skipRows Number of rows to skip (can be negative to extend above). Default 0.
+ * @param takeRows Number of rows to take after skipping. If negative, excludes from the end. Default Infinity.
+ * @param skipCols Number of columns to skip (can be negative to extend left). Default 0.
+ * @param takeCols Number of columns to take after skipping. If negative, excludes from the end. Default Infinity.
+ * @returns Extended super-range reference.
+ */
+export function superRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
+	const address = superAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
 	return {
 		...rangeRef,
 		address,
