@@ -1,3 +1,5 @@
+// biome-ignore lint/style/useFilenamingConvention: Appropriate in this context
+
 /**
  * Credentials used to authenticate an application with Azure.
  * @module AzureApplicationCredentials

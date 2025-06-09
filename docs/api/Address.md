@@ -90,6 +90,25 @@ Address of multiple consecutive columns in a worksheet ().
 
 ***
 
+### DecomposedAddress
+
+> **DecomposedAddress** = `object`
+
+Defined in: [src/models/Address.ts:53](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L53)
+
+Address when decomposed into its components.
+
+#### Properties
+
+| Property | Type | Defined in |
+| ------ | ------ | ------ |
+| <a id="endcolumn"></a> `endColumn` | [`ColumnAddress`](#columnaddress) | [src/models/Address.ts:55](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L55) |
+| <a id="endrow"></a> `endRow` | [`RowAddress`](#rowaddress) | [src/models/Address.ts:57](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L57) |
+| <a id="startcolumn"></a> `startColumn` | [`ColumnAddress`](#columnaddress) | [src/models/Address.ts:54](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L54) |
+| <a id="startrow"></a> `startRow` | [`RowAddress`](#rowaddress) | [src/models/Address.ts:56](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L56) |
+
+***
+
 ### RowAddress
 
 > **RowAddress** = `` `${number}` ``
