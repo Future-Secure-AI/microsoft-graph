@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookRangeFont
 
+# getWorkbookRangeFont
+
 Retrieve the font format of a workbook range.
 
 ## Functions

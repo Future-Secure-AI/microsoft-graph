@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / stringCaseConversion
 
+# stringCaseConversion
+
 Utilities for converting string case styles (e.g., kebab-case to camelCase).
 
 ## Functions

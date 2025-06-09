@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / WorkbookTableColumnRef
 
+# WorkbookTableColumnRef
+
 Reference to a column in a table in a worksheet.
 
 ## Type Aliases

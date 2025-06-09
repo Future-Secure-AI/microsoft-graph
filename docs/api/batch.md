@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / batch
 
+# batch
+
 Constants and helpers for batching Microsoft Graph API requests.
 
 ## Variables

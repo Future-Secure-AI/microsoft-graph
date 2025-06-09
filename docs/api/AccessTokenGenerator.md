@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / AccessTokenGenerator
 
+# AccessTokenGenerator
+
 Callback function that generates an access token.
 
 ## Remarks

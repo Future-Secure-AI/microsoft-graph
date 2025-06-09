@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / setColumnHidden
 
+# setColumnHidden
+
 Set one or more columns visibility.
 
 ## Functions

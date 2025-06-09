@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookVisibleRange
 
+# getWorkbookVisibleRange
+
 Retrieve the visible view of a range.
 
 ## Functions

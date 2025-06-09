@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / createWorkbookTable
 
+# createWorkbookTable
+
 Create a new table in a worksheet.
 
 ## Functions

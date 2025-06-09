@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / sharepointUrl
 
+# sharepointUrl
+
 Utilities for parsing and extracting information from SharePoint URLs.
 
 ## Functions

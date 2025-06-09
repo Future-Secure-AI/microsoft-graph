@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookRangeFormat
 
+# getWorkbookRangeFormat
+
 Retrieve the format of a workbook range.
 
 ## Functions

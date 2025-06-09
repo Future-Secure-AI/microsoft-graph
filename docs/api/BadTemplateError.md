@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / BadTemplateError
 
+# BadTemplateError
+
 Error thrown when path template did not match the expected format.
 
 ## Classes

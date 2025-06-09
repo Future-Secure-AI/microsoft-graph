@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / setRowHidden
 
+# setRowHidden
+
 Set one or more rows visibility.
 
 ## Functions

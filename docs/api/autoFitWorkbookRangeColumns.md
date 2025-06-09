@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / autoFitWorkbookRangeColumns
 
+# autoFitWorkbookRangeColumns
+
 Auto-fit the columns in a range.
 
 ## Functions

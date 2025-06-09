@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / writeWorkbookRows
 
+# writeWorkbookRows
+
 Write rows to a workbook range.
 
 ## Functions

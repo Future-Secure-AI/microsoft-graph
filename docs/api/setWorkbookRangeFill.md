@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / setWorkbookRangeFill
 
+# setWorkbookRangeFill
+
 Update the fill format of a workbook range.
 
 ## Functions

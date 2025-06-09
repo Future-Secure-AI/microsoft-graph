@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / copyDriveItem
 
+# copyDriveItem
+
 Copy a drive item.
 
 ## Functions

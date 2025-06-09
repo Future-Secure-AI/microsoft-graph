@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / rangeManipulation
 
+# rangeManipulation
+
 Utilities for inferring and manipulating spreadsheet ranges and objects.
 
 ## Functions

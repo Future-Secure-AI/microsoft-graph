@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / WorkbookWorksheetId
 
+# WorkbookWorksheetId
+
 Identifier for a worksheet in a workbook.
 
 ## Type Aliases

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / addressManipulation
 
+# addressManipulation
+
 Utilities for manipulating and analyzing spreadsheet-style addresses (A1 notation).
 
 ## Type Aliases

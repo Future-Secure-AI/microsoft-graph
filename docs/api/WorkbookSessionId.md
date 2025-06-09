@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / WorkbookSessionId
 
+# WorkbookSessionId
+
 Identifier for a workbook session.
 
 ## Type Aliases

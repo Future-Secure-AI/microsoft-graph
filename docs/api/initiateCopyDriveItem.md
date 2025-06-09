@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / initiateCopyDriveItem
 
+# initiateCopyDriveItem
+
 Initiate an asynchronous copy of an item.
 
 ## Functions

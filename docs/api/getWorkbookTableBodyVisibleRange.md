@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookTableBodyVisibleRange
 
+# getWorkbookTableBodyVisibleRange
+
 Retrieve the visible data body range of a table.
 
 ## Functions

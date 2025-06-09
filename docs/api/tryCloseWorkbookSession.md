@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / tryCloseWorkbookSession
 
+# tryCloseWorkbookSession
+
 Try and close a workbook session.
 
 ## Functions

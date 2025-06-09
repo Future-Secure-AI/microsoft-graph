@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / operationInvoker
 
+# operationInvoker
+
 Invoke operations, potentially as parallel or sequential batches.
 
 ## Functions

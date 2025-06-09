@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookWorksheetRange
 
+# getWorkbookWorksheetRange
+
 Fetch a range.
 
 ## Functions

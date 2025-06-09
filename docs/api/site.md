@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / site
 
+# site
+
 Utilities for working with Microsoft Graph Site references and operations.
 
 ## Functions

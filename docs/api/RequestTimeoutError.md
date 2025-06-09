@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / RequestTimeoutError
 
+# RequestTimeoutError
+
 Error thrown when a request exceeds the allowed time limit.
 
 ## Classes

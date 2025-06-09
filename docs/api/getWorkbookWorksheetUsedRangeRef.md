@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookWorksheetUsedRangeRef
 
+# getWorkbookWorksheetUsedRangeRef
+
 Retrieve the address of the used range in a worksheet, ignoring trailing rows and columns that are blank.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / addressOffset
 
+# addressOffset
+
 Utilities for converting between spreadsheet column/row addresses and offsets.
 
 ## Functions

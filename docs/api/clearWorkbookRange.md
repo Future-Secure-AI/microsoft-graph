@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / clearWorkbookRange
 
+# clearWorkbookRange
+
 Clear a range - content, formatting, or both.
 
 ## Functions

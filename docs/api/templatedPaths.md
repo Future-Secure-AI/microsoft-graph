@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / templatedPaths
 
+# templatedPaths
+
 Utilities for generating and parsing templated HTTP paths.
 
 ## Functions

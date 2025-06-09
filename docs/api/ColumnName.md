@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / ColumnName
 
+# ColumnName
+
 Name of a column, as configured by the user.
 
 ## Type Aliases

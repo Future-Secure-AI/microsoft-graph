@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / setWorkbookRangeFont
 
+# setWorkbookRangeFont
+
 Update the font format of a workbook range.
 
 ## Functions

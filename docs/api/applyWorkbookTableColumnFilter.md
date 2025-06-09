@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / applyWorkbookTableColumnFilter
 
+# applyWorkbookTableColumnFilter
+
 Apply a filter to a workbook table column.
 
 ## Functions

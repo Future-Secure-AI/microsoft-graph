@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / context
 
+# context
+
 Context creation and management utilities for Microsoft Graph API authentication.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / RowNumber
 
+# RowNumber
+
 Row number as it appears in Excel.
 
 ## Remarks

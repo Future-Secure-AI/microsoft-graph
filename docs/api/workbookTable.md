@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / workbookTable
 
+# workbookTable
+
 Utilities for creating and working with workbook table references.
 
 ## Functions

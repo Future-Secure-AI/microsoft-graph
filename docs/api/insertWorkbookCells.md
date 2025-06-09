@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / insertWorkbookCells
 
+# insertWorkbookCells
+
 Insert a new blank range at a specified address, shifting existing cells.
 
 ## Functions

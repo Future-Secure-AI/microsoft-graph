@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / Context
 
+# Context
+
 Context of requests.
 
 ## Type Aliases

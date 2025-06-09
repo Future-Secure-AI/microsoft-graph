@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / EnvironmentVariableMissingError
 
+# EnvironmentVariableMissingError
+
 Error thrown when a required environment variable is not set, empty or whitespace.
 
 ## Classes

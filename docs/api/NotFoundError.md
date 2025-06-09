@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / NotFoundError
 
+# NotFoundError
+
 Error thrown when a requested resource is not found.
 
 ## Classes

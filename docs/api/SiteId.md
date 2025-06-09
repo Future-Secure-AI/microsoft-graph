@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / SiteId
 
+# SiteId
+
 Identifier for a site.
 
 ## Type Aliases

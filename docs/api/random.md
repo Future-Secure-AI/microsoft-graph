@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / random
 
+# random
+
 Utilities for generating random values for spreadsheet and API operations.
 
 ## Functions

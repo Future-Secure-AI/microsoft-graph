@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / refreshWorkbookSession
 
+# refreshWorkbookSession
+
 Refresh a workbook session.
 
 ## Functions

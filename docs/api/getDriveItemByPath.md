@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getDriveItemByPath
 
+# getDriveItemByPath
+
 Retrieve the metadata for an item in a drive by file path.
 
 ## Functions

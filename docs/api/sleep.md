@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / sleep
 
+# sleep
+
 Utility for pausing execution (sleep) in async workflows.
 
 ## Functions

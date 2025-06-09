@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / closeWorkbookSession
 
+# closeWorkbookSession
+
 Close an existing workbook session.
 
 ## Functions

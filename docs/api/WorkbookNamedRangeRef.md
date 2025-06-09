@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / WorkbookNamedRangeRef
 
+# WorkbookNamedRangeRef
+
 Reference to a named range.
 
 ## Type Aliases

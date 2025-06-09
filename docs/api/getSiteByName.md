@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getSiteByName
 
+# getSiteByName
+
 Get a site by its name.
 
 ## Functions

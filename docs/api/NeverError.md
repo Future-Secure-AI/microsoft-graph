@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / NeverError
 
+# NeverError
+
 Error thrown when a theoretically impossible state is encountered. This is akin to a panic.
 
 ## Classes

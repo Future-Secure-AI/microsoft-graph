@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / deleteWorkbookWorksheet
 
+# deleteWorkbookWorksheet
+
 Permanently delete a worksheet.
 
 ## Functions

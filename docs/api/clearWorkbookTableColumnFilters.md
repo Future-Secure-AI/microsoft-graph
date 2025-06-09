@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / clearWorkbookTableColumnFilters
 
+# clearWorkbookTableColumnFilters
+
 Clear all filters from a workbook table.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / InconsistentContextError
 
+# InconsistentContextError
+
 Error thrown when batched operations are performed with an inconsistent context (ie, different authentication).
 
 ## Classes

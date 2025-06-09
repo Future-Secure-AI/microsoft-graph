@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / HostName
 
+# HostName
+
 Name of a remote host, resolvable by DNS.
 
 ## Type Aliases

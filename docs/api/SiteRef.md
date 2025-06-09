@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / SiteRef
 
+# SiteRef
+
 Reference to a site.
 
 ## Type Aliases

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / numberFormat
 
+# numberFormat
+
 Spreadsheet number format constants for Microsoft Graph API.
 
 ## Variables

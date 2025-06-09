@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getDriveItemContent
 
+# getDriveItemContent
+
 Download the content of a drive item.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / updateWorkbookNamedRange
 
+# updateWorkbookNamedRange
+
 Update a named range.
 
 ## Functions

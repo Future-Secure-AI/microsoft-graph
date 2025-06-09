@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / InvalidArgumentError
 
+# InvalidArgumentError
+
 Error thrown when a function is called with one or more invalid arguments.
 
 ## Classes

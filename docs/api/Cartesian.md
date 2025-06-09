@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / Cartesian
 
+# Cartesian
+
 Cartesian coordinates of a set of cells in a spreadsheet.
 
 ## Type Aliases

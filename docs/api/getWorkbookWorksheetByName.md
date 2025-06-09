@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookWorksheetByName
 
+# getWorkbookWorksheetByName
+
 Get a worksheet by its name.
 
 ## Functions

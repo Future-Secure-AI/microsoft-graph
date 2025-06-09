@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / AccessToken
 
+# AccessToken
+
 Token sent to server to authenticate a request.
 
 ## Remarks

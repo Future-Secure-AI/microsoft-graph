@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / GraphOperation
 
+# GraphOperation
+
 An atomic operation to be performed against the Microsoft Graph API.
 
 ## Type Aliases

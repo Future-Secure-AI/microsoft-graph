@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / mergeWorkbookRange
 
+# mergeWorkbookRange
+
 Merge a range of cells in a worksheet.
 
 ## Functions

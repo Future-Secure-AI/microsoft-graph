@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / Http
 
+# Http
+
 HTTP models for handling HTTP requests and responses.
 
 ## Type Aliases

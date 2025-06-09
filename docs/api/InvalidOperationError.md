@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / InvalidOperationError
 
+# InvalidOperationError
+
 Error thrown when a function is called when the system is in an unexpected state.
 
 ## Classes

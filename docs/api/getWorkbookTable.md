@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookTable
 
+# getWorkbookTable
+
 Retrieve a workbook table.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / WorkbookRangeName
 
+# WorkbookRangeName
+
 Name of a range in a workbook.
 
 ## Type Aliases

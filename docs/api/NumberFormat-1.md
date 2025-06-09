@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / NumberFormat
 
+# NumberFormat
+
 Format to be applied to a cell value to convert it to text to display to the user.
 
 ## See

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / listWorkbookWorksheets
 
+# listWorkbookWorksheets
+
 Retrieve a list of worksheets in a workbook.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / listSites
 
+# listSites
+
 List accessible sites.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / createFolder
 
+# createFolder
+
 Create a folder in the root of a drive, or in a folder. If it already exists do nothing.
 
 ## Functions

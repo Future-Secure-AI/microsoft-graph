@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / deleteWorkbookTablePreservingValues
 
+# deleteWorkbookTablePreservingValues
+
 Converts the table into a normal range of cells. All data is preserved.
 
 ## Functions

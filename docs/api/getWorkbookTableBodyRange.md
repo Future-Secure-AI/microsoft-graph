@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookTableBodyRange
 
+# getWorkbookTableBodyRange
+
 Retrieve the data body range of a workbook table.
 
 ## Functions

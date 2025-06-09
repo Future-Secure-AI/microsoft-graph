@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / createWorkbookWorksheet
 
+# createWorkbookWorksheet
+
 Create a new worksheet in a workbook, optionally with a defined name.
 
 ## Functions

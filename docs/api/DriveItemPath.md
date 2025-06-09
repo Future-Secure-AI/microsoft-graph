@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / DriveItemPath
 
+# DriveItemPath
+
 Path of an item in a drive.
 
 ## Type Aliases

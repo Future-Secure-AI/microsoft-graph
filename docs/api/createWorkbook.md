@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / createWorkbook
 
+# createWorkbook
+
 Create a new blank workbook.
 
 ## Functions

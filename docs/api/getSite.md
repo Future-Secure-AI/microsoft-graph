@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getSite
 
+# getSite
+
 Retrieve properties for a site resource.
 
 ## Functions

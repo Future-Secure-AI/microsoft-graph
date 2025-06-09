@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / workbookTableColumn
 
+# workbookTableColumn
+
 Utilities for creating and working with workbook table column references.
 
 ## Functions

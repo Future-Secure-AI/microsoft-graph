@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookNamedRange
 
+# getWorkbookNamedRange
+
 Retrieve a named range.
 
 ## Functions

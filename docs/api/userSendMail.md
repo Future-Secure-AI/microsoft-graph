@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / userSendMail
 
+# userSendMail
+
 Send an email.
 
 ## Functions

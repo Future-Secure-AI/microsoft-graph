@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / DriveId
 
+# DriveId
+
 Identifier for a drive.
 
 ## Type Aliases

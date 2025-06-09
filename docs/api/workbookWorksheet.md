@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / workbookWorksheet
 
+# workbookWorksheet
+
 Utilities for creating and working with workbook worksheet references.
 
 ## Variables

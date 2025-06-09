@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / AzureApplicationCredentials
 
+# AzureApplicationCredentials
+
 Credentials used to authenticate an application with Azure.
 
 ## Type Aliases

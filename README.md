@@ -4,7 +4,7 @@ This is an extensible library that allows access to Microsoft's GraphAPI, includ
 
 ℹ️ This is a THIRD PARTY library and not associated with Microsoft.
 
-## Usage
+## TLDR
 Install the NPM package `npm i microsoft-graph`, then:
 
 ```typescript
@@ -48,3 +48,7 @@ for (const item of await listDriveItems(folder)) {
 await safeDeleteWorkbook(workbook); // Closes session and waits for unlock
 await deleteDriveItem(folder);
 ```
+
+## Further reading
+* [API Documentation](/docs/api/README.md)
+* [Common questions and advanced topics](/docs/topics/README.md)

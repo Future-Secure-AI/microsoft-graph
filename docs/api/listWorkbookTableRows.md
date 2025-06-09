@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / listWorkbookTableRows
 
+# listWorkbookTableRows
+
 Retrieve a list of rows in a table.
 
 ## Functions

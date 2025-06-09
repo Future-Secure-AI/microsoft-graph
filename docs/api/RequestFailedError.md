@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / RequestFailedError
 
+# RequestFailedError
+
 Error thrown when a request to the server fails.
 
 ## Classes

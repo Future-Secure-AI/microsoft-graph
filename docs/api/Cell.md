@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / Cell
 
+# Cell
+
 Cell in a worksheet.
 
 ## Type Aliases

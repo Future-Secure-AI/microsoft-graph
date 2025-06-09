@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / downloadDriveItemContent
 
+# downloadDriveItemContent
+
 Download a drive item and save it to the local disk.
 
 ## Functions

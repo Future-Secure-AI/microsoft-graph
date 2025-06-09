@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / UnsupportedAddressTypeError
 
+# UnsupportedAddressTypeError
+
 Error thrown when a given address does not confirm to any known address type.
 
 ## Classes

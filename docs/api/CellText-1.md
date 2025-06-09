@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / CellText
 
+# CellText
+
 Text content of a cell in a worksheet.
 
 ## Remarks

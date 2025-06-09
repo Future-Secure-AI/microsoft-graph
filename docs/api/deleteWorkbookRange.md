@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / deleteWorkbookRange
 
+# deleteWorkbookRange
+
 Delete a range.
 
 ## Functions

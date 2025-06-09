@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / WorkbookRef
 
+# WorkbookRef
+
 Reference to a workbook.
 
 ## Type Aliases

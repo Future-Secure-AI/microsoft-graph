@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / searchSites
 
+# searchSites
+
 Find accessible sites that match the provided keywords.
 
 ## Functions

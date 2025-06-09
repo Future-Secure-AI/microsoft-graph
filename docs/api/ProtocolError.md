@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / ProtocolError
 
+# ProtocolError
+
 Error thrown when a response from the server does not conform to the expected protocol.
 
 ## Classes

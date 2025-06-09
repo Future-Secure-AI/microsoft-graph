@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / tryDeleteDriveItem
 
+# tryDeleteDriveItem
+
 Attempts to delete a drive item, returning success status.
 
 ## Functions

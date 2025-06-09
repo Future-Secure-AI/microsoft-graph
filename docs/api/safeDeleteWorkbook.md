@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / safeDeleteWorkbook
 
+# safeDeleteWorkbook
+
 Safely delete a workbook by first closing any open sessions and then deleting it.
 
 ## Functions

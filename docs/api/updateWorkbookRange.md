@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / updateWorkbookRange
 
+# updateWorkbookRange
+
 Update a range, including values and formatting.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookWorksheetUsedVisibleRange
 
+# getWorkbookWorksheetUsedVisibleRange
+
 Retrieve the visible (not hidden) range in a worksheet.
 
 ## Functions

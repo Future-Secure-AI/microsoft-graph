@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / azureApplicationCredentials
 
+# azureApplicationCredentials
+
 Azure application credential helpers for authentication and token management.
 
 ## Functions

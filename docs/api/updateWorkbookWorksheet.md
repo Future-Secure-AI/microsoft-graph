@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / updateWorkbookWorksheet
 
+# updateWorkbookWorksheet
+
 Update the name, position, and/or visibility of a worksheet.
 
 ## Functions

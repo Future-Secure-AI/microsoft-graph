@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / httpStatus
 
+# httpStatus
+
 Utilities for analyzing HTTP status codes for Microsoft Graph API responses.
 
 ## Functions

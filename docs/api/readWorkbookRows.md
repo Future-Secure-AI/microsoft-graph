@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / readWorkbookRows
 
+# readWorkbookRows
+
 Iterates over the rows in a given worksheet range.
 
 ## Functions

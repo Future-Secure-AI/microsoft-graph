@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / deleteDriveItem
 
+# deleteDriveItem
+
 Delete an item from a drive.
 
 ## Functions

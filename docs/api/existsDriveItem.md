@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / existsDriveItem
 
+# existsDriveItem
+
 Check if a given drive item exists.
 
 ## Functions

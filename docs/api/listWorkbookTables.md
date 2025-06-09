@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / listWorkbookTables
 
+# listWorkbookTables
+
 Retrieve a list of tables in a worksheet.
 
 ## Functions

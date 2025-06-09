@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / RowOffset
 
+# RowOffset
+
 Zero-based index representing the position of a row in a range.
 
 ## Type Aliases

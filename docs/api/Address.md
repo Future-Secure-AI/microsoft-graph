@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / Address
 
+# Address
+
 Address of a set of cells in a spreadsheet.
 
 ## Type Aliases

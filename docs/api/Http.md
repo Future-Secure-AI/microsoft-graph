@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / http
 
+# http
+
 HTTP request utilities for Microsoft Graph API, with proxy support.
 
 ## Functions

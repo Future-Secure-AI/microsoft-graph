@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / WorkbookRangeRef
 
+# WorkbookRangeRef
+
 Reference to a range in a worksheet.
 
 ## Type Aliases

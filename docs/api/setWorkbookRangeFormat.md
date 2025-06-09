@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / setWorkbookRangeFormat
 
+# setWorkbookRangeFormat
+
 Update the general format of a workbook range.
 
 ## Functions

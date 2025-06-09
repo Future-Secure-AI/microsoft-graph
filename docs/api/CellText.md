@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / cellText
 
+# cellText
+
 Utilities for working with cell text values in spreadsheets.
 
 ## Functions

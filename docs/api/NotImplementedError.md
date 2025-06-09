@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / NotImplementedError
 
+# NotImplementedError
+
 Error thrown when a requested feature or functionality is not yet implemented.
 
 ## Classes

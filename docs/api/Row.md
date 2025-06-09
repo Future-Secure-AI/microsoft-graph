@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / Row
 
+# Row
+
 A linear sequency of cells in a worksheet.
 
 ## Type Aliases

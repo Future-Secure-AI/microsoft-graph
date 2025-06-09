@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / CellValue
 
+# CellValue
+
 CellValue represents the value of a cell in a spreadsheet.
 
 ## See

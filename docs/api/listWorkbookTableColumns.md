@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / listWorkbookTableColumns
 
+# listWorkbookTableColumns
+
 Retrieve a list of columns in a table.
 
 ## Functions

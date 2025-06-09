@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / unmergeWorkbookRange
 
+# unmergeWorkbookRange
+
 Unmerge a merged range of cells in a worksheet.
 
 ## Functions

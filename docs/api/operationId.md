@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / operationId
 
+# operationId
+
 Utilities for converting between operation IDs and indexes.
 
 ## Functions

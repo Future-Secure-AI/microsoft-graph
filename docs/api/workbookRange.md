@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / workbookRange
 
+# workbookRange
+
 Utilities for working with workbook ranges and references.
 
 ## Functions

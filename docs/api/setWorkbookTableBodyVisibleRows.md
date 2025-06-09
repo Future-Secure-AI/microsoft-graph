@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / setWorkbookTableBodyVisibleRows
 
+# setWorkbookTableBodyVisibleRows
+
 Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed.
 
 ## Functions

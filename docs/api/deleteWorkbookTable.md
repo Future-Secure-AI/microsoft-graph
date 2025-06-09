@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / deleteWorkbookTable
 
+# deleteWorkbookTable
+
 Delete a workbook table. All data in the table will be cleared.
 
 ## Functions

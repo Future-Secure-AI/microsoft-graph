@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / moveDriveItem
 
+# moveDriveItem
+
 Moves a file to a new location in the same drive.
 
 ## Functions

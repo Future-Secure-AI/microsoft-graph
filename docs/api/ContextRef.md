@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / ContextRef
 
+# ContextRef
+
 Reference to a context
 
 ## Type Aliases

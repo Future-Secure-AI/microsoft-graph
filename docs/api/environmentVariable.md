@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / environmentVariable
 
+# environmentVariable
+
 Utilities for accessing environment variables with error handling and fallbacks.
 
 ## Functions

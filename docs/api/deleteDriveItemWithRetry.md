@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / deleteDriveItemWithRetry
 
+# deleteDriveItemWithRetry
+
 Delete a drive item, avoiding locking issues through automatic retries.
 
 ## Functions

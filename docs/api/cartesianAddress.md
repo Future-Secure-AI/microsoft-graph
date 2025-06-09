@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / cartesianAddress
 
+# cartesianAddress
+
 Utilities for converting between A1 addresses and Cartesian coordinates.
 
 ## Functions

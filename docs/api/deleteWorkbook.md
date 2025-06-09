@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / deleteWorkbook
 
+# deleteWorkbook
+
 Delete a workbook.
 
 ## Functions

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / temporaryFiles
 
+# temporaryFiles
+
 Utilities for generating temporary file names for use with Drive Items.
 
 ## Functions

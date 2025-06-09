@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / SiteName
 
+# SiteName
+
 Name of a site.
 
 ## Type Aliases

@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / ColumnOffset
 
+# ColumnOffset
+
 Zero-based index representing the position of a column in a range.
 
 ## Type Aliases

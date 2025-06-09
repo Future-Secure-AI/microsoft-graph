@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / listDrives
 
+# listDrives
+
 Retrieve the list of accessible Drives in a Site.
 
 ## Functions

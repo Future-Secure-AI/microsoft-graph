@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / createWorkbookAndStartSession
 
+# createWorkbookAndStartSession
+
 Create a new workbook and open a session for that workbook.
 
 ## Functions

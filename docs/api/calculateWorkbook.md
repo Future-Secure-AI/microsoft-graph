@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / calculateWorkbook
 
+# calculateWorkbook
+
 Recalculate a workbook.
 
 ## Functions

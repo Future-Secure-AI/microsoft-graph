@@ -1,5 +1,7 @@
 [Microsoft Graph SDK](README.md) / getWorkbookTableHeaderRange
 
+# getWorkbookTableHeaderRange
+
 Retrieve the header row range of a table.
 
 ## Functions
