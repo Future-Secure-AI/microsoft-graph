@@ -1,14 +1,17 @@
 /**
- * A cell in a workbook.
- * @remarks Contrary to common expectation, while a cell does contain a single value, it also contains a text representation of that value and a number format that often defines that representation.
+ * Cell in a worksheet.
  * @module Cell
  * @category Models
  */
 
-import type { CellValue } from "../models/CellValue.ts";
 import type { CellText } from "./CellText.ts";
+import type { CellValue } from "./CellValue.ts";
 import type { NumberFormat } from "./NumberFormat.ts";
 
+/**
+ * Cell in a worksheet.
+ * @remarks Contrary to common expectation, while a cell does contain a single value, it also contains a text representation of that value and a number format that often defines that representation.
+ */
 export type Cell = {
 	/**
 	 * The text representation of the cell's value.

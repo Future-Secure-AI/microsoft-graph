@@ -14,7 +14,7 @@ Clear a range - content, formatting, or both.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](../../models/WorkbookRangeRef.md#workbookrangeref) | `undefined` | A reference to the range to be cleared, optionally including session information. |
+| `rangeRef` | [`WorkbookRangeRef`](../../WorkbookRangeRef.md#workbookrangeref) | `undefined` | A reference to the range to be cleared, optionally including session information. |
 | `applyTo` | `"All"` \| `"Formats"` \| `"Contents"` | `"All"` | Specifies what to clear. Can be "All", "Formats", or "Contents". Defaults to "All". |
 
 #### Returns

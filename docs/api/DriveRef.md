@@ -6,7 +6,7 @@ Reference to a drive.
 
 ### DriveRef
 
-> **DriveRef** = [`SiteRef`](models/SiteRef.md#siteref) & `object`
+> **DriveRef** = [`SiteRef`](SiteRef.md#siteref) & `object`
 
 Defined in: [src/models/DriveRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveRef.ts#L10)
 

@@ -14,7 +14,7 @@ Unmerge a merged range of cells in a worksheet.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](../../models/WorkbookRangeRef.md#workbookrangeref) | Reference to the worksheet range. |
+| `rangeRef` | [`WorkbookRangeRef`](../../WorkbookRangeRef.md#workbookrangeref) | Reference to the worksheet range. |
 
 #### Returns
 

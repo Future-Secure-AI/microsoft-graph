@@ -14,7 +14,7 @@ Refresh a workbook session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](../../models/WorkbookRef.md#workbookref) | A reference to the workbook, optionally including session information. The session ID is required. |
+| `workbookRef` | [`WorkbookRef`](../../WorkbookRef.md#workbookref) | A reference to the workbook, optionally including session information. The session ID is required. |
 
 #### Returns
 

@@ -14,7 +14,7 @@ Update a range that has been defined using the "named range" functionality. Prop
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookNamedRangeRef`](../../models/WorkbookNamedRangeRef.md#workbooknamedrangeref) | A reference to the named range to be updated, optionally including session information. |
+| `rangeRef` | [`WorkbookNamedRangeRef`](../../WorkbookNamedRangeRef.md#workbooknamedrangeref) | A reference to the named range to be updated, optionally including session information. |
 | `value` | `WorkbookRange` | The updated properties for the named range. |
 
 #### Returns

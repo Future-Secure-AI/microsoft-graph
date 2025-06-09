@@ -17,7 +17,7 @@ Creates a context with a reference to a drive.
 | `tenantId` | [`AzureTenantId`](../AzureApplicationCredentials.md#azuretenantid) |
 | `clientId` | [`AzureClientId`](../AzureApplicationCredentials.md#azureclientid) |
 | `clientSecret` | [`AzureClientSecret`](../AzureApplicationCredentials.md#azureclientsecret) |
-| `siteId` | [`SiteId`](../models/SiteId.md#siteid) |
+| `siteId` | [`SiteId`](../SiteId.md#siteid) |
 | `driveId` | [`DriveId`](../DriveId.md#driveid) |
 
 #### Returns
@@ -38,7 +38,7 @@ Creates a reference to a drive.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `siteRef` | [`SiteRef`](../models/SiteRef.md#siteref) | The reference to the site. |
+| `siteRef` | [`SiteRef`](../SiteRef.md#siteref) | The reference to the site. |
 | `driveId` | `undefined` \| [`DriveId`](../DriveId.md#driveid) | The ID of the drive. |
 
 #### Returns

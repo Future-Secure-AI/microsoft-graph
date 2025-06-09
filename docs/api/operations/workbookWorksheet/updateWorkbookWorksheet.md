@@ -4,7 +4,7 @@
 
 ### updateWorkbookWorksheet()
 
-> **updateWorkbookWorksheet**(`worksheetRef`, `updates`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
+> **updateWorkbookWorksheet**(`worksheetRef`, `updates`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookWorksheet/updateWorkbookWorksheet.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/updateWorkbookWorksheet.ts#L18)
 
@@ -14,7 +14,7 @@ Update the name, position, and/or visibility of a worksheet.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `worksheetRef` | [`WorkbookWorksheetRef`](../../models/WorkbookWorksheetRef.md#workbookworksheetref) | A reference to the worksheet to be updated, optionally including session information. |
+| `worksheetRef` | [`WorkbookWorksheetRef`](../../WorkbookWorksheetRef.md#workbookworksheetref) | A reference to the worksheet to be updated, optionally including session information. |
 | `updates` | \{ `name?`: `string`; `position?`: `number`; `visibility?`: `"Visible"` \| `"Hidden"` \| `"VeryHidden"`; \} | An object containing the properties to update: - `name` (optional): The new name for the worksheet. - `position` (optional): The new position of the worksheet in the workbook. - `visibility` (optional): The visibility state of the worksheet. Can be "Visible", "Hidden", or "VeryHidden". |
 | `updates.name?` | `string` | - |
 | `updates.position?` | `number` | - |
@@ -22,7 +22,7 @@ Update the name, position, and/or visibility of a worksheet.
 
 #### Returns
 
-[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
 
 The updated worksheet, including its reference information.
 

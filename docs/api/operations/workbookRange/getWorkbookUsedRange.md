@@ -4,7 +4,7 @@
 
 ### ~~getWorkbookUsedRange()~~
 
-> **getWorkbookUsedRange**(`worksheetRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookUsedRange**(`worksheetRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](../../SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookRange/getWorkbookUsedRange.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookUsedRange.ts#L14)
 
@@ -12,11 +12,11 @@ Defined in: [src/operations/workbookRange/getWorkbookUsedRange.ts:14](https://gi
 
 | Parameter | Type |
 | ------ | ------ |
-| `worksheetRef` | [`WorkbookWorksheetRef`](../../models/WorkbookWorksheetRef.md#workbookworksheetref) |
+| `worksheetRef` | [`WorkbookWorksheetRef`](../../WorkbookWorksheetRef.md#workbookworksheetref) |
 
 #### Returns
 
-[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](../../SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 #### Deprecated
 

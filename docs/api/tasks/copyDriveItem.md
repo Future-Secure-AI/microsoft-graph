@@ -4,7 +4,7 @@
 
 ### copyDriveItem()
 
-> **copyDriveItem**(`srcFileRef`, `dstDriveRef`, `dstFilePath`, `timeoutMs`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object`\>
+> **copyDriveItem**(`srcFileRef`, `dstDriveRef`, `dstFilePath`, `timeoutMs`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../SiteRef.md#siteref) & `object` & `object`\>
 
 Defined in: [src/tasks/copyDriveItem.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/copyDriveItem.ts#L19)
 
@@ -21,4 +21,4 @@ Copy a drive item, blocking and polling for completion.
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../SiteRef.md#siteref) & `object` & `object`\>

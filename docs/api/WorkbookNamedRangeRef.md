@@ -1,4 +1,6 @@
-[Microsoft Graph SDK](../README.md) / models/WorkbookNamedRangeRef
+[Microsoft Graph SDK](README.md) / WorkbookNamedRangeRef
+
+Reference to a named range.
 
 ## Type Aliases
 
@@ -6,7 +8,7 @@
 
 > **WorkbookNamedRangeRef** = [`WorkbookRef`](WorkbookRef.md#workbookref) & `object`
 
-Defined in: [src/models/WorkbookNamedRangeRef.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookNamedRangeRef.ts#L4)
+Defined in: [src/models/WorkbookNamedRangeRef.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookNamedRangeRef.ts#L10)
 
 #### Type declaration
 

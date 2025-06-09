@@ -4,7 +4,7 @@
 
 ### listWorkbookWorksheets()
 
-> **listWorkbookWorksheets**(`workbookRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`[]\>
+> **listWorkbookWorksheets**(`workbookRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../SiteRef.md#siteref) & `object` & `object` & `object` & `object`[]\>
 
 Defined in: [src/operations/workbookWorksheet/listWorkbookWorksheets.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/listWorkbookWorksheets.ts#L18)
 
@@ -14,11 +14,11 @@ Retrieve a list of worksheets in a workbook.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](../../models/WorkbookRef.md#workbookref) | A reference to the workbook, optionally including session information. |
+| `workbookRef` | [`WorkbookRef`](../../WorkbookRef.md#workbookref) | A reference to the workbook, optionally including session information. |
 
 #### Returns
 
-[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object` & `object` & `object`[]\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](../../SiteRef.md#siteref) & `object` & `object` & `object` & `object`[]\>
 
 An array of worksheets, each including its metadata and reference information.
 

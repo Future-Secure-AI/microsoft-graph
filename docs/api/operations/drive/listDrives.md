@@ -4,7 +4,7 @@
 
 ### listDrives()
 
-> **listDrives**(`siteRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object`[]\>
+> **listDrives**(`siteRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../SiteRef.md#siteref) & `object`[]\>
 
 Defined in: [src/operations/drive/listDrives.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/drive/listDrives.ts#L17)
 
@@ -14,11 +14,11 @@ Retrieve the list of accessible Drives in a Site.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `siteRef` | [`SiteRef`](../../models/SiteRef.md#siteref) | A reference to the site. |
+| `siteRef` | [`SiteRef`](../../SiteRef.md#siteref) | A reference to the site. |
 
 #### Returns
 
-[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object`[]\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../SiteRef.md#siteref) & `object`[]\>
 
 An array of drives available for the specified site, each including its metadata and reference information.
 

@@ -4,7 +4,7 @@
 
 ### createDriveItem()
 
-> **createDriveItem**(`parentRef`, `itemPath`, `contextType`, `content`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object`\>
+> **createDriveItem**(`parentRef`, `itemPath`, `contextType`, `content`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../SiteRef.md#siteref) & `object` & `object`\>
 
 Defined in: [src/operations/driveItem/createDriveItem.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItem.ts#L19)
 
@@ -21,7 +21,7 @@ Creates new drive item in the specified parent drive or folder. If the file alre
 
 #### Returns
 
-[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../models/SiteRef.md#siteref) & `object` & `object`\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](../../SiteRef.md#siteref) & `object` & `object`\>
 
 The newly created workbook, including its metadata and reference information.
 

@@ -14,7 +14,7 @@ Update the fill format of a workbook range.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](../../models/WorkbookRangeRef.md#workbookrangeref) | A reference to the range to be formatted, optionally including session information. |
+| `rangeRef` | [`WorkbookRangeRef`](../../WorkbookRangeRef.md#workbookrangeref) | A reference to the range to be formatted, optionally including session information. |
 | `format` | `WorkbookRangeFill` | The fill format properties to apply to the range. |
 
 #### Returns

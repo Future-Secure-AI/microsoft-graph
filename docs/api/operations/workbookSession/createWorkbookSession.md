@@ -4,7 +4,7 @@
 
 ### createWorkbookSession()
 
-> **createWorkbookSession**(`itemRef`, `persistChanges`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<[`WorkbookRef`](../../models/WorkbookRef.md#workbookref)\>
+> **createWorkbookSession**(`itemRef`, `persistChanges`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<[`WorkbookRef`](../../WorkbookRef.md#workbookref)\>
 
 Defined in: [src/operations/workbookSession/createWorkbookSession.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookSession/createWorkbookSession.ts#L17)
 
@@ -19,7 +19,7 @@ Create a new workbook session.
 
 #### Returns
 
-[`GraphOperation`](../../GraphOperation.md#graphoperation)\<[`WorkbookRef`](../../models/WorkbookRef.md#workbookref)\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<[`WorkbookRef`](../../WorkbookRef.md#workbookref)\>
 
 A reference to the workbook, including the session ID.
 

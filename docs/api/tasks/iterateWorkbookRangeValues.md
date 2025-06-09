@@ -14,7 +14,7 @@ Iterates over the values of a workbook range in chunks, fetching data in managea
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](../models/WorkbookRangeRef.md#workbookrangeref) | `undefined` | A reference to the workbook range to iterate over. |
+| `rangeRef` | [`WorkbookRangeRef`](../WorkbookRangeRef.md#workbookrangeref) | `undefined` | A reference to the workbook range to iterate over. |
 | `overwriteRowsPerRequest` | `null` \| `number` | `null` | Optional. The number of rows to fetch per request. If omitted, it is automatically calculated. |
 
 #### Returns

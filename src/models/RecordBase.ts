@@ -1,3 +1,3 @@
-import type { CellValue } from "./CellValue.ts";
+// import type { CellValue } from "./CellValue.ts";
 
-export type RecordBase = Record<string, CellValue>;
+// export type RecordBase = Record<string, CellValue>;

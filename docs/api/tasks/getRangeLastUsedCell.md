@@ -14,7 +14,7 @@ Get the last used cell (i.e., the most lower-right cell) in a given range.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](../models/WorkbookRangeRef.md#workbookrangeref) | A reference to the workbook range to search. |
+| `rangeRef` | [`WorkbookRangeRef`](../WorkbookRangeRef.md#workbookrangeref) | A reference to the workbook range to search. |
 
 #### Returns
 

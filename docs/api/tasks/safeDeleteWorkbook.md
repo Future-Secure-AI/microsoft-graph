@@ -14,7 +14,7 @@ Safely delete a workbook by first closing any open sessions and then deleting it
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](../models/WorkbookRef.md#workbookref) | A reference to the workbook to be deleted. |
+| `workbookRef` | [`WorkbookRef`](../WorkbookRef.md#workbookref) | A reference to the workbook to be deleted. |
 
 #### Returns
 

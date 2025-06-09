@@ -32,7 +32,7 @@ An object containing the host name, site name, and item ID.
 
 ##### siteName
 
-> **siteName**: [`SiteName`](../models/SiteName.md#sitename)
+> **siteName**: [`SiteName`](../SiteName.md#sitename)
 
 #### Throws
 

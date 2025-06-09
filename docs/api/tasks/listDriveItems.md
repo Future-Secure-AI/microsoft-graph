@@ -4,7 +4,7 @@
 
 ### listDriveItems()
 
-> **listDriveItems**(`parentRef`, `pageSize`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object`[]\>
+> **listDriveItems**(`parentRef`, `pageSize`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../SiteRef.md#siteref) & `object` & `object`[]\>
 
 Defined in: [src/tasks/listDriveItems.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/listDriveItems.ts#L9)
 
@@ -17,4 +17,4 @@ Defined in: [src/tasks/listDriveItems.ts:9](https://github.com/Future-Secure-AI/
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object`[]\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](../SiteRef.md#siteref) & `object` & `object`[]\>

@@ -4,7 +4,7 @@
 
 ### accountingNumberFormat
 
-> `const` **accountingNumberFormat**: [`NumberFormat`](../models/NumberFormat.md#numberformat)
+> `const` **accountingNumberFormat**: [`NumberFormat`](../NumberFormat.md#numberformat)
 
 Defined in: [src/services/numberFormat.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L6)
 
@@ -12,7 +12,7 @@ Defined in: [src/services/numberFormat.ts:6](https://github.com/Future-Secure-AI
 
 ### currencyNumberFormat
 
-> `const` **currencyNumberFormat**: [`NumberFormat`](../models/NumberFormat.md#numberformat)
+> `const` **currencyNumberFormat**: [`NumberFormat`](../NumberFormat.md#numberformat)
 
 Defined in: [src/services/numberFormat.ts:5](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L5)
 
@@ -20,7 +20,7 @@ Defined in: [src/services/numberFormat.ts:5](https://github.com/Future-Secure-AI
 
 ### dateShortNumberFormat
 
-> `const` **dateShortNumberFormat**: [`NumberFormat`](../models/NumberFormat.md#numberformat)
+> `const` **dateShortNumberFormat**: [`NumberFormat`](../NumberFormat.md#numberformat)
 
 Defined in: [src/services/numberFormat.ts:8](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L8)
 
@@ -28,7 +28,7 @@ Defined in: [src/services/numberFormat.ts:8](https://github.com/Future-Secure-AI
 
 ### generalNumberFormat
 
-> `const` **generalNumberFormat**: [`NumberFormat`](../models/NumberFormat.md#numberformat)
+> `const` **generalNumberFormat**: [`NumberFormat`](../NumberFormat.md#numberformat)
 
 Defined in: [src/services/numberFormat.ts:3](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L3)
 
@@ -36,7 +36,7 @@ Defined in: [src/services/numberFormat.ts:3](https://github.com/Future-Secure-AI
 
 ### numberNumberFormat
 
-> `const` **numberNumberFormat**: [`NumberFormat`](../models/NumberFormat.md#numberformat)
+> `const` **numberNumberFormat**: [`NumberFormat`](../NumberFormat.md#numberformat)
 
 Defined in: [src/services/numberFormat.ts:4](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L4)
 
@@ -44,7 +44,7 @@ Defined in: [src/services/numberFormat.ts:4](https://github.com/Future-Secure-AI
 
 ### percentageNumberFormat
 
-> `const` **percentageNumberFormat**: [`NumberFormat`](../models/NumberFormat.md#numberformat)
+> `const` **percentageNumberFormat**: [`NumberFormat`](../NumberFormat.md#numberformat)
 
 Defined in: [src/services/numberFormat.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L7)
 
@@ -52,7 +52,7 @@ Defined in: [src/services/numberFormat.ts:7](https://github.com/Future-Secure-AI
 
 ### textNumberFormat
 
-> `const` **textNumberFormat**: [`NumberFormat`](../models/NumberFormat.md#numberformat)
+> `const` **textNumberFormat**: [`NumberFormat`](../NumberFormat.md#numberformat)
 
 Defined in: [src/services/numberFormat.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L10)
 
@@ -60,6 +60,6 @@ Defined in: [src/services/numberFormat.ts:10](https://github.com/Future-Secure-A
 
 ### timeNumberFormat
 
-> `const` **timeNumberFormat**: [`NumberFormat`](../models/NumberFormat.md#numberformat)
+> `const` **timeNumberFormat**: [`NumberFormat`](../NumberFormat.md#numberformat)
 
 Defined in: [src/services/numberFormat.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/numberFormat.ts#L9)

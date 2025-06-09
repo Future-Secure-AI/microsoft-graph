@@ -4,7 +4,7 @@
 
 ### defaultWorkbookWorksheetId
 
-> `const` **defaultWorkbookWorksheetId**: [`WorkbookWorksheetId`](../models/WorkbookWorksheetId.md#workbookworksheetid)
+> `const` **defaultWorkbookWorksheetId**: [`WorkbookWorksheetId`](../WorkbookWorksheetId.md#workbookworksheetid)
 
 Defined in: [src/services/workbookWorksheet.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L7)
 
@@ -14,7 +14,7 @@ ID of the initial worksheet that is included in a new workbook.
 
 ### defaultWorkbookWorksheetName
 
-> `const` **defaultWorkbookWorksheetName**: [`WorkbookWorksheetName`](../models/WorkbookWorksheetName.md#workbookworksheetname)
+> `const` **defaultWorkbookWorksheetName**: [`WorkbookWorksheetName`](../WorkbookWorksheetName.md#workbookworksheetname)
 
 Defined in: [src/services/workbookWorksheet.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L10)
 
@@ -24,7 +24,7 @@ Name of the initial worksheet that is included in a new workbook.
 
 ### createDefaultWorkbookWorksheetRef()
 
-> **createDefaultWorkbookWorksheetRef**(`workbookRef`): [`WorkbookWorksheetRef`](../models/WorkbookWorksheetRef.md#workbookworksheetref)
+> **createDefaultWorkbookWorksheetRef**(`workbookRef`): [`WorkbookWorksheetRef`](../WorkbookWorksheetRef.md#workbookworksheetref)
 
 Defined in: [src/services/workbookWorksheet.ts:39](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L39)
 
@@ -34,11 +34,11 @@ Creates a reference to the default workbook worksheet that is initially included
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](../models/WorkbookRef.md#workbookref) | The reference to the workbook. |
+| `workbookRef` | [`WorkbookRef`](../WorkbookRef.md#workbookref) | The reference to the workbook. |
 
 #### Returns
 
-[`WorkbookWorksheetRef`](../models/WorkbookWorksheetRef.md#workbookworksheetref)
+[`WorkbookWorksheetRef`](../WorkbookWorksheetRef.md#workbookworksheetref)
 
 A reference to the default workbook worksheet.
 
@@ -46,7 +46,7 @@ A reference to the default workbook worksheet.
 
 ### createWorkbookWorksheetRef()
 
-> **createWorkbookWorksheetRef**(`workbookRef`, `worksheetId`): [`WorkbookWorksheetRef`](../models/WorkbookWorksheetRef.md#workbookworksheetref)
+> **createWorkbookWorksheetRef**(`workbookRef`, `worksheetId`): [`WorkbookWorksheetRef`](../WorkbookWorksheetRef.md#workbookworksheetref)
 
 Defined in: [src/services/workbookWorksheet.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L19)
 
@@ -56,12 +56,12 @@ Creates a reference to a workbook worksheet.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](../models/WorkbookRef.md#workbookref) | The reference to the workbook. |
-| `worksheetId` | `undefined` \| [`WorkbookWorksheetId`](../models/WorkbookWorksheetId.md#workbookworksheetid) | The ID of the worksheet. |
+| `workbookRef` | [`WorkbookRef`](../WorkbookRef.md#workbookref) | The reference to the workbook. |
+| `worksheetId` | `undefined` \| [`WorkbookWorksheetId`](../WorkbookWorksheetId.md#workbookworksheetid) | The ID of the worksheet. |
 
 #### Returns
 
-[`WorkbookWorksheetRef`](../models/WorkbookWorksheetRef.md#workbookworksheetref)
+[`WorkbookWorksheetRef`](../WorkbookWorksheetRef.md#workbookworksheetref)
 
 A reference to the workbook worksheet.
 

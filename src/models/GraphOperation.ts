@@ -33,3 +33,11 @@ export type GraphOperationDefinition<T> = {
 export type GraphOperation<T> = Promise<T> & {
 	definition: GraphOperationDefinition<T>;
 };
+
+/**
+ * Response from a batch of Graph operations.
+ * @template T The type of the operations in the batch.
+ */
+export type OperationResponse<T> = {
+	[K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never;
+};

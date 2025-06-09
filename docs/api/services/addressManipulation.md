@@ -537,7 +537,7 @@ subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
 
 ### subRange()
 
-> **subRange**(`rangeRef`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`WorkbookRangeRef`](../models/WorkbookRangeRef.md#workbookrangeref)
+> **subRange**(`rangeRef`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`WorkbookRangeRef`](../WorkbookRangeRef.md#workbookrangeref)
 
 Defined in: [src/services/addressManipulation.ts:451](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L451)
 
@@ -547,7 +547,7 @@ Extracts a sub-range from a WorkbookRangeRef using skip/take semantics.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](../models/WorkbookRangeRef.md#workbookrangeref) | `undefined` | Range reference to extract the sub-range from. |
+| `rangeRef` | [`WorkbookRangeRef`](../WorkbookRangeRef.md#workbookrangeref) | `undefined` | Range reference to extract the sub-range from. |
 | `skipRows` | `number` | `0` | Number of rows to skip. If negative, skips from the end. Default 0. |
 | `takeRows` | `number` | `Number.POSITIVE_INFINITY` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip. If negative, skips from the end. Default 0. |
@@ -555,7 +555,7 @@ Extracts a sub-range from a WorkbookRangeRef using skip/take semantics.
 
 #### Returns
 
-[`WorkbookRangeRef`](../models/WorkbookRangeRef.md#workbookrangeref)
+[`WorkbookRangeRef`](../WorkbookRangeRef.md#workbookrangeref)
 
 Extracted sub-range reference.
 

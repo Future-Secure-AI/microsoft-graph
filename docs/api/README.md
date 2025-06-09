@@ -75,7 +75,7 @@ await deleteDriveItem(folder);
 | [Address](Address.md) | Address of a set of cells in a spreadsheet. |
 | [AzureApplicationCredentials](AzureApplicationCredentials.md) | Credentials used to authenticate an application with Azure. |
 | [Cartesian](Cartesian.md) | Cartesian coordinates of a set of cells in a spreadsheet. |
-| [Cell](Cell.md) | A cell in a workbook. |
+| [Cell](Cell.md) | Cell in a worksheet. |
 | [CellText](CellText.md) | Text content of a cell in a worksheet. |
 | [CellValue](CellValue.md) | CellValue represents the value of a cell in a spreadsheet. |
 | [ColumnName](ColumnName.md) | Name of a column, as configured by the user. |
@@ -90,7 +90,24 @@ await deleteDriveItem(folder);
 | [GraphOperation](GraphOperation.md) | An atomic operation to be performed against the Microsoft Graph API. |
 | [HostName](HostName.md) | Name of a remote host, resolvable by DNS. |
 | [Http](Http.md) | HTTP models for handling HTTP requests and responses. |
+| [NumberFormat](NumberFormat.md) | Format to be applied to a cell value to convert it to text to display to the user. |
+| [Row](Row.md) | A linear sequency of cells in a worksheet. |
+| [RowNumber](RowNumber.md) | Row number as it appears in Excel. |
 | [RowOffset](RowOffset.md) | Zero-based index representing the position of a row in a range. |
+| [SiteId](SiteId.md) | Identifier for a site. |
+| [SiteName](SiteName.md) | Name of a site. |
+| [SiteRef](SiteRef.md) | Reference to a site. |
+| [WorkbookNamedRangeRef](WorkbookNamedRangeRef.md) | Reference to a named range. |
+| [WorkbookRangeName](WorkbookRangeName.md) | Name of a range in a workbook. |
+| [WorkbookRangeRef](WorkbookRangeRef.md) | Reference to a range in a worksheet. |
+| [WorkbookRef](WorkbookRef.md) | Reference to a workbook. |
+| [WorkbookSessionId](WorkbookSessionId.md) | Identifier for a workbook session. |
+| [WorkbookTableColumnRef](WorkbookTableColumnRef.md) | Reference to a column in a table in a worksheet. |
+| [WorkbookTableId](WorkbookTableId.md) | Identifier for a table in a worksheet. |
+| [WorkbookTableRef](WorkbookTableRef.md) | Reference to a table in a worksheet. |
+| [WorkbookWorksheetId](WorkbookWorksheetId.md) | Identifier for a worksheet in a workbook. |
+| [WorkbookWorksheetName](WorkbookWorksheetName.md) | Name of a worksheet in a workbook. |
+| [WorkbookWorksheetRef](WorkbookWorksheetRef.md) | Reference to a worksheet in a workbook. |
 
 ## Other
 
@@ -104,27 +121,9 @@ await deleteDriveItem(folder);
 | [models/DataSourceIndex](models/DataSourceIndex.md) | - |
 | [models/DataSourceRow](models/DataSourceRow.md) | - |
 | [models/Item](models/Item.md) | - |
-| [models/NumberFormat](models/NumberFormat.md) | - |
-| [models/OperationResponse](models/OperationResponse.md) | - |
 | [models/RangeOperationCallback](models/RangeOperationCallback.md) | - |
 | [models/RecordBase](models/RecordBase.md) | - |
-| [models/Row](models/Row.md) | - |
-| [models/RowNumber](models/RowNumber.md) | - |
-| [models/SiteId](models/SiteId.md) | - |
-| [models/SiteName](models/SiteName.md) | - |
-| [models/SiteRef](models/SiteRef.md) | - |
 | [models/SourceRowValue](models/SourceRowValue.md) | - |
-| [models/WorkbookNamedRangeRef](models/WorkbookNamedRangeRef.md) | - |
-| [models/WorkbookRangeName](models/WorkbookRangeName.md) | - |
-| [models/WorkbookRangeRef](models/WorkbookRangeRef.md) | - |
-| [models/WorkbookRef](models/WorkbookRef.md) | - |
-| [models/WorkbookSessionId](models/WorkbookSessionId.md) | - |
-| [models/WorkbookTableColumnRef](models/WorkbookTableColumnRef.md) | - |
-| [models/WorkbookTableId](models/WorkbookTableId.md) | - |
-| [models/WorkbookTableRef](models/WorkbookTableRef.md) | - |
-| [models/WorkbookWorksheetId](models/WorkbookWorksheetId.md) | - |
-| [models/WorkbookWorksheetName](models/WorkbookWorksheetName.md) | - |
-| [models/WorkbookWorksheetRef](models/WorkbookWorksheetRef.md) | - |
 | [operations/drive/createFolder](operations/drive/createFolder.md) | - |
 | [operations/drive/listDrives](operations/drive/listDrives.md) | - |
 | [operations/driveItem/createDriveItem](operations/driveItem/createDriveItem.md) | - |

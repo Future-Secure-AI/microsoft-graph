@@ -15,7 +15,7 @@ THIS IS SLOW as it must check each row's visibility.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tableRef` | [`WorkbookTableRef`](../models/WorkbookTableRef.md#workbooktableref) | A reference to the workbook table. |
+| `tableRef` | [`WorkbookTableRef`](../WorkbookTableRef.md#workbooktableref) | A reference to the workbook table. |
 | `values` | `string`[][] | A 2D array of strings representing the values to set in the visible rows of the table. |
 
 #### Returns

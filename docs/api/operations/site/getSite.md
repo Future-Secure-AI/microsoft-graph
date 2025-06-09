@@ -4,7 +4,7 @@
 
 ### getSite()
 
-> **getSite**(`siteRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)\>
+> **getSite**(`siteRef`): [`GraphOperation`](../../GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../SiteRef.md#siteref)\>
 
 Defined in: [src/operations/site/getSite.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/getSite.ts#L14)
 
@@ -14,11 +14,11 @@ Retrieve properties for a site resource.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `siteRef` | [`SiteRef`](../../models/SiteRef.md#siteref) | A reference to the site. |
+| `siteRef` | [`SiteRef`](../../SiteRef.md#siteref) | A reference to the site. |
 
 #### Returns
 
-[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../models/SiteRef.md#siteref)\>
+[`GraphOperation`](../../GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](../../SiteRef.md#siteref)\>
 
 The specified site, including its metadata and reference information.
 

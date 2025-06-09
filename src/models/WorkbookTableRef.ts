@@ -1,3 +1,8 @@
+/**
+ * Reference to a table in a worksheet.
+ * @module WorkbookTableRef
+ * @category Models
+ */
 import type { WorkbookTableId } from "./WorkbookTableId.ts";
 import type { WorkbookWorksheetRef } from "./WorkbookWorksheetRef.ts";
 

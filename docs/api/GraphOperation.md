@@ -50,3 +50,19 @@ Definition of an operation to be performed against the Microsoft Graph API.
 | <a id="method"></a> `method` | [`HttpMethod`](Http.md#httpmethod) | HTTP method to be used. | [src/models/GraphOperation.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/GraphOperation.ts#L18) |
 | <a id="path"></a> `path` | [`HttpPath`](Http.md#httppath) | Relative resource URL for the individual request. Ie, if the absolute URL is `https://graph.microsoft.com/v1.0/users`, this path is `/users`. | [src/models/GraphOperation.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/GraphOperation.ts#L20) |
 | <a id="responsetransform"></a> `responseTransform` | (`response`) => `T` | Translate the server response into a usable model | [src/models/GraphOperation.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/GraphOperation.ts#L26) |
+
+***
+
+### OperationResponse\<T\>
+
+> **OperationResponse**\<`T`\> = `{ [K in keyof T]: T[K] extends GraphOperation<infer R> ? R : never }`
+
+Defined in: [src/models/GraphOperation.ts:41](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/GraphOperation.ts#L41)
+
+Response from a batch of Graph operations.
+
+#### Type Parameters
+
+| Type Parameter | Description |
+| ------ | ------ |
+| `T` | The type of the operations in the batch. |

@@ -4,7 +4,7 @@
 
 ### createWorkbookAndStartSession()
 
-> **createWorkbookAndStartSession**(`parentRef`, `itemPath`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Workbook` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object` & `object`\>
+> **createWorkbookAndStartSession**(`parentRef`, `itemPath`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Workbook` & [`SiteRef`](../SiteRef.md#siteref) & `object` & `object` & `object`\>
 
 Defined in: [src/tasks/createWorkbookAndStartSession.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/createWorkbookAndStartSession.ts#L16)
 
@@ -19,6 +19,6 @@ Create a new workbook and open a session for that workbook in a single operation
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Workbook` & [`SiteRef`](../models/SiteRef.md#siteref) & `object` & `object` & `object`\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Workbook` & [`SiteRef`](../SiteRef.md#siteref) & `object` & `object` & `object`\>
 
 The created workbook and session details.

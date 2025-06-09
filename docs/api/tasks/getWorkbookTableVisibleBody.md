@@ -12,7 +12,7 @@ Defined in: [src/tasks/getWorkbookTableVisibleBody.ts:7](https://github.com/Futu
 
 | Parameter | Type |
 | ------ | ------ |
-| `tableRef` | [`WorkbookTableRef`](../models/WorkbookTableRef.md#workbooktableref) |
+| `tableRef` | [`WorkbookTableRef`](../WorkbookTableRef.md#workbooktableref) |
 
 #### Returns
 

@@ -4,7 +4,7 @@
 
 ### createWorkbookTableColumnRef()
 
-> **createWorkbookTableColumnRef**(`tableRef`, `column`): [`WorkbookTableColumnRef`](../models/WorkbookTableColumnRef.md#workbooktablecolumnref)
+> **createWorkbookTableColumnRef**(`tableRef`, `column`): [`WorkbookTableColumnRef`](../WorkbookTableColumnRef.md#workbooktablecolumnref)
 
 Defined in: [src/services/workbookTableColumn.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookTableColumn.ts#L12)
 
@@ -14,12 +14,12 @@ Creates a reference to a workbook table column.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tableRef` | [`WorkbookTableRef`](../models/WorkbookTableRef.md#workbooktableref) | The reference to the worksheet containing the table. |
+| `tableRef` | [`WorkbookTableRef`](../WorkbookTableRef.md#workbooktableref) | The reference to the worksheet containing the table. |
 | `column` | `undefined` \| `string` \| [`ColumnName`](../ColumnName.md#columnname) | Name of the table column |
 
 #### Returns
 
-[`WorkbookTableColumnRef`](../models/WorkbookTableColumnRef.md#workbooktablecolumnref)
+[`WorkbookTableColumnRef`](../WorkbookTableColumnRef.md#workbooktablecolumnref)
 
 A reference to the workbook table.
 
