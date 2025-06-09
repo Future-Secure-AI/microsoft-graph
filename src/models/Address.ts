@@ -46,3 +46,13 @@ export type CellRangeAddress = `${CellAddress}:${CellAddress}`;
  * @example 'C', 'C:D', '3', '3:5', 'C3', 'C3:D5'
  */
 export type Address = ColumnAddress | RowAddress | ColumnRangeAddress | RowRangeAddress | CellRangeAddress | CellAddress;
+
+/**
+ * Address when decomposed into its components.
+ */
+export type DecomposedAddress = {
+	startColumn: ColumnAddress;
+	endColumn: ColumnAddress;
+	startRow: RowAddress;
+	endRow: RowAddress;
+};

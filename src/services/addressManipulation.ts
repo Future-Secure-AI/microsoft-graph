@@ -6,7 +6,7 @@
 
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.ts";
-import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
+import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, DecomposedAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
@@ -32,13 +32,6 @@ type AddressParsedComponents = {
 	endRow: RowAddress | undefined;
 };
 
-export type AddressComponents = {
-	startColumn: ColumnAddress;
-	endColumn: ColumnAddress;
-	startRow: RowAddress;
-	endRow: RowAddress;
-};
-
 /**
  * Fixes address, removing an optional sheet prefix and ensuring it is a valid range.
  * @param address - The address to normalize.
@@ -55,7 +48,7 @@ export function normalizeAddress(address: Address, forceRange = false): Address 
  * @returns The decomposed address components.
  * @throws InvalidArgumentError if the address format is invalid.
  */
-export function decomposeAddress(address: Address): AddressComponents {
+export function decomposeAddress(address: Address): DecomposedAddress {
 	const match = address.match(addressPattern);
 	if (!match?.groups) {
 		throw new InvalidArgumentError(`Invalid address '${address}'. Must match pattern '${addressPattern}'`);
@@ -78,7 +71,7 @@ export function decomposeAddress(address: Address): AddressComponents {
  * @returns The composed address.
  * @throws InvalidArgumentError if the components are invalid.
  */
-export function composeAddress(components: AddressComponents, forceRange = false): Address {
+export function composeAddress(components: DecomposedAddress, forceRange = false): Address {
 	if (!forceRange && isSingleColumn(components) && isAllRows(components)) {
 		return composeColumnAddress(components.startColumn);
 	}
@@ -462,19 +455,19 @@ export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Nu
 	};
 }
 
-function isSingleRow(components: AddressComponents): boolean {
+function isSingleRow(components: DecomposedAddress): boolean {
 	return components.startRow === components.endRow;
 }
 
-function isSingleColumn(components: AddressComponents): boolean {
+function isSingleColumn(components: DecomposedAddress): boolean {
 	return components.startColumn === components.endColumn;
 }
 
-function isAllColumns(components: AddressComponents): boolean {
+function isAllColumns(components: DecomposedAddress): boolean {
 	return components.startColumn === firstColumn && components.endColumn === lastColumn;
 }
 
-function isAllRows(components: AddressComponents): boolean {
+function isAllRows(components: DecomposedAddress): boolean {
 	return components.startRow === firstRow && components.endRow === lastRow;
 }
 
