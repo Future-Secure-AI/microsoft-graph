@@ -6,10 +6,10 @@
 
 import type { Message } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
-import { operation } from "../../graphApi.ts";
 import type { Context } from "../../models/Context.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { HttpPath } from "../../models/Http.ts";
+import { operation } from "../../services/operationInvoker.ts";
 
 // Overview of SendMail process: https://learn.microsoft.com/en-us/graph/outlook-things-to-know-about-send-mail
 

@@ -4,11 +4,11 @@
  * @category Operations
  */
 
-import { endpoint } from "../../graphApi.ts";
 import type { DriveItemPath } from "../../models/DriveItemPath.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
 import { executeHttpRequest } from "../../services/http.ts";
 import { isHttpNotFound, isHttpOk } from "../../services/httpStatus.ts";
+import { endpoint } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**

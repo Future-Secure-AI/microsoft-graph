@@ -5,11 +5,11 @@
  */
 
 import type { Site } from "@microsoft/microsoft-graph-types";
-import { operation } from "../../graphApi.ts";
 import type { ContextRef } from "../../models/ContextRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { SiteId } from "../../models/SiteId.ts";
 import type { SiteRef } from "../../models/SiteRef.ts";
+import { operation } from "../../services/operationInvoker.ts";
 import { createSiteRef } from "../../services/site.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 

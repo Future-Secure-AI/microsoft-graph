@@ -7,10 +7,10 @@
 // https://learn.microsoft.com/en-us/graph/api/rangefill-get
 
 import type { WorkbookRangeFill } from "@microsoft/microsoft-graph-types";
-import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import { normalizeAddress } from "../../services/addressManipulation.ts";
+import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**

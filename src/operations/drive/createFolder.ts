@@ -5,12 +5,12 @@
  */
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
-import { operation } from "../../graphApi.ts";
 import type { DriveItemId } from "../../models/DriveItemId.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import type { DriveRef } from "../../models/DriveRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import { createDriveItemRef } from "../../services/driveItem.ts";
+import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**

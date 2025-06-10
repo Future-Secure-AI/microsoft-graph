@@ -4,9 +4,9 @@
  * @category Operations
  */
 
-import { operation } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
+import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**

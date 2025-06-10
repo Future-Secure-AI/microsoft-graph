@@ -6,18 +6,18 @@
  * @category Services
  **/
 import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
-import InconsistentContextError from "./errors/InconsistentContextError.ts";
-import InvalidArgumentError from "./errors/InvalidArgumentError.ts";
-import NeverError from "./errors/NeverError.ts";
-import ProtocolError from "./errors/ProtocolError.ts";
-import RequestFailedError from "./errors/RequestFailedError.ts";
-import type { AccessToken } from "./models/AccessToken.ts";
-import type { GraphOperation, GraphOperationDefinition, OperationResponse } from "./models/GraphOperation.ts";
-import type { HttpHeaders } from "./models/Http.ts";
-import { executeHttpRequest } from "./services/http.ts";
-import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isServiceUnavailable } from "./services/httpStatus.ts";
-import { operationIdToIndex, operationIndexToId } from "./services/operationId.ts";
-import { sleep } from "./services/sleep.ts";
+import InconsistentContextError from "../errors/InconsistentContextError.ts";
+import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import NeverError from "../errors/NeverError.ts";
+import ProtocolError from "../errors/ProtocolError.ts";
+import RequestFailedError from "../errors/RequestFailedError.ts";
+import type { AccessToken } from "../models/AccessToken.ts";
+import type { GraphOperation, GraphOperationDefinition, OperationResponse } from "../models/GraphOperation.ts";
+import type { HttpHeaders } from "../models/Http.ts";
+import { executeHttpRequest } from "./http.ts";
+import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isServiceUnavailable } from "./httpStatus.ts";
+import { operationIdToIndex, operationIndexToId } from "./operationId.ts";
+import { sleep } from "./sleep.ts";
 
 /**
  * Endpoint for submitting individual requests.

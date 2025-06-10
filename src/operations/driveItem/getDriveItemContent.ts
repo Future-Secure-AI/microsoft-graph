@@ -4,10 +4,10 @@
  * @category Operations
  */
 
-import { endpoint } from "../../graphApi.ts";
 import type { DriveItemRef } from "../../models/DriveItemRef.ts";
 import { executeHttpRequest } from "../../services/http.ts";
 import { isHttpSuccess } from "../../services/httpStatus.ts";
+import { endpoint } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**

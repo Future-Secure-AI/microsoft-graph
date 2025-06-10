@@ -5,9 +5,9 @@
  */
 
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
-import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
+import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**

@@ -6,11 +6,11 @@
 
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import ProtocolError from "../../errors/ProtocolError.ts";
-import { operation } from "../../graphApi.ts";
 import type { CellRangeAddress } from "../../models/Address.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
 import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
+import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 

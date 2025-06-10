@@ -5,11 +5,11 @@
  */
 
 import type { WorkbookTable } from "@microsoft/microsoft-graph-types";
-import { operation } from "../../graphApi.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRef } from "../../models/WorkbookRef.ts";
 import type { WorkbookTableId } from "../../models/WorkbookTableId.ts";
 import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
+import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookTableRef } from "../../services/workbookTable.ts";
 
