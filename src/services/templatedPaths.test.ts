@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import BadTemplateError from "../errors/BadTemplateError.ts";
+import BadPathTemplateError from "../errors/BadPathTemplateError.ts";
 import { generatePath } from "./templatedPaths.ts";
 
 describe("generatePath", () => {
@@ -10,22 +10,22 @@ describe("generatePath", () => {
 		expect(result).toBe("/me/drive/items/123/children");
 	});
 
-	it("should throw BadTemplateError if template does not start with a slash", () => {
+	it("should throw BadPathTemplateError if template does not start with a slash", () => {
 		const template = "me/drive/items/{item-id}/children";
 		const args = { itemId: "123" };
-		expect(() => generatePath(template, args)).toThrow(BadTemplateError);
+		expect(() => generatePath(template, args)).toThrow(BadPathTemplateError);
 	});
 
-	it("should throw BadTemplateError if template contains newlines", () => {
+	it("should throw BadPathTemplateError if template contains newlines", () => {
 		const template = "/me/drive/items/{item-id}/children\n";
 		const args = { itemId: "123" };
-		expect(() => generatePath(template, args)).toThrow(BadTemplateError);
+		expect(() => generatePath(template, args)).toThrow(BadPathTemplateError);
 	});
 
-	it("should throw BadTemplateError if argument is missing", () => {
+	it("should throw BadPathTemplateError if argument is missing", () => {
 		const template = "/me/drive/items/{item-id}/children";
 		const args = {};
-		expect(() => generatePath(template, args)).toThrow(BadTemplateError);
+		expect(() => generatePath(template, args)).toThrow(BadPathTemplateError);
 	});
 
 	it("should encode URI components", () => {
@@ -42,10 +42,10 @@ describe("generatePath", () => {
 		expect(result).toBe("/me/drive/items/123/children/123");
 	});
 
-	it("should throw BadTemplateError if template has an argument that is not matched", () => {
+	it("should throw BadPathTemplateError if template has an argument that is not matched", () => {
 		const template = "/me/drive/items/{item-id}/children/{child-id}";
 		const args = { itemId: "123" };
-		expect(() => generatePath(template, args)).toThrow(BadTemplateError);
+		expect(() => generatePath(template, args)).toThrow(BadPathTemplateError);
 	});
 
 	it("should generate a valid path with multiple arguments", () => {
