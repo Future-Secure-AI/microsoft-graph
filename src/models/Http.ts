@@ -5,7 +5,7 @@
  * @category Models
  */
 
-import type { WorkbookSessionId } from "./WorkbookSessionId.ts";
+import type { WorkbookSessionId } from "./WorkbookSession.ts";
 
 /**
  * HTTP headers used in requests and responses.

@@ -4,7 +4,7 @@
  * @category Services
  */
 
-import type { DriveItemPath } from "../models/DriveItemPath.ts";
+import type { DriveItemPath } from "../models/DriveItem.ts";
 import { generateRandomString } from "./random.ts";
 
 /**

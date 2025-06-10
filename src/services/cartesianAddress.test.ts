@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
-import type { RowOffset } from "../models/RowOffset.ts";
+import type { RowOffset } from "../models/Row.ts";
 import { addressToCartesian, cartesianToAddress } from "./cartesianAddress.ts";
 
 describe("addressToCartesian", () => {

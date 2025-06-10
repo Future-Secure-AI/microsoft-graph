@@ -18,8 +18,8 @@ Moves a file to a new location in the same drive.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `srcFileRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the source file to be copied. |
-| `dstFolderRef` | [`DriveRef`](DriveRef.md#driveref) \| [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the destination folder or site (if targeting root). |
+| `srcFileRef` | [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the source file to be copied. |
+| `dstFolderRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the destination folder or site (if targeting root). |
 | `dstFileName` | `string` | Name of the copied file. * |
 
 #### Returns

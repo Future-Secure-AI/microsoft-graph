@@ -8,9 +8,9 @@ Create a new blank workbook.
 
 ### createWorkbook()
 
-> **createWorkbook**(`parentRef`, `itemPath`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object`\>
+> **createWorkbook**(`parentRef`, `itemPath`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbook/createWorkbook.ts:27](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/createWorkbook.ts#L27)
+Defined in: [src/operations/workbook/createWorkbook.ts:25](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/createWorkbook.ts#L25)
 
 Create a new blank workbook.
 
@@ -18,12 +18,12 @@ Create a new blank workbook.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `parentRef` | [`DriveRef`](DriveRef.md#driveref) \| [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the parent drive or folder where the workbook will be created. |
-| `itemPath` | [`DriveItemPath`](DriveItemPath.md#driveitempath) | Path (including the filename) for the new workbook. Must end with `.xlsx`. |
+| `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the parent drive or folder where the workbook will be created. |
+| `itemPath` | [`DriveItemPath`](DriveItem-1.md#driveitempath) | Path (including the filename) for the new workbook. Must end with `.xlsx`. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object`\>
 
 Newly created workbook.
 

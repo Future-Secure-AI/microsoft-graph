@@ -6,7 +6,7 @@
 
 import type { WorkbookTableRow } from "@microsoft/microsoft-graph-types";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookTableRef } from "../../models/WorkbookTableRef.ts";
+import type { WorkbookTableRef } from "../../models/WorkbookTable.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 

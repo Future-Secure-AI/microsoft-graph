@@ -18,7 +18,7 @@ Delete a workbook table. All data in the table will be cleared.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tableRef` | [`WorkbookTableRef`](WorkbookTableRef.md#workbooktableref) | Reference to the table. |
+| `tableRef` | [`WorkbookTableRef`](WorkbookTable-1.md#workbooktableref) | Reference to the table. |
 
 #### Returns
 

@@ -18,7 +18,7 @@ Update a named range.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookNamedRangeRef`](WorkbookNamedRangeRef.md#workbooknamedrangeref) | Reference to the named range to be updated. |
+| `rangeRef` | [`WorkbookNamedRangeRef`](WorkbookNamedRange.md#workbooknamedrangeref) | Reference to the named range to be updated. |
 | `value` | `WorkbookRange` | The updated properties for the named range. * |
 
 #### Returns

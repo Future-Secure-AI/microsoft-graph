@@ -6,10 +6,8 @@
 
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import ProtocolError from "../errors/ProtocolError.ts";
-import type { DriveItemId } from "../models/DriveItemId.ts";
-import type { DriveItemPath } from "../models/DriveItemPath.ts";
-import type { DriveItemRef } from "../models/DriveItemRef.ts";
-import type { DriveRef } from "../models/DriveRef.ts";
+import type { DriveRef } from "../models/Drive.ts";
+import type { DriveItemId, DriveItemPath, DriveItemRef } from "../models/DriveItem.ts";
 
 const segmentPattern = /^[^"*:<>?\\|#]{1,256}$/;
 

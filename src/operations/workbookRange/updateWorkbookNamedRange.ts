@@ -6,7 +6,7 @@
 
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookNamedRangeRef } from "../../models/WorkbookNamedRangeRef.ts";
+import type { WorkbookNamedRangeRef } from "../../models/WorkbookNamedRange.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 

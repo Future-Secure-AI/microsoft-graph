@@ -8,9 +8,9 @@ Utilities for creating and working with workbook table references.
 
 ### createWorkbookTableRef()
 
-> **createWorkbookTableRef**(`worksheetRef`, `tableId`): [`WorkbookTableRef`](WorkbookTableRef.md#workbooktableref)
+> **createWorkbookTableRef**(`worksheetRef`, `tableId`): [`WorkbookTableRef`](WorkbookTable-1.md#workbooktableref)
 
-Defined in: [src/services/workbookTable.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookTable.ts#L18)
+Defined in: [src/services/workbookTable.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookTable.ts#L17)
 
 Creates a reference to a workbook table.
 
@@ -18,12 +18,12 @@ Creates a reference to a workbook table.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheetRef.md#workbookworksheetref) | The reference to the worksheet containing the table. |
-| `tableId` | `undefined` \| [`WorkbookTableId`](WorkbookTableId.md#workbooktableid) | The ID of the table. |
+| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref) | The reference to the worksheet containing the table. |
+| `tableId` | `undefined` \| [`WorkbookTableId`](WorkbookTable-1.md#workbooktableid) | The ID of the table. |
 
 #### Returns
 
-[`WorkbookTableRef`](WorkbookTableRef.md#workbooktableref)
+[`WorkbookTableRef`](WorkbookTable-1.md#workbooktableref)
 
 A reference to the workbook table.
 

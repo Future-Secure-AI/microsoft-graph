@@ -18,7 +18,7 @@ Set visible rows of a workbook table with the provided 2D array of values, ignor
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tableRef` | [`WorkbookTableRef`](WorkbookTableRef.md#workbooktableref) | Reference to the workbook table. |
+| `tableRef` | [`WorkbookTableRef`](WorkbookTable-1.md#workbooktableref) | Reference to the workbook table. |
 | `values` | `string`[][] | 2D array of strings representing the values to set in the visible rows of the table. |
 
 #### Returns

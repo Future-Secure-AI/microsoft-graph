@@ -8,7 +8,7 @@ Retrieve a workbook table.
 
 ### getWorkbookTable()
 
-> **getWorkbookTable**(`tableRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookTable**(`tableRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookTable/getWorkbookTable.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/getWorkbookTable.ts#L19)
 
@@ -18,11 +18,11 @@ Retrieve a workbook table.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tableRef` | [`WorkbookTableRef`](WorkbookTableRef.md#workbooktableref) | Reference to the table. |
+| `tableRef` | [`WorkbookTableRef`](WorkbookTable-1.md#workbooktableref) | Reference to the table. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 The specified table.
 

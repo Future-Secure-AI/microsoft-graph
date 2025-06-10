@@ -8,7 +8,7 @@ Retrieve the visible (not hidden) range in a worksheet.
 
 ### getWorkbookWorksheetUsedVisibleRange()
 
-> **getWorkbookWorksheetUsedVisibleRange**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookWorksheetUsedVisibleRange**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.ts#L22)
 
@@ -18,11 +18,11 @@ Retrieve the visible (not hidden) range in a worksheet.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheetRef.md#workbookworksheetref) | Reference to the worksheet. |
+| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref) | Reference to the worksheet. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 The visible range of the worksheet.
 

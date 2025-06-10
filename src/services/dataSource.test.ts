@@ -1,5 +1,5 @@
 // import { describe, expect, it } from "vitest";
-// import type { ColumnName } from "../models/ColumnName.ts";
+// import type { ColumnName } from "../models/Column.ts";
 // import type { DataSource } from "../models/DataSource.ts";
 // import type { DataSourceIndex } from "../models/DataSourceIndex.ts";
 // import type { DataSourceRow } from "../models/DataSourceRow.ts";
@@ -78,7 +78,7 @@
 // 	const workbook = await createWorkbook(driveRef, workbookPath);
 // 	const worksheetRef = await createWorkbookWorksheet(workbook);
 
-// 	let rangeRef: import("../models/WorkbookRangeRef.ts").WorkbookRangeRef;
+// 	let rangeRef: import("../models/WorkbookRange.ts").WorkbookRangeRef;
 // 	if (filled) {
 // 		rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C4");
 // 		await updateWorkbookRange(rangeRef, {

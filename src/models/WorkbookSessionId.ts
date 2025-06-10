@@ -1,9 +1,0 @@
-// TODO: Move to WorkbookSession.ts
-/**
- * Identifier for a workbook session.
- * @module WorkbookSessionId
- * @category Models
- */
-export type WorkbookSessionId = string & {
-	__brand: "WorkbookSessionId";
-};

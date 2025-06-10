@@ -18,7 +18,7 @@ Update the general format of a workbook range.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](WorkbookRangeRef.md#workbookrangeref) | Reference to the range to be formatted. |
+| `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | Reference to the range to be formatted. |
 | `format` | `WorkbookRangeFormat` | General format properties to apply to the range. |
 
 #### Returns

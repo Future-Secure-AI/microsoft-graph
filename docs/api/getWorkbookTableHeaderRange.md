@@ -8,7 +8,7 @@ Retrieve the header row range of a table.
 
 ### getWorkbookTableHeaderRange()
 
-> **getWorkbookTableHeaderRange**(`tableRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookTableHeaderRange**(`tableRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookTable/getWorkbookTableHeaderRange.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/getWorkbookTableHeaderRange.ts#L23)
 
@@ -18,11 +18,11 @@ Retrieve the header row range of a table.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tableRef` | [`WorkbookTableRef`](WorkbookTableRef.md#workbooktableref) | Reference to the table. |
+| `tableRef` | [`WorkbookTableRef`](WorkbookTable-1.md#workbooktableref) | Reference to the table. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 The header row range of the specified table.
 

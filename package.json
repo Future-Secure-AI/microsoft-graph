@@ -507,55 +507,30 @@
       "require": "./dist/cjs/models/Cell.js",
       "types": "./dist/esm/models/Cell.d.ts"
     },
-    "./ColumnName": {
-      "import": "./dist/esm/models/ColumnName.js",
-      "require": "./dist/cjs/models/ColumnName.js",
-      "types": "./dist/esm/models/ColumnName.d.ts"
+    "./Column": {
+      "import": "./dist/esm/models/Column.js",
+      "require": "./dist/cjs/models/Column.js",
+      "types": "./dist/esm/models/Column.d.ts"
     },
-    "./dist/cjs/models/ColumnName.js": {
-      "import": "./dist/esm/models/ColumnName.js",
-      "require": "./dist/cjs/models/ColumnName.js",
-      "types": "./dist/esm/models/ColumnName.d.ts"
+    "./dist/cjs/models/Column.js": {
+      "import": "./dist/esm/models/Column.js",
+      "require": "./dist/cjs/models/Column.js",
+      "types": "./dist/esm/models/Column.d.ts"
     },
-    "./dist/cjs/models/ColumnName": {
-      "import": "./dist/esm/models/ColumnName.js",
-      "require": "./dist/cjs/models/ColumnName.js",
-      "types": "./dist/esm/models/ColumnName.d.ts"
+    "./dist/cjs/models/Column": {
+      "import": "./dist/esm/models/Column.js",
+      "require": "./dist/cjs/models/Column.js",
+      "types": "./dist/esm/models/Column.d.ts"
     },
-    "./models/ColumnName": {
-      "import": "./dist/esm/models/ColumnName.js",
-      "require": "./dist/cjs/models/ColumnName.js",
-      "types": "./dist/esm/models/ColumnName.d.ts"
+    "./models/Column": {
+      "import": "./dist/esm/models/Column.js",
+      "require": "./dist/cjs/models/Column.js",
+      "types": "./dist/esm/models/Column.d.ts"
     },
-    "./models/ColumnName.js": {
-      "import": "./dist/esm/models/ColumnName.js",
-      "require": "./dist/cjs/models/ColumnName.js",
-      "types": "./dist/esm/models/ColumnName.d.ts"
-    },
-    "./ColumnOffset": {
-      "import": "./dist/esm/models/ColumnOffset.js",
-      "require": "./dist/cjs/models/ColumnOffset.js",
-      "types": "./dist/esm/models/ColumnOffset.d.ts"
-    },
-    "./dist/cjs/models/ColumnOffset.js": {
-      "import": "./dist/esm/models/ColumnOffset.js",
-      "require": "./dist/cjs/models/ColumnOffset.js",
-      "types": "./dist/esm/models/ColumnOffset.d.ts"
-    },
-    "./dist/cjs/models/ColumnOffset": {
-      "import": "./dist/esm/models/ColumnOffset.js",
-      "require": "./dist/cjs/models/ColumnOffset.js",
-      "types": "./dist/esm/models/ColumnOffset.d.ts"
-    },
-    "./models/ColumnOffset": {
-      "import": "./dist/esm/models/ColumnOffset.js",
-      "require": "./dist/cjs/models/ColumnOffset.js",
-      "types": "./dist/esm/models/ColumnOffset.d.ts"
-    },
-    "./models/ColumnOffset.js": {
-      "import": "./dist/esm/models/ColumnOffset.js",
-      "require": "./dist/cjs/models/ColumnOffset.js",
-      "types": "./dist/esm/models/ColumnOffset.d.ts"
+    "./models/Column.js": {
+      "import": "./dist/esm/models/Column.js",
+      "require": "./dist/cjs/models/Column.js",
+      "types": "./dist/esm/models/Column.d.ts"
     },
     "./Context": {
       "import": "./dist/esm/models/Context.js",
@@ -582,155 +557,55 @@
       "require": "./dist/cjs/models/Context.js",
       "types": "./dist/esm/models/Context.d.ts"
     },
-    "./ContextRef": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
+    "./Drive": {
+      "import": "./dist/esm/models/Drive.js",
+      "require": "./dist/cjs/models/Drive.js",
+      "types": "./dist/esm/models/Drive.d.ts"
     },
-    "./dist/cjs/models/ContextRef.js": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
+    "./dist/cjs/models/Drive.js": {
+      "import": "./dist/esm/models/Drive.js",
+      "require": "./dist/cjs/models/Drive.js",
+      "types": "./dist/esm/models/Drive.d.ts"
     },
-    "./dist/cjs/models/ContextRef": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
+    "./dist/cjs/models/Drive": {
+      "import": "./dist/esm/models/Drive.js",
+      "require": "./dist/cjs/models/Drive.js",
+      "types": "./dist/esm/models/Drive.d.ts"
     },
-    "./models/ContextRef": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
+    "./models/Drive": {
+      "import": "./dist/esm/models/Drive.js",
+      "require": "./dist/cjs/models/Drive.js",
+      "types": "./dist/esm/models/Drive.d.ts"
     },
-    "./models/ContextRef.js": {
-      "import": "./dist/esm/models/ContextRef.js",
-      "require": "./dist/cjs/models/ContextRef.js",
-      "types": "./dist/esm/models/ContextRef.d.ts"
+    "./models/Drive.js": {
+      "import": "./dist/esm/models/Drive.js",
+      "require": "./dist/cjs/models/Drive.js",
+      "types": "./dist/esm/models/Drive.d.ts"
     },
-    "./DriveId": {
-      "import": "./dist/esm/models/DriveId.js",
-      "require": "./dist/cjs/models/DriveId.js",
-      "types": "./dist/esm/models/DriveId.d.ts"
+    "./DriveItem": {
+      "import": "./dist/esm/models/DriveItem.js",
+      "require": "./dist/cjs/models/DriveItem.js",
+      "types": "./dist/esm/models/DriveItem.d.ts"
     },
-    "./dist/cjs/models/DriveId.js": {
-      "import": "./dist/esm/models/DriveId.js",
-      "require": "./dist/cjs/models/DriveId.js",
-      "types": "./dist/esm/models/DriveId.d.ts"
+    "./dist/cjs/models/DriveItem.js": {
+      "import": "./dist/esm/models/DriveItem.js",
+      "require": "./dist/cjs/models/DriveItem.js",
+      "types": "./dist/esm/models/DriveItem.d.ts"
     },
-    "./dist/cjs/models/DriveId": {
-      "import": "./dist/esm/models/DriveId.js",
-      "require": "./dist/cjs/models/DriveId.js",
-      "types": "./dist/esm/models/DriveId.d.ts"
+    "./dist/cjs/models/DriveItem": {
+      "import": "./dist/esm/models/DriveItem.js",
+      "require": "./dist/cjs/models/DriveItem.js",
+      "types": "./dist/esm/models/DriveItem.d.ts"
     },
-    "./models/DriveId": {
-      "import": "./dist/esm/models/DriveId.js",
-      "require": "./dist/cjs/models/DriveId.js",
-      "types": "./dist/esm/models/DriveId.d.ts"
+    "./models/DriveItem": {
+      "import": "./dist/esm/models/DriveItem.js",
+      "require": "./dist/cjs/models/DriveItem.js",
+      "types": "./dist/esm/models/DriveItem.d.ts"
     },
-    "./models/DriveId.js": {
-      "import": "./dist/esm/models/DriveId.js",
-      "require": "./dist/cjs/models/DriveId.js",
-      "types": "./dist/esm/models/DriveId.d.ts"
-    },
-    "./DriveItemId": {
-      "import": "./dist/esm/models/DriveItemId.js",
-      "require": "./dist/cjs/models/DriveItemId.js",
-      "types": "./dist/esm/models/DriveItemId.d.ts"
-    },
-    "./dist/cjs/models/DriveItemId.js": {
-      "import": "./dist/esm/models/DriveItemId.js",
-      "require": "./dist/cjs/models/DriveItemId.js",
-      "types": "./dist/esm/models/DriveItemId.d.ts"
-    },
-    "./dist/cjs/models/DriveItemId": {
-      "import": "./dist/esm/models/DriveItemId.js",
-      "require": "./dist/cjs/models/DriveItemId.js",
-      "types": "./dist/esm/models/DriveItemId.d.ts"
-    },
-    "./models/DriveItemId": {
-      "import": "./dist/esm/models/DriveItemId.js",
-      "require": "./dist/cjs/models/DriveItemId.js",
-      "types": "./dist/esm/models/DriveItemId.d.ts"
-    },
-    "./models/DriveItemId.js": {
-      "import": "./dist/esm/models/DriveItemId.js",
-      "require": "./dist/cjs/models/DriveItemId.js",
-      "types": "./dist/esm/models/DriveItemId.d.ts"
-    },
-    "./DriveItemPath": {
-      "import": "./dist/esm/models/DriveItemPath.js",
-      "require": "./dist/cjs/models/DriveItemPath.js",
-      "types": "./dist/esm/models/DriveItemPath.d.ts"
-    },
-    "./dist/cjs/models/DriveItemPath.js": {
-      "import": "./dist/esm/models/DriveItemPath.js",
-      "require": "./dist/cjs/models/DriveItemPath.js",
-      "types": "./dist/esm/models/DriveItemPath.d.ts"
-    },
-    "./dist/cjs/models/DriveItemPath": {
-      "import": "./dist/esm/models/DriveItemPath.js",
-      "require": "./dist/cjs/models/DriveItemPath.js",
-      "types": "./dist/esm/models/DriveItemPath.d.ts"
-    },
-    "./models/DriveItemPath": {
-      "import": "./dist/esm/models/DriveItemPath.js",
-      "require": "./dist/cjs/models/DriveItemPath.js",
-      "types": "./dist/esm/models/DriveItemPath.d.ts"
-    },
-    "./models/DriveItemPath.js": {
-      "import": "./dist/esm/models/DriveItemPath.js",
-      "require": "./dist/cjs/models/DriveItemPath.js",
-      "types": "./dist/esm/models/DriveItemPath.d.ts"
-    },
-    "./DriveItemRef": {
-      "import": "./dist/esm/models/DriveItemRef.js",
-      "require": "./dist/cjs/models/DriveItemRef.js",
-      "types": "./dist/esm/models/DriveItemRef.d.ts"
-    },
-    "./dist/cjs/models/DriveItemRef.js": {
-      "import": "./dist/esm/models/DriveItemRef.js",
-      "require": "./dist/cjs/models/DriveItemRef.js",
-      "types": "./dist/esm/models/DriveItemRef.d.ts"
-    },
-    "./dist/cjs/models/DriveItemRef": {
-      "import": "./dist/esm/models/DriveItemRef.js",
-      "require": "./dist/cjs/models/DriveItemRef.js",
-      "types": "./dist/esm/models/DriveItemRef.d.ts"
-    },
-    "./models/DriveItemRef": {
-      "import": "./dist/esm/models/DriveItemRef.js",
-      "require": "./dist/cjs/models/DriveItemRef.js",
-      "types": "./dist/esm/models/DriveItemRef.d.ts"
-    },
-    "./models/DriveItemRef.js": {
-      "import": "./dist/esm/models/DriveItemRef.js",
-      "require": "./dist/cjs/models/DriveItemRef.js",
-      "types": "./dist/esm/models/DriveItemRef.d.ts"
-    },
-    "./DriveRef": {
-      "import": "./dist/esm/models/DriveRef.js",
-      "require": "./dist/cjs/models/DriveRef.js",
-      "types": "./dist/esm/models/DriveRef.d.ts"
-    },
-    "./dist/cjs/models/DriveRef.js": {
-      "import": "./dist/esm/models/DriveRef.js",
-      "require": "./dist/cjs/models/DriveRef.js",
-      "types": "./dist/esm/models/DriveRef.d.ts"
-    },
-    "./dist/cjs/models/DriveRef": {
-      "import": "./dist/esm/models/DriveRef.js",
-      "require": "./dist/cjs/models/DriveRef.js",
-      "types": "./dist/esm/models/DriveRef.d.ts"
-    },
-    "./models/DriveRef": {
-      "import": "./dist/esm/models/DriveRef.js",
-      "require": "./dist/cjs/models/DriveRef.js",
-      "types": "./dist/esm/models/DriveRef.d.ts"
-    },
-    "./models/DriveRef.js": {
-      "import": "./dist/esm/models/DriveRef.js",
-      "require": "./dist/cjs/models/DriveRef.js",
-      "types": "./dist/esm/models/DriveRef.d.ts"
+    "./models/DriveItem.js": {
+      "import": "./dist/esm/models/DriveItem.js",
+      "require": "./dist/cjs/models/DriveItem.js",
+      "types": "./dist/esm/models/DriveItem.d.ts"
     },
     "./GraphOperation": {
       "import": "./dist/esm/models/GraphOperation.js",
@@ -832,405 +707,180 @@
       "require": "./dist/cjs/models/Row.js",
       "types": "./dist/esm/models/Row.d.ts"
     },
-    "./RowNumber": {
-      "import": "./dist/esm/models/RowNumber.js",
-      "require": "./dist/cjs/models/RowNumber.js",
-      "types": "./dist/esm/models/RowNumber.d.ts"
-    },
-    "./dist/cjs/models/RowNumber.js": {
-      "import": "./dist/esm/models/RowNumber.js",
-      "require": "./dist/cjs/models/RowNumber.js",
-      "types": "./dist/esm/models/RowNumber.d.ts"
-    },
-    "./dist/cjs/models/RowNumber": {
-      "import": "./dist/esm/models/RowNumber.js",
-      "require": "./dist/cjs/models/RowNumber.js",
-      "types": "./dist/esm/models/RowNumber.d.ts"
-    },
-    "./models/RowNumber": {
-      "import": "./dist/esm/models/RowNumber.js",
-      "require": "./dist/cjs/models/RowNumber.js",
-      "types": "./dist/esm/models/RowNumber.d.ts"
-    },
-    "./models/RowNumber.js": {
-      "import": "./dist/esm/models/RowNumber.js",
-      "require": "./dist/cjs/models/RowNumber.js",
-      "types": "./dist/esm/models/RowNumber.d.ts"
-    },
-    "./RowOffset": {
-      "import": "./dist/esm/models/RowOffset.js",
-      "require": "./dist/cjs/models/RowOffset.js",
-      "types": "./dist/esm/models/RowOffset.d.ts"
-    },
-    "./dist/cjs/models/RowOffset.js": {
-      "import": "./dist/esm/models/RowOffset.js",
-      "require": "./dist/cjs/models/RowOffset.js",
-      "types": "./dist/esm/models/RowOffset.d.ts"
-    },
-    "./dist/cjs/models/RowOffset": {
-      "import": "./dist/esm/models/RowOffset.js",
-      "require": "./dist/cjs/models/RowOffset.js",
-      "types": "./dist/esm/models/RowOffset.d.ts"
-    },
-    "./models/RowOffset": {
-      "import": "./dist/esm/models/RowOffset.js",
-      "require": "./dist/cjs/models/RowOffset.js",
-      "types": "./dist/esm/models/RowOffset.d.ts"
-    },
-    "./models/RowOffset.js": {
-      "import": "./dist/esm/models/RowOffset.js",
-      "require": "./dist/cjs/models/RowOffset.js",
-      "types": "./dist/esm/models/RowOffset.d.ts"
-    },
-    "./SiteId": {
-      "import": "./dist/esm/models/SiteId.js",
-      "require": "./dist/cjs/models/SiteId.js",
-      "types": "./dist/esm/models/SiteId.d.ts"
-    },
-    "./dist/cjs/models/SiteId.js": {
-      "import": "./dist/esm/models/SiteId.js",
-      "require": "./dist/cjs/models/SiteId.js",
-      "types": "./dist/esm/models/SiteId.d.ts"
-    },
-    "./dist/cjs/models/SiteId": {
-      "import": "./dist/esm/models/SiteId.js",
-      "require": "./dist/cjs/models/SiteId.js",
-      "types": "./dist/esm/models/SiteId.d.ts"
-    },
-    "./models/SiteId": {
-      "import": "./dist/esm/models/SiteId.js",
-      "require": "./dist/cjs/models/SiteId.js",
-      "types": "./dist/esm/models/SiteId.d.ts"
-    },
-    "./models/SiteId.js": {
-      "import": "./dist/esm/models/SiteId.js",
-      "require": "./dist/cjs/models/SiteId.js",
-      "types": "./dist/esm/models/SiteId.d.ts"
-    },
-    "./SiteName": {
-      "import": "./dist/esm/models/SiteName.js",
-      "require": "./dist/cjs/models/SiteName.js",
-      "types": "./dist/esm/models/SiteName.d.ts"
-    },
-    "./dist/cjs/models/SiteName.js": {
-      "import": "./dist/esm/models/SiteName.js",
-      "require": "./dist/cjs/models/SiteName.js",
-      "types": "./dist/esm/models/SiteName.d.ts"
-    },
-    "./dist/cjs/models/SiteName": {
-      "import": "./dist/esm/models/SiteName.js",
-      "require": "./dist/cjs/models/SiteName.js",
-      "types": "./dist/esm/models/SiteName.d.ts"
-    },
-    "./models/SiteName": {
-      "import": "./dist/esm/models/SiteName.js",
-      "require": "./dist/cjs/models/SiteName.js",
-      "types": "./dist/esm/models/SiteName.d.ts"
-    },
-    "./models/SiteName.js": {
-      "import": "./dist/esm/models/SiteName.js",
-      "require": "./dist/cjs/models/SiteName.js",
-      "types": "./dist/esm/models/SiteName.d.ts"
-    },
-    "./SiteRef": {
-      "import": "./dist/esm/models/SiteRef.js",
-      "require": "./dist/cjs/models/SiteRef.js",
-      "types": "./dist/esm/models/SiteRef.d.ts"
-    },
-    "./dist/cjs/models/SiteRef.js": {
-      "import": "./dist/esm/models/SiteRef.js",
-      "require": "./dist/cjs/models/SiteRef.js",
-      "types": "./dist/esm/models/SiteRef.d.ts"
-    },
-    "./dist/cjs/models/SiteRef": {
-      "import": "./dist/esm/models/SiteRef.js",
-      "require": "./dist/cjs/models/SiteRef.js",
-      "types": "./dist/esm/models/SiteRef.d.ts"
-    },
-    "./models/SiteRef": {
-      "import": "./dist/esm/models/SiteRef.js",
-      "require": "./dist/cjs/models/SiteRef.js",
-      "types": "./dist/esm/models/SiteRef.d.ts"
-    },
-    "./models/SiteRef.js": {
-      "import": "./dist/esm/models/SiteRef.js",
-      "require": "./dist/cjs/models/SiteRef.js",
-      "types": "./dist/esm/models/SiteRef.d.ts"
-    },
-    "./WorkbookNamedRangeRef": {
-      "import": "./dist/esm/models/WorkbookNamedRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookNamedRangeRef.js",
-      "types": "./dist/esm/models/WorkbookNamedRangeRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookNamedRangeRef.js": {
-      "import": "./dist/esm/models/WorkbookNamedRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookNamedRangeRef.js",
-      "types": "./dist/esm/models/WorkbookNamedRangeRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookNamedRangeRef": {
-      "import": "./dist/esm/models/WorkbookNamedRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookNamedRangeRef.js",
-      "types": "./dist/esm/models/WorkbookNamedRangeRef.d.ts"
-    },
-    "./models/WorkbookNamedRangeRef": {
-      "import": "./dist/esm/models/WorkbookNamedRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookNamedRangeRef.js",
-      "types": "./dist/esm/models/WorkbookNamedRangeRef.d.ts"
-    },
-    "./models/WorkbookNamedRangeRef.js": {
-      "import": "./dist/esm/models/WorkbookNamedRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookNamedRangeRef.js",
-      "types": "./dist/esm/models/WorkbookNamedRangeRef.d.ts"
-    },
-    "./WorkbookRangeName": {
-      "import": "./dist/esm/models/WorkbookRangeName.js",
-      "require": "./dist/cjs/models/WorkbookRangeName.js",
-      "types": "./dist/esm/models/WorkbookRangeName.d.ts"
-    },
-    "./dist/cjs/models/WorkbookRangeName.js": {
-      "import": "./dist/esm/models/WorkbookRangeName.js",
-      "require": "./dist/cjs/models/WorkbookRangeName.js",
-      "types": "./dist/esm/models/WorkbookRangeName.d.ts"
-    },
-    "./dist/cjs/models/WorkbookRangeName": {
-      "import": "./dist/esm/models/WorkbookRangeName.js",
-      "require": "./dist/cjs/models/WorkbookRangeName.js",
-      "types": "./dist/esm/models/WorkbookRangeName.d.ts"
-    },
-    "./models/WorkbookRangeName": {
-      "import": "./dist/esm/models/WorkbookRangeName.js",
-      "require": "./dist/cjs/models/WorkbookRangeName.js",
-      "types": "./dist/esm/models/WorkbookRangeName.d.ts"
-    },
-    "./models/WorkbookRangeName.js": {
-      "import": "./dist/esm/models/WorkbookRangeName.js",
-      "require": "./dist/cjs/models/WorkbookRangeName.js",
-      "types": "./dist/esm/models/WorkbookRangeName.d.ts"
-    },
-    "./WorkbookRangeRef": {
-      "import": "./dist/esm/models/WorkbookRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookRangeRef.js",
-      "types": "./dist/esm/models/WorkbookRangeRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookRangeRef.js": {
-      "import": "./dist/esm/models/WorkbookRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookRangeRef.js",
-      "types": "./dist/esm/models/WorkbookRangeRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookRangeRef": {
-      "import": "./dist/esm/models/WorkbookRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookRangeRef.js",
-      "types": "./dist/esm/models/WorkbookRangeRef.d.ts"
-    },
-    "./models/WorkbookRangeRef": {
-      "import": "./dist/esm/models/WorkbookRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookRangeRef.js",
-      "types": "./dist/esm/models/WorkbookRangeRef.d.ts"
-    },
-    "./models/WorkbookRangeRef.js": {
-      "import": "./dist/esm/models/WorkbookRangeRef.js",
-      "require": "./dist/cjs/models/WorkbookRangeRef.js",
-      "types": "./dist/esm/models/WorkbookRangeRef.d.ts"
-    },
-    "./WorkbookRef": {
-      "import": "./dist/esm/models/WorkbookRef.js",
-      "require": "./dist/cjs/models/WorkbookRef.js",
-      "types": "./dist/esm/models/WorkbookRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookRef.js": {
-      "import": "./dist/esm/models/WorkbookRef.js",
-      "require": "./dist/cjs/models/WorkbookRef.js",
-      "types": "./dist/esm/models/WorkbookRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookRef": {
-      "import": "./dist/esm/models/WorkbookRef.js",
-      "require": "./dist/cjs/models/WorkbookRef.js",
-      "types": "./dist/esm/models/WorkbookRef.d.ts"
-    },
-    "./models/WorkbookRef": {
-      "import": "./dist/esm/models/WorkbookRef.js",
-      "require": "./dist/cjs/models/WorkbookRef.js",
-      "types": "./dist/esm/models/WorkbookRef.d.ts"
-    },
-    "./models/WorkbookRef.js": {
-      "import": "./dist/esm/models/WorkbookRef.js",
-      "require": "./dist/cjs/models/WorkbookRef.js",
-      "types": "./dist/esm/models/WorkbookRef.d.ts"
-    },
-    "./WorkbookSessionId": {
-      "import": "./dist/esm/models/WorkbookSessionId.js",
-      "require": "./dist/cjs/models/WorkbookSessionId.js",
-      "types": "./dist/esm/models/WorkbookSessionId.d.ts"
-    },
-    "./dist/cjs/models/WorkbookSessionId.js": {
-      "import": "./dist/esm/models/WorkbookSessionId.js",
-      "require": "./dist/cjs/models/WorkbookSessionId.js",
-      "types": "./dist/esm/models/WorkbookSessionId.d.ts"
-    },
-    "./dist/cjs/models/WorkbookSessionId": {
-      "import": "./dist/esm/models/WorkbookSessionId.js",
-      "require": "./dist/cjs/models/WorkbookSessionId.js",
-      "types": "./dist/esm/models/WorkbookSessionId.d.ts"
-    },
-    "./models/WorkbookSessionId": {
-      "import": "./dist/esm/models/WorkbookSessionId.js",
-      "require": "./dist/cjs/models/WorkbookSessionId.js",
-      "types": "./dist/esm/models/WorkbookSessionId.d.ts"
-    },
-    "./models/WorkbookSessionId.js": {
-      "import": "./dist/esm/models/WorkbookSessionId.js",
-      "require": "./dist/cjs/models/WorkbookSessionId.js",
-      "types": "./dist/esm/models/WorkbookSessionId.d.ts"
-    },
-    "./WorkbookTableColumnRef": {
-      "import": "./dist/esm/models/WorkbookTableColumnRef.js",
-      "require": "./dist/cjs/models/WorkbookTableColumnRef.js",
-      "types": "./dist/esm/models/WorkbookTableColumnRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookTableColumnRef.js": {
-      "import": "./dist/esm/models/WorkbookTableColumnRef.js",
-      "require": "./dist/cjs/models/WorkbookTableColumnRef.js",
-      "types": "./dist/esm/models/WorkbookTableColumnRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookTableColumnRef": {
-      "import": "./dist/esm/models/WorkbookTableColumnRef.js",
-      "require": "./dist/cjs/models/WorkbookTableColumnRef.js",
-      "types": "./dist/esm/models/WorkbookTableColumnRef.d.ts"
-    },
-    "./models/WorkbookTableColumnRef": {
-      "import": "./dist/esm/models/WorkbookTableColumnRef.js",
-      "require": "./dist/cjs/models/WorkbookTableColumnRef.js",
-      "types": "./dist/esm/models/WorkbookTableColumnRef.d.ts"
-    },
-    "./models/WorkbookTableColumnRef.js": {
-      "import": "./dist/esm/models/WorkbookTableColumnRef.js",
-      "require": "./dist/cjs/models/WorkbookTableColumnRef.js",
-      "types": "./dist/esm/models/WorkbookTableColumnRef.d.ts"
-    },
-    "./WorkbookTableId": {
-      "import": "./dist/esm/models/WorkbookTableId.js",
-      "require": "./dist/cjs/models/WorkbookTableId.js",
-      "types": "./dist/esm/models/WorkbookTableId.d.ts"
-    },
-    "./dist/cjs/models/WorkbookTableId.js": {
-      "import": "./dist/esm/models/WorkbookTableId.js",
-      "require": "./dist/cjs/models/WorkbookTableId.js",
-      "types": "./dist/esm/models/WorkbookTableId.d.ts"
-    },
-    "./dist/cjs/models/WorkbookTableId": {
-      "import": "./dist/esm/models/WorkbookTableId.js",
-      "require": "./dist/cjs/models/WorkbookTableId.js",
-      "types": "./dist/esm/models/WorkbookTableId.d.ts"
-    },
-    "./models/WorkbookTableId": {
-      "import": "./dist/esm/models/WorkbookTableId.js",
-      "require": "./dist/cjs/models/WorkbookTableId.js",
-      "types": "./dist/esm/models/WorkbookTableId.d.ts"
-    },
-    "./models/WorkbookTableId.js": {
-      "import": "./dist/esm/models/WorkbookTableId.js",
-      "require": "./dist/cjs/models/WorkbookTableId.js",
-      "types": "./dist/esm/models/WorkbookTableId.d.ts"
-    },
-    "./WorkbookTableRef": {
-      "import": "./dist/esm/models/WorkbookTableRef.js",
-      "require": "./dist/cjs/models/WorkbookTableRef.js",
-      "types": "./dist/esm/models/WorkbookTableRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookTableRef.js": {
-      "import": "./dist/esm/models/WorkbookTableRef.js",
-      "require": "./dist/cjs/models/WorkbookTableRef.js",
-      "types": "./dist/esm/models/WorkbookTableRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookTableRef": {
-      "import": "./dist/esm/models/WorkbookTableRef.js",
-      "require": "./dist/cjs/models/WorkbookTableRef.js",
-      "types": "./dist/esm/models/WorkbookTableRef.d.ts"
-    },
-    "./models/WorkbookTableRef": {
-      "import": "./dist/esm/models/WorkbookTableRef.js",
-      "require": "./dist/cjs/models/WorkbookTableRef.js",
-      "types": "./dist/esm/models/WorkbookTableRef.d.ts"
-    },
-    "./models/WorkbookTableRef.js": {
-      "import": "./dist/esm/models/WorkbookTableRef.js",
-      "require": "./dist/cjs/models/WorkbookTableRef.js",
-      "types": "./dist/esm/models/WorkbookTableRef.d.ts"
-    },
-    "./WorkbookWorksheetId": {
-      "import": "./dist/esm/models/WorkbookWorksheetId.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetId.js",
-      "types": "./dist/esm/models/WorkbookWorksheetId.d.ts"
-    },
-    "./dist/cjs/models/WorkbookWorksheetId.js": {
-      "import": "./dist/esm/models/WorkbookWorksheetId.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetId.js",
-      "types": "./dist/esm/models/WorkbookWorksheetId.d.ts"
-    },
-    "./dist/cjs/models/WorkbookWorksheetId": {
-      "import": "./dist/esm/models/WorkbookWorksheetId.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetId.js",
-      "types": "./dist/esm/models/WorkbookWorksheetId.d.ts"
-    },
-    "./models/WorkbookWorksheetId": {
-      "import": "./dist/esm/models/WorkbookWorksheetId.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetId.js",
-      "types": "./dist/esm/models/WorkbookWorksheetId.d.ts"
-    },
-    "./models/WorkbookWorksheetId.js": {
-      "import": "./dist/esm/models/WorkbookWorksheetId.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetId.js",
-      "types": "./dist/esm/models/WorkbookWorksheetId.d.ts"
-    },
-    "./WorkbookWorksheetName": {
-      "import": "./dist/esm/models/WorkbookWorksheetName.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetName.js",
-      "types": "./dist/esm/models/WorkbookWorksheetName.d.ts"
-    },
-    "./dist/cjs/models/WorkbookWorksheetName.js": {
-      "import": "./dist/esm/models/WorkbookWorksheetName.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetName.js",
-      "types": "./dist/esm/models/WorkbookWorksheetName.d.ts"
-    },
-    "./dist/cjs/models/WorkbookWorksheetName": {
-      "import": "./dist/esm/models/WorkbookWorksheetName.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetName.js",
-      "types": "./dist/esm/models/WorkbookWorksheetName.d.ts"
-    },
-    "./models/WorkbookWorksheetName": {
-      "import": "./dist/esm/models/WorkbookWorksheetName.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetName.js",
-      "types": "./dist/esm/models/WorkbookWorksheetName.d.ts"
-    },
-    "./models/WorkbookWorksheetName.js": {
-      "import": "./dist/esm/models/WorkbookWorksheetName.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetName.js",
-      "types": "./dist/esm/models/WorkbookWorksheetName.d.ts"
-    },
-    "./WorkbookWorksheetRef": {
-      "import": "./dist/esm/models/WorkbookWorksheetRef.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetRef.js",
-      "types": "./dist/esm/models/WorkbookWorksheetRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookWorksheetRef.js": {
-      "import": "./dist/esm/models/WorkbookWorksheetRef.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetRef.js",
-      "types": "./dist/esm/models/WorkbookWorksheetRef.d.ts"
-    },
-    "./dist/cjs/models/WorkbookWorksheetRef": {
-      "import": "./dist/esm/models/WorkbookWorksheetRef.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetRef.js",
-      "types": "./dist/esm/models/WorkbookWorksheetRef.d.ts"
-    },
-    "./models/WorkbookWorksheetRef": {
-      "import": "./dist/esm/models/WorkbookWorksheetRef.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetRef.js",
-      "types": "./dist/esm/models/WorkbookWorksheetRef.d.ts"
-    },
-    "./models/WorkbookWorksheetRef.js": {
-      "import": "./dist/esm/models/WorkbookWorksheetRef.js",
-      "require": "./dist/cjs/models/WorkbookWorksheetRef.js",
-      "types": "./dist/esm/models/WorkbookWorksheetRef.d.ts"
+    "./Site": {
+      "import": "./dist/esm/models/Site.js",
+      "require": "./dist/cjs/models/Site.js",
+      "types": "./dist/esm/models/Site.d.ts"
+    },
+    "./dist/cjs/models/Site.js": {
+      "import": "./dist/esm/models/Site.js",
+      "require": "./dist/cjs/models/Site.js",
+      "types": "./dist/esm/models/Site.d.ts"
+    },
+    "./dist/cjs/models/Site": {
+      "import": "./dist/esm/models/Site.js",
+      "require": "./dist/cjs/models/Site.js",
+      "types": "./dist/esm/models/Site.d.ts"
+    },
+    "./models/Site": {
+      "import": "./dist/esm/models/Site.js",
+      "require": "./dist/cjs/models/Site.js",
+      "types": "./dist/esm/models/Site.d.ts"
+    },
+    "./models/Site.js": {
+      "import": "./dist/esm/models/Site.js",
+      "require": "./dist/cjs/models/Site.js",
+      "types": "./dist/esm/models/Site.d.ts"
+    },
+    "./Workbook": {
+      "import": "./dist/esm/models/Workbook.js",
+      "require": "./dist/cjs/models/Workbook.js",
+      "types": "./dist/esm/models/Workbook.d.ts"
+    },
+    "./dist/cjs/models/Workbook.js": {
+      "import": "./dist/esm/models/Workbook.js",
+      "require": "./dist/cjs/models/Workbook.js",
+      "types": "./dist/esm/models/Workbook.d.ts"
+    },
+    "./dist/cjs/models/Workbook": {
+      "import": "./dist/esm/models/Workbook.js",
+      "require": "./dist/cjs/models/Workbook.js",
+      "types": "./dist/esm/models/Workbook.d.ts"
+    },
+    "./models/Workbook": {
+      "import": "./dist/esm/models/Workbook.js",
+      "require": "./dist/cjs/models/Workbook.js",
+      "types": "./dist/esm/models/Workbook.d.ts"
+    },
+    "./models/Workbook.js": {
+      "import": "./dist/esm/models/Workbook.js",
+      "require": "./dist/cjs/models/Workbook.js",
+      "types": "./dist/esm/models/Workbook.d.ts"
+    },
+    "./WorkbookNamedRange": {
+      "import": "./dist/esm/models/WorkbookNamedRange.js",
+      "require": "./dist/cjs/models/WorkbookNamedRange.js",
+      "types": "./dist/esm/models/WorkbookNamedRange.d.ts"
+    },
+    "./dist/cjs/models/WorkbookNamedRange.js": {
+      "import": "./dist/esm/models/WorkbookNamedRange.js",
+      "require": "./dist/cjs/models/WorkbookNamedRange.js",
+      "types": "./dist/esm/models/WorkbookNamedRange.d.ts"
+    },
+    "./dist/cjs/models/WorkbookNamedRange": {
+      "import": "./dist/esm/models/WorkbookNamedRange.js",
+      "require": "./dist/cjs/models/WorkbookNamedRange.js",
+      "types": "./dist/esm/models/WorkbookNamedRange.d.ts"
+    },
+    "./models/WorkbookNamedRange": {
+      "import": "./dist/esm/models/WorkbookNamedRange.js",
+      "require": "./dist/cjs/models/WorkbookNamedRange.js",
+      "types": "./dist/esm/models/WorkbookNamedRange.d.ts"
+    },
+    "./models/WorkbookNamedRange.js": {
+      "import": "./dist/esm/models/WorkbookNamedRange.js",
+      "require": "./dist/cjs/models/WorkbookNamedRange.js",
+      "types": "./dist/esm/models/WorkbookNamedRange.d.ts"
+    },
+    "./WorkbookRange": {
+      "import": "./dist/esm/models/WorkbookRange.js",
+      "require": "./dist/cjs/models/WorkbookRange.js",
+      "types": "./dist/esm/models/WorkbookRange.d.ts"
+    },
+    "./dist/cjs/models/WorkbookRange.js": {
+      "import": "./dist/esm/models/WorkbookRange.js",
+      "require": "./dist/cjs/models/WorkbookRange.js",
+      "types": "./dist/esm/models/WorkbookRange.d.ts"
+    },
+    "./dist/cjs/models/WorkbookRange": {
+      "import": "./dist/esm/models/WorkbookRange.js",
+      "require": "./dist/cjs/models/WorkbookRange.js",
+      "types": "./dist/esm/models/WorkbookRange.d.ts"
+    },
+    "./models/WorkbookRange": {
+      "import": "./dist/esm/models/WorkbookRange.js",
+      "require": "./dist/cjs/models/WorkbookRange.js",
+      "types": "./dist/esm/models/WorkbookRange.d.ts"
+    },
+    "./models/WorkbookRange.js": {
+      "import": "./dist/esm/models/WorkbookRange.js",
+      "require": "./dist/cjs/models/WorkbookRange.js",
+      "types": "./dist/esm/models/WorkbookRange.d.ts"
+    },
+    "./WorkbookSession": {
+      "import": "./dist/esm/models/WorkbookSession.js",
+      "require": "./dist/cjs/models/WorkbookSession.js",
+      "types": "./dist/esm/models/WorkbookSession.d.ts"
+    },
+    "./dist/cjs/models/WorkbookSession.js": {
+      "import": "./dist/esm/models/WorkbookSession.js",
+      "require": "./dist/cjs/models/WorkbookSession.js",
+      "types": "./dist/esm/models/WorkbookSession.d.ts"
+    },
+    "./dist/cjs/models/WorkbookSession": {
+      "import": "./dist/esm/models/WorkbookSession.js",
+      "require": "./dist/cjs/models/WorkbookSession.js",
+      "types": "./dist/esm/models/WorkbookSession.d.ts"
+    },
+    "./models/WorkbookSession": {
+      "import": "./dist/esm/models/WorkbookSession.js",
+      "require": "./dist/cjs/models/WorkbookSession.js",
+      "types": "./dist/esm/models/WorkbookSession.d.ts"
+    },
+    "./models/WorkbookSession.js": {
+      "import": "./dist/esm/models/WorkbookSession.js",
+      "require": "./dist/cjs/models/WorkbookSession.js",
+      "types": "./dist/esm/models/WorkbookSession.d.ts"
+    },
+    "./WorkbookTable": {
+      "import": "./dist/esm/models/WorkbookTable.js",
+      "require": "./dist/cjs/models/WorkbookTable.js",
+      "types": "./dist/esm/models/WorkbookTable.d.ts"
+    },
+    "./dist/cjs/models/WorkbookTable.js": {
+      "import": "./dist/esm/models/WorkbookTable.js",
+      "require": "./dist/cjs/models/WorkbookTable.js",
+      "types": "./dist/esm/models/WorkbookTable.d.ts"
+    },
+    "./dist/cjs/models/WorkbookTable": {
+      "import": "./dist/esm/models/WorkbookTable.js",
+      "require": "./dist/cjs/models/WorkbookTable.js",
+      "types": "./dist/esm/models/WorkbookTable.d.ts"
+    },
+    "./models/WorkbookTable": {
+      "import": "./dist/esm/models/WorkbookTable.js",
+      "require": "./dist/cjs/models/WorkbookTable.js",
+      "types": "./dist/esm/models/WorkbookTable.d.ts"
+    },
+    "./models/WorkbookTable.js": {
+      "import": "./dist/esm/models/WorkbookTable.js",
+      "require": "./dist/cjs/models/WorkbookTable.js",
+      "types": "./dist/esm/models/WorkbookTable.d.ts"
+    },
+    "./WorkbookWorksheet": {
+      "import": "./dist/esm/models/WorkbookWorksheet.js",
+      "require": "./dist/cjs/models/WorkbookWorksheet.js",
+      "types": "./dist/esm/models/WorkbookWorksheet.d.ts"
+    },
+    "./dist/cjs/models/WorkbookWorksheet.js": {
+      "import": "./dist/esm/models/WorkbookWorksheet.js",
+      "require": "./dist/cjs/models/WorkbookWorksheet.js",
+      "types": "./dist/esm/models/WorkbookWorksheet.d.ts"
+    },
+    "./dist/cjs/models/WorkbookWorksheet": {
+      "import": "./dist/esm/models/WorkbookWorksheet.js",
+      "require": "./dist/cjs/models/WorkbookWorksheet.js",
+      "types": "./dist/esm/models/WorkbookWorksheet.d.ts"
+    },
+    "./models/WorkbookWorksheet": {
+      "import": "./dist/esm/models/WorkbookWorksheet.js",
+      "require": "./dist/cjs/models/WorkbookWorksheet.js",
+      "types": "./dist/esm/models/WorkbookWorksheet.d.ts"
+    },
+    "./models/WorkbookWorksheet.js": {
+      "import": "./dist/esm/models/WorkbookWorksheet.js",
+      "require": "./dist/cjs/models/WorkbookWorksheet.js",
+      "types": "./dist/esm/models/WorkbookWorksheet.d.ts"
     },
     "./createFolder": {
       "import": "./dist/esm/operations/drive/createFolder.js",

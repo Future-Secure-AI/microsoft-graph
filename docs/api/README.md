@@ -27,35 +27,21 @@
 | [AzureApplicationCredentials](AzureApplicationCredentials-1.md) | Credentials used to authenticate an application with Azure. |
 | [Cartesian](Cartesian.md) | Cartesian coordinates of a set of cells in a spreadsheet. |
 | [Cell](Cell.md) | Cell in a worksheet. |
-| [ColumnName](ColumnName.md) | Name of a column, as configured by the user. |
-| [ColumnOffset](ColumnOffset.md) | Zero-based index representing the position of a column in a range. |
+| [Column](Column.md) | Column pointers. |
 | [Context](Context-1.md) | Context of requests. |
-| [ContextRef](ContextRef.md) | Reference to a context |
-| [DriveId](DriveId.md) | Identifier for a drive. |
-| [DriveItemId](DriveItemId.md) | Identifier for an item in a drive. |
-| [DriveItemPath](DriveItemPath.md) | Path of an item in a drive. |
-| [DriveItemRef](DriveItemRef.md) | Reference to an item in a drive. |
-| [DriveRef](DriveRef.md) | Reference to a drive. |
+| [Drive](Drive-1.md) | Drive pointers. |
+| [DriveItem](DriveItem-1.md) | Drive item pointers. |
 | [GraphOperation](GraphOperation.md) | An atomic operation to be performed against the Microsoft Graph API. |
 | [HostName](HostName.md) | Name of a remote host, resolvable by DNS. |
 | [Http](Http-1.md) | HTTP models for handling HTTP requests and responses. |
 | [Row](Row.md) | A linear sequency of cells in a worksheet. |
-| [RowNumber](RowNumber.md) | Row number as it appears in Excel. |
-| [RowOffset](RowOffset.md) | Zero-based index representing the position of a row in a range. |
-| [SiteId](SiteId.md) | Identifier for a site. |
-| [SiteName](SiteName.md) | Name of a site. |
-| [SiteRef](SiteRef.md) | Reference to a site. |
-| [WorkbookNamedRangeRef](WorkbookNamedRangeRef.md) | Reference to a named range. |
-| [WorkbookRangeName](WorkbookRangeName.md) | Name of a range in a workbook. |
-| [WorkbookRangeRef](WorkbookRangeRef.md) | Reference to a range in a worksheet. |
-| [WorkbookRef](WorkbookRef.md) | Reference to a workbook. |
-| [WorkbookSessionId](WorkbookSessionId.md) | Identifier for a workbook session. |
-| [WorkbookTableColumnRef](WorkbookTableColumnRef.md) | Reference to a column in a table in a worksheet. |
-| [WorkbookTableId](WorkbookTableId.md) | Identifier for a table in a worksheet. |
-| [WorkbookTableRef](WorkbookTableRef.md) | Reference to a table in a worksheet. |
-| [WorkbookWorksheetId](WorkbookWorksheetId.md) | Identifier for a worksheet in a workbook. |
-| [WorkbookWorksheetName](WorkbookWorksheetName.md) | Name of a worksheet in a workbook. |
-| [WorkbookWorksheetRef](WorkbookWorksheetRef.md) | Reference to a worksheet in a workbook. |
+| [Site](Site-1.md) | Pointers to a site. |
+| [Workbook](Workbook.md) | Pointers to a workbook. |
+| [WorkbookNamedRange](WorkbookNamedRange.md) | Pointers to a named range in a worksheet. |
+| [WorkbookRange](WorkbookRange-1.md) | Pointers to a range in a worksheet. |
+| [WorkbookSession](WorkbookSession.md) | Pointers to a workbook session . |
+| [WorkbookTable](WorkbookTable-1.md) | Pointer for a table in a worksheet. |
+| [WorkbookWorksheet](WorkbookWorksheet-1.md) | Pointer for a worksheet in a workbook. |
 
 ## Operations
 

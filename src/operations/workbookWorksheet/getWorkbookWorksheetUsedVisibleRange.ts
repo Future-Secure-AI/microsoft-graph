@@ -7,8 +7,8 @@
 import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
 import type { CellRangeAddress } from "../../models/Address.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookRangeRef } from "../../models/WorkbookRangeRef.ts";
-import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
+import type { WorkbookRangeRef } from "../../models/WorkbookRange.ts";
+import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheet.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";

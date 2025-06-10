@@ -8,9 +8,9 @@ Create a folder in the root of a drive, or in a folder. If it already exists do 
 
 ### createFolder()
 
-> **createFolder**(`parentRef`, `folderName`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object`\>
+> **createFolder**(`parentRef`, `folderName`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
-Defined in: [src/operations/drive/createFolder.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/drive/createFolder.ts#L23)
+Defined in: [src/operations/drive/createFolder.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/drive/createFolder.ts#L22)
 
 Create a folder in the root of a drive, or in a folder. If it already exists do nothing.
 
@@ -18,12 +18,12 @@ Create a folder in the root of a drive, or in a folder. If it already exists do 
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `parentRef` | [`DriveRef`](DriveRef.md#driveref) \| [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the parent drive or folder where the folder will be created. |
+| `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the parent drive or folder where the folder will be created. |
 | `folderName` | `string` | Name of the folder to be created. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
 The newly created folder.
 

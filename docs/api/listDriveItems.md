@@ -8,9 +8,9 @@ List drive items in a drive or a drive item.
 
 ### listDriveItems()
 
-> **listDriveItems**(`parentRef`, `pageSize`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object`[]\>
+> **listDriveItems**(`parentRef`, `pageSize`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`[]\>
 
-Defined in: [src/tasks/listDriveItems.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/listDriveItems.ts#L22)
+Defined in: [src/tasks/listDriveItems.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/listDriveItems.ts#L21)
 
 List drive items in a drive or a drive item.
 
@@ -18,12 +18,12 @@ List drive items in a drive or a drive item.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `parentRef` | [`DriveRef`](DriveRef.md#driveref) \| [`DriveItemRef`](DriveItemRef.md#driveitemref) | `undefined` | Parent drive or folder reference. |
+| `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | `undefined` | Parent drive or folder reference. |
 | `pageSize` | `number` | `1000` | Number of items to fetch per request. |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object`[]\>
+[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`[]\>
 
 #### Remarks
 

@@ -18,7 +18,7 @@ Refresh a workbook session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook. * |
+| `workbookRef` | [`WorkbookRef`](Workbook.md#workbookref) | Reference to the workbook. * |
 
 #### Returns
 

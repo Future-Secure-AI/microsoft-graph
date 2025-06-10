@@ -4,8 +4,8 @@
  * @category Models
  */
 
-import type { ColumnOffset } from "../models/ColumnOffset.ts";
-import type { RowOffset } from "../models/RowOffset.ts";
+import type { ColumnOffset } from "./Column.ts";
+import type { RowOffset } from "./Row.ts";
 
 export type Cartesian = {
 	/**

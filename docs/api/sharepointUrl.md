@@ -32,11 +32,11 @@ An object containing the host name, site name, and item ID.
 
 ##### itemId
 
-> **itemId**: [`DriveItemId`](DriveItemId.md#driveitemid)
+> **itemId**: [`DriveItemId`](DriveItem-1.md#driveitemid)
 
 ##### siteName
 
-> **siteName**: [`SiteName`](SiteName.md#sitename)
+> **siteName**: [`SiteName`](Site-1.md#sitename)
 
 #### Throws
 

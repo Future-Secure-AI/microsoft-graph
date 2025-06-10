@@ -8,7 +8,7 @@ Retrieve the address of the used range in a worksheet, ignoring trailing rows an
 
 ### getWorkbookWorksheetUsedRangeRef()
 
-> **getWorkbookWorksheetUsedRangeRef**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<[`WorkbookRangeRef`](WorkbookRangeRef.md#workbookrangeref)\>
+> **getWorkbookWorksheetUsedRangeRef**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<[`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref)\>
 
 Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts#L28)
 
@@ -18,11 +18,11 @@ Retrieve the address of the used range in a worksheet, ignoring trailing rows an
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheetRef.md#workbookworksheetref) | Reference to the worksheet. |
+| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref) | Reference to the worksheet. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<[`WorkbookRangeRef`](WorkbookRangeRef.md#workbookrangeref)\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<[`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref)\>
 
 Address of the used range of the worksheet.
 

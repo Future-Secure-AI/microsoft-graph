@@ -29,8 +29,6 @@ export type Cell = {
 /**
  * Text content of a cell in a worksheet.
  * @remarks This is a string that represents the text displayed in the cell, which may differ from the actual value of the cell (e.g., due to formatting).
- * @module CellText
- * @category Models
  */
 export type CellText = string & {
 	__brand: "CellText";
@@ -38,16 +36,12 @@ export type CellText = string & {
 
 /**
  * CellValue represents the value of a cell in a spreadsheet.
- * @module CellValue
- * @category Models
  * @see {@link Cell} for a more comprehensive representation of a cell, which includes text and formatting.
  */
 export type CellValue = string | number | boolean;
 
 /**
  * Format to be applied to a cell value to convert it to text to display to the user.
- * @module CellFormat
- * @category Models
  * @see {@link Cell} for a more comprehensive representation of a cell, which includes text and formatting.
  */
 export type CellFormat = string & {

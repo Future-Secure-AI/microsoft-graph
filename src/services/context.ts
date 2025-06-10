@@ -7,7 +7,7 @@
 import type { AccessToken } from "../models/AccessToken.ts";
 import type { AccessTokenGenerator } from "../models/AccessTokenGenerator.ts";
 import type { AzureClientId, AzureClientSecret, AzureTenantId, Scope } from "../models/AzureApplicationCredentials.ts";
-import type { ContextRef } from "../models/ContextRef.ts";
+import type { ContextRef } from "../models/Context.ts";
 import { getCurrentAccessToken } from "./azureApplicationCredentials.ts";
 import { getEnvironmentVariable } from "./environmentVariable.ts";
 ("../models/Scope.ts");

@@ -5,9 +5,9 @@
  */
 
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { DriveItemId } from "../models/DriveItemId.ts";
+import type { DriveItemId } from "../models/DriveItem.ts";
 import type { HostName } from "../models/HostName.ts";
-import type { SiteName } from "../models/SiteName.ts";
+import type { SiteName } from "../models/Site.ts";
 
 /**
  * Parses a SharePoint document URL to extract the site name, host name, and item ID.

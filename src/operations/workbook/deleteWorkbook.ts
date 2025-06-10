@@ -5,7 +5,7 @@
  */
 
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookRef } from "../../models/WorkbookRef.ts";
+import type { WorkbookRef } from "../../models/Workbook.ts";
 import deleteDriveItem from "../driveItem/deleteDriveItem.ts";
 
 /**

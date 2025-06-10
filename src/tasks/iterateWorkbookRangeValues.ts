@@ -6,8 +6,8 @@
 
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { CellValue } from "../models/Cell.ts";
-import type { RowOffset } from "../models/RowOffset.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
+import type { RowOffset } from "../models/Row.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { composeAddress, decomposeAddress } from "../services/addressManipulation.ts";
 import { columnAddressToOffset, rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";

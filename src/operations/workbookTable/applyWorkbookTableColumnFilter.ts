@@ -6,7 +6,7 @@
 
 import type { WorkbookFilterCriteria } from "@microsoft/microsoft-graph-types";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookTableColumnRef } from "../../models/WorkbookTableColumnRef.ts";
+import type { WorkbookTableColumnRef } from "../../models/WorkbookTable.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 

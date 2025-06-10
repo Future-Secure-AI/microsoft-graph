@@ -4,8 +4,8 @@
  * @category Operations
  */
 
-import type { DriveItemPath } from "../../models/DriveItemPath.ts";
-import type { DriveRef } from "../../models/DriveRef.ts";
+import type { DriveRef } from "../../models/Drive.ts";
+import type { DriveItemPath } from "../../models/DriveItem.ts";
 import { executeHttpRequest } from "../../services/http.ts";
 import { isHttpNotFound, isHttpOk } from "../../services/httpStatus.ts";
 import { endpoint } from "../../services/operationInvoker.ts";

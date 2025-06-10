@@ -6,10 +6,8 @@
 
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { AzureClientId, AzureClientSecret, AzureTenantId } from "../models/AzureApplicationCredentials.ts";
-import type { DriveId } from "../models/DriveId.ts";
-import type { DriveRef } from "../models/DriveRef.ts";
-import type { SiteId } from "../models/SiteId.ts";
-import type { SiteRef } from "../models/SiteRef.ts";
+import type { DriveId, DriveRef } from "../models/Drive.ts";
+import type { SiteId, SiteRef } from "../models/Site.ts";
 import { createClientSecretContext, register } from "./context.ts";
 import { getEnvironmentVariable } from "./environmentVariable.ts";
 import { createSiteRef } from "./site.ts";

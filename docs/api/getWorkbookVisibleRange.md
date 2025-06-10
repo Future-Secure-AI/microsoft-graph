@@ -8,7 +8,7 @@ Retrieve the visible view of a range.
 
 ### getWorkbookVisibleRange()
 
-> **getWorkbookVisibleRange**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeView` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookVisibleRange**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeView` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookRange/getWorkbookVisibleRange.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookVisibleRange.ts#L20)
 
@@ -18,11 +18,11 @@ Retrieve the visible view of a range.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](WorkbookRangeRef.md#workbookrangeref) | Reference to the range to be fetched. |
+| `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | Reference to the range to be fetched. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeView` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeView` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Visible view of the specified range.
 

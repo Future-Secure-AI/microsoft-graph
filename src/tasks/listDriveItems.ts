@@ -5,9 +5,8 @@
  */
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
-import type { DriveItemId } from "../models/DriveItemId.ts";
-import type { DriveItemRef } from "../models/DriveItemRef.ts";
-import type { DriveRef } from "../models/DriveRef.ts";
+import type { DriveRef } from "../models/Drive.ts";
+import type { DriveItemId, DriveItemRef } from "../models/DriveItem.ts";
 import listDriveItemChildren, { type ListDriveItemResponse } from "../operations/driveItem/listDriveItemChildren.ts";
 import { createDriveItemRef } from "../services/driveItem.ts";
 import { executeHttpRequest } from "../services/http.ts";

@@ -6,9 +6,8 @@
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import RequestTimeoutError from "../errors/RequestTimeoutError.ts";
-import type { DriveItemPath } from "../models/DriveItemPath.ts";
-import type { DriveItemRef } from "../models/DriveItemRef.ts";
-import type { DriveRef } from "../models/DriveRef.ts";
+import type { DriveRef } from "../models/Drive.ts";
+import type { DriveItemPath, DriveItemRef } from "../models/DriveItem.ts";
 import getDriveItemByPath from "../operations/driveItem/getDriveItemByPath.ts";
 import initiateCopyDriveItem from "../operations/driveItem/initiateCopyDriveItem.ts";
 import { splitDriveItemPath } from "../services/driveItem.ts";

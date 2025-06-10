@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { HostName } from "../../models/HostName.ts";
-import type { SiteName } from "../../models/SiteName.ts";
+import type { SiteName } from "../../models/Site.ts";
 import { getDefaultSiteRef } from "../../services/site.ts";
 import getSite from "./getSite.ts";
 import getSiteByName from "./getSiteByName.ts";

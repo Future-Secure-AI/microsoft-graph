@@ -18,7 +18,7 @@ Permanently delete a worksheet.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheetRef.md#workbookworksheetref) | Reference to the worksheet to be deleted. * |
+| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref) | Reference to the worksheet to be deleted. * |
 
 #### Returns
 

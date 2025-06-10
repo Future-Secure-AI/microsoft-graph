@@ -5,10 +5,9 @@
  */
 
 import type { Workbook } from "@microsoft/microsoft-graph-types";
-import type { DriveItemPath } from "../models/DriveItemPath.ts";
-import type { DriveItemRef } from "../models/DriveItemRef.ts";
-import type { DriveRef } from "../models/DriveRef.ts";
-import type { WorkbookRef } from "../models/WorkbookRef.ts";
+import type { DriveRef } from "../models/Drive.ts";
+import type { DriveItemPath, DriveItemRef } from "../models/DriveItem.ts";
+import type { WorkbookRef } from "../models/Workbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import createWorkbookSession from "../operations/workbookSession/createWorkbookSession.ts";
 

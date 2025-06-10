@@ -5,7 +5,7 @@
  */
 
 import type { WorkbookRangeView } from "@microsoft/microsoft-graph-types";
-import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
+import type { WorkbookTableRef } from "../models/WorkbookTable.ts";
 import getWorkbookVisibleRange from "../operations/workbookRange/getWorkbookVisibleRange.ts";
 import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTableBodyRange.ts";
 

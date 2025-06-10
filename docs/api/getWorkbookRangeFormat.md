@@ -8,7 +8,7 @@ Retrieve the format of a workbook range.
 
 ### getWorkbookRangeFormat()
 
-> **getWorkbookRangeFormat**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeFormat` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookRangeFormat**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeFormat` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookRange/getWorkbookRangeFormat.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookRangeFormat.ts#L20)
 
@@ -18,11 +18,11 @@ Retrieve the format of a workbook range.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](WorkbookRangeRef.md#workbookrangeref) | Reference to the range. |
+| `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | Reference to the range. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeFormat` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeFormat` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Format of the specified range.
 

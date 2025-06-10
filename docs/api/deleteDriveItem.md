@@ -18,7 +18,7 @@ Delete an item from a drive.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `itemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the drive item to be deleted. * |
+| `itemRef` | [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the drive item to be deleted. * |
 
 #### Returns
 

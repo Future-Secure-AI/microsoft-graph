@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { DriveItemPath } from "../models/DriveItemPath.ts";
+import type { DriveItemPath } from "../models/DriveItem.ts";
 import { driveItemPath, splitDriveItemPath } from "./driveItem.ts";
 
 describe("driveItemPath", () => {

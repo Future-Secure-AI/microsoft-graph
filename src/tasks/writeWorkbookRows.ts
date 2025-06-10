@@ -5,9 +5,9 @@
  */
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Cell } from "../models/Cell.ts";
-import type { ColumnOffset } from "../models/ColumnOffset.ts";
-import type { RowOffset } from "../models/RowOffset.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
+import type { ColumnOffset } from "../models/Column.ts";
+import type { RowOffset } from "../models/Row.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
 import { addressToCartesian, cartesianToAddress } from "../services/cartesianAddress.ts";

@@ -10,7 +10,7 @@ Spreadsheet number format constants for Microsoft Graph API.
 
 > `const` **accountingCellFormat**: [`CellFormat`](Cell.md#cellformat-1)
 
-Defined in: src/services/cellFormat.ts:12
+Defined in: [src/services/cellFormat.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellFormat.ts#L12)
 
 ***
 
@@ -18,7 +18,7 @@ Defined in: src/services/cellFormat.ts:12
 
 > `const` **currencyCellFormat**: [`CellFormat`](Cell.md#cellformat-1)
 
-Defined in: src/services/cellFormat.ts:11
+Defined in: [src/services/cellFormat.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellFormat.ts#L11)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: src/services/cellFormat.ts:11
 
 > `const` **dateShortCellFormat**: [`CellFormat`](Cell.md#cellformat-1)
 
-Defined in: src/services/cellFormat.ts:14
+Defined in: [src/services/cellFormat.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellFormat.ts#L14)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: src/services/cellFormat.ts:14
 
 > `const` **generalCellFormat**: [`CellFormat`](Cell.md#cellformat-1)
 
-Defined in: src/services/cellFormat.ts:9
+Defined in: [src/services/cellFormat.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellFormat.ts#L9)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: src/services/cellFormat.ts:9
 
 > `const` **numberCellFormat**: [`CellFormat`](Cell.md#cellformat-1)
 
-Defined in: src/services/cellFormat.ts:10
+Defined in: [src/services/cellFormat.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellFormat.ts#L10)
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: src/services/cellFormat.ts:10
 
 > `const` **percentageCellFormat**: [`CellFormat`](Cell.md#cellformat-1)
 
-Defined in: src/services/cellFormat.ts:13
+Defined in: [src/services/cellFormat.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellFormat.ts#L13)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: src/services/cellFormat.ts:13
 
 > `const` **textCellFormat**: [`CellFormat`](Cell.md#cellformat-1)
 
-Defined in: src/services/cellFormat.ts:16
+Defined in: [src/services/cellFormat.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellFormat.ts#L16)
 
 ***
 
@@ -66,4 +66,4 @@ Defined in: src/services/cellFormat.ts:16
 
 > `const` **timeCellFormat**: [`CellFormat`](Cell.md#cellformat-1)
 
-Defined in: src/services/cellFormat.ts:15
+Defined in: [src/services/cellFormat.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cellFormat.ts#L15)

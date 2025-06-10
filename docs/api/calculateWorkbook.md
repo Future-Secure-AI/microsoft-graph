@@ -18,7 +18,7 @@ Recalculate a workbook.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | `undefined` | Reference to the workbook to be recalculated. |
+| `workbookRef` | [`WorkbookRef`](Workbook.md#workbookref) | `undefined` | Reference to the workbook to be recalculated. |
 | `calculationType` | `"Full"` \| `"Recalculate"` \| `"FullRebuild"` | `"Recalculate"` | Type of recalculation to perform. Can be "Recalculate", "Full", or "FullRebuild". * |
 
 #### Returns
@@ -41,7 +41,7 @@ Defined in: [src/operations/workbook/calculateWorkbook.ts:38](https://github.com
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook to be recalculated. |
+| `workbookRef` | [`WorkbookRef`](Workbook.md#workbookref) | Reference to the workbook to be recalculated. |
 
 #### Returns
 

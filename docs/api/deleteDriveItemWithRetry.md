@@ -18,7 +18,7 @@ Delete a drive item, avoiding locking issues through automatic retries.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveItemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the DriveItem to delete. |
+| `driveItemRef` | [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the DriveItem to delete. |
 
 #### Returns
 

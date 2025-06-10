@@ -4,9 +4,8 @@
  * @category Services
  */
 
-import type { ColumnName } from "../models/ColumnName.ts";
-import type { WorkbookTableColumnRef } from "../models/WorkbookTableColumnRef.ts";
-import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
+import type { ColumnName } from "../models/Column.ts";
+import type { WorkbookTableColumnRef, WorkbookTableRef } from "../models/WorkbookTable.ts";
 
 /**
  * Creates a reference to a workbook table column.

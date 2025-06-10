@@ -6,10 +6,8 @@
 
 import type { WorkbookWorksheet } from "@microsoft/microsoft-graph-types";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookRef } from "../../models/WorkbookRef.ts";
-import type { WorkbookWorksheetId } from "../../models/WorkbookWorksheetId.ts";
-import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheetName.ts";
-import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
+import type { WorkbookRef } from "../../models/Workbook.ts";
+import type { WorkbookWorksheetId, WorkbookWorksheetName, WorkbookWorksheetRef } from "../../models/WorkbookWorksheet.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 import { createWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";

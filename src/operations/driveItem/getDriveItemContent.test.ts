@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { DriveItemId } from "../../models/DriveItemId.ts";
+import type { DriveItemId } from "../../models/DriveItem.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { createDriveItemRef, driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";

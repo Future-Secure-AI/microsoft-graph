@@ -8,9 +8,9 @@ Utilities for working with Microsoft Graph Drive Items (files and folders).
 
 ### rootDriveItemPath
 
-> `const` **rootDriveItemPath**: [`DriveItemPath`](DriveItemPath.md#driveitempath)
+> `const` **rootDriveItemPath**: [`DriveItemPath`](DriveItem-1.md#driveitempath)
 
-Defined in: [src/services/driveItem.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L20)
+Defined in: [src/services/driveItem.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L18)
 
 ***
 
@@ -18,15 +18,15 @@ Defined in: [src/services/driveItem.ts:20](https://github.com/Future-Secure-AI/m
 
 > `const` **workbookFileExtension**: `"xlsx"` = `"xlsx"`
 
-Defined in: [src/services/driveItem.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L18)
+Defined in: [src/services/driveItem.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L16)
 
 ## Functions
 
 ### createDriveItemRef()
 
-> **createDriveItemRef**(`driveRef`, `itemId`): [`DriveItemRef`](DriveItemRef.md#driveitemref)
+> **createDriveItemRef**(`driveRef`, `itemId`): [`DriveItemRef`](DriveItem-1.md#driveitemref)
 
-Defined in: [src/services/driveItem.ts:71](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L71)
+Defined in: [src/services/driveItem.ts:69](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L69)
 
 Creates a reference to a drive item.
 
@@ -34,12 +34,12 @@ Creates a reference to a drive item.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveRef` | [`DriveRef`](DriveRef.md#driveref) | The reference to the drive. |
-| `itemId` | `undefined` \| [`DriveItemId`](DriveItemId.md#driveitemid) | The ID of the drive item. |
+| `driveRef` | [`DriveRef`](Drive-1.md#driveref) | The reference to the drive. |
+| `itemId` | `undefined` \| [`DriveItemId`](DriveItem-1.md#driveitemid) | The ID of the drive item. |
 
 #### Returns
 
-[`DriveItemRef`](DriveItemRef.md#driveitemref)
+[`DriveItemRef`](DriveItem-1.md#driveitemref)
 
 A reference to the drive item.
 
@@ -51,9 +51,9 @@ ProtocolError if the item ID is missing.
 
 ### driveItemPath()
 
-> **driveItemPath**(...`segments`): [`DriveItemPath`](DriveItemPath.md#driveitempath)
+> **driveItemPath**(...`segments`): [`DriveItemPath`](DriveItem-1.md#driveitempath)
 
-Defined in: [src/services/driveItem.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L28)
+Defined in: [src/services/driveItem.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L26)
 
 Creates a drive item path from a given set of segments.
 
@@ -65,7 +65,7 @@ Creates a drive item path from a given set of segments.
 
 #### Returns
 
-[`DriveItemPath`](DriveItemPath.md#driveitempath)
+[`DriveItemPath`](DriveItem-1.md#driveitempath)
 
 The constructed drive item path.
 
@@ -79,7 +79,7 @@ InvalidArgumentError if a segment is invalid or the path exceeds 400 characters.
 
 > **splitDriveItemPath**(`filePath`): `object`
 
-Defined in: [src/services/driveItem.ts:89](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L89)
+Defined in: [src/services/driveItem.ts:87](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L87)
 
 Splits a drive item path into its folder path and file name.
 
@@ -87,7 +87,7 @@ Splits a drive item path into its folder path and file name.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `filePath` | [`DriveItemPath`](DriveItemPath.md#driveitempath) | The full path of the file. |
+| `filePath` | [`DriveItemPath`](DriveItem-1.md#driveitempath) | The full path of the file. |
 
 #### Returns
 
@@ -101,4 +101,4 @@ An object containing the folder path and file name.
 
 ##### folderPath
 
-> **folderPath**: [`DriveItemPath`](DriveItemPath.md#driveitempath)
+> **folderPath**: [`DriveItemPath`](DriveItem-1.md#driveitempath)

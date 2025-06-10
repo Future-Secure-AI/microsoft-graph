@@ -18,7 +18,7 @@ Attempts to delete a drive item, returning success status.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveItemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | A reference to the DriveItem to delete. |
+| `driveItemRef` | [`DriveItemRef`](DriveItem-1.md#driveitemref) | A reference to the DriveItem to delete. |
 
 #### Returns
 

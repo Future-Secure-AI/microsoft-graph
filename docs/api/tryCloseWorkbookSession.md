@@ -18,7 +18,7 @@ Try and close a workbook session.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook. The session ID is required. |
+| `workbookRef` | [`WorkbookRef`](Workbook.md#workbookref) | Reference to the workbook. The session ID is required. |
 
 #### Returns
 

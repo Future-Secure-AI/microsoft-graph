@@ -18,7 +18,7 @@ Write rows to a workbook range.
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `originRef` | [`WorkbookRangeRef`](WorkbookRangeRef.md#workbookrangeref) | `undefined` | The reference to the workbook range where rows will be written. Only the upper-left is used as an origin point. |
+| `originRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | `undefined` | The reference to the workbook range where rows will be written. Only the upper-left is used as an origin point. |
 | `rows` | [`Iterable`](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html#iterable-interface)\<[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<[`Cell`](Cell.md#cell)\>[], `any`, `any`\> \| `AsyncIterable`\<[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<[`Cell`](Cell.md#cell)\>[], `any`, `any`\> | `undefined` | An iterable or async iterable of rows to write. Each row is an array of cells. |
 | `overwriteMaxRowsPerChunk` | `null` \| `number` | `null` | Overwrite the number of rows per underlying request. DO NOT SET EXCEPT FOR ADVANCED TUNING. |
 

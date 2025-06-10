@@ -4,9 +4,8 @@
  * @category Services
  */
 
-import type { WorkbookTableId } from "../models/WorkbookTableId.ts";
-import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
-import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
+import type { WorkbookTableId, WorkbookTableRef } from "../models/WorkbookTable.ts";
+import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheet.ts";
 
 /**
  * Creates a reference to a workbook table.

@@ -3,7 +3,7 @@
  * @module tryCloseWorkbookSession
  * @category Tasks
  */
-import type { WorkbookRef } from "../models/WorkbookRef.ts";
+import type { WorkbookRef } from "../models/Workbook.ts";
 import closeWorkbookSession from "../operations/workbookSession/closeWorkbookSession.ts";
 
 /**

@@ -1,5 +1,3 @@
-// TODO: Move to `services/operationInvoker.ts` at next major version.
-
 /**
  * Invoke operations, potentially as parallel or sequential batches.
  * @module operationInvoker

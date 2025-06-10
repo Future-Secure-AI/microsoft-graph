@@ -18,7 +18,7 @@ Converts the table into a normal range of cells. All data is preserved.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `tableRef` | [`WorkbookTableRef`](WorkbookTableRef.md#workbooktableref) | Reference to the table. |
+| `tableRef` | [`WorkbookTableRef`](WorkbookTable-1.md#workbooktableref) | Reference to the table. |
 
 #### Returns
 

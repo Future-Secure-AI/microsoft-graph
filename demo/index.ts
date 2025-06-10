@@ -1,6 +1,6 @@
 import type { AzureClientId, AzureClientSecret, AzureTenantId } from "../src/models/AzureApplicationCredentials.ts";
-import type { DriveId } from "../src/models/DriveId.ts";
-import type { SiteId } from "../src/models/SiteId.ts";
+import type { DriveId } from "../src/models/Drive.ts";
+import type { SiteId } from "../src/models/Site.ts";
 import { createClientSecretContext } from "../src/services/context.ts";
 import { createDriveRef } from "../src/services/drive.ts";
 import { workbookFileExtension } from "../src/services/driveItem.ts";

@@ -4,7 +4,7 @@
  * @category Operations
  */
 
-import type { DriveItemRef } from "../../models/DriveItemRef.ts";
+import type { DriveItemRef } from "../../models/DriveItem.ts";
 import { executeHttpRequest } from "../../services/http.ts";
 import { isHttpSuccess } from "../../services/httpStatus.ts";
 import { endpoint } from "../../services/operationInvoker.ts";

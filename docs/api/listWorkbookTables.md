@@ -8,7 +8,7 @@ Retrieve a list of tables in a worksheet.
 
 ### listWorkbookTables()
 
-> **listWorkbookTables**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object`[]\>
+> **listWorkbookTables**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object`[]\>
 
 Defined in: [src/operations/workbookTable/listWorkbookTables.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookTable/listWorkbookTables.ts#L22)
 
@@ -18,11 +18,11 @@ Retrieve a list of tables in a worksheet.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheetRef.md#workbookworksheetref) | Reference to the worksheet. |
+| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref) | Reference to the worksheet. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object`[]\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookTable` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object`[]\>
 
 Array of tables, each including its metadata and reference information.
 

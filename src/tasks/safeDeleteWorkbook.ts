@@ -4,7 +4,7 @@
  * @category Tasks
  */
 
-import type { WorkbookRef } from "../models/WorkbookRef.ts";
+import type { WorkbookRef } from "../models/Workbook.ts";
 import deleteDriveItem from "../operations/driveItem/deleteDriveItem.ts";
 import closeWorkbookSession from "../operations/workbookSession/closeWorkbookSession.ts";
 

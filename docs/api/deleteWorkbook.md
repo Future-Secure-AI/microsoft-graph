@@ -18,7 +18,7 @@ Delete a workbook.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](WorkbookRef.md#workbookref) | Reference to the workbook to be deleted. * |
+| `workbookRef` | [`WorkbookRef`](Workbook.md#workbookref) | Reference to the workbook to be deleted. * |
 
 #### Returns
 

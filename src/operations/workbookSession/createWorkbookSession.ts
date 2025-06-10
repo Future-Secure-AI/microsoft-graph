@@ -4,10 +4,10 @@
  * @category Operations
  */
 
-import type { DriveItemRef } from "../../models/DriveItemRef.ts";
+import type { DriveItemRef } from "../../models/DriveItem.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookRef } from "../../models/WorkbookRef.ts";
-import type { WorkbookSessionId } from "../../models/WorkbookSessionId.ts";
+import type { WorkbookRef } from "../../models/Workbook.ts";
+import type { WorkbookSessionId } from "../../models/WorkbookSession.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 

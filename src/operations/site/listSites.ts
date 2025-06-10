@@ -5,10 +5,9 @@
  */
 
 import type { Site } from "@microsoft/microsoft-graph-types";
-import type { ContextRef } from "../../models/ContextRef.ts";
+import type { ContextRef } from "../../models/Context.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { SiteId } from "../../models/SiteId.ts";
-import type { SiteRef } from "../../models/SiteRef.ts";
+import type { SiteId, SiteRef } from "../../models/Site.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { createSiteRef } from "../../services/site.ts";
 import { generatePath } from "../../services/templatedPaths.ts";

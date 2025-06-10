@@ -3,7 +3,7 @@
  * @module tryDeleteDriveItem
  * @category Tasks
  */
-import type { DriveItemRef } from "../models/DriveItemRef.ts";
+import type { DriveItemRef } from "../models/DriveItem.ts";
 import deleteDriveItem from "../operations/driveItem/deleteDriveItem.ts";
 
 /**

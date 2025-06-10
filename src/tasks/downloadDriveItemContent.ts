@@ -5,7 +5,7 @@
  */
 
 import { writeFile } from "node:fs/promises";
-import type { DriveItemRef } from "../models/DriveItemRef.ts";
+import type { DriveItemRef } from "../models/DriveItem.ts";
 import getDriveItemContent from "../operations/driveItem/getDriveItemContent.ts";
 
 /**

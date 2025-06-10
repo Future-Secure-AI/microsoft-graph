@@ -1,6 +1,6 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { CellValue } from "../models/Cell.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import { countAddressColumns, countAddressRows } from "../services/addressManipulation.ts";
 

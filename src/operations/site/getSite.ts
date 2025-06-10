@@ -6,7 +6,7 @@
 
 import type { Site } from "@microsoft/microsoft-graph-types";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { SiteRef } from "../../models/SiteRef.ts";
+import type { SiteRef } from "../../models/Site.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 

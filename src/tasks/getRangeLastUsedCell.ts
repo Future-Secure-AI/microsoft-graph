@@ -7,9 +7,9 @@
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { CellAddress } from "../models/Address.ts";
 import type { CellValue } from "../models/Cell.ts";
-import type { ColumnOffset } from "../models/ColumnOffset.ts";
-import type { RowOffset } from "../models/RowOffset.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
+import type { ColumnOffset } from "../models/Column.ts";
+import type { RowOffset } from "../models/Row.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { getFirstCellAddress, offsetAddress } from "../services/addressManipulation.ts";
 

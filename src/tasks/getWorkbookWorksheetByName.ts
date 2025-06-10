@@ -6,8 +6,8 @@
 
 import type { WorkbookWorksheet } from "@microsoft/microsoft-graph-types";
 import NotFoundError from "../errors/NotFoundError.ts";
-import type { WorkbookRef } from "../models/WorkbookRef.ts";
-import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
+import type { WorkbookRef } from "../models/Workbook.ts";
+import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheet.ts";
 import listWorkbookWorksheets from "../operations/workbookWorksheet/listWorkbookWorksheets.ts";
 
 /**

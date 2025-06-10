@@ -1,0 +1,37 @@
+[Microsoft Graph SDK](README.md) / Drive
+
+# Drive
+
+Drive pointers.
+
+## Type Aliases
+
+### DriveId
+
+> **DriveId** = `string` & `object`
+
+Defined in: src/models/Drive.ts:14
+
+Identifier for a drive.
+
+#### Type declaration
+
+##### \_\_brand
+
+> **\_\_brand**: `"DriveId"`
+
+***
+
+### DriveRef
+
+> **DriveRef** = [`SiteRef`](Site-1.md#siteref) & `object`
+
+Defined in: src/models/Drive.ts:21
+
+Reference to a drive.
+
+#### Type declaration
+
+##### driveId
+
+> **driveId**: [`DriveId`](#driveid)

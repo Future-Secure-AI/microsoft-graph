@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheetName.ts";
+import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheet.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";

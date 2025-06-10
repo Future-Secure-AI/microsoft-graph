@@ -8,9 +8,9 @@ Get a site by its name.
 
 ### getSiteByName()
 
-> **getSiteByName**(`contextRef`, `hostName`, `siteName`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](SiteRef.md#siteref)\>
+> **getSiteByName**(`contextRef`, `hostName`, `siteName`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](Site-1.md#siteref)\>
 
-Defined in: [src/operations/site/getSiteByName.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/getSiteByName.ts#L26)
+Defined in: [src/operations/site/getSiteByName.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/getSiteByName.ts#L24)
 
 Get a site by its name.
 
@@ -18,13 +18,13 @@ Get a site by its name.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `contextRef` | [`ContextRef`](ContextRef.md#contextref) | Reference to the context. |
+| `contextRef` | [`ContextRef`](Context-1.md#contextref) | Reference to the context. |
 | `hostName` | [`HostName`](HostName.md#hostname) | Host name of the site. |
-| `siteName` | [`SiteName`](SiteName.md#sitename) | Name of the site. |
+| `siteName` | [`SiteName`](Site-1.md#sitename) | Name of the site. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](SiteRef.md#siteref)\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](Site-1.md#siteref)\>
 
 The specified site.
 

@@ -5,8 +5,8 @@
  */
 
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
-import type { WorkbookTableRef } from "../models/WorkbookTableRef.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
+import type { WorkbookTableRef } from "../models/WorkbookTable.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import insertWorkbookCells from "../operations/workbookRange/insertWorkbookCells.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";

@@ -8,7 +8,7 @@ Retrieve a named range.
 
 ### getWorkbookNamedRange()
 
-> **getWorkbookNamedRange**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
+> **getWorkbookNamedRange**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookRange/getWorkbookNamedRange.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookNamedRange.ts#L19)
 
@@ -18,11 +18,11 @@ Retrieve a named range.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookNamedRangeRef`](WorkbookNamedRangeRef.md#workbooknamedrangeref) | Reference to the named range. |
+| `rangeRef` | [`WorkbookNamedRangeRef`](WorkbookNamedRange.md#workbooknamedrangeref) | Reference to the named range. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object`\>
 
 Specified named range.
 

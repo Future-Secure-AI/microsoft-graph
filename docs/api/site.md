@@ -8,9 +8,9 @@ Utilities for working with Microsoft Graph Site references and operations.
 
 ### createSiteRef()
 
-> **createSiteRef**(`contextRef`, `siteId`): [`SiteRef`](SiteRef.md#siteref)
+> **createSiteRef**(`contextRef`, `siteId`): [`SiteRef`](Site-1.md#siteref)
 
-Defined in: [src/services/site.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/site.ts#L21)
+Defined in: [src/services/site.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/site.ts#L20)
 
 Creates a reference to a site.
 
@@ -18,12 +18,12 @@ Creates a reference to a site.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `contextRef` | [`ContextRef`](ContextRef.md#contextref) | The reference to the context. |
-| `siteId` | `undefined` \| [`SiteId`](SiteId.md#siteid) | The ID of the site. |
+| `contextRef` | [`ContextRef`](Context-1.md#contextref) | The reference to the context. |
+| `siteId` | `undefined` \| [`SiteId`](Site-1.md#siteid) | The ID of the site. |
 
 #### Returns
 
-[`SiteRef`](SiteRef.md#siteref)
+[`SiteRef`](Site-1.md#siteref)
 
 A reference to the site.
 
@@ -35,15 +35,15 @@ ProtocolError if the site ID is missing.
 
 ### getDefaultSiteRef()
 
-> **getDefaultSiteRef**(): [`SiteRef`](SiteRef.md#siteref)
+> **getDefaultSiteRef**(): [`SiteRef`](Site-1.md#siteref)
 
-Defined in: [src/services/site.ts:37](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/site.ts#L37)
+Defined in: [src/services/site.ts:36](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/site.ts#L36)
 
 Retrieves the opinionated default site reference. NOT RECOMMENDED FOR PRODUCTION USE
 
 #### Returns
 
-[`SiteRef`](SiteRef.md#siteref)
+[`SiteRef`](Site-1.md#siteref)
 
 A reference to the default site.
 

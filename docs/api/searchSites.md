@@ -8,9 +8,9 @@ Find accessible sites that match the provided keywords.
 
 ### searchSites()
 
-> **searchSites**(`contextRef`, `search`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](SiteRef.md#siteref)[]\>
+> **searchSites**(`contextRef`, `search`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](Site-1.md#siteref)[]\>
 
-Defined in: [src/operations/site/searchSites.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/searchSites.ts#L23)
+Defined in: [src/operations/site/searchSites.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/searchSites.ts#L22)
 
 Find accessible sites that match the provided keywords.
 
@@ -18,12 +18,12 @@ Find accessible sites that match the provided keywords.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `contextRef` | [`ContextRef`](ContextRef.md#contextref) | Reference to the context. |
+| `contextRef` | [`ContextRef`](Context-1.md#contextref) | Reference to the context. |
 | `search` | `string` | Search keywords to find matching sites. |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](SiteRef.md#siteref)[]\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](Site-1.md#siteref)[]\>
 
 Array of sites that match the search criteria, each including its metadata and reference information.
 

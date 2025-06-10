@@ -9,7 +9,7 @@ import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
-import getWorkbookWorksheetUsedRangeRef from "./getWorkbookWorksheetUsedRangeRef.ts";
+import getWorkbookWorksheetUsedRangeRef from "./getWorkbookWorksheetUsedRange.ts";
 
 const values = [
 	[1, 2],

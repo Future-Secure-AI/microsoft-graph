@@ -5,9 +5,8 @@
  */
 
 import ProtocolError from "../errors/ProtocolError.ts";
-import type { ContextRef } from "../models/ContextRef.ts";
-import type { SiteId } from "../models/SiteId.ts";
-import type { SiteRef } from "../models/SiteRef.ts";
+import type { ContextRef } from "../models/Context.ts";
+import type { SiteId, SiteRef } from "../models/Site.ts";
 import { getDefaultContextRef } from "./context.ts";
 import { getEnvironmentVariable } from "./environmentVariable.ts";
 

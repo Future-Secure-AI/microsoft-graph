@@ -32,7 +32,9 @@ Contrary to common expectation, while a cell does contain a single value, it als
 
 > **CellFormat** = `string` & `object`
 
-Defined in: [src/models/Cell.ts:53](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L53)
+Defined in: [src/models/Cell.ts:47](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L47)
+
+Format to be applied to a cell value to convert it to text to display to the user.
 
 #### Type declaration
 
@@ -40,13 +42,19 @@ Defined in: [src/models/Cell.ts:53](https://github.com/Future-Secure-AI/microsof
 
 > **\_\_brand**: `"CellFormat"`
 
+#### See
+
+[Cell](#cell) for a more comprehensive representation of a cell, which includes text and formatting.
+
 ***
 
 ### CellText
 
 > **CellText** = `string` & `object`
 
-Defined in: [src/models/Cell.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L35)
+Defined in: [src/models/Cell.ts:33](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L33)
+
+Text content of a cell in a worksheet.
 
 #### Type declaration
 
@@ -54,10 +62,20 @@ Defined in: [src/models/Cell.ts:35](https://github.com/Future-Secure-AI/microsof
 
 > **\_\_brand**: `"CellText"`
 
+#### Remarks
+
+This is a string that represents the text displayed in the cell, which may differ from the actual value of the cell (e.g., due to formatting).
+
 ***
 
 ### CellValue
 
 > **CellValue** = `string` \| `number` \| `boolean`
 
-Defined in: [src/models/Cell.ts:45](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L45)
+Defined in: [src/models/Cell.ts:41](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L41)
+
+CellValue represents the value of a cell in a spreadsheet.
+
+#### See
+
+[Cell](#cell) for a more comprehensive representation of a cell, which includes text and formatting.

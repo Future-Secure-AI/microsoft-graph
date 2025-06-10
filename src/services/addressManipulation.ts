@@ -7,9 +7,9 @@
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import UnsupportedAddressTypeError from "../errors/UnsupportedAddressTypeError.ts";
 import type { Address, CellAddress, CellRangeAddress, ColumnAddress, ColumnRangeAddress, DecomposedAddress, RowAddress, RowRangeAddress } from "../models/Address.ts";
-import type { ColumnOffset } from "../models/ColumnOffset.ts";
-import type { RowOffset } from "../models/RowOffset.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
+import type { ColumnOffset } from "../models/Column.ts";
+import type { RowOffset } from "../models/Row.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import { columnAddressToOffset, columnOffsetToAddress, rowAddressToOffset, rowOffsetToAddress } from "./addressOffset.ts";
 import { addressToCartesian, cartesianToAddress } from "./cartesianAddress.ts";
 

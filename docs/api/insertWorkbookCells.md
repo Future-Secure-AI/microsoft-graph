@@ -8,7 +8,7 @@ Insert a new blank range at a specified address, shifting existing cells.
 
 ### insertWorkbookCells()
 
-> **insertWorkbookCells**(`rangeRef`, `shift`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **insertWorkbookCells**(`rangeRef`, `shift`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Defined in: [src/operations/workbookRange/insertWorkbookCells.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/insertWorkbookCells.ts#L24)
 
@@ -18,12 +18,12 @@ Insert a new blank range at a specified address, shifting existing cells.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](WorkbookRangeRef.md#workbookrangeref) | Reference to the worksheet range where the range will be inserted. |
+| `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | Reference to the worksheet range where the range will be inserted. |
 | `shift` | `"Down"` \| `"Right"` | Direction to shift existing cells. Can be "Down" or "Right". |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
 Newly inserted range.
 

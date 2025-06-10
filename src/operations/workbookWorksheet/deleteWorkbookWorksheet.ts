@@ -5,7 +5,7 @@
  */
 
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
+import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheet.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 

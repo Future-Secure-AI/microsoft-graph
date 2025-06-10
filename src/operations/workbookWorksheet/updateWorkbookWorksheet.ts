@@ -6,7 +6,7 @@
 
 import type { WorkbookWorksheet } from "@microsoft/microsoft-graph-types";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheetRef.ts";
+import type { WorkbookWorksheetRef } from "../../models/WorkbookWorksheet.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
@@ -21,7 +21,6 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @see https://learn.microsoft.com/en-us/graph/api/worksheet-update
  */
 export default function updateWorkbookWorksheet(worksheetRef: WorkbookWorksheetRef, updates: { name?: string; position?: number; visibility?: "Visible" | "Hidden" | "VeryHidden" }): GraphOperation<WorkbookWorksheet & WorkbookWorksheetRef> {
-	// TODO: Flatten parameters
 	return operation({
 		context: worksheetRef.context,
 		method: "PATCH",

@@ -6,8 +6,8 @@
 
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { Address } from "../models/Address.ts";
-import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
-import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheetRef.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
+import type { WorkbookWorksheetRef } from "../models/WorkbookWorksheet.ts";
 import { normalizeAddress } from "./addressManipulation.ts";
 
 /**

@@ -6,12 +6,10 @@
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
-import type { DriveItemId } from "../../models/DriveItemId.ts";
-import type { DriveItemPath } from "../../models/DriveItemPath.ts";
-import type { DriveItemRef } from "../../models/DriveItemRef.ts";
-import type { DriveRef } from "../../models/DriveRef.ts";
+import type { DriveRef } from "../../models/Drive.ts";
+import type { DriveItemId, DriveItemPath, DriveItemRef } from "../../models/DriveItem.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
-import type { WorkbookRef } from "../../models/WorkbookRef.ts";
+import type { WorkbookRef } from "../../models/Workbook.ts";
 import { createDriveItemRef, workbookFileExtension } from "../../services/driveItem.ts";
 import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";

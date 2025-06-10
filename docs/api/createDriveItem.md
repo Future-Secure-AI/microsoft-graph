@@ -8,9 +8,9 @@ Creates new drive item in the specified parent drive or folder.
 
 ### createDriveItem()
 
-> **createDriveItem**(`parentRef`, `itemPath`, `contextType`, `content`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object`\>
+> **createDriveItem**(`parentRef`, `itemPath`, `contextType`, `content`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
-Defined in: [src/operations/driveItem/createDriveItem.ts:25](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItem.ts#L25)
+Defined in: [src/operations/driveItem/createDriveItem.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItem.ts#L23)
 
 Creates new drive item in the specified parent drive or folder.
 
@@ -18,14 +18,14 @@ Creates new drive item in the specified parent drive or folder.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `parentRef` | [`DriveRef`](DriveRef.md#driveref) \| [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the parent drive or folder where the drive item will be created. |
-| `itemPath` | [`DriveItemPath`](DriveItemPath.md#driveitempath) | Path (including the filename) for the new drive item. |
+| `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the parent drive or folder where the drive item will be created. |
+| `itemPath` | [`DriveItemPath`](DriveItem-1.md#driveitempath) | Path (including the filename) for the new drive item. |
 | `contextType` | `string` | - |
 | `content` | [`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) | - |
 
 #### Returns
 
-[`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](SiteRef.md#siteref) & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
 The newly created drive item.
 

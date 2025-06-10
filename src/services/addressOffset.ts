@@ -5,8 +5,8 @@
  */
 
 import type { ColumnAddress, RowAddress } from "../models/Address.ts";
-import type { ColumnOffset } from "../models/ColumnOffset.ts";
-import type { RowOffset } from "../models/RowOffset.ts";
+import type { ColumnOffset } from "../models/Column.ts";
+import type { RowOffset } from "../models/Row.ts";
 
 /**
  * Converts a column address (e.g., "A") to a zero-based column offset.

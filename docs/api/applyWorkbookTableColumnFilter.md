@@ -18,7 +18,7 @@ Apply a filter to a workbook table column.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `columnRef` | [`WorkbookTableColumnRef`](WorkbookTableColumnRef.md#workbooktablecolumnref) | Reference to the table column. |
+| `columnRef` | [`WorkbookTableColumnRef`](WorkbookTable-1.md#workbooktablecolumnref) | Reference to the table column. |
 | `criteria` | `WorkbookFilterCriteria` | Filter criteria to apply. |
 
 #### Returns
