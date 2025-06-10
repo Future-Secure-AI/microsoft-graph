@@ -4,7 +4,8 @@
  * @category Operations
  */
 
-import type { WorkbookRange } from "@microsoft/microsoft-graph-types";
+import type { WorkbookRange, WorkbookRangeView } from "@microsoft/microsoft-graph-types";
+import ProtocolError from "../../errors/ProtocolError.ts";
 import type { CellRangeAddress } from "../../models/Address.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
 import type { WorkbookRangeRef } from "../../models/WorkbookRange.ts";
@@ -29,8 +30,10 @@ export default function getWorkbookWorksheetUsedVisibleRange(worksheetRef: Workb
 		},
 		body: null,
 		responseTransform: (response) => {
-			const range = response as WorkbookRange;
-			const rangeRef = createWorkbookRangeRef(worksheetRef, range.address as CellRangeAddress);
+			const range = response as WorkbookRangeView;
+
+			const address = extractAddress(range);
+			const rangeRef = createWorkbookRangeRef(worksheetRef, address as CellRangeAddress);
 
 			return {
 				...range,
@@ -38,4 +41,19 @@ export default function getWorkbookWorksheetUsedVisibleRange(worksheetRef: Workb
 			};
 		},
 	});
+}
+function extractAddress(range: WorkbookRangeView): CellRangeAddress {
+	// `range.address` is absent, so manually create the range reference
+	const cellAddresses = range.cellAddresses as string[][];
+	const firstRow = cellAddresses[0];
+	const lastRow = cellAddresses[cellAddresses.length - 1];
+
+	if (!(firstRow && lastRow)) {
+		throw new ProtocolError("No visible cells found in the range.");
+	}
+
+	const firstCell = firstRow[0];
+	const lastCell = lastRow[lastRow.length - 1];
+	const address = `${firstCell}:${lastCell}` as CellRangeAddress;
+	return address;
 }

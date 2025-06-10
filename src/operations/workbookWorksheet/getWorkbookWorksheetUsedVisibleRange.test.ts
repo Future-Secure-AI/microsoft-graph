@@ -33,6 +33,7 @@ describe("getWorkbookWorksheetUsedVisibleRange", () => {
 
 			const usedRange = await getWorkbookWorksheetUsedVisibleRange(worksheetRef);
 			expect(usedRange.values).toEqual([[3, 4]]);
+			expect(usedRange.address).toBe("A2:B2");
 		} finally {
 			await tryDeleteDriveItem(workbook);
 		}
