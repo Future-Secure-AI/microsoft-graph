@@ -31,7 +31,7 @@ describe("insertWorkbookCells", () => {
 
 		try {
 			await updateWorkbookRange(rangeRef, { values: initialValues });
-			await insertWorkbookCells(worksheetRef, "A1", "Down");
+			await insertWorkbookCells(createWorkbookRangeRef(worksheetRef, "A1"), "Down");
 			await calculateWorkbook(workbook);
 			const insertedRange = await getWorkbookUsedRange(rangeRef);
 

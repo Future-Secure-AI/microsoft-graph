@@ -6,11 +6,11 @@ Delete a drive item, avoiding locking issues through automatic retries.
 
 ## Functions
 
-### deleteDriveItemWithRetry()
+### ~~deleteDriveItemWithRetry()~~
 
 > **deleteDriveItemWithRetry**(`driveItemRef`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/deleteDriveItemWithRetry.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/deleteDriveItemWithRetry.ts#L17)
+Defined in: [src/tasks/deleteDriveItemWithRetry.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/deleteDriveItemWithRetry.ts#L18)
 
 Delete a drive item, avoiding locking issues through automatic retries.
 
@@ -18,7 +18,7 @@ Delete a drive item, avoiding locking issues through automatic retries.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `driveItemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the DriveItem to delete. * |
+| `driveItemRef` | [`DriveItemRef`](DriveItemRef.md#driveitemref) | Reference to the DriveItem to delete. |
 
 #### Returns
 
@@ -27,3 +27,7 @@ Delete a drive item, avoiding locking issues through automatic retries.
 #### Remarks
 
 This function attempts to delete the drive item up to three times with increasing delays (1s, 2s, 4s) in case of failure.
+
+#### Deprecated
+
+Use `deleteDriveItem` directly as this is now handled by the lowest level API

@@ -4,6 +4,11 @@ This is an extensible library that allows access to Microsoft's GraphAPI, includ
 
 ℹ️ This is a THIRD PARTY library and not associated with Microsoft.
 
+## Breaking changes
+Version 2.25.0 has a few breaking changes:
+* `insertWorkbookCells(worksheetRef, address, shift)` => `insertWorkbookCells(rangeRef, shift)`
+* 
+
 ## TLDR
 Install the NPM package `npm i microsoft-graph`, then:
 

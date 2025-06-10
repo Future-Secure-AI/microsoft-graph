@@ -10,7 +10,7 @@ Safely delete a workbook by first closing any open sessions and then deleting it
 
 > **safeDeleteWorkbook**(`workbookRef`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/safeDeleteWorkbook.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/safeDeleteWorkbook.ts#L19)
+Defined in: [src/tasks/safeDeleteWorkbook.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/safeDeleteWorkbook.ts#L18)
 
 Safely delete a workbook by first closing any open sessions and then deleting it.
 
@@ -25,10 +25,6 @@ Safely delete a workbook by first closing any open sessions and then deleting it
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
 Void when the workbook is successfully deleted.
-
-#### Remarks
-
-Back-off retry to allow for any lingering locks to be closed.
 
 #### See
 

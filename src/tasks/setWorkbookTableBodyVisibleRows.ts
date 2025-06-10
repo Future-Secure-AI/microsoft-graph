@@ -42,7 +42,7 @@ export async function setWorkbookTableBodyVisibleRows(tableRef: WorkbookTableRef
 				const row = await getWorkbookWorksheetRange(rowRef);
 				rowHidden = row.rowHidden ?? false;
 			} else {
-				await insertWorkbookCells(rowRef, rowRef.address, "Down");
+				await insertWorkbookCells(rowRef, "Down");
 				rowHidden = false;
 			}
 			currentRowAddress = incrementRowAddress(currentRowAddress);
