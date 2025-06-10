@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { sequential } from "../../graphApi.ts";
-import type { WorkbookWorksheetId } from "../../models/WorkbookWorksheetId.ts";
+import type { WorkbookWorksheetId } from "../../models/WorkbookWorksheet.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
+import { sequential } from "../../services/operationInvoker.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
