@@ -19,6 +19,13 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
  * @param rows An iterable or async iterable of rows to write. Each row is an array of cells.
  * @param overwriteMaxRowsPerChunk Overwrite the number of rows per underlying request. DO NOT SET EXCEPT FOR ADVANCED TUNING.
  * @returns Number of rows written.
+ * @example
+ * const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B3");
+ * await writeWorkbookRows(rangeRef, [
+ *   [{ value: 1 }, { value: 2 }],
+ *   [{ value: 3 }, { value: 4 }],
+ *   [{ value: 5 }, { value: 6 }],
+ * ]);
  */
 export default async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, overwriteMaxRowsPerChunk: number | null = null): Promise<number> {
 	let maxRowsPerUnderlyingRead: number | null = overwriteMaxRowsPerChunk;

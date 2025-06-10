@@ -19,6 +19,11 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
  * @param worksheetRef Reference to the worksheet.
  * @returns Address of the used range of the worksheet.
  * @see https://learn.microsoft.com/en-us/graph/api/range-usedrange
+ * @example
+ * const usedRangeRef = await getWorkbookWorksheetUsedRangeRef(worksheetRef);
+ * for await (const row of readWorkbookRows(usedRangeRef)) {
+ * 	 console.debug(row.map((cell) => cell.value).join(", "));
+ * }
  */
 export default function getWorkbookWorksheetUsedRangeRef(worksheetRef: WorkbookWorksheetRef): GraphOperation<WorkbookRangeRef> {
 	return operation({
