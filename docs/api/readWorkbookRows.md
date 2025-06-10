@@ -10,7 +10,7 @@ Iterates over the rows in a given worksheet range.
 
 > **readWorkbookRows**(`rangeRef`, `overwriteMaxRowsPerChunk`): `AsyncIterable`\<[`Row`](Row.md#row)\>
 
-Defined in: [src/tasks/readWorkbookRows.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/readWorkbookRows.ts#L28)
+Defined in: [src/tasks/readWorkbookRows.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/readWorkbookRows.ts#L26)
 
 Iterates over the rows in a given worksheet range.
 

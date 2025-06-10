@@ -3,7 +3,7 @@ import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
-import { generalNumberFormat } from "../services/numberFormat.ts";
+import { generalNumberFormat } from "../services/cellFormat.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
@@ -33,7 +33,7 @@ describe("readWorkbookRows", () => {
 			for await (const row of readWorkbookRows(rangeRef)) {
 				expect(row.map((x) => x.value)).toEqual(values[idx]);
 				expect(row.map((x) => x.text)).toEqual(values[idx].map((x) => x.toString()));
-				expect(row.map((x) => x.numberFormat)).toEqual(values[idx].map(() => generalNumberFormat));
+				expect(row.map((x) => x.format)).toEqual(values[idx].map(() => generalNumberFormat));
 				idx++;
 			}
 		} finally {
@@ -62,7 +62,7 @@ describe("readWorkbookRows", () => {
 			for await (const row of readWorkbookRows(rangeRef)) {
 				expect(row.map((x) => x.value)).toEqual(values[idx]);
 				expect(row.map((x) => x.text)).toEqual(values[idx].map((x) => x.toString()));
-				expect(row.map((x) => x.numberFormat)).toEqual(values[idx].map(() => generalNumberFormat));
+				expect(row.map((x) => x.format)).toEqual(values[idx].map(() => generalNumberFormat));
 				idx++;
 			}
 		} finally {

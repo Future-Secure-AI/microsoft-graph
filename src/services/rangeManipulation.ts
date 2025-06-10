@@ -6,7 +6,7 @@
 
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Address } from "../models/Address.ts";
-import type { CellValue } from "../models/CellValue.ts";
+import type { CellValue } from "../models/Cell.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import { cartesianToAddress } from "./cartesianAddress.ts";

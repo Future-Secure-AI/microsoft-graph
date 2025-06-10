@@ -357,26 +357,6 @@
       "require": "./dist/cjs/errors/UnsupportedAddressTypeError.js",
       "types": "./dist/esm/errors/UnsupportedAddressTypeError.d.ts"
     },
-    "./graphApi": {
-      "import": "./dist/esm/graphApi.js",
-      "require": "./dist/cjs/graphApi.js",
-      "types": "./dist/esm/graphApi.d.ts"
-    },
-    "./dist/cjs/graphApi.js": {
-      "import": "./dist/esm/graphApi.js",
-      "require": "./dist/cjs/graphApi.js",
-      "types": "./dist/esm/graphApi.d.ts"
-    },
-    "./dist/cjs/graphApi": {
-      "import": "./dist/esm/graphApi.js",
-      "require": "./dist/cjs/graphApi.js",
-      "types": "./dist/esm/graphApi.d.ts"
-    },
-    "./graphApi.js": {
-      "import": "./dist/esm/graphApi.js",
-      "require": "./dist/cjs/graphApi.js",
-      "types": "./dist/esm/graphApi.d.ts"
-    },
     "./AccessToken": {
       "import": "./dist/esm/models/AccessToken.js",
       "require": "./dist/cjs/models/AccessToken.js",
@@ -526,56 +506,6 @@
       "import": "./dist/esm/models/Cell.js",
       "require": "./dist/cjs/models/Cell.js",
       "types": "./dist/esm/models/Cell.d.ts"
-    },
-    "./CellText": {
-      "import": "./dist/esm/models/CellText.js",
-      "require": "./dist/cjs/models/CellText.js",
-      "types": "./dist/esm/models/CellText.d.ts"
-    },
-    "./dist/cjs/models/CellText.js": {
-      "import": "./dist/esm/models/CellText.js",
-      "require": "./dist/cjs/models/CellText.js",
-      "types": "./dist/esm/models/CellText.d.ts"
-    },
-    "./dist/cjs/models/CellText": {
-      "import": "./dist/esm/models/CellText.js",
-      "require": "./dist/cjs/models/CellText.js",
-      "types": "./dist/esm/models/CellText.d.ts"
-    },
-    "./models/CellText": {
-      "import": "./dist/esm/models/CellText.js",
-      "require": "./dist/cjs/models/CellText.js",
-      "types": "./dist/esm/models/CellText.d.ts"
-    },
-    "./models/CellText.js": {
-      "import": "./dist/esm/models/CellText.js",
-      "require": "./dist/cjs/models/CellText.js",
-      "types": "./dist/esm/models/CellText.d.ts"
-    },
-    "./CellValue": {
-      "import": "./dist/esm/models/CellValue.js",
-      "require": "./dist/cjs/models/CellValue.js",
-      "types": "./dist/esm/models/CellValue.d.ts"
-    },
-    "./dist/cjs/models/CellValue.js": {
-      "import": "./dist/esm/models/CellValue.js",
-      "require": "./dist/cjs/models/CellValue.js",
-      "types": "./dist/esm/models/CellValue.d.ts"
-    },
-    "./dist/cjs/models/CellValue": {
-      "import": "./dist/esm/models/CellValue.js",
-      "require": "./dist/cjs/models/CellValue.js",
-      "types": "./dist/esm/models/CellValue.d.ts"
-    },
-    "./models/CellValue": {
-      "import": "./dist/esm/models/CellValue.js",
-      "require": "./dist/cjs/models/CellValue.js",
-      "types": "./dist/esm/models/CellValue.d.ts"
-    },
-    "./models/CellValue.js": {
-      "import": "./dist/esm/models/CellValue.js",
-      "require": "./dist/cjs/models/CellValue.js",
-      "types": "./dist/esm/models/CellValue.d.ts"
     },
     "./ColumnName": {
       "import": "./dist/esm/models/ColumnName.js",
@@ -876,31 +806,6 @@
       "import": "./dist/esm/models/Http.js",
       "require": "./dist/cjs/models/Http.js",
       "types": "./dist/esm/models/Http.d.ts"
-    },
-    "./NumberFormat": {
-      "import": "./dist/esm/models/NumberFormat.js",
-      "require": "./dist/cjs/models/NumberFormat.js",
-      "types": "./dist/esm/models/NumberFormat.d.ts"
-    },
-    "./dist/cjs/models/NumberFormat.js": {
-      "import": "./dist/esm/models/NumberFormat.js",
-      "require": "./dist/cjs/models/NumberFormat.js",
-      "types": "./dist/esm/models/NumberFormat.d.ts"
-    },
-    "./dist/cjs/models/NumberFormat": {
-      "import": "./dist/esm/models/NumberFormat.js",
-      "require": "./dist/cjs/models/NumberFormat.js",
-      "types": "./dist/esm/models/NumberFormat.d.ts"
-    },
-    "./models/NumberFormat": {
-      "import": "./dist/esm/models/NumberFormat.js",
-      "require": "./dist/cjs/models/NumberFormat.js",
-      "types": "./dist/esm/models/NumberFormat.d.ts"
-    },
-    "./models/NumberFormat.js": {
-      "import": "./dist/esm/models/NumberFormat.js",
-      "require": "./dist/cjs/models/NumberFormat.js",
-      "types": "./dist/esm/models/NumberFormat.d.ts"
     },
     "./Row": {
       "import": "./dist/esm/models/Row.js",
@@ -2927,30 +2832,30 @@
       "require": "./dist/cjs/services/cartesianAddress.js",
       "types": "./dist/esm/services/cartesianAddress.d.ts"
     },
-    "./cellText": {
-      "import": "./dist/esm/services/cellText.js",
-      "require": "./dist/cjs/services/cellText.js",
-      "types": "./dist/esm/services/cellText.d.ts"
+    "./cellFormat": {
+      "import": "./dist/esm/services/cellFormat.js",
+      "require": "./dist/cjs/services/cellFormat.js",
+      "types": "./dist/esm/services/cellFormat.d.ts"
     },
-    "./dist/cjs/services/cellText.js": {
-      "import": "./dist/esm/services/cellText.js",
-      "require": "./dist/cjs/services/cellText.js",
-      "types": "./dist/esm/services/cellText.d.ts"
+    "./dist/cjs/services/cellFormat.js": {
+      "import": "./dist/esm/services/cellFormat.js",
+      "require": "./dist/cjs/services/cellFormat.js",
+      "types": "./dist/esm/services/cellFormat.d.ts"
     },
-    "./dist/cjs/services/cellText": {
-      "import": "./dist/esm/services/cellText.js",
-      "require": "./dist/cjs/services/cellText.js",
-      "types": "./dist/esm/services/cellText.d.ts"
+    "./dist/cjs/services/cellFormat": {
+      "import": "./dist/esm/services/cellFormat.js",
+      "require": "./dist/cjs/services/cellFormat.js",
+      "types": "./dist/esm/services/cellFormat.d.ts"
     },
-    "./services/cellText": {
-      "import": "./dist/esm/services/cellText.js",
-      "require": "./dist/cjs/services/cellText.js",
-      "types": "./dist/esm/services/cellText.d.ts"
+    "./services/cellFormat": {
+      "import": "./dist/esm/services/cellFormat.js",
+      "require": "./dist/cjs/services/cellFormat.js",
+      "types": "./dist/esm/services/cellFormat.d.ts"
     },
-    "./services/cellText.js": {
-      "import": "./dist/esm/services/cellText.js",
-      "require": "./dist/cjs/services/cellText.js",
-      "types": "./dist/esm/services/cellText.d.ts"
+    "./services/cellFormat.js": {
+      "import": "./dist/esm/services/cellFormat.js",
+      "require": "./dist/cjs/services/cellFormat.js",
+      "types": "./dist/esm/services/cellFormat.d.ts"
     },
     "./context": {
       "import": "./dist/esm/services/context.js",
@@ -3102,31 +3007,6 @@
       "require": "./dist/cjs/services/httpStatus.js",
       "types": "./dist/esm/services/httpStatus.d.ts"
     },
-    "./numberFormat": {
-      "import": "./dist/esm/services/numberFormat.js",
-      "require": "./dist/cjs/services/numberFormat.js",
-      "types": "./dist/esm/services/numberFormat.d.ts"
-    },
-    "./dist/cjs/services/numberFormat.js": {
-      "import": "./dist/esm/services/numberFormat.js",
-      "require": "./dist/cjs/services/numberFormat.js",
-      "types": "./dist/esm/services/numberFormat.d.ts"
-    },
-    "./dist/cjs/services/numberFormat": {
-      "import": "./dist/esm/services/numberFormat.js",
-      "require": "./dist/cjs/services/numberFormat.js",
-      "types": "./dist/esm/services/numberFormat.d.ts"
-    },
-    "./services/numberFormat": {
-      "import": "./dist/esm/services/numberFormat.js",
-      "require": "./dist/cjs/services/numberFormat.js",
-      "types": "./dist/esm/services/numberFormat.d.ts"
-    },
-    "./services/numberFormat.js": {
-      "import": "./dist/esm/services/numberFormat.js",
-      "require": "./dist/cjs/services/numberFormat.js",
-      "types": "./dist/esm/services/numberFormat.d.ts"
-    },
     "./operationId": {
       "import": "./dist/esm/services/operationId.js",
       "require": "./dist/cjs/services/operationId.js",
@@ -3151,6 +3031,31 @@
       "import": "./dist/esm/services/operationId.js",
       "require": "./dist/cjs/services/operationId.js",
       "types": "./dist/esm/services/operationId.d.ts"
+    },
+    "./operationInvoker": {
+      "import": "./dist/esm/services/operationInvoker.js",
+      "require": "./dist/cjs/services/operationInvoker.js",
+      "types": "./dist/esm/services/operationInvoker.d.ts"
+    },
+    "./dist/cjs/services/operationInvoker.js": {
+      "import": "./dist/esm/services/operationInvoker.js",
+      "require": "./dist/cjs/services/operationInvoker.js",
+      "types": "./dist/esm/services/operationInvoker.d.ts"
+    },
+    "./dist/cjs/services/operationInvoker": {
+      "import": "./dist/esm/services/operationInvoker.js",
+      "require": "./dist/cjs/services/operationInvoker.js",
+      "types": "./dist/esm/services/operationInvoker.d.ts"
+    },
+    "./services/operationInvoker": {
+      "import": "./dist/esm/services/operationInvoker.js",
+      "require": "./dist/cjs/services/operationInvoker.js",
+      "types": "./dist/esm/services/operationInvoker.d.ts"
+    },
+    "./services/operationInvoker.js": {
+      "import": "./dist/esm/services/operationInvoker.js",
+      "require": "./dist/cjs/services/operationInvoker.js",
+      "types": "./dist/esm/services/operationInvoker.d.ts"
     },
     "./random": {
       "import": "./dist/esm/services/random.js",

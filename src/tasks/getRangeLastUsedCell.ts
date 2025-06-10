@@ -6,7 +6,7 @@
 
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { CellAddress } from "../models/Address.ts";
-import type { CellValue } from "../models/CellValue.ts";
+import type { CellValue } from "../models/Cell.ts";
 import type { ColumnOffset } from "../models/ColumnOffset.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";

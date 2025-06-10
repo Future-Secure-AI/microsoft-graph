@@ -10,7 +10,7 @@ Invoke operations, potentially as parallel or sequential batches.
 
 > **operation**\<`T`\>(`definition`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`T`\>
 
-Defined in: src/services/operationInvoker.ts:38
+Defined in: [src/services/operationInvoker.ts:38](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L38)
 
 Define a operation.
 
@@ -40,7 +40,7 @@ Operations can be `await`d to execute independently, or passed with others as ar
 
 > **parallel**\<`T`\>(...`operations`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`OperationResponse`](GraphOperation.md#operationresponse)\<`T`\>\>
 
-Defined in: src/services/operationInvoker.ts:52
+Defined in: [src/services/operationInvoker.ts:52](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L52)
 
 Execute a batch of GraphAPI operations in parallel.
 
@@ -70,7 +70,7 @@ Provides the best performance for batch operations, however only useful if opera
 
 > **sequential**\<`T`\>(...`operations`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`OperationResponse`](GraphOperation.md#operationresponse)\<`T`\>\>
 
-Defined in: src/services/operationInvoker.ts:61
+Defined in: [src/services/operationInvoker.ts:61](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L61)
 
 Execute a batch of GraphAPI operations sequentially.
 

@@ -8,6 +8,11 @@ This is an extensible library that allows access to Microsoft's GraphAPI, includ
 Version 2.25.0 has a few breaking changes:
 * Signature change for `insertWorkbookCells`: `insertWorkbookCells(worksheetRef, address, shift)` => `insertWorkbookCells(rangeRef, shift)`
 * `graphApi.ts` has moved to `services/operationInvoker.ts`
+* `models/CellText.ts` merged with `models/Cell.ts`
+* `models/CellValue.ts` merged with `models/Cell.ts`
+* `models/CellValue.ts` merged with `models/Cell.ts` and renamed to `CellFormat`
+* `Cell.numberFormat` renamed to `Cell.format`
+* `services/numberFormat.ts` moved to `services/cellFormat.ts`
 
 ## TLDR
 Install the NPM package `npm i microsoft-graph`, then:

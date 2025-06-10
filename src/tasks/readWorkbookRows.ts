@@ -5,9 +5,7 @@
  */
 
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { CellText } from "../models/CellText.ts";
-import type { CellValue } from "../models/CellValue.ts";
-import type { NumberFormat } from "../models/NumberFormat.ts";
+import type { Cell, CellFormat, CellText, CellValue } from "../models/Cell.ts";
 import type { Row } from "../models/Row.ts";
 import type { RowOffset } from "../models/RowOffset.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRangeRef.ts";
@@ -59,15 +57,19 @@ export default async function* readWorkbookRows(rangeRef: WorkbookRangeRef, over
 		const range = await getWorkbookWorksheetRange(requestRef);
 		const values = range.values satisfies CellValue[][];
 		const text = range.text as CellText[][];
-		const numberFormat = range.numberFormat as NumberFormat[][];
+		const numberFormat = range.numberFormat as CellFormat[][];
 		const rowCount = values.length;
 
 		for (let r = 0; r < rowCount; r++) {
-			const row = Array.from({ length: columnCount }, (_, c) => ({
-				text: text[r]?.[c] ?? ("" as CellText),
-				value: values[r]?.[c] ?? "",
-				numberFormat: numberFormat?.[r]?.[c] ?? ("" as NumberFormat),
-			}));
+			const row = Array.from(
+				{ length: columnCount },
+				(_, c) =>
+					({
+						text: text[r]?.[c] ?? ("" as CellText),
+						value: values[r]?.[c] ?? "",
+						format: numberFormat?.[r]?.[c] ?? ("" as CellFormat),
+					}) satisfies Cell,
+			);
 
 			yield row;
 		}

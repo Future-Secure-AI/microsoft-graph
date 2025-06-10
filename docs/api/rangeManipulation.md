@@ -8,7 +8,7 @@ Utilities for inferring and manipulating spreadsheet ranges and objects.
 
 ### inferObjectRange()
 
-> **inferObjectRange**(`objs`, `header`): [`CellValue`](CellValue.md#cellvalue)[][]
+> **inferObjectRange**(`objs`, `header`): [`CellValue`](Cell.md#cellvalue-1)[][]
 
 Defined in: [src/services/rangeManipulation.ts:120](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/rangeManipulation.ts#L120)
 
@@ -24,7 +24,7 @@ The first row of the 2D array contains the keys as headers.
 
 #### Returns
 
-[`CellValue`](CellValue.md#cellvalue)[][]
+[`CellValue`](Cell.md#cellvalue-1)[][]
 
 A 2D array where the first row is the header and subsequent rows are the object values.
 
@@ -42,7 +42,7 @@ Converts a 2D array of cell values into range address in the upper left.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `values` | [`CellValue`](CellValue.md#cellvalue)[][] | A 2D array representing cell values. |
+| `values` | [`CellValue`](Cell.md#cellvalue-1)[][] | A 2D array representing cell values. |
 | `rowOffset?` | [`RowOffset`](RowOffset.md#rowoffset) | The row offset to apply to the range address. |
 | `columnOffset?` | [`ColumnOffset`](ColumnOffset.md#columnoffset) | The column offset to apply to the range address. |
 
@@ -71,7 +71,7 @@ Assumes the first row is a header and uses it as keys for the objects.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `values` | [`CellValue`](CellValue.md#cellvalue)[][] | A 2D array representing cell values. |
+| `values` | [`CellValue`](Cell.md#cellvalue-1)[][] | A 2D array representing cell values. |
 
 #### Returns
 
@@ -97,7 +97,7 @@ Converts a 2D array of cell values into a row address in the upper left.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `row` | [`CellValue`](CellValue.md#cellvalue)[] | A single row of cell values. |
+| `row` | [`CellValue`](Cell.md#cellvalue-1)[] | A single row of cell values. |
 | `rowOffset?` | [`RowOffset`](RowOffset.md#rowoffset) | The row offset to apply to the address. |
 | `columnOffset?` | [`ColumnOffset`](ColumnOffset.md#columnoffset) | The column offset to apply to the address. |
 

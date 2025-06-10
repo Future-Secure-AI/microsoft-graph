@@ -75,7 +75,7 @@ async function flushBatch(batch: Partial<Cell>[][], originRef: WorkbookRangeRef,
 	await updateWorkbookRange(rangeRef, {
 		values: batch.map((r) => r.map((c) => c.value)),
 		text: batch.map((r) => r.map((c) => c.text)),
-		numberFormat: batch.map((r) => r.map((c) => c.numberFormat)),
+		numberFormat: batch.map((r) => r.map((c) => c.format)),
 	});
 
 	batch.length = 0;
