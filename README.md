@@ -13,6 +13,7 @@ Version 2.25.0 has a few breaking changes:
 * `services/numberFormat.ts` moved to `services/cellFormat.ts`
 * Merged a number of files in `models` to reduce import count.
 * Removed return value from `setColumnHidden` and `setRowHidden`
+* `services/listDriveItems` now returns async iterable. Wrap this with `iterateToArray` if an array is actually desired.
 
 ## TLDR
 Install the NPM package `npm i microsoft-graph`, then:

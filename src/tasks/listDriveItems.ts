@@ -12,18 +12,22 @@ import { createDriveItemRef } from "../services/driveItem.ts";
 import { executeHttpRequest } from "../services/http.ts";
 
 /**
- * List drive items in a drive or a drive item.
+ * List drive items in a drive or a drive item as an async iterable.
  * @param parentRef Parent drive or folder reference.
- * @param pageSize Number of items to fetch per request.
- * @returns
+ * @param maxPerChunk Number of items to fetch per request. DO NOT SET EXCEPT FOR ADVANCED TUNING.
+ * @returns Async iterable of drive items.
  * @remarks `pageSize` should only be set for advanced performance tuning.
  */
-export default async function listDriveItems(parentRef: DriveRef | DriveItemRef, pageSize = 1000): Promise<(DriveItem & DriveItemRef)[]> {
-	// TODO: Make async iterable
-	const output: (DriveItem & DriveItemRef)[] = [];
+export default async function* listDriveItems(parentRef: DriveRef | DriveItemRef, maxPerChunk = 1000): AsyncGenerator<DriveItem & DriveItemRef> {
+	let result = await listDriveItemChildren(parentRef, maxPerChunk);
 
-	let result = await listDriveItemChildren(parentRef, pageSize);
-	output.push(...result.value);
+	for (const item of result.value) {
+		const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
+		yield {
+			...item,
+			...itemRef,
+		};
+	}
 
 	while (result["@odata.nextLink"]) {
 		const accessToken = await parentRef.context.generateAccessToken();
@@ -38,17 +42,12 @@ export default async function listDriveItems(parentRef: DriveRef | DriveItemRef,
 
 		result = response.data as ListDriveItemResponse;
 
-		const items = result.value.map((item) => {
+		for (const item of result.value) {
 			const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
-
-			return {
+			yield {
 				...item,
 				...itemRef,
 			};
-		});
-
-		output.push(...items);
+		}
 	}
-
-	return output;
 }

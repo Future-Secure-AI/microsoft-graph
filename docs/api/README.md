@@ -110,6 +110,8 @@
 
 | Module | Description |
 | ------ | ------ |
+| [tasks/setColumnHidden](tasks/setColumnHidden.md) | - |
+| [tasks/setRowHidden](tasks/setRowHidden.md) | - |
 | [tasks/setWorkbookRangeValues](tasks/setWorkbookRangeValues.md) | - |
 
 ## Services
@@ -128,6 +130,7 @@
 | [environmentVariable](environmentVariable.md) | Utilities for accessing environment variables with error handling and fallbacks. |
 | [http](http.md) | HTTP request utilities for Microsoft Graph API, with proxy support. |
 | [httpStatus](httpStatus.md) | Utilities for analyzing HTTP status codes for Microsoft Graph API responses. |
+| [Iteration](Iteration.md) | - |
 | [operationId](operationId.md) | Utilities for converting between operation IDs and indexes. |
 | [operationInvoker](operationInvoker.md) | Invoke operations, potentially as parallel or sequential batches. |
 | [random](random.md) | Utilities for generating random values for spreadsheet and API operations. |
@@ -155,8 +158,6 @@
 | [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
 | [readWorkbookRows](readWorkbookRows.md) | Iterates over the rows in a given worksheet range. |
 | [safeDeleteWorkbook](safeDeleteWorkbook.md) | Safely delete a workbook by first closing any open sessions and then deleting it. |
-| [setColumnHidden](setColumnHidden.md) | Set one or more columns visibility. |
-| [setRowHidden](setRowHidden.md) | Set one or more rows visibility. |
 | [setWorkbookTableBodyVisibleRows](setWorkbookTableBodyVisibleRows.md) | Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed. |
 | [tryCloseWorkbookSession](tryCloseWorkbookSession.md) | Try and close a workbook session. |
 | [tryDeleteDriveItem](tryDeleteDriveItem.md) | Attempts to delete a drive item, returning success status. |

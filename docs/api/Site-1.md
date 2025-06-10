@@ -10,7 +10,7 @@ Pointers to a site.
 
 > **SiteId** = `string` & `object`
 
-Defined in: src/models/Site.ts:14
+Defined in: [src/models/Site.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Site.ts#L14)
 
 Identifier for a site.
 
@@ -26,7 +26,7 @@ Identifier for a site.
 
 > **SiteName** = `string` & `object`
 
-Defined in: src/models/Site.ts:21
+Defined in: [src/models/Site.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Site.ts#L21)
 
 Name of a site.
 
@@ -42,7 +42,7 @@ Name of a site.
 
 > **SiteRef** = `object`
 
-Defined in: src/models/Site.ts:28
+Defined in: [src/models/Site.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Site.ts#L28)
 
 Reference to a site.
 
@@ -50,5 +50,5 @@ Reference to a site.
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="context"></a> `context` | [`Context`](Context-1.md#context) | src/models/Site.ts:29 |
-| <a id="siteid-1"></a> `siteId` | [`SiteId`](#siteid) | src/models/Site.ts:30 |
+| <a id="context"></a> `context` | [`Context`](Context-1.md#context) | [src/models/Site.ts:29](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Site.ts#L29) |
+| <a id="siteid-1"></a> `siteId` | [`SiteId`](#siteid) | [src/models/Site.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Site.ts#L30) |

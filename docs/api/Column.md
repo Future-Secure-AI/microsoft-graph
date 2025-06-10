@@ -10,7 +10,7 @@ Column pointers.
 
 > **ColumnName** = `string` & `object`
 
-Defined in: src/models/Column.ts:19
+Defined in: [src/models/Column.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Column.ts#L19)
 
 Name of a column, as configured by the user.
 
@@ -26,7 +26,7 @@ Name of a column, as configured by the user.
 
 > **ColumnOffset** = `number` & `object`
 
-Defined in: src/models/Column.ts:12
+Defined in: [src/models/Column.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Column.ts#L12)
 
 Zero-based index representing the position of a column in a range.
 

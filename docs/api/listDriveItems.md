@@ -8,22 +8,24 @@ List drive items in a drive or a drive item.
 
 ### listDriveItems()
 
-> **listDriveItems**(`parentRef`, `pageSize`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`[]\>
+> **listDriveItems**(`parentRef`, `maxPerChunk`): [`AsyncGenerator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
 Defined in: [src/tasks/listDriveItems.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/listDriveItems.ts#L21)
 
-List drive items in a drive or a drive item.
+List drive items in a drive or a drive item as an async iterable.
 
 #### Parameters
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
 | `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | `undefined` | Parent drive or folder reference. |
-| `pageSize` | `number` | `1000` | Number of items to fetch per request. |
+| `maxPerChunk` | `number` | `1000` | Number of items to fetch per request. DO NOT SET EXCEPT FOR ADVANCED TUNING. |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`[]\>
+[`AsyncGenerator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
+
+Async iterable of drive items.
 
 #### Remarks
 
