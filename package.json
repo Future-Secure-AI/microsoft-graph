@@ -2657,6 +2657,31 @@
       "require": "./dist/cjs/services/httpStatus.js",
       "types": "./dist/esm/services/httpStatus.d.ts"
     },
+    "./iteration": {
+      "import": "./dist/esm/services/iteration.js",
+      "require": "./dist/cjs/services/iteration.js",
+      "types": "./dist/esm/services/iteration.d.ts"
+    },
+    "./dist/cjs/services/iteration.js": {
+      "import": "./dist/esm/services/iteration.js",
+      "require": "./dist/cjs/services/iteration.js",
+      "types": "./dist/esm/services/iteration.d.ts"
+    },
+    "./dist/cjs/services/iteration": {
+      "import": "./dist/esm/services/iteration.js",
+      "require": "./dist/cjs/services/iteration.js",
+      "types": "./dist/esm/services/iteration.d.ts"
+    },
+    "./services/iteration": {
+      "import": "./dist/esm/services/iteration.js",
+      "require": "./dist/cjs/services/iteration.js",
+      "types": "./dist/esm/services/iteration.d.ts"
+    },
+    "./services/iteration.js": {
+      "import": "./dist/esm/services/iteration.js",
+      "require": "./dist/cjs/services/iteration.js",
+      "types": "./dist/esm/services/iteration.d.ts"
+    },
     "./operationId": {
       "import": "./dist/esm/services/operationId.js",
       "require": "./dist/cjs/services/operationId.js",
