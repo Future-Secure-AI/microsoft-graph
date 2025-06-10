@@ -10,7 +10,7 @@ Create a new worksheet in a workbook, optionally with a defined name.
 
 > **createWorkbookWorksheet**(`workbookRef`, `name?`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookWorksheet/createWorkbookWorksheet.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/createWorkbookWorksheet.ts#L22)
+Defined in: [src/operations/workbookWorksheet/createWorkbookWorksheet.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/createWorkbookWorksheet.ts#L23)
 
 Create a new worksheet in a workbook, optionally with a defined name.
 
@@ -30,3 +30,7 @@ The newly created worksheet.
 #### See
 
 https://learn.microsoft.com/en-us/graph/api/worksheetcollection-add
+
+#### Remarks
+
+While `createWorkbookWorksheet` returns a reference to the worksheet, `getWorkbookWorksheetByName` and `listWorkbookWorksheets` may be unable to see the worksheet for a number of seconds. Calling `calculateWorkbook` can hasten the availability of the new worksheet for these operations.

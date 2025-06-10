@@ -2,31 +2,31 @@
 
 # getWorkbookWorksheetByName
 
-Get a worksheet by its name.
+Retrieve a worksheet by its name from a workbook.
 
 ## Functions
 
 ### getWorkbookWorksheetByName()
 
-> **getWorkbookWorksheetByName**(`workbookRef`, `name`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`WorkbookWorksheet` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object`\>
+> **getWorkbookWorksheetByName**(`workbookRef`, `worksheetName`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/tasks/getWorkbookWorksheetByName.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/getWorkbookWorksheetByName.ts#L21)
+Defined in: src/operations/workbookWorksheet/getWorkbookWorksheetByName.ts:22
 
-Get a worksheet by its name.
+Retrieve a worksheet by its name from a workbook.
 
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `workbookRef` | [`WorkbookRef`](Workbook.md#workbookref) | A reference to the workbook containing the worksheet. |
-| `name` | `string` | The name of the worksheet to retrieve. |
+| `workbookRef` | [`WorkbookRef`](Workbook.md#workbookref) | Reference to the workbook. |
+| `worksheetName` | [`WorkbookWorksheetName`](WorkbookWorksheet-1.md#workbookworksheetname) | The name of the worksheet to retrieve. |
 
 #### Returns
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`WorkbookWorksheet` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object`\>
 
-Worksheet
+The worksheet object.
 
-#### Throws
+#### See
 
-[NotFoundError](NotFoundError.md) If the worksheet with the specified name is not found.
+https://learn.microsoft.com/en-us/graph/api/worksheet-get

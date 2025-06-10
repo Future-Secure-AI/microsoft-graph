@@ -10,7 +10,7 @@ Retrieve the visible (not hidden) range in a worksheet.
 
 > **getWorkbookWorksheetUsedVisibleRange**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.ts#L22)
+Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetUsedVisibleRange.ts#L23)
 
 Retrieve the visible (not hidden) range in a worksheet.
 

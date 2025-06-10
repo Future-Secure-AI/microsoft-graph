@@ -18,6 +18,7 @@ import { createWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts"
  * @param name (Optional) The name of the new worksheet.
  * @returns The newly created worksheet.
  * @see https://learn.microsoft.com/en-us/graph/api/worksheetcollection-add
+ * @remarks While `createWorkbookWorksheet` returns a reference to the worksheet, `getWorkbookWorksheetByName` and `listWorkbookWorksheets` may be unable to see the worksheet for a number of seconds. Calling `calculateWorkbook` can hasten the availability of the new worksheet for these operations.
  */
 export default function createWorkbookWorksheet(workbookRef: WorkbookRef, name?: WorkbookWorksheetName): GraphOperation<WorkbookWorksheet & WorkbookWorksheetRef> {
 	return operation({

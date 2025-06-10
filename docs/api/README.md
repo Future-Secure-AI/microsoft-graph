@@ -80,6 +80,7 @@
 | [getWorkbookTableBodyVisibleRange](getWorkbookTableBodyVisibleRange.md) | Retrieve the visible data body range of a table. |
 | [getWorkbookTableHeaderRange](getWorkbookTableHeaderRange.md) | Retrieve the header row range of a table. |
 | [getWorkbookVisibleRange](getWorkbookVisibleRange.md) | Retrieve the visible view of a range. |
+| [getWorkbookWorksheetByName](getWorkbookWorksheetByName.md) | Retrieve a worksheet by its name from a workbook. |
 | [getWorkbookWorksheetRange](getWorkbookWorksheetRange.md) | Fetch a range. |
 | [getWorkbookWorksheetUsedRange](getWorkbookWorksheetUsedRange.md) | Retrieve the used range in a worksheet, ignoring trailing rows and columns that are blank. |
 | [getWorkbookWorksheetUsedRangeRef](getWorkbookWorksheetUsedRangeRef.md) | Retrieve the address of the used range in a worksheet, ignoring trailing rows and columns that are blank. |
@@ -154,7 +155,7 @@
 | [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
 | [deleteDriveItemWithRetry](deleteDriveItemWithRetry.md) | Delete a drive item, avoiding locking issues through automatic retries. |
 | [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
-| [getWorkbookWorksheetByName](getWorkbookWorksheetByName.md) | Get a worksheet by its name. |
+| [getWorkbookWorksheetByName](getWorkbookWorksheetByName-1.md) | Get a worksheet by its name. |
 | [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
 | [readWorkbookRows](readWorkbookRows.md) | Iterates over the rows in a given worksheet range. |
 | [safeDeleteWorkbook](safeDeleteWorkbook.md) | Safely delete a workbook by first closing any open sessions and then deleting it. |
