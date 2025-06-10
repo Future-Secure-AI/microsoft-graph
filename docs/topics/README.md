@@ -11,4 +11,4 @@ This section provides in-depth guides and explanations for key concepts, workaro
 - [Handling Locked Workbooks](./lockedWorkbook.md): Strategies for dealing with "resource is locked" errors.
 - [Performance](./performance.md): Tips for optimizing performance, including batching and session management.
 - [Pivot Tables](./pivotTables.md): Current limitations and workarounds for pivot table support.
-- [Request Retrying](./requestRetrying.md): How the SDK handles Graph API throttling and automatic retries.
+- [Request Retrying](./retrying.md): How the SDK handles Graph API throttling and automatic retries.
