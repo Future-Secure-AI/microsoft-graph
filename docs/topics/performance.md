@@ -1,24 +1,59 @@
 # Performance
-If your particular use-case requires enhanced performance there are a couple of tools available to help.
 
-## Sessions
-If you have performing multiple operations on a workbook, first open a session using `createWorkbookSession` and close the session at the end with `closeWorkbookSession` (or it times out after 5mins or so). Without this GraphAPI effectively opens and closes the spreadsheet on every operation. With a session in place it keeps the document open.
+For enhanced performance with the Graph API, use the following techniques:
 
-## Parallel batch
-If you have a number of operations that can be performed at the same time, use `await parallel(operation1(), operation2(), ...)`. This allows you to send up to 20 operations to GraphAPI in a single request and have them be performed in parallel. 
+## Workbook Sessions
+When performing more than a single operations on a workbook, there are significant performance benefits to use workbook sessions. To do this first open a session with `createWorkbookSession` and close it with `closeWorkbookSession` when done. This keeps the workbook open, reducing overhead from repeatedly opening and closing the document. Be sure to close sessions otherwise they linger for a number of minutes preventing worksheets from being deleted or moved.
 
-## Parallel batch
-Sometimes the order of operations are important. To facilitate this variant of a batch operation you can use `await sequential(operation1(), operation2(), ...)`.
+**Recommended pattern:**
 
 ```typescript
- const [_, __, ___, clearedRange] = await sequential(
-    updateWorkbookRange(rangeRef, {
-        values: values
-    }),
+const workbook = await createWorkbookSession(driveItemRef);
+try {
+    // Perform multiple operations
+    const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B3");
+    await writeWorkbookRows(rangeRef, [
+        [{ value: 1 }, { value: 2 }],
+        [{ value: 3 }, { value: 4 }],
+        [{ value: 5 }, { value: 6 }],
+    ]);
+    // ...more operations
+} finally {
+    await closeWorkbookSession(workbook);
+}
+```
+
+## Batching Requests
+Batching allows up to 20 operations in a single network request. Use batching for performance, but be aware:
+- Debugging failures is harder (which operation failed?).
+- Concurrency issues may arise if multiple operations modify the same resource.
+
+### Parallel Batch
+Use `await parallel(operation1(), operation2(), ...)` for independent operations that can run at the same time.
+
+**Example:**
+```typescript
+await parallel(
+    updateWorkbookRange(rangeRef1, { values: values1 }),
+    updateWorkbookRange(rangeRef2, { values: values2 }),
+    clearWorkbookRange(rangeRef3)
+);
+```
+
+### Sequential Batch
+If order matters, use `await sequential(operation1(), operation2(), ...)`. Each operation waits for the previous one to finish.
+
+**Example:**
+```typescript
+const [updated, cleared, calculated, result] = await sequential(
+    updateWorkbookRange(rangeRef, { values }),
     clearWorkbookRange(rangeRef),
     calculateWorkbook(workbookRef),
     getWorkbookRange(rangeRef)
 );
 ```
 
-While this allows for up to 20 operations to be submitted to GraphAPI in one request, it waits for the former operation to complete before starting the next.
+**Summary:**
+- Use sessions for multiple workbook operations.
+- Use batching for up to 20 operations per request.
+- Use `parallel` for independent operations, `sequential` for ordered ones.
