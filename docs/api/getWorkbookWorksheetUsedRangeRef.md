@@ -10,7 +10,7 @@ Retrieve the address of the used range in a worksheet, ignoring trailing rows an
 
 > **getWorkbookWorksheetUsedRangeRef**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<[`WorkbookRangeRef`](WorkbookRangeRef.md#workbookrangeref)\>
 
-Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts#L23)
+Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetUsedRangeRef.ts#L28)
 
 Retrieve the address of the used range in a worksheet, ignoring trailing rows and columns that are blank.
 
@@ -29,3 +29,12 @@ Address of the used range of the worksheet.
 #### See
 
 https://learn.microsoft.com/en-us/graph/api/range-usedrange
+
+#### Example
+
+```ts
+const usedRangeRef = await getWorkbookWorksheetUsedRangeRef(worksheetRef);
+for await (const row of readWorkbookRows(usedRangeRef)) {
+	 console.debug(row.map((cell) => cell.value).join(", "));
+}
+```

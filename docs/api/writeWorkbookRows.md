@@ -10,7 +10,7 @@ Write rows to a workbook range.
 
 > **writeWorkbookRows**(`originRef`, `rows`, `overwriteMaxRowsPerChunk`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`number`\>
 
-Defined in: [src/tasks/writeWorkbookRows.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/writeWorkbookRows.ts#L23)
+Defined in: [src/tasks/writeWorkbookRows.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/writeWorkbookRows.ts#L30)
 
 Write rows to a workbook range.
 
@@ -27,3 +27,14 @@ Write rows to a workbook range.
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`number`\>
 
 Number of rows written.
+
+#### Example
+
+```ts
+const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B3");
+await writeWorkbookRows(rangeRef, [
+  [{ value: 1 }, { value: 2 }],
+  [{ value: 3 }, { value: 4 }],
+  [{ value: 5 }, { value: 6 }],
+]);
+```
