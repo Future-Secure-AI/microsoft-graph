@@ -2,6 +2,7 @@
  * Delete a drive item, avoiding locking issues through automatic retries.
  * @module deleteDriveItemWithRetry
  * @category Tasks
+ * @hidden
  */
 
 import type { DriveItemRef } from "../models/DriveItem.ts";
