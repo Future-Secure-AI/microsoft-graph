@@ -405,7 +405,8 @@ export function subAddress(address: Address, skipRows = 0, takeRows = Number.POS
 	const [startCol, endCol] = slice(ax, bx, skipCols, takeCols);
 
 	if (startRow < ay || endRow > by || startRow > endRow || startCol < ax || endCol > bx || startCol > endCol) {
-		throw new InvalidArgumentError(`Requested subaddress is out of bounds: rows [${startRow + 1},${endRow + 1}], cols [${startCol + 1},${endCol + 1}] in range.`);
+		const requestedAddress = cartesianToAddress({ ax: startCol as ColumnOffset, bx: endCol as ColumnOffset, ay: startRow as RowOffset, by: endRow as RowOffset });
+		throw new InvalidArgumentError(`Requested subaddress ${requestedAddress} is out of bounds of the base address ${address}.`);
 	}
 
 	return cartesianToAddress({

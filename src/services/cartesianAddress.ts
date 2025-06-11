@@ -41,10 +41,10 @@ export function cartesianToAddress({ ax, ay, bx, by }: Cartesian): Address {
 	const endRow = rowOffsetToAddress(by);
 
 	if (ax > bx) {
-		throw new InvalidArgumentError("Invalid address. End column is before start column.");
+		throw new InvalidArgumentError(`Invalid address. End column is before start column. ax=${ax} bx=${bx}.`);
 	}
 	if (ay > by) {
-		throw new InvalidArgumentError("Invalid address. End row is before start row.");
+		throw new InvalidArgumentError(`Invalid address. End row is before start row. ay=${ay} by=${by}.`);
 	}
 
 	const address = composeAddress({

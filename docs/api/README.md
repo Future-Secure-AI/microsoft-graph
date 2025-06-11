@@ -152,7 +152,6 @@
 | ------ | ------ |
 | [copyDriveItem](copyDriveItem.md) | Copy a drive item. |
 | [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
-| [deleteDriveItemWithRetry](deleteDriveItemWithRetry.md) | Delete a drive item, avoiding locking issues through automatic retries. |
 | [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
 | [getWorkbookWorksheetByName](getWorkbookWorksheetByName-1.md) | Get a worksheet by its name. |
 | [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
