@@ -1,3 +1,9 @@
+/**
+ * Tooling for easily creating, updating, and deleting items in a worksheet or range.
+ * @module dataSource
+ * @category Services
+ */
+
 import InvalidOperationError from "../errors/InvalidOperationError.ts";
 import NeverError from "../errors/NeverError.ts";
 import type { Cell, CellText } from "../models/Cell.ts";
