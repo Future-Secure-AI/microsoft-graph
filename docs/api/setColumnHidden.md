@@ -1,6 +1,8 @@
-[Microsoft Graph SDK](../README.md) / tasks/setColumnHidden
+[Microsoft Graph SDK](README.md) / setColumnHidden
 
-# tasks/setColumnHidden
+# setColumnHidden
+
+Set one or more columns visibility.
 
 ## Functions
 
@@ -8,7 +10,7 @@
 
 > **setColumnHidden**(`rangeRef`, `hidden`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/setColumnHidden.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/setColumnHidden.ts#L10)
+Defined in: [src/tasks/setColumnHidden.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/setColumnHidden.ts#L16)
 
 Set one or more columns visibility.
 
@@ -16,7 +18,7 @@ Set one or more columns visibility.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `rangeRef` | [`WorkbookRangeRef`](../WorkbookRange-1.md#workbookrangeref) | Reference to the workbook range representing the columns to hide or show. |
+| `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | Reference to the workbook range representing the columns to hide or show. |
 | `hidden` | `boolean` | Boolean indicating whether to hide (`true`) or show (`false`) the columns. |
 
 #### Returns

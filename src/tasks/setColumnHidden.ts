@@ -1,3 +1,9 @@
+/**
+ * Set one or more columns visibility.
+ * @module setColumnHidden
+ * @category Tasks
+ */
+
 import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import { isAllColumnsAddress } from "../services/addressManipulation.ts";

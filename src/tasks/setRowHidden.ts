@@ -1,3 +1,9 @@
+/**
+ * Set one or more rows visibility.
+ * @module setRowHidden
+ * @category Tasks
+ */
+
 import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import { isAllRowsAddress } from "../services/addressManipulation.ts";

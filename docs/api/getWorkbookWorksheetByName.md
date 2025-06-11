@@ -10,7 +10,7 @@ Retrieve a worksheet by its name from a workbook.
 
 > **getWorkbookWorksheetByName**(`workbookRef`, `worksheetName`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookWorksheet` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object`\>
 
-Defined in: src/operations/workbookWorksheet/getWorkbookWorksheetByName.ts:22
+Defined in: [src/operations/workbookWorksheet/getWorkbookWorksheetByName.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookWorksheet/getWorkbookWorksheetByName.ts#L22)
 
 Retrieve a worksheet by its name from a workbook.
 

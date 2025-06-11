@@ -111,9 +111,8 @@
 
 | Module | Description |
 | ------ | ------ |
-| [tasks/setColumnHidden](tasks/setColumnHidden.md) | - |
-| [tasks/setRowHidden](tasks/setRowHidden.md) | - |
-| [tasks/setWorkbookRangeValues](tasks/setWorkbookRangeValues.md) | - |
+| [models/DataSource](models/DataSource.md) | - |
+| [services/dataSource](services/dataSource.md) | - |
 
 ## Services
 
@@ -159,6 +158,8 @@
 | [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
 | [readWorkbookRows](readWorkbookRows.md) | Iterates over the rows in a given worksheet range. |
 | [safeDeleteWorkbook](safeDeleteWorkbook.md) | Safely delete a workbook by first closing any open sessions and then deleting it. |
+| [setColumnHidden](setColumnHidden.md) | Set one or more columns visibility. |
+| [setRowHidden](setRowHidden.md) | Set one or more rows visibility. |
 | [setWorkbookTableBodyVisibleRows](setWorkbookTableBodyVisibleRows.md) | Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed. |
 | [tryCloseWorkbookSession](tryCloseWorkbookSession.md) | Try and close a workbook session. |
 | [tryDeleteDriveItem](tryDeleteDriveItem.md) | Attempts to delete a drive item, returning success status. |

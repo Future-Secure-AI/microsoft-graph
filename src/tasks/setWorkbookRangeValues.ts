@@ -1,3 +1,10 @@
+/**
+ * Sets the values of a specified workbook range.
+ * @module setWorkbookRangeValues
+ * @category Tasks
+ * @hidden
+ */
+
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { CellValue } from "../models/Cell.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
@@ -6,10 +13,9 @@ import { countAddressColumns, countAddressRows } from "../services/addressManipu
 
 /**
  * Sets the values of a specified workbook range.
- *
  * @param {WorkbookRangeRef} rangeRef Reference to the workbook range to update.
  * @param {CellRangeValues} values - The values to set in the specified workbook range. Must match the range's dimensions.
- *  * @deprecated Use `writeWorkbookRows` instead.
+ * @deprecated Use `writeWorkbookRows` instead.
  * @hidden
  */
 export default async function setWorkbookRangeValues(rangeRef: WorkbookRangeRef, values: CellValue[][]) {
