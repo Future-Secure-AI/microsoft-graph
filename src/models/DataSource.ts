@@ -49,6 +49,7 @@ export type Item<T extends RecordBase> = {
 	record: T;
 };
 
+// TODO: Document this
 export type RecordBase = Record<string, CellValue>;
 export type DataSourceRow = Record<ColumnName, Partial<Cell>>;
 export type RangeOperationCallback = (rangeRef: WorkbookRangeRef) => Promise<void>;

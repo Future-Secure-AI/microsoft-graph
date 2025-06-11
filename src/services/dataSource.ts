@@ -5,7 +5,7 @@
  */
 
 import InvalidOperationError from "../errors/InvalidOperationError.ts";
-import NeverError from "../errors/NeverError.ts";
+import ProtocolError from "../errors/ProtocolError.ts";
 import type { Cell, CellText } from "../models/Cell.ts";
 import type { ColumnName } from "../models/Column.ts";
 import type { DataSource, DataSourceRow, Item, ItemIndex, RecordBase, RowDecoder, RowEncoder } from "../models/DataSource.ts";
@@ -158,7 +158,7 @@ function rowToRecord<T extends RecordBase>(row: Cell[], source: DataSource<T>): 
 	const sourceRow = source.head.reduce((acc, heading, columnIndex) => {
 		const cell = row[columnIndex];
 		if (!cell) {
-			throw new NeverError(`Cell at index ${columnIndex} is undefined`);
+			throw new ProtocolError(`Cell for '${heading}' is undefined`);
 		}
 		acc[heading] = cell;
 		return acc;
@@ -177,7 +177,7 @@ function recordToRow<T extends RecordBase>(record: T, source: DataSource<T>): Ce
 	const row = source.head.map((heading) => {
 		const cell = sourceRow[heading];
 		if (cell === undefined) {
-			throw new Error(`Encoder produced undefined value for '${heading}'.`);
+			throw new Error(`Encoder produced undefined value for '${heading}'.`); // TODO: Make more specific error
 		}
 
 		return {
