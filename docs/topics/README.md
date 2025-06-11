@@ -12,3 +12,4 @@ This section provides in-depth guides and explanations for key concepts, workaro
 - [Performance](./performance.md): Tips for optimizing performance, including batching and session management.
 - [Pivot Tables](./pivotTables.md): Current limitations and workarounds for pivot table support.
 - [Request Retrying](./retrying.md): How the SDK handles Graph API throttling and automatic retries.
+- [Versioning](./versioning.md): What version numbers mean.
