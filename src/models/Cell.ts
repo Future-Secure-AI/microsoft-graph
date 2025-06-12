@@ -4,6 +4,7 @@
  * @category Models
  */
 
+import type { Border } from "./Border.ts";
 import type { Color } from "./Color.ts";
 import type { FontName } from "./FontName.ts";
 
@@ -81,14 +82,14 @@ export type CellStyle = {
 	 * @experimental
 	 */
 	borders: {
-		top?: CellBorder | undefined;
-		bottom?: CellBorder | undefined;
-		left?: CellBorder | undefined;
-		right?: CellBorder | undefined;
-		insideVertical?: CellBorder | undefined;
-		insideHorizontal?: CellBorder | undefined;
-		diagonalDown?: CellBorder | undefined;
-		diagonalUp?: CellBorder | undefined;
+		top?: Border | undefined;
+		bottom?: Border | undefined;
+		left?: Border | undefined;
+		right?: Border | undefined;
+		insideVertical?: Border | undefined;
+		insideHorizontal?: Border | undefined;
+		diagonalDown?: Border | undefined;
+		diagonalUp?: Border | undefined;
 	};
 	/**
 	 * Protection settings for the cell.
@@ -137,17 +138,4 @@ export type CellHorizontalAlignment = "General" | "Left" | "Center" | "Right" | 
 
 export type CellVerticalAlignment = "Top" | "Center" | "Bottom" | "Justify" | "Distributed";
 
-export type CellBorderSide = "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight" | "InsideVertical" | "InsideHorizontal" | "DiagonalDown" | "DiagonalUp";
-
-export type CellBorderType = "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot";
-
-export type CellBorderWeight = "Hairline" | "Thin" | "Medium" | "Thick";
-
 export type CellUnderline = "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant";
-
-export type CellBorder = {
-	color?: Color;
-	side?: CellBorderSide;
-	style?: CellBorderType;
-	weight?: CellBorderWeight;
-};
