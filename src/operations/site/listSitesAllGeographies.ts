@@ -1,5 +1,5 @@
 /**
- * List sites in your company geography.
+ * List sites in all company geographies.
  * @module listSites
  * @category Operations
  */
@@ -13,16 +13,16 @@ import { createSiteRef } from "../../services/site.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
- * List sites in your company geography.
+ * List sites in all company geographies.
  * @param contextRef Reference to the context.
  * @returns Array of sites, each including its metadata and reference information.
- * @see https://learn.microsoft.com/en-us/graph/api/site-list
+ * @see https://learn.microsoft.com/en-us/graph/api/site-getallsites
  */
-export default function listSites(contextRef: ContextRef): GraphOperation<(Site & SiteRef)[]> {
+export default function listSitesAllGeographies(contextRef: ContextRef): GraphOperation<(Site & SiteRef)[]> {
 	return operation({
 		context: contextRef.context,
 		method: "GET",
-		path: generatePath("/sites", {}),
+		path: generatePath("/sites/getAllSites", {}),
 		headers: {},
 		body: null,
 		responseTransform: (response) => {

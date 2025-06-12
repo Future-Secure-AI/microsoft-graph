@@ -2,17 +2,17 @@
 
 # listSites
 
-List sites in your company geography.
+List sites in all company geographies.
 
 ## Functions
 
-### listSites()
+### listSitesAllGeographies()
 
-> **listSites**(`contextRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](Site-1.md#siteref)[]\>
+> **listSitesAllGeographies**(`contextRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](Site-1.md#siteref)[]\>
 
-Defined in: [src/operations/site/listSites.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/listSites.ts#L21)
+Defined in: src/operations/site/listSitesAllGeographies.ts:21
 
-List sites in your company geography.
+List sites in all company geographies.
 
 #### Parameters
 
@@ -28,4 +28,4 @@ Array of sites, each including its metadata and reference information.
 
 #### See
 
-https://learn.microsoft.com/en-us/graph/api/site-list
+https://learn.microsoft.com/en-us/graph/api/site-getallsites

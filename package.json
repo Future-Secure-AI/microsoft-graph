@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.27.0",
+  "version": "2.29.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -457,6 +457,31 @@
       "require": "./dist/cjs/models/AzureApplicationCredentials.js",
       "types": "./dist/esm/models/AzureApplicationCredentials.d.ts"
     },
+    "./Border": {
+      "import": "./dist/esm/models/Border.js",
+      "require": "./dist/cjs/models/Border.js",
+      "types": "./dist/esm/models/Border.d.ts"
+    },
+    "./dist/cjs/models/Border.js": {
+      "import": "./dist/esm/models/Border.js",
+      "require": "./dist/cjs/models/Border.js",
+      "types": "./dist/esm/models/Border.d.ts"
+    },
+    "./dist/cjs/models/Border": {
+      "import": "./dist/esm/models/Border.js",
+      "require": "./dist/cjs/models/Border.js",
+      "types": "./dist/esm/models/Border.d.ts"
+    },
+    "./models/Border": {
+      "import": "./dist/esm/models/Border.js",
+      "require": "./dist/cjs/models/Border.js",
+      "types": "./dist/esm/models/Border.d.ts"
+    },
+    "./models/Border.js": {
+      "import": "./dist/esm/models/Border.js",
+      "require": "./dist/cjs/models/Border.js",
+      "types": "./dist/esm/models/Border.d.ts"
+    },
     "./Cartesian": {
       "import": "./dist/esm/models/Cartesian.js",
       "require": "./dist/cjs/models/Cartesian.js",
@@ -506,6 +531,31 @@
       "import": "./dist/esm/models/Cell.js",
       "require": "./dist/cjs/models/Cell.js",
       "types": "./dist/esm/models/Cell.d.ts"
+    },
+    "./Color": {
+      "import": "./dist/esm/models/Color.js",
+      "require": "./dist/cjs/models/Color.js",
+      "types": "./dist/esm/models/Color.d.ts"
+    },
+    "./dist/cjs/models/Color.js": {
+      "import": "./dist/esm/models/Color.js",
+      "require": "./dist/cjs/models/Color.js",
+      "types": "./dist/esm/models/Color.d.ts"
+    },
+    "./dist/cjs/models/Color": {
+      "import": "./dist/esm/models/Color.js",
+      "require": "./dist/cjs/models/Color.js",
+      "types": "./dist/esm/models/Color.d.ts"
+    },
+    "./models/Color": {
+      "import": "./dist/esm/models/Color.js",
+      "require": "./dist/cjs/models/Color.js",
+      "types": "./dist/esm/models/Color.d.ts"
+    },
+    "./models/Color.js": {
+      "import": "./dist/esm/models/Color.js",
+      "require": "./dist/cjs/models/Color.js",
+      "types": "./dist/esm/models/Color.d.ts"
     },
     "./Column": {
       "import": "./dist/esm/models/Column.js",
@@ -631,6 +681,31 @@
       "import": "./dist/esm/models/DriveItem.js",
       "require": "./dist/cjs/models/DriveItem.js",
       "types": "./dist/esm/models/DriveItem.d.ts"
+    },
+    "./FontName": {
+      "import": "./dist/esm/models/FontName.js",
+      "require": "./dist/cjs/models/FontName.js",
+      "types": "./dist/esm/models/FontName.d.ts"
+    },
+    "./dist/cjs/models/FontName.js": {
+      "import": "./dist/esm/models/FontName.js",
+      "require": "./dist/cjs/models/FontName.js",
+      "types": "./dist/esm/models/FontName.d.ts"
+    },
+    "./dist/cjs/models/FontName": {
+      "import": "./dist/esm/models/FontName.js",
+      "require": "./dist/cjs/models/FontName.js",
+      "types": "./dist/esm/models/FontName.d.ts"
+    },
+    "./models/FontName": {
+      "import": "./dist/esm/models/FontName.js",
+      "require": "./dist/cjs/models/FontName.js",
+      "types": "./dist/esm/models/FontName.d.ts"
+    },
+    "./models/FontName.js": {
+      "import": "./dist/esm/models/FontName.js",
+      "require": "./dist/cjs/models/FontName.js",
+      "types": "./dist/esm/models/FontName.d.ts"
     },
     "./GraphOperation": {
       "import": "./dist/esm/models/GraphOperation.js",
@@ -1257,6 +1332,31 @@
       "require": "./dist/cjs/operations/site/listSites.js",
       "types": "./dist/esm/operations/site/listSites.d.ts"
     },
+    "./listSitesAllGeographies": {
+      "import": "./dist/esm/operations/site/listSitesAllGeographies.js",
+      "require": "./dist/cjs/operations/site/listSitesAllGeographies.js",
+      "types": "./dist/esm/operations/site/listSitesAllGeographies.d.ts"
+    },
+    "./dist/cjs/operations/site/listSitesAllGeographies.js": {
+      "import": "./dist/esm/operations/site/listSitesAllGeographies.js",
+      "require": "./dist/cjs/operations/site/listSitesAllGeographies.js",
+      "types": "./dist/esm/operations/site/listSitesAllGeographies.d.ts"
+    },
+    "./dist/cjs/operations/site/listSitesAllGeographies": {
+      "import": "./dist/esm/operations/site/listSitesAllGeographies.js",
+      "require": "./dist/cjs/operations/site/listSitesAllGeographies.js",
+      "types": "./dist/esm/operations/site/listSitesAllGeographies.d.ts"
+    },
+    "./operations/site/listSitesAllGeographies": {
+      "import": "./dist/esm/operations/site/listSitesAllGeographies.js",
+      "require": "./dist/cjs/operations/site/listSitesAllGeographies.js",
+      "types": "./dist/esm/operations/site/listSitesAllGeographies.d.ts"
+    },
+    "./operations/site/listSitesAllGeographies.js": {
+      "import": "./dist/esm/operations/site/listSitesAllGeographies.js",
+      "require": "./dist/cjs/operations/site/listSitesAllGeographies.js",
+      "types": "./dist/esm/operations/site/listSitesAllGeographies.d.ts"
+    },
     "./searchSites": {
       "import": "./dist/esm/operations/site/searchSites.js",
       "require": "./dist/cjs/operations/site/searchSites.js",
@@ -1657,6 +1757,31 @@
       "require": "./dist/cjs/operations/workbookRange/insertWorkbookCells.js",
       "types": "./dist/esm/operations/workbookRange/insertWorkbookCells.d.ts"
     },
+    "./listWorkbookRangeBorders": {
+      "import": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.js",
+      "require": "./dist/cjs/operations/workbookRange/listWorkbookRangeBorders.js",
+      "types": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/listWorkbookRangeBorders.js": {
+      "import": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.js",
+      "require": "./dist/cjs/operations/workbookRange/listWorkbookRangeBorders.js",
+      "types": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/listWorkbookRangeBorders": {
+      "import": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.js",
+      "require": "./dist/cjs/operations/workbookRange/listWorkbookRangeBorders.js",
+      "types": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.d.ts"
+    },
+    "./operations/workbookRange/listWorkbookRangeBorders": {
+      "import": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.js",
+      "require": "./dist/cjs/operations/workbookRange/listWorkbookRangeBorders.js",
+      "types": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.d.ts"
+    },
+    "./operations/workbookRange/listWorkbookRangeBorders.js": {
+      "import": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.js",
+      "require": "./dist/cjs/operations/workbookRange/listWorkbookRangeBorders.js",
+      "types": "./dist/esm/operations/workbookRange/listWorkbookRangeBorders.d.ts"
+    },
     "./mergeWorkbookRange": {
       "import": "./dist/esm/operations/workbookRange/mergeWorkbookRange.js",
       "require": "./dist/cjs/operations/workbookRange/mergeWorkbookRange.js",
@@ -1681,6 +1806,31 @@
       "import": "./dist/esm/operations/workbookRange/mergeWorkbookRange.js",
       "require": "./dist/cjs/operations/workbookRange/mergeWorkbookRange.js",
       "types": "./dist/esm/operations/workbookRange/mergeWorkbookRange.d.ts"
+    },
+    "./setWorkbookRangeBorder": {
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.js",
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeBorder.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/setWorkbookRangeBorder.js": {
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.js",
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeBorder.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.d.ts"
+    },
+    "./dist/cjs/operations/workbookRange/setWorkbookRangeBorder": {
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.js",
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeBorder.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.d.ts"
+    },
+    "./operations/workbookRange/setWorkbookRangeBorder": {
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.js",
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeBorder.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.d.ts"
+    },
+    "./operations/workbookRange/setWorkbookRangeBorder.js": {
+      "import": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.js",
+      "require": "./dist/cjs/operations/workbookRange/setWorkbookRangeBorder.js",
+      "types": "./dist/esm/operations/workbookRange/setWorkbookRangeBorder.d.ts"
     },
     "./setWorkbookRangeFill": {
       "import": "./dist/esm/operations/workbookRange/setWorkbookRangeFill.js",
@@ -3276,6 +3426,31 @@
       "import": "./dist/esm/tasks/getWorkbookWorksheetByName.js",
       "require": "./dist/cjs/tasks/getWorkbookWorksheetByName.js",
       "types": "./dist/esm/tasks/getWorkbookWorksheetByName.d.ts"
+    },
+    "./iterateRows": {
+      "import": "./dist/esm/tasks/iterateRows.js",
+      "require": "./dist/cjs/tasks/iterateRows.js",
+      "types": "./dist/esm/tasks/iterateRows.d.ts"
+    },
+    "./dist/cjs/tasks/iterateRows.js": {
+      "import": "./dist/esm/tasks/iterateRows.js",
+      "require": "./dist/cjs/tasks/iterateRows.js",
+      "types": "./dist/esm/tasks/iterateRows.d.ts"
+    },
+    "./dist/cjs/tasks/iterateRows": {
+      "import": "./dist/esm/tasks/iterateRows.js",
+      "require": "./dist/cjs/tasks/iterateRows.js",
+      "types": "./dist/esm/tasks/iterateRows.d.ts"
+    },
+    "./tasks/iterateRows": {
+      "import": "./dist/esm/tasks/iterateRows.js",
+      "require": "./dist/cjs/tasks/iterateRows.js",
+      "types": "./dist/esm/tasks/iterateRows.d.ts"
+    },
+    "./tasks/iterateRows.js": {
+      "import": "./dist/esm/tasks/iterateRows.js",
+      "require": "./dist/cjs/tasks/iterateRows.js",
+      "types": "./dist/esm/tasks/iterateRows.d.ts"
     },
     "./iterateWorkbookRange": {
       "import": "./dist/esm/tasks/iterateWorkbookRange.js",

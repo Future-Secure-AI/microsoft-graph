@@ -93,7 +93,8 @@
 | [insertWorkbookCells](insertWorkbookCells.md) | Insert a new blank range at a specified address, shifting existing cells. |
 | [listDriveItemChildren](listDriveItemChildren.md) | Retrieve the metadata for items in a drive or folder. |
 | [listDrives](listDrives.md) | Retrieve the list of accessible Drives in a Site. |
-| [listSites](listSites.md) | List accessible sites. |
+| [listSites](listSites.md) | List sites in your company geography. |
+| [listSites](listSites-1.md) | List sites in all company geographies. |
 | [listWorkbookRangeBorders](listWorkbookRangeBorders.md) | List the borders of a range. |
 | [listWorkbookTableColumns](listWorkbookTableColumns.md) | Retrieve a list of columns in a table. |
 | [listWorkbookTableRows](listWorkbookTableRows.md) | Retrieve a list of rows in a table. |
