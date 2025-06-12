@@ -19,7 +19,7 @@ Insert a new blank range at a specified address, shifting existing cells.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | Reference to the worksheet range where the range will be inserted. |
-| `shift` | `"Down"` \| `"Right"` | Direction to shift existing cells. Can be "Down" or "Right". |
+| `shift` | `"Right"` \| `"Down"` | Direction to shift existing cells. Can be "Down" or "Right". |
 
 #### Returns
 

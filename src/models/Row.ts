@@ -6,6 +6,9 @@
 
 import type { Cell } from "./Cell.ts";
 
+/**
+ * Horizontal linear sequence of cells in a worksheet.
+ */
 export type Row = Cell[];
 
 /**

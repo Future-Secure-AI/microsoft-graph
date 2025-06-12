@@ -10,7 +10,9 @@ A linear sequency of cells in a worksheet.
 
 > **Row** = [`Cell`](Cell.md#cell)[]
 
-Defined in: [src/models/Row.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Row.ts#L9)
+Defined in: [src/models/Row.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Row.ts#L12)
+
+Horizontal linear sequence of cells in a worksheet.
 
 ***
 
@@ -18,7 +20,7 @@ Defined in: [src/models/Row.ts:9](https://github.com/Future-Secure-AI/microsoft-
 
 > **RowNumber** = `number` & `object`
 
-Defined in: [src/models/Row.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Row.ts#L15)
+Defined in: [src/models/Row.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Row.ts#L18)
 
 Row number as it appears in Excel.
 
@@ -38,7 +40,7 @@ First row is 1.
 
 > **RowOffset** = `number` & `object`
 
-Defined in: [src/models/Row.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Row.ts#L22)
+Defined in: [src/models/Row.ts:25](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Row.ts#L25)
 
 Zero-based index representing the position of a row in a range.
 

@@ -27,11 +27,13 @@
 | [AzureApplicationCredentials](AzureApplicationCredentials-1.md) | Credentials used to authenticate an application with Azure. |
 | [Cartesian](Cartesian.md) | Cartesian coordinates of a set of cells in a spreadsheet. |
 | [Cell](Cell.md) | Cell in a worksheet. |
+| [Color](Color.md) | Color has a hexadecimal representation (ie #ffffff"). |
 | [Column](Column.md) | Column pointers. |
 | [Context](Context-1.md) | Context of requests. |
 | [DataSource](DataSource-1.md) | Tooling for easily creating, updating, and deleting items in a worksheet or range. |
 | [Drive](Drive-1.md) | Drive pointers. |
 | [DriveItem](DriveItem-1.md) | Drive item pointers. |
+| [FontName](FontName.md) | Name of a font. |
 | [GraphOperation](GraphOperation.md) | An atomic operation to be performed against the Microsoft Graph API. |
 | [HostName](HostName.md) | Name of a remote host, resolvable by DNS. |
 | [Http](Http-1.md) | HTTP models for handling HTTP requests and responses. |
@@ -125,7 +127,7 @@
 | [environmentVariable](environmentVariable.md) | Utilities for accessing environment variables with error handling and fallbacks. |
 | [http](http.md) | HTTP request utilities for Microsoft Graph API, with proxy support. |
 | [httpStatus](httpStatus.md) | Utilities for analyzing HTTP status codes for Microsoft Graph API responses. |
-| [Iteration](Iteration.md) | - |
+| [Iteration](Iteration.md) | Utilities for iterating over AsyncIterables. |
 | [operationId](operationId.md) | Utilities for converting between operation IDs and indexes. |
 | [operationInvoker](operationInvoker.md) | Invoke operations, potentially as parallel or sequential batches. |
 | [random](random.md) | Utilities for generating random values for spreadsheet and API operations. |

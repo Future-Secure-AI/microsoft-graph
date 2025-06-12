@@ -19,7 +19,7 @@ Delete a range.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | Reference to the range to be deleted. |
-| `shift` | `"Up"` \| `"Left"` | Direction to shift existing cells after deletion - "Up" or "Left". * |
+| `shift` | `"Left"` \| `"Up"` | Direction to shift existing cells after deletion - "Up" or "Left". * |
 
 #### Returns
 

@@ -1,10 +1,15 @@
-// biome-ignore lint/style/useFilenamingConvention: Appropriate in this context
-
 /**
  * Column pointers.
  * @module Column
  * @category Models
  */
+
+import type { Cell } from "./Cell.ts";
+
+/**
+ * Vertical linear sequence of cells in a worksheet.
+ */
+export type Column = Cell[];
 
 /**
  * Zero-based index representing the position of a column in a range.
