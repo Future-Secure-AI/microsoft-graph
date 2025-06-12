@@ -2,6 +2,7 @@
  * Tooling for easily creating, updating, and deleting items in a worksheet or range.
  * @module DataSource
  * @category Models
+ * @experimental
  */
 
 import type { Cell, CellValue } from "./Cell.ts";

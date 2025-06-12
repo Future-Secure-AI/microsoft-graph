@@ -1,4 +1,5 @@
 /**
+ * Utilities for iterating over AsyncIterables.
  * @module Iteration
  * @category Services
  */

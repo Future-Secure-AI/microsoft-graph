@@ -2,6 +2,8 @@
 
 # dataSource
 
+**`Experimental`**
+
 Tooling for easily creating, updating, and deleting items in a worksheet or range.
 
 ## Functions
@@ -10,9 +12,9 @@ Tooling for easily creating, updating, and deleting items in a worksheet or rang
 
 > **createItem**\<`T`\>(`source`, `record`, `after`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Item`](DataSource-1.md#item)\<`T`\>\>
 
-Defined in: [src/services/dataSource.ts:106](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L106)
+Defined in: [src/services/dataSource.ts:110](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L110)
 
-Creates a new item in the data source.
+**`Experimental`**
 
 #### Type Parameters
 
@@ -48,9 +50,9 @@ If the 'after' index is out of range.
 
 > **dataSourceFromRange**\<`T`\>(`rangeRef`, `decode`, `encode`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`DataSource`](DataSource-1.md#datasource)\<`T`\>\>
 
-Defined in: [src/services/dataSource.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L44)
+Defined in: [src/services/dataSource.ts:47](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L47)
 
-Defines a data source from a given range.
+**`Experimental`**
 
 #### Type Parameters
 
@@ -78,9 +80,9 @@ The initialized data source.
 
 > **dataSourceFromWorksheet**\<`T`\>(`worksheetRef`, `decode`, `encode`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`DataSource`](DataSource-1.md#datasource)\<`T`\>\>
 
-Defined in: [src/services/dataSource.ts:32](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L32)
+Defined in: [src/services/dataSource.ts:34](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L34)
 
-Define a datasource from an entire worksheet.
+**`Experimental`**
 
 #### Type Parameters
 
@@ -108,9 +110,9 @@ The initialized data source.
 
 > **deleteItem**\<`T`\>(`source`, `index`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/services/dataSource.ts:151](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L151)
+Defined in: [src/services/dataSource.ts:157](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L157)
 
-Deletes an item from the data source at the specified index.
+**`Experimental`**
 
 #### Type Parameters
 
@@ -139,9 +141,9 @@ If the data source is not initialized.
 
 > **listItems**\<`T`\>(`source`): `AsyncIterable`\<[`Item`](DataSource-1.md#item)\<`T`\>\>
 
-Defined in: [src/services/dataSource.ts:90](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L90)
+Defined in: [src/services/dataSource.ts:93](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L93)
 
-Reads all items from the data source.
+**`Experimental`**
 
 #### Type Parameters
 
@@ -171,9 +173,9 @@ Iterate on the source directly using `for await (const item of source)`.
 
 > **updateItem**\<`T`\>(`source`, `index`, `record`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/services/dataSource.ts:133](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L133)
+Defined in: [src/services/dataSource.ts:138](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/dataSource.ts#L138)
 
-Updates an item in the data source at the specified index.
+**`Experimental`**
 
 #### Type Parameters
 

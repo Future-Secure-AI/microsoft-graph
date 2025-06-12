@@ -2,6 +2,8 @@
 
 # DataSource
 
+**`Experimental`**
+
 Tooling for easily creating, updating, and deleting items in a worksheet or range.
 
 ## Type Aliases
@@ -10,7 +12,9 @@ Tooling for easily creating, updating, and deleting items in a worksheet or rang
 
 > **DataSource**\<`T`\> = `object` & `AsyncIterable`\<[`Item`](#item)\<`T`\>\>
 
-Defined in: [src/models/DataSource.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L16)
+Defined in: [src/models/DataSource.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L17)
+
+**`Experimental`**
 
 Defines a data source for a worksheet or range.
 
@@ -52,7 +56,9 @@ Defines a data source for a worksheet or range.
 
 > **DataSourceRow** = [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<[`ColumnName`](Column.md#columnname), [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<[`Cell`](Cell.md#cell)\>\>
 
-Defined in: [src/models/DataSource.ts:53](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L53)
+Defined in: [src/models/DataSource.ts:55](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L55)
+
+**`Experimental`**
 
 ***
 
@@ -60,7 +66,9 @@ Defined in: [src/models/DataSource.ts:53](https://github.com/Future-Secure-AI/mi
 
 > **Item**\<`T`\> = `object`
 
-Defined in: [src/models/DataSource.ts:46](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L46)
+Defined in: [src/models/DataSource.ts:47](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L47)
+
+**`Experimental`**
 
 Item within a data source.
 
@@ -74,9 +82,9 @@ Item within a data source.
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="index"></a> `index` | [`ItemIndex`](#itemindex-1) | [src/models/DataSource.ts:47](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L47) |
-| <a id="record"></a> `record` | `T` | [src/models/DataSource.ts:49](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L49) |
-| <a id="rownumber"></a> `rowNumber` | [`RowNumber`](Row.md#rownumber) | [src/models/DataSource.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L48) |
+| <a id="index"></a> `index` | [`ItemIndex`](#itemindex-1) | [src/models/DataSource.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L48) |
+| <a id="record"></a> `record` | `T` | [src/models/DataSource.ts:50](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L50) |
+| <a id="rownumber"></a> `rowNumber` | [`RowNumber`](Row.md#rownumber) | [src/models/DataSource.ts:49](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L49) |
 
 ***
 
@@ -84,7 +92,9 @@ Item within a data source.
 
 > **ItemIndex** = `number` & `object`
 
-Defined in: [src/models/DataSource.ts:39](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L39)
+Defined in: [src/models/DataSource.ts:40](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L40)
+
+**`Experimental`**
 
 Item's position within a data source.
 
@@ -100,7 +110,9 @@ Item's position within a data source.
 
 > **RangeOperationCallback** = (`rangeRef`) => [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/models/DataSource.ts:54](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L54)
+Defined in: [src/models/DataSource.ts:56](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L56)
+
+**`Experimental`**
 
 #### Parameters
 
@@ -118,7 +130,9 @@ Defined in: [src/models/DataSource.ts:54](https://github.com/Future-Secure-AI/mi
 
 > **RecordBase** = [`Record`](https://www.typescriptlang.org/docs/handbook/utility-types.html#recordkeys-type)\<`string`, [`CellValue`](Cell.md#cellvalue-1)\>
 
-Defined in: [src/models/DataSource.ts:52](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L52)
+Defined in: [src/models/DataSource.ts:54](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L54)
+
+**`Experimental`**
 
 ***
 
@@ -126,7 +140,9 @@ Defined in: [src/models/DataSource.ts:52](https://github.com/Future-Secure-AI/mi
 
 > **RowDecoder**\<`T`\> = (`row`) => `T`
 
-Defined in: [src/models/DataSource.ts:29](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L29)
+Defined in: [src/models/DataSource.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L30)
+
+**`Experimental`**
 
 Method to decode row into a record.
 
@@ -152,7 +168,9 @@ Method to decode row into a record.
 
 > **RowEncoder**\<`T`\> = (`record`) => [`DataSourceRow`](#datasourcerow)
 
-Defined in: [src/models/DataSource.ts:34](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L34)
+Defined in: [src/models/DataSource.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DataSource.ts#L35)
+
+**`Experimental`**
 
 Method to encode a record into a row.
 

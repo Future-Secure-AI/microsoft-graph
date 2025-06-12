@@ -2,6 +2,7 @@
  * Tooling for easily creating, updating, and deleting items in a worksheet or range.
  * @module dataSource
  * @category Services
+ * @experimental
  */
 
 import InvalidOperationError from "../errors/InvalidOperationError.ts";
@@ -28,6 +29,7 @@ import { generalCellFormat } from "./cellFormat.ts";
  * @param decode Function to decode a row into a record.
  * @param encode Function to encode a record into a row. Optional.
  * @returns The initialized data source.
+ * @experimental
  */
 export async function dataSourceFromWorksheet<T extends RecordBase>(worksheetRef: WorkbookRangeRef, decode: RowDecoder<T>, encode: RowEncoder<T> | null = null): Promise<DataSource<T>> {
 	const rangeRef = await getWorkbookWorksheetUsedRangeRef(worksheetRef);
@@ -40,6 +42,7 @@ export async function dataSourceFromWorksheet<T extends RecordBase>(worksheetRef
  * @param decode Function to decode a row into a record.
  * @param encode Function to encode a record into a row. Optional.
  * @returns The initialized data source.
+ * @experimental
  */
 export async function dataSourceFromRange<T extends RecordBase>(rangeRef: WorkbookRangeRef, decode: RowDecoder<T>, encode: RowEncoder<T> | null = null): Promise<DataSource<T>> {
 	if (countAddressRows(rangeRef.address) < 1) {
@@ -102,6 +105,7 @@ export async function* listItems<T extends RecordBase>(source: DataSource<T>): A
  * @returns Newly created item, including its index, row number, and record.
  * @throws {InvalidOperationError} If the data source is not initialized.
  * @throws {InvalidArgumentError} If the 'after' index is out of range.
+ * @experimental
  */
 export async function createItem<T extends RecordBase>(source: DataSource<T>, record: T, after: ItemIndex | null = null): Promise<Item<T>> {
 	const count = countAddressRows(source.bodyRef.address);
@@ -129,6 +133,7 @@ export async function createItem<T extends RecordBase>(source: DataSource<T>, re
  * @param record New record to write at the specified index.
  * @throws {InvalidOperationError} If the data source is not initialized.
  * @throws {InvalidArgumentError} If the index is out of range.
+ * @experimental
  */
 export async function updateItem<T extends RecordBase>(source: DataSource<T>, index: ItemIndex, record: T): Promise<void> {
 	const row = recordToRow(record, source);
@@ -147,6 +152,7 @@ export async function updateItem<T extends RecordBase>(source: DataSource<T>, in
  * @param source Data source to delete from. Must be initialized.
  * @param index Index of the item to delete.
  * @throws {InvalidOperationError} If the data source is not initialized.
+ * @experimental
  */
 export async function deleteItem<T extends RecordBase>(source: DataSource<T>, index: ItemIndex): Promise<void> {
 	const rowRef = subRange(source.bodyRef, index, 1);
