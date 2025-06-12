@@ -18,7 +18,6 @@ const emptyStyle: CellStyle = {
 	merge: {},
 	alignment: {},
 	borders: {},
-	protection: {},
 	fill: {},
 	font: {},
 };

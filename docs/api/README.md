@@ -25,6 +25,7 @@
 | [AccessTokenGenerator](AccessTokenGenerator.md) | Callback function that generates an access token. |
 | [Address](Address.md) | Address of a set of cells in a spreadsheet. |
 | [AzureApplicationCredentials](AzureApplicationCredentials-1.md) | Credentials used to authenticate an application with Azure. |
+| [Border](Border.md) | Defining a border that could be on a cell. |
 | [Cartesian](Cartesian.md) | Cartesian coordinates of a set of cells in a spreadsheet. |
 | [Cell](Cell.md) | Cell in a worksheet. |
 | [Color](Color.md) | Color has a hexadecimal representation (ie #ffffff"). |
@@ -93,6 +94,7 @@
 | [listDriveItemChildren](listDriveItemChildren.md) | Retrieve the metadata for items in a drive or folder. |
 | [listDrives](listDrives.md) | Retrieve the list of accessible Drives in a Site. |
 | [listSites](listSites.md) | List accessible sites. |
+| [listWorkbookRangeBorders](listWorkbookRangeBorders.md) | List the borders of a range. |
 | [listWorkbookTableColumns](listWorkbookTableColumns.md) | Retrieve a list of columns in a table. |
 | [listWorkbookTableRows](listWorkbookTableRows.md) | Retrieve a list of rows in a table. |
 | [listWorkbookTables](listWorkbookTables.md) | Retrieve a list of tables in a worksheet. |
@@ -101,6 +103,7 @@
 | [moveDriveItem](moveDriveItem.md) | Moves a file to a new location in the same drive. |
 | [refreshWorkbookSession](refreshWorkbookSession.md) | Refresh a workbook session. |
 | [searchSites](searchSites.md) | Find accessible sites that match the provided keywords. |
+| [setWorkbookRangeBorder](setWorkbookRangeBorder.md) | Update a specific border of a workbook range. |
 | [setWorkbookRangeFill](setWorkbookRangeFill.md) | Update the fill format of a workbook range. |
 | [setWorkbookRangeFont](setWorkbookRangeFont.md) | Update the font format of a workbook range. |
 | [setWorkbookRangeFormat](setWorkbookRangeFormat.md) | Update the general format of a workbook range. |
@@ -151,6 +154,7 @@
 | [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
 | [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
 | [getWorkbookWorksheetByName](getWorkbookWorksheetByName-1.md) | Get a worksheet by its name. |
+| [iterateRows](iterateRows.md) | Iterate over the rows in a given worksheet range. |
 | [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
 | [readWorkbookRows](readWorkbookRows.md) | Iterates over the rows in a given worksheet range. |
 | [safeDeleteWorkbook](safeDeleteWorkbook.md) | Safely delete a workbook by first closing any open sessions and then deleting it. |

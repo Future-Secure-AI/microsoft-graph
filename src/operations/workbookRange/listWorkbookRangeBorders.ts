@@ -28,7 +28,7 @@ export default function listWorkbookRangeBorders(rangeRef: WorkbookRangeRef): Gr
 		},
 		body: null,
 		responseTransform: (response) => {
-            const typed = response as { value: WorkbookRangeBorder[] };
+			const typed = response as { value: WorkbookRangeBorder[] };
 			return typed.value;
 		},
 	});

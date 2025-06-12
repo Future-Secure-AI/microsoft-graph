@@ -8,9 +8,9 @@ Fetch a range.
 
 ### getWorkbookWorksheetRange()
 
-> **getWorkbookWorksheetRange**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookWorksheetRange**(`rangeRef`, `select?`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookRange/getWorkbookWorksheetRange.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookWorksheetRange.ts#L20)
+Defined in: [src/operations/workbookRange/getWorkbookWorksheetRange.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookWorksheetRange.ts#L21)
 
 Fetch a range.
 
@@ -19,6 +19,10 @@ Fetch a range.
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | Reference to the range to be fetched. |
+| `select?` | \{ `numberFormat?`: `boolean`; `text?`: `boolean`; `values?`: `boolean`; \} | Optional parameters to select specific properties of the range. |
+| `select.numberFormat?` | `boolean` | - |
+| `select.text?` | `boolean` | - |
+| `select.values?` | `boolean` | - |
 
 #### Returns
 

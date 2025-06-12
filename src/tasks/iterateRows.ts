@@ -1,3 +1,10 @@
+/**
+ * Iterate over the rows in a given worksheet range.
+ * @module iterateRows
+ * @category Tasks
+ * @experimental
+ */
+
 import type { WorkbookRangeBorder } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Border, BorderSide, BorderType, BorderWeight } from "../models/Border.ts";
