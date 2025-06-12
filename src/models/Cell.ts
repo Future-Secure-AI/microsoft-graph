@@ -29,83 +29,22 @@ export type Cell = {
 	format: CellFormat;
 
 	/**
-	 * Number of cell merges (WRITE ONLY).
-	 * @remarks Due to API limitations, this value is never populated when reading a cell, but it can be set when writing a cell.
-	 * @experimental
+	 * Style applied to the cell to affect its appearance, like color, borders, alignment, etc.
 	 */
-	merge?: {
-		right?: number;
-		down?: number;
-	};
-	/**
-	 * Alignment of cell contents.
-	 * @experimental
-	 */
-	alignment?: {
-		horizontal?: "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection" | "Distributed";
-		vertical?: "Top" | "Center" | "Bottom" | "Justify" | "Distributed";
-	};
-	/**
-	 * When text exceeds the cell width, it can either overflow into the next cell or wrap to the next line.
-	 * @experimental
-	 */
-	wrapText?: boolean;
-
-	/**
-	 * Borders around the cell.
-	 * @experimental
-	 */
-	borders?: {
-		color?: Color;
-		side?: "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight" | "InsideVertical" | "InsideHorizontal" | "DiagonalDown" | "DiagonalUp";
-		style?: "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot";
-		weight?: "Hairline" | "Thin" | "Medium" | "Thick";
-	};
-
-	/**
-	 * Protection settings for the cell.
-	 * @experimental
-	 */
-	protection?: {
-		/** Hide the formula. */
-		formulaHidden?: boolean;
-		/** Prevent cell changes */
-		locked?: boolean;
-	};
-
-	/**
-	 * Fill color of the cell.
-	 * @experimental
-	 */
-	fill?: {
-		color?: Color;
-	};
-
-	/**
-	 * Font settings for the cell.
-	 * @experimental
-	 */
-	font?: {
-		name?: FontName;
-		size?: number;
-		color?: Color;
-		bold?: boolean;
-		italic?: boolean;
-		underline?: "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant";
-	};
+	style: CellStyle;
 };
-
-/**
- * Text content of a cell in a worksheet.
- * @remarks This is a string that represents the text displayed in the cell, which may differ from the actual value of the cell (e.g., due to formatting).
- */
-export type CellText = string;
 
 /**
  * CellValue represents the value of a cell in a spreadsheet.
  * @see {@link Cell} for a more comprehensive representation of a cell, which includes text and formatting.
  */
 export type CellValue = string | number | boolean;
+
+/**
+ * Text content of a cell in a worksheet.
+ * @remarks This is a string that represents the text displayed in the cell, which may differ from the actual value of the cell (e.g., due to formatting).
+ */
+export type CellText = string;
 
 /**
  * Format to be applied to a cell value to convert it to text to display to the user.
@@ -116,7 +55,99 @@ export type CellFormat = string & {
 };
 
 /**
- * The amount of detail that we're reading from a cell.
- * @remarks This is used to determine how much information we want to extract from a cell when reading it, since usually we just want values, sometimes we also want text, and rarely we want the format.
+ * Style applied to the cell to affect its appearance, like color, borders, alignment, etc.
  */
-export type CellScope = "Values" | "ValuesText" | "ValuesTextFormat";
+export type CellStyle = {
+	/**
+	 * Number of cell merges (WRITE ONLY).
+	 * @remarks Due to API limitations, this value is never populated when reading a cell, but it can be set when writing a cell.
+	 * @experimental
+	 */
+	merge: {
+		right?: number;
+		down?: number;
+	};
+	/**
+	 * Alignment of cell contents.
+	 * @experimental
+	 */
+	alignment: {
+		horizontal?: CellHorizontalAlignment;
+		vertical?: CellVerticalAlignment;
+		wrapText?: boolean | undefined;
+	};
+	/**
+	 * Borders around the cell.
+	 * @experimental
+	 */
+	borders: {
+		top?: CellBorder | undefined;
+		bottom?: CellBorder | undefined;
+		left?: CellBorder | undefined;
+		right?: CellBorder | undefined;
+		insideVertical?: CellBorder | undefined;
+		insideHorizontal?: CellBorder | undefined;
+		diagonalDown?: CellBorder | undefined;
+		diagonalUp?: CellBorder | undefined;
+	};
+	/**
+	 * Protection settings for the cell.
+	 * @experimental
+	 */
+	protection: {
+		/** Hide the formula. */
+		formulaHidden?: boolean | undefined;
+
+		/** Prevent cell changes */
+		locked?: boolean | undefined;
+	};
+	/**
+	 * Fill color of the cell.
+	 * @experimental
+	 */
+	fill: {
+		color?: Color;
+	};
+	/**
+	 * Font settings for the cell.
+	 * @experimental
+	 */
+	font: {
+		name?: FontName;
+		size?: number;
+		color?: Color;
+		bold?: boolean;
+		italic?: boolean;
+		underline?: CellUnderline;
+	};
+};
+
+/**
+ * The amount of detail that we're reading from a cell.
+ * @remarks This is used to determine how much information we want to extract from a cell when reading it, since usually we just want values, sometimes we also want text, and rarely we want the format etc.
+ */
+export type CellScope = {
+	values: boolean;
+	text: boolean;
+	format: boolean;
+	style: boolean;
+};
+
+export type CellHorizontalAlignment = "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection" | "Distributed";
+
+export type CellVerticalAlignment = "Top" | "Center" | "Bottom" | "Justify" | "Distributed";
+
+export type CellBorderSide = "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight" | "InsideVertical" | "InsideHorizontal" | "DiagonalDown" | "DiagonalUp";
+
+export type CellBorderType = "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot";
+
+export type CellBorderWeight = "Hairline" | "Thin" | "Medium" | "Thick";
+
+export type CellUnderline = "None" | "Single" | "Double" | "SingleAccountant" | "DoubleAccountant";
+
+export type CellBorder = {
+	color?: Color;
+	side?: CellBorderSide;
+	style?: CellBorderType;
+	weight?: CellBorderWeight;
+};
