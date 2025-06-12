@@ -1,9 +1,11 @@
 import { describe, expect, it } from "vitest";
+import type { BorderWeight } from "../models/Border.ts";
 import type { CellStyle } from "../models/Cell.ts";
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
+import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRangeBorder.ts";
 import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFill.ts";
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
 import setWorkbookRangeFormat from "../operations/workbookRange/setWorkbookRangeFormat.ts";
@@ -27,7 +29,6 @@ const emptyStyle: CellStyle = {
 	merge: {},
 	alignment: {},
 	borders: {},
-	protection: {},
 	fill: {},
 	font: {},
 };
@@ -85,9 +86,8 @@ describe("iterateRows", () => {
 	it("retrieves just values when scope.values only is set", async () => {
 		const rangeRef = await prepareRange();
 		try {
-			const scope = { values: true, text: false, format: false, style: false };
 			let y = 0;
-			for await (const row of iterateRows(rangeRef, 0, Number.POSITIVE_INFINITY, scope)) {
+			for await (const row of iterateRows(rangeRef, 0, Number.POSITIVE_INFINITY, { values: true })) {
 				row.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual("");
@@ -131,10 +131,19 @@ describe("iterateRows", () => {
 			bold: fontBold,
 		});
 
+		const borderColor = "#00FF00" as Color;
+		const borderStyle = "Continuous";
+		const borderWeight = "Medium" as BorderWeight;
+		const borderEdge = "EdgeBottom";
+		await setWorkbookRangeBorder(rangeRef, borderEdge, {
+			color: borderColor,
+			style: borderStyle,
+			weight: borderWeight,
+		});
+
 		await calculateWorkbook(rangeRef);
 		try {
-			const scope = { values: false, text: false, format: false, style: true };
-			for await (const row of iterateRows(rangeRef, 0, Number.POSITIVE_INFINITY, scope)) {
+			for await (const row of iterateRows(rangeRef, 0, Number.POSITIVE_INFINITY, { alignment: true, borders: true, fill: true, font: true })) {
 				row.forEach((cell, _) => {
 					expect(cell.value).toEqual("");
 					expect(cell.text).toEqual("");
@@ -146,8 +155,13 @@ describe("iterateRows", () => {
 							vertical: verticalAlignment,
 							wrapText: wrapText,
 						},
-						borders: {}, // TODO: Test once ability to protect has been added
-						protection: {}, // TODO: Test once ability to protect has been added
+						borders: {
+							bottom: {
+								color: borderColor,
+								style: borderStyle,
+								weight: borderWeight,
+							},
+						},
 						fill: {
 							color: fillColor,
 						},
@@ -159,7 +173,7 @@ describe("iterateRows", () => {
 							underline: fontUnderline,
 							bold: fontBold,
 						},
-					} satisfies CellStyle); // TODO: Test more
+					} satisfies CellStyle);
 				});
 			}
 		} finally {

@@ -91,17 +91,15 @@ export type CellStyle = {
 		diagonalDown?: Border | undefined;
 		diagonalUp?: Border | undefined;
 	};
-	/**
-	 * Protection settings for the cell.
-	 * @experimental
-	 */
-	protection: {
-		/** Hide the formula. */
-		formulaHidden?: boolean | undefined;
 
-		/** Prevent cell changes */
-		locked?: boolean | undefined;
-	};
+	// TODO: Not yet supported, but possible
+	// protection: {
+	// 	/** Hide the formula. */
+	// 	formulaHidden?: boolean | undefined;
+
+	// 	/** Prevent cell changes */
+	// 	locked?: boolean | undefined;
+	// };
 	/**
 	 * Fill color of the cell.
 	 * @experimental
@@ -125,13 +123,28 @@ export type CellStyle = {
 
 /**
  * The amount of detail that we're reading from a cell.
- * @remarks This is used to determine how much information we want to extract from a cell when reading it, since usually we just want values, sometimes we also want text, and rarely we want the format etc.
  */
 export type CellScope = {
+	/** Raw underlying value. Cheap to read/write (1 op per ~10K cells for values, text & format) */
 	values: boolean;
+
+	/** Formatted value, as presented to the user. Cheap to read/write (1 op per ~10K cells for values, text & format) */
 	text: boolean;
+
+	/** Logic used to format values to text. Cheap to read/write (1 op per ~10K cells for values, text & format) */
 	format: boolean;
-	style: boolean;
+
+	/** Content position with the cell. Expensive to read/write (1 op per cell) */
+	alignment: boolean;
+
+	/** Cell borders. Expensive to read/write (1 op per cell) */
+	borders: boolean;
+
+	/** Background fill style. Expensive to read/write (1 op per cell) */
+	fill: boolean;
+
+	/** Text style. Expensive to read/write (1 op per cell) */
+	font: boolean;
 };
 
 export type CellHorizontalAlignment = "General" | "Left" | "Center" | "Right" | "Fill" | "Justify" | "CenterAcrossSelection" | "Distributed";

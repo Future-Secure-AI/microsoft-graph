@@ -1,13 +1,7 @@
-/**
- * Iterate over the rows in a given worksheet range. (EXPERIMENTAL)
- * @module iterateRows
- * @category Tasks
- * @experimental
- */
-
-import type { WorkbookRangeFormat } from "@microsoft/microsoft-graph-types";
+import type { WorkbookRangeBorder } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { Cell, CellBorder, CellBorderSide, CellBorderType, CellBorderWeight, CellFormat, CellHorizontalAlignment, CellScope, CellStyle, CellText, CellUnderline, CellValue, CellVerticalAlignment } from "../models/Cell.ts";
+import type { Border, BorderSide, BorderType, BorderWeight } from "../models/Border.ts";
+import type { Cell, CellFormat, CellHorizontalAlignment, CellScope, CellStyle, CellText, CellUnderline, CellValue, CellVerticalAlignment } from "../models/Cell.ts";
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import type { Row } from "../models/Row.ts";
@@ -16,18 +10,11 @@ import getWorkbookRangeFill from "../operations/workbookRange/getWorkbookRangeFi
 import getWorkbookRangeFont from "../operations/workbookRange/getWorkbookRangeFont.ts";
 import getWorkbookRangeFormat from "../operations/workbookRange/getWorkbookRangeFormat.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
+import listWorkbookRangeBorders from "../operations/workbookRange/listWorkbookRangeBorders.ts";
 import { countAddressColumns, countAddressRows, subRange } from "../services/addressManipulation.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
 
-const defaultScope: CellScope = { values: true, text: true, format: true, style: false };
-const emptyStyle: CellStyle = {
-	merge: {},
-	alignment: {},
-	borders: {},
-	protection: {},
-	fill: {},
-	font: {},
-};
+const defaultScope: Partial<CellScope> = { values: true, text: true, format: true };
 
 /**
  * Iterate over the rows in a given worksheet range.
@@ -42,7 +29,7 @@ const emptyStyle: CellStyle = {
  *   console.log(row);
  * }
  */
-export async function* iterateRows(rangeRef: WorkbookRangeRef, skip = 0, take: number = Number.POSITIVE_INFINITY, scope: CellScope = defaultScope, maxCellsPerOperation: number | null = null): AsyncIterable<Row> {
+export async function* iterateRows(rangeRef: WorkbookRangeRef, skip = 0, take: number = Number.POSITIVE_INFINITY, scope: Partial<CellScope> = defaultScope, maxCellsPerOperation: number | null = null): AsyncIterable<Row> {
 	const totalRangeRef = subRange(rangeRef, skip, take);
 
 	const totalColumnCount = countAddressColumns(totalRangeRef.address);
@@ -54,7 +41,7 @@ export async function* iterateRows(rangeRef: WorkbookRangeRef, skip = 0, take: n
 		const operationRowCount = Math.min(maxRowsPerOperation, totalRowCount - operationRowStart);
 		const operationRangeRef = subRange(totalRangeRef, operationRowStart, operationRowCount);
 
-		const range = rangeSelect.values || rangeSelect.text || rangeSelect.numberFormat ? await getWorkbookWorksheetRange(operationRangeRef, rangeSelect) : null;
+		const range = rangeSelect ? await getWorkbookWorksheetRange(operationRangeRef, rangeSelect) : null;
 
 		for (let rowIndex = 0; rowIndex < operationRowCount; rowIndex++) {
 			const row: Row = [];
@@ -62,7 +49,7 @@ export async function* iterateRows(rangeRef: WorkbookRangeRef, skip = 0, take: n
 				const value = (range?.values?.[rowIndex]?.[columnIndex] ?? "") as CellValue; // The root of these is undefined if that detail isn't in scope
 				const text = (range?.text?.[rowIndex]?.[columnIndex] ?? "") as CellText;
 				const format = (range?.numberFormat?.[rowIndex]?.[columnIndex] ?? "") as CellFormat;
-				const style = scope.style ? await getStyle(subRange(rangeRef, rowIndex, 1, columnIndex, 1)) : emptyStyle; // This line is potentially expensive
+				const style = await getStyle(subRange(rangeRef, rowIndex, 1, columnIndex, 1), scope); // This line is potentially expensive
 
 				row.push({
 					value,
@@ -77,61 +64,57 @@ export async function* iterateRows(rangeRef: WorkbookRangeRef, skip = 0, take: n
 	}
 }
 
-async function getStyle(rangeRef: WorkbookRangeRef): Promise<CellStyle> {
-	const format = await getWorkbookRangeFormat(rangeRef); // horizontalAlignment, verticalAlignment, wrapText
-	const fill = await getWorkbookRangeFill(rangeRef); // fill color
-	const font = await getWorkbookRangeFont(rangeRef); // bold, color, italic, name, size, underling
+async function getStyle(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>): Promise<CellStyle> {
+	const alignment = scope.alignment ? await getWorkbookRangeFormat(rangeRef) : null;
+	const borders = scope.borders ? await listWorkbookRangeBorders(rangeRef) : null;
+	const fill = scope.fill ? await getWorkbookRangeFill(rangeRef) : null;
+	const font = scope.font ? await getWorkbookRangeFont(rangeRef) : null;
 
 	return {
-		merge: {}, // Not provided by any API
+		merge: {
+			/* Not provided by API */
+		},
 		alignment: {
-			vertical: format.verticalAlignment as CellVerticalAlignment,
-			horizontal: format.horizontalAlignment as CellHorizontalAlignment,
-			wrapText: format.wrapText ?? undefined,
+			vertical: alignment?.verticalAlignment as CellVerticalAlignment,
+			horizontal: alignment?.horizontalAlignment as CellHorizontalAlignment,
+			wrapText: alignment?.wrapText ?? undefined,
 		},
 		borders: {
-			// TODO: Need border setting/retrieval operations
-			// top: extractBorderStyle(format, "EdgeTop"),
-			// bottom: extractBorderStyle(format, "EdgeBottom"),
-			// left: extractBorderStyle(format, "EdgeLeft"),
-			// right: extractBorderStyle(format, "EdgeRight"),
-			// insideVertical: extractBorderStyle(format, "InsideVertical"),
-			// insideHorizontal: extractBorderStyle(format, "InsideHorizontal"),
-			// diagonalDown: extractBorderStyle(format, "DiagonalDown"),
-			// diagonalUp: extractBorderStyle(format, "DiagonalUp"),
-		},
-		protection: {
-			formulaHidden: format.protection?.formulaHidden ?? undefined,
-			locked: format.protection?.locked ?? undefined,
+			top: extractBorderStyle(borders, "EdgeTop"),
+			bottom: extractBorderStyle(borders, "EdgeBottom"),
+			left: extractBorderStyle(borders, "EdgeLeft"),
+			right: extractBorderStyle(borders, "EdgeRight"),
+			insideVertical: extractBorderStyle(borders, "InsideVertical"),
+			insideHorizontal: extractBorderStyle(borders, "InsideHorizontal"),
+			diagonalDown: extractBorderStyle(borders, "DiagonalDown"),
+			diagonalUp: extractBorderStyle(borders, "DiagonalUp"),
 		},
 		fill: {
-			color: fill.color as Color,
+			color: fill?.color as Color,
 		},
 		font: {
-			name: font.name as FontName,
-			size: font.size as number,
-			color: font.color as Color,
-			bold: font.bold as boolean,
-			italic: font.italic as boolean,
-			underline: font.underline as CellUnderline,
+			name: font?.name as FontName,
+			size: font?.size as number,
+			color: font?.color as Color,
+			bold: font?.bold as boolean,
+			italic: font?.italic as boolean,
+			underline: font?.underline as CellUnderline,
 		},
 	};
 
-	function extractBorderStyle(response: WorkbookRangeFormat, side: CellBorderSide): CellBorder | undefined {
-		if (!response.borders) {
+	function extractBorderStyle(borders: WorkbookRangeBorder[] | null, side: BorderSide): Border | undefined {
+		if (!borders) {
 			return undefined;
 		}
-
-		const a = response.borders.find((x) => x.sideIndex === side);
-		if (!a) {
+		const border = borders.find((x) => x.sideIndex === side);
+		if (!border) {
 			return undefined;
 		}
 
 		return {
-			color: a.color as Color,
-			side: a.sideIndex as CellBorderSide,
-			style: a.style as CellBorderType,
-			weight: a.weight as CellBorderWeight,
+			color: border.color as Color,
+			style: border.style as BorderType,
+			weight: border.weight as BorderWeight,
 		};
 	}
 }
@@ -144,6 +127,9 @@ function calculateMaxRowsPerOperation(columnCount: number, overwriteMaxCellsPerO
 	}
 	return maxRowsPerOperation;
 }
-function scopeToRangeSelect(scope: CellScope) {
-	return { values: scope.values, text: scope.text, numberFormat: scope.format, style: false };
+function scopeToRangeSelect(scope: Partial<CellScope>) {
+	if (!(scope.values || scope.text || scope.format)) {
+		return null;
+	}
+	return { values: scope.values ?? false, text: scope.text ?? false, numberFormat: scope.format ?? false };
 }
