@@ -26,7 +26,7 @@ export default function getWorkbookWorksheetRange(rangeRef: WorkbookRangeRef, se
 				.map(([k, v]) => (v ? k : undefined))
 				.filter((v) => !!v)
 				.join(",")
-		: null;
+		: "";
 
 	return operation({
 		context: rangeRef.context,
