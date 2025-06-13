@@ -57,9 +57,10 @@
 | [clearWorkbookRange](clearWorkbookRange.md) | Clear a range - content, formatting, or both. |
 | [clearWorkbookTableColumnFilters](clearWorkbookTableColumnFilters.md) | Clear all filters from a workbook table. |
 | [closeWorkbookSession](closeWorkbookSession.md) | Close an existing workbook session. |
+| [createBinaryWorkbook](createBinaryWorkbook.md) | Create a new blank binary workbook (XLSB). |
 | [createDriveItem](createDriveItem.md) | Creates new drive item in the specified parent drive or folder. |
 | [createFolder](createFolder.md) | Create a folder in the root of a drive, or in a folder. If it already exists do nothing. |
-| [createWorkbook](createWorkbook.md) | Create a new blank workbook. |
+| [createWorkbook](createWorkbook.md) | Create a new blank workbook (XLSX). |
 | [createWorkbookSession](createWorkbookSession.md) | Create a new workbook session. |
 | [createWorkbookTable](createWorkbookTable.md) | Create a new table in a worksheet. |
 | [createWorkbookWorksheet](createWorkbookWorksheet.md) | Create a new worksheet in a workbook, optionally with a defined name. |
@@ -72,7 +73,6 @@
 | [existsDriveItem](existsDriveItem.md) | Check if a given drive item exists. |
 | [getDriveItem](getDriveItem.md) | Retrieve the metadata for an item in a drive. |
 | [getDriveItemByPath](getDriveItemByPath.md) | Retrieve the metadata for an item in a drive by file path. |
-| [getDriveItemContent](getDriveItemContent.md) | Download the content of a drive item. |
 | [getSite](getSite.md) | Retrieve properties for a site resource. |
 | [getSiteByName](getSiteByName.md) | Get a site by its name. |
 | [getWorkbookNamedRange](getWorkbookNamedRange.md) | Retrieve a named range. |

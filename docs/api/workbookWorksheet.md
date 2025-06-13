@@ -10,9 +10,13 @@ Utilities for creating and working with workbook worksheet references.
 
 > `const` **defaultWorkbookWorksheetId**: [`WorkbookWorksheetId`](WorkbookWorksheet-1.md#workbookworksheetid)
 
-Defined in: [src/services/workbookWorksheet.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L11)
+Defined in: [src/services/workbookWorksheet.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L14)
 
-ID of the initial worksheet that is included in a new workbook.
+ID of the initial worksheet that is included in a new XLSX workbook.
+
+#### Remarks
+
+This does not work apply to XLSB workbooks.
 
 ***
 
@@ -20,7 +24,7 @@ ID of the initial worksheet that is included in a new workbook.
 
 > `const` **defaultWorkbookWorksheetName**: [`WorkbookWorksheetName`](WorkbookWorksheet-1.md#workbookworksheetname)
 
-Defined in: [src/services/workbookWorksheet.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L14)
+Defined in: [src/services/workbookWorksheet.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L19)
 
 Name of the initial worksheet that is included in a new workbook.
 
@@ -30,9 +34,9 @@ Name of the initial worksheet that is included in a new workbook.
 
 > **createDefaultWorkbookWorksheetRef**(`workbookRef`): [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref)
 
-Defined in: [src/services/workbookWorksheet.ts:43](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L43)
+Defined in: [src/services/workbookWorksheet.ts:49](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L49)
 
-Creates a reference to the default workbook worksheet that is initially included in all new workbooks.
+Creates a reference to the default workbook worksheet that is initially included in all new XLSX workbooks.
 
 #### Parameters
 
@@ -46,13 +50,17 @@ Creates a reference to the default workbook worksheet that is initially included
 
 A reference to the default workbook worksheet.
 
+#### Remarks
+
+This does not work with XLSB workbooks.
+
 ***
 
 ### createWorkbookWorksheetRef()
 
 > **createWorkbookWorksheetRef**(`workbookRef`, `worksheetId`): [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref)
 
-Defined in: [src/services/workbookWorksheet.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L23)
+Defined in: [src/services/workbookWorksheet.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookWorksheet.ts#L28)
 
 Creates a reference to a workbook worksheet.
 

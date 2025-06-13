@@ -2,7 +2,7 @@
 
 # createWorkbook
 
-Create a new blank workbook.
+Create a new blank workbook (XLSX).
 
 ## Functions
 
@@ -12,7 +12,7 @@ Create a new blank workbook.
 
 Defined in: [src/operations/workbook/createWorkbook.ts:25](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/createWorkbook.ts#L25)
 
-Create a new blank workbook.
+Create a new blank workbook (XLSX).
 
 #### Parameters
 

@@ -7,10 +7,15 @@
 import type { WorkbookRef } from "../models/Workbook.ts";
 import type { WorkbookWorksheetId, WorkbookWorksheetName, WorkbookWorksheetRef } from "../models/WorkbookWorksheet.ts";
 
-/** ID of the initial worksheet that is included in a new workbook. */
+/**
+ * ID of the initial worksheet that is included in a new XLSX workbook.
+ * @remarks This does not work apply to XLSB workbooks.
+ */
 export const defaultWorkbookWorksheetId = "{00000000-0001-0000-0000-000000000000}" as WorkbookWorksheetId; // Program Manager in Microsoft Office Extensibility team says this ID is used for the first sheet of all workbooks by design, but not documented. https://github.com/OfficeDev/office-js/issues/552#issuecomment-800841930
 
-/** Name of the initial worksheet that is included in a new workbook. */
+/**
+ * Name of the initial worksheet that is included in a new workbook.
+ */
 export const defaultWorkbookWorksheetName = "Sheet1" as WorkbookWorksheetName;
 
 /**
@@ -36,9 +41,10 @@ export function createWorkbookWorksheetRef(workbookRef: WorkbookRef, worksheetId
 }
 
 /**
- * Creates a reference to the default workbook worksheet that is initially included in all new workbooks.
+ * Creates a reference to the default workbook worksheet that is initially included in all new XLSX workbooks.
  * @param workbookRef - The reference to the workbook.
  * @returns A reference to the default workbook worksheet.
+ * @remarks This does not work with XLSB workbooks.
  */
 export function createDefaultWorkbookWorksheetRef(workbookRef: WorkbookRef): WorkbookWorksheetRef {
 	return createWorkbookWorksheetRef(workbookRef, defaultWorkbookWorksheetId);

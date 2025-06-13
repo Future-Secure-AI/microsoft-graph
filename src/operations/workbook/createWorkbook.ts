@@ -1,5 +1,5 @@
 /**
- * Create a new blank workbook.
+ * Create a new blank workbook (XLSX).
  * @module createWorkbook
  * @category Operations
  */
@@ -15,7 +15,7 @@ import { operation } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
- * Create a new blank workbook.
+ * Create a new blank workbook (XLSX).
  * @param parentRef Reference to the parent drive or folder where the workbook will be created.
  * @param itemPath Path (including the filename) for the new workbook. Must end with `.xlsx`.
  * @returns Newly created workbook.

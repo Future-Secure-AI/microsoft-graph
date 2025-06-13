@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.30.0",
+  "version": "2.31.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -1458,6 +1458,31 @@
       "import": "./dist/esm/operations/workbook/calculateWorkbook.js",
       "require": "./dist/cjs/operations/workbook/calculateWorkbook.js",
       "types": "./dist/esm/operations/workbook/calculateWorkbook.d.ts"
+    },
+    "./createBinaryWorkbook": {
+      "import": "./dist/esm/operations/workbook/createBinaryWorkbook.js",
+      "require": "./dist/cjs/operations/workbook/createBinaryWorkbook.js",
+      "types": "./dist/esm/operations/workbook/createBinaryWorkbook.d.ts"
+    },
+    "./dist/cjs/operations/workbook/createBinaryWorkbook.js": {
+      "import": "./dist/esm/operations/workbook/createBinaryWorkbook.js",
+      "require": "./dist/cjs/operations/workbook/createBinaryWorkbook.js",
+      "types": "./dist/esm/operations/workbook/createBinaryWorkbook.d.ts"
+    },
+    "./dist/cjs/operations/workbook/createBinaryWorkbook": {
+      "import": "./dist/esm/operations/workbook/createBinaryWorkbook.js",
+      "require": "./dist/cjs/operations/workbook/createBinaryWorkbook.js",
+      "types": "./dist/esm/operations/workbook/createBinaryWorkbook.d.ts"
+    },
+    "./operations/workbook/createBinaryWorkbook": {
+      "import": "./dist/esm/operations/workbook/createBinaryWorkbook.js",
+      "require": "./dist/cjs/operations/workbook/createBinaryWorkbook.js",
+      "types": "./dist/esm/operations/workbook/createBinaryWorkbook.d.ts"
+    },
+    "./operations/workbook/createBinaryWorkbook.js": {
+      "import": "./dist/esm/operations/workbook/createBinaryWorkbook.js",
+      "require": "./dist/cjs/operations/workbook/createBinaryWorkbook.js",
+      "types": "./dist/esm/operations/workbook/createBinaryWorkbook.d.ts"
     },
     "./createWorkbook": {
       "import": "./dist/esm/operations/workbook/createWorkbook.js",
