@@ -2,6 +2,7 @@
  * Download the content of a drive item.
  * @module getDriveItemContent
  * @category Operations
+ * @hidden
  */
 
 import type { DriveItemRef } from "../../models/DriveItem.ts";
@@ -17,6 +18,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @returns The content of the drive item as an ArrayBuffer.
  * @throws Error if the download fails.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-get-content
+ * @deprecated Use `streamDriveItemContent` instead for better performance and streaming capabilities.
+ * @hidden
  */
 export default async function getDriveItemContent(itemRef: DriveItemRef): Promise<ArrayBuffer> {
 	// Note this method doesn't match the standard pattern since the batching library doesn't support non-JSON return types, and there appears to be no value in adding support.
