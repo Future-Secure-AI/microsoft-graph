@@ -88,7 +88,7 @@ export function composeAddress(components: DecomposedAddress, forceRange = false
 		return composeRowRangeAddress(components.startRow, components.endRow);
 	}
 
-	if (isSingleColumn(components) && isSingleRow(components)) {
+	if (!forceRange && isSingleColumn(components) && isSingleRow(components)) {
 		return composeCellAddress(components.startColumn, components.startRow);
 	}
 
