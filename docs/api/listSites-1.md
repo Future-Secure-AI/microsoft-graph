@@ -10,7 +10,7 @@ List sites in all company geographies.
 
 > **listSitesAllGeographies**(`contextRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`Site` & [`SiteRef`](Site-1.md#siteref)[]\>
 
-Defined in: src/operations/site/listSitesAllGeographies.ts:21
+Defined in: [src/operations/site/listSitesAllGeographies.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/site/listSitesAllGeographies.ts#L21)
 
 List sites in all company geographies.
 

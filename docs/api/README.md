@@ -108,6 +108,7 @@
 | [setWorkbookRangeFill](setWorkbookRangeFill.md) | Update the fill format of a workbook range. |
 | [setWorkbookRangeFont](setWorkbookRangeFont.md) | Update the font format of a workbook range. |
 | [setWorkbookRangeFormat](setWorkbookRangeFormat.md) | Update the general format of a workbook range. |
+| [streamDriveItemContent](streamDriveItemContent.md) | Stream the content of a drive item as a Node.js readable stream. |
 | [unmergeWorkbookRange](unmergeWorkbookRange.md) | Unmerge a merged range of cells in a worksheet. |
 | [updateWorkbookNamedRange](updateWorkbookNamedRange.md) | Update a named range. |
 | [updateWorkbookRange](updateWorkbookRange.md) | Update a range, including values and formatting. |
