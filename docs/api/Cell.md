@@ -69,13 +69,13 @@ The amount of detail that we're reading from a cell.
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="alignment"></a> `alignment` | `boolean` | Content position with the cell. Expensive to read/write (1 op per cell) | [src/models/Cell.ts:138](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L138) |
-| <a id="borders"></a> `borders` | `boolean` | Cell borders. Expensive to read/write (1 op per cell) | [src/models/Cell.ts:141](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L141) |
-| <a id="fill"></a> `fill` | `boolean` | Background fill style. Expensive to read/write (1 op per cell) | [src/models/Cell.ts:144](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L144) |
-| <a id="font"></a> `font` | `boolean` | Text style. Expensive to read/write (1 op per cell) | [src/models/Cell.ts:147](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L147) |
-| <a id="format-1"></a> `format` | `boolean` | Logic used to format values to text. Cheap to read/write (1 op per ~10K cells for values, text & format) | [src/models/Cell.ts:135](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L135) |
-| <a id="text-1"></a> `text` | `boolean` | Formatted value, as presented to the user. Cheap to read/write (1 op per ~10K cells for values, text & format) | [src/models/Cell.ts:132](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L132) |
-| <a id="values"></a> `values` | `boolean` | Raw underlying value. Cheap to read/write (1 op per ~10K cells for values, text & format) | [src/models/Cell.ts:129](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L129) |
+| <a id="alignment"></a> `alignment` | `boolean` | Content position with the cell. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:138](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L138) |
+| <a id="borders"></a> `borders` | `boolean` | Cell borders. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:141](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L141) |
+| <a id="fill"></a> `fill` | `boolean` | Background fill style. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:144](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L144) |
+| <a id="font"></a> `font` | `boolean` | Text style. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:147](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L147) |
+| <a id="format-1"></a> `format` | `boolean` | Logic used to format values to text. CHEAP (~1 op per 10K cells, no additional call op `values` or `text`) | [src/models/Cell.ts:135](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L135) |
+| <a id="text-1"></a> `text` | `boolean` | Formatted value, as presented to the user. CHEAP (~1 op per 10K cells, no additional call op `values` or `format`) | [src/models/Cell.ts:132](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L132) |
+| <a id="values"></a> `values` | `boolean` | Raw cell value. CHEAP (~1 op per 10K cells, no additional op with `text` or `format`) | [src/models/Cell.ts:129](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L129) |
 
 ***
 

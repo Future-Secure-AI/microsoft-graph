@@ -8,12 +8,12 @@ import type { Color } from "./Color.ts";
 
 export type Border = {
 	color: Color;
-	style: BorderType;
+	style: BorderStyle;
 	weight: BorderWeight;
 };
 
 export type BorderSide = "EdgeTop" | "EdgeBottom" | "EdgeLeft" | "EdgeRight" | "InsideVertical" | "InsideHorizontal" | "DiagonalDown" | "DiagonalUp";
 
-export type BorderType = "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot";
+export type BorderStyle = "None" | "Continuous" | "Dash" | "DashDot" | "DashDotDot" | "Dot" | "Double" | "SlantDashDot";
 
 export type BorderWeight = "Hairline" | "Thin" | "Medium" | "Thick";

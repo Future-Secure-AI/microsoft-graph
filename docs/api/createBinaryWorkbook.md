@@ -10,7 +10,7 @@ Create a new blank binary workbook (XLSB).
 
 > **createBinaryWorkbook**(`parentRef`, `itemPath`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object`\>
 
-Defined in: src/operations/workbook/createBinaryWorkbook.ts:28
+Defined in: [src/operations/workbook/createBinaryWorkbook.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbook/createBinaryWorkbook.ts#L28)
 
 Create a new blank binary workbook (XLSB).
 

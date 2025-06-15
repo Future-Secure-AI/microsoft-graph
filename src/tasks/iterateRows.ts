@@ -7,7 +7,7 @@
 
 import type { WorkbookRangeBorder } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { Border, BorderSide, BorderType, BorderWeight } from "../models/Border.ts";
+import type { Border, BorderSide, BorderStyle, BorderWeight } from "../models/Border.ts";
 import type { Cell, CellFormat, CellHorizontalAlignment, CellScope, CellStyle, CellText, CellUnderline, CellValue, CellVerticalAlignment } from "../models/Cell.ts";
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
@@ -117,7 +117,7 @@ async function getStyle(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>): 
 
 		return {
 			color: border.color as Color,
-			style: border.style as BorderType,
+			style: border.style as BorderStyle,
 			weight: border.weight as BorderWeight,
 		};
 	}

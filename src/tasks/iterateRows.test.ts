@@ -1,11 +1,10 @@
 import { describe, expect, it } from "vitest";
-import type { BorderWeight } from "../models/Border.ts";
+import type { BorderStyle, BorderWeight } from "../models/Border.ts";
 import type { CellStyle } from "../models/Cell.ts";
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
-import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRangeBorder.ts";
 import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFill.ts";
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
 import setWorkbookRangeFormat from "../operations/workbookRange/setWorkbookRangeFormat.ts";
@@ -18,6 +17,7 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
 import { iterateRows } from "./iterateRows.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
+import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRangeBorder.ts";
 
 const values = [
 	[1, 2, 3],
@@ -102,6 +102,18 @@ describe("iterateRows", () => {
 		}
 	});
 
+	const defaultBorder = {
+		color: "#000000" as Color,
+		style: "None" as BorderStyle,
+		weight: "Thin" as BorderWeight,
+	};
+
+	const alternateBorder = {
+		color: "#ffffff" as Color,
+		style: "Dash" as BorderStyle,
+		weight: "Thick" as BorderWeight,
+	};
+
 	it("retrieves everything including styles when scope.style is true", { timeout: 30000 }, async () => {
 		const rangeRef = await prepareRange();
 
@@ -132,15 +144,7 @@ describe("iterateRows", () => {
 			bold: fontBold,
 		});
 
-		const borderColor = "#00FF00" as Color;
-		const borderStyle = "Continuous";
-		const borderWeight = "Medium" as BorderWeight;
-		const borderEdge = "EdgeBottom";
-		await setWorkbookRangeBorder(rangeRef, borderEdge, {
-			color: borderColor,
-			style: borderStyle,
-			weight: borderWeight,
-		});
+		await setWorkbookRangeBorder(rangeRef,  "EdgeBottom", alternateBorder);
 
 		await calculateWorkbook(rangeRef);
 		try {
@@ -149,6 +153,7 @@ describe("iterateRows", () => {
 					expect(cell.value).toEqual("");
 					expect(cell.text).toEqual("");
 					expect(cell.format).toEqual("");
+
 					expect(cell.style).toEqual({
 						merge: {},
 						alignment: {
@@ -157,11 +162,14 @@ describe("iterateRows", () => {
 							wrapText: wrapText,
 						},
 						borders: {
-							bottom: {
-								color: borderColor,
-								style: borderStyle,
-								weight: borderWeight,
-							},
+							bottom: alternateBorder,
+							diagonalDown: defaultBorder,
+							diagonalUp: defaultBorder,
+							insideHorizontal: defaultBorder,
+							insideVertical: defaultBorder,
+							left: defaultBorder,
+							right: defaultBorder,
+							top: defaultBorder,
 						},
 						fill: {
 							color: fillColor,
