@@ -54,27 +54,3 @@ A reference to the drive.
 #### Throws
 
 ProtocolError if the drive ID is missing.
-
-***
-
-### ~~getDefaultDriveRef()~~
-
-> **getDefaultDriveRef**(): [`DriveRef`](Drive-1.md#driveref)
-
-Defined in: [src/services/drive.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/drive.ts#L48)
-
-Retrieves the opinionated default drive reference. NOT RECOMMENDED FOR PRODUCTION USE.
-
-#### Returns
-
-[`DriveRef`](Drive-1.md#driveref)
-
-A reference to the default drive.
-
-#### Remarks
-
-This method is opinionated and not recommended for production use.
-
-#### Deprecated
-
-Use `createClientSecretContextWithDriveRef()` instead.

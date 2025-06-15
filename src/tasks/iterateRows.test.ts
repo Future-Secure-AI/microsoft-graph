@@ -5,6 +5,7 @@ import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
+import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRangeBorder.ts";
 import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFill.ts";
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
 import setWorkbookRangeFormat from "../operations/workbookRange/setWorkbookRangeFormat.ts";
@@ -17,7 +18,6 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
 import { iterateRows } from "./iterateRows.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
-import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRangeBorder.ts";
 
 const values = [
 	[1, 2, 3],
@@ -52,13 +52,16 @@ describe("iterateRows", () => {
 
 		try {
 			let y = 0;
-			for await (const row of iterateRows(rangeRef)) {
-				row.forEach((cell, x) => {
+			for await (const { cells, offset, isFirst, isLast } of iterateRows(rangeRef)) {
+				cells.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual(texts[y][x]);
 					expect(cell.format).toEqual(generalCellFormat);
 					expect(cell.style).toEqual(emptyStyle);
 				});
+				expect(offset).toBe(y);
+				expect(isFirst).toBe(y === 0);
+				expect(isLast).toBe(y === values.length - 1);
 				y++;
 			}
 		} finally {
@@ -70,13 +73,16 @@ describe("iterateRows", () => {
 		const rangeRef = await prepareRange();
 		try {
 			let y = 0;
-			for await (const row of iterateRows(rangeRef, undefined, values[0].length)) {
-				row.forEach((cell, x) => {
+			for await (const { cells, offset, isFirst, isLast } of iterateRows(rangeRef, undefined, values[0].length)) {
+				cells.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual(texts[y][x]);
 					expect(cell.format).toEqual(generalCellFormat);
 					expect(cell.style).toEqual(emptyStyle);
 				});
+				expect(offset).toBe(y);
+				expect(isFirst).toBe(y === 0);
+				expect(isLast).toBe(y === values.length - 1);
 				y++;
 			}
 		} finally {
@@ -87,15 +93,13 @@ describe("iterateRows", () => {
 	it("retrieves just values when scope.values only is set", async () => {
 		const rangeRef = await prepareRange();
 		try {
-			let y = 0;
-			for await (const row of iterateRows(rangeRef, { values: true })) {
-				row.forEach((cell, x) => {
+			for await (const { cells, offset: y } of iterateRows(rangeRef, { values: true })) {
+				cells.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual("");
 					expect(cell.format).toEqual("");
 					expect(cell.style).toEqual(emptyStyle);
 				});
-				y++;
 			}
 		} finally {
 			await tryDeleteDriveItem(rangeRef);
@@ -109,8 +113,8 @@ describe("iterateRows", () => {
 	};
 
 	const alternateBorder = {
-		color: "#ffffff" as Color,
-		style: "Dash" as BorderStyle,
+		color: "#555555" as Color,
+		style: "Double" as BorderStyle,
 		weight: "Thick" as BorderWeight,
 	};
 
@@ -144,12 +148,12 @@ describe("iterateRows", () => {
 			bold: fontBold,
 		});
 
-		await setWorkbookRangeBorder(rangeRef,  "EdgeBottom", alternateBorder);
+		await setWorkbookRangeBorder(rangeRef, "EdgeBottom", alternateBorder);
 
-		await calculateWorkbook(rangeRef);
+		// await calculateWorkbook(rangeRef);
 		try {
-			for await (const row of iterateRows(rangeRef, { alignment: true, borders: true, fill: true, font: true })) {
-				row.forEach((cell, _) => {
+			for await (const { cells, isLast } of iterateRows(rangeRef, { alignment: true, borders: true, fill: true, font: true })) {
+				cells.forEach((cell, _) => {
 					expect(cell.value).toEqual("");
 					expect(cell.text).toEqual("");
 					expect(cell.format).toEqual("");
@@ -162,7 +166,7 @@ describe("iterateRows", () => {
 							wrapText: wrapText,
 						},
 						borders: {
-							bottom: alternateBorder,
+							bottom: isLast ? alternateBorder : defaultBorder, // <==
 							diagonalDown: defaultBorder,
 							diagonalUp: defaultBorder,
 							insideHorizontal: defaultBorder,

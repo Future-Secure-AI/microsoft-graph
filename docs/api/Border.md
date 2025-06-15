@@ -21,7 +21,7 @@ Defined in: [src/models/Border.ts:9](https://github.com/Future-Secure-AI/microso
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
 | <a id="color"></a> `color` | [`Color`](Color.md#color) | [src/models/Border.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Border.ts#L10) |
-| <a id="style"></a> `style` | [`BorderType`](#bordertype) | [src/models/Border.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Border.ts#L11) |
+| <a id="style"></a> `style` | [`BorderStyle`](#borderstyle-1) | [src/models/Border.ts:11](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Border.ts#L11) |
 | <a id="weight"></a> `weight` | [`BorderWeight`](#borderweight-1) | [src/models/Border.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Border.ts#L12) |
 
 ***
@@ -36,9 +36,9 @@ Defined in: [src/models/Border.ts:15](https://github.com/Future-Secure-AI/micros
 
 ***
 
-### BorderType
+### BorderStyle
 
-> **BorderType** = `"None"` \| `"Continuous"` \| `"Dash"` \| `"DashDot"` \| `"DashDotDot"` \| `"Dot"` \| `"Double"` \| `"SlantDashDot"`
+> **BorderStyle** = `"None"` \| `"Continuous"` \| `"Dash"` \| `"DashDot"` \| `"DashDotDot"` \| `"Dot"` \| `"Double"` \| `"SlantDashDot"`
 
 Defined in: [src/models/Border.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Border.ts#L17)
 
