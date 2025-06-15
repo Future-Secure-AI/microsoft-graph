@@ -26,27 +26,24 @@ const defaultScope: Partial<CellScope> = { values: true, text: true, format: tru
 /**
  * Iterate over the rows in a given worksheet range.
  * @param rangeRef Reference to the workbook range to iterate over.
- * @param skip Number of rows to skip before starting to yield rows. Can be negative to get last rows (e.g., -1 for the last row).
- * @param take Max number of rows to yield. `POSITIVE_INFINITY` returns all rows.
  * @param scope Amount of detail to include for each cell.
  * @param maxCellsPerOperation Prescribe max cells to retrieve per operation. `null` automatically determines value. DO NOT SET EXCEPT FOR ADVANCED TUNING.
  * @remarks Including `style` in the scope requires over three operations for each and every cell. Use this sparingly!
+ * @experimental
  * @example
  * for await (const row of iterateRows(rangeRef)) {
  *   console.log(row);
  * }
  */
-export async function* iterateRows(rangeRef: WorkbookRangeRef, skip = 0, take: number = Number.POSITIVE_INFINITY, scope: Partial<CellScope> = defaultScope, maxCellsPerOperation: number | null = null): AsyncIterable<Row> {
-	const totalRangeRef = subRange(rangeRef, skip, take);
-
-	const totalColumnCount = countAddressColumns(totalRangeRef.address);
-	const totalRowCount = countAddressRows(totalRangeRef.address);
+export async function* iterateRows(rangeRef: WorkbookRangeRef, scope: Partial<CellScope> = defaultScope, maxCellsPerOperation: number | null = null): AsyncIterable<Row> {
+	const totalColumnCount = countAddressColumns(rangeRef.address);
+	const totalRowCount = countAddressRows(rangeRef.address);
 	const maxRowsPerOperation = calculateMaxRowsPerOperation(totalColumnCount, maxCellsPerOperation);
 	const rangeSelect = scopeToRangeSelect(scope);
 
 	for (let operationRowStart = 0; operationRowStart < totalRowCount; operationRowStart += maxRowsPerOperation) {
 		const operationRowCount = Math.min(maxRowsPerOperation, totalRowCount - operationRowStart);
-		const operationRangeRef = subRange(totalRangeRef, operationRowStart, operationRowCount);
+		const operationRangeRef = subRange(rangeRef, operationRowStart, operationRowCount);
 
 		const range = rangeSelect ? await getWorkbookWorksheetRange(operationRangeRef, rangeSelect) : null;
 

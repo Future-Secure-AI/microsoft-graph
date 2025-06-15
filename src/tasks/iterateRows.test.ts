@@ -9,6 +9,7 @@ import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRange
 import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFill.ts";
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
 import setWorkbookRangeFormat from "../operations/workbookRange/setWorkbookRangeFormat.ts";
+import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import { generalCellFormat } from "../services/cellFormat.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
@@ -16,8 +17,8 @@ import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
 import { iterateRows } from "./iterateRows.ts";
-import setWorkbookRangeValues from "./setWorkbookRangeValues.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
+
 const values = [
 	[1, 2, 3],
 	[4, 5, 6],
@@ -40,7 +41,7 @@ async function prepareRange() {
 	const workbook = await createWorkbook(driveRef, workbookPath);
 	const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 	const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
-	await setWorkbookRangeValues(rangeRef, values);
+	await updateWorkbookRange(rangeRef, { values: values });
 	await calculateWorkbook(rangeRef);
 	return rangeRef;
 }
@@ -69,7 +70,7 @@ describe("iterateRows", () => {
 		const rangeRef = await prepareRange();
 		try {
 			let y = 0;
-			for await (const row of iterateRows(rangeRef, 0, Number.POSITIVE_INFINITY, undefined, values[0].length)) {
+			for await (const row of iterateRows(rangeRef, undefined, values[0].length)) {
 				row.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual(texts[y][x]);
@@ -87,7 +88,7 @@ describe("iterateRows", () => {
 		const rangeRef = await prepareRange();
 		try {
 			let y = 0;
-			for await (const row of iterateRows(rangeRef, 0, Number.POSITIVE_INFINITY, { values: true })) {
+			for await (const row of iterateRows(rangeRef, { values: true })) {
 				row.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual("");
@@ -143,7 +144,7 @@ describe("iterateRows", () => {
 
 		await calculateWorkbook(rangeRef);
 		try {
-			for await (const row of iterateRows(rangeRef, 0, Number.POSITIVE_INFINITY, { alignment: true, borders: true, fill: true, font: true })) {
+			for await (const row of iterateRows(rangeRef, { alignment: true, borders: true, fill: true, font: true })) {
 				row.forEach((cell, _) => {
 					expect(cell.value).toEqual("");
 					expect(cell.text).toEqual("");

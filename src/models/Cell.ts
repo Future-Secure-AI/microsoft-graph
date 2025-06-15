@@ -125,25 +125,25 @@ export type CellStyle = {
  * The amount of detail that we're reading from a cell.
  */
 export type CellScope = {
-	/** Raw underlying value. Cheap to read/write (1 op per ~10K cells for values, text & format) */
+	/** Raw cell value. CHEAP (~1 op per 10K cells, no additional op with `text` or `format`) */
 	values: boolean;
 
-	/** Formatted value, as presented to the user. Cheap to read/write (1 op per ~10K cells for values, text & format) */
+	/** Formatted value, as presented to the user. CHEAP (~1 op per 10K cells, no additional call op `values` or `format`) */
 	text: boolean;
 
-	/** Logic used to format values to text. Cheap to read/write (1 op per ~10K cells for values, text & format) */
+	/** Logic used to format values to text. CHEAP (~1 op per 10K cells, no additional call op `values` or `text`) */
 	format: boolean;
 
-	/** Content position with the cell. Expensive to read/write (1 op per cell) */
+	/** Content position with the cell. VERY EXPENSIVE (+1 op per cell) */
 	alignment: boolean;
 
-	/** Cell borders. Expensive to read/write (1 op per cell) */
+	/** Cell borders. VERY EXPENSIVE (+1 op per cell)  */
 	borders: boolean;
 
-	/** Background fill style. Expensive to read/write (1 op per cell) */
+	/** Background fill style. VERY EXPENSIVE (+1 op per cell)  */
 	fill: boolean;
 
-	/** Text style. Expensive to read/write (1 op per cell) */
+	/** Text style. VERY EXPENSIVE (+1 op per cell) */
 	font: boolean;
 };
 
