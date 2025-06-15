@@ -10,7 +10,7 @@ import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFi
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
 import setWorkbookRangeFormat from "../operations/workbookRange/setWorkbookRangeFormat.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
-import { generalCellFormat } from "../services/cellFormat.ts";
+import { generalCellFormat } from "../services/cell.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";

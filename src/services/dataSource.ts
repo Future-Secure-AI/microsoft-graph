@@ -20,7 +20,7 @@ import getWorkbookWorksheetUsedRangeRef from "../operations/workbookWorksheet/ge
 import readWorkbookRows from "../tasks/readWorkbookRows.ts";
 import { countAddressRows, subRange, superRange } from "./addressManipulation.ts";
 import { addressToCartesian } from "./cartesianAddress.ts";
-import { generalCellFormat } from "./cellFormat.ts";
+import { generalCellFormat } from "./cell.ts";
 
 /**
  * Define a datasource from an entire worksheet.

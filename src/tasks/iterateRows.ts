@@ -21,8 +21,7 @@ import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWo
 import listWorkbookRangeBorders from "../operations/workbookRange/listWorkbookRangeBorders.ts";
 import { countAddressColumns, countAddressRows, subRange } from "../services/addressManipulation.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
-
-const defaultScope: Partial<CellScope> = { values: true, text: true, format: true };
+import { defaultCellScope } from "../services/cell.ts";
 
 /**
  * Represents a row yielded by the {@link iterateRows} generator.
@@ -50,7 +49,7 @@ export type IteratedRow = {
  *   console.log(row);
  * }
  */
-export async function* iterateRows(rangeRef: WorkbookRangeRef, scope: Partial<CellScope> = defaultScope, maxCellsPerOperation: number | null = null): AsyncIterable<IteratedRow> {
+export async function* iterateRows(rangeRef: WorkbookRangeRef, scope: Partial<CellScope> = defaultCellScope, maxCellsPerOperation: number | null = null): AsyncIterable<IteratedRow> {
 	const totalColumnCount = countAddressColumns(rangeRef.address);
 	const totalRowCount = countAddressRows(rangeRef.address);
 	const maxRowsPerOperation = calculateMaxRowsPerOperation(totalColumnCount, maxCellsPerOperation);

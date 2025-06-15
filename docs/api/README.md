@@ -124,7 +124,7 @@
 | [azureApplicationCredentials](azureApplicationCredentials.md) | Azure application credential helpers for authentication and token management. |
 | [batch](batch.md) | Constants and helpers for batching Microsoft Graph API requests. |
 | [cartesianAddress](cartesianAddress.md) | Utilities for converting between A1 addresses and Cartesian coordinates. |
-| [CellFormat](CellFormat.md) | Spreadsheet number format constants for Microsoft Graph API. |
+| [CellFormat](CellFormat.md) | Cell utilities. |
 | [context](context.md) | Context creation and management utilities for Microsoft Graph API authentication. |
 | [dataSource](dataSource.md) | Tooling for easily creating, updating, and deleting items in a worksheet or range. |
 | [drive](drive.md) | Utilities for working with Microsoft Graph Drive references and operations. |
@@ -158,6 +158,8 @@
 | [getWorkbookWorksheetByName](getWorkbookWorksheetByName-1.md) | Get a worksheet by its name. |
 | [iterateRows](iterateRows.md) | Iterate over the rows in a given worksheet range. |
 | [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
+| [readFirstRow](readFirstRow.md) | Read the first row from a given workbook range. |
+| [readRows](readRows.md) | Read all rows from a given workbook range. |
 | [readWorkbookRows](readWorkbookRows.md) | Iterates over the rows in a given worksheet range. |
 | [safeDeleteWorkbook](safeDeleteWorkbook.md) | Safely delete a workbook by first closing any open sessions and then deleting it. |
 | [setColumnHidden](setColumnHidden.md) | Set one or more columns visibility. |
