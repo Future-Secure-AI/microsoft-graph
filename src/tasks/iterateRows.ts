@@ -42,7 +42,6 @@ export type IteratedRow = {
  * @param rangeRef Reference to the workbook range to iterate over.
  * @param scope Amount of detail to include for each cell.
  * @param maxCellsPerOperation Prescribe max cells to retrieve per operation. `null` automatically determines value. DO NOT SET EXCEPT FOR ADVANCED TUNING.
- * @remarks Including `style` in the scope requires over three operations for each and every cell. Use this sparingly!
  * @experimental
  * @example
  * for await (const { row } of iterateRows(rangeRef)) {
@@ -154,6 +153,7 @@ function calculateMaxRowsPerOperation(columnCount: number, overwriteMaxCellsPerO
 	}
 	return maxRowsPerOperation;
 }
+
 function scopeToRangeSelect(scope: Partial<CellScope>) {
 	if (!(scope.values || scope.text || scope.format)) {
 		return null;

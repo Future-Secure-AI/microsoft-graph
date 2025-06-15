@@ -28,7 +28,7 @@ import { createWorkbookRangeRef } from "../services/workbookRange.ts";
  * ]);
  */
 export default async function writeWorkbookRows(originRef: WorkbookRangeRef, rows: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, overwriteMaxRowsPerChunk: number | null = null): Promise<number> {
-	let maxRowsPerUnderlyingRead: number | null = overwriteMaxRowsPerChunk;
+	let maxRowsPerOperation: number | null = overwriteMaxRowsPerChunk;
 	let cellsPerRow: number | null = null;
 	let rowsCompleted = 0;
 	const batch: Partial<Cell>[][] = [];
@@ -40,11 +40,11 @@ export default async function writeWorkbookRows(originRef: WorkbookRangeRef, row
 			throw new InvalidArgumentError("Not all rows have the same number of cells. Ensure all rows are consistent in length.");
 		}
 
-		if (maxRowsPerUnderlyingRead === null) {
-			maxRowsPerUnderlyingRead = Math.max(1, Math.floor(maxCellsPerRequest / cellsPerRow)); // Excel supports up to 16k columns, which exceeds the assumed 10k cell limit per write. This might not be a problem, but not worth spending time checking this currently either.
+		if (maxRowsPerOperation === null) {
+			maxRowsPerOperation = Math.max(1, Math.floor(maxCellsPerRequest / cellsPerRow)); // Excel supports up to 16k columns, which exceeds the assumed 10k cell limit per write. This might not be a problem, but not worth spending time checking this currently either.
 		}
 
-		if (batch.push(row) >= maxRowsPerUnderlyingRead) {
+		if (batch.push(row) >= maxRowsPerOperation) {
 			rowsCompleted += await flushBatch(batch, originRef, rowsCompleted);
 		}
 	}
