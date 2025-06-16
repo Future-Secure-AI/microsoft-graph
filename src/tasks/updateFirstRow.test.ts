@@ -50,11 +50,7 @@ describe("updateFirstRow", () => {
 			]);
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
-			expect(result.numberFormat[0]).toEqual([
-				accountingCellFormat,
-				accountingCellFormat,
-				accountingCellFormat,
-			]);
+			expect(result.numberFormat[0]).toEqual([accountingCellFormat, accountingCellFormat, accountingCellFormat]);
 		} finally {
 			await tryDeleteDriveItem(workbook);
 		}
@@ -64,7 +60,7 @@ describe("updateFirstRow", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			// Fill all rows first
-			const initial = values.map(row => row.map(value => ({ value })));
+			const initial = values.map((row) => row.map((value) => ({ value })));
 			await import("./updateRows.ts").then(({ default: updateRows }) => updateRows(rangeRef, initial));
 			await calculateWorkbook(rangeRef);
 			// Update only the first row

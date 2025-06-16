@@ -167,5 +167,6 @@
 | [setWorkbookTableBodyVisibleRows](setWorkbookTableBodyVisibleRows.md) | Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed. |
 | [tryCloseWorkbookSession](tryCloseWorkbookSession.md) | Try and close a workbook session. |
 | [tryDeleteDriveItem](tryDeleteDriveItem.md) | Attempts to delete a drive item, returning success status. |
+| [updateFirstRow](updateFirstRow.md) | Update first row in a given workbook range. |
 | [updateRows](updateRows.md) | Update rows in a given workbook range. |
 | [writeWorkbookRows](writeWorkbookRows.md) | Write rows to a workbook range. |
