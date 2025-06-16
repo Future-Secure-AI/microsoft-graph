@@ -36,11 +36,21 @@ import { camelCaseToPascalCase } from "../services/stringCaseConversion.ts";
  *
  * // Advanced example with cell formatting:
  * await updateWorkbookRangeRows(rangeRef, [
- *   [{ value: "Column A", style: { alignment: { horizontal: "Right" }, font: { bold: true } } }, { value: "Column B", style: { alignment: { horizontal: "Right" }, font: { bold: true } }  }],
- *   [{ value: 1, format: accountingCellFormat }, { value: "A" }],
- *   [{ value: 2, format: accountingCellFormat }, { value: "B" }],
- * ]);
+ * [
+ * 	{ value: "Column A", alignment: { horizontal: "Right" }, font: { bold: true, color: "#ffffff" as Color }, fill: { color: "#000000" as Color } },
+ * 	{ value: "Column B", alignment: { horizontal: "Right" }, font: { bold: true, color: "#ffffff" as Color }, fill: { color: "#000000" as Color } },
+ * ],
+ * [
+ * 	{ value: 1, format: accountingCellFormat },
+ * 	{ value: "A" },
+ * ],
+ * [
+ * 	{ value: 2, format: accountingCellFormat },
+ * 	{ value: "B" }],
+ * ],
+ * );
  */
+
 export default async function updateWorkbookRangeRows(originRef: WorkbookRangeRef, cells: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, maxCellsPerOperation: number | null = null): Promise<void> {
 	let maxRowsPerOperation: number | null = maxCellsPerOperation;
 	let colCount: number | null = null;

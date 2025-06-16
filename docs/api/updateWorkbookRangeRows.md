@@ -12,7 +12,7 @@ Update rows in a given workbook range.
 
 > **updateWorkbookRangeRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/updateWorkbookRangeRows.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/updateWorkbookRangeRows.ts#L44)
+Defined in: [src/tasks/updateWorkbookRangeRows.ts:54](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/updateWorkbookRangeRows.ts#L54)
 
 **`Experimental`**
 
@@ -44,8 +44,17 @@ await updateWorkbookRangeRows(rangeRef, [
 
 // Advanced example with cell formatting:
 await updateWorkbookRangeRows(rangeRef, [
-  [{ value: "Column A", style: { alignment: { horizontal: "Right" }, font: { bold: true } } }, { value: "Column B", style: { alignment: { horizontal: "Right" }, font: { bold: true } }  }],
-  [{ value: 1, format: accountingCellFormat }, { value: "A" }],
-  [{ value: 2, format: accountingCellFormat }, { value: "B" }],
-]);
+[
+	{ value: "Column A", alignment: { horizontal: "Right" }, font: { bold: true, color: "#ffffff" as Color }, fill: { color: "#000000" as Color } },
+	{ value: "Column B", alignment: { horizontal: "Right" }, font: { bold: true, color: "#ffffff" as Color }, fill: { color: "#000000" as Color } },
+],
+[
+	{ value: 1, format: accountingCellFormat },
+	{ value: "A" },
+],
+[
+	{ value: 2, format: accountingCellFormat },
+	{ value: "B" }],
+],
+);
 ```
