@@ -12,7 +12,7 @@ Read all rows from a given workbook range.
 
 > **readRows**(`rangeRef`, `scope`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Cell`](Cell.md#cell)[][]\>
 
-Defined in: src/tasks/readRows.ts:23
+Defined in: [src/tasks/readRows.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/readRows.ts#L23)
 
 **`Experimental`**
 

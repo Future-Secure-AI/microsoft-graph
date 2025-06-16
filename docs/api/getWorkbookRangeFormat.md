@@ -10,7 +10,7 @@ Retrieve the format of a workbook range.
 
 > **getWorkbookRangeFormat**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeFormat` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookRange/getWorkbookRangeFormat.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookRangeFormat.ts#L20)
+Defined in: [src/operations/workbookRange/getWorkbookRangeFormat.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookRangeFormat.ts#L21)
 
 Retrieve the format of a workbook range.
 

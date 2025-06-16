@@ -14,3 +14,15 @@ export function kebabToCamelCase(str: string): string {
 		.replace(/^-+|-+$/g, "") // Remove leading and trailing dashes
 		.replace(/-([a-z])/g, (_: string, letter: string) => letter.toUpperCase());
 }
+
+/**
+ * Converts a camelCase string to PascalCase.
+ * @param str - The camelCase string.
+ * @returns The PascalCase string.
+ */
+export function camelCaseToPascalCase(str: string): string {
+	if (!str) {
+		return str;
+	}
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}

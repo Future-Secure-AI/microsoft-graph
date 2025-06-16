@@ -10,7 +10,7 @@ Fetch a range.
 
 > **getWorkbookWorksheetRange**(`rangeRef`, `select?`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRange` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookRange/getWorkbookWorksheetRange.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookWorksheetRange.ts#L21)
+Defined in: [src/operations/workbookRange/getWorkbookWorksheetRange.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookWorksheetRange.ts#L23)
 
 Fetch a range.
 

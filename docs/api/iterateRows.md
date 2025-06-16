@@ -33,7 +33,7 @@ Represents a row yielded by the [iterateRows](#iteraterows) generator.
 
 > **iterateRows**(`rangeRef`, `scope`, `maxCellsPerOperation`): `AsyncIterable`\<[`IteratedRow`](#iteratedrow)\>
 
-Defined in: [src/tasks/iterateRows.ts:52](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateRows.ts#L52)
+Defined in: [src/tasks/iterateRows.ts:51](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateRows.ts#L51)
 
 **`Experimental`**
 
@@ -48,10 +48,6 @@ Defined in: [src/tasks/iterateRows.ts:52](https://github.com/Future-Secure-AI/mi
 #### Returns
 
 `AsyncIterable`\<[`IteratedRow`](#iteratedrow)\>
-
-#### Remarks
-
-Including `style` in the scope requires over three operations for each and every cell. Use this sparingly!
 
 #### Example
 

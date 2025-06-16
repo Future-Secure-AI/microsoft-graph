@@ -166,14 +166,14 @@ describe("iterateRows", () => {
 							wrapText: wrapText,
 						},
 						borders: {
-							bottom: isLast ? alternateBorder : defaultBorder, // <==
+							edgeLeft: defaultBorder,
+							edgeRight: defaultBorder,
+							edgeTop: defaultBorder,
+							edgeBottom: isLast ? alternateBorder : defaultBorder, // <==
 							diagonalDown: defaultBorder,
 							diagonalUp: defaultBorder,
 							insideHorizontal: defaultBorder,
 							insideVertical: defaultBorder,
-							left: defaultBorder,
-							right: defaultBorder,
-							top: defaultBorder,
 						},
 						fill: {
 							color: fillColor,

@@ -1,3 +1,4 @@
+// TODO: Rename to getWorkbookRangeAlignment
 /**
  * Retrieve the format of a workbook range.
  * @module getWorkbookRangeFormat

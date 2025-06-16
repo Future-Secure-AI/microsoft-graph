@@ -12,7 +12,7 @@ Read the first row from a given workbook range.
 
 > **readFirstRow**(`rangeRef`, `scope`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Cell`](Cell.md#cell)[]\>
 
-Defined in: src/tasks/readFirstRow.ts:23
+Defined in: [src/tasks/readFirstRow.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/readFirstRow.ts#L23)
 
 **`Experimental`**
 

@@ -1,3 +1,5 @@
+// TODO: Rename to getWorkbookRangeValueTextFormat
+
 /**
  * Fetch a range.
  * @module getWorkbookWorksheetRange

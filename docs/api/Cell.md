@@ -73,9 +73,9 @@ The amount of detail that we're reading from a cell.
 | <a id="borders"></a> `borders` | `boolean` | Cell borders. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:141](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L141) |
 | <a id="fill"></a> `fill` | `boolean` | Background fill style. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:144](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L144) |
 | <a id="font"></a> `font` | `boolean` | Text style. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:147](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L147) |
-| <a id="format-1"></a> `format` | `boolean` | Logic used to format values to text. CHEAP (~1 op per 10K cells, no additional call op `values` or `text`) | [src/models/Cell.ts:135](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L135) |
-| <a id="text-1"></a> `text` | `boolean` | Formatted value, as presented to the user. CHEAP (~1 op per 10K cells, no additional call op `values` or `format`) | [src/models/Cell.ts:132](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L132) |
-| <a id="values"></a> `values` | `boolean` | Raw cell value. CHEAP (~1 op per 10K cells, no additional op with `text` or `format`) | [src/models/Cell.ts:129](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L129) |
+| <a id="format-1"></a> `format` | `boolean` | Logic used to format values to text. CHEAP (+1 op per 10K cells, no additional call op `values` or `text`) | [src/models/Cell.ts:135](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L135) |
+| <a id="text-1"></a> `text` | `boolean` | Formatted value, as presented to the user. CHEAP (+1 op per 10K cells, no additional call op `values` or `format`) | [src/models/Cell.ts:132](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L132) |
+| <a id="values"></a> `values` | `boolean` | Raw cell value. CHEAP (+1 op per 10K cells, no additional op with `text` or `format`) | [src/models/Cell.ts:129](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L129) |
 
 ***
 
@@ -96,14 +96,14 @@ Style applied to the cell to affect its appearance, like color, borders, alignme
 | `alignment.vertical?` | [`CellVerticalAlignment`](#cellverticalalignment) | - | [src/models/Cell.ts:77](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L77) |
 | `alignment.wrapText?` | `boolean` | - | [src/models/Cell.ts:78](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L78) |
 | <a id="borders-1"></a> `borders` | `object` | **`Experimental`** Borders around the cell. | [src/models/Cell.ts:84](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L84) |
-| `borders.bottom?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:86](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L86) |
 | `borders.diagonalDown?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:91](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L91) |
 | `borders.diagonalUp?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:92](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L92) |
+| `borders.edgeBottom?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:86](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L86) |
+| `borders.edgeLeft?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:87](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L87) |
+| `borders.edgeRight?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:88](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L88) |
+| `borders.edgeTop?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:85](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L85) |
 | `borders.insideHorizontal?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:90](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L90) |
 | `borders.insideVertical?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:89](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L89) |
-| `borders.left?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:87](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L87) |
-| `borders.right?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:88](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L88) |
-| `borders.top?` | [`Border`](Border.md#border) | - | [src/models/Cell.ts:85](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L85) |
 | <a id="fill-1"></a> `fill` | `object` | **`Experimental`** Fill color of the cell. | [src/models/Cell.ts:107](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L107) |
 | `fill.color?` | [`Color`](Color.md#color) | - | [src/models/Cell.ts:108](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L108) |
 | <a id="font-1"></a> `font` | `object` | **`Experimental`** Font settings for the cell. | [src/models/Cell.ts:114](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L114) |

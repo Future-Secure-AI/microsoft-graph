@@ -82,10 +82,10 @@ export type CellStyle = {
 	 * @experimental
 	 */
 	borders: {
-		top?: Border | undefined;
-		bottom?: Border | undefined;
-		left?: Border | undefined;
-		right?: Border | undefined;
+		edgeTop?: Border | undefined;
+		edgeBottom?: Border | undefined;
+		edgeLeft?: Border | undefined;
+		edgeRight?: Border | undefined;
 		insideVertical?: Border | undefined;
 		insideHorizontal?: Border | undefined;
 		diagonalDown?: Border | undefined;
@@ -125,13 +125,13 @@ export type CellStyle = {
  * The amount of detail that we're reading from a cell.
  */
 export type CellScope = {
-	/** Raw cell value. CHEAP (~1 op per 10K cells, no additional op with `text` or `format`) */
+	/** Raw cell value. CHEAP (+1 op per 10K cells, no additional op with `text` or `format`) */
 	values: boolean;
 
-	/** Formatted value, as presented to the user. CHEAP (~1 op per 10K cells, no additional call op `values` or `format`) */
+	/** Formatted value, as presented to the user. CHEAP (+1 op per 10K cells, no additional call op `values` or `format`) */
 	text: boolean;
 
-	/** Logic used to format values to text. CHEAP (~1 op per 10K cells, no additional call op `values` or `text`) */
+	/** Logic used to format values to text. CHEAP (+1 op per 10K cells, no additional call op `values` or `text`) */
 	format: boolean;
 
 	/** Content position with the cell. VERY EXPENSIVE (+1 op per cell) */
