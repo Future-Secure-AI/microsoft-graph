@@ -31,7 +31,6 @@
 | [Color](Color.md) | Color has a hexadecimal representation (ie #ffffff"). |
 | [Column](Column.md) | Column pointers. |
 | [Context](Context-1.md) | Context of requests. |
-| [DataSource](DataSource-1.md) | Tooling for easily creating, updating, and deleting items in a worksheet or range. |
 | [Drive](Drive-1.md) | Drive pointers. |
 | [DriveItem](DriveItem-1.md) | Drive item pointers. |
 | [FontName](FontName.md) | Name of a font. |
@@ -126,7 +125,6 @@
 | [cartesianAddress](cartesianAddress.md) | Utilities for converting between A1 addresses and Cartesian coordinates. |
 | [CellFormat](CellFormat.md) | Cell utilities. |
 | [context](context.md) | Context creation and management utilities for Microsoft Graph API authentication. |
-| [dataSource](dataSource.md) | Tooling for easily creating, updating, and deleting items in a worksheet or range. |
 | [drive](drive.md) | Utilities for working with Microsoft Graph Drive references and operations. |
 | [driveItem](driveItem.md) | Utilities for working with Microsoft Graph Drive Items (files and folders). |
 | [environmentVariable](environmentVariable.md) | Utilities for accessing environment variables with error handling and fallbacks. |
