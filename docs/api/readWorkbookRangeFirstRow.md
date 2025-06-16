@@ -36,5 +36,5 @@ Particularly useful for reading header rows.
 #### Example
 
 ```ts
-const firstRow = await readFirstRow(rangeRef);
+const firstRow = await readWorkbookRangeFirstRow(rangeRef);
 ```

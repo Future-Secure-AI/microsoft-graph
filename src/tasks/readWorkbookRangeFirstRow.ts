@@ -18,7 +18,7 @@ import { iterateWorkbookRangeRows } from "./iterateWorkbookRangeRows.ts";
  * @returns A promise that resolves to an array of cells in the first row.
  * @remarks Particularly useful for reading header rows.
  * @example
- * const firstRow = await readFirstRow(rangeRef);
+ * const firstRow = await readWorkbookRangeFirstRow(rangeRef);
  */
 export default async function readWorkbookRangeFirstRow(rangeRef: WorkbookRangeRef, scope = defaultCellScope): Promise<Cell[]> {
 	const firstRowRef = subRange(rangeRef, 0, 1);

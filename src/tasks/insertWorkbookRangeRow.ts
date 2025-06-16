@@ -15,7 +15,7 @@ import insertWorkbookRangeRows from "./insertWorkbookRangeRows.ts";
  * @param row Array of cells to insert as a single row.
  * @experimental
  * @example
- * await insertRow(originRef, [{ value: "A1" }, { value: "B1" }, { value: "C1" }]);
+ * await insertWorkbookRangeRow(originRef, [{ value: "A1" }, { value: "B1" }, { value: "C1" }]);
  */
 export default async function insertWorkbookRangeRow(originRef: WorkbookRangeRef, row: Partial<Cell>[]): Promise<void> {
 	await insertWorkbookRangeRows(originRef, [row]);

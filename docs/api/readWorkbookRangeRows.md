@@ -36,5 +36,5 @@ Where practical, prefer using [iterateWorkbookRangeRows](iterateWorkbookRangeRow
 #### Example
 
 ```ts
-const rows = await readRows(rangeRef);
+const rows = await readWorkbookRangeRows(rangeRef);
 ```

@@ -35,10 +35,10 @@ Defined in: [src/tasks/updateWorkbookRangeFirstRow.ts:28](https://github.com/Fut
 
 ```ts
 // Basic example:
-await updateFirstRow(rangeRef, [{ value: 1 }, { value: 2 }]);
+await updateWorkbookRangeFirstRow(rangeRef, [{ value: 1 }, { value: 2 }]);
 
 // Advanced example with cell formatting:
-await updateRows(rangeRef, [
+await updateWorkbookRangeFirstRow(rangeRef, [
  { value: "Column A", style: { alignment: { horizontal: "Right" }, font: { bold: true } } },
  { value: "Column B", style: { alignment: { horizontal: "Right" }, font: { bold: true } } }
 ]);

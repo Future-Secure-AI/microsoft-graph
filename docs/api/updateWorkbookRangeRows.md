@@ -36,14 +36,14 @@ Defined in: [src/tasks/updateWorkbookRangeRows.ts:44](https://github.com/Future-
 
 ```ts
 // Basic example:
-await updateRows(rangeRef, [
+await updateWorkbookRangeRows(rangeRef, [
   [{ value: 1 }, { value: 2 }],
   [{ value: 3 }, { value: 4 }],
   [{ value: 5 }, { value: 6 }],
 ]);
 
 // Advanced example with cell formatting:
-await updateRows(rangeRef, [
+await updateWorkbookRangeRows(rangeRef, [
   [{ value: "Column A", style: { alignment: { horizontal: "Right" }, font: { bold: true } } }, { value: "Column B", style: { alignment: { horizontal: "Right" }, font: { bold: true } }  }],
   [{ value: 1, format: accountingCellFormat }, { value: "A" }],
   [{ value: 2, format: accountingCellFormat }, { value: "B" }],

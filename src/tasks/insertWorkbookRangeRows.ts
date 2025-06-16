@@ -21,14 +21,14 @@ import updateWorkbookRangeRows from "./updateWorkbookRangeRows.ts";
  * @experimental
  * @example
  * // Basic example:
- * await insertRows(originRef, [
+ * await insertWorkbookRangeRows(originRef, [
  *   [{ value: "A1" }, { value: "B1" }, { value: "C1" }],
  *   [{ value: "A2" }, { value: "B2" }, { value: "C2" }],
  *  [{ value: "A3" }, { value: "B3" }, { value: "C3" }],
  * ])
  *
  * // Advanced example with cell formatting:
- * await insertRows(originRef, [
+ * await insertWorkbookRangeRows(originRef, [
  *   [{ value: "A1", format: { fontColor: "red" } }, { value: "B1" }, { value: "C1" }],
  *   [{ value: "A2" }, { value: "B2", format: { fontColor: "blue" } }, { value: "C2" }],
  *   [{ value: "A3" }, { value: "B3" }, { value: "C3", format: { fontColor: "green" } }],

@@ -30,5 +30,5 @@ Defined in: [src/tasks/insertWorkbookRangeRow.ts:20](https://github.com/Future-S
 #### Example
 
 ```ts
-await insertRow(originRef, [{ value: "A1" }, { value: "B1" }, { value: "C1" }]);
+await insertWorkbookRangeRow(originRef, [{ value: "A1" }, { value: "B1" }, { value: "C1" }]);
 ```

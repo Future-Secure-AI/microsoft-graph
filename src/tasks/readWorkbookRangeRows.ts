@@ -18,7 +18,7 @@ import { iterateWorkbookRangeRows } from "./iterateWorkbookRangeRows.ts";
  * @remarks Where practical, prefer using {@link iterateWorkbookRangeRows} for more efficient memory usage.
  * @experimental
  * @example
- * const rows = await readRows(rangeRef);
+ * const rows = await readWorkbookRangeRows(rangeRef);
  */
 export default async function readWorkbookRangeRows(rangeRef: WorkbookRangeRef, scope = defaultCellScope): Promise<Cell[][]> {
 	const rows: Cell[][] = [];
