@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.34.1",
+  "version": "2.35.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -608,31 +608,6 @@
       "import": "./dist/esm/models/Context.js",
       "require": "./dist/cjs/models/Context.js",
       "types": "./dist/esm/models/Context.d.ts"
-    },
-    "./DataSource": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./dist/cjs/models/DataSource.js": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./dist/cjs/models/DataSource": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./models/DataSource": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
-    },
-    "./models/DataSource.js": {
-      "import": "./dist/esm/models/DataSource.js",
-      "require": "./dist/cjs/models/DataSource.js",
-      "types": "./dist/esm/models/DataSource.d.ts"
     },
     "./Drive": {
       "import": "./dist/esm/models/Drive.js",
@@ -2784,31 +2759,6 @@
       "require": "./dist/cjs/services/context.js",
       "types": "./dist/esm/services/context.d.ts"
     },
-    "./dataSource": {
-      "import": "./dist/esm/services/dataSource.js",
-      "require": "./dist/cjs/services/dataSource.js",
-      "types": "./dist/esm/services/dataSource.d.ts"
-    },
-    "./dist/cjs/services/dataSource.js": {
-      "import": "./dist/esm/services/dataSource.js",
-      "require": "./dist/cjs/services/dataSource.js",
-      "types": "./dist/esm/services/dataSource.d.ts"
-    },
-    "./dist/cjs/services/dataSource": {
-      "import": "./dist/esm/services/dataSource.js",
-      "require": "./dist/cjs/services/dataSource.js",
-      "types": "./dist/esm/services/dataSource.d.ts"
-    },
-    "./services/dataSource": {
-      "import": "./dist/esm/services/dataSource.js",
-      "require": "./dist/cjs/services/dataSource.js",
-      "types": "./dist/esm/services/dataSource.d.ts"
-    },
-    "./services/dataSource.js": {
-      "import": "./dist/esm/services/dataSource.js",
-      "require": "./dist/cjs/services/dataSource.js",
-      "types": "./dist/esm/services/dataSource.d.ts"
-    },
     "./drive": {
       "import": "./dist/esm/services/drive.js",
       "require": "./dist/cjs/services/drive.js",
@@ -2958,6 +2908,31 @@
       "import": "./dist/esm/services/iteration.js",
       "require": "./dist/cjs/services/iteration.js",
       "types": "./dist/esm/services/iteration.d.ts"
+    },
+    "./objectMapping": {
+      "import": "./dist/esm/services/objectMapping.js",
+      "require": "./dist/cjs/services/objectMapping.js",
+      "types": "./dist/esm/services/objectMapping.d.ts"
+    },
+    "./dist/cjs/services/objectMapping.js": {
+      "import": "./dist/esm/services/objectMapping.js",
+      "require": "./dist/cjs/services/objectMapping.js",
+      "types": "./dist/esm/services/objectMapping.d.ts"
+    },
+    "./dist/cjs/services/objectMapping": {
+      "import": "./dist/esm/services/objectMapping.js",
+      "require": "./dist/cjs/services/objectMapping.js",
+      "types": "./dist/esm/services/objectMapping.d.ts"
+    },
+    "./services/objectMapping": {
+      "import": "./dist/esm/services/objectMapping.js",
+      "require": "./dist/cjs/services/objectMapping.js",
+      "types": "./dist/esm/services/objectMapping.d.ts"
+    },
+    "./services/objectMapping.js": {
+      "import": "./dist/esm/services/objectMapping.js",
+      "require": "./dist/cjs/services/objectMapping.js",
+      "types": "./dist/esm/services/objectMapping.d.ts"
     },
     "./operationId": {
       "import": "./dist/esm/services/operationId.js",
