@@ -18,9 +18,9 @@ import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFi
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
 import setWorkbookRangeFormat from "../operations/workbookRange/setWorkbookRangeFormat.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
-import { subRange } from "../services/addressManipulation.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
 import { camelCaseToPascalCase } from "../services/stringCaseConversion.ts";
+import { superRange } from "../services/addressManipulation.ts";
 
 /**
  * Update rows in a given workbook range.
@@ -76,7 +76,7 @@ async function writeBatch(cells: Partial<Cell>[][], originRef: WorkbookRangeRef,
 		return 0;
 	}
 
-	const rangeRef = subRange(originRef, rowsCompleted, rowCount, 0, colCount);
+	const rangeRef = superRange(originRef, rowsCompleted, rowCount, 0, colCount);
 
 	await writeValuesTextFormat(cells, rangeRef);
 	await writeMerges(cells, rangeRef, rowCount, colCount);
@@ -138,7 +138,7 @@ async function writeMerges(cells: Partial<Cell>[][], rangeRef: WorkbookRangeRef,
 				}
 			}
 
-			const subRangeRef = subRange(rangeRef, r, rowSpan, c, colSpan);
+			const subRangeRef = superRange(rangeRef, r, rowSpan, c, colSpan);
 			await mergeWorkbookRange(subRangeRef);
 		}
 	}
@@ -283,7 +283,7 @@ async function forEachIdenticalRange<T>(cells: Partial<Cell>[][], rowCount: numb
 	const bestRanges = horizontalRanges.length <= verticalRanges.length ? horizontalRanges : verticalRanges;
 
 	for (const { cartesian, value } of bestRanges) {
-		const subRangeRef = subRange(originRef, cartesian.ay, cartesian.by - cartesian.ay + 1, cartesian.ax, cartesian.bx - cartesian.ax + 1);
+		const subRangeRef = superRange(originRef, cartesian.ay, cartesian.by - cartesian.ay + 1, cartesian.ax, cartesian.bx - cartesian.ax + 1);
 		await callback(subRangeRef, value);
 	}
 }
