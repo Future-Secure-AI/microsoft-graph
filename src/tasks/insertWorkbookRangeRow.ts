@@ -1,6 +1,6 @@
 /**
  * Inserts a single row into a workbook range.
- * @module insertRow
+ * @module insertWorkbookRangeRow
  * @category Tasks
  * @experimental
  */

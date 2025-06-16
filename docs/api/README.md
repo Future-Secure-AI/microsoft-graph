@@ -156,12 +156,12 @@
 | [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
 | [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
 | [getWorkbookWorksheetByName](getWorkbookWorksheetByName-1.md) | Get a worksheet by its name. |
-| [insertRow](insertRow.md) | Inserts a single row into a workbook range. |
-| [insertRows](insertRows.md) | Inserts rows into a workbook range. |
-| [iterateRows](iterateRows.md) | Iterate over the rows in a given worksheet range. |
+| [insertWorkbookRangeRow](insertWorkbookRangeRow.md) | Inserts a single row into a workbook range. |
+| [insertWorkbookRangeRows](insertWorkbookRangeRows.md) | Inserts rows into a workbook range. |
+| [iterateWorkbookRangeRows](iterateWorkbookRangeRows.md) | Iterate over the rows in a given worksheet range. |
 | [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
-| [readFirstRow](readFirstRow.md) | Read the first row from a given workbook range. |
-| [readRows](readRows.md) | Read all rows from a given workbook range. |
+| [readWorkbookRangeFirstRow](readWorkbookRangeFirstRow.md) | Read the first row from a given workbook range. |
+| [readWorkbookRangeRows](readWorkbookRangeRows.md) | Read all rows from a given workbook range. |
 | [readWorkbookRows](readWorkbookRows.md) | Iterates over the rows in a given worksheet range. |
 | [safeDeleteWorkbook](safeDeleteWorkbook.md) | Safely delete a workbook by first closing any open sessions and then deleting it. |
 | [setColumnHidden](setColumnHidden.md) | Set one or more columns visibility. |
@@ -169,6 +169,6 @@
 | [setWorkbookTableBodyVisibleRows](setWorkbookTableBodyVisibleRows.md) | Set visible rows of a workbook table with the provided 2D array of values, ignoring hidden rows and inserting new rows at the end if needed. |
 | [tryCloseWorkbookSession](tryCloseWorkbookSession.md) | Try and close a workbook session. |
 | [tryDeleteDriveItem](tryDeleteDriveItem.md) | Attempts to delete a drive item, returning success status. |
-| [updateFirstRow](updateFirstRow.md) | Update first row in a given workbook range. |
-| [updateRows](updateRows.md) | Update rows in a given workbook range. |
+| [updateWorkbookRangeFirstRow](updateWorkbookRangeFirstRow.md) | Update first row in a given workbook range. |
+| [updateWorkbookRangeRows](updateWorkbookRangeRows.md) | Update rows in a given workbook range. |
 | [writeWorkbookRows](writeWorkbookRows.md) | Write rows to a workbook range. |

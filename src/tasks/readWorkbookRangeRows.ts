@@ -1,6 +1,6 @@
 /**
  * Read all rows from a given workbook range.
- * @module readRows
+ * @module readWorkbookRangeRows
  * @category Tasks
  * @experimental
  */

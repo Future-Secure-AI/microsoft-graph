@@ -1,6 +1,6 @@
 /**
  * Update rows in a given workbook range.
- * @module updateRows
+ * @module updateWorkbookRangeRows
  * @category Tasks
  * @experimental
  */

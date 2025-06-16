@@ -1,6 +1,6 @@
 /**
  * Iterate over the rows in a given worksheet range.
- * @module iterateRows
+ * @module iterateWorkbookRangeRows
  * @category Tasks
  * @experimental
  */

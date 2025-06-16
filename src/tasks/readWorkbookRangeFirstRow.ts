@@ -1,6 +1,6 @@
 /**
  * Read the first row from a given workbook range.
- * @module readFirstRow
+ * @module readWorkbookRangeFirstRow
  * @category Tasks
  * @experimental
  */
