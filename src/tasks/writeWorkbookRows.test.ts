@@ -1,10 +1,9 @@
 import { describe, expect, it } from "vitest";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import createWorkbook from "../operations/workbook/createWorkbook.ts";
-import { asCellText } from "../services/cellText.ts";
+import { generalCellFormat } from "../services/cell.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
-import { generalNumberFormat } from "../services/numberFormat.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
@@ -24,19 +23,19 @@ describe("writeWorkbookRows", () => {
 			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1");
 			const rows = [
 				[
-					{ value: 1, text: asCellText("1"), numberFormat: generalNumberFormat },
-					{ value: 2, text: asCellText("2"), numberFormat: generalNumberFormat },
-					{ value: 3, text: asCellText("3"), numberFormat: generalNumberFormat },
+					{ value: 1, text: "1", numberFormat: generalCellFormat },
+					{ value: 2, text: "2", numberFormat: generalCellFormat },
+					{ value: 3, text: "3", numberFormat: generalCellFormat },
 				],
 				[
-					{ value: 4, text: asCellText("4"), numberFormat: generalNumberFormat },
-					{ value: 5, text: asCellText("5"), numberFormat: generalNumberFormat },
-					{ value: 6, text: asCellText("6"), numberFormat: generalNumberFormat },
+					{ value: 4, text: "4", numberFormat: generalCellFormat },
+					{ value: 5, text: "5", numberFormat: generalCellFormat },
+					{ value: 6, text: "6", numberFormat: generalCellFormat },
 				],
 				[
-					{ value: 7, text: asCellText("7"), numberFormat: generalNumberFormat },
-					{ value: 8, text: asCellText("8"), numberFormat: generalNumberFormat },
-					{ value: 9, text: asCellText("9"), numberFormat: generalNumberFormat },
+					{ value: 7, text: "7", numberFormat: generalCellFormat },
+					{ value: 8, text: "8", numberFormat: generalCellFormat },
+					{ value: 9, text: "9", numberFormat: generalCellFormat },
 				],
 			];
 
@@ -49,7 +48,7 @@ describe("writeWorkbookRows", () => {
 			for await (const row of readWorkbookRows(readRangeRef)) {
 				expect(row.map((x) => x.value)).toEqual(rows[idx].map((c) => c.value));
 				expect(row.map((x) => x.text)).toEqual(rows[idx].map((c) => c.text));
-				expect(row.map((x) => x.numberFormat)).toEqual(rows[idx].map((c) => c.numberFormat));
+				expect(row.map((x) => x.format)).toEqual(rows[idx].map((c) => c.numberFormat));
 				idx++;
 			}
 		} finally {
@@ -67,9 +66,9 @@ describe("writeWorkbookRows", () => {
 		try {
 			const rangeRef = createWorkbookRangeRef(worksheetRef, "A1");
 			const rows = Array.from({ length: 20 }, (_, i) => [
-				{ value: i, text: asCellText(i.toString()), numberFormat: generalNumberFormat },
-				{ value: i + 1, text: asCellText((i + 1).toString()), numberFormat: generalNumberFormat },
-				{ value: i + 2, text: asCellText((i + 2).toString()), numberFormat: generalNumberFormat },
+				{ value: i, text: i.toString(), numberFormat: generalCellFormat },
+				{ value: i + 1, text: (i + 1).toString(), numberFormat: generalCellFormat },
+				{ value: i + 2, text: (i + 2).toString(), numberFormat: generalCellFormat },
 			]);
 
 			await writeWorkbookRows(rangeRef, rows, 5); // Force small batch size
@@ -80,7 +79,7 @@ describe("writeWorkbookRows", () => {
 			for await (const row of readWorkbookRows(readRangeRef)) {
 				expect(row.map((x) => x.value)).toEqual(rows[idx].map((c) => c.value));
 				expect(row.map((x) => x.text)).toEqual(rows[idx].map((c) => c.text));
-				expect(row.map((x) => x.numberFormat)).toEqual(rows[idx].map((c) => c.numberFormat));
+				expect(row.map((x) => x.format)).toEqual(rows[idx].map((c) => c.numberFormat));
 				idx++;
 			}
 		} finally {
@@ -97,19 +96,19 @@ describe("writeWorkbookRows", () => {
 
 		function* rowGenerator() {
 			yield [
-				{ value: 10, text: asCellText("10"), numberFormat: generalNumberFormat },
-				{ value: 20, text: asCellText("20"), numberFormat: generalNumberFormat },
-				{ value: 30, text: asCellText("30"), numberFormat: generalNumberFormat },
+				{ value: 10, text: "10", numberFormat: generalCellFormat },
+				{ value: 20, text: "20", numberFormat: generalCellFormat },
+				{ value: 30, text: "30", numberFormat: generalCellFormat },
 			];
 			yield [
-				{ value: 40, text: asCellText("40"), numberFormat: generalNumberFormat },
-				{ value: 50, text: asCellText("50"), numberFormat: generalNumberFormat },
-				{ value: 60, text: asCellText("60"), numberFormat: generalNumberFormat },
+				{ value: 40, text: "40", numberFormat: generalCellFormat },
+				{ value: 50, text: "50", numberFormat: generalCellFormat },
+				{ value: 60, text: "60", numberFormat: generalCellFormat },
 			];
 			yield [
-				{ value: 70, text: asCellText("70"), numberFormat: generalNumberFormat },
-				{ value: 80, text: asCellText("80"), numberFormat: generalNumberFormat },
-				{ value: 90, text: asCellText("90"), numberFormat: generalNumberFormat },
+				{ value: 70, text: "70", numberFormat: generalCellFormat },
+				{ value: 80, text: "80", numberFormat: generalCellFormat },
+				{ value: 90, text: "90", numberFormat: generalCellFormat },
 			];
 		}
 
@@ -124,7 +123,7 @@ describe("writeWorkbookRows", () => {
 			for await (const row of readWorkbookRows(rangeRef)) {
 				expect(row.map((x) => x.value)).toEqual(rows[idx].map((c) => c.value));
 				expect(row.map((x) => x.text)).toEqual(rows[idx].map((c) => c.text));
-				expect(row.map((x) => x.numberFormat)).toEqual(rows[idx].map((c) => c.numberFormat));
+				expect(row.map((x) => x.format)).toEqual(rows[idx].map((c) => c.numberFormat));
 				idx++;
 			}
 		} finally {
