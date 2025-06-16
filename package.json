@@ -3479,6 +3479,31 @@
       "require": "./dist/cjs/tasks/getWorkbookWorksheetByName.js",
       "types": "./dist/esm/tasks/getWorkbookWorksheetByName.d.ts"
     },
+    "./insertRow": {
+      "import": "./dist/esm/tasks/insertRow.js",
+      "require": "./dist/cjs/tasks/insertRow.js",
+      "types": "./dist/esm/tasks/insertRow.d.ts"
+    },
+    "./dist/cjs/tasks/insertRow.js": {
+      "import": "./dist/esm/tasks/insertRow.js",
+      "require": "./dist/cjs/tasks/insertRow.js",
+      "types": "./dist/esm/tasks/insertRow.d.ts"
+    },
+    "./dist/cjs/tasks/insertRow": {
+      "import": "./dist/esm/tasks/insertRow.js",
+      "require": "./dist/cjs/tasks/insertRow.js",
+      "types": "./dist/esm/tasks/insertRow.d.ts"
+    },
+    "./tasks/insertRow": {
+      "import": "./dist/esm/tasks/insertRow.js",
+      "require": "./dist/cjs/tasks/insertRow.js",
+      "types": "./dist/esm/tasks/insertRow.d.ts"
+    },
+    "./tasks/insertRow.js": {
+      "import": "./dist/esm/tasks/insertRow.js",
+      "require": "./dist/cjs/tasks/insertRow.js",
+      "types": "./dist/esm/tasks/insertRow.d.ts"
+    },
     "./insertRows": {
       "import": "./dist/esm/tasks/insertRows.js",
       "require": "./dist/cjs/tasks/insertRows.js",

@@ -1,0 +1,22 @@
+/**
+ * Inserts a single row into a workbook range.
+ * @module insertRow
+ * @category Tasks
+ * @experimental
+ */
+
+import type { Cell } from "../models/Cell.ts";
+import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
+import insertRows from "./insertRows.ts";
+
+/**
+ * Inserts a single row into a workbook range.
+ * @param originRef Reference to the workbook range to update. Only the upper-left cell is used as an origin point.
+ * @param row Array of cells to insert as a single row.
+ * @experimental
+ * @example
+ * await insertRow(originRef, [{ value: "A1" }, { value: "B1" }, { value: "C1" }]);
+ */
+export default async function insertRow(originRef: WorkbookRangeRef, row: Partial<Cell>[]): Promise<void> {
+	await insertRows(originRef, [row]);
+}

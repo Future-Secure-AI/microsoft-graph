@@ -156,6 +156,7 @@
 | [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
 | [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
 | [getWorkbookWorksheetByName](getWorkbookWorksheetByName-1.md) | Get a worksheet by its name. |
+| [insertRow](insertRow.md) | Inserts a single row into a workbook range. |
 | [insertRows](insertRows.md) | Inserts rows into a workbook range. |
 | [iterateRows](iterateRows.md) | Iterate over the rows in a given worksheet range. |
 | [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
