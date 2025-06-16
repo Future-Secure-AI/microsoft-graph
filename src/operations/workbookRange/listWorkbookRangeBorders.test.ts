@@ -10,6 +10,7 @@ import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
 import listWorkbookRangeBorders from "./listWorkbookRangeBorders.ts";
 import setWorkbookRangeBorder from "./setWorkbookRangeBorder.ts";
+import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 
 describe("listWorkbookRangeBorders", () => {
 	it("can list borders after setting with setWorkbookRangeBorder", async () => {
@@ -32,6 +33,7 @@ describe("listWorkbookRangeBorders", () => {
 				weight: weight,
 			});
 
+			await calculateWorkbook(workbook);
 			const borders = await listWorkbookRangeBorders(rangeRef);
 			const bottomBorder = borders.find((b) => b.sideIndex === "EdgeBottom");
 			if (!bottomBorder) {
