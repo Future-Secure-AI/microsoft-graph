@@ -41,7 +41,7 @@ import { camelCaseToPascalCase } from "../services/stringCaseConversion.ts";
  *   [{ value: 2, format: accountingCellFormat }, { value: "B" }],
  * ]);
  */
-export default async function updateRows(originRef: WorkbookRangeRef, cells: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, maxCellsPerOperation: number | null = null): Promise<void> {
+export default async function updateWorkbookRangeRows(originRef: WorkbookRangeRef, cells: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, maxCellsPerOperation: number | null = null): Promise<void> {
 	let maxRowsPerOperation: number | null = maxCellsPerOperation;
 	let colCount: number | null = null;
 	let rowCount = 0;

@@ -8,11 +8,11 @@ Inserts a single row into a workbook range.
 
 ## Functions
 
-### insertRow()
+### insertWorkbookRangeRow()
 
-> **insertRow**(`originRef`, `row`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+> **insertWorkbookRangeRow**(`originRef`, `row`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: src/tasks/insertRow.ts:20
+Defined in: src/tasks/insertWorkbookRangeRow.ts:20
 
 **`Experimental`**
 

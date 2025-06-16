@@ -11,7 +11,7 @@ import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import insertWorkbookCells from "../operations/workbookRange/insertWorkbookCells.ts";
 import { superRange } from "../services/addressManipulation.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
-import updateRows from "./updateRows.ts";
+import updateWorkbookRangeRows from "./updateWorkbookRangeRows.ts";
 
 /**
  * Inserts rows into a workbook range.
@@ -35,7 +35,7 @@ import updateRows from "./updateRows.ts";
  * ]);
  */
 
-export default async function insertRows(originRef: WorkbookRangeRef, cells: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, maxCellsPerOperation: number | null = null): Promise<void> {
+export default async function insertWorkbookRangeRows(originRef: WorkbookRangeRef, cells: Iterable<Partial<Cell>[]> | AsyncIterable<Partial<Cell>[]>, maxCellsPerOperation: number | null = null): Promise<void> {
 	let maxRowsPerOperation: number | null = maxCellsPerOperation;
 	let colCount: number | null = null;
 	let rowCount = 0;
@@ -68,7 +68,7 @@ async function writeBatch(batch: Partial<Cell>[][], originRef: WorkbookRangeRef,
 	}
 	const rangeRef = superRange(originRef, rowsCompleted, rowCount, 0, colCount);
 	await insertWorkbookCells(rangeRef, "Down");
-	await updateRows(rangeRef, batch);
+	await updateWorkbookRangeRows(rangeRef, batch);
 	batch.length = 0;
 	return rowCount;
 }

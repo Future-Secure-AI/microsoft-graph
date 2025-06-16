@@ -8,7 +8,7 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
-import readRows from "./readRows.ts";
+import readWorkbookRangeRows from "./readWorkbookRangeRows.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 const values = [
@@ -18,7 +18,7 @@ const values = [
 ];
 const texts = values.map((row) => row.map((x) => x.toString()));
 
-describe("readRows", () => {
+describe("readWorkbookRangeRows", () => {
 	async function prepareRange() {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
@@ -34,7 +34,7 @@ describe("readRows", () => {
 	it("reads all rows with default scope", async () => {
 		const rangeRef = await prepareRange();
 		try {
-			const rows = await readRows(rangeRef);
+			const rows = await readWorkbookRangeRows(rangeRef);
 			expect(rows.length).toBe(3);
 			rows.forEach((row, y) => {
 				expect(row.length).toBe(3);
@@ -52,7 +52,7 @@ describe("readRows", () => {
 	it("reads all rows with values only scope", async () => {
 		const rangeRef = await prepareRange();
 		try {
-			const rows = await readRows(rangeRef, { values: true, text: false, format: false, alignment: false, borders: false, fill: false, font: false });
+			const rows = await readWorkbookRangeRows(rangeRef, { values: true, text: false, format: false, alignment: false, borders: false, fill: false, font: false });
 			rows.forEach((row, y) => {
 				row.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);

@@ -7,7 +7,7 @@
 
 import type { Cell } from "../models/Cell.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
-import insertRows from "./insertRows.ts";
+import insertWorkbookRangeRows from "./insertWorkbookRangeRows.ts";
 
 /**
  * Inserts a single row into a workbook range.
@@ -17,6 +17,6 @@ import insertRows from "./insertRows.ts";
  * @example
  * await insertRow(originRef, [{ value: "A1" }, { value: "B1" }, { value: "C1" }]);
  */
-export default async function insertRow(originRef: WorkbookRangeRef, row: Partial<Cell>[]): Promise<void> {
-	await insertRows(originRef, [row]);
+export default async function insertWorkbookRangeRow(originRef: WorkbookRangeRef, row: Partial<Cell>[]): Promise<void> {
+	await insertWorkbookRangeRows(originRef, [row]);
 }

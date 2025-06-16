@@ -8,11 +8,11 @@ Read all rows from a given workbook range.
 
 ## Functions
 
-### readRows()
+### readWorkbookRangeRows()
 
-> **readRows**(`rangeRef`, `scope`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Cell`](Cell.md#cell)[][]\>
+> **readWorkbookRangeRows**(`rangeRef`, `scope`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`Cell`](Cell.md#cell)[][]\>
 
-Defined in: [src/tasks/readRows.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/readRows.ts#L23)
+Defined in: src/tasks/readWorkbookRangeRows.ts:23
 
 **`Experimental`**
 
@@ -31,7 +31,7 @@ A promise that resolves to an array of rows, each containing an array of cells.
 
 #### Remarks
 
-Where practical, prefer using [iterateRows](iterateRows.md#iteraterows) for more efficient memory usage.
+Where practical, prefer using [iterateWorkbookRangeRows](iterateRows.md#iterateworkbookrangerows) for more efficient memory usage.
 
 #### Example
 

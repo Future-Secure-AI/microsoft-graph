@@ -24,7 +24,7 @@ import { maxCellsPerRequest } from "../services/batch.ts";
 import { defaultCellScope } from "../services/cell.ts";
 
 /**
- * Represents a row yielded by the {@link iterateRows} generator.
+ * Represents a row yielded by the {@link iterateWorkbookRangeRows} generator.
  * @property {Cell[]} cells Array of cells in the row, each containing value, text, format, and optionally style information depending on the scope.
  * @property {RowOffset} offset Zero-based offset of the row within the original range.
  * @property {boolean} isFirst If this is the first row in the iteration.
@@ -48,7 +48,7 @@ export type IteratedRow = {
  *   console.log(row);
  * }
  */
-export async function* iterateRows(rangeRef: WorkbookRangeRef, scope: Partial<CellScope> = defaultCellScope, maxCellsPerOperation: number | null = null): AsyncIterable<IteratedRow> {
+export async function* iterateWorkbookRangeRows(rangeRef: WorkbookRangeRef, scope: Partial<CellScope> = defaultCellScope, maxCellsPerOperation: number | null = null): AsyncIterable<IteratedRow> {
 	const totalColumnCount = countAddressColumns(rangeRef.address);
 	const totalRowCount = countAddressRows(rangeRef.address);
 	const maxRowsPerOperation = calculateMaxRowsPerOperation(totalColumnCount, maxCellsPerOperation);

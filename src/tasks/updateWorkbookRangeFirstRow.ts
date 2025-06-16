@@ -7,7 +7,7 @@
 
 import type { Cell } from "../models/Cell.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
-import updateRows from "./updateRows.ts";
+import updateWorkbookRangeRows from "./updateWorkbookRangeRows.ts";
 
 /**
  * Update first row in a given workbook range.
@@ -25,7 +25,7 @@ import updateRows from "./updateRows.ts";
  *  { value: "Column B", style: { alignment: { horizontal: "Right" }, font: { bold: true } } }
  * ]);
  */
-export default async function updateFirstRow(originRef: WorkbookRangeRef, cells: Partial<Cell>[]): Promise<void> {
+export default async function updateWorkbookRangeFirstRow(originRef: WorkbookRangeRef, cells: Partial<Cell>[]): Promise<void> {
 	const rows = [cells];
-	await updateRows(originRef, rows);
+	await updateWorkbookRangeRows(originRef, rows);
 }

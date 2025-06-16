@@ -16,7 +16,7 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
-import insertRows from "./insertRows.ts";
+import insertWorkbookRangeRows from "./insertWorkbookRangeRows.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 const asColor = (c: string) => c as Color;
@@ -44,11 +44,11 @@ async function prepareRange() {
 	return { workbook, rangeRef };
 }
 
-describe("insertRows", () => {
+describe("insertWorkbookRangeRows", () => {
 	it("inserts values", async () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
-			await insertRows(
+			await insertWorkbookRangeRows(
 				rangeRef,
 				values.map((row) => row.map((value) => ({ value }))),
 			);
@@ -64,7 +64,7 @@ describe("insertRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const format = generalCellFormat;
-			await insertRows(
+			await insertWorkbookRangeRows(
 				rangeRef,
 				values.map((row) => row.map((value) => ({ value, format }))),
 			);
@@ -80,7 +80,7 @@ describe("insertRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const alignment = { horizontal: asCellHorizontalAlignment("Center"), vertical: asCellVerticalAlignment("Center"), wrapText: true };
-			await insertRows(
+			await insertWorkbookRangeRows(
 				rangeRef,
 				values.map((row) => row.map((value) => ({ value, alignment }))),
 			);
@@ -98,7 +98,7 @@ describe("insertRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const borderObj = border("#000000", "Double", "Thick");
-			await insertRows(
+			await insertWorkbookRangeRows(
 				rangeRef,
 				values.map((row) => row.map((value) => ({ value, borders: { edgeBottom: borderObj } }))),
 			);
@@ -117,7 +117,7 @@ describe("insertRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const fill = { color: asColor("#FF00FF") };
-			await insertRows(
+			await insertWorkbookRangeRows(
 				rangeRef,
 				values.map((row) => row.map((value) => ({ value, fill }))),
 			);
@@ -133,7 +133,7 @@ describe("insertRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const font = { name: asFontName("Arial"), size: 14, color: asColor("#123456"), bold: true, italic: true, underline: asUnderline("Single") };
-			await insertRows(
+			await insertWorkbookRangeRows(
 				rangeRef,
 				values.map((row) => row.map((value) => ({ value, font }))),
 			);
@@ -158,7 +158,7 @@ describe("insertRows", () => {
 				[{}, {}, { value: "C" }],
 				[{ value: "D" }, { value: "E" }, { value: "F" }],
 			];
-			await insertRows(rangeRef, cells);
+			await insertWorkbookRangeRows(rangeRef, cells);
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.values[0][0]).toBe("A");
@@ -172,7 +172,7 @@ describe("insertRows", () => {
 	it("handles empty input without error", async () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
-			await insertRows(rangeRef, []);
+			await insertWorkbookRangeRows(rangeRef, []);
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.values.slice(0, 3)).toEqual([
@@ -189,7 +189,7 @@ describe("insertRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const badRows = [[{ value: "A" }, { value: "B" }], [{ value: "C" }]];
-			await expect(() => insertRows(rangeRef, badRows)).rejects.toThrow();
+			await expect(() => insertWorkbookRangeRows(rangeRef, badRows)).rejects.toThrow();
 		} finally {
 			await tryDeleteDriveItem(workbook);
 		}

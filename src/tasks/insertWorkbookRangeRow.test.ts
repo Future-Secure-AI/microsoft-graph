@@ -16,7 +16,7 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
-import insertRow from "./insertRow.ts";
+import insertWorkbookRangeRow from "./insertWorkbookRangeRow.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 const asColor = (c: string) => c as Color;
@@ -38,11 +38,11 @@ async function prepareRange() {
 	return { workbook, rangeRef };
 }
 
-describe("insertRow", () => {
+describe("insertWorkbookRangeRow", () => {
 	it("inserts values", async () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
-			await insertRow(rangeRef, [{ value: "A" }, { value: "B" }, { value: "C" }]);
+			await insertWorkbookRangeRow(rangeRef, [{ value: "A" }, { value: "B" }, { value: "C" }]);
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.values[0]).toEqual(["A", "B", "C"]);
@@ -55,7 +55,7 @@ describe("insertRow", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const format = generalCellFormat;
-			await insertRow(rangeRef, [
+			await insertWorkbookRangeRow(rangeRef, [
 				{ value: "A", format },
 				{ value: "B", format },
 				{ value: "C", format },
@@ -72,7 +72,7 @@ describe("insertRow", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const alignment = { horizontal: asCellHorizontalAlignment("Center"), vertical: asCellVerticalAlignment("Center"), wrapText: true };
-			await insertRow(rangeRef, [
+			await insertWorkbookRangeRow(rangeRef, [
 				{ value: "A", alignment },
 				{ value: "B", alignment },
 				{ value: "C", alignment },
@@ -91,7 +91,7 @@ describe("insertRow", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const borderObj = border("#000000", "Double", "Thick");
-			await insertRow(rangeRef, [
+			await insertWorkbookRangeRow(rangeRef, [
 				{ value: "A", borders: { edgeBottom: borderObj } },
 				{ value: "B", borders: { edgeBottom: borderObj } },
 				{ value: "C", borders: { edgeBottom: borderObj } },
@@ -111,7 +111,7 @@ describe("insertRow", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const fill = { color: asColor("#FF00FF") };
-			await insertRow(rangeRef, [
+			await insertWorkbookRangeRow(rangeRef, [
 				{ value: "A", fill },
 				{ value: "B", fill },
 				{ value: "C", fill },
@@ -128,7 +128,7 @@ describe("insertRow", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const font = { name: asFontName("Arial"), size: 14, color: asColor("#123456"), bold: true, italic: true, underline: asUnderline("Single") };
-			await insertRow(rangeRef, [
+			await insertWorkbookRangeRow(rangeRef, [
 				{ value: "A", font },
 				{ value: "B", font },
 				{ value: "C", font },

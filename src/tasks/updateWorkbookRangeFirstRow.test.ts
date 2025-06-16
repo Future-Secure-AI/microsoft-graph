@@ -9,7 +9,8 @@ import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
-import updateFirstRow from "./updateFirstRow.ts";
+import updateWorkbookRangeFirstRow from "./updateWorkbookRangeFirstRow.ts";
+import updateWorkbookRangeRows from "./updateWorkbookRangeRows.ts";
 
 const values = [
 	[1, 2, 3],
@@ -27,11 +28,11 @@ async function prepareRange() {
 	return { workbook, rangeRef };
 }
 
-describe("updateFirstRow", () => {
+describe("updateWorkbookRangeFirstRow", () => {
 	it("writes values to the first row", async () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
-			await updateFirstRow(rangeRef, [{ value: "A" }, { value: "B" }, { value: "C" }]);
+			await updateWorkbookRangeFirstRow(rangeRef, [{ value: "A" }, { value: "B" }, { value: "C" }]);
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.values[0]).toEqual(["A", "B", "C"]);
@@ -43,7 +44,7 @@ describe("updateFirstRow", () => {
 	it("writes formats to the first row", async () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
-			await updateFirstRow(rangeRef, [
+			await updateWorkbookRangeFirstRow(rangeRef, [
 				{ value: 1, format: accountingCellFormat },
 				{ value: 2, format: accountingCellFormat },
 				{ value: 3, format: accountingCellFormat },
@@ -61,10 +62,11 @@ describe("updateFirstRow", () => {
 		try {
 			// Fill all rows first
 			const initial = values.map((row) => row.map((value) => ({ value })));
-			await import("./updateRows.ts").then(({ default: updateRows }) => updateRows(rangeRef, initial));
+			await updateWorkbookRangeRows(rangeRef, initial);
 			await calculateWorkbook(rangeRef);
+
 			// Update only the first row
-			await updateFirstRow(rangeRef, [{ value: 10 }, { value: 20 }, { value: 30 }]);
+			await updateWorkbookRangeFirstRow(rangeRef, [{ value: 10 }, { value: 20 }, { value: 30 }]);
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.values[0]).toEqual([10, 20, 30]);

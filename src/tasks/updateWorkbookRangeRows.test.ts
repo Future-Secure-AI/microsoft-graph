@@ -17,7 +17,7 @@ import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
-import updateRows from "./updateRows.ts";
+import updateWorkbookRangeRows from "./updateWorkbookRangeRows.ts";
 
 const asColor = (c: string) => c as Color;
 const asFontName = (n: string) => n as FontName;
@@ -44,12 +44,12 @@ async function prepareRange() {
 	return { workbook, rangeRef };
 }
 
-describe("updateRows", () => {
+describe("updateWorkbookRangeRows", () => {
 	it("writes values", async () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const cells = values.map((row) => row.map((value) => ({ value })));
-			await updateRows(rangeRef, cells);
+			await updateWorkbookRangeRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
@@ -63,7 +63,7 @@ describe("updateRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const cells = values.map((row) => row.map((value) => ({ value, format: accountingCellFormat })));
-			await updateRows(rangeRef, cells);
+			await updateWorkbookRangeRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
@@ -78,7 +78,7 @@ describe("updateRows", () => {
 		try {
 			const alignment = { horizontal: asCellHorizontalAlignment("Center"), vertical: asCellVerticalAlignment("Center"), wrapText: true };
 			const cells = values.map((row) => row.map((value) => ({ value, alignment })));
-			await updateRows(rangeRef, cells);
+			await updateWorkbookRangeRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
 			const cellFormat = await getWorkbookRangeFormat(rangeRef);
@@ -95,7 +95,7 @@ describe("updateRows", () => {
 		try {
 			const borderObj = border("#000000", "Double", "Thick");
 			const cells = values.map((row) => row.map((value) => ({ value, borders: { edgeBottom: borderObj } })));
-			await updateRows(rangeRef, cells);
+			await updateWorkbookRangeRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
 			const borders = await listWorkbookRangeBorders(rangeRef);
@@ -113,7 +113,7 @@ describe("updateRows", () => {
 		try {
 			const fill = { color: asColor("#FF00FF") };
 			const cells = values.map((row) => row.map((value) => ({ value, fill })));
-			await updateRows(rangeRef, cells);
+			await updateWorkbookRangeRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
 			const fillResult = await getWorkbookRangeFill(rangeRef);
@@ -128,7 +128,7 @@ describe("updateRows", () => {
 		try {
 			const font = { name: asFontName("Arial"), size: 14, color: asColor("#123456"), bold: true, italic: true, underline: asUnderline("Single") };
 			const cells = values.map((row) => row.map((value) => ({ value, font })));
-			await updateRows(rangeRef, cells);
+			await updateWorkbookRangeRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
 			const fontResult = await getWorkbookRangeFont(rangeRef);
@@ -151,7 +151,7 @@ describe("updateRows", () => {
 				[{}, {}, { value: "C" }],
 				[{ value: "D" }, { value: "E" }, { value: "F" }],
 			];
-			await updateRows(rangeRef, cells);
+			await updateWorkbookRangeRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
@@ -167,11 +167,11 @@ describe("updateRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const cells = values.map((row) => row.map((value) => ({ value })));
-			await updateRows(rangeRef, cells);
+			await updateWorkbookRangeRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
 			const partial = values.map((row, y) => row.map((_, x) => (y === 1 && x === 1 ? { value: 42 } : {})));
-			await updateRows(rangeRef, partial);
+			await updateWorkbookRangeRows(rangeRef, partial);
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			const expected = values.map((row, y) => row.map((v, x) => (y === 1 && x === 1 ? 42 : v)));
@@ -184,7 +184,7 @@ describe("updateRows", () => {
 	it("handles empty input without error", async () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
-			await updateRows(rangeRef, []);
+			await updateWorkbookRangeRows(rangeRef, []);
 
 			await calculateWorkbook(rangeRef);
 			const result = await getWorkbookWorksheetRange(rangeRef);

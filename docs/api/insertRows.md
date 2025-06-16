@@ -8,11 +8,11 @@ Inserts rows into a workbook range.
 
 ## Functions
 
-### insertRows()
+### insertWorkbookRangeRows()
 
-> **insertRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+> **insertWorkbookRangeRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/insertRows.ts:38](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/insertRows.ts#L38)
+Defined in: src/tasks/insertWorkbookRangeRows.ts:38
 
 **`Experimental`**
 

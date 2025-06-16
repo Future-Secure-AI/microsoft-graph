@@ -8,11 +8,11 @@ Update rows in a given workbook range.
 
 ## Functions
 
-### updateRows()
+### updateWorkbookRangeRows()
 
-> **updateRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+> **updateWorkbookRangeRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/updateRows.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/updateRows.ts#L44)
+Defined in: src/tasks/updateWorkbookRangeRows.ts:44
 
 **`Experimental`**
 

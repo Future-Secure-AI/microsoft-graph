@@ -15,7 +15,7 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
-import { iterateRows } from "./iterateRows.ts";
+import { iterateWorkbookRangeRows } from "./iterateWorkbookRangeRows.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 const values = [
@@ -37,13 +37,13 @@ async function prepareRange() {
 	return rangeRef;
 }
 
-describe("iterateRows", () => {
+describe("iterateWorkbookRangeRows", () => {
 	it("Single request", async () => {
 		const rangeRef = await prepareRange();
 
 		try {
 			let y = 0;
-			for await (const { cells, offset, isFirst, isLast } of iterateRows(rangeRef)) {
+			for await (const { cells, offset, isFirst, isLast } of iterateWorkbookRangeRows(rangeRef)) {
 				cells.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual(texts[y][x]);
@@ -68,7 +68,7 @@ describe("iterateRows", () => {
 		const rangeRef = await prepareRange();
 		try {
 			let y = 0;
-			for await (const { cells, offset, isFirst, isLast } of iterateRows(rangeRef, undefined, values[0].length)) {
+			for await (const { cells, offset, isFirst, isLast } of iterateWorkbookRangeRows(rangeRef, undefined, values[0].length)) {
 				cells.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual(texts[y][x]);
@@ -92,7 +92,7 @@ describe("iterateRows", () => {
 	it("retrieves just values when scope.values only is set", async () => {
 		const rangeRef = await prepareRange();
 		try {
-			for await (const { cells, offset: y } of iterateRows(rangeRef, { values: true })) {
+			for await (const { cells, offset: y } of iterateWorkbookRangeRows(rangeRef, { values: true })) {
 				cells.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual("");
@@ -154,7 +154,7 @@ describe("iterateRows", () => {
 		await setWorkbookRangeBorder(rangeRef, "EdgeBottom", alternateBorder);
 
 		try {
-			for await (const { cells, offset, isLast } of iterateRows(rangeRef, { alignment: true, borders: true, fill: true, font: true })) {
+			for await (const { cells, offset, isLast } of iterateWorkbookRangeRows(rangeRef, { alignment: true, borders: true, fill: true, font: true })) {
 				cells.forEach((cell, _) => {
 					expect(cell.value).toEqual("");
 					expect(cell.text).toEqual("");
