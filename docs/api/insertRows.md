@@ -1,18 +1,18 @@
-[Microsoft Graph SDK](README.md) / updateRows
+[Microsoft Graph SDK](README.md) / insertRows
 
-# updateRows
+# insertRows
 
 **`Experimental`**
 
-Update rows in a given workbook range.
+Inserts rows into a workbook range.
 
 ## Functions
 
-### updateRows()
+### insertRows()
 
-> **updateRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
+> **insertRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/updateRows.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/updateRows.ts#L44)
+Defined in: src/tasks/insertRows.ts:38
 
 **`Experimental`**
 
@@ -28,24 +28,20 @@ Defined in: [src/tasks/updateRows.ts:44](https://github.com/Future-Secure-AI/mic
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-#### Remarks
-
-`undefined` values are left unchanged. Applying styling to cells is slow, use sparingly.
-
 #### Example
 
 ```ts
 // Basic example:
-await updateRows(rangeRef, [
-  [{ value: 1 }, { value: 2 }],
-  [{ value: 3 }, { value: 4 }],
-  [{ value: 5 }, { value: 6 }],
-]);
+await insertRows(originRef, [
+  [{ value: "A1" }, { value: "B1" }, { value: "C1" }],
+  [{ value: "A2" }, { value: "B2" }, { value: "C2" }],
+ [{ value: "A3" }, { value: "B3" }, { value: "C3" }],
+])
 
 // Advanced example with cell formatting:
-await updateRows(rangeRef, [
-  [{ value: "Column A", style: { alignment: { horizontal: "Right" }, font: { bold: true } } }, { value: "Column B", style: { alignment: { horizontal: "Right" }, font: { bold: true } }  }],
-  [{ value: 1, format: accountingCellFormat }, { value: "A" }],
-  [{ value: 2, format: accountingCellFormat }, { value: "B" }],
+await insertRows(originRef, [
+  [{ value: "A1", format: { fontColor: "red" } }, { value: "B1" }, { value: "C1" }],
+  [{ value: "A2" }, { value: "B2", format: { fontColor: "blue" } }, { value: "C2" }],
+  [{ value: "A3" }, { value: "B3" }, { value: "C3", format: { fontColor: "green" } }],
 ]);
 ```

@@ -62,8 +62,8 @@ export default async function updateRows(originRef: WorkbookRangeRef, cells: Ite
 			rowCount += await writeBatch(batch, originRef, rowCount, colCount);
 		}
 	}
-	if (colCount) {
-		await writeBatch(batch, originRef, rowCount, colCount);
+	if (colCount !== null) {
+		rowCount += await writeBatch(batch, originRef, rowCount, colCount);
 	}
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.32.0",
+  "version": "2.33.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -3478,6 +3478,31 @@
       "import": "./dist/esm/tasks/getWorkbookWorksheetByName.js",
       "require": "./dist/cjs/tasks/getWorkbookWorksheetByName.js",
       "types": "./dist/esm/tasks/getWorkbookWorksheetByName.d.ts"
+    },
+    "./insertRows": {
+      "import": "./dist/esm/tasks/insertRows.js",
+      "require": "./dist/cjs/tasks/insertRows.js",
+      "types": "./dist/esm/tasks/insertRows.d.ts"
+    },
+    "./dist/cjs/tasks/insertRows.js": {
+      "import": "./dist/esm/tasks/insertRows.js",
+      "require": "./dist/cjs/tasks/insertRows.js",
+      "types": "./dist/esm/tasks/insertRows.d.ts"
+    },
+    "./dist/cjs/tasks/insertRows": {
+      "import": "./dist/esm/tasks/insertRows.js",
+      "require": "./dist/cjs/tasks/insertRows.js",
+      "types": "./dist/esm/tasks/insertRows.d.ts"
+    },
+    "./tasks/insertRows": {
+      "import": "./dist/esm/tasks/insertRows.js",
+      "require": "./dist/cjs/tasks/insertRows.js",
+      "types": "./dist/esm/tasks/insertRows.d.ts"
+    },
+    "./tasks/insertRows.js": {
+      "import": "./dist/esm/tasks/insertRows.js",
+      "require": "./dist/cjs/tasks/insertRows.js",
+      "types": "./dist/esm/tasks/insertRows.d.ts"
     },
     "./iterateRows": {
       "import": "./dist/esm/tasks/iterateRows.js",
