@@ -3829,6 +3829,31 @@
       "require": "./dist/cjs/tasks/tryDeleteDriveItem.js",
       "types": "./dist/esm/tasks/tryDeleteDriveItem.d.ts"
     },
+    "./updateRows": {
+      "import": "./dist/esm/tasks/updateRows.js",
+      "require": "./dist/cjs/tasks/updateRows.js",
+      "types": "./dist/esm/tasks/updateRows.d.ts"
+    },
+    "./dist/cjs/tasks/updateRows.js": {
+      "import": "./dist/esm/tasks/updateRows.js",
+      "require": "./dist/cjs/tasks/updateRows.js",
+      "types": "./dist/esm/tasks/updateRows.d.ts"
+    },
+    "./dist/cjs/tasks/updateRows": {
+      "import": "./dist/esm/tasks/updateRows.js",
+      "require": "./dist/cjs/tasks/updateRows.js",
+      "types": "./dist/esm/tasks/updateRows.d.ts"
+    },
+    "./tasks/updateRows": {
+      "import": "./dist/esm/tasks/updateRows.js",
+      "require": "./dist/cjs/tasks/updateRows.js",
+      "types": "./dist/esm/tasks/updateRows.d.ts"
+    },
+    "./tasks/updateRows.js": {
+      "import": "./dist/esm/tasks/updateRows.js",
+      "require": "./dist/cjs/tasks/updateRows.js",
+      "types": "./dist/esm/tasks/updateRows.d.ts"
+    },
     "./writeWorkbookRows": {
       "import": "./dist/esm/tasks/writeWorkbookRows.js",
       "require": "./dist/cjs/tasks/writeWorkbookRows.js",

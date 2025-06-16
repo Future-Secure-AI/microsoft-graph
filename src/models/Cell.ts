@@ -30,9 +30,59 @@ export type Cell = {
 	format: CellFormat;
 
 	/**
-	 * Style applied to the cell to affect its appearance, like color, borders, alignment, etc.
+	 * Number of cell merges (WRITE ONLY).
+	 * @remarks Due to API limitations, this value is never populated when reading a cell, but it can be set when writing a cell.
+	 * @experimental
 	 */
-	style: CellStyle;
+	merge: {
+		right?: number;
+		down?: number;
+	};
+
+	/**
+	 * Alignment of cell contents.
+	 * @experimental
+	 */
+	alignment: {
+		horizontal?: CellHorizontalAlignment;
+		vertical?: CellVerticalAlignment;
+		wrapText?: boolean | undefined;
+	};
+
+	/**
+	 * Borders around the cell.
+	 * @experimental
+	 */
+	borders: {
+		edgeTop?: Border | undefined;
+		edgeBottom?: Border | undefined;
+		edgeLeft?: Border | undefined;
+		edgeRight?: Border | undefined;
+		insideVertical?: Border | undefined;
+		insideHorizontal?: Border | undefined;
+		diagonalDown?: Border | undefined;
+		diagonalUp?: Border | undefined;
+	};
+
+	/**
+	 * Fill color of the cell.
+	 * @experimental
+	 */
+	fill: {
+		color?: Color;
+	};
+	/**
+	 * Font settings for the cell.
+	 * @experimental
+	 */
+	font: {
+		name?: FontName;
+		size?: number;
+		color?: Color;
+		bold?: boolean;
+		italic?: boolean;
+		underline?: CellUnderline;
+	};
 };
 
 /**
@@ -53,72 +103,6 @@ export type CellText = string;
  */
 export type CellFormat = string & {
 	__brand: "CellFormat";
-};
-
-/**
- * Style applied to the cell to affect its appearance, like color, borders, alignment, etc.
- */
-export type CellStyle = {
-	/**
-	 * Number of cell merges (WRITE ONLY).
-	 * @remarks Due to API limitations, this value is never populated when reading a cell, but it can be set when writing a cell.
-	 * @experimental
-	 */
-	merge: {
-		right?: number;
-		down?: number;
-	};
-	/**
-	 * Alignment of cell contents.
-	 * @experimental
-	 */
-	alignment: {
-		horizontal?: CellHorizontalAlignment;
-		vertical?: CellVerticalAlignment;
-		wrapText?: boolean | undefined;
-	};
-	/**
-	 * Borders around the cell.
-	 * @experimental
-	 */
-	borders: {
-		edgeTop?: Border | undefined;
-		edgeBottom?: Border | undefined;
-		edgeLeft?: Border | undefined;
-		edgeRight?: Border | undefined;
-		insideVertical?: Border | undefined;
-		insideHorizontal?: Border | undefined;
-		diagonalDown?: Border | undefined;
-		diagonalUp?: Border | undefined;
-	};
-
-	// TODO: Not yet supported, but possible
-	// protection: {
-	// 	/** Hide the formula. */
-	// 	formulaHidden?: boolean | undefined;
-
-	// 	/** Prevent cell changes */
-	// 	locked?: boolean | undefined;
-	// };
-	/**
-	 * Fill color of the cell.
-	 * @experimental
-	 */
-	fill: {
-		color?: Color;
-	};
-	/**
-	 * Font settings for the cell.
-	 * @experimental
-	 */
-	font: {
-		name?: FontName;
-		size?: number;
-		color?: Color;
-		bold?: boolean;
-		italic?: boolean;
-		underline?: CellUnderline;
-	};
 };
 
 /**

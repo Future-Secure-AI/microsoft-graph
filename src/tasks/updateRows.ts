@@ -118,7 +118,7 @@ async function writeMerges(cells: Partial<Cell>[][], rangeRef: WorkbookRangeRef,
 				continue;
 			}
 
-			const merge = cells[r]?.[c]?.style?.merge;
+			const merge = cells[r]?.[c]?.merge;
 			if (!(merge?.right || merge?.down)) {
 				continue;
 			}
@@ -150,7 +150,7 @@ async function writeAlignment(cells: Partial<Cell>[][], originRef: WorkbookRange
 		rowCount,
 		colCount,
 		originRef,
-		(cell) => cell.style?.alignment,
+		(cell) => cell.alignment,
 		async (subRangeRef, alignment) => {
 			await setWorkbookRangeFormat(subRangeRef, {
 				verticalAlignment: alignment.vertical ?? null,
@@ -167,7 +167,7 @@ async function writeBorders(cells: Partial<Cell>[][], originRef: WorkbookRangeRe
 		rowCount,
 		colCount,
 		originRef,
-		(cell) => cell.style?.borders,
+		(cell) => cell.borders,
 		async (subRangeRef, borders) => {
 			for (const key of Object.keys(borders) as Array<keyof typeof borders>) {
 				const edge = camelCaseToPascalCase(key as string) as BorderSide;
@@ -186,7 +186,7 @@ async function writeFill(cells: Partial<Cell>[][], originRef: WorkbookRangeRef, 
 		rowCount,
 		colCount,
 		originRef,
-		(cell) => cell.style?.fill,
+		(cell) => cell.fill,
 		async (subRangeRef, fill) => {
 			await setWorkbookRangeFill(subRangeRef, fill);
 		},
@@ -199,7 +199,7 @@ async function writeFont(cells: Partial<Cell>[][], originRef: WorkbookRangeRef, 
 		rowCount,
 		colCount,
 		originRef,
-		(cell) => cell.style?.font,
+		(cell) => cell.font,
 		async (subRangeRef, font) => {
 			await setWorkbookRangeFont(subRangeRef, font);
 		},

@@ -190,13 +190,11 @@ function recordToRow<T extends RecordBase>(record: T, source: DataSource<T>): Ce
 			value: cell.value ?? "",
 			text: cell.text ?? ((cell.value ?? "").toString() as CellText),
 			format: cell.format ?? generalCellFormat,
-			style: {
-				merge: {},
-				alignment: {},
-				borders: {},
-				fill: {},
-				font: {},
-			},
+			merge: {},
+			alignment: {},
+			borders: {},
+			fill: {},
+			font: {},
 		} satisfies Cell;
 	});
 	return row;

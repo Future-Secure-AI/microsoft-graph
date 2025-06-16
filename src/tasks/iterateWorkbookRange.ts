@@ -70,13 +70,11 @@ export default async function* iterateWorkbookRange(rangeRef: WorkbookRangeRef, 
 						text: text[r]?.[c] ?? ("" as CellText),
 						value: values[r]?.[c] ?? "",
 						format: format?.[r]?.[c] ?? ("" as CellFormat),
-						style: {
-							merge: {},
-							alignment: {},
-							borders: {},
-							fill: {},
-							font: {},
-						},
+						merge: {},
+						alignment: {},
+						borders: {},
+						fill: {},
+						font: {},
 					}) satisfies Cell,
 			);
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { Border, BorderStyle, BorderWeight } from "../models/Border.ts";
-import type { CellHorizontalAlignment, CellStyle, CellUnderline, CellVerticalAlignment } from "../models/Cell.ts";
+import type { CellHorizontalAlignment, CellUnderline, CellVerticalAlignment } from "../models/Cell.ts";
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
@@ -27,14 +27,6 @@ const asUnderline = (u: string) => u as CellUnderline;
 const asBorderStyle = (s: string) => s as BorderStyle;
 const asBorderWeight = (w: string) => w as BorderWeight;
 const border = (color: string, style: string, weight: string): Border => ({ color: asColor(color), style: asBorderStyle(style), weight: asBorderWeight(weight) });
-
-const minimalStyle: CellStyle = {
-	merge: {},
-	alignment: {},
-	borders: {},
-	fill: {},
-	font: {},
-};
 
 const values = [
 	[1, 2, 3],
@@ -84,7 +76,8 @@ describe("updateRows", () => {
 	it("writes alignment", async () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
-			const cells = values.map((row) => row.map((value) => ({ value, style: { ...minimalStyle, alignment: { horizontal: asCellHorizontalAlignment("Center"), vertical: asCellVerticalAlignment("Center"), wrapText: true } } })));
+			const alignment = { horizontal: asCellHorizontalAlignment("Center"), vertical: asCellVerticalAlignment("Center"), wrapText: true };
+			const cells = values.map((row) => row.map((value) => ({ value, alignment })));
 			await updateRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
@@ -101,7 +94,7 @@ describe("updateRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const borderObj = border("#000000", "Double", "Thick");
-			const cells = values.map((row) => row.map((value) => ({ value, style: { ...minimalStyle, borders: { edgeBottom: borderObj } } })));
+			const cells = values.map((row) => row.map((value) => ({ value, borders: { edgeBottom: borderObj } })));
 			await updateRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
@@ -119,7 +112,7 @@ describe("updateRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const fill = { color: asColor("#FF00FF") };
-			const cells = values.map((row) => row.map((value) => ({ value, style: { ...minimalStyle, fill } })));
+			const cells = values.map((row) => row.map((value) => ({ value, fill })));
 			await updateRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
@@ -134,7 +127,7 @@ describe("updateRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const font = { name: asFontName("Arial"), size: 14, color: asColor("#123456"), bold: true, italic: true, underline: asUnderline("Single") };
-			const cells = values.map((row) => row.map((value) => ({ value, style: { ...minimalStyle, font } })));
+			const cells = values.map((row) => row.map((value) => ({ value, font })));
 			await updateRows(rangeRef, cells);
 
 			await calculateWorkbook(rangeRef);
@@ -154,13 +147,9 @@ describe("updateRows", () => {
 		const { workbook, rangeRef } = await prepareRange();
 		try {
 			const cells = [
-				[{ value: "A", style: { ...minimalStyle, merge: { right: 1, down: 1 } } }, { style: minimalStyle }, { value: "B", style: minimalStyle }],
-				[{ style: minimalStyle }, { style: minimalStyle }, { value: "C", style: minimalStyle }],
-				[
-					{ value: "D", style: minimalStyle },
-					{ value: "E", style: minimalStyle },
-					{ value: "F", style: minimalStyle },
-				],
+				[{ value: "A", merge: { right: 1, down: 1 } }, {}, { value: "B" }],
+				[{}, {}, { value: "C" }],
+				[{ value: "D" }, { value: "E" }, { value: "F" }],
 			];
 			await updateRows(rangeRef, cells);
 

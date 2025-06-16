@@ -8,7 +8,7 @@
 import type { WorkbookRangeBorder } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Border, BorderSide, BorderStyle, BorderWeight } from "../models/Border.ts";
-import type { Cell, CellFormat, CellHorizontalAlignment, CellScope, CellStyle, CellText, CellUnderline, CellValue, CellVerticalAlignment } from "../models/Cell.ts";
+import type { Cell, CellFormat, CellHorizontalAlignment, CellScope, CellText, CellUnderline, CellValue, CellVerticalAlignment } from "../models/Cell.ts";
 import type { Color } from "../models/Color.ts";
 import type { ColumnOffset } from "../models/Column.ts";
 import type { FontName } from "../models/FontName.ts";
@@ -66,13 +66,21 @@ export async function* iterateRows(rangeRef: WorkbookRangeRef, scope: Partial<Ce
 				const value = (range?.values?.[operationRowOffset]?.[columnOffset] ?? "") as CellValue; // The root of these is undefined if that detail isn't in scope
 				const text = (range?.text?.[operationRowOffset]?.[columnOffset] ?? "") as CellText;
 				const format = (range?.numberFormat?.[operationRowOffset]?.[columnOffset] ?? "") as CellFormat;
-				const style = await getStyle(subRange(rangeRef, operationRowOffset, 1, columnOffset, 1), scope); // This line is potentially expensive
+				const merge = {}; // No API available to retrieve merge information
+				const alignment = scope.alignment ? await getAlignment(rangeRef) : {};
+				const borders = scope.borders ? await getBorders(rangeRef) : {};
+				const fill = scope.fill ? await getFill(rangeRef) : {};
+				const font = scope.font ? await getFont(rangeRef) : {};
 
 				cells.push({
 					value,
 					text,
 					format,
-					style,
+					merge,
+					alignment,
+					borders,
+					fill,
+					font,
 				} satisfies Cell);
 			}
 
@@ -90,44 +98,40 @@ export async function* iterateRows(rangeRef: WorkbookRangeRef, scope: Partial<Ce
 	}
 }
 
-async function getStyle(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>): Promise<CellStyle> {
-	const alignment = scope.alignment ? await getWorkbookRangeFormat(rangeRef) : null;
-	const borders = scope.borders ? await listWorkbookRangeBorders(rangeRef) : null;
-	const fill = scope.fill ? await getWorkbookRangeFill(rangeRef) : null;
-	const font = scope.font ? await getWorkbookRangeFont(rangeRef) : null;
+async function getFont(rangeRef: WorkbookRangeRef) {
+	const response = await getWorkbookRangeFont(rangeRef);
 
 	return {
-		merge: {
-			/* Not provided by API */
-		},
-		alignment: {
-			vertical: alignment?.verticalAlignment as CellVerticalAlignment,
-			horizontal: alignment?.horizontalAlignment as CellHorizontalAlignment,
-			wrapText: alignment?.wrapText ?? undefined,
-		},
-		borders: {
-			edgeTop: extractBorderStyle(borders, "EdgeTop"),
-			edgeBottom: extractBorderStyle(borders, "EdgeBottom"),
-			edgeLeft: extractBorderStyle(borders, "EdgeLeft"),
-			edgeRight: extractBorderStyle(borders, "EdgeRight"),
-			insideVertical: extractBorderStyle(borders, "InsideVertical"),
-			insideHorizontal: extractBorderStyle(borders, "InsideHorizontal"),
-			diagonalDown: extractBorderStyle(borders, "DiagonalDown"),
-			diagonalUp: extractBorderStyle(borders, "DiagonalUp"),
-		},
-		fill: {
-			color: fill?.color as Color,
-		},
-		font: {
-			name: font?.name as FontName,
-			size: font?.size as number,
-			color: font?.color as Color,
-			bold: font?.bold as boolean,
-			italic: font?.italic as boolean,
-			underline: font?.underline as CellUnderline,
-		},
+		name: response?.name as FontName,
+		size: response?.size as number,
+		color: response?.color as Color,
+		bold: response?.bold as boolean,
+		italic: response?.italic as boolean,
+		underline: response?.underline as CellUnderline,
 	};
+}
 
+async function getFill(rangeRef: WorkbookRangeRef) {
+	const response = await getWorkbookRangeFill(rangeRef);
+
+	return {
+		color: response?.color as Color,
+	};
+}
+
+async function getBorders(rangeRef: WorkbookRangeRef) {
+	const response = await listWorkbookRangeBorders(rangeRef);
+
+	return {
+		edgeTop: extractBorderStyle(response, "EdgeTop"),
+		edgeBottom: extractBorderStyle(response, "EdgeBottom"),
+		edgeLeft: extractBorderStyle(response, "EdgeLeft"),
+		edgeRight: extractBorderStyle(response, "EdgeRight"),
+		insideVertical: extractBorderStyle(response, "InsideVertical"),
+		insideHorizontal: extractBorderStyle(response, "InsideHorizontal"),
+		diagonalDown: extractBorderStyle(response, "DiagonalDown"),
+		diagonalUp: extractBorderStyle(response, "DiagonalUp"),
+	};
 	function extractBorderStyle(borders: WorkbookRangeBorder[] | null, side: BorderSide): Border | undefined {
 		if (!borders) {
 			return undefined;
@@ -143,6 +147,16 @@ async function getStyle(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>): 
 			weight: border.weight as BorderWeight,
 		};
 	}
+}
+
+async function getAlignment(rangeRef: WorkbookRangeRef) {
+	const response = await getWorkbookRangeFormat(rangeRef);
+
+	return {
+		vertical: response?.verticalAlignment as CellVerticalAlignment,
+		horizontal: response?.horizontalAlignment as CellHorizontalAlignment,
+		wrapText: response?.wrapText ?? undefined,
+	};
 }
 
 function calculateMaxRowsPerOperation(columnCount: number, overwriteMaxCellsPerOperation: number | null): number {

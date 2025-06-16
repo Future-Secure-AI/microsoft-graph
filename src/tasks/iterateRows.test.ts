@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import type { BorderStyle, BorderWeight } from "../models/Border.ts";
-import type { CellStyle } from "../models/Cell.ts";
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
@@ -26,14 +25,6 @@ const values = [
 ];
 const texts = values.map((row) => row.map((x) => x.toString()));
 
-const emptyStyle: CellStyle = {
-	merge: {},
-	alignment: {},
-	borders: {},
-	fill: {},
-	font: {},
-};
-
 async function prepareRange() {
 	const workbookName = generateTempFileName("xlsx");
 	const workbookPath = driveItemPath(workbookName);
@@ -57,7 +48,11 @@ describe("iterateRows", () => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual(texts[y][x]);
 					expect(cell.format).toEqual(generalCellFormat);
-					expect(cell.style).toEqual(emptyStyle);
+					expect(cell.merge).toEqual({});
+					expect(cell.alignment).toEqual({});
+					expect(cell.borders).toEqual({});
+					expect(cell.fill).toEqual({});
+					expect(cell.font).toEqual({});
 				});
 				expect(offset).toBe(y);
 				expect(isFirst).toBe(y === 0);
@@ -78,7 +73,11 @@ describe("iterateRows", () => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual(texts[y][x]);
 					expect(cell.format).toEqual(generalCellFormat);
-					expect(cell.style).toEqual(emptyStyle);
+					expect(cell.merge).toEqual({});
+					expect(cell.alignment).toEqual({});
+					expect(cell.borders).toEqual({});
+					expect(cell.fill).toEqual({});
+					expect(cell.font).toEqual({});
 				});
 				expect(offset).toBe(y);
 				expect(isFirst).toBe(y === 0);
@@ -98,7 +97,11 @@ describe("iterateRows", () => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual("");
 					expect(cell.format).toEqual("");
-					expect(cell.style).toEqual(emptyStyle);
+					expect(cell.merge).toEqual({});
+					expect(cell.alignment).toEqual({});
+					expect(cell.borders).toEqual({});
+					expect(cell.fill).toEqual({});
+					expect(cell.font).toEqual({});
 				});
 			}
 		} finally {
@@ -150,43 +153,40 @@ describe("iterateRows", () => {
 
 		await setWorkbookRangeBorder(rangeRef, "EdgeBottom", alternateBorder);
 
-		// await calculateWorkbook(rangeRef);
 		try {
-			for await (const { cells, isLast } of iterateRows(rangeRef, { alignment: true, borders: true, fill: true, font: true })) {
+			for await (const { cells, offset, isLast } of iterateRows(rangeRef, { alignment: true, borders: true, fill: true, font: true })) {
 				cells.forEach((cell, _) => {
 					expect(cell.value).toEqual("");
 					expect(cell.text).toEqual("");
 					expect(cell.format).toEqual("");
 
-					expect(cell.style).toEqual({
-						merge: {},
-						alignment: {
-							horizontal: horizontalAlignment,
-							vertical: verticalAlignment,
-							wrapText: wrapText,
-						},
-						borders: {
-							edgeLeft: defaultBorder,
-							edgeRight: defaultBorder,
-							edgeTop: defaultBorder,
-							edgeBottom: isLast ? alternateBorder : defaultBorder, // <==
-							diagonalDown: defaultBorder,
-							diagonalUp: defaultBorder,
-							insideHorizontal: defaultBorder,
-							insideVertical: defaultBorder,
-						},
-						fill: {
-							color: fillColor,
-						},
-						font: {
-							name: fontName,
-							size: fontSize,
-							color: fontColor,
-							italic: fontItalic,
-							underline: fontUnderline,
-							bold: fontBold,
-						},
-					} satisfies CellStyle);
+					expect(cell.merge).toEqual({});
+					expect(cell.alignment).toEqual({
+						horizontal: horizontalAlignment,
+						vertical: verticalAlignment,
+						wrapText: wrapText,
+					});
+					expect(cell.borders, `offset: ${offset} isLast: ${isLast}`).toEqual({
+						edgeLeft: defaultBorder,
+						edgeRight: defaultBorder,
+						edgeTop: defaultBorder,
+						edgeBottom: alternateBorder, // <==
+						diagonalDown: defaultBorder,
+						diagonalUp: defaultBorder,
+						insideHorizontal: defaultBorder,
+						insideVertical: defaultBorder,
+					});
+					expect(cell.fill).toEqual({
+						color: fillColor,
+					});
+					expect(cell.font).toEqual({
+						name: fontName,
+						size: fontSize,
+						color: fontColor,
+						italic: fontItalic,
+						underline: fontUnderline,
+						bold: fontBold,
+					});
 				});
 			}
 		} finally {

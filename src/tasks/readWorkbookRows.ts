@@ -5,7 +5,7 @@
  */
 
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
-import type { Cell, CellFormat, CellStyle, CellText, CellValue } from "../models/Cell.ts";
+import type { Cell, CellFormat, CellText, CellValue } from "../models/Cell.ts";
 import type { Row, RowOffset } from "../models/Row.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
@@ -13,14 +13,6 @@ import { composeAddress, countAddressColumns, decomposeAddress } from "../servic
 import { columnAddressToOffset, rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
-
-const emptyStyle: CellStyle = {
-	merge: {},
-	alignment: {},
-	borders: {},
-	fill: {},
-	font: {},
-};
 
 /**
  * Iterates over the rows in a given worksheet range.
@@ -75,7 +67,11 @@ export default async function* readWorkbookRows(rangeRef: WorkbookRangeRef, over
 						text: text[r]?.[c] ?? ("" as CellText),
 						value: values[r]?.[c] ?? "",
 						format: numberFormat?.[r]?.[c] ?? ("" as CellFormat),
-						style: emptyStyle,
+						merge: {},
+						alignment: {},
+						borders: {},
+						fill: {},
+						font: {},
 					}) satisfies Cell,
 			);
 
