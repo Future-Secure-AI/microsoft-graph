@@ -133,6 +133,7 @@
 | [http](http.md) | HTTP request utilities for Microsoft Graph API, with proxy support. |
 | [httpStatus](httpStatus.md) | Utilities for analyzing HTTP status codes for Microsoft Graph API responses. |
 | [Iteration](Iteration.md) | Utilities for iterating over AsyncIterables. |
+| [objectMapping](objectMapping.md) | Automated conversion of rows to objects and vice versa based on defined mapping rules. |
 | [operationId](operationId.md) | Utilities for converting between operation IDs and indexes. |
 | [operationInvoker](operationInvoker.md) | Invoke operations, potentially as parallel or sequential batches. |
 | [random](random.md) | Utilities for generating random values for spreadsheet and API operations. |

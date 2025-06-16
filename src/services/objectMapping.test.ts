@@ -3,7 +3,7 @@ import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { Cell, CellValue } from "../models/Cell.ts";
 import { generalCellFormat } from "./cell.ts";
 import { iterateToArray } from "./iteration.ts";
-import { createMapping, iterateObjectsToRows, iterateRowsToObjects, iterateRowsToObjectsWithHeader } from "./objectMapping.ts";
+import { createObjectMapping, objectsToRows, rowsToObjects, rowsToObjectsWithHeader } from "./objectMapping.ts";
 
 const namePattern = /^Name$/;
 const agePattern = /^Age$/;
@@ -36,7 +36,7 @@ describe("iterateRowsToObjectsWithHeader", () => {
 			name: { columnPattern: namePattern },
 			age: { columnPattern: agePattern },
 		};
-		const result = await iterateToArray(iterateRowsToObjectsWithHeader(rows, rules));
+		const result = await iterateToArray(rowsToObjectsWithHeader(rows, rules));
 		expect(result).toEqual([
 			{ name: "Alice", age: 30 },
 			{ name: "Bob", age: 25 },
@@ -51,7 +51,7 @@ describe("iterateRowsToObjectsWithHeader", () => {
 				decode: (cell) => Number(cell.value),
 			},
 		};
-		const result = await iterateToArray(iterateRowsToObjectsWithHeader(rows, rules));
+		const result = await iterateToArray(rowsToObjectsWithHeader(rows, rules));
 		expect(result[0].value).toBe(42);
 	});
 });
@@ -65,8 +65,8 @@ describe("iterateObjectsToRows", () => {
 				encode: (prop) => cell(String(prop)),
 			},
 		};
-		const mapping = createMapping(header, rules);
-		const encodedRows = await iterateToArray(iterateObjectsToRows([{ value: 42 }], mapping));
+		const mapping = createObjectMapping(header, rules);
+		const encodedRows = await iterateToArray(objectsToRows([{ value: 42 }], mapping));
 		expect(encodedRows[0][0].value).toBe("42");
 	});
 
@@ -76,8 +76,8 @@ describe("iterateObjectsToRows", () => {
 			y: { columnPattern: yPattern },
 			x: { columnPattern: xPattern },
 		};
-		const mapping = createMapping(header, rules);
-		const rowsResult = await iterateToArray(iterateObjectsToRows([{ x: 1, y: 2 }], mapping));
+		const mapping = createObjectMapping(header, rules);
+		const rowsResult = await iterateToArray(objectsToRows([{ x: 1, y: 2 }], mapping));
 		expect(rowsResult[0][mapping.x.columnOffset].value).toBe(1);
 		expect(rowsResult[0][mapping.y.columnOffset].value).toBe(2);
 	});
@@ -87,7 +87,7 @@ describe("createMapping", () => {
 	it("throws if column is missing in header", () => {
 		const header = [cell("A")];
 		const rules = { foo: { columnPattern: missingPattern } };
-		expect(() => createMapping(header, rules)).toThrow(InvalidArgumentError);
+		expect(() => createObjectMapping(header, rules)).toThrow(InvalidArgumentError);
 	});
 });
 
@@ -98,14 +98,14 @@ describe("iterateRowsToObjects", () => {
 			a: { columnPattern: aPattern },
 			b: { columnPattern: bPattern },
 		};
-		const mapping = createMapping(header, rules);
+		const mapping = createObjectMapping(header, rules);
 		async function* gen() {
 			await Promise.resolve();
 			yield [cell("onlyA")];
 		}
 		let error: unknown;
 		try {
-			await iterateToArray(iterateRowsToObjects(gen(), mapping));
+			await iterateToArray(rowsToObjects(gen(), mapping));
 		} catch (e) {
 			error = e;
 		}
