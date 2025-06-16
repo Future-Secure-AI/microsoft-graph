@@ -12,7 +12,7 @@ Iterate over the rows in a given worksheet range.
 
 > **IteratedRow** = `object`
 
-Defined in: src/tasks/iterateWorkbookRangeRows.ts:33
+Defined in: [src/tasks/iterateWorkbookRangeRows.ts:33](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateWorkbookRangeRows.ts#L33)
 
 **`Experimental`**
 
@@ -22,10 +22,10 @@ Represents a row yielded by the [iterateWorkbookRangeRows](#iterateworkbookrange
 
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
-| <a id="cells"></a> `cells` | [`Cell`](Cell.md#cell)[] | Array of cells in the row, each containing value, text, format, and optionally style information depending on the scope. | src/tasks/iterateWorkbookRangeRows.ts:34 |
-| <a id="isfirst"></a> `isFirst` | `boolean` | If this is the first row in the iteration. | src/tasks/iterateWorkbookRangeRows.ts:36 |
-| <a id="islast"></a> `isLast` | `boolean` | If this is the last row in the iteration. | src/tasks/iterateWorkbookRangeRows.ts:37 |
-| <a id="offset"></a> `offset` | [`RowOffset`](Row.md#rowoffset) | Zero-based offset of the row within the original range. | src/tasks/iterateWorkbookRangeRows.ts:35 |
+| <a id="cells"></a> `cells` | [`Cell`](Cell.md#cell)[] | Array of cells in the row, each containing value, text, format, and optionally style information depending on the scope. | [src/tasks/iterateWorkbookRangeRows.ts:34](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateWorkbookRangeRows.ts#L34) |
+| <a id="isfirst"></a> `isFirst` | `boolean` | If this is the first row in the iteration. | [src/tasks/iterateWorkbookRangeRows.ts:36](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateWorkbookRangeRows.ts#L36) |
+| <a id="islast"></a> `isLast` | `boolean` | If this is the last row in the iteration. | [src/tasks/iterateWorkbookRangeRows.ts:37](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateWorkbookRangeRows.ts#L37) |
+| <a id="offset"></a> `offset` | [`RowOffset`](Row.md#rowoffset) | Zero-based offset of the row within the original range. | [src/tasks/iterateWorkbookRangeRows.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateWorkbookRangeRows.ts#L35) |
 
 ## Functions
 
@@ -33,7 +33,7 @@ Represents a row yielded by the [iterateWorkbookRangeRows](#iterateworkbookrange
 
 > **iterateWorkbookRangeRows**(`rangeRef`, `scope`, `maxCellsPerOperation`): `AsyncIterable`\<[`IteratedRow`](#iteratedrow)\>
 
-Defined in: src/tasks/iterateWorkbookRangeRows.ts:51
+Defined in: [src/tasks/iterateWorkbookRangeRows.ts:51](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateWorkbookRangeRows.ts#L51)
 
 **`Experimental`**
 

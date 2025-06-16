@@ -115,12 +115,6 @@
 | [updateWorkbookWorksheet](updateWorkbookWorksheet.md) | Update the name, position, and/or visibility of a worksheet. |
 | [userSendMail](userSendMail.md) | Send an email. |
 
-## Other
-
-| Module | Description |
-| ------ | ------ |
-| [tasks/readWorkbookRangeFirstRow.test.](tasks/readWorkbookRangeFirstRow.test..md) | - |
-
 ## Services
 
 | Module | Description |

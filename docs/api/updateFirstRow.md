@@ -12,7 +12,7 @@ Update first row in a given workbook range.
 
 > **updateWorkbookRangeFirstRow**(`originRef`, `cells`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: src/tasks/updateWorkbookRangeFirstRow.ts:28
+Defined in: [src/tasks/updateWorkbookRangeFirstRow.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/updateWorkbookRangeFirstRow.ts#L28)
 
 **`Experimental`**
 

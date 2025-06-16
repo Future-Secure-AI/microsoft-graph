@@ -12,7 +12,7 @@ Inserts a single row into a workbook range.
 
 > **insertWorkbookRangeRow**(`originRef`, `row`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: src/tasks/insertWorkbookRangeRow.ts:20
+Defined in: [src/tasks/insertWorkbookRangeRow.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/insertWorkbookRangeRow.ts#L20)
 
 **`Experimental`**
 

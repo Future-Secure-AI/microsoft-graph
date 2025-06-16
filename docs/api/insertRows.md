@@ -12,7 +12,7 @@ Inserts rows into a workbook range.
 
 > **insertWorkbookRangeRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: src/tasks/insertWorkbookRangeRows.ts:38
+Defined in: [src/tasks/insertWorkbookRangeRows.ts:38](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/insertWorkbookRangeRows.ts#L38)
 
 **`Experimental`**
 

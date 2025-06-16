@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "2.33.0",
+  "version": "2.34.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -3479,80 +3479,55 @@
       "require": "./dist/cjs/tasks/getWorkbookWorksheetByName.js",
       "types": "./dist/esm/tasks/getWorkbookWorksheetByName.d.ts"
     },
-    "./insertRow": {
-      "import": "./dist/esm/tasks/insertRow.js",
-      "require": "./dist/cjs/tasks/insertRow.js",
-      "types": "./dist/esm/tasks/insertRow.d.ts"
+    "./insertWorkbookRangeRow": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRow.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRow.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRow.d.ts"
     },
-    "./dist/cjs/tasks/insertRow.js": {
-      "import": "./dist/esm/tasks/insertRow.js",
-      "require": "./dist/cjs/tasks/insertRow.js",
-      "types": "./dist/esm/tasks/insertRow.d.ts"
+    "./dist/cjs/tasks/insertWorkbookRangeRow.js": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRow.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRow.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRow.d.ts"
     },
-    "./dist/cjs/tasks/insertRow": {
-      "import": "./dist/esm/tasks/insertRow.js",
-      "require": "./dist/cjs/tasks/insertRow.js",
-      "types": "./dist/esm/tasks/insertRow.d.ts"
+    "./dist/cjs/tasks/insertWorkbookRangeRow": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRow.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRow.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRow.d.ts"
     },
-    "./tasks/insertRow": {
-      "import": "./dist/esm/tasks/insertRow.js",
-      "require": "./dist/cjs/tasks/insertRow.js",
-      "types": "./dist/esm/tasks/insertRow.d.ts"
+    "./tasks/insertWorkbookRangeRow": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRow.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRow.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRow.d.ts"
     },
-    "./tasks/insertRow.js": {
-      "import": "./dist/esm/tasks/insertRow.js",
-      "require": "./dist/cjs/tasks/insertRow.js",
-      "types": "./dist/esm/tasks/insertRow.d.ts"
+    "./tasks/insertWorkbookRangeRow.js": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRow.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRow.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRow.d.ts"
     },
-    "./insertRows": {
-      "import": "./dist/esm/tasks/insertRows.js",
-      "require": "./dist/cjs/tasks/insertRows.js",
-      "types": "./dist/esm/tasks/insertRows.d.ts"
+    "./insertWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRows.d.ts"
     },
-    "./dist/cjs/tasks/insertRows.js": {
-      "import": "./dist/esm/tasks/insertRows.js",
-      "require": "./dist/cjs/tasks/insertRows.js",
-      "types": "./dist/esm/tasks/insertRows.d.ts"
+    "./dist/cjs/tasks/insertWorkbookRangeRows.js": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRows.d.ts"
     },
-    "./dist/cjs/tasks/insertRows": {
-      "import": "./dist/esm/tasks/insertRows.js",
-      "require": "./dist/cjs/tasks/insertRows.js",
-      "types": "./dist/esm/tasks/insertRows.d.ts"
+    "./dist/cjs/tasks/insertWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRows.d.ts"
     },
-    "./tasks/insertRows": {
-      "import": "./dist/esm/tasks/insertRows.js",
-      "require": "./dist/cjs/tasks/insertRows.js",
-      "types": "./dist/esm/tasks/insertRows.d.ts"
+    "./tasks/insertWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRows.d.ts"
     },
-    "./tasks/insertRows.js": {
-      "import": "./dist/esm/tasks/insertRows.js",
-      "require": "./dist/cjs/tasks/insertRows.js",
-      "types": "./dist/esm/tasks/insertRows.d.ts"
-    },
-    "./iterateRows": {
-      "import": "./dist/esm/tasks/iterateRows.js",
-      "require": "./dist/cjs/tasks/iterateRows.js",
-      "types": "./dist/esm/tasks/iterateRows.d.ts"
-    },
-    "./dist/cjs/tasks/iterateRows.js": {
-      "import": "./dist/esm/tasks/iterateRows.js",
-      "require": "./dist/cjs/tasks/iterateRows.js",
-      "types": "./dist/esm/tasks/iterateRows.d.ts"
-    },
-    "./dist/cjs/tasks/iterateRows": {
-      "import": "./dist/esm/tasks/iterateRows.js",
-      "require": "./dist/cjs/tasks/iterateRows.js",
-      "types": "./dist/esm/tasks/iterateRows.d.ts"
-    },
-    "./tasks/iterateRows": {
-      "import": "./dist/esm/tasks/iterateRows.js",
-      "require": "./dist/cjs/tasks/iterateRows.js",
-      "types": "./dist/esm/tasks/iterateRows.d.ts"
-    },
-    "./tasks/iterateRows.js": {
-      "import": "./dist/esm/tasks/iterateRows.js",
-      "require": "./dist/cjs/tasks/iterateRows.js",
-      "types": "./dist/esm/tasks/iterateRows.d.ts"
+    "./tasks/insertWorkbookRangeRows.js": {
+      "import": "./dist/esm/tasks/insertWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/insertWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/insertWorkbookRangeRows.d.ts"
     },
     "./iterateWorkbookRange": {
       "import": "./dist/esm/tasks/iterateWorkbookRange.js",
@@ -3578,6 +3553,31 @@
       "import": "./dist/esm/tasks/iterateWorkbookRange.js",
       "require": "./dist/cjs/tasks/iterateWorkbookRange.js",
       "types": "./dist/esm/tasks/iterateWorkbookRange.d.ts"
+    },
+    "./iterateWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/iterateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRangeRows.d.ts"
+    },
+    "./dist/cjs/tasks/iterateWorkbookRangeRows.js": {
+      "import": "./dist/esm/tasks/iterateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRangeRows.d.ts"
+    },
+    "./dist/cjs/tasks/iterateWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/iterateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRangeRows.d.ts"
+    },
+    "./tasks/iterateWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/iterateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRangeRows.d.ts"
+    },
+    "./tasks/iterateWorkbookRangeRows.js": {
+      "import": "./dist/esm/tasks/iterateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/iterateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/iterateWorkbookRangeRows.d.ts"
     },
     "./iterateWorkbookRangeValues": {
       "import": "./dist/esm/tasks/iterateWorkbookRangeValues.js",
@@ -3629,55 +3629,55 @@
       "require": "./dist/cjs/tasks/listDriveItems.js",
       "types": "./dist/esm/tasks/listDriveItems.d.ts"
     },
-    "./readFirstRow": {
-      "import": "./dist/esm/tasks/readFirstRow.js",
-      "require": "./dist/cjs/tasks/readFirstRow.js",
-      "types": "./dist/esm/tasks/readFirstRow.d.ts"
+    "./readWorkbookRangeFirstRow": {
+      "import": "./dist/esm/tasks/readWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeFirstRow.d.ts"
     },
-    "./dist/cjs/tasks/readFirstRow.js": {
-      "import": "./dist/esm/tasks/readFirstRow.js",
-      "require": "./dist/cjs/tasks/readFirstRow.js",
-      "types": "./dist/esm/tasks/readFirstRow.d.ts"
+    "./dist/cjs/tasks/readWorkbookRangeFirstRow.js": {
+      "import": "./dist/esm/tasks/readWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeFirstRow.d.ts"
     },
-    "./dist/cjs/tasks/readFirstRow": {
-      "import": "./dist/esm/tasks/readFirstRow.js",
-      "require": "./dist/cjs/tasks/readFirstRow.js",
-      "types": "./dist/esm/tasks/readFirstRow.d.ts"
+    "./dist/cjs/tasks/readWorkbookRangeFirstRow": {
+      "import": "./dist/esm/tasks/readWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeFirstRow.d.ts"
     },
-    "./tasks/readFirstRow": {
-      "import": "./dist/esm/tasks/readFirstRow.js",
-      "require": "./dist/cjs/tasks/readFirstRow.js",
-      "types": "./dist/esm/tasks/readFirstRow.d.ts"
+    "./tasks/readWorkbookRangeFirstRow": {
+      "import": "./dist/esm/tasks/readWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeFirstRow.d.ts"
     },
-    "./tasks/readFirstRow.js": {
-      "import": "./dist/esm/tasks/readFirstRow.js",
-      "require": "./dist/cjs/tasks/readFirstRow.js",
-      "types": "./dist/esm/tasks/readFirstRow.d.ts"
+    "./tasks/readWorkbookRangeFirstRow.js": {
+      "import": "./dist/esm/tasks/readWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeFirstRow.d.ts"
     },
-    "./readRows": {
-      "import": "./dist/esm/tasks/readRows.js",
-      "require": "./dist/cjs/tasks/readRows.js",
-      "types": "./dist/esm/tasks/readRows.d.ts"
+    "./readWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/readWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeRows.d.ts"
     },
-    "./dist/cjs/tasks/readRows.js": {
-      "import": "./dist/esm/tasks/readRows.js",
-      "require": "./dist/cjs/tasks/readRows.js",
-      "types": "./dist/esm/tasks/readRows.d.ts"
+    "./dist/cjs/tasks/readWorkbookRangeRows.js": {
+      "import": "./dist/esm/tasks/readWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeRows.d.ts"
     },
-    "./dist/cjs/tasks/readRows": {
-      "import": "./dist/esm/tasks/readRows.js",
-      "require": "./dist/cjs/tasks/readRows.js",
-      "types": "./dist/esm/tasks/readRows.d.ts"
+    "./dist/cjs/tasks/readWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/readWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeRows.d.ts"
     },
-    "./tasks/readRows": {
-      "import": "./dist/esm/tasks/readRows.js",
-      "require": "./dist/cjs/tasks/readRows.js",
-      "types": "./dist/esm/tasks/readRows.d.ts"
+    "./tasks/readWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/readWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeRows.d.ts"
     },
-    "./tasks/readRows.js": {
-      "import": "./dist/esm/tasks/readRows.js",
-      "require": "./dist/cjs/tasks/readRows.js",
-      "types": "./dist/esm/tasks/readRows.d.ts"
+    "./tasks/readWorkbookRangeRows.js": {
+      "import": "./dist/esm/tasks/readWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/readWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/readWorkbookRangeRows.d.ts"
     },
     "./readWorkbookRows": {
       "import": "./dist/esm/tasks/readWorkbookRows.js",
@@ -3879,55 +3879,55 @@
       "require": "./dist/cjs/tasks/tryDeleteDriveItem.js",
       "types": "./dist/esm/tasks/tryDeleteDriveItem.d.ts"
     },
-    "./updateFirstRow": {
-      "import": "./dist/esm/tasks/updateFirstRow.js",
-      "require": "./dist/cjs/tasks/updateFirstRow.js",
-      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    "./updateWorkbookRangeFirstRow": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeFirstRow.d.ts"
     },
-    "./dist/cjs/tasks/updateFirstRow.js": {
-      "import": "./dist/esm/tasks/updateFirstRow.js",
-      "require": "./dist/cjs/tasks/updateFirstRow.js",
-      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    "./dist/cjs/tasks/updateWorkbookRangeFirstRow.js": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeFirstRow.d.ts"
     },
-    "./dist/cjs/tasks/updateFirstRow": {
-      "import": "./dist/esm/tasks/updateFirstRow.js",
-      "require": "./dist/cjs/tasks/updateFirstRow.js",
-      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    "./dist/cjs/tasks/updateWorkbookRangeFirstRow": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeFirstRow.d.ts"
     },
-    "./tasks/updateFirstRow": {
-      "import": "./dist/esm/tasks/updateFirstRow.js",
-      "require": "./dist/cjs/tasks/updateFirstRow.js",
-      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    "./tasks/updateWorkbookRangeFirstRow": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeFirstRow.d.ts"
     },
-    "./tasks/updateFirstRow.js": {
-      "import": "./dist/esm/tasks/updateFirstRow.js",
-      "require": "./dist/cjs/tasks/updateFirstRow.js",
-      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    "./tasks/updateWorkbookRangeFirstRow.js": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeFirstRow.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeFirstRow.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeFirstRow.d.ts"
     },
-    "./updateRows": {
-      "import": "./dist/esm/tasks/updateRows.js",
-      "require": "./dist/cjs/tasks/updateRows.js",
-      "types": "./dist/esm/tasks/updateRows.d.ts"
+    "./updateWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeRows.d.ts"
     },
-    "./dist/cjs/tasks/updateRows.js": {
-      "import": "./dist/esm/tasks/updateRows.js",
-      "require": "./dist/cjs/tasks/updateRows.js",
-      "types": "./dist/esm/tasks/updateRows.d.ts"
+    "./dist/cjs/tasks/updateWorkbookRangeRows.js": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeRows.d.ts"
     },
-    "./dist/cjs/tasks/updateRows": {
-      "import": "./dist/esm/tasks/updateRows.js",
-      "require": "./dist/cjs/tasks/updateRows.js",
-      "types": "./dist/esm/tasks/updateRows.d.ts"
+    "./dist/cjs/tasks/updateWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeRows.d.ts"
     },
-    "./tasks/updateRows": {
-      "import": "./dist/esm/tasks/updateRows.js",
-      "require": "./dist/cjs/tasks/updateRows.js",
-      "types": "./dist/esm/tasks/updateRows.d.ts"
+    "./tasks/updateWorkbookRangeRows": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeRows.d.ts"
     },
-    "./tasks/updateRows.js": {
-      "import": "./dist/esm/tasks/updateRows.js",
-      "require": "./dist/cjs/tasks/updateRows.js",
-      "types": "./dist/esm/tasks/updateRows.d.ts"
+    "./tasks/updateWorkbookRangeRows.js": {
+      "import": "./dist/esm/tasks/updateWorkbookRangeRows.js",
+      "require": "./dist/cjs/tasks/updateWorkbookRangeRows.js",
+      "types": "./dist/esm/tasks/updateWorkbookRangeRows.d.ts"
     },
     "./writeWorkbookRows": {
       "import": "./dist/esm/tasks/writeWorkbookRows.js",
