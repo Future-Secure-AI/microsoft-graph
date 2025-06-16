@@ -67,10 +67,10 @@ export async function* iterateRows(rangeRef: WorkbookRangeRef, scope: Partial<Ce
 				const text = (range?.text?.[operationRowOffset]?.[columnOffset] ?? "") as CellText;
 				const format = (range?.numberFormat?.[operationRowOffset]?.[columnOffset] ?? "") as CellFormat;
 				const merge = {}; // No API available to retrieve merge information
-				const alignment = scope.alignment ? await getAlignment(rangeRef) : {};
-				const borders = scope.borders ? await getBorders(rangeRef) : {};
-				const fill = scope.fill ? await getFill(rangeRef) : {};
-				const font = scope.font ? await getFont(rangeRef) : {};
+				const alignment = await getAlignment(rangeRef, scope);
+				const borders = await getBorders(rangeRef, scope);
+				const fill = await getFill(rangeRef, scope);
+				const font = await getFont(rangeRef, scope);
 
 				cells.push({
 					value,
@@ -98,7 +98,11 @@ export async function* iterateRows(rangeRef: WorkbookRangeRef, scope: Partial<Ce
 	}
 }
 
-async function getFont(rangeRef: WorkbookRangeRef) {
+async function getFont(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>) {
+	if (!scope.font) {
+		return {};
+	}
+
 	const response = await getWorkbookRangeFont(rangeRef);
 
 	return {
@@ -111,7 +115,10 @@ async function getFont(rangeRef: WorkbookRangeRef) {
 	};
 }
 
-async function getFill(rangeRef: WorkbookRangeRef) {
+async function getFill(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>) {
+	if (!scope.fill) {
+		return {};
+	}
 	const response = await getWorkbookRangeFill(rangeRef);
 
 	return {
@@ -119,7 +126,10 @@ async function getFill(rangeRef: WorkbookRangeRef) {
 	};
 }
 
-async function getBorders(rangeRef: WorkbookRangeRef) {
+async function getBorders(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>) {
+	if (!scope.borders) {
+		return {};
+	}
 	const response = await listWorkbookRangeBorders(rangeRef);
 
 	return {
@@ -149,7 +159,10 @@ async function getBorders(rangeRef: WorkbookRangeRef) {
 	}
 }
 
-async function getAlignment(rangeRef: WorkbookRangeRef) {
+async function getAlignment(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>) {
+	if (!scope.alignment) {
+		return {};
+	}
 	const response = await getWorkbookRangeFormat(rangeRef);
 
 	return {

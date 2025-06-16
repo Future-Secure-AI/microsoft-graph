@@ -7,10 +7,7 @@
 import { isEqual } from "lodash";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { BorderSide } from "../models/Border.ts";
-import type { Cartesian } from "../models/Cartesian.ts";
 import type { Cell } from "../models/Cell.ts";
-import type { ColumnOffset } from "../models/Column.ts";
-import type { RowOffset } from "../models/Row.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
 import mergeWorkbookRange from "../operations/workbookRange/mergeWorkbookRange.ts";
 import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRangeBorder.ts";
@@ -18,9 +15,9 @@ import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFi
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
 import setWorkbookRangeFormat from "../operations/workbookRange/setWorkbookRangeFormat.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
+import { superRange } from "../services/addressManipulation.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
 import { camelCaseToPascalCase } from "../services/stringCaseConversion.ts";
-import { superRange } from "../services/addressManipulation.ts";
 
 /**
  * Update rows in a given workbook range.
@@ -126,20 +123,23 @@ async function writeMerges(cells: Partial<Cell>[][], rangeRef: WorkbookRangeRef,
 			const rowSpan = (merge.down ?? 0) + 1;
 			const colSpan = (merge.right ?? 0) + 1;
 
-			// Mark all cells in this merge region as merged, throw if already marked
-			for (let rr = r; rr < r + rowSpan; rr++) {
-				for (let cc = c; cc < c + colSpan; cc++) {
-					if (rr < rowCount && cc < colCount) {
-						if ((merged[rr] as boolean[])[cc]) {
-							throw new InvalidArgumentError(`Cell at (${rr}, ${cc}) is involved in multiple merges in this batch.`);
-						}
-						(merged[rr] as boolean[])[cc] = true;
-					}
-				}
-			}
+			markMerged(r, rowSpan, c, colSpan);
 
 			const subRangeRef = superRange(rangeRef, r, rowSpan, c, colSpan);
 			await mergeWorkbookRange(subRangeRef);
+		}
+	}
+
+	function markMerged(r: number, rowSpan: number, c: number, colSpan: number) {
+		for (let rr = r; rr < r + rowSpan; rr++) {
+			for (let cc = c; cc < c + colSpan; cc++) {
+				if (rr < rowCount && cc < colCount) {
+					if ((merged[rr] as boolean[])[cc]) {
+						throw new InvalidArgumentError(`Cell at (${rr}, ${cc}) is involved in multiple merges in this batch.`);
+					}
+					(merged[rr] as boolean[])[cc] = true;
+				}
+			}
 		}
 	}
 }
@@ -207,11 +207,88 @@ async function writeFont(cells: Partial<Cell>[][], originRef: WorkbookRangeRef, 
 }
 
 async function forEachIdenticalRange<T>(cells: Partial<Cell>[][], rowCount: number, colCount: number, originRef: WorkbookRangeRef, getValue: (cell: Partial<Cell>) => T | undefined, callback: (subRange: WorkbookRangeRef, value: T) => Promise<void> | void) {
-	type Range = { cartesian: Cartesian; value: T };
+	const horizontalRanges = findRanges(true);
+	const verticalRanges = findRanges(false);
+	const bestRanges = horizontalRanges.length <= verticalRanges.length ? horizontalRanges : verticalRanges;
+
+	for (const { rangeRef, value } of bestRanges) {
+		await callback(rangeRef, value);
+	}
+
+	type Range = { rangeRef: WorkbookRangeRef; value: T };
+
+	function idx(r: number, c: number) {
+		return r * colCount + c;
+	}
+
+	function expandHorizontally(r: number, c: number, value: T | undefined, visited: boolean[]): number {
+		let maxCol = c;
+		while (maxCol + 1 < colCount && !visited[idx(r, maxCol + 1)] && isEqual(getValue(cells[r]?.[maxCol + 1] ?? {}), value)) {
+			maxCol++;
+		}
+		return maxCol;
+	}
+
+	function expandVertically(r: number, c: number, value: T | undefined, visited: boolean[]): number {
+		let maxRow = r;
+		while (maxRow + 1 < rowCount && !visited[idx(maxRow + 1, c)] && isEqual(getValue(cells[maxRow + 1]?.[c] ?? {}), value)) {
+			maxRow++;
+		}
+		return maxRow;
+	}
+
+	function canExpandRow(r: number, cStart: number, cEnd: number, value: T | undefined, visited: boolean[]): boolean {
+		for (let cc = cStart; cc <= cEnd; cc++) {
+			if (visited[idx(r, cc)] || !isEqual(getValue(cells[r]?.[cc] ?? {}), value)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	function canExpandCol(c: number, rStart: number, rEnd: number, value: T | undefined, visited: boolean[]): boolean {
+		for (let rr = rStart; rr <= rEnd; rr++) {
+			if (visited[idx(rr, c)] || !isEqual(getValue(cells[rr]?.[c] ?? {}), value)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	function markVisitedAndPushRange(r: number, c: number, maxRow: number, maxCol: number, value: T | undefined, visited: boolean[], ranges: Range[]) {
+		for (let rr = r; rr <= maxRow; rr++) {
+			for (let cc = c; cc <= maxCol; cc++) {
+				visited[idx(rr, cc)] = true;
+			}
+		}
+		if (value) {
+			const subRangeRef = superRange(originRef, r, maxRow - r + 1, c, maxCol - c + 1);
+			ranges.push({
+				rangeRef: subRangeRef,
+				value,
+			});
+		}
+	}
+
+	function expandRange(r: number, c: number, value: T | undefined, horizontalFirst: boolean, visited: boolean[]): { maxRow: number; maxCol: number } {
+		let maxRow = r;
+		let maxCol = c;
+		if (horizontalFirst) {
+			maxCol = expandHorizontally(r, c, value, visited);
+			while (maxRow + 1 < rowCount && canExpandRow(maxRow + 1, c, maxCol, value, visited)) {
+				maxRow++;
+			}
+		} else {
+			maxRow = expandVertically(r, c, value, visited);
+			while (maxCol + 1 < colCount && canExpandCol(maxCol + 1, r, maxRow, value, visited)) {
+				maxCol++;
+			}
+		}
+		return { maxRow, maxCol };
+	}
 
 	function findRanges(horizontalFirst: boolean): Range[] {
 		const visited = new Array(rowCount * colCount).fill(false);
-		const idx = (r: number, c: number) => r * colCount + c;
 		const ranges: Range[] = [];
 
 		for (let r = 0; r < rowCount; r++) {
@@ -220,71 +297,11 @@ async function forEachIdenticalRange<T>(cells: Partial<Cell>[][], rowCount: numb
 					continue;
 				}
 				const value = getValue(cells[r]?.[c] ?? {});
-				let maxRow = r;
-				let maxCol = c;
-
-				if (horizontalFirst) {
-					while (maxCol + 1 < colCount && !visited[idx(r, maxCol + 1)] && isEqual(getValue(cells[r]?.[maxCol + 1] ?? {}), value)) {
-						maxCol++;
-					}
-					let canExpand = true;
-					while (canExpand && maxRow + 1 < rowCount) {
-						for (let cc = c; cc <= maxCol; cc++) {
-							if (visited[idx(maxRow + 1, cc)] || !isEqual(getValue(cells[maxRow + 1]?.[cc] ?? {}), value)) {
-								canExpand = false;
-								break;
-							}
-						}
-						if (canExpand) {
-							maxRow++;
-						}
-					}
-				} else {
-					while (maxRow + 1 < rowCount && !visited[idx(maxRow + 1, c)] && isEqual(getValue(cells[maxRow + 1]?.[c] ?? {}), value)) {
-						maxRow++;
-					}
-					let canExpand = true;
-					while (canExpand && maxCol + 1 < colCount) {
-						for (let rr = r; rr <= maxRow; rr++) {
-							if (visited[idx(rr, maxCol + 1)] || !isEqual(getValue(cells[rr]?.[maxCol + 1] ?? {}), value)) {
-								canExpand = false;
-								break;
-							}
-						}
-						if (canExpand) {
-							maxCol++;
-						}
-					}
-				}
-
-				for (let rr = r; rr <= maxRow; rr++) {
-					for (let cc = c; cc <= maxCol; cc++) {
-						visited[idx(rr, cc)] = true;
-					}
-				}
-				if (value) {
-					ranges.push({
-						cartesian: {
-							ax: c as ColumnOffset,
-							ay: r as RowOffset,
-							bx: maxCol as ColumnOffset,
-							by: maxRow as RowOffset,
-						},
-						value,
-					});
-				}
+				const { maxRow, maxCol } = expandRange(r, c, value, horizontalFirst, visited);
+				markVisitedAndPushRange(r, c, maxRow, maxCol, value, visited, ranges);
 			}
 		}
 		return ranges;
-	}
-
-	const horizontalRanges = findRanges(true);
-	const verticalRanges = findRanges(false);
-	const bestRanges = horizontalRanges.length <= verticalRanges.length ? horizontalRanges : verticalRanges;
-
-	for (const { cartesian, value } of bestRanges) {
-		const subRangeRef = superRange(originRef, cartesian.ay, cartesian.by - cartesian.ay + 1, cartesian.ax, cartesian.bx - cartesian.ax + 1);
-		await callback(subRangeRef, value);
 	}
 }
 

@@ -3829,6 +3829,31 @@
       "require": "./dist/cjs/tasks/tryDeleteDriveItem.js",
       "types": "./dist/esm/tasks/tryDeleteDriveItem.d.ts"
     },
+    "./updateFirstRow": {
+      "import": "./dist/esm/tasks/updateFirstRow.js",
+      "require": "./dist/cjs/tasks/updateFirstRow.js",
+      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    },
+    "./dist/cjs/tasks/updateFirstRow.js": {
+      "import": "./dist/esm/tasks/updateFirstRow.js",
+      "require": "./dist/cjs/tasks/updateFirstRow.js",
+      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    },
+    "./dist/cjs/tasks/updateFirstRow": {
+      "import": "./dist/esm/tasks/updateFirstRow.js",
+      "require": "./dist/cjs/tasks/updateFirstRow.js",
+      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    },
+    "./tasks/updateFirstRow": {
+      "import": "./dist/esm/tasks/updateFirstRow.js",
+      "require": "./dist/cjs/tasks/updateFirstRow.js",
+      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    },
+    "./tasks/updateFirstRow.js": {
+      "import": "./dist/esm/tasks/updateFirstRow.js",
+      "require": "./dist/cjs/tasks/updateFirstRow.js",
+      "types": "./dist/esm/tasks/updateFirstRow.d.ts"
+    },
     "./updateRows": {
       "import": "./dist/esm/tasks/updateRows.js",
       "require": "./dist/cjs/tasks/updateRows.js",
