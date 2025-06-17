@@ -6,7 +6,8 @@
 
 import type { DriveItemRef } from "../../models/DriveItem.ts";
 import { executeHttpRequest } from "../../services/http.ts";
-import { endpoint } from "../../services/operationInvoker.ts";
+import { isHttpSuccess } from "../../services/httpStatus.ts";
+import { endpoint, handleResponseError } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
@@ -29,6 +30,10 @@ export default async function streamDriveItemContent(itemRef: DriveItemRef): Pro
 		},
 		responseType: "stream",
 	});
+
+	if (!isHttpSuccess(response.status)) {
+		handleResponseError("GET", url, null, response.status, {}, 0);
+	}
 
 	if (!response || typeof response.data?.pipe !== "function") {
 		throw new Error("Failed to get a streamable response");

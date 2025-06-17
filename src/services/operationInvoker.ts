@@ -3,17 +3,66 @@
  * @module operationInvoker
  * @category Services
  **/
-import axios, { type AxiosRequestConfig, type AxiosResponse } from "axios";
+import type { PublicErrorResponse } from "@microsoft/microsoft-graph-types";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
+import BadRequestError from "../errors/BadRequestError.ts";
+import BandwidthLimitExceededError from "../errors/BandwidthLimitExceededError.ts";
+import ConflictError from "../errors/ConflictError.ts";
+import ForbiddenError from "../errors/ForbiddenError.ts";
+import GatewayTimeoutError from "../errors/GatewayTimeoutError.ts";
+import GoneError from "../errors/GoneError.ts";
 import InconsistentContextError from "../errors/InconsistentContextError.ts";
+import InsufficientStorageError from "../errors/InsufficientStorageError.ts";
+import InternalServerError from "../errors/InternalServerError.ts";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import LengthRequiredError from "../errors/LengthRequiredError.ts";
+import LockedError from "../errors/LockedError.ts";
+import MethodNotAllowedError from "../errors/MethodNotAllowedError.ts";
 import NeverError from "../errors/NeverError.ts";
+import NotAcceptableError from "../errors/NotAcceptableError.ts";
+import NotFoundError from "../errors/NotFoundError.ts";
+import NotImplementedError from "../errors/NotImplementedError.ts";
+import PaymentRequiredError from "../errors/PaymentRequiredError.ts";
+import PreconditionFailedError from "../errors/PreconditionFailedError.ts";
 import ProtocolError from "../errors/ProtocolError.ts";
-import RequestFailedError from "../errors/RequestFailedError.ts";
+import RequestedRangeNotSatisfiableError from "../errors/RequestedRangeNotSatisfiableError.ts";
+import RequestEntityTooLargeError from "../errors/RequestEntityTooLargeError.ts";
+import ServiceUnavailableError from "../errors/ServiceUnavailableError.ts";
+import TooManyRequestsError from "../errors/TooManyRequestsError.ts";
+import UnauthorizedError from "../errors/UnauthorizedError.ts";
+import UnprocessableEntityError from "../errors/UnprocessableEntityError.ts";
+import UnsupportedMediaTypeError from "../errors/UnsupportedMediaTypeError.ts";
 import type { AccessToken } from "../models/AccessToken.ts";
 import type { GraphOperation, GraphOperationDefinition, OperationResponse } from "../models/GraphOperation.ts";
 import type { HttpHeaders } from "../models/Http.ts";
 import { executeHttpRequest } from "./http.ts";
-import { isGatewayTimeout, isHttpSuccess, isHttpTooManyRequests, isLocked, isServiceUnavailable } from "./httpStatus.ts";
+import {
+	isHttpBadRequest,
+	isHttpBandwidthLimitExceeded,
+	isHttpConflict,
+	isHttpForbidden,
+	isHttpGatewayTimeout,
+	isHttpGone,
+	isHttpInsufficientStorage,
+	isHttpInternalServerError,
+	isHttpLengthRequired,
+	isHttpLocked,
+	isHttpMethodNotAllowed,
+	isHttpNotAcceptable,
+	isHttpNotFound,
+	isHttpNotImplemented,
+	isHttpPaymentRequired,
+	isHttpPreconditionFailed,
+	isHttpRequestedRangeNotSatisfiable,
+	isHttpRequestEntityTooLarge,
+	isHttpServiceUnavailable,
+	isHttpSuccess,
+	isHttpTooManyRequests,
+	isHttpUnauthorized,
+	isHttpUnprocessableEntity,
+	isHttpUnsupportedMediaType,
+	isRetryable,
+} from "./httpStatus.ts";
 import { operationIdToIndex, operationIndexToId } from "./operationId.ts";
 import { sleep } from "./sleep.ts";
 
@@ -66,7 +115,7 @@ export async function sequential<T extends GraphOperation<unknown>[]>(...operati
 }
 
 const maxBatchOperations = 20; // https://learn.microsoft.com/en-us/graph/json-batching?tabs=http#batch-size-limitations
-const maxRetries = 5;
+const maxRetries = 3;
 const defaultRetryDelayMilliseconds = 1000;
 const consecutiveRetryDelayMultiplier = 2;
 
@@ -81,13 +130,6 @@ type BatchReplyPayload = {
 
 type BatchGraphOperationDefinition<T> = GraphOperationDefinition<T> & {
 	dependsOn?: number[] | undefined;
-};
-
-type BodyError = {
-	error: {
-		code: string;
-		message: string;
-	};
 };
 
 async function executeSingle<T>(definition: GraphOperationDefinition<T>) {
@@ -158,12 +200,7 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 			throw new ProtocolError("Reference to operation that was not submitted in the batch");
 		}
 		if (!isHttpSuccess(r.status)) {
-			const bodyError = body as BodyError;
-			let errorMessage = `${r.status}`;
-			if (bodyError?.error) {
-				errorMessage += `: [${bodyError.error.code}] '${bodyError.error.message}'`;
-			}
-			RequestFailedError.throw(`GraphAPI operation ${index} failed: ${errorMessage}`, op, r);
+			handleResponseError(op?.method, op?.path, op?.body, r.status, r.body as PublicErrorResponse, 0, index);
 		}
 		responses[index] = op.responseTransform(body);
 	}
@@ -172,49 +209,33 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 }
 
 /** Execute request, supporting GraphAPI retry logic */
-// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: This function does need to be simplified, though it is a TODO for another day
 async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 	const { url, ...options } = args;
 
 	if (!url) {
-		throw new Error("URL is required for request");
+		throw new InvalidArgumentError("URL is required for request");
 	}
 
 	let retryAfterMilliseconds = defaultRetryDelayMilliseconds;
 	let response: AxiosResponse | null = null;
 	let retry = 0;
+	for (retry = 0; retry < maxRetries; retry++) {
+		response = await executeHttpRequest({
+			url,
+			...options,
+		});
 
-	while (retry < maxRetries) {
-		try {
-			response = await executeHttpRequest({
-				url,
-				...options,
-			});
+		if (isHttpSuccess(response.status) || !isRetryable(response.status)) {
 			break;
-		} catch (error) {
-			if (axios.isAxiosError(error) && error.response) {
-				response = error.response;
-
-				if (!(isHttpTooManyRequests(response.status) || isServiceUnavailable(response.status) || isGatewayTimeout(response.status) || isLocked(response.status))) {
-					throw error;
-				}
-
-				const requestedRetryAfterSeconds = Number.parseInt(response.headers["retry-after"] ?? "0", 10);
-				if (requestedRetryAfterSeconds) {
-					retryAfterMilliseconds = requestedRetryAfterSeconds * 1000;
-				}
-
-				await sleep(retryAfterMilliseconds);
-				retryAfterMilliseconds *= consecutiveRetryDelayMultiplier;
-				retry++;
-
-				if (retry >= maxRetries) {
-					RequestFailedError.throw(`GraphAPI fetch exceed retry limit of ${maxRetries} attempts.`, args);
-				}
-			} else {
-				throw error;
-			}
 		}
+
+		const requestedRetryAfterSeconds = Number.parseInt(response.headers["retry-after"] ?? "0", 10);
+		if (requestedRetryAfterSeconds) {
+			retryAfterMilliseconds = requestedRetryAfterSeconds * 1000;
+		}
+
+		await sleep(retryAfterMilliseconds);
+		retryAfterMilliseconds *= consecutiveRetryDelayMultiplier;
 	}
 
 	if (!response) {
@@ -222,16 +243,118 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 	}
 
 	if (!isHttpSuccess(response.status)) {
-		const bodyError = response.data as BodyError;
-		let errorMessage = `${response.status} '${response.statusText}'`;
-		if (bodyError?.error) {
-			errorMessage += `: [${bodyError.error.code}] '${bodyError.error.message}'`;
-		}
-
-		RequestFailedError.throw(`GraphAPI fetch failed: ${errorMessage}`, args, response.data);
+		handleResponseError(options.method ?? "GET", url, options.data, response.status, response.data, retry);
 	}
 
 	return response.data as T;
+}
+
+export function handleResponseError(requestMethod: string, requestUrl: string, requestBody: unknown, responseCode: number, responseError: PublicErrorResponse, retries: number, operationIndex: number | null = null): never {
+	let message = responseError?.error?.message;
+	if (message && !message.endsWith(".")) {
+		message += ".";
+	}
+	if (responseError?.error?.innerError?.message) {
+		message += ` ${responseError.error.innerError.message}`;
+	}
+	if (message && !message.endsWith(".")) {
+		message += ".";
+	}
+	if (!message) {
+		message = `Error ${responseCode}.`;
+	}
+	if (retries) {
+		message += ` Request was retried ${retries} times.`;
+	}
+	if (operationIndex !== null) {
+		message += ` (op #${operationIndex})`;
+	}
+
+	message += `\n > ${requestMethod} ${requestUrl}`;
+
+	const bodyString = requestBody ? JSON.stringify(requestBody, null, 2) : "<no body>";
+	const bodyStringIndented = bodyString
+		.split("\n")
+		.map((line) => `   ${line}`)
+		.join("\n");
+	message += `\n${bodyStringIndented}`;
+
+	throwException(responseCode, message);
+}
+
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: Simple enough
+function throwException(responseCode: number, message: string): never {
+	if (isHttpBadRequest(responseCode)) {
+		throw new BadRequestError(message);
+	}
+	if (isHttpUnauthorized(responseCode)) {
+		throw new UnauthorizedError(message);
+	}
+	if (isHttpPaymentRequired(responseCode)) {
+		throw new PaymentRequiredError(message);
+	}
+	if (isHttpForbidden(responseCode)) {
+		throw new ForbiddenError(message);
+	}
+	if (isHttpNotFound(responseCode)) {
+		throw new NotFoundError(message);
+	}
+	if (isHttpMethodNotAllowed(responseCode)) {
+		throw new MethodNotAllowedError(message);
+	}
+	if (isHttpNotAcceptable(responseCode)) {
+		throw new NotAcceptableError(message);
+	}
+	if (isHttpConflict(responseCode)) {
+		throw new ConflictError(message);
+	}
+	if (isHttpGone(responseCode)) {
+		throw new GoneError(message);
+	}
+	if (isHttpLengthRequired(responseCode)) {
+		throw new LengthRequiredError(message);
+	}
+	if (isHttpPreconditionFailed(responseCode)) {
+		throw new PreconditionFailedError(message);
+	}
+	if (isHttpRequestEntityTooLarge(responseCode)) {
+		throw new RequestEntityTooLargeError(message);
+	}
+	if (isHttpUnsupportedMediaType(responseCode)) {
+		throw new UnsupportedMediaTypeError(message);
+	}
+	if (isHttpRequestedRangeNotSatisfiable(responseCode)) {
+		throw new RequestedRangeNotSatisfiableError(message);
+	}
+	if (isHttpUnprocessableEntity(responseCode)) {
+		throw new UnprocessableEntityError(message);
+	}
+	if (isHttpLocked(responseCode)) {
+		throw new LockedError(message);
+	}
+	if (isHttpTooManyRequests(responseCode)) {
+		throw new TooManyRequestsError(message);
+	}
+	if (isHttpInternalServerError(responseCode)) {
+		throw new InternalServerError(message);
+	}
+	if (isHttpNotImplemented(responseCode)) {
+		throw new NotImplementedError(message);
+	}
+	if (isHttpServiceUnavailable(responseCode)) {
+		throw new ServiceUnavailableError(message);
+	}
+	if (isHttpGatewayTimeout(responseCode)) {
+		throw new GatewayTimeoutError(message);
+	}
+	if (isHttpInsufficientStorage(responseCode)) {
+		throw new InsufficientStorageError(message);
+	}
+	if (isHttpBandwidthLimitExceeded(responseCode)) {
+		throw new BandwidthLimitExceededError(message);
+	}
+
+	throw new NeverError(message);
 }
 
 function normalizeBatchBody(contentType: string | undefined, body: unknown): unknown {
