@@ -10,7 +10,7 @@ Retrieve the metadata for an item in a drive by file path.
 
 > **getDriveItemByPath**(`driveRef`, `itemPath`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
-Defined in: [src/operations/driveItem/getDriveItemByPath.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/getDriveItemByPath.ts#L22)
+Defined in: [src/operations/driveItem/getDriveItemByPath.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/getDriveItemByPath.ts#L23)
 
 Retrieve the metadata for an item in a drive by file path.
 
