@@ -5,6 +5,7 @@
  */
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
+import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import type { DriveRef } from "../../models/Drive.ts";
 import type { DriveItemId, DriveItemPath, DriveItemRef } from "../../models/DriveItem.ts";
 import type { GraphOperation } from "../../models/GraphOperation.ts";
@@ -20,6 +21,10 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
 export default function getDriveItemByPath(driveRef: DriveRef, itemPath: DriveItemPath): GraphOperation<DriveItem & DriveItemRef> {
+	if (!itemPath.startsWith("/")) {
+		throw new InvalidArgumentError("itemPath must start with a forward slash (/)");
+	}
+
 	return operation({
 		context: driveRef.context,
 		method: "GET",
