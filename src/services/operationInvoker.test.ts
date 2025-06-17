@@ -8,7 +8,7 @@ import { getDefaultDriveRef } from "./drive.ts";
 import { driveItemPath } from "./driveItem.ts";
 import { generateTempFileName } from "./temporaryFiles.ts";
 
-const lockedErrorPattern = /locked.*Request was retried 3 times/i;
+const lockedErrorPattern = /locked.*Operation attempted 3 time/i;
 const badRequestErrorPattern = /not be found/i;
 
 describe("operation", () => {
