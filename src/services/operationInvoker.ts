@@ -227,15 +227,16 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 async function innerFetch<T>(request: AxiosRequestConfig): Promise<T> {
 	let retryAfterMilliseconds = defaultRetryDelayMilliseconds;
 	let response: AxiosResponse | null = null;
-	let retry = 0;
+	let attempts = 0;
 	let errorLog = "";
-	for (retry = 0; retry < maxRetries; retry++) {
+	while (true) {
 		response = await executeHttpRequest(request);
 
 		errorLog += requestToString(request);
 		errorLog += responseToString(response);
+		attempts++;
 
-		if (isHttpSuccess(response.status) || !isRetryable(response.status) || retry === maxRetries - 1) {
+		if (isHttpSuccess(response.status) || !isRetryable(response.status) || attempts === maxRetries) {
 			break;
 		}
 
@@ -254,24 +255,29 @@ async function innerFetch<T>(request: AxiosRequestConfig): Promise<T> {
 	}
 
 	if (!isHttpSuccess(response.status)) {
-		handleResponseError(response, errorLog, retry);
+		handleResponseError(response, errorLog, attempts);
 	}
 
 	return response.data as T;
 }
 
 function requestToString(request: AxiosRequestConfig): string {
-	let message = ` 📤 ${request.method} ${request.url}\n`;
+	let url = request.url || "";
+	if (url.startsWith(endpoint)) {
+		url = url.substring(endpoint.length);
+	}
+	let message = ` 📤 ${request.method} ${url}\n`;
 	if (request.data) {
 		message += errorObjectToString(request.data);
 	}
 	return message;
 }
 function responseToString(response: AxiosResponse): string {
-	let message = ` 📥 ${response.status} ${response.statusText}\n`;
-	if (response.data) {
-		message += errorObjectToString(response.data);
-	}
+	const message = ` 📥 ${response.status} ${response.statusText}\n`;
+	// TODO: Is there any case where we care about the response body?
+	// if (response.data) {
+	// 	message += errorObjectToString(response.data);
+	// }
 	return message;
 }
 function waitToString(milliseconds: number): string {
@@ -292,7 +298,7 @@ function errorObjectToString(obj: unknown): string {
 	}
 	return `${str}\n`;
 }
-function handleResponseError(response: AxiosResponse, errorLog: string, retries: number, operationIndex: number | null = null): never {
+function handleResponseError(response: AxiosResponse, errorLog: string, attempts: number, operationIndex: number | null = null): never {
 	const error = response.data as PublicErrorResponse | undefined;
 
 	let message = error?.error?.message;
@@ -308,8 +314,8 @@ function handleResponseError(response: AxiosResponse, errorLog: string, retries:
 	if (!message) {
 		message = response.statusText;
 	}
-	if (retries) {
-		message += ` Request was retried ${retries} times.`;
+	if (attempts > 1) {
+		message += ` Operation attempted ${attempts} time(s).`;
 	}
 	if (operationIndex !== null) {
 		message += ` (op #${operationIndex})`;
