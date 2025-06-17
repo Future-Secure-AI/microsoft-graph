@@ -1,14 +1,16 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / ForbiddenError
 
-# RequestFailedError
+# ForbiddenError
 
-Can't process the request because it's malformed or incorrect.
+Access is denied to the requested resource. The user might not have enough permission or might not have a required license.
+
+Important: If conditional access policies are applied to a resource, an HTTP 403; Forbidden error=insufficient_claims message may be returned. For more information on Microsoft Graph and conditional access, see Developer Guidance for Microsoft Entra Conditional Access.
 
 ## Classes
 
-### RequestFailedError
+### ForbiddenError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/ForbiddenError.ts:8](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ForbiddenError.ts#L8)
 
 #### Extends
 
@@ -18,9 +20,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new ForbiddenError**(`message`): [`ForbiddenError`](#forbiddenerror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/ForbiddenError.ts:9](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ForbiddenError.ts#L9)
 
 ###### Parameters
 
@@ -30,7 +32,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`ForbiddenError`](#forbiddenerror)
 
 ###### Overrides
 

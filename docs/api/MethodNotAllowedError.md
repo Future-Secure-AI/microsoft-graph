@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / MethodNotAllowedError
 
-# RequestFailedError
+# MethodNotAllowedError
 
-Can't process the request because it's malformed or incorrect.
+The HTTP method in the request isn't allowed on the resource.
 
 ## Classes
 
-### RequestFailedError
+### MethodNotAllowedError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/MethodNotAllowedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/MethodNotAllowedError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new MethodNotAllowedError**(`message`): [`MethodNotAllowedError`](#methodnotallowederror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/MethodNotAllowedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/MethodNotAllowedError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`MethodNotAllowedError`](#methodnotallowederror)
 
 ###### Overrides
 

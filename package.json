@@ -84,6 +84,81 @@
       "require": "./dist/cjs/errors/BadPathTemplateError.js",
       "types": "./dist/esm/errors/BadPathTemplateError.d.ts"
     },
+    "./BadRequestError": {
+      "import": "./dist/esm/errors/BadRequestError.js",
+      "require": "./dist/cjs/errors/BadRequestError.js",
+      "types": "./dist/esm/errors/BadRequestError.d.ts"
+    },
+    "./dist/cjs/errors/BadRequestError.js": {
+      "import": "./dist/esm/errors/BadRequestError.js",
+      "require": "./dist/cjs/errors/BadRequestError.js",
+      "types": "./dist/esm/errors/BadRequestError.d.ts"
+    },
+    "./dist/cjs/errors/BadRequestError": {
+      "import": "./dist/esm/errors/BadRequestError.js",
+      "require": "./dist/cjs/errors/BadRequestError.js",
+      "types": "./dist/esm/errors/BadRequestError.d.ts"
+    },
+    "./errors/BadRequestError": {
+      "import": "./dist/esm/errors/BadRequestError.js",
+      "require": "./dist/cjs/errors/BadRequestError.js",
+      "types": "./dist/esm/errors/BadRequestError.d.ts"
+    },
+    "./errors/BadRequestError.js": {
+      "import": "./dist/esm/errors/BadRequestError.js",
+      "require": "./dist/cjs/errors/BadRequestError.js",
+      "types": "./dist/esm/errors/BadRequestError.d.ts"
+    },
+    "./BandwidthLimitExceededError": {
+      "import": "./dist/esm/errors/BandwidthLimitExceededError.js",
+      "require": "./dist/cjs/errors/BandwidthLimitExceededError.js",
+      "types": "./dist/esm/errors/BandwidthLimitExceededError.d.ts"
+    },
+    "./dist/cjs/errors/BandwidthLimitExceededError.js": {
+      "import": "./dist/esm/errors/BandwidthLimitExceededError.js",
+      "require": "./dist/cjs/errors/BandwidthLimitExceededError.js",
+      "types": "./dist/esm/errors/BandwidthLimitExceededError.d.ts"
+    },
+    "./dist/cjs/errors/BandwidthLimitExceededError": {
+      "import": "./dist/esm/errors/BandwidthLimitExceededError.js",
+      "require": "./dist/cjs/errors/BandwidthLimitExceededError.js",
+      "types": "./dist/esm/errors/BandwidthLimitExceededError.d.ts"
+    },
+    "./errors/BandwidthLimitExceededError": {
+      "import": "./dist/esm/errors/BandwidthLimitExceededError.js",
+      "require": "./dist/cjs/errors/BandwidthLimitExceededError.js",
+      "types": "./dist/esm/errors/BandwidthLimitExceededError.d.ts"
+    },
+    "./errors/BandwidthLimitExceededError.js": {
+      "import": "./dist/esm/errors/BandwidthLimitExceededError.js",
+      "require": "./dist/cjs/errors/BandwidthLimitExceededError.js",
+      "types": "./dist/esm/errors/BandwidthLimitExceededError.d.ts"
+    },
+    "./ConflictError": {
+      "import": "./dist/esm/errors/ConflictError.js",
+      "require": "./dist/cjs/errors/ConflictError.js",
+      "types": "./dist/esm/errors/ConflictError.d.ts"
+    },
+    "./dist/cjs/errors/ConflictError.js": {
+      "import": "./dist/esm/errors/ConflictError.js",
+      "require": "./dist/cjs/errors/ConflictError.js",
+      "types": "./dist/esm/errors/ConflictError.d.ts"
+    },
+    "./dist/cjs/errors/ConflictError": {
+      "import": "./dist/esm/errors/ConflictError.js",
+      "require": "./dist/cjs/errors/ConflictError.js",
+      "types": "./dist/esm/errors/ConflictError.d.ts"
+    },
+    "./errors/ConflictError": {
+      "import": "./dist/esm/errors/ConflictError.js",
+      "require": "./dist/cjs/errors/ConflictError.js",
+      "types": "./dist/esm/errors/ConflictError.d.ts"
+    },
+    "./errors/ConflictError.js": {
+      "import": "./dist/esm/errors/ConflictError.js",
+      "require": "./dist/cjs/errors/ConflictError.js",
+      "types": "./dist/esm/errors/ConflictError.d.ts"
+    },
     "./EnvironmentVariableMissingError": {
       "import": "./dist/esm/errors/EnvironmentVariableMissingError.js",
       "require": "./dist/cjs/errors/EnvironmentVariableMissingError.js",
@@ -109,6 +184,81 @@
       "require": "./dist/cjs/errors/EnvironmentVariableMissingError.js",
       "types": "./dist/esm/errors/EnvironmentVariableMissingError.d.ts"
     },
+    "./ForbiddenError": {
+      "import": "./dist/esm/errors/ForbiddenError.js",
+      "require": "./dist/cjs/errors/ForbiddenError.js",
+      "types": "./dist/esm/errors/ForbiddenError.d.ts"
+    },
+    "./dist/cjs/errors/ForbiddenError.js": {
+      "import": "./dist/esm/errors/ForbiddenError.js",
+      "require": "./dist/cjs/errors/ForbiddenError.js",
+      "types": "./dist/esm/errors/ForbiddenError.d.ts"
+    },
+    "./dist/cjs/errors/ForbiddenError": {
+      "import": "./dist/esm/errors/ForbiddenError.js",
+      "require": "./dist/cjs/errors/ForbiddenError.js",
+      "types": "./dist/esm/errors/ForbiddenError.d.ts"
+    },
+    "./errors/ForbiddenError": {
+      "import": "./dist/esm/errors/ForbiddenError.js",
+      "require": "./dist/cjs/errors/ForbiddenError.js",
+      "types": "./dist/esm/errors/ForbiddenError.d.ts"
+    },
+    "./errors/ForbiddenError.js": {
+      "import": "./dist/esm/errors/ForbiddenError.js",
+      "require": "./dist/cjs/errors/ForbiddenError.js",
+      "types": "./dist/esm/errors/ForbiddenError.d.ts"
+    },
+    "./GatewayTimeoutError": {
+      "import": "./dist/esm/errors/GatewayTimeoutError.js",
+      "require": "./dist/cjs/errors/GatewayTimeoutError.js",
+      "types": "./dist/esm/errors/GatewayTimeoutError.d.ts"
+    },
+    "./dist/cjs/errors/GatewayTimeoutError.js": {
+      "import": "./dist/esm/errors/GatewayTimeoutError.js",
+      "require": "./dist/cjs/errors/GatewayTimeoutError.js",
+      "types": "./dist/esm/errors/GatewayTimeoutError.d.ts"
+    },
+    "./dist/cjs/errors/GatewayTimeoutError": {
+      "import": "./dist/esm/errors/GatewayTimeoutError.js",
+      "require": "./dist/cjs/errors/GatewayTimeoutError.js",
+      "types": "./dist/esm/errors/GatewayTimeoutError.d.ts"
+    },
+    "./errors/GatewayTimeoutError": {
+      "import": "./dist/esm/errors/GatewayTimeoutError.js",
+      "require": "./dist/cjs/errors/GatewayTimeoutError.js",
+      "types": "./dist/esm/errors/GatewayTimeoutError.d.ts"
+    },
+    "./errors/GatewayTimeoutError.js": {
+      "import": "./dist/esm/errors/GatewayTimeoutError.js",
+      "require": "./dist/cjs/errors/GatewayTimeoutError.js",
+      "types": "./dist/esm/errors/GatewayTimeoutError.d.ts"
+    },
+    "./GoneError": {
+      "import": "./dist/esm/errors/GoneError.js",
+      "require": "./dist/cjs/errors/GoneError.js",
+      "types": "./dist/esm/errors/GoneError.d.ts"
+    },
+    "./dist/cjs/errors/GoneError.js": {
+      "import": "./dist/esm/errors/GoneError.js",
+      "require": "./dist/cjs/errors/GoneError.js",
+      "types": "./dist/esm/errors/GoneError.d.ts"
+    },
+    "./dist/cjs/errors/GoneError": {
+      "import": "./dist/esm/errors/GoneError.js",
+      "require": "./dist/cjs/errors/GoneError.js",
+      "types": "./dist/esm/errors/GoneError.d.ts"
+    },
+    "./errors/GoneError": {
+      "import": "./dist/esm/errors/GoneError.js",
+      "require": "./dist/cjs/errors/GoneError.js",
+      "types": "./dist/esm/errors/GoneError.d.ts"
+    },
+    "./errors/GoneError.js": {
+      "import": "./dist/esm/errors/GoneError.js",
+      "require": "./dist/cjs/errors/GoneError.js",
+      "types": "./dist/esm/errors/GoneError.d.ts"
+    },
     "./InconsistentContextError": {
       "import": "./dist/esm/errors/InconsistentContextError.js",
       "require": "./dist/cjs/errors/InconsistentContextError.js",
@@ -133,6 +283,56 @@
       "import": "./dist/esm/errors/InconsistentContextError.js",
       "require": "./dist/cjs/errors/InconsistentContextError.js",
       "types": "./dist/esm/errors/InconsistentContextError.d.ts"
+    },
+    "./InsufficientStorageError": {
+      "import": "./dist/esm/errors/InsufficientStorageError.js",
+      "require": "./dist/cjs/errors/InsufficientStorageError.js",
+      "types": "./dist/esm/errors/InsufficientStorageError.d.ts"
+    },
+    "./dist/cjs/errors/InsufficientStorageError.js": {
+      "import": "./dist/esm/errors/InsufficientStorageError.js",
+      "require": "./dist/cjs/errors/InsufficientStorageError.js",
+      "types": "./dist/esm/errors/InsufficientStorageError.d.ts"
+    },
+    "./dist/cjs/errors/InsufficientStorageError": {
+      "import": "./dist/esm/errors/InsufficientStorageError.js",
+      "require": "./dist/cjs/errors/InsufficientStorageError.js",
+      "types": "./dist/esm/errors/InsufficientStorageError.d.ts"
+    },
+    "./errors/InsufficientStorageError": {
+      "import": "./dist/esm/errors/InsufficientStorageError.js",
+      "require": "./dist/cjs/errors/InsufficientStorageError.js",
+      "types": "./dist/esm/errors/InsufficientStorageError.d.ts"
+    },
+    "./errors/InsufficientStorageError.js": {
+      "import": "./dist/esm/errors/InsufficientStorageError.js",
+      "require": "./dist/cjs/errors/InsufficientStorageError.js",
+      "types": "./dist/esm/errors/InsufficientStorageError.d.ts"
+    },
+    "./InternalServerError": {
+      "import": "./dist/esm/errors/InternalServerError.js",
+      "require": "./dist/cjs/errors/InternalServerError.js",
+      "types": "./dist/esm/errors/InternalServerError.d.ts"
+    },
+    "./dist/cjs/errors/InternalServerError.js": {
+      "import": "./dist/esm/errors/InternalServerError.js",
+      "require": "./dist/cjs/errors/InternalServerError.js",
+      "types": "./dist/esm/errors/InternalServerError.d.ts"
+    },
+    "./dist/cjs/errors/InternalServerError": {
+      "import": "./dist/esm/errors/InternalServerError.js",
+      "require": "./dist/cjs/errors/InternalServerError.js",
+      "types": "./dist/esm/errors/InternalServerError.d.ts"
+    },
+    "./errors/InternalServerError": {
+      "import": "./dist/esm/errors/InternalServerError.js",
+      "require": "./dist/cjs/errors/InternalServerError.js",
+      "types": "./dist/esm/errors/InternalServerError.d.ts"
+    },
+    "./errors/InternalServerError.js": {
+      "import": "./dist/esm/errors/InternalServerError.js",
+      "require": "./dist/cjs/errors/InternalServerError.js",
+      "types": "./dist/esm/errors/InternalServerError.d.ts"
     },
     "./InvalidArgumentError": {
       "import": "./dist/esm/errors/InvalidArgumentError.js",
@@ -184,6 +384,81 @@
       "require": "./dist/cjs/errors/InvalidOperationError.js",
       "types": "./dist/esm/errors/InvalidOperationError.d.ts"
     },
+    "./LengthRequiredError": {
+      "import": "./dist/esm/errors/LengthRequiredError.js",
+      "require": "./dist/cjs/errors/LengthRequiredError.js",
+      "types": "./dist/esm/errors/LengthRequiredError.d.ts"
+    },
+    "./dist/cjs/errors/LengthRequiredError.js": {
+      "import": "./dist/esm/errors/LengthRequiredError.js",
+      "require": "./dist/cjs/errors/LengthRequiredError.js",
+      "types": "./dist/esm/errors/LengthRequiredError.d.ts"
+    },
+    "./dist/cjs/errors/LengthRequiredError": {
+      "import": "./dist/esm/errors/LengthRequiredError.js",
+      "require": "./dist/cjs/errors/LengthRequiredError.js",
+      "types": "./dist/esm/errors/LengthRequiredError.d.ts"
+    },
+    "./errors/LengthRequiredError": {
+      "import": "./dist/esm/errors/LengthRequiredError.js",
+      "require": "./dist/cjs/errors/LengthRequiredError.js",
+      "types": "./dist/esm/errors/LengthRequiredError.d.ts"
+    },
+    "./errors/LengthRequiredError.js": {
+      "import": "./dist/esm/errors/LengthRequiredError.js",
+      "require": "./dist/cjs/errors/LengthRequiredError.js",
+      "types": "./dist/esm/errors/LengthRequiredError.d.ts"
+    },
+    "./LockedError": {
+      "import": "./dist/esm/errors/LockedError.js",
+      "require": "./dist/cjs/errors/LockedError.js",
+      "types": "./dist/esm/errors/LockedError.d.ts"
+    },
+    "./dist/cjs/errors/LockedError.js": {
+      "import": "./dist/esm/errors/LockedError.js",
+      "require": "./dist/cjs/errors/LockedError.js",
+      "types": "./dist/esm/errors/LockedError.d.ts"
+    },
+    "./dist/cjs/errors/LockedError": {
+      "import": "./dist/esm/errors/LockedError.js",
+      "require": "./dist/cjs/errors/LockedError.js",
+      "types": "./dist/esm/errors/LockedError.d.ts"
+    },
+    "./errors/LockedError": {
+      "import": "./dist/esm/errors/LockedError.js",
+      "require": "./dist/cjs/errors/LockedError.js",
+      "types": "./dist/esm/errors/LockedError.d.ts"
+    },
+    "./errors/LockedError.js": {
+      "import": "./dist/esm/errors/LockedError.js",
+      "require": "./dist/cjs/errors/LockedError.js",
+      "types": "./dist/esm/errors/LockedError.d.ts"
+    },
+    "./MethodNotAllowedError": {
+      "import": "./dist/esm/errors/MethodNotAllowedError.js",
+      "require": "./dist/cjs/errors/MethodNotAllowedError.js",
+      "types": "./dist/esm/errors/MethodNotAllowedError.d.ts"
+    },
+    "./dist/cjs/errors/MethodNotAllowedError.js": {
+      "import": "./dist/esm/errors/MethodNotAllowedError.js",
+      "require": "./dist/cjs/errors/MethodNotAllowedError.js",
+      "types": "./dist/esm/errors/MethodNotAllowedError.d.ts"
+    },
+    "./dist/cjs/errors/MethodNotAllowedError": {
+      "import": "./dist/esm/errors/MethodNotAllowedError.js",
+      "require": "./dist/cjs/errors/MethodNotAllowedError.js",
+      "types": "./dist/esm/errors/MethodNotAllowedError.d.ts"
+    },
+    "./errors/MethodNotAllowedError": {
+      "import": "./dist/esm/errors/MethodNotAllowedError.js",
+      "require": "./dist/cjs/errors/MethodNotAllowedError.js",
+      "types": "./dist/esm/errors/MethodNotAllowedError.d.ts"
+    },
+    "./errors/MethodNotAllowedError.js": {
+      "import": "./dist/esm/errors/MethodNotAllowedError.js",
+      "require": "./dist/cjs/errors/MethodNotAllowedError.js",
+      "types": "./dist/esm/errors/MethodNotAllowedError.d.ts"
+    },
     "./NeverError": {
       "import": "./dist/esm/errors/NeverError.js",
       "require": "./dist/cjs/errors/NeverError.js",
@@ -208,6 +483,31 @@
       "import": "./dist/esm/errors/NeverError.js",
       "require": "./dist/cjs/errors/NeverError.js",
       "types": "./dist/esm/errors/NeverError.d.ts"
+    },
+    "./NotAcceptableError": {
+      "import": "./dist/esm/errors/NotAcceptableError.js",
+      "require": "./dist/cjs/errors/NotAcceptableError.js",
+      "types": "./dist/esm/errors/NotAcceptableError.d.ts"
+    },
+    "./dist/cjs/errors/NotAcceptableError.js": {
+      "import": "./dist/esm/errors/NotAcceptableError.js",
+      "require": "./dist/cjs/errors/NotAcceptableError.js",
+      "types": "./dist/esm/errors/NotAcceptableError.d.ts"
+    },
+    "./dist/cjs/errors/NotAcceptableError": {
+      "import": "./dist/esm/errors/NotAcceptableError.js",
+      "require": "./dist/cjs/errors/NotAcceptableError.js",
+      "types": "./dist/esm/errors/NotAcceptableError.d.ts"
+    },
+    "./errors/NotAcceptableError": {
+      "import": "./dist/esm/errors/NotAcceptableError.js",
+      "require": "./dist/cjs/errors/NotAcceptableError.js",
+      "types": "./dist/esm/errors/NotAcceptableError.d.ts"
+    },
+    "./errors/NotAcceptableError.js": {
+      "import": "./dist/esm/errors/NotAcceptableError.js",
+      "require": "./dist/cjs/errors/NotAcceptableError.js",
+      "types": "./dist/esm/errors/NotAcceptableError.d.ts"
     },
     "./NotFoundError": {
       "import": "./dist/esm/errors/NotFoundError.js",
@@ -259,6 +559,56 @@
       "require": "./dist/cjs/errors/NotImplementedError.js",
       "types": "./dist/esm/errors/NotImplementedError.d.ts"
     },
+    "./PaymentRequiredError": {
+      "import": "./dist/esm/errors/PaymentRequiredError.js",
+      "require": "./dist/cjs/errors/PaymentRequiredError.js",
+      "types": "./dist/esm/errors/PaymentRequiredError.d.ts"
+    },
+    "./dist/cjs/errors/PaymentRequiredError.js": {
+      "import": "./dist/esm/errors/PaymentRequiredError.js",
+      "require": "./dist/cjs/errors/PaymentRequiredError.js",
+      "types": "./dist/esm/errors/PaymentRequiredError.d.ts"
+    },
+    "./dist/cjs/errors/PaymentRequiredError": {
+      "import": "./dist/esm/errors/PaymentRequiredError.js",
+      "require": "./dist/cjs/errors/PaymentRequiredError.js",
+      "types": "./dist/esm/errors/PaymentRequiredError.d.ts"
+    },
+    "./errors/PaymentRequiredError": {
+      "import": "./dist/esm/errors/PaymentRequiredError.js",
+      "require": "./dist/cjs/errors/PaymentRequiredError.js",
+      "types": "./dist/esm/errors/PaymentRequiredError.d.ts"
+    },
+    "./errors/PaymentRequiredError.js": {
+      "import": "./dist/esm/errors/PaymentRequiredError.js",
+      "require": "./dist/cjs/errors/PaymentRequiredError.js",
+      "types": "./dist/esm/errors/PaymentRequiredError.d.ts"
+    },
+    "./PreconditionFailedError": {
+      "import": "./dist/esm/errors/PreconditionFailedError.js",
+      "require": "./dist/cjs/errors/PreconditionFailedError.js",
+      "types": "./dist/esm/errors/PreconditionFailedError.d.ts"
+    },
+    "./dist/cjs/errors/PreconditionFailedError.js": {
+      "import": "./dist/esm/errors/PreconditionFailedError.js",
+      "require": "./dist/cjs/errors/PreconditionFailedError.js",
+      "types": "./dist/esm/errors/PreconditionFailedError.d.ts"
+    },
+    "./dist/cjs/errors/PreconditionFailedError": {
+      "import": "./dist/esm/errors/PreconditionFailedError.js",
+      "require": "./dist/cjs/errors/PreconditionFailedError.js",
+      "types": "./dist/esm/errors/PreconditionFailedError.d.ts"
+    },
+    "./errors/PreconditionFailedError": {
+      "import": "./dist/esm/errors/PreconditionFailedError.js",
+      "require": "./dist/cjs/errors/PreconditionFailedError.js",
+      "types": "./dist/esm/errors/PreconditionFailedError.d.ts"
+    },
+    "./errors/PreconditionFailedError.js": {
+      "import": "./dist/esm/errors/PreconditionFailedError.js",
+      "require": "./dist/cjs/errors/PreconditionFailedError.js",
+      "types": "./dist/esm/errors/PreconditionFailedError.d.ts"
+    },
     "./ProtocolError": {
       "import": "./dist/esm/errors/ProtocolError.js",
       "require": "./dist/cjs/errors/ProtocolError.js",
@@ -283,6 +633,31 @@
       "import": "./dist/esm/errors/ProtocolError.js",
       "require": "./dist/cjs/errors/ProtocolError.js",
       "types": "./dist/esm/errors/ProtocolError.d.ts"
+    },
+    "./RequestEntityTooLargeError": {
+      "import": "./dist/esm/errors/RequestEntityTooLargeError.js",
+      "require": "./dist/cjs/errors/RequestEntityTooLargeError.js",
+      "types": "./dist/esm/errors/RequestEntityTooLargeError.d.ts"
+    },
+    "./dist/cjs/errors/RequestEntityTooLargeError.js": {
+      "import": "./dist/esm/errors/RequestEntityTooLargeError.js",
+      "require": "./dist/cjs/errors/RequestEntityTooLargeError.js",
+      "types": "./dist/esm/errors/RequestEntityTooLargeError.d.ts"
+    },
+    "./dist/cjs/errors/RequestEntityTooLargeError": {
+      "import": "./dist/esm/errors/RequestEntityTooLargeError.js",
+      "require": "./dist/cjs/errors/RequestEntityTooLargeError.js",
+      "types": "./dist/esm/errors/RequestEntityTooLargeError.d.ts"
+    },
+    "./errors/RequestEntityTooLargeError": {
+      "import": "./dist/esm/errors/RequestEntityTooLargeError.js",
+      "require": "./dist/cjs/errors/RequestEntityTooLargeError.js",
+      "types": "./dist/esm/errors/RequestEntityTooLargeError.d.ts"
+    },
+    "./errors/RequestEntityTooLargeError.js": {
+      "import": "./dist/esm/errors/RequestEntityTooLargeError.js",
+      "require": "./dist/cjs/errors/RequestEntityTooLargeError.js",
+      "types": "./dist/esm/errors/RequestEntityTooLargeError.d.ts"
     },
     "./RequestFailedError": {
       "import": "./dist/esm/errors/RequestFailedError.js",
@@ -334,6 +709,131 @@
       "require": "./dist/cjs/errors/RequestTimeoutError.js",
       "types": "./dist/esm/errors/RequestTimeoutError.d.ts"
     },
+    "./RequestedRangeNotSatisfiableError": {
+      "import": "./dist/esm/errors/RequestedRangeNotSatisfiableError.js",
+      "require": "./dist/cjs/errors/RequestedRangeNotSatisfiableError.js",
+      "types": "./dist/esm/errors/RequestedRangeNotSatisfiableError.d.ts"
+    },
+    "./dist/cjs/errors/RequestedRangeNotSatisfiableError.js": {
+      "import": "./dist/esm/errors/RequestedRangeNotSatisfiableError.js",
+      "require": "./dist/cjs/errors/RequestedRangeNotSatisfiableError.js",
+      "types": "./dist/esm/errors/RequestedRangeNotSatisfiableError.d.ts"
+    },
+    "./dist/cjs/errors/RequestedRangeNotSatisfiableError": {
+      "import": "./dist/esm/errors/RequestedRangeNotSatisfiableError.js",
+      "require": "./dist/cjs/errors/RequestedRangeNotSatisfiableError.js",
+      "types": "./dist/esm/errors/RequestedRangeNotSatisfiableError.d.ts"
+    },
+    "./errors/RequestedRangeNotSatisfiableError": {
+      "import": "./dist/esm/errors/RequestedRangeNotSatisfiableError.js",
+      "require": "./dist/cjs/errors/RequestedRangeNotSatisfiableError.js",
+      "types": "./dist/esm/errors/RequestedRangeNotSatisfiableError.d.ts"
+    },
+    "./errors/RequestedRangeNotSatisfiableError.js": {
+      "import": "./dist/esm/errors/RequestedRangeNotSatisfiableError.js",
+      "require": "./dist/cjs/errors/RequestedRangeNotSatisfiableError.js",
+      "types": "./dist/esm/errors/RequestedRangeNotSatisfiableError.d.ts"
+    },
+    "./ServiceUnavailableError": {
+      "import": "./dist/esm/errors/ServiceUnavailableError.js",
+      "require": "./dist/cjs/errors/ServiceUnavailableError.js",
+      "types": "./dist/esm/errors/ServiceUnavailableError.d.ts"
+    },
+    "./dist/cjs/errors/ServiceUnavailableError.js": {
+      "import": "./dist/esm/errors/ServiceUnavailableError.js",
+      "require": "./dist/cjs/errors/ServiceUnavailableError.js",
+      "types": "./dist/esm/errors/ServiceUnavailableError.d.ts"
+    },
+    "./dist/cjs/errors/ServiceUnavailableError": {
+      "import": "./dist/esm/errors/ServiceUnavailableError.js",
+      "require": "./dist/cjs/errors/ServiceUnavailableError.js",
+      "types": "./dist/esm/errors/ServiceUnavailableError.d.ts"
+    },
+    "./errors/ServiceUnavailableError": {
+      "import": "./dist/esm/errors/ServiceUnavailableError.js",
+      "require": "./dist/cjs/errors/ServiceUnavailableError.js",
+      "types": "./dist/esm/errors/ServiceUnavailableError.d.ts"
+    },
+    "./errors/ServiceUnavailableError.js": {
+      "import": "./dist/esm/errors/ServiceUnavailableError.js",
+      "require": "./dist/cjs/errors/ServiceUnavailableError.js",
+      "types": "./dist/esm/errors/ServiceUnavailableError.d.ts"
+    },
+    "./TooManyRequestsError": {
+      "import": "./dist/esm/errors/TooManyRequestsError.js",
+      "require": "./dist/cjs/errors/TooManyRequestsError.js",
+      "types": "./dist/esm/errors/TooManyRequestsError.d.ts"
+    },
+    "./dist/cjs/errors/TooManyRequestsError.js": {
+      "import": "./dist/esm/errors/TooManyRequestsError.js",
+      "require": "./dist/cjs/errors/TooManyRequestsError.js",
+      "types": "./dist/esm/errors/TooManyRequestsError.d.ts"
+    },
+    "./dist/cjs/errors/TooManyRequestsError": {
+      "import": "./dist/esm/errors/TooManyRequestsError.js",
+      "require": "./dist/cjs/errors/TooManyRequestsError.js",
+      "types": "./dist/esm/errors/TooManyRequestsError.d.ts"
+    },
+    "./errors/TooManyRequestsError": {
+      "import": "./dist/esm/errors/TooManyRequestsError.js",
+      "require": "./dist/cjs/errors/TooManyRequestsError.js",
+      "types": "./dist/esm/errors/TooManyRequestsError.d.ts"
+    },
+    "./errors/TooManyRequestsError.js": {
+      "import": "./dist/esm/errors/TooManyRequestsError.js",
+      "require": "./dist/cjs/errors/TooManyRequestsError.js",
+      "types": "./dist/esm/errors/TooManyRequestsError.d.ts"
+    },
+    "./UnauthorizedError": {
+      "import": "./dist/esm/errors/UnauthorizedError.js",
+      "require": "./dist/cjs/errors/UnauthorizedError.js",
+      "types": "./dist/esm/errors/UnauthorizedError.d.ts"
+    },
+    "./dist/cjs/errors/UnauthorizedError.js": {
+      "import": "./dist/esm/errors/UnauthorizedError.js",
+      "require": "./dist/cjs/errors/UnauthorizedError.js",
+      "types": "./dist/esm/errors/UnauthorizedError.d.ts"
+    },
+    "./dist/cjs/errors/UnauthorizedError": {
+      "import": "./dist/esm/errors/UnauthorizedError.js",
+      "require": "./dist/cjs/errors/UnauthorizedError.js",
+      "types": "./dist/esm/errors/UnauthorizedError.d.ts"
+    },
+    "./errors/UnauthorizedError": {
+      "import": "./dist/esm/errors/UnauthorizedError.js",
+      "require": "./dist/cjs/errors/UnauthorizedError.js",
+      "types": "./dist/esm/errors/UnauthorizedError.d.ts"
+    },
+    "./errors/UnauthorizedError.js": {
+      "import": "./dist/esm/errors/UnauthorizedError.js",
+      "require": "./dist/cjs/errors/UnauthorizedError.js",
+      "types": "./dist/esm/errors/UnauthorizedError.d.ts"
+    },
+    "./UnprocessableEntityError": {
+      "import": "./dist/esm/errors/UnprocessableEntityError.js",
+      "require": "./dist/cjs/errors/UnprocessableEntityError.js",
+      "types": "./dist/esm/errors/UnprocessableEntityError.d.ts"
+    },
+    "./dist/cjs/errors/UnprocessableEntityError.js": {
+      "import": "./dist/esm/errors/UnprocessableEntityError.js",
+      "require": "./dist/cjs/errors/UnprocessableEntityError.js",
+      "types": "./dist/esm/errors/UnprocessableEntityError.d.ts"
+    },
+    "./dist/cjs/errors/UnprocessableEntityError": {
+      "import": "./dist/esm/errors/UnprocessableEntityError.js",
+      "require": "./dist/cjs/errors/UnprocessableEntityError.js",
+      "types": "./dist/esm/errors/UnprocessableEntityError.d.ts"
+    },
+    "./errors/UnprocessableEntityError": {
+      "import": "./dist/esm/errors/UnprocessableEntityError.js",
+      "require": "./dist/cjs/errors/UnprocessableEntityError.js",
+      "types": "./dist/esm/errors/UnprocessableEntityError.d.ts"
+    },
+    "./errors/UnprocessableEntityError.js": {
+      "import": "./dist/esm/errors/UnprocessableEntityError.js",
+      "require": "./dist/cjs/errors/UnprocessableEntityError.js",
+      "types": "./dist/esm/errors/UnprocessableEntityError.d.ts"
+    },
     "./UnsupportedAddressTypeError": {
       "import": "./dist/esm/errors/UnsupportedAddressTypeError.js",
       "require": "./dist/cjs/errors/UnsupportedAddressTypeError.js",
@@ -358,6 +858,31 @@
       "import": "./dist/esm/errors/UnsupportedAddressTypeError.js",
       "require": "./dist/cjs/errors/UnsupportedAddressTypeError.js",
       "types": "./dist/esm/errors/UnsupportedAddressTypeError.d.ts"
+    },
+    "./UnsupportedMediaTypeError": {
+      "import": "./dist/esm/errors/UnsupportedMediaTypeError.js",
+      "require": "./dist/cjs/errors/UnsupportedMediaTypeError.js",
+      "types": "./dist/esm/errors/UnsupportedMediaTypeError.d.ts"
+    },
+    "./dist/cjs/errors/UnsupportedMediaTypeError.js": {
+      "import": "./dist/esm/errors/UnsupportedMediaTypeError.js",
+      "require": "./dist/cjs/errors/UnsupportedMediaTypeError.js",
+      "types": "./dist/esm/errors/UnsupportedMediaTypeError.d.ts"
+    },
+    "./dist/cjs/errors/UnsupportedMediaTypeError": {
+      "import": "./dist/esm/errors/UnsupportedMediaTypeError.js",
+      "require": "./dist/cjs/errors/UnsupportedMediaTypeError.js",
+      "types": "./dist/esm/errors/UnsupportedMediaTypeError.d.ts"
+    },
+    "./errors/UnsupportedMediaTypeError": {
+      "import": "./dist/esm/errors/UnsupportedMediaTypeError.js",
+      "require": "./dist/cjs/errors/UnsupportedMediaTypeError.js",
+      "types": "./dist/esm/errors/UnsupportedMediaTypeError.d.ts"
+    },
+    "./errors/UnsupportedMediaTypeError.js": {
+      "import": "./dist/esm/errors/UnsupportedMediaTypeError.js",
+      "require": "./dist/cjs/errors/UnsupportedMediaTypeError.js",
+      "types": "./dist/esm/errors/UnsupportedMediaTypeError.d.ts"
     },
     "./AccessToken": {
       "import": "./dist/esm/models/AccessToken.js",

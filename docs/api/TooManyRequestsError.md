@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / TooManyRequestsError
 
-# RequestFailedError
+# TooManyRequestsError
 
-Can't process the request because it's malformed or incorrect.
+Client application has been throttled and shouldn't attempt to repeat the request until an amount of time has elapsed.
 
 ## Classes
 
-### RequestFailedError
+### TooManyRequestsError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/TooManyRequestsError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/TooManyRequestsError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new TooManyRequestsError**(`message`): [`TooManyRequestsError`](#toomanyrequestserror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/TooManyRequestsError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/TooManyRequestsError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`TooManyRequestsError`](#toomanyrequestserror)
 
 ###### Overrides
 

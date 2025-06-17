@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / UnprocessableEntityError
 
-# RequestFailedError
+# UnprocessableEntityError
 
-Can't process the request because it's malformed or incorrect.
+Can't process the request because it is semantically incorrect.
 
 ## Classes
 
-### RequestFailedError
+### UnprocessableEntityError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/UnprocessableEntityError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnprocessableEntityError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new UnprocessableEntityError**(`message`): [`UnprocessableEntityError`](#unprocessableentityerror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/UnprocessableEntityError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnprocessableEntityError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`UnprocessableEntityError`](#unprocessableentityerror)
 
 ###### Overrides
 

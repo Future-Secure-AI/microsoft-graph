@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / ServiceUnavailableError
 
-# RequestFailedError
+# ServiceUnavailableError
 
-Can't process the request because it's malformed or incorrect.
+The service is temporarily unavailable for maintenance or is overloaded. You may repeat the request after a delay, the length of which may be specified in a Retry-After header.
 
 ## Classes
 
-### RequestFailedError
+### ServiceUnavailableError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/ServiceUnavailableError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ServiceUnavailableError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new ServiceUnavailableError**(`message`): [`ServiceUnavailableError`](#serviceunavailableerror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/ServiceUnavailableError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ServiceUnavailableError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`ServiceUnavailableError`](#serviceunavailableerror)
 
 ###### Overrides
 

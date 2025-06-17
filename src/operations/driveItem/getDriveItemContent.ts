@@ -8,7 +8,7 @@
 import type { DriveItemRef } from "../../models/DriveItem.ts";
 import { executeHttpRequest } from "../../services/http.ts";
 import { isHttpSuccess } from "../../services/httpStatus.ts";
-import { endpoint, handleResponseError } from "../../services/operationInvoker.ts";
+import { endpoint, throwException } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
@@ -36,7 +36,7 @@ export default async function getDriveItemContent(itemRef: DriveItemRef): Promis
 	});
 
 	if (!isHttpSuccess(response.status)) {
-		handleResponseError("GET", url, null, response.status, {}, 0);
+		throwException(response.status, "Failed to get content");
 	}
 
 	if (!Buffer.isBuffer(response.data)) {

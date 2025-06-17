@@ -1,14 +1,18 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / ConflictError
 
-# RequestFailedError
+# ConflictError
 
-Can't process the request because it's malformed or incorrect.
+The request can't be processed due to a conflict with the current state.
+
+## Remarks
+
+For example, the specified parent folder might not exist.
 
 ## Classes
 
-### RequestFailedError
+### ConflictError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/ConflictError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ConflictError.ts#L7)
 
 #### Extends
 
@@ -18,9 +22,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new ConflictError**(`message`): [`ConflictError`](#conflicterror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/ConflictError.ts:8](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/ConflictError.ts#L8)
 
 ###### Parameters
 
@@ -30,7 +34,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`ConflictError`](#conflicterror)
 
 ###### Overrides
 

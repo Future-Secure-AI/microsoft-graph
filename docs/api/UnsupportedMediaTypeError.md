@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / UnsupportedMediaTypeError
 
-# RequestFailedError
+# UnsupportedMediaTypeError
 
-Can't process the request because it's malformed or incorrect.
+The content type of the request is a format that isn't supported by the service.
 
 ## Classes
 
-### RequestFailedError
+### UnsupportedMediaTypeError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/UnsupportedMediaTypeError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnsupportedMediaTypeError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new UnsupportedMediaTypeError**(`message`): [`UnsupportedMediaTypeError`](#unsupportedmediatypeerror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/UnsupportedMediaTypeError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnsupportedMediaTypeError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`UnsupportedMediaTypeError`](#unsupportedmediatypeerror)
 
 ###### Overrides
 

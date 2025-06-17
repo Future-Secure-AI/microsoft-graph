@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / LockedError
 
-# RequestFailedError
+# LockedError
 
-Can't process the request because it's malformed or incorrect.
+The resource that is being accessed is locked.
 
 ## Classes
 
-### RequestFailedError
+### LockedError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/LockedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/LockedError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new LockedError**(`message`): [`LockedError`](#lockederror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/LockedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/LockedError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`LockedError`](#lockederror)
 
 ###### Overrides
 

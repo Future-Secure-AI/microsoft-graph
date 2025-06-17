@@ -4,18 +4,39 @@
 
 | Module | Description |
 | ------ | ------ |
+| [BadRequestError](BadRequestError.md) | Can't process the request because it's malformed or incorrect. |
 | [BadTemplateError](BadTemplateError.md) | Error thrown when path template did not match the expected format. |
+| [BandwidthLimitExceededError](BandwidthLimitExceededError.md) | Your app has been throttled for exceeding the maximum bandwidth cap. Your app can retry the request again after more time has elapsed. |
+| [ConflictError](ConflictError.md) | The request can't be processed due to a conflict with the current state. |
 | [EnvironmentVariableMissingError](EnvironmentVariableMissingError.md) | Error thrown when a required environment variable is not set, empty or whitespace. |
+| [ForbiddenError](ForbiddenError.md) | Access is denied to the requested resource. The user might not have enough permission or might not have a required license. |
+| [GatewayTimeoutError](GatewayTimeoutError.md) | The server, while acting as a proxy, didn't receive a timely response from the upstream server it needed to access in attempting to complete the request. |
+| [GoneError](GoneError.md) | The requested resource is no longer available at the server. |
 | [InconsistentContextError](InconsistentContextError.md) | Error thrown when batched operations are performed with an inconsistent context (ie, different authentication). |
+| [InsufficientStorageError](InsufficientStorageError.md) | The maximum storage quota has been reached. |
+| [InternalServerError](InternalServerError.md) | There was an internal server error while processing the request. |
 | [InvalidArgumentError](InvalidArgumentError.md) | Error thrown when a function is called with one or more invalid arguments. |
 | [InvalidOperationError](InvalidOperationError.md) | Error thrown when a function is called when the system is in an unexpected state. |
+| [LengthRequiredError](LengthRequiredError.md) | A Content-Length header is required on the request. |
+| [LockedError](LockedError.md) | The resource that is being accessed is locked. |
+| [MethodNotAllowedError](MethodNotAllowedError.md) | The HTTP method in the request isn't allowed on the resource. |
 | [NeverError](NeverError.md) | Error thrown when a theoretically impossible state is encountered. This is akin to a panic. |
+| [NotAcceptableError](NotAcceptableError.md) | This service doesn’t support the format requested in the Accept header. |
 | [NotFoundError](NotFoundError.md) | Error thrown when a requested resource is not found. |
 | [NotImplementedError](NotImplementedError.md) | Error thrown when a requested feature or functionality is not yet implemented. |
+| [PaymentRequiredError](PaymentRequiredError.md) | The payment requirements for the API haven't been met. |
+| [PreconditionFailedError](PreconditionFailedError.md) | A precondition provided in the request (such as an if-match header) doesn't match the resource's current state. |
 | [ProtocolError](ProtocolError.md) | Error thrown when a response from the server does not conform to the expected protocol. |
-| [RequestFailedError](RequestFailedError.md) | Error thrown when a request to the server fails. |
+| [RequestedRangeNotSatisfiableError](RequestedRangeNotSatisfiableError.md) | The specified byte range is invalid or unavailable. |
+| [RequestEntityTooLargeError](RequestEntityTooLargeError.md) | The request size exceeds the maximum limit. |
+| [RequestFailedError](RequestFailedError.md) | Can't process the request because it's malformed or incorrect. |
 | [RequestTimeoutError](RequestTimeoutError.md) | Error thrown when a request exceeds the allowed time limit. |
+| [ServiceUnavailableError](ServiceUnavailableError.md) | The service is temporarily unavailable for maintenance or is overloaded. You may repeat the request after a delay, the length of which may be specified in a Retry-After header. |
+| [TooManyRequestsError](TooManyRequestsError.md) | Client application has been throttled and shouldn't attempt to repeat the request until an amount of time has elapsed. |
+| [UnauthorizedError](UnauthorizedError.md) | Required authentication information is either missing or not valid for the resource. |
+| [UnprocessableEntityError](UnprocessableEntityError.md) | Can't process the request because it is semantically incorrect. |
 | [UnsupportedAddressTypeError](UnsupportedAddressTypeError.md) | Error thrown when a given address does not confirm to any known address type. |
+| [UnsupportedMediaTypeError](UnsupportedMediaTypeError.md) | The content type of the request is a format that isn't supported by the service. |
 
 ## Models
 

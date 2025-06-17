@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / RequestEntityTooLargeError
 
-# RequestFailedError
+# RequestEntityTooLargeError
 
-Can't process the request because it's malformed or incorrect.
+The request size exceeds the maximum limit.
 
 ## Classes
 
-### RequestFailedError
+### RequestEntityTooLargeError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/RequestEntityTooLargeError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestEntityTooLargeError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new RequestEntityTooLargeError**(`message`): [`RequestEntityTooLargeError`](#requestentitytoolargeerror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/RequestEntityTooLargeError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestEntityTooLargeError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`RequestEntityTooLargeError`](#requestentitytoolargeerror)
 
 ###### Overrides
 

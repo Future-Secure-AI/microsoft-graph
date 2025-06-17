@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / GoneError
 
-# RequestFailedError
+# GoneError
 
-Can't process the request because it's malformed or incorrect.
+The requested resource is no longer available at the server.
 
 ## Classes
 
-### RequestFailedError
+### GoneError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/GoneError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/GoneError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new GoneError**(`message`): [`GoneError`](#goneerror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/GoneError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/GoneError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`GoneError`](#goneerror)
 
 ###### Overrides
 

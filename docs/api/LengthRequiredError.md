@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / LengthRequiredError
 
-# RequestFailedError
+# LengthRequiredError
 
-Can't process the request because it's malformed or incorrect.
+A Content-Length header is required on the request.
 
 ## Classes
 
-### RequestFailedError
+### LengthRequiredError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/LengthRequiredError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/LengthRequiredError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new LengthRequiredError**(`message`): [`LengthRequiredError`](#lengthrequirederror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/LengthRequiredError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/LengthRequiredError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`LengthRequiredError`](#lengthrequirederror)
 
 ###### Overrides
 

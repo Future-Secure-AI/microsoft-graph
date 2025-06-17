@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / InternalServerError
 
-# RequestFailedError
+# InternalServerError
 
-Can't process the request because it's malformed or incorrect.
+There was an internal server error while processing the request.
 
 ## Classes
 
-### RequestFailedError
+### InternalServerError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/InternalServerError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InternalServerError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new InternalServerError**(`message`): [`InternalServerError`](#internalservererror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/InternalServerError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/InternalServerError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`InternalServerError`](#internalservererror)
 
 ###### Overrides
 

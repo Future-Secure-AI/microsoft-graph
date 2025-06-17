@@ -79,8 +79,13 @@ export const endpoint = "https://graph.microsoft.com/v1.0";
 export const batchEndpoint = `${endpoint}/$batch`;
 
 /**
- * Define a operation.
- * @remarks Operations can be `await`d to execute independently, or passed with others as arguments to `parallel` or `sequential` to execute as part of a batch.
+ * Defines a Graph operation.
+ *
+ * Operations can be awaited to execute independently, or passed with others as arguments to {@link parallel} or {@link sequential} to execute as part of a batch.
+ *
+ * @typeParam T - The response type of the operation.
+ * @param definition Definition of the Graph operation.
+ * @returns GraphOperation instance.
  */
 export function operation<T>(definition: GraphOperationDefinition<T>): GraphOperation<T> {
 	const single = async <T>(definition: GraphOperationDefinition<T>): Promise<T> => {
@@ -94,7 +99,12 @@ export function operation<T>(definition: GraphOperationDefinition<T>): GraphOper
 
 /**
  * Execute a batch of GraphAPI operations in parallel.
- * @remarks Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time.
+ *
+ * Provides the best performance for batch operations, however only useful if operations can logically be performed at the same time.
+ *
+ * @typeParam T - Tuple of GraphOperation types.
+ * @param operations Operations to execute in parallel.
+ * @returns The responses for each operation, in the same order.
  */
 export async function parallel<T extends GraphOperation<unknown>[]>(...operations: T): Promise<OperationResponse<T>> {
 	const definitions = operations.map((op) => op.definition) as BatchGraphOperationDefinition<unknown>[];
@@ -104,6 +114,12 @@ export async function parallel<T extends GraphOperation<unknown>[]>(...operation
 
 /**
  * Execute a batch of GraphAPI operations sequentially.
+ *
+ * Each operation is dependent on the previous operation in the batch.
+ *
+ * @typeParam T - Tuple of GraphOperation types.
+ * @param operations Operations to execute sequentially.
+ * @returns The responses for each operation, in the same order.
  */
 export async function sequential<T extends GraphOperation<unknown>[]>(...operations: T): Promise<OperationResponse<T>> {
 	const definitions = operations.map((definition, index) => ({
@@ -200,7 +216,7 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 			throw new ProtocolError("Reference to operation that was not submitted in the batch");
 		}
 		if (!isHttpSuccess(r.status)) {
-			handleResponseError(op?.method, op?.path, op?.body, r.status, r.body as PublicErrorResponse, 0, index);
+			throwException(r.status, `Batch operation failed for op #${index}: ${JSON.stringify(r.body, null, 2)}`);
 		}
 		responses[index] = op.responseTransform(body);
 	}
@@ -208,24 +224,18 @@ async function executeBatch<T extends BatchGraphOperationDefinition<unknown>[]>(
 	return responses as OperationResponse<T>; // TODO: Is there a neater way to massage the types correctly? This is functionally correct, but I do want to avoid using `unknown` here if possible.
 }
 
-/** Execute request, supporting GraphAPI retry logic */
-async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
-	const { url, ...options } = args;
-
-	if (!url) {
-		throw new InvalidArgumentError("URL is required for request");
-	}
-
+async function innerFetch<T>(request: AxiosRequestConfig): Promise<T> {
 	let retryAfterMilliseconds = defaultRetryDelayMilliseconds;
 	let response: AxiosResponse | null = null;
 	let retry = 0;
+	let errorLog = "";
 	for (retry = 0; retry < maxRetries; retry++) {
-		response = await executeHttpRequest({
-			url,
-			...options,
-		});
+		response = await executeHttpRequest(request);
 
-		if (isHttpSuccess(response.status) || !isRetryable(response.status)) {
+		errorLog += requestToString(request);
+		errorLog += responseToString(response);
+
+		if (isHttpSuccess(response.status) || !isRetryable(response.status) || retry === maxRetries - 1) {
 			break;
 		}
 
@@ -234,6 +244,7 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 			retryAfterMilliseconds = requestedRetryAfterSeconds * 1000;
 		}
 
+		errorLog += waitToString(retryAfterMilliseconds);
 		await sleep(retryAfterMilliseconds);
 		retryAfterMilliseconds *= consecutiveRetryDelayMultiplier;
 	}
@@ -243,25 +254,59 @@ async function innerFetch<T>(args: AxiosRequestConfig): Promise<T> {
 	}
 
 	if (!isHttpSuccess(response.status)) {
-		handleResponseError(options.method ?? "GET", url, options.data, response.status, response.data, retry);
+		handleResponseError(response, errorLog, retry);
 	}
 
 	return response.data as T;
 }
 
-export function handleResponseError(requestMethod: string, requestUrl: string, requestBody: unknown, responseCode: number, responseError: PublicErrorResponse, retries: number, operationIndex: number | null = null): never {
-	let message = responseError?.error?.message;
+function requestToString(request: AxiosRequestConfig): string {
+	let message = ` 📤 ${request.method} ${request.url}\n`;
+	if (request.data) {
+		message += errorObjectToString(request.data);
+	}
+	return message;
+}
+function responseToString(response: AxiosResponse): string {
+	let message = ` 📥 ${response.status} ${response.statusText}\n`;
+	if (response.data) {
+		message += errorObjectToString(response.data);
+	}
+	return message;
+}
+function waitToString(milliseconds: number): string {
+	return ` ⏳ Wait ${milliseconds}ms for retry.\n`;
+}
+
+function errorObjectToString(obj: unknown): string {
+	const maxLength = 1024;
+	const ellipses = "...";
+
+	let str = JSON.stringify(obj, null, 2)
+		.split("\n")
+		.map((line) => `    ${line}`)
+		.join("\n");
+
+	if (str.length > maxLength) {
+		str = `${str.substring(0, maxLength - ellipses.length)}${ellipses}`;
+	}
+	return `${str}\n`;
+}
+function handleResponseError(response: AxiosResponse, errorLog: string, retries: number, operationIndex: number | null = null): never {
+	const error = response.data as PublicErrorResponse | undefined;
+
+	let message = error?.error?.message;
 	if (message && !message.endsWith(".")) {
 		message += ".";
 	}
-	if (responseError?.error?.innerError?.message) {
-		message += ` ${responseError.error.innerError.message}`;
+	if (error?.error?.innerError?.message) {
+		message += ` ${error.error.innerError.message}`;
 	}
 	if (message && !message.endsWith(".")) {
 		message += ".";
 	}
 	if (!message) {
-		message = `Error ${responseCode}.`;
+		message = response.statusText;
 	}
 	if (retries) {
 		message += ` Request was retried ${retries} times.`;
@@ -269,21 +314,13 @@ export function handleResponseError(requestMethod: string, requestUrl: string, r
 	if (operationIndex !== null) {
 		message += ` (op #${operationIndex})`;
 	}
+	message += `\n${errorLog}`;
 
-	message += `\n > ${requestMethod} ${requestUrl}`;
-
-	const bodyString = requestBody ? JSON.stringify(requestBody, null, 2) : "<no body>";
-	const bodyStringIndented = bodyString
-		.split("\n")
-		.map((line) => `   ${line}`)
-		.join("\n");
-	message += `\n${bodyStringIndented}`;
-
-	throwException(responseCode, message);
+	throwException(response.status, message);
 }
 
 // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: Simple enough
-function throwException(responseCode: number, message: string): never {
+export function throwException(responseCode: number, message: string): never {
 	if (isHttpBadRequest(responseCode)) {
 		throw new BadRequestError(message);
 	}

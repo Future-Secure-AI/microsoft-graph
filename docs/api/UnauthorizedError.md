@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / UnauthorizedError
 
-# RequestFailedError
+# UnauthorizedError
 
-Can't process the request because it's malformed or incorrect.
+Required authentication information is either missing or not valid for the resource.
 
 ## Classes
 
-### RequestFailedError
+### UnauthorizedError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/UnauthorizedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnauthorizedError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new UnauthorizedError**(`message`): [`UnauthorizedError`](#unauthorizederror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/UnauthorizedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/UnauthorizedError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`UnauthorizedError`](#unauthorizederror)
 
 ###### Overrides
 

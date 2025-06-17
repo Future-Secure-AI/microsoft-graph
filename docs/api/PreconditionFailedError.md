@@ -1,14 +1,14 @@
-[Microsoft Graph SDK](README.md) / RequestFailedError
+[Microsoft Graph SDK](README.md) / PreconditionFailedError
 
-# RequestFailedError
+# PreconditionFailedError
 
-Can't process the request because it's malformed or incorrect.
+A precondition provided in the request (such as an if-match header) doesn't match the resource's current state.
 
 ## Classes
 
-### RequestFailedError
+### PreconditionFailedError
 
-Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L6)
+Defined in: [src/errors/PreconditionFailedError.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/PreconditionFailedError.ts#L6)
 
 #### Extends
 
@@ -18,9 +18,9 @@ Defined in: [src/errors/RequestFailedError.ts:6](https://github.com/Future-Secur
 
 ##### Constructor
 
-> **new RequestFailedError**(`message`): [`RequestFailedError`](#requestfailederror)
+> **new PreconditionFailedError**(`message`): [`PreconditionFailedError`](#preconditionfailederror)
 
-Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/RequestFailedError.ts#L7)
+Defined in: [src/errors/PreconditionFailedError.ts:7](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/errors/PreconditionFailedError.ts#L7)
 
 ###### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [src/errors/RequestFailedError.ts:7](https://github.com/Future-Secur
 
 ###### Returns
 
-[`RequestFailedError`](#requestfailederror)
+[`PreconditionFailedError`](#preconditionfailederror)
 
 ###### Overrides
 
