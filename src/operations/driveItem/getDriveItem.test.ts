@@ -12,13 +12,14 @@ describe("getDriveItem", () => {
 	it("can retrieve an existing folder", async () => {
 		const folderName = generateTempFileName();
 		const folder = await createFolder(defaultDriveRef, folderName);
+		try {
+			const retrievedFolder = await getDriveItem(folder);
 
-		const retrievedFolder = await getDriveItem(folder);
-
-		expect(retrievedFolder.id).toBe(folder.id);
-		expect(retrievedFolder.name).toBe(folderName);
-
-		await tryDeleteDriveItem(folder);
+			expect(retrievedFolder.id).toBe(folder.id);
+			expect(retrievedFolder.name).toBe(folderName);
+		} finally {
+			await tryDeleteDriveItem(folder);
+		}
 	});
 
 	it("throws an error when trying to retrieve a non-existent item", async () => {

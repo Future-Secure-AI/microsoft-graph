@@ -5,7 +5,7 @@ import { createDriveItemRef, driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
@@ -30,7 +30,7 @@ describe("getDriveItemContent", () => {
 			expect(content).toBeInstanceOf(ArrayBuffer);
 			expect(content.byteLength).toBeGreaterThan(0);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 

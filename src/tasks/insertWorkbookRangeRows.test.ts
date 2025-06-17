@@ -4,7 +4,6 @@ import type { CellHorizontalAlignment, CellUnderline, CellVerticalAlignment } fr
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
-import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import getWorkbookRangeFill from "../operations/workbookRange/getWorkbookRangeFill.ts";
 import getWorkbookRangeFont from "../operations/workbookRange/getWorkbookRangeFont.ts";
 import getWorkbookRangeFormat from "../operations/workbookRange/getWorkbookRangeFormat.ts";
@@ -16,8 +15,9 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
+import createWorkbookAndStartSession from "./createWorkbookAndStartSession.ts";
 import insertWorkbookRangeRows from "./insertWorkbookRangeRows.ts";
-import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
+import safeDeleteWorkbook from "./safeDeleteWorkbook.ts";
 
 const asColor = (c: string) => c as Color;
 const asFontName = (n: string) => n as FontName;
@@ -38,7 +38,7 @@ async function prepareRange() {
 	const workbookName = generateTempFileName("xlsx");
 	const workbookPath = driveItemPath(workbookName);
 	const driveRef = getDefaultDriveRef();
-	const workbook = await createWorkbook(driveRef, workbookPath);
+	const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 	const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 	const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
 	return { workbook, rangeRef };
@@ -56,7 +56,7 @@ describe("insertWorkbookRangeRows", () => {
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.values.slice(0, 3)).toEqual(values);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -72,7 +72,7 @@ describe("insertWorkbookRangeRows", () => {
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.numberFormat.slice(0, 3)).toEqual(values.map((row) => row.map(() => format)));
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -90,7 +90,7 @@ describe("insertWorkbookRangeRows", () => {
 			expect(cellFormat.verticalAlignment).toBe("Center");
 			expect(cellFormat.wrapText).toBe(true);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -109,7 +109,7 @@ describe("insertWorkbookRangeRows", () => {
 			expect(bottom?.style).toBe("Double");
 			expect(bottom?.weight).toBe("Thick");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -125,7 +125,7 @@ describe("insertWorkbookRangeRows", () => {
 			const fillResult = await getWorkbookRangeFill(rangeRef);
 			expect(fillResult.color).toBe("#FF00FF");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -146,7 +146,7 @@ describe("insertWorkbookRangeRows", () => {
 			expect(fontResult.italic).toBe(true);
 			expect(fontResult.underline).toBe("Single");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -165,7 +165,7 @@ describe("insertWorkbookRangeRows", () => {
 			expect(result.values[0][2]).toBe("B");
 			expect(result.values[1][2]).toBe("C");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -181,7 +181,7 @@ describe("insertWorkbookRangeRows", () => {
 				["", "", ""],
 			]);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -191,7 +191,7 @@ describe("insertWorkbookRangeRows", () => {
 			const badRows = [[{ value: "A" }, { value: "B" }], [{ value: "C" }]];
 			await expect(() => insertWorkbookRangeRows(rangeRef, badRows)).rejects.toThrow();
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

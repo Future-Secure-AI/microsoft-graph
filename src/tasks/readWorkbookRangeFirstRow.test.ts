@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
-import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import { generalCellFormat } from "../services/cell.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
@@ -8,6 +7,7 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
+import createWorkbookAndStartSession from "./createWorkbookAndStartSession.ts";
 import readWorkbookRangeFirstRow from "./readWorkbookRangeFirstRow.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
@@ -22,7 +22,7 @@ async function prepareRange() {
 	const workbookName = generateTempFileName("xlsx");
 	const workbookPath = driveItemPath(workbookName);
 	const driveRef = getDefaultDriveRef();
-	const workbook = await createWorkbook(driveRef, workbookPath);
+	const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 	const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 	const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
 	await updateWorkbookRange(rangeRef, { values: values });

@@ -4,7 +4,6 @@ import type { CellHorizontalAlignment, CellUnderline, CellVerticalAlignment } fr
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
-import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import getWorkbookRangeFill from "../operations/workbookRange/getWorkbookRangeFill.ts";
 import getWorkbookRangeFont from "../operations/workbookRange/getWorkbookRangeFont.ts";
 import getWorkbookRangeFormat from "../operations/workbookRange/getWorkbookRangeFormat.ts";
@@ -16,7 +15,8 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
+import createWorkbookAndStartSession from "./createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "./safeDeleteWorkbook.ts";
 import updateWorkbookRangeRows from "./updateWorkbookRangeRows.ts";
 
 const asColor = (c: string) => c as Color;
@@ -38,7 +38,7 @@ async function prepareRange() {
 	const workbookName = generateTempFileName("xlsx");
 	const workbookPath = driveItemPath(workbookName);
 	const driveRef = getDefaultDriveRef();
-	const workbook = await createWorkbook(driveRef, workbookPath);
+	const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 	const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 	const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
 	return { workbook, rangeRef };
@@ -55,7 +55,7 @@ describe("updateWorkbookRangeRows", () => {
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.values).toEqual(values);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -69,7 +69,7 @@ describe("updateWorkbookRangeRows", () => {
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.numberFormat).toEqual(values.map((row) => row.map(() => accountingCellFormat)));
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -86,7 +86,7 @@ describe("updateWorkbookRangeRows", () => {
 			expect(cellFormat.verticalAlignment).toBe("Center");
 			expect(cellFormat.wrapText).toBe(true);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -104,7 +104,7 @@ describe("updateWorkbookRangeRows", () => {
 			expect(bottom?.style).toBe("Double");
 			expect(bottom?.weight).toBe("Thick");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -119,7 +119,7 @@ describe("updateWorkbookRangeRows", () => {
 			const fillResult = await getWorkbookRangeFill(rangeRef);
 			expect(fillResult.color).toBe("#FF00FF");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -139,7 +139,7 @@ describe("updateWorkbookRangeRows", () => {
 			expect(fontResult.italic).toBe(true);
 			expect(fontResult.underline).toBe("Single");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -159,7 +159,7 @@ describe("updateWorkbookRangeRows", () => {
 			expect(result.values[0][2]).toBe("B");
 			expect(result.values[1][2]).toBe("C");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -177,7 +177,7 @@ describe("updateWorkbookRangeRows", () => {
 			const expected = values.map((row, y) => row.map((v, x) => (y === 1 && x === 1 ? 42 : v)));
 			expect(result.values).toEqual(expected);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -194,7 +194,7 @@ describe("updateWorkbookRangeRows", () => {
 				["", "", ""],
 			]);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

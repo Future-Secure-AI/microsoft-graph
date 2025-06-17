@@ -5,19 +5,19 @@ import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
-import createWorkbook from "../workbook/createWorkbook.ts";
+import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
+import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
 import listWorkbookRangeBorders from "./listWorkbookRangeBorders.ts";
 import setWorkbookRangeBorder from "./setWorkbookRangeBorder.ts";
-import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 
 describe("listWorkbookRangeBorders", () => {
 	it("can list borders after setting with setWorkbookRangeBorder", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		try {
 			const worksheet = await createWorkbookWorksheet(workbook);
@@ -43,7 +43,7 @@ describe("listWorkbookRangeBorders", () => {
 			expect(bottomBorder.style).toBe(style);
 			expect(bottomBorder.weight).toBe(weight);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

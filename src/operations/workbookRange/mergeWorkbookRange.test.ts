@@ -4,7 +4,7 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import mergeWorkbookRange from "./mergeWorkbookRange.ts";
 import updateWorkbookRange from "./updateWorkbookRange.ts";
@@ -24,7 +24,7 @@ describe("mergeWorkbookRange", () => {
 			await updateWorkbookRange(rangeRef, { values });
 			await mergeWorkbookRange(rangeRef);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

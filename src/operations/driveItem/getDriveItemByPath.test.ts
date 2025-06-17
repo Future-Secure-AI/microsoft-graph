@@ -10,14 +10,16 @@ describe("getDriveItemByPath", () => {
 	it("can retrieve an existing folder by path", async () => {
 		const folderName = generateTempFileName();
 		const folder = await createFolder(getDefaultDriveRef(), folderName);
-		const folderPath = driveItemPath(folderName);
+		try {
+			const folderPath = driveItemPath(folderName);
 
-		const retrievedFolder = await getDriveItemByPath(getDefaultDriveRef(), folderPath);
+			const retrievedFolder = await getDriveItemByPath(getDefaultDriveRef(), folderPath);
 
-		expect(retrievedFolder.id).toBe(folder.id);
-		expect(retrievedFolder.name).toBe(folderName);
-
-		await tryDeleteDriveItem(folder);
+			expect(retrievedFolder.id).toBe(folder.id);
+			expect(retrievedFolder.name).toBe(folderName);
+		} finally {
+			await tryDeleteDriveItem(folder);
+		}
 	});
 
 	it("throws an error when trying to retrieve a non-existent item by path", async () => {

@@ -1,22 +1,22 @@
 import { describe, expect, it } from "vitest";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
-import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import { generalCellFormat } from "../services/cell.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
+import createWorkbookAndStartSession from "./createWorkbookAndStartSession.ts";
 import readWorkbookRows from "./readWorkbookRows.ts";
+import safeDeleteWorkbook from "./safeDeleteWorkbook.ts";
 import setWorkbookRangeValues from "./setWorkbookRangeValues.ts";
-import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 describe("readWorkbookRows", () => {
 	it("Single request", async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 
 		try {
@@ -37,7 +37,7 @@ describe("readWorkbookRows", () => {
 				idx++;
 			}
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -45,7 +45,7 @@ describe("readWorkbookRows", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 
 		try {
@@ -66,7 +66,7 @@ describe("readWorkbookRows", () => {
 				idx++;
 			}
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

@@ -4,8 +4,8 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
-import createWorkbook from "../workbook/createWorkbook.ts";
+import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import calculateWorkbook from "./../workbook/calculateWorkbook.ts";
 import getWorkbookWorksheetRange from "./getWorkbookWorksheetRange.ts";
 import updateWorkbookRange from "./updateWorkbookRange.ts";
@@ -19,7 +19,7 @@ describe("getWorkbookRange", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 		const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B2");
 
@@ -34,7 +34,7 @@ describe("getWorkbookRange", () => {
 			expect(range.text).toEqual(values.map((row) => row.map((cell) => cell.toString())));
 			expect(range.numberFormat).toEqual(values.map((row) => row.map(() => "General")));
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -42,7 +42,7 @@ describe("getWorkbookRange", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 		const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B2");
 
@@ -58,7 +58,7 @@ describe("getWorkbookRange", () => {
 			expect(range.text).toBeUndefined();
 			expect(range.numberFormat).toBeUndefined();
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -66,7 +66,7 @@ describe("getWorkbookRange", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 		const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:B2");
 
@@ -82,7 +82,7 @@ describe("getWorkbookRange", () => {
 			expect(range.text).toEqual(values.map((row) => row.map((cell) => cell.toString())));
 			expect(range.numberFormat).toBeUndefined();
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

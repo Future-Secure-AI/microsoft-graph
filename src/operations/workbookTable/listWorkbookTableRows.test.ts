@@ -4,7 +4,7 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookTable from "./createWorkbookTable.ts";
@@ -26,7 +26,7 @@ describe("listWorkbookTableRows", () => {
 			const rows = await listWorkbookTableRows(table);
 			expect(rows.length).toBeGreaterThan(0);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
-import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import { accountingCellFormat } from "../services/cell.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
@@ -8,7 +7,8 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
+import createWorkbookAndStartSession from "./createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "./safeDeleteWorkbook.ts";
 import updateWorkbookRangeFirstRow from "./updateWorkbookRangeFirstRow.ts";
 import updateWorkbookRangeRows from "./updateWorkbookRangeRows.ts";
 
@@ -22,7 +22,7 @@ async function prepareRange() {
 	const workbookName = generateTempFileName("xlsx");
 	const workbookPath = driveItemPath(workbookName);
 	const driveRef = getDefaultDriveRef();
-	const workbook = await createWorkbook(driveRef, workbookPath);
+	const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 	const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 	const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
 	return { workbook, rangeRef };
@@ -37,7 +37,7 @@ describe("updateWorkbookRangeFirstRow", () => {
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.values[0]).toEqual(["A", "B", "C"]);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -53,7 +53,7 @@ describe("updateWorkbookRangeFirstRow", () => {
 			const result = await getWorkbookWorksheetRange(rangeRef);
 			expect(result.numberFormat[0]).toEqual([accountingCellFormat, accountingCellFormat, accountingCellFormat]);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -73,7 +73,7 @@ describe("updateWorkbookRangeFirstRow", () => {
 			expect(result.values[1]).toEqual([4, 5, 6]);
 			expect(result.values[2]).toEqual([7, 8, 9]);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

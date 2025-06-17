@@ -9,7 +9,8 @@ import getDriveItem from "./getDriveItem.ts";
 describe("deleteDriveItem", () => {
 	it("can delete an existing folder", async () => {
 		const folderName = generateTempFileName();
-		const folder = await createFolder(getDefaultDriveRef(), folderName);
+		const driveRef = getDefaultDriveRef();
+		const folder = await createFolder(driveRef, folderName);
 
 		await deleteDriveItem(folder);
 

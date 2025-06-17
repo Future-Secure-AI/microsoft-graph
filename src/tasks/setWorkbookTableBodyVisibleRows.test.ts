@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
-import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
 import createWorkbookTable from "../operations/workbookTable/createWorkbookTable.ts";
 import getWorkbookTableBodyRange from "../operations/workbookTable/getWorkbookTableBodyRange.ts";
@@ -9,16 +8,17 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createDefaultWorkbookWorksheetRef } from "../services/workbookWorksheet.ts";
+import createWorkbookAndStartSession from "./createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "./safeDeleteWorkbook.ts";
 import setRowHidden from "./setRowHidden.ts";
 import { setWorkbookTableBodyVisibleRows } from "./setWorkbookTableBodyVisibleRows.ts";
-import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
 describe("setWorkbookTableBodyVisibleRows", () => {
 	it("writes input rows to visible rows of a table", { timeout: 30000 }, async () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		try {
 			const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
@@ -49,7 +49,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 				["NewValue5", "NewValue6", "NewValue7", "NewValue8"],
 			]);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -57,7 +57,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		try {
 			const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
@@ -90,7 +90,7 @@ describe("setWorkbookTableBodyVisibleRows", () => {
 				["NewValue9", "NewValue10", "NewValue11", "NewValue12"],
 			]);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

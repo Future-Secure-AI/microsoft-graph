@@ -3,8 +3,8 @@ import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
-import createWorkbook from "../workbook/createWorkbook.ts";
+import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
 import getWorkbookRangeFont from "./getWorkbookRangeFont.ts";
 import setWorkbookRangeFont from "./setWorkbookRangeFont.ts";
@@ -14,7 +14,7 @@ describe("getWorkbookRangeFont", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		try {
 			const worksheet = await createWorkbookWorksheet(workbook);
@@ -29,7 +29,7 @@ describe("getWorkbookRangeFont", () => {
 			expect(font.bold).toBe(true);
 			expect(font.color).toBe("#0000FF");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

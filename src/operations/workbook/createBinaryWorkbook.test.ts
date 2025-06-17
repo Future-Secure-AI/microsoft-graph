@@ -4,7 +4,7 @@ import { binaryWorkbookFileExtension, driveItemPath } from "../../services/drive
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { defaultWorkbookWorksheetName } from "../../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import getWorkbookWorksheetRange from "../workbookRange/getWorkbookWorksheetRange.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 import createWorkbookSession from "../workbookSession/createWorkbookSession.ts";
@@ -29,7 +29,7 @@ describe("createWorkbook", () => {
 			const range = await getWorkbookWorksheetRange(rangeRef);
 			expect(range.values[0][0]).toBe(testValue);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

@@ -26,6 +26,7 @@ describe("createFolder", () => {
 		try {
 			const childFolderName = generateTempFileName("child");
 			console.debug(`Creating child folder ${childFolderName}...`);
+			
 			const childFolder = await createFolder(parentFolder, childFolderName);
 			console.debug(`Created child folder ${childFolder.webUrl}...`);
 

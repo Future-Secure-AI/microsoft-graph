@@ -3,9 +3,9 @@ import type { WorkbookWorksheetName } from "../../models/WorkbookWorksheet.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
+import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
-import createWorkbook from "../workbook/createWorkbook.ts";
 import createWorkbookWorksheet from "./createWorkbookWorksheet.ts";
 import getWorkbookWorksheetByName from "./getWorkbookWorksheetByName.ts";
 
@@ -14,7 +14,7 @@ describe("getWorkbookWorksheetByName", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		const worksheetName = "Sheet2" as WorkbookWorksheetName;
 
 		try {
@@ -24,7 +24,7 @@ describe("getWorkbookWorksheetByName", () => {
 			expect(worksheet.name).toBe(worksheetName);
 			expect(worksheet.worksheetId).toBeDefined();
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -32,7 +32,7 @@ describe("getWorkbookWorksheetByName", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		const worksheetName = "NonExistentSheet" as WorkbookWorksheetName;
 
 		try {
@@ -44,7 +44,7 @@ describe("getWorkbookWorksheetByName", () => {
 			}
 			expect(errorCaught).toBe(true);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

@@ -5,8 +5,9 @@ import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
-import createWorkbook from "../workbook/createWorkbook.ts";
+import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
+import calculateWorkbook from "../workbook/calculateWorkbook.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
 import listWorkbookRangeBorders from "./listWorkbookRangeBorders.ts";
 import setWorkbookRangeBorder from "./setWorkbookRangeBorder.ts";
@@ -16,7 +17,7 @@ describe("setWorkbookRangeBorder", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		try {
 			const worksheet = await createWorkbookWorksheet(workbook);
@@ -31,6 +32,7 @@ describe("setWorkbookRangeBorder", () => {
 				weight: weight,
 			});
 
+			await calculateWorkbook(workbook);
 			const borders = await listWorkbookRangeBorders(rangeRef);
 			const topBorder = borders.find((b) => b.sideIndex === "EdgeTop");
 			if (!topBorder) {
@@ -40,7 +42,7 @@ describe("setWorkbookRangeBorder", () => {
 			expect(topBorder.style).toBe(style);
 			expect(topBorder.weight).toBe(weight);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

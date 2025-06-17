@@ -3,7 +3,6 @@ import type { BorderStyle, BorderWeight } from "../models/Border.ts";
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
-import createWorkbook from "../operations/workbook/createWorkbook.ts";
 import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRangeBorder.ts";
 import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFill.ts";
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
@@ -15,6 +14,7 @@ import { driveItemPath } from "../services/driveItem.ts";
 import { generateTempFileName } from "../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../services/workbookWorksheet.ts";
+import createWorkbookAndStartSession from "./createWorkbookAndStartSession.ts";
 import { iterateWorkbookRangeRows } from "./iterateWorkbookRangeRows.ts";
 import tryDeleteDriveItem from "./tryDeleteDriveItem.ts";
 
@@ -29,7 +29,7 @@ async function prepareRange() {
 	const workbookName = generateTempFileName("xlsx");
 	const workbookPath = driveItemPath(workbookName);
 	const driveRef = getDefaultDriveRef();
-	const workbook = await createWorkbook(driveRef, workbookPath);
+	const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 	const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 	const rangeRef = createWorkbookRangeRef(worksheetRef, "A1:C3");
 	await updateWorkbookRange(rangeRef, { values: values });

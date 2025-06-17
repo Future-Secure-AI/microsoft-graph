@@ -4,8 +4,8 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createDefaultWorkbookWorksheetRef } from "../../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
-import createWorkbook from "../workbook/createWorkbook.ts";
+import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import getWorkbookWorksheetRange from "../workbookRange/getWorkbookWorksheetRange.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 import createWorkbookTable from "./createWorkbookTable.ts";
@@ -17,7 +17,7 @@ describe("deleteWorkbookTablePreservingValues", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		try {
 			const worksheetRef = createDefaultWorkbookWorksheetRef(workbook);
@@ -47,7 +47,7 @@ describe("deleteWorkbookTablePreservingValues", () => {
 				[9, 10, 11, 12],
 			]);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

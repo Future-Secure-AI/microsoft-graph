@@ -5,9 +5,9 @@ import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import { createWorkbookWorksheetRef, defaultWorkbookWorksheetId } from "../../services/workbookWorksheet.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
+import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import calculateWorkbook from "../workbook/calculateWorkbook.ts";
-import createWorkbook from "../workbook/createWorkbook.ts";
 import updateWorkbookRange from "../workbookRange/updateWorkbookRange.ts";
 import getWorkbookWorksheetUsedRangeRef from "./getWorkbookWorksheetUsedRange.ts";
 
@@ -21,7 +21,7 @@ describe("getWorkbookWorksheetUsedRangeRef", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
 		const address = "A1:B2" as CellRangeAddress;
 		const rangeRef = createWorkbookRangeRef(worksheetRef, address);
@@ -36,7 +36,7 @@ describe("getWorkbookWorksheetUsedRangeRef", () => {
 			const usedRangeRef = await getWorkbookWorksheetUsedRangeRef(worksheetRef);
 			expect(usedRangeRef.address).toBe(address);
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

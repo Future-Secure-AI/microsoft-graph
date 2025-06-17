@@ -2,9 +2,9 @@ import { describe, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
-import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
+import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
+import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import calculateWorkbook from "./calculateWorkbook.ts";
-import createWorkbook from "./createWorkbook.ts";
 
 describe("calculateWorkbook", () => {
 	// All we're really doing is check that there's no errors
@@ -13,12 +13,12 @@ describe("calculateWorkbook", () => {
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const driveRef = getDefaultDriveRef();
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		try {
 			await calculateWorkbook(workbook, "Recalculate");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -26,11 +26,11 @@ describe("calculateWorkbook", () => {
 		const driveRef = getDefaultDriveRef();
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 		try {
 			await calculateWorkbook(workbook, "Full");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 
@@ -38,12 +38,12 @@ describe("calculateWorkbook", () => {
 		const driveRef = getDefaultDriveRef();
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
-		const workbook = await createWorkbook(driveRef, workbookPath);
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		try {
 			await calculateWorkbook(workbook, "FullRebuild");
 		} finally {
-			await tryDeleteDriveItem(workbook);
+			await safeDeleteWorkbook(workbook);
 		}
 	});
 });

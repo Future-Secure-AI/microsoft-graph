@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import type { DriveItemRef } from "../../models/DriveItem.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
@@ -15,10 +14,9 @@ describe("createDriveItem", () => {
 		const driveRef = getDefaultDriveRef();
 		const itemPath = driveItemPath(generateTempFileName("txt"));
 
-		let createdItem: DriveItemRef | null = null;
-		try {
-			createdItem = await createDriveItem(driveRef, itemPath, sampleContentType, sampleContent);
+		const createdItem = await createDriveItem(driveRef, itemPath, sampleContentType, sampleContent);
 
+		try {
 			expect(createdItem).toHaveProperty("id");
 			expect(createdItem).toHaveProperty("name", itemPath.split("/").pop());
 
@@ -29,9 +27,7 @@ describe("createDriveItem", () => {
 			const retrievedArray = new Uint8Array(content);
 			expect(retrievedArray).toEqual(originalArray);
 		} finally {
-			if (createdItem) {
-				await tryDeleteDriveItem(createdItem);
-			}
+			await tryDeleteDriveItem(createdItem);
 		}
 	});
 });
