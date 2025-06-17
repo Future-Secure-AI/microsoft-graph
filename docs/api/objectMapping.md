@@ -42,7 +42,7 @@ Resolved mapping from object properties to column offsets and encode/decode func
 
 > **createObjectMapping**\<`T`\>(`headerRow`, `rules`): [`ResolvedObjectMapping`](#resolvedobjectmapping)\<`T`\>
 
-Defined in: [src/services/objectMapping.ts:86](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L86)
+Defined in: [src/services/objectMapping.ts:94](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L94)
 
 Creates a mapping from a header row to object properties based on provided rules.
 
@@ -75,7 +75,7 @@ If a column matching a pattern is not found in the header row.
 
 > **objectsToRows**\<`T`\>(`objects`, `mapping`): `AsyncIterable`\<[`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<[`Cell`](Cell.md#cell)\>[]\>
 
-Defined in: [src/services/objectMapping.ts:146](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L146)
+Defined in: [src/services/objectMapping.ts:154](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L154)
 
 Converts objects to spreadsheet rows using a provided mapping.
 
@@ -106,7 +106,7 @@ Arrays of partial cells, one for each object.
 
 > **objectToRow**\<`T`\>(`record`, `mapper`): [`Partial`](https://www.typescriptlang.org/docs/handbook/utility-types.html#partialtype)\<[`Cell`](Cell.md#cell)\>[]
 
-Defined in: [src/services/objectMapping.ts:184](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L184)
+Defined in: [src/services/objectMapping.ts:192](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L192)
 
 Converts an object to a row of cells using the provided mapping.
 
@@ -135,7 +135,7 @@ An array of partial cells representing the row.
 
 > **rowsToObjects**\<`T`\>(`rows`, `mapping`): `AsyncIterable`\<`T`\>
 
-Defined in: [src/services/objectMapping.ts:133](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L133)
+Defined in: [src/services/objectMapping.ts:141](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L141)
 
 Converts spreadsheet rows to objects using a provided mapping.
 
@@ -166,7 +166,7 @@ Objects of type T, one for each row.
 
 > **rowsToObjectsWithHeader**\<`T`\>(`rows`, `rules`): `AsyncIterable`\<`T`\>
 
-Defined in: [src/services/objectMapping.ts:65](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L65)
+Defined in: [src/services/objectMapping.ts:73](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L73)
 
 Converts spreadsheet rows to objects using the first row as a header.
 
@@ -191,13 +191,25 @@ Converts spreadsheet rows to objects using the first row as a header.
 
 Objects of type T, one for each data row.
 
+#### Example
+
+```ts
+const rows = iterateRows(rangeRef)
+const rules = {
+   name: { columnPattern: /name/i },
+   age: { columnPattern: /age/i },
+ };
+const objs = await iterateToArray(rowsToObjectsWithHeader(rows, rules));
+// objs could be [{ name: "Alice", age: 30 }, { name: "Bob", age: 25 }]
+```
+
 ***
 
 ### rowToObject()
 
 > **rowToObject**\<`T`\>(`cells`, `rules`): `T`
 
-Defined in: [src/services/objectMapping.ts:160](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L160)
+Defined in: [src/services/objectMapping.ts:168](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/objectMapping.ts#L168)
 
 Converts a row of cells to an object using the provided mapping.
 
