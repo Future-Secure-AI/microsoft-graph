@@ -61,6 +61,14 @@ export type ResolvedObjectMapping<T> = {
  * @param rows Iterable or async iterable of cell arrays (rows).
  * @param rules Mapping rules for converting columns to object properties.
  * @yields Objects of type T, one for each data row.
+ * @example
+ * const rows = iterateRows(rangeRef)
+ * const rules = {
+ *    name: { columnPattern: /name/i },
+ *    age: { columnPattern: /age/i },
+ *  };
+ * const objs = await iterateToArray(rowsToObjectsWithHeader(rows, rules));
+ * // objs could be [{ name: "Alice", age: 30 }, { name: "Bob", age: 25 }]
  */
 export async function* rowsToObjectsWithHeader<T>(rows: Iterable<Cell[]> | AsyncIterable<Cell[]>, rules: ObjectMapping<T>): AsyncIterable<T> {
 	let mapping: ResolvedObjectMapping<T> | null = null;
