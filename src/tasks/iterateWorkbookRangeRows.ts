@@ -127,7 +127,7 @@ async function getFill(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>) {
 }
 
 async function getBorders(rangeRef: WorkbookRangeRef, scope: Partial<CellScope>) {
-	if (!scope.borders) {
+	if (!scope.border) {
 		return {};
 	}
 	const response = await listWorkbookRangeBorders(rangeRef);
@@ -182,8 +182,8 @@ function calculateMaxRowsPerOperation(columnCount: number, overwriteMaxCellsPerO
 }
 
 function scopeToRangeSelect(scope: Partial<CellScope>) {
-	if (!(scope.values || scope.text || scope.format)) {
+	if (!(scope.value || scope.text || scope.format)) {
 		return null;
 	}
-	return { values: scope.values ?? false, text: scope.text ?? false, numberFormat: scope.format ?? false };
+	return { values: scope.value ?? false, text: scope.text ?? false, numberFormat: scope.format ?? false };
 }

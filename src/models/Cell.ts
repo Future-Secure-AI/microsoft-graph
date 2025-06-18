@@ -110,7 +110,7 @@ export type CellFormat = string & {
  */
 export type CellScope = {
 	/** Raw cell value. CHEAP (+1 op per 10K cells, no additional op with `text` or `format`) */
-	values: boolean;
+	value: boolean;
 
 	/** Formatted value, as presented to the user. CHEAP (+1 op per 10K cells, no additional call op `values` or `format`) */
 	text: boolean;
@@ -122,7 +122,7 @@ export type CellScope = {
 	alignment: boolean;
 
 	/** Cell borders. VERY EXPENSIVE (+1 op per cell)  */
-	borders: boolean;
+	border: boolean;
 
 	/** Background fill style. VERY EXPENSIVE (+1 op per cell)  */
 	fill: boolean;

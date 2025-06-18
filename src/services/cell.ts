@@ -16,11 +16,11 @@ export const accountingCellFormat = '_($* #,##0.00_);_($* (#,##0.00);_($* "-"??_
 // export const timeCellFormat = "h:mm:ss AM/PM" as CellFormat;
 
 export const defaultCellScope: CellScope = {
-	values: true,
+	value: true,
 	text: true,
 	format: true,
 	alignment: false,
-	borders: false,
+	border: false,
 	fill: false,
 	font: false,
 };
