@@ -22,7 +22,7 @@ export default function listSites(contextRef: ContextRef): GraphOperation<(Site 
 	return operation({
 		context: contextRef.context,
 		method: "GET",
-		path: generatePath("/sites", {}),
+		path: generatePath("/sites?search=*", {}), // TODO: Implement search parameter properly. Without this not all are shown.
 		headers: {},
 		body: null,
 		responseTransform: (response) => {
