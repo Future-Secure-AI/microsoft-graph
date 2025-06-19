@@ -1,6 +1,6 @@
 /**
  * Refresh all pivot tables in a worksheet.
- * @module refreshAllWorkbookWorksheetPivotTables
+ * @module refreshAllWorkbookPivotTables
  * @category Operations
  */
 
@@ -14,8 +14,23 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @param worksheetRef Reference to the worksheet.
  * @returns void (no response body)
  * @see https://learn.microsoft.com/en-us/graph/api/workbookpivottable-refreshall
+ * @example
+ * const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as AzureTenantId;
+ * const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as AzureClientId;
+ * const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as AzureClientSecret;
+ * const siteId = getEnvironmentVariable("SHAREPOINT_SITE_ID") as SiteId;
+ * const driveId = getEnvironmentVariable("SHAREPOINT_DRIVE_ID") as DriveId;
+ * const driveItemPath = "/path/to/your/workbook.xlsx" as DriveItemPath;
+ * const worksheetName = "Sheet1" as WorkbookWorksheetName;
+ *
+ * const contextRef = createClientSecretContext(tenantId, clientId, clientSecret);
+ * const siteRef = createSiteRef(contextRef, siteId);
+ * const driveRef = createDriveRef(siteRef, driveId);
+ * const driveItemRef = await getDriveItemByPath(driveRef, driveItemPath);
+ * const worksheetRef = await getWorkbookWorksheetByName(driveItemRef, worksheetName);
+ * await refreshAllWorkbookPivotTables(worksheetRef);
  */
-export default function refreshAllWorkbookWorksheetPivotTables(worksheetRef: WorkbookWorksheetRef): GraphOperation<void> {
+export default function refreshAllWorkbookPivotTables(worksheetRef: WorkbookWorksheetRef): GraphOperation<void> {
 	return operation({
 		context: worksheetRef.context,
 		method: "POST",

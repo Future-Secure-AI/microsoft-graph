@@ -1,37 +1,32 @@
-[Microsoft Graph SDK](README.md) / WorkbookPivotTable
+[Microsoft Graph SDK](README.md) / workbookPivotTable
 
-# WorkbookPivotTable
+# workbookPivotTable
 
-Pointer for a pivot table in a worksheet.
+Utilities for working with workbook pivot tables and their references.
 
-## Type Aliases
+## Functions
 
-### WorkbookPivotTableId
+### createWorkbookPivotTableRef()
 
-> **WorkbookPivotTableId** = `string` & `object`
+> **createWorkbookPivotTableRef**(`worksheetRef`, `pivotTableId`): [`WorkbookPivotTableRef`](WorkbookPivotTable-1.md#workbookpivottableref)
 
-Defined in: [src/models/WorkbookPivotTable.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookPivotTable.ts#L14)
+Defined in: src/services/workbookPivotTable.ts:17
 
-Identifier for a pivot table in a worksheet.
+Creates a reference to a workbook pivot table.
 
-#### Type declaration
+#### Parameters
 
-##### \_\_brand
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `worksheetRef` | [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref) | Reference to the worksheet containing the pivot table. |
+| `pivotTableId` | `undefined` \| [`WorkbookPivotTableId`](WorkbookPivotTable-1.md#workbookpivottableid) | ID of the pivot table. |
 
-> **\_\_brand**: `"WorkbookPivotTableId"`
+#### Returns
 
-***
+[`WorkbookPivotTableRef`](WorkbookPivotTable-1.md#workbookpivottableref)
 
-### WorkbookPivotTableRef
+Reference to the workbook pivot table.
 
-> **WorkbookPivotTableRef** = [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref) & `object`
+#### Throws
 
-Defined in: [src/models/WorkbookPivotTable.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookPivotTable.ts#L21)
-
-Reference to a pivot table in a worksheet.
-
-#### Type declaration
-
-##### pivotTableId
-
-> **pivotTableId**: [`WorkbookPivotTableId`](#workbookpivottableid)
+Error if the pivot table ID is missing.

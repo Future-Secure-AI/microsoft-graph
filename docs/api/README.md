@@ -62,7 +62,7 @@
 | [Site](Site-1.md) | Pointers to a site. |
 | [Workbook](Workbook.md) | Pointers to a workbook. |
 | [WorkbookNamedRange](WorkbookNamedRange.md) | Pointers to a named range in a worksheet. |
-| [WorkbookPivotTable](WorkbookPivotTable.md) | Pointer for a pivot table in a worksheet. |
+| [WorkbookPivotTable](WorkbookPivotTable-1.md) | Pointer for a pivot table in a worksheet. |
 | [WorkbookRange](WorkbookRange-1.md) | Pointers to a range in a worksheet. |
 | [WorkbookSession](WorkbookSession.md) | Pointers to a workbook session . |
 | [WorkbookTable](WorkbookTable-1.md) | Pointer for a table in a worksheet. |
@@ -124,9 +124,9 @@
 | [listWorkbookWorksheets](listWorkbookWorksheets.md) | Retrieve a list of worksheets in a workbook. |
 | [mergeWorkbookRange](mergeWorkbookRange.md) | Merge a range of cells in a worksheet. |
 | [moveDriveItem](moveDriveItem.md) | Moves a file to a new location in the same drive. |
-| [refreshAllWorkbookWorksheetPivotTables](refreshAllWorkbookWorksheetPivotTables.md) | Refresh all pivot tables in a worksheet. |
+| [refreshAllWorkbookPivotTables](refreshAllWorkbookPivotTables.md) | Refresh all pivot tables in a worksheet. |
+| [refreshWorkbookPivotTable](refreshWorkbookPivotTable.md) | Refresh a specific pivot table in a worksheet. |
 | [refreshWorkbookSession](refreshWorkbookSession.md) | Refresh a workbook session. |
-| [refreshWorkbookWorksheetPivotTable](refreshWorkbookWorksheetPivotTable.md) | Refresh a specific pivot table in a worksheet. |
 | [searchSites](searchSites.md) | Find accessible sites that match the provided keywords. |
 | [setWorkbookRangeBorder](setWorkbookRangeBorder.md) | Update a specific border of a workbook range. |
 | [setWorkbookRangeFill](setWorkbookRangeFill.md) | Update the fill format of a workbook range. |
@@ -167,6 +167,7 @@
 | [stringCaseConversion](stringCaseConversion.md) | Utilities for converting string case styles (e.g., kebab-case to camelCase). |
 | [templatedPaths](templatedPaths.md) | Utilities for generating and parsing templated HTTP paths. |
 | [temporaryFiles](temporaryFiles.md) | Utilities for generating temporary file names for use with Drive Items. |
+| [workbookPivotTable](workbookPivotTable.md) | Utilities for working with workbook pivot tables and their references. |
 | [workbookRange](workbookRange.md) | Utilities for working with workbook ranges and references. |
 | [workbookTable](workbookTable.md) | Utilities for creating and working with workbook table references. |
 | [workbookTableColumn](workbookTableColumn.md) | Utilities for creating and working with workbook table column references. |

@@ -18,7 +18,7 @@ Retrieve a workbook pivot table.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `pivotTableRef` | [`WorkbookPivotTableRef`](WorkbookPivotTable.md#workbookpivottableref) | Reference to the pivot table. |
+| `pivotTableRef` | [`WorkbookPivotTableRef`](WorkbookPivotTable-1.md#workbookpivottableref) | Reference to the pivot table. |
 
 #### Returns
 

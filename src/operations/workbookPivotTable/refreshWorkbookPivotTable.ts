@@ -1,6 +1,6 @@
 /**
  * Refresh a specific pivot table in a worksheet.
- * @module refreshWorkbookWorksheetPivotTable
+ * @module refreshWorkbookPivotTable
  * @category Operations
  */
 
@@ -14,8 +14,25 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @param pivotTableRef Reference to the pivot table.
  * @returns void (no response body)
  * @see https://learn.microsoft.com/en-us/graph/api/workbookpivottable-refresh
+ * @example
+ * const tenantId = getEnvironmentVariable("AZURE_TENANT_ID") as AzureTenantId;
+ * const clientId = getEnvironmentVariable("AZURE_CLIENT_ID") as AzureClientId;
+ * const clientSecret = getEnvironmentVariable("AZURE_CLIENT_SECRET") as AzureClientSecret;
+ * const siteId = getEnvironmentVariable("SHAREPOINT_SITE_ID") as SiteId;
+ * const driveId = getEnvironmentVariable("SHAREPOINT_DRIVE_ID") as DriveId;
+ * const driveItemPath = "/path/to/your/workbook.xlsx" as DriveItemPath;
+ * const worksheetName = "Sheet1" as WorkbookWorksheetName;
+ * const pivotTableId = "PivotTable1" as WorkbookPivotTableId;
+ *
+ * const contextRef = createClientSecretContext(tenantId, clientId, clientSecret);
+ * const siteRef = createSiteRef(contextRef, siteId);
+ * const driveRef = createDriveRef(siteRef, driveId);
+ * const driveItemRef = await getDriveItemByPath(driveRef, driveItemPath);
+ * const worksheetRef = await getWorkbookWorksheetByName(driveItemRef, worksheetName);
+ * const pivotTableRef = createWorkbookPivotTableRef(worksheetRef, pivotTableId);
+ * await refreshWorkbookPivotTable(pivotTableRef);
  */
-export default function refreshWorkbookWorksheetPivotTable(pivotTableRef: WorkbookPivotTableRef): GraphOperation<void> {
+export default function refreshWorkbookPivotTable(pivotTableRef: WorkbookPivotTableRef): GraphOperation<void> {
 	return operation({
 		context: pivotTableRef.context,
 		method: "POST",
