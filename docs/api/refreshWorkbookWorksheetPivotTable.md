@@ -10,7 +10,7 @@ Refresh a specific pivot table in a worksheet.
 
 > **refreshWorkbookWorksheetPivotTable**(`pivotTableRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: src/operations/workbookPivotTable/refreshWorkbookPivotTable.ts:18
+Defined in: [src/operations/workbookPivotTable/refreshWorkbookPivotTable.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookPivotTable/refreshWorkbookPivotTable.ts#L18)
 
 Refresh a specific pivot table in a worksheet.
 

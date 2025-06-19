@@ -10,7 +10,7 @@ Refresh all pivot tables in a worksheet.
 
 > **refreshAllWorkbookWorksheetPivotTables**(`worksheetRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`void`\>
 
-Defined in: src/operations/workbookPivotTable/refreshAllWorkbookPivotTables.ts:18
+Defined in: [src/operations/workbookPivotTable/refreshAllWorkbookPivotTables.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookPivotTable/refreshAllWorkbookPivotTables.ts#L18)
 
 Refresh all pivot tables in a worksheet.
 

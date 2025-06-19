@@ -10,7 +10,7 @@ Retrieve a workbook pivot table.
 
 > **getWorkbookPivotTable**(`pivotTableRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookPivotTable` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: src/operations/workbookPivotTable/getWorkbookPivotTable.ts:19
+Defined in: [src/operations/workbookPivotTable/getWorkbookPivotTable.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookPivotTable/getWorkbookPivotTable.ts#L19)
 
 Retrieve a workbook pivot table.
 
