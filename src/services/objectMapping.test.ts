@@ -33,8 +33,8 @@ describe("iterateRowsToObjectsWithHeader", () => {
 			[cell("Bob"), cell(25)],
 		];
 		const rules = {
-			name: { columnPattern: /name/i },
-			age: { columnPattern: /age/i },
+			name: { columnPattern: namePattern },
+			age: { columnPattern: agePattern },
 		};
 		const objs = await iterateToArray(rowsToObjectsWithHeader(rows, rules));
 		expect(objs).toEqual([

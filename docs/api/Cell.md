@@ -94,12 +94,12 @@ The amount of detail that we're reading from a cell.
 | Property | Type | Description | Defined in |
 | ------ | ------ | ------ | ------ |
 | <a id="alignment-1"></a> `alignment` | `boolean` | Content position with the cell. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:122](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L122) |
-| <a id="borders-1"></a> `borders` | `boolean` | Cell borders. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:125](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L125) |
+| <a id="border"></a> `border` | `boolean` | Cell borders. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:125](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L125) |
 | <a id="fill-1"></a> `fill` | `boolean` | Background fill style. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:128](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L128) |
 | <a id="font-1"></a> `font` | `boolean` | Text style. VERY EXPENSIVE (+1 op per cell) | [src/models/Cell.ts:131](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L131) |
 | <a id="format-1"></a> `format` | `boolean` | Logic used to format values to text. CHEAP (+1 op per 10K cells, no additional call op `values` or `text`) | [src/models/Cell.ts:119](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L119) |
 | <a id="text-1"></a> `text` | `boolean` | Formatted value, as presented to the user. CHEAP (+1 op per 10K cells, no additional call op `values` or `format`) | [src/models/Cell.ts:116](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L116) |
-| <a id="values"></a> `values` | `boolean` | Raw cell value. CHEAP (+1 op per 10K cells, no additional op with `text` or `format`) | [src/models/Cell.ts:113](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L113) |
+| <a id="value-1"></a> `value` | `boolean` | Raw cell value. CHEAP (+1 op per 10K cells, no additional op with `text` or `format`) | [src/models/Cell.ts:113](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Cell.ts#L113) |
 
 ***
 

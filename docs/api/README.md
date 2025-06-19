@@ -62,6 +62,7 @@
 | [Site](Site-1.md) | Pointers to a site. |
 | [Workbook](Workbook.md) | Pointers to a workbook. |
 | [WorkbookNamedRange](WorkbookNamedRange.md) | Pointers to a named range in a worksheet. |
+| [WorkbookPivotTable](WorkbookPivotTable.md) | Pointer for a pivot table in a worksheet. |
 | [WorkbookRange](WorkbookRange-1.md) | Pointers to a range in a worksheet. |
 | [WorkbookSession](WorkbookSession.md) | Pointers to a workbook session . |
 | [WorkbookTable](WorkbookTable-1.md) | Pointer for a table in a worksheet. |
@@ -96,6 +97,7 @@
 | [getSite](getSite.md) | Retrieve properties for a site resource. |
 | [getSiteByName](getSiteByName.md) | Get a site by its name. |
 | [getWorkbookNamedRange](getWorkbookNamedRange.md) | Retrieve a named range. |
+| [getWorkbookPivotTable](getWorkbookPivotTable.md) | Retrieve a workbook pivot table. |
 | [getWorkbookRangeFill](getWorkbookRangeFill.md) | Retrieve the fill format of a workbook range. |
 | [getWorkbookRangeFont](getWorkbookRangeFont.md) | Retrieve the font format of a workbook range. |
 | [getWorkbookRangeFormat](getWorkbookRangeFormat.md) | Retrieve the format of a workbook range. |
@@ -122,7 +124,9 @@
 | [listWorkbookWorksheets](listWorkbookWorksheets.md) | Retrieve a list of worksheets in a workbook. |
 | [mergeWorkbookRange](mergeWorkbookRange.md) | Merge a range of cells in a worksheet. |
 | [moveDriveItem](moveDriveItem.md) | Moves a file to a new location in the same drive. |
+| [refreshAllWorkbookWorksheetPivotTables](refreshAllWorkbookWorksheetPivotTables.md) | Refresh all pivot tables in a worksheet. |
 | [refreshWorkbookSession](refreshWorkbookSession.md) | Refresh a workbook session. |
+| [refreshWorkbookWorksheetPivotTable](refreshWorkbookWorksheetPivotTable.md) | Refresh a specific pivot table in a worksheet. |
 | [searchSites](searchSites.md) | Find accessible sites that match the provided keywords. |
 | [setWorkbookRangeBorder](setWorkbookRangeBorder.md) | Update a specific border of a workbook range. |
 | [setWorkbookRangeFill](setWorkbookRangeFill.md) | Update the fill format of a workbook range. |
