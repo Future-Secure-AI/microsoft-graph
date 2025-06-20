@@ -10,7 +10,7 @@ Iterate accessible sites matching the provided search keywords as an async itera
 
 > **iterateSiteSearch**(`contextRef`, `search`): [`AsyncGenerator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator)\<`Site` & [`SiteRef`](Site-1.md#siteref)\>
 
-Defined in: src/tasks/iterateSiteSearch.ts:18
+Defined in: [src/tasks/iterateSiteSearch.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateSiteSearch.ts#L19)
 
 Iterate accessible sites matching the provided search keywords as an async iterable.
 

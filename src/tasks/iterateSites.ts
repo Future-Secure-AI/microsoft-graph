@@ -8,6 +8,7 @@ import type { Site } from "@microsoft/microsoft-graph-types";
 import type { ContextRef } from "../models/Context.ts";
 import type { SiteRef } from "../models/Site.ts";
 import listSites from "../operations/site/listSites.ts";
+import { executeHttpRequest } from "../services/http.ts";
 
 /**
  * List sites in your company geography as an async iterable.
@@ -26,12 +27,14 @@ export default async function* iterateSites(contextRef: ContextRef, maxPerChunk 
 	while (nextLink) {
 		const accessToken = await contextRef.context.generateAccessToken();
 
-		const response = await fetch(nextLink, {
+		const response = await executeHttpRequest({
+			url: nextLink.toString(),
+			method: "GET",
 			headers: {
 				authorization: `Bearer ${accessToken}`,
 			},
 		});
-		const result = (await response.json()) as { value: (Site & SiteRef)[]; "@odata.nextLink"?: string };
+		const result = response.data as { value: (Site & SiteRef)[]; "@odata.nextLink"?: string };
 		sites = result.value;
 		nextLink = result["@odata.nextLink"] ? new URL(result["@odata.nextLink"]) : null;
 

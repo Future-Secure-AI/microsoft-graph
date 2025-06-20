@@ -14,4 +14,15 @@ describe("iterateSites", () => {
 		);
 		expect(sites.length).toBeGreaterThan(0);
 	});
+
+	it("can iterate all sites over multiple pages", async () => {
+		const contextRef = getDefaultContextRef();
+		const sites = await iterateToArray(iterateSites(contextRef, 1));
+
+		console.debug(
+			"Sites:",
+			sites.map((x) => x.name),
+		);
+		expect(sites.length).toBeGreaterThan(0);
+	});
 });

@@ -8,6 +8,7 @@ import type { Site } from "@microsoft/microsoft-graph-types";
 import type { ContextRef } from "../models/Context.ts";
 import type { SiteRef } from "../models/Site.ts";
 import searchSites from "../operations/site/searchSites.ts";
+import { executeHttpRequest } from "../services/http.ts";
 
 /**
  * Iterate accessible sites matching the provided search keywords as an async iterable.
@@ -24,12 +25,15 @@ export default async function* iterateSiteSearch(contextRef: ContextRef, search:
 
 	while (nextLink) {
 		const accessToken = await contextRef.context.generateAccessToken();
-		const response = await fetch(nextLink, {
+
+		const response = await executeHttpRequest({
+			url: nextLink.toString(),
+			method: "GET",
 			headers: {
 				authorization: `Bearer ${accessToken}`,
 			},
 		});
-		const result = (await response.json()) as { value: (Site & SiteRef)[]; "@odata.nextLink"?: string };
+		const result = response.data as { value: (Site & SiteRef)[]; "@odata.nextLink"?: string };
 		sites = result.value;
 		nextLink = result["@odata.nextLink"] ? new URL(result["@odata.nextLink"]) : null;
 
