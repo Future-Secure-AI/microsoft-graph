@@ -185,6 +185,7 @@
 | [iterateDriveItems](iterateDriveItems.md) | List drive items in a drive or a drive item. |
 | [iterateDrives](iterateDrives.md) | List drives in a site as an async iterable. |
 | [iterateSites](iterateSites.md) | List sites in your company geography as an async iterable. |
+| [iterateSiteSearch](iterateSiteSearch.md) | Iterate accessible sites matching the provided search keywords as an async iterable. |
 | [iterateWorkbookRangeRows](iterateWorkbookRangeRows.md) | Iterate over the rows in a given worksheet range. |
 | [readWorkbookRangeFirstRow](readWorkbookRangeFirstRow.md) | Read the first row from a given workbook range. |
 | [readWorkbookRangeRows](readWorkbookRangeRows.md) | Read all rows from a given workbook range. |

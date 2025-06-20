@@ -10,7 +10,7 @@ List drives in a site as an async iterable.
 
 > **iterateDrives**(`siteRef`, `maxPerChunk`): [`AsyncGenerator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object`\>
 
-Defined in: src/tasks/iterateDrives.ts:19
+Defined in: [src/tasks/iterateDrives.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateDrives.ts#L19)
 
 List drives in a site as an async iterable.
 

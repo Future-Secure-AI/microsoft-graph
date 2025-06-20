@@ -10,7 +10,7 @@ List drive items in a drive or a drive item.
 
 > **iterateDriveItems**(`parentRef`, `maxPerChunk`): [`AsyncGenerator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
-Defined in: src/tasks/iterateDriveItems.ts:21
+Defined in: [src/tasks/iterateDriveItems.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateDriveItems.ts#L21)
 
 List drive items in a drive or a drive item as an async iterable.
 

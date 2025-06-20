@@ -10,7 +10,7 @@ List sites in your company geography as an async iterable.
 
 > **iterateSites**(`contextRef`, `maxPerChunk`): [`AsyncGenerator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator)\<`Site` & [`SiteRef`](Site-1.md#siteref)\>
 
-Defined in: src/tasks/iterateSites.ts:19
+Defined in: [src/tasks/iterateSites.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/iterateSites.ts#L19)
 
 List sites in your company geography as an async iterable.
 

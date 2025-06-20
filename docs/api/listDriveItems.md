@@ -10,14 +10,14 @@ Retrieve the metadata for items in a drive or folder.
 
 > **DriveItemList** = `object`
 
-Defined in: src/operations/driveItem/listDriveItems.ts:20
+Defined in: [src/operations/driveItem/listDriveItems.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItems.ts#L20)
 
 #### Properties
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="items"></a> `items` | `DriveItem` & [`DriveItemRef`](DriveItem-1.md#driveitemref)[] | src/operations/driveItem/listDriveItems.ts:21 |
-| <a id="nextlink"></a> `nextLink` | [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| `null` | src/operations/driveItem/listDriveItems.ts:22 |
+| <a id="items"></a> `items` | `DriveItem` & [`DriveItemRef`](DriveItem-1.md#driveitemref)[] | [src/operations/driveItem/listDriveItems.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItems.ts#L21) |
+| <a id="nextlink"></a> `nextLink` | [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| `null` | [src/operations/driveItem/listDriveItems.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItems.ts#L22) |
 
 ***
 
@@ -25,14 +25,14 @@ Defined in: src/operations/driveItem/listDriveItems.ts:20
 
 > **ListDriveItemResponse** = `object`
 
-Defined in: src/operations/driveItem/listDriveItems.ts:15
+Defined in: [src/operations/driveItem/listDriveItems.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItems.ts#L15)
 
 #### Properties
 
 | Property | Type | Defined in |
 | ------ | ------ | ------ |
-| <a id="odatanextlink"></a> `@odata.nextLink` | `string` \| `null` | src/operations/driveItem/listDriveItems.ts:17 |
-| <a id="value"></a> `value` | `DriveItem` & [`DriveItemRef`](DriveItem-1.md#driveitemref)[] | src/operations/driveItem/listDriveItems.ts:16 |
+| <a id="odatanextlink"></a> `@odata.nextLink` | `string` \| `null` | [src/operations/driveItem/listDriveItems.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItems.ts#L17) |
+| <a id="value"></a> `value` | `DriveItem` & [`DriveItemRef`](DriveItem-1.md#driveitemref)[] | [src/operations/driveItem/listDriveItems.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItems.ts#L16) |
 
 ## Functions
 
@@ -40,7 +40,7 @@ Defined in: src/operations/driveItem/listDriveItems.ts:15
 
 > **listDriveItems**(`parentRef`, `take`): [`GraphOperation`](GraphOperation.md#graphoperation)\<[`DriveItemList`](#driveitemlist)\>
 
-Defined in: src/operations/driveItem/listDriveItems.ts:32
+Defined in: [src/operations/driveItem/listDriveItems.ts:32](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/listDriveItems.ts#L32)
 
 Retrieve the metadata for items in a drive or folder.
 
