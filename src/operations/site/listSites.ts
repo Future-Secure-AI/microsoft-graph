@@ -33,7 +33,7 @@ export default function listSites(contextRef: ContextRef, take = 1000): GraphOpe
 	return operation({
 		context: contextRef.context,
 		method: "GET",
-		path: generatePath(`/sites?search=*&$top=${take}`, {}), // TODO: Implement search parameter properly. Without this not all are shown.
+		path: generatePath(`/sites?$top=${take}`, {}), // TODO: Implement search parameter properly. Without this not all are shown.
 		headers: {},
 		body: null,
 		responseTransform: (response) => {

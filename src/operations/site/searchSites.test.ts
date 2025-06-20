@@ -8,8 +8,8 @@ describe("searchSites", () => {
 		const searchKeyword = "a";
 		const result = await searchSites(contextRef, searchKeyword);
 
-		expect(result).toBeInstanceOf(Array);
-		expect(result.length).toBeGreaterThan(0);
+		expect(result.sites).toBeInstanceOf(Array);
+		expect(result.sites.length).toBeGreaterThan(0);
 	});
 
 	it("handles search with '/' character", async () => {
@@ -17,6 +17,6 @@ describe("searchSites", () => {
 		const searchKeyword = "/";
 		const result = await searchSites(contextRef, searchKeyword);
 
-		expect(result).toBeInstanceOf(Array);
+		expect(result.sites).toBeInstanceOf(Array);
 	});
 });
