@@ -71,10 +71,7 @@ function exportsWalk(dir: string, exportsMap, currentRelPath = ""): void {
 			};
 
 			exportsMap[`./${basename(entry, extname(entry))}`] = target; // Workaround for legacy CJS support
-			exportsMap[cjsRequire] = target; // Workaround for legacy CJS support TODO: Remove in next major version since extensions aren't required
 			exportsMap[`./${join(dirname(cjsRequire), basename(cjsRequire, extname(cjsRequire)))}`] = target; // Workaround for legacy CJS support
-			exportsMap[`./${join(dirname(relPath), basename(relPath, extname(relPath)))}`] = target; // TODO: Remove in next major version
-			exportsMap[`./${relPath}`] = target; // TODO: Remove in next major version
 		}
 	}
 }

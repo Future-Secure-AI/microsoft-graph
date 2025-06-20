@@ -2,31 +2,61 @@
 
 # listDriveItems
 
-List drive items in a drive or a drive item.
+Retrieve the metadata for items in a drive or folder.
+
+## Type Aliases
+
+### DriveItemList
+
+> **DriveItemList** = `object`
+
+Defined in: src/operations/driveItem/listDriveItems.ts:20
+
+#### Properties
+
+| Property | Type | Defined in |
+| ------ | ------ | ------ |
+| <a id="items"></a> `items` | `DriveItem` & [`DriveItemRef`](DriveItem-1.md#driveitemref)[] | src/operations/driveItem/listDriveItems.ts:21 |
+| <a id="nextlink"></a> `nextLink` | [`URL`](https://developer.mozilla.org/docs/Web/API/URL) \| `null` | src/operations/driveItem/listDriveItems.ts:22 |
+
+***
+
+### ListDriveItemResponse
+
+> **ListDriveItemResponse** = `object`
+
+Defined in: src/operations/driveItem/listDriveItems.ts:15
+
+#### Properties
+
+| Property | Type | Defined in |
+| ------ | ------ | ------ |
+| <a id="odatanextlink"></a> `@odata.nextLink` | `string` \| `null` | src/operations/driveItem/listDriveItems.ts:17 |
+| <a id="value"></a> `value` | `DriveItem` & [`DriveItemRef`](DriveItem-1.md#driveitemref)[] | src/operations/driveItem/listDriveItems.ts:16 |
 
 ## Functions
 
 ### listDriveItems()
 
-> **listDriveItems**(`parentRef`, `maxPerChunk`): [`AsyncGenerator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
+> **listDriveItems**(`parentRef`, `take`): [`GraphOperation`](GraphOperation.md#graphoperation)\<[`DriveItemList`](#driveitemlist)\>
 
-Defined in: [src/tasks/listDriveItems.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/listDriveItems.ts#L21)
+Defined in: src/operations/driveItem/listDriveItems.ts:32
 
-List drive items in a drive or a drive item as an async iterable.
+Retrieve the metadata for items in a drive or folder.
 
 #### Parameters
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | `undefined` | Parent drive or folder reference. |
-| `maxPerChunk` | `number` | `1000` | Number of items to fetch per request. DO NOT SET EXCEPT FOR ADVANCED TUNING. |
+| `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | `undefined` | Reference to the parent drive or folder. Defaults to the root drive. |
+| `take` | `number` | `1000` | Maximum number of items to retrieve. Defaults to 1000. |
 
 #### Returns
 
-[`AsyncGenerator`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
+[`GraphOperation`](GraphOperation.md#graphoperation)\<[`DriveItemList`](#driveitemlist)\>
 
-Async iterable of drive items.
+Array of drive items, each including its metadata and reference information.
 
-#### Remarks
+#### See
 
-`pageSize` should only be set for advanced performance tuning.
+https://learn.microsoft.com/en-us/graph/api/driveitem-list-children

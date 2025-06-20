@@ -14,9 +14,9 @@ import type { ColumnOffset } from "../models/Column.ts";
 import type { FontName } from "../models/FontName.ts";
 import type { RowOffset } from "../models/Row.ts";
 import type { WorkbookRangeRef } from "../models/WorkbookRange.ts";
+import getWorkbookRangeAlignment from "../operations/workbookRange/getWorkbookRangeAlignment.ts";
 import getWorkbookRangeFill from "../operations/workbookRange/getWorkbookRangeFill.ts";
 import getWorkbookRangeFont from "../operations/workbookRange/getWorkbookRangeFont.ts";
-import getWorkbookRangeFormat from "../operations/workbookRange/getWorkbookRangeFormat.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import listWorkbookRangeBorders from "../operations/workbookRange/listWorkbookRangeBorders.ts";
 import { countAddressColumns, countAddressRows, subRange } from "../services/addressManipulation.ts";
@@ -163,7 +163,7 @@ async function getAlignment(rangeRef: WorkbookRangeRef, scope: Partial<CellScope
 	if (!scope.alignment) {
 		return {};
 	}
-	const response = await getWorkbookRangeFormat(rangeRef);
+	const response = await getWorkbookRangeAlignment(rangeRef);
 
 	return {
 		vertical: response?.verticalAlignment as CellVerticalAlignment,

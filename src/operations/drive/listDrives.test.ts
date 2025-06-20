@@ -5,11 +5,11 @@ import listDrives from "./listDrives.ts";
 describe("listDrives", () => {
 	it("can listDrives", async () => {
 		const siteRef = getDefaultSiteRef();
-		const drives = await listDrives(siteRef);
+		const { drives } = await listDrives(siteRef);
 
 		console.debug(
 			"Drives:",
-			drives.map((drive) => [drive.id, drive.name]),
+			drives.map((drive) => drive.name),
 		);
 		expect(drives.length).toBeGreaterThan(0);
 	});

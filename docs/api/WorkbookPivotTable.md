@@ -10,7 +10,7 @@ Utilities for working with workbook pivot tables and their references.
 
 > **createWorkbookPivotTableRef**(`worksheetRef`, `pivotTableId`): [`WorkbookPivotTableRef`](WorkbookPivotTable-1.md#workbookpivottableref)
 
-Defined in: src/services/workbookPivotTable.ts:17
+Defined in: [src/services/workbookPivotTable.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/workbookPivotTable.ts#L17)
 
 Creates a reference to a workbook pivot table.
 

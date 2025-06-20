@@ -1,6 +1,6 @@
 /**
  * Retrieve the metadata for items in a drive or folder.
- * @module listDriveItemChildren
+ * @module listDriveItems
  * @category Operations
  */
 
@@ -17,6 +17,11 @@ export type ListDriveItemResponse = {
 	"@odata.nextLink": string | null;
 };
 
+export type DriveItemList = {
+	items: (DriveItem & DriveItemRef)[];
+	nextLink: URL | null;
+};
+
 /**
  * Retrieve the metadata for items in a drive or folder.
  * @param parentRef Reference to the parent drive or folder. Defaults to the root drive.
@@ -24,7 +29,7 @@ export type ListDriveItemResponse = {
  * @returns Array of drive items, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-list-children
  */
-export default function listDriveItemChildren(parentRef: DriveRef | DriveItemRef, take = 1000): GraphOperation<ListDriveItemResponse> {
+export default function listDriveItems(parentRef: DriveRef | DriveItemRef, take = 1000): GraphOperation<DriveItemList> {
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 
 	return operation({
@@ -37,7 +42,7 @@ export default function listDriveItemChildren(parentRef: DriveRef | DriveItemRef
 			const result = response as ListDriveItemResponse;
 
 			return {
-				value: result.value.map((item) => {
+				items: result.value.map((item) => {
 					const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
 
 					return {
@@ -45,7 +50,7 @@ export default function listDriveItemChildren(parentRef: DriveRef | DriveItemRef
 						...itemRef,
 					};
 				}),
-				"@odata.nextLink": result["@odata.nextLink"] ?? null,
+				nextLink: result["@odata.nextLink"] ? new URL(result["@odata.nextLink"]) : null,
 			};
 		},
 	});

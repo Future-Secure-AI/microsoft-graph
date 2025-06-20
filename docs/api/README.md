@@ -98,9 +98,9 @@
 | [getSiteByName](getSiteByName.md) | Get a site by its name. |
 | [getWorkbookNamedRange](getWorkbookNamedRange.md) | Retrieve a named range. |
 | [getWorkbookPivotTable](getWorkbookPivotTable.md) | Retrieve a workbook pivot table. |
+| [getWorkbookRangeAlignment](getWorkbookRangeAlignment.md) | Retrieve the format of a workbook range. |
 | [getWorkbookRangeFill](getWorkbookRangeFill.md) | Retrieve the fill format of a workbook range. |
 | [getWorkbookRangeFont](getWorkbookRangeFont.md) | Retrieve the font format of a workbook range. |
-| [getWorkbookRangeFormat](getWorkbookRangeFormat.md) | Retrieve the format of a workbook range. |
 | [getWorkbookTable](getWorkbookTable.md) | Retrieve a workbook table. |
 | [getWorkbookTableBodyRange](getWorkbookTableBodyRange.md) | Retrieve the data body range of a workbook table. |
 | [getWorkbookTableBodyVisibleRange](getWorkbookTableBodyVisibleRange.md) | Retrieve the visible data body range of a table. |
@@ -113,7 +113,7 @@
 | [getWorkbookWorksheetUsedVisibleRange](getWorkbookWorksheetUsedVisibleRange.md) | Retrieve the visible (not hidden) range in a worksheet. |
 | [initiateCopyDriveItem](initiateCopyDriveItem.md) | Initiate an asynchronous copy of an item. |
 | [insertWorkbookCells](insertWorkbookCells.md) | Insert a new blank range at a specified address, shifting existing cells. |
-| [listDriveItemChildren](listDriveItemChildren.md) | Retrieve the metadata for items in a drive or folder. |
+| [listDriveItems](listDriveItems.md) | Retrieve the metadata for items in a drive or folder. |
 | [listDrives](listDrives.md) | Retrieve the list of accessible Drives in a Site. |
 | [listSites](listSites.md) | List sites in your company geography. |
 | [listSites](listSites-1.md) | List sites in all company geographies. |
@@ -180,11 +180,12 @@
 | [copyDriveItem](copyDriveItem.md) | Copy a drive item. |
 | [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
 | [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
-| [getWorkbookWorksheetByName](getWorkbookWorksheetByName-1.md) | Get a worksheet by its name. |
 | [insertWorkbookRangeRow](insertWorkbookRangeRow.md) | Inserts a single row into a workbook range. |
 | [insertWorkbookRangeRows](insertWorkbookRangeRows.md) | Inserts rows into a workbook range. |
+| [iterateDriveItems](iterateDriveItems.md) | List drive items in a drive or a drive item. |
+| [iterateDrives](iterateDrives.md) | List drives in a site as an async iterable. |
+| [iterateSites](iterateSites.md) | List sites in your company geography as an async iterable. |
 | [iterateWorkbookRangeRows](iterateWorkbookRangeRows.md) | Iterate over the rows in a given worksheet range. |
-| [listDriveItems](listDriveItems.md) | List drive items in a drive or a drive item. |
 | [readWorkbookRangeFirstRow](readWorkbookRangeFirstRow.md) | Read the first row from a given workbook range. |
 | [readWorkbookRangeRows](readWorkbookRangeRows.md) | Read all rows from a given workbook range. |
 | [readWorkbookRows](readWorkbookRows.md) | Iterates over the rows in a given worksheet range. |

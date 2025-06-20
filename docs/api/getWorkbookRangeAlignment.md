@@ -1,16 +1,16 @@
-[Microsoft Graph SDK](README.md) / getWorkbookRangeFormat
+[Microsoft Graph SDK](README.md) / getWorkbookRangeAlignment
 
-# getWorkbookRangeFormat
+# getWorkbookRangeAlignment
 
 Retrieve the format of a workbook range.
 
 ## Functions
 
-### getWorkbookRangeFormat()
+### getWorkbookRangeAlignment()
 
-> **getWorkbookRangeFormat**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeFormat` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
+> **getWorkbookRangeAlignment**(`rangeRef`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`WorkbookRangeFormat` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` & `object` & `object` & `object`\>
 
-Defined in: [src/operations/workbookRange/getWorkbookRangeFormat.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/workbookRange/getWorkbookRangeFormat.ts#L21)
+Defined in: src/operations/workbookRange/getWorkbookRangeAlignment.ts:20
 
 Retrieve the format of a workbook range.
 

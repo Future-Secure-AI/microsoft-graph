@@ -12,33 +12,44 @@ import { operation } from "../../services/operationInvoker.ts";
 import { createSiteRef } from "../../services/site.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
+export type ListSitesResponse = {
+	value: (Site & SiteRef)[];
+	"@odata.nextLink": string | null;
+};
+
+export type SiteList = {
+	sites: (Site & SiteRef)[];
+	nextLink: URL | null;
+};
+
 /**
  * List sites in your company geography.
  * @param contextRef Reference to the context.
+ * @param take Maximum number of items to retrieve. Defaults to 1000.
  * @returns Array of sites, each including its metadata and reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/site-list
  */
-export default function listSites(contextRef: ContextRef): GraphOperation<(Site & SiteRef)[]> {
+export default function listSites(contextRef: ContextRef, take = 1000): GraphOperation<SiteList> {
 	return operation({
 		context: contextRef.context,
 		method: "GET",
-		path: generatePath("/sites?search=*", {}), // TODO: Implement search parameter properly. Without this not all are shown.
+		path: generatePath(`/sites?search=*&$top=${take}`, {}), // TODO: Implement search parameter properly. Without this not all are shown.
 		headers: {},
 		body: null,
 		responseTransform: (response) => {
-			const list = response as { value: Site[] };
+			const result = response as ListSitesResponse;
 
-			const sites = list.value.map((site) => {
-				const siteId = site.id as SiteId;
-				const siteRef = createSiteRef(contextRef, siteId);
+			return {
+				sites: result.value.map((site) => {
+					const siteRef = createSiteRef(contextRef, site.id as SiteId);
 
-				return {
-					...site,
-					...siteRef,
-				};
-			});
-
-			return sites;
+					return {
+						...site,
+						...siteRef,
+					};
+				}),
+				nextLink: result["@odata.nextLink"] ? new URL(result["@odata.nextLink"]) : null,
+			};
 		},
 	});
 }

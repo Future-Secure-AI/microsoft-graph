@@ -1,7 +1,6 @@
-// TODO: Rename to getWorkbookRangeAlignment
 /**
  * Retrieve the format of a workbook range.
- * @module getWorkbookRangeFormat
+ * @module getWorkbookRangeAlignment
  * @category Operations
  */
 
@@ -18,7 +17,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @returns Format of the specified range.
  * @see https://learn.microsoft.com/en-us/graph/api/rangeformat-get
  */
-export default function getWorkbookRangeFormat(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRangeFormat & WorkbookRangeRef> {
+export default function getWorkbookRangeAlignment(rangeRef: WorkbookRangeRef): GraphOperation<WorkbookRangeFormat & WorkbookRangeRef> {
 	const address = normalizeAddress(rangeRef.address, true);
 
 	return operation({

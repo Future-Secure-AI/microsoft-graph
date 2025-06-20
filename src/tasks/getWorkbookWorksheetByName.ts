@@ -2,6 +2,7 @@
  * Get a worksheet by its name.
  * @module getWorkbookWorksheetByName
  * @category Tasks
+ * @hidden
  */
 
 import type { WorkbookWorksheet } from "@microsoft/microsoft-graph-types";
@@ -17,9 +18,10 @@ import listWorkbookWorksheets from "../operations/workbookWorksheet/listWorkbook
  * @param name The name of the worksheet to retrieve.
  * @throws {@link NotFoundError} If the worksheet with the specified name is not found.
  * @returns Worksheet
+ * @deprecated Use `getWorkbookWorksheetByName` operation instead
+ * @hidden
  */
 export default async function getWorkbookWorksheetByName(workbookRef: WorkbookRef, name: string): Promise<WorkbookWorksheet & WorkbookWorksheetRef> {
-	// TODO: More performant to get it by a direct call without listing all workbooks?
 	const worksheets = await listWorkbookWorksheets(workbookRef);
 	const worksheet = worksheets.find((worksheetRef) => worksheetRef.name === name);
 

@@ -1,13 +1,13 @@
 /**
  * List drive items in a drive or a drive item.
- * @module listDriveItems
+ * @module iterateDriveItems
  * @category Tasks
  */
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import type { DriveRef } from "../models/Drive.ts";
 import type { DriveItemId, DriveItemRef } from "../models/DriveItem.ts";
-import listDriveItemChildren, { type ListDriveItemResponse } from "../operations/driveItem/listDriveItemChildren.ts";
+import listDriveItems from "../operations/driveItem/listDriveItems.ts";
 import { createDriveItemRef } from "../services/driveItem.ts";
 import { executeHttpRequest } from "../services/http.ts";
 
@@ -18,36 +18,30 @@ import { executeHttpRequest } from "../services/http.ts";
  * @returns Async iterable of drive items.
  * @remarks `pageSize` should only be set for advanced performance tuning.
  */
-export default async function* listDriveItems(parentRef: DriveRef | DriveItemRef, maxPerChunk = 1000): AsyncGenerator<DriveItem & DriveItemRef> {
-	let result = await listDriveItemChildren(parentRef, maxPerChunk);
+export default async function* iterateDriveItems(parentRef: DriveRef | DriveItemRef, maxPerChunk = 1000): AsyncGenerator<DriveItem & DriveItemRef> {
+	let { items, nextLink } = await listDriveItems(parentRef, maxPerChunk);
 
-	for (const item of result.value) {
-		const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
-		yield {
-			...item,
-			...itemRef,
-		};
+	for (const item of items) {
+		yield item;
 	}
 
-	while (result["@odata.nextLink"]) {
+	while (nextLink) {
 		const accessToken = await parentRef.context.generateAccessToken();
 
 		const response = await executeHttpRequest({
-			url: result["@odata.nextLink"],
+			url: nextLink.toString(),
 			method: "GET",
 			headers: {
 				authorization: `Bearer ${accessToken}`,
 			},
 		});
 
-		result = response.data as ListDriveItemResponse;
+		const result = response.data as { value: (DriveItem & DriveItemRef)[]; "@odata.nextLink"?: string };
+		const newItems = result.value.map((item) => (createDriveItemRef(parentRef, item.id as DriveItemId) ? { ...item, ...createDriveItemRef(parentRef, item.id as DriveItemId) } : item));
+		nextLink = result["@odata.nextLink"] ? new URL(result["@odata.nextLink"]) : null;
 
-		for (const item of result.value) {
-			const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
-			yield {
-				...item,
-				...itemRef,
-			};
+		for (const item of newItems) {
+			yield item;
 		}
 	}
 }

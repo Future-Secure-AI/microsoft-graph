@@ -3,14 +3,18 @@ import { getDefaultDriveRef } from "../../services/drive.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createFolder from "../drive/createFolder.ts";
-import listDriveItemChildren from "./listDriveItemChildren.ts";
+import listDriveItems from "./listDriveItems.ts";
 
 describe("listDriveItemChildren", () => {
 	it("can list items in the root folder", async () => {
 		const driveRef = getDefaultDriveRef();
-		const items = await listDriveItemChildren(driveRef);
+		const { items } = await listDriveItems(driveRef);
 
-		expect(items.value).toBeInstanceOf(Array);
+		console.debug(
+			"Drive items:",
+			items.map((x) => x.name),
+		);
+		expect(items).toBeInstanceOf(Array);
 	});
 
 	it("can list items in a folder", async () => {
@@ -18,9 +22,9 @@ describe("listDriveItemChildren", () => {
 		const folder = await createFolder(driveRef, generateTempFileName());
 
 		try {
-			const items = await listDriveItemChildren(folder);
+			const { items } = await listDriveItems(folder);
 
-			expect(items.value).toBeInstanceOf(Array);
+			expect(items).toBeInstanceOf(Array);
 		} finally {
 			await tryDeleteDriveItem(folder);
 		}
