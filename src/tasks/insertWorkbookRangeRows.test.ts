@@ -4,9 +4,9 @@ import type { CellHorizontalAlignment, CellUnderline, CellVerticalAlignment } fr
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
+import getWorkbookRangeAlignment from "../operations/workbookRange/getWorkbookRangeAlignment.ts";
 import getWorkbookRangeFill from "../operations/workbookRange/getWorkbookRangeFill.ts";
 import getWorkbookRangeFont from "../operations/workbookRange/getWorkbookRangeFont.ts";
-import getWorkbookRangeFormat from "../operations/workbookRange/getWorkbookRangeFormat.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import listWorkbookRangeBorders from "../operations/workbookRange/listWorkbookRangeBorders.ts";
 import { generalCellFormat } from "../services/cell.ts";
@@ -85,7 +85,7 @@ describe("insertWorkbookRangeRows", () => {
 				values.map((row) => row.map((value) => ({ value, alignment }))),
 			);
 			await calculateWorkbook(rangeRef);
-			const cellFormat = await getWorkbookRangeFormat(rangeRef);
+			const cellFormat = await getWorkbookRangeAlignment(rangeRef);
 			expect(cellFormat.horizontalAlignment).toBe("Center");
 			expect(cellFormat.verticalAlignment).toBe("Center");
 			expect(cellFormat.wrapText).toBe(true);

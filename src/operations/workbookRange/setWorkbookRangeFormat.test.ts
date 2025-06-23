@@ -6,7 +6,7 @@ import { createWorkbookRangeRef } from "../../services/workbookRange.ts";
 import createWorkbookAndStartSession from "../../tasks/createWorkbookAndStartSession.ts";
 import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import createWorkbookWorksheet from "../workbookWorksheet/createWorkbookWorksheet.ts";
-import getWorkbookRangeFormat from "./getWorkbookRangeFormat.ts";
+import getWorkbookRangeAlignment from "./getWorkbookRangeAlignment.ts";
 import { default as setWorkbookRangeFormat } from "./setWorkbookRangeFormat.ts";
 
 describe("setWorkbookRangeFormat", () => {
@@ -24,7 +24,7 @@ describe("setWorkbookRangeFormat", () => {
 				wrapText: true,
 			});
 
-			const format = await getWorkbookRangeFormat(rangeRef);
+			const format = await getWorkbookRangeAlignment(rangeRef);
 			expect(format.wrapText).toBe(true);
 		} finally {
 			await safeDeleteWorkbook(workbook);
