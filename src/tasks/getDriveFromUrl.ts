@@ -1,5 +1,5 @@
 /**
- * Retrieves a DriveRef from a SharePoint URL.
+ * Retrieves a Drive from a SharePoint URL.
  * @module getDriveFromUrl
  * @category Tasks
  */
@@ -12,7 +12,7 @@ import { parseSharepointUrl } from "../services/sharepointUrl.ts";
 import iterateDrives from "./iterateDrives.ts";
 
 /**
- * Retrieves a DriveRef from a SharePoint URL.
+ * Retrieves a Drive from a SharePoint URL.
  *
  * Parses the given SharePoint URL to extract the host, site, and drive names, then locates and returns the corresponding Drive object.
  *
