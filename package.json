@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "3.1.2",
+  "version": "3.2.0",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -1648,6 +1648,16 @@
       "import": "./dist/esm/tasks/downloadDriveItemContent.js",
       "require": "./dist/cjs/tasks/downloadDriveItemContent.js",
       "types": "./dist/esm/tasks/downloadDriveItemContent.d.ts"
+    },
+    "./getDriveFromUrl": {
+      "import": "./dist/esm/tasks/getDriveFromUrl.js",
+      "require": "./dist/cjs/tasks/getDriveFromUrl.js",
+      "types": "./dist/esm/tasks/getDriveFromUrl.d.ts"
+    },
+    "./dist/cjs/tasks/getDriveFromUrl": {
+      "import": "./dist/esm/tasks/getDriveFromUrl.js",
+      "require": "./dist/cjs/tasks/getDriveFromUrl.js",
+      "types": "./dist/esm/tasks/getDriveFromUrl.d.ts"
     },
     "./getRangeLastUsedCell": {
       "import": "./dist/esm/tasks/getRangeLastUsedCell.js",

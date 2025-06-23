@@ -180,6 +180,7 @@
 | [copyDriveItem](copyDriveItem.md) | Copy a drive item. |
 | [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
 | [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
+| [getDriveFromUrl](getDriveFromUrl.md) | Retrieves a Drive from a SharePoint URL. |
 | [insertWorkbookRangeRow](insertWorkbookRangeRow.md) | Inserts a single row into a workbook range. |
 | [insertWorkbookRangeRows](insertWorkbookRangeRows.md) | Inserts rows into a workbook range. |
 | [iterateDriveItems](iterateDriveItems.md) | List drive items in a drive or a drive item. |

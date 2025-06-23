@@ -9,7 +9,7 @@ import type { DriveItemId } from "../models/DriveItem.ts";
 import type { HostName } from "../models/HostName.ts";
 import type { SiteName } from "../models/Site.ts";
 
-type SharepointUrlComponents = {
+export type SharepointUrlComponents = {
 	hostName: HostName | null;
 	siteName: SiteName | null;
 	driveName: DriveName | null;
@@ -19,8 +19,7 @@ type SharepointUrlComponents = {
 /**
  * Parses a SharePoint document URL string to extract the site name, host name, drive name and item ID if present.
  * @param urlString SharePoint URL as a string.
- * @returns An object containing the host name, site name, drive name (if present), and item ID (if present).
- * @throws InvalidArgumentError if the URL is invalid or required components are missing.
+ * @returns An object containing the host name, site name, drive name, and item ID. Parameters are omitted if not found.
  */
 export function parseSharepointUrl(urlString: string): SharepointUrlComponents {
 	let url: URL;
