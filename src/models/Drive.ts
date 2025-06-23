@@ -21,3 +21,10 @@ export type DriveId = string & {
 export type DriveRef = SiteRef & {
 	driveId: DriveId;
 };
+
+/**
+ * Name of a drive.
+ */
+export type DriveName = string & {
+	__brand: "DriveName";
+};

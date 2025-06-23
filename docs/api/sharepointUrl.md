@@ -8,35 +8,23 @@ Utilities for parsing and extracting information from SharePoint URLs.
 
 ### parseSharepointUrl()
 
-> **parseSharepointUrl**(`url`): `object`
+> **parseSharepointUrl**(`urlString`): `SharepointUrlComponents`
 
-Defined in: [src/services/sharepointUrl.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/sharepointUrl.ts#L18)
+Defined in: [src/services/sharepointUrl.ts:25](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/sharepointUrl.ts#L25)
 
-Parses a SharePoint document URL to extract the site name, host name, and item ID.
+Parses a SharePoint document URL string to extract the site name, host name, drive name and item ID if present.
 
 #### Parameters
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `url` | [`URL`](https://developer.mozilla.org/docs/Web/API/URL) | The SharePoint document URL. |
+| `urlString` | `string` | SharePoint URL as a string. |
 
 #### Returns
 
-`object`
+`SharepointUrlComponents`
 
-An object containing the host name, site name, and item ID.
-
-##### hostName
-
-> **hostName**: [`HostName`](HostName.md#hostname)
-
-##### itemId
-
-> **itemId**: [`DriveItemId`](DriveItem-1.md#driveitemid)
-
-##### siteName
-
-> **siteName**: [`SiteName`](Site-1.md#sitename)
+An object containing the host name, site name, drive name (if present), and item ID (if present).
 
 #### Throws
 

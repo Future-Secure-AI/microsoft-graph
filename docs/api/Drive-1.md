@@ -22,6 +22,22 @@ Identifier for a drive.
 
 ***
 
+### DriveName
+
+> **DriveName** = `string` & `object`
+
+Defined in: [src/models/Drive.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Drive.ts#L28)
+
+Name of a drive.
+
+#### Type declaration
+
+##### \_\_brand
+
+> **\_\_brand**: `"DriveName"`
+
+***
+
 ### DriveRef
 
 > **DriveRef** = [`SiteRef`](Site-1.md#siteref) & `object`
