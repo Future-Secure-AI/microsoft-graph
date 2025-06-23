@@ -139,6 +139,13 @@
 | [updateWorkbookWorksheet](updateWorkbookWorksheet.md) | Update the name, position, and/or visibility of a worksheet. |
 | [userSendMail](userSendMail.md) | Send an email. |
 
+## Other
+
+| Module | Description |
+| ------ | ------ |
+| [services/sharepointUrl](services/sharepointUrl.md) | - |
+| [tasks/getSiteByUrl](tasks/getSiteByUrl.md) | - |
+
 ## Services
 
 | Module | Description |
@@ -161,7 +168,6 @@
 | [operationInvoker](operationInvoker.md) | Invoke operations, potentially as parallel or sequential batches. |
 | [random](random.md) | Utilities for generating random values for spreadsheet and API operations. |
 | [rangeManipulation](rangeManipulation.md) | Utilities for inferring and manipulating spreadsheet ranges and objects. |
-| [sharepointUrl](sharepointUrl.md) | Utilities for parsing and extracting information from SharePoint URLs. |
 | [site](site.md) | Utilities for working with Microsoft Graph Site references and operations. |
 | [sleep](sleep.md) | Utility for pausing execution (sleep) in async workflows. |
 | [stringCaseConversion](stringCaseConversion.md) | Utilities for converting string case styles (e.g., kebab-case to camelCase). |
@@ -180,7 +186,6 @@
 | [copyDriveItem](copyDriveItem.md) | Copy a drive item. |
 | [createWorkbookAndStartSession](createWorkbookAndStartSession.md) | Create a new workbook and open a session for that workbook. |
 | [downloadDriveItemContent](downloadDriveItemContent.md) | Download a drive item and save it to the local disk. |
-| [getDriveFromUrl](getDriveFromUrl.md) | Retrieves a Drive from a SharePoint URL. |
 | [insertWorkbookRangeRow](insertWorkbookRangeRow.md) | Inserts a single row into a workbook range. |
 | [insertWorkbookRangeRows](insertWorkbookRangeRows.md) | Inserts rows into a workbook range. |
 | [iterateDriveItems](iterateDriveItems.md) | List drive items in a drive or a drive item. |

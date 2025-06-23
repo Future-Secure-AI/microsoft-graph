@@ -8,8 +8,6 @@ describe("parseSharepointUrl", () => {
 			{
 				hostName: "hostname.sharepoint.com",
 				siteName: "sitename",
-				driveName: null,
-				itemId: "500FF055-1E0F-4C2E-8B32-D167FBA4778B",
 			},
 		],
 		[
@@ -17,8 +15,6 @@ describe("parseSharepointUrl", () => {
 			{
 				hostName: "hostname.sharepoint.com",
 				siteName: "sitename",
-				driveName: null,
-				itemId: "500FF055-1E0F-4C2E-8B32-D167FBA4778B",
 			},
 		],
 		[
@@ -26,8 +22,6 @@ describe("parseSharepointUrl", () => {
 			{
 				hostName: "hostname.sharepoint.com",
 				siteName: "sitename",
-				driveName: null,
-				itemId: "418801C2-AF81-44F9-AD17-324A973AA6AF",
 			},
 		],
 		[
@@ -35,17 +29,13 @@ describe("parseSharepointUrl", () => {
 			{
 				hostName: "hostname.sharepoint.com",
 				siteName: "sitename",
-				driveName: "drivename",
-				itemId: null,
 			},
 		],
 		[
-			"https://hostname.sharepoint.com/sites/Shared%20Documents/drivename/Forms/AllItems.aspx?viewid=075ae863%2Ddee7%2D4407%2D8411%2Dbb2a13584e2c",
+			"https://hostname.sharepoint.com/sites/With%20Space/drivename/Forms/AllItems.aspx?viewid=075ae863%2Ddee7%2D4407%2D8411%2Dbb2a13584e2c",
 			{
 				hostName: "hostname.sharepoint.com",
-				siteName: "Shared Documents",
-				driveName: "drivename",
-				itemId: null,
+				siteName: "With Space",
 			},
 		],
 	])("parses %s", (url, expected) => {
@@ -57,8 +47,6 @@ describe("parseSharepointUrl", () => {
 		expect(result).toEqual({
 			hostName: null,
 			siteName: null,
-			driveName: null,
-			itemId: null,
 		});
 	});
 
@@ -67,8 +55,6 @@ describe("parseSharepointUrl", () => {
 		expect(result).toEqual({
 			hostName: null,
 			siteName: null,
-			driveName: null,
-			itemId: null,
 		});
 	});
 
@@ -77,8 +63,6 @@ describe("parseSharepointUrl", () => {
 		expect(result).toEqual({
 			hostName: "hostname.sharepoint.com",
 			siteName: null,
-			driveName: null,
-			itemId: null,
 		});
 	});
 
@@ -87,8 +71,6 @@ describe("parseSharepointUrl", () => {
 		expect(result).toEqual({
 			hostName: "hostname.sharepoint.com",
 			siteName: null,
-			driveName: null,
-			itemId: null,
 		});
 	});
 });

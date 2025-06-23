@@ -1,6 +1,6 @@
 {
   "name": "microsoft-graph",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Microsoft GraphAPI SDK for NodeJS",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -1649,16 +1649,6 @@
       "require": "./dist/cjs/tasks/downloadDriveItemContent.js",
       "types": "./dist/esm/tasks/downloadDriveItemContent.d.ts"
     },
-    "./getDriveFromUrl": {
-      "import": "./dist/esm/tasks/getDriveFromUrl.js",
-      "require": "./dist/cjs/tasks/getDriveFromUrl.js",
-      "types": "./dist/esm/tasks/getDriveFromUrl.d.ts"
-    },
-    "./dist/cjs/tasks/getDriveFromUrl": {
-      "import": "./dist/esm/tasks/getDriveFromUrl.js",
-      "require": "./dist/cjs/tasks/getDriveFromUrl.js",
-      "types": "./dist/esm/tasks/getDriveFromUrl.d.ts"
-    },
     "./getRangeLastUsedCell": {
       "import": "./dist/esm/tasks/getRangeLastUsedCell.js",
       "require": "./dist/cjs/tasks/getRangeLastUsedCell.js",
@@ -1668,6 +1658,16 @@
       "import": "./dist/esm/tasks/getRangeLastUsedCell.js",
       "require": "./dist/cjs/tasks/getRangeLastUsedCell.js",
       "types": "./dist/esm/tasks/getRangeLastUsedCell.d.ts"
+    },
+    "./getSiteByUrl": {
+      "import": "./dist/esm/tasks/getSiteByUrl.js",
+      "require": "./dist/cjs/tasks/getSiteByUrl.js",
+      "types": "./dist/esm/tasks/getSiteByUrl.d.ts"
+    },
+    "./dist/cjs/tasks/getSiteByUrl": {
+      "import": "./dist/esm/tasks/getSiteByUrl.js",
+      "require": "./dist/cjs/tasks/getSiteByUrl.js",
+      "types": "./dist/esm/tasks/getSiteByUrl.d.ts"
     },
     "./getWorkbookTableVisibleBody": {
       "import": "./dist/esm/tasks/getWorkbookTableVisibleBody.js",

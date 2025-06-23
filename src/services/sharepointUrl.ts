@@ -1,19 +1,9 @@
-/**
- * Utilities for parsing and extracting information from SharePoint URLs.
- * @module sharepointUrl
- * @category Services
- */
-
-import type { DriveName } from "../models/Drive.ts";
-import type { DriveItemId } from "../models/DriveItem.ts";
 import type { HostName } from "../models/HostName.ts";
 import type { SiteName } from "../models/Site.ts";
 
 export type SharepointUrlComponents = {
 	hostName: HostName | null;
 	siteName: SiteName | null;
-	driveName: DriveName | null;
-	itemId: DriveItemId | null;
 };
 
 /**
@@ -25,8 +15,6 @@ export function parseSharepointUrl(urlString: string): SharepointUrlComponents {
 	let url: URL;
 	let hostName: HostName | null = null;
 	let siteName: SiteName | null = null;
-	let driveName: DriveName | null = null;
-	let itemId: DriveItemId | null = null;
 
 	try {
 		url = new URL(urlString);
@@ -34,8 +22,6 @@ export function parseSharepointUrl(urlString: string): SharepointUrlComponents {
 		return {
 			hostName: null,
 			siteName: null,
-			driveName: null,
-			itemId: null,
 		};
 	}
 
@@ -43,8 +29,6 @@ export function parseSharepointUrl(urlString: string): SharepointUrlComponents {
 		return {
 			hostName: null,
 			siteName: null,
-			driveName: null,
-			itemId: null,
 		};
 	}
 	hostName = url.hostname as HostName;
@@ -54,21 +38,10 @@ export function parseSharepointUrl(urlString: string): SharepointUrlComponents {
 	if (sitesIdx !== -1 && pathSegments[sitesIdx + 1]) {
 		const rawSiteName = pathSegments[sitesIdx + 1];
 		siteName = rawSiteName ? (decodeURIComponent(rawSiteName) as SiteName) : null;
-		const afterSite = pathSegments[sitesIdx + 2];
-		if (afterSite && afterSite.toLowerCase() !== "_layouts" && afterSite.toLowerCase() !== "forms") {
-			driveName = decodeURIComponent(afterSite) as DriveName;
-		}
-	}
-
-	const sourcedoc = url.searchParams.get("sourcedoc");
-	if (sourcedoc) {
-		itemId = decodeURIComponent(sourcedoc.replace(/[{}]/g, "")).toUpperCase() as DriveItemId;
 	}
 
 	return {
 		hostName,
 		siteName,
-		driveName,
-		itemId,
 	} satisfies SharepointUrlComponents;
 }
