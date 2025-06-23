@@ -1,20 +1,19 @@
 import { describe, expect, it } from "vitest";
 import type { HostName } from "../../models/HostName.ts";
-import type { SiteName } from "../../models/Site.ts";
-import { getDefaultSiteRef } from "../../services/site.ts";
-import getSite from "./getSite.ts";
+import type { SiteId, SiteName } from "../../models/Site.ts";
+import { getDefaultContextRef } from "../../services/context.ts";
 import getSiteByName from "./getSiteByName.ts";
 
 describe("getSiteByName", () => {
 	it("can retrieve an existing site by name", async () => {
-		const siteRef = getDefaultSiteRef();
-		const site = await getSite(siteRef);
+		const contextRef = getDefaultContextRef();
+		const hostName = "msftfuturesecureai.sharepoint.com" as HostName;
+		const siteName = "FSAI-MQG" as SiteName;
+		const siteId = "msftfuturesecureai.sharepoint.com,89cb90aa-7977-412d-8215-31c74db72d7b,910df34e-fa8e-473a-8606-b9b3386f0f01" as SiteId;
 
-		const hostName = new URL(site.webUrl ?? "").hostname as HostName; // Yeah, a little hacky, but in the context of this test it's fine
-		const siteName = site.name as SiteName;
-		const siteByName = await getSiteByName(siteRef, hostName, siteName);
+		const siteByName = await getSiteByName(contextRef, hostName, siteName);
 
-		expect(siteByName.id).toBe(site.id);
+		expect(siteByName.id).toBe(siteId);
 		expect(siteByName.name).toBe(siteName);
 	});
 });

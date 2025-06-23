@@ -39,6 +39,15 @@ describe("parseSharepointUrl", () => {
 				itemId: null,
 			},
 		],
+		[
+			"https://hostname.sharepoint.com/sites/Shared%20Documents/drivename/Forms/AllItems.aspx?viewid=075ae863%2Ddee7%2D4407%2D8411%2Dbb2a13584e2c",
+			{
+				hostName: "hostname.sharepoint.com",
+				siteName: "Shared Documents",
+				driveName: "drivename",
+				itemId: null,
+			},
+		],
 	])("parses %s", (url, expected) => {
 		expect(parseSharepointUrl(url)).toEqual(expected);
 	});

@@ -52,10 +52,11 @@ export function parseSharepointUrl(urlString: string): SharepointUrlComponents {
 	const pathSegments = url.pathname.split("/").filter(Boolean);
 	const sitesIdx = pathSegments.findIndex((seg) => seg.toLowerCase() === "sites");
 	if (sitesIdx !== -1 && pathSegments[sitesIdx + 1]) {
-		siteName = pathSegments[sitesIdx + 1] as SiteName;
+		const rawSiteName = pathSegments[sitesIdx + 1];
+		siteName = rawSiteName ? (decodeURIComponent(rawSiteName) as SiteName) : null;
 		const afterSite = pathSegments[sitesIdx + 2];
 		if (afterSite && afterSite.toLowerCase() !== "_layouts" && afterSite.toLowerCase() !== "forms") {
-			driveName = afterSite as DriveName;
+			driveName = decodeURIComponent(afterSite) as DriveName;
 		}
 	}
 

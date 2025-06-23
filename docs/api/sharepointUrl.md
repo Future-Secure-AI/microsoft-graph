@@ -27,7 +27,7 @@ Defined in: [src/services/sharepointUrl.ts:12](https://github.com/Future-Secure-
 
 > **parseSharepointUrl**(`urlString`): [`SharepointUrlComponents`](#sharepointurlcomponents)
 
-Defined in: [src/services/sharepointUrl.ts:25](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/sharepointUrl.ts#L25)
+Defined in: [src/services/sharepointUrl.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/sharepointUrl.ts#L24)
 
 Parses a SharePoint document URL string to extract the site name, host name, drive name and item ID if present.
 
@@ -41,8 +41,4 @@ Parses a SharePoint document URL string to extract the site name, host name, dri
 
 [`SharepointUrlComponents`](#sharepointurlcomponents)
 
-An object containing the host name, site name, drive name (if present), and item ID (if present).
-
-#### Throws
-
-InvalidArgumentError if the URL is invalid or required components are missing.
+An object containing the host name, site name, drive name, and item ID. Parameters are omitted if not found.
