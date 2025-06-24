@@ -8,7 +8,7 @@
 
 > **getSiteByUrl**(`contextRef`, `url`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`Site` & [`SiteRef`](../Site-1.md#siteref)\>
 
-Defined in: src/tasks/getSiteByUrl.ts:15
+Defined in: [src/tasks/getSiteByUrl.ts:15](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/getSiteByUrl.ts#L15)
 
 Retrieves a site from a SharePoint URL.
 
