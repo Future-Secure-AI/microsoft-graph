@@ -25,10 +25,12 @@ export default function getDriveItemByPath(driveRef: DriveRef, itemPath: DriveIt
 		throw new InvalidArgumentError("itemPath must start with a forward slash (/)");
 	}
 
+	const normalizedPath = itemPath === "/" ? "/sites/{site-id}/drives/{drive-id}/root" : `/sites/{site-id}/drives/{drive-id}/root:${itemPath}`;
+
 	return operation({
 		context: driveRef.context,
 		method: "GET",
-		path: generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef),
+		path: generatePath(normalizedPath, driveRef),
 		headers: {},
 		body: null,
 		responseTransform: (response) => {
