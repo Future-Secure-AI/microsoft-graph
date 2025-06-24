@@ -7,6 +7,7 @@
 
 import type { WorkbookRangeBorder } from "@microsoft/microsoft-graph-types";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
+import type { RowAddress } from "../models/Address.ts";
 import type { Border, BorderSide, BorderStyle, BorderWeight } from "../models/Border.ts";
 import type { Cell, CellFormat, CellHorizontalAlignment, CellScope, CellText, CellUnderline, CellValue, CellVerticalAlignment } from "../models/Cell.ts";
 import type { Color } from "../models/Color.ts";
@@ -19,7 +20,8 @@ import getWorkbookRangeFill from "../operations/workbookRange/getWorkbookRangeFi
 import getWorkbookRangeFont from "../operations/workbookRange/getWorkbookRangeFont.ts";
 import getWorkbookWorksheetRange from "../operations/workbookRange/getWorkbookWorksheetRange.ts";
 import listWorkbookRangeBorders from "../operations/workbookRange/listWorkbookRangeBorders.ts";
-import { countAddressColumns, countAddressRows, subRange } from "../services/addressManipulation.ts";
+import { countAddressColumns, countAddressRows, decomposeAddress, subRange } from "../services/addressManipulation.ts";
+import { rowAddressToOffset, rowOffsetToAddress } from "../services/addressOffset.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
 import { defaultCellScope } from "../services/cell.ts";
 
@@ -32,6 +34,7 @@ import { defaultCellScope } from "../services/cell.ts";
  */
 export type IteratedRow = {
 	cells: Cell[];
+	address: RowAddress;
 	offset: RowOffset;
 	isFirst: boolean;
 	isLast: boolean;
@@ -44,8 +47,8 @@ export type IteratedRow = {
  * @param maxCellsPerOperation Prescribe max cells to retrieve per operation. `null` automatically determines value. DO NOT SET EXCEPT FOR ADVANCED TUNING.
  * @experimental
  * @example
- * for await (const { row } of iterateRows(rangeRef)) {
- *   console.log(row);
+ * for await (const { cells } of iterateRows(rangeRef)) {
+ *   console.log(cells);
  * }
  */
 export async function* iterateWorkbookRangeRows(rangeRef: WorkbookRangeRef, scope: Partial<CellScope> = defaultCellScope, maxCellsPerOperation: number | null = null): AsyncIterable<IteratedRow> {
@@ -53,6 +56,10 @@ export async function* iterateWorkbookRangeRows(rangeRef: WorkbookRangeRef, scop
 	const totalRowCount = countAddressRows(rangeRef.address);
 	const maxRowsPerOperation = calculateMaxRowsPerOperation(totalColumnCount, maxCellsPerOperation);
 	const rangeSelect = scopeToRangeSelect(scope);
+
+	// Calculate the absolute row offset from the top of the sheet
+	const { startRow } = decomposeAddress(rangeRef.address);
+	const absoluteStartRowOffset = rowAddressToOffset(startRow);
 
 	for (let operationRowStart = 0; operationRowStart < totalRowCount; operationRowStart += maxRowsPerOperation) {
 		const operationRowCount = Math.min(maxRowsPerOperation, totalRowCount - operationRowStart);
@@ -84,13 +91,16 @@ export async function* iterateWorkbookRangeRows(rangeRef: WorkbookRangeRef, scop
 				} satisfies Cell);
 			}
 
-			const offset = (operationRowStart + operationRowOffset) as RowOffset;
+			// Calculate the absolute offset from the top of the sheet
+			const offset = (absoluteStartRowOffset + operationRowStart + operationRowOffset) as RowOffset;
+			const address = rowOffsetToAddress(offset);
 			const isFirst = offset === 0;
-			const isLast = offset === totalRowCount - 1;
+			const isLast = offset === absoluteStartRowOffset + totalRowCount - 1;
 
 			yield {
 				cells,
 				offset,
+				address,
 				isFirst,
 				isLast,
 			};

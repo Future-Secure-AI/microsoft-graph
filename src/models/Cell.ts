@@ -54,6 +54,7 @@ export type Cell = {
 	 * @experimental
 	 */
 	borders: {
+		// TODO: On next breaking revision this should be "border" to be consistent with scope. Or maybe scope should change?
 		edgeTop?: Border | undefined;
 		edgeBottom?: Border | undefined;
 		edgeLeft?: Border | undefined;

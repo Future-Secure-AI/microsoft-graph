@@ -2,12 +2,15 @@ import { describe, expect, it } from "vitest";
 import type { BorderStyle, BorderWeight } from "../models/Border.ts";
 import type { Color } from "../models/Color.ts";
 import type { FontName } from "../models/FontName.ts";
+import type { RowOffset } from "../models/Row.ts";
 import calculateWorkbook from "../operations/workbook/calculateWorkbook.ts";
 import setWorkbookRangeBorder from "../operations/workbookRange/setWorkbookRangeBorder.ts";
 import setWorkbookRangeFill from "../operations/workbookRange/setWorkbookRangeFill.ts";
 import setWorkbookRangeFont from "../operations/workbookRange/setWorkbookRangeFont.ts";
 import setWorkbookRangeFormat from "../operations/workbookRange/setWorkbookRangeFormat.ts";
 import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange.ts";
+import { subRange } from "../services/addressManipulation.ts";
+import { rowOffsetToAddress } from "../services/addressOffset.ts";
 import { generalCellFormat } from "../services/cell.ts";
 import { getDefaultDriveRef } from "../services/drive.ts";
 import { driveItemPath } from "../services/driveItem.ts";
@@ -38,7 +41,7 @@ async function prepareRange() {
 }
 
 describe("iterateWorkbookRangeRows", () => {
-	it("Single request", async () => {
+	it("Single request in upper left", async () => {
 		const rangeRef = await prepareRange();
 
 		try {
@@ -64,7 +67,7 @@ describe("iterateWorkbookRangeRows", () => {
 		}
 	});
 
-	it("Multiple requests", async () => {
+	it("Multiple requests in upper left", async () => {
 		const rangeRef = await prepareRange();
 		try {
 			let y = 0;
@@ -89,10 +92,44 @@ describe("iterateWorkbookRangeRows", () => {
 		}
 	});
 
+	it("Single request not in upper left", async () => {
+		const rangeRef = await prepareRange();
+		const subRef = subRange(rangeRef, 1, undefined, 1, undefined);
+
+		try {
+			let y = 1;
+			for await (const { offset, address, isFirst, isLast } of iterateWorkbookRangeRows(subRef)) {
+				expect(offset).toBe(y);
+				expect(address).toBe(rowOffsetToAddress(y as RowOffset));
+				expect(isFirst).toBe(y === 0);
+				expect(isLast).toBe(y === values.length - 1);
+				y++;
+			}
+		} finally {
+			await tryDeleteDriveItem(rangeRef);
+		}
+	});
+	it("Multiple requests not in upper left", async () => {
+		const rangeRef = await prepareRange();
+		const subRef = subRange(rangeRef, 1, undefined, 1, undefined);
+		try {
+			let y = 1;
+			for await (const { offset, address, isFirst, isLast } of iterateWorkbookRangeRows(subRef, undefined, values[0].length)) {
+				expect(offset).toBe(y);
+				expect(address).toBe(rowOffsetToAddress(y as RowOffset));
+				expect(isFirst).toBe(y === 0);
+				expect(isLast).toBe(y === values.length - 1);
+				y++;
+			}
+		} finally {
+			await tryDeleteDriveItem(rangeRef);
+		}
+	});
+
 	it("retrieves just values when scope.values only is set", async () => {
 		const rangeRef = await prepareRange();
 		try {
-			for await (const { cells, offset: y } of iterateWorkbookRangeRows(rangeRef, { values: true })) {
+			for await (const { cells, offset: y } of iterateWorkbookRangeRows(rangeRef, { value: true })) {
 				cells.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
 					expect(cell.text).toEqual("");
@@ -154,7 +191,7 @@ describe("iterateWorkbookRangeRows", () => {
 		await setWorkbookRangeBorder(rangeRef, "EdgeBottom", alternateBorder);
 
 		try {
-			for await (const { cells, offset, isLast } of iterateWorkbookRangeRows(rangeRef, { alignment: true, borders: true, fill: true, font: true })) {
+			for await (const { cells, offset, isLast } of iterateWorkbookRangeRows(rangeRef, { alignment: true, border: true, fill: true, font: true })) {
 				cells.forEach((cell, _) => {
 					expect(cell.value).toEqual("");
 					expect(cell.text).toEqual("");
