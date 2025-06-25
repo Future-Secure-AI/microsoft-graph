@@ -19,6 +19,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-get-content
  */
 export default async function streamDriveItemContent(itemRef: DriveItemRef): Promise<NodeJS.ReadableStream> {
+	// TODO: Rename to getDriveItemContent at next breaking update
 	const url = `${endpoint}${generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/content", itemRef)}`;
 	const accessToken = await itemRef.context.generateAccessToken();
 

@@ -10,7 +10,7 @@ Drive item pointers.
 
 > **DriveItemId** = `string` & `object`
 
-Defined in: [src/models/DriveItem.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItem.ts#L14)
+Defined in: [src/models/DriveItem.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItem.ts#L12)
 
 Unique identifier of an item in a drive.
 
@@ -26,7 +26,7 @@ Unique identifier of an item in a drive.
 
 > **DriveItemPath** = `string` & `object`
 
-Defined in: [src/models/DriveItem.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItem.ts#L21)
+Defined in: [src/models/DriveItem.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItem.ts#L19)
 
 Path of an item in a drive.
 
@@ -42,7 +42,7 @@ Path of an item in a drive.
 
 > **DriveItemRef** = [`DriveRef`](Drive-1.md#driveref) & `object`
 
-Defined in: [src/models/DriveItem.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItem.ts#L28)
+Defined in: [src/models/DriveItem.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItem.ts#L26)
 
 Reference to a drive item.
 

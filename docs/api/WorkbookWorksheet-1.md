@@ -10,7 +10,7 @@ Pointer for a worksheet in a workbook.
 
 > **WorkbookWorksheetId** = `string` & `object`
 
-Defined in: [src/models/WorkbookWorksheet.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheet.ts#L14)
+Defined in: [src/models/WorkbookWorksheet.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheet.ts#L12)
 
 Identifier for a worksheet in a workbook.
 
@@ -26,7 +26,7 @@ Identifier for a worksheet in a workbook.
 
 > **WorkbookWorksheetName** = `string` & `object`
 
-Defined in: [src/models/WorkbookWorksheet.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheet.ts#L21)
+Defined in: [src/models/WorkbookWorksheet.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheet.ts#L19)
 
 Name of a worksheet in a workbook.
 
@@ -42,7 +42,7 @@ Name of a worksheet in a workbook.
 
 > **WorkbookWorksheetRef** = [`WorkbookRef`](Workbook.md#workbookref) & `object`
 
-Defined in: [src/models/WorkbookWorksheet.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheet.ts#L28)
+Defined in: [src/models/WorkbookWorksheet.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookWorksheet.ts#L26)
 
 Reference to a worksheet in a workbook.
 

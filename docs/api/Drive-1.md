@@ -10,7 +10,7 @@ Drive pointers.
 
 > **DriveId** = `string` & `object`
 
-Defined in: [src/models/Drive.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Drive.ts#L14)
+Defined in: [src/models/Drive.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Drive.ts#L12)
 
 Identifier for a drive.
 
@@ -26,7 +26,7 @@ Identifier for a drive.
 
 > **DriveName** = `string` & `object`
 
-Defined in: [src/models/Drive.ts:28](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Drive.ts#L28)
+Defined in: [src/models/Drive.ts:26](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Drive.ts#L26)
 
 Name of a drive.
 
@@ -42,7 +42,7 @@ Name of a drive.
 
 > **DriveRef** = [`SiteRef`](Site-1.md#siteref) & `object`
 
-Defined in: [src/models/Drive.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Drive.ts#L21)
+Defined in: [src/models/Drive.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Drive.ts#L19)
 
 Reference to a drive.
 

@@ -57,7 +57,7 @@ Create a context using the client secret credential.
 
 > **createContext**(`accessTokenGenerator`): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:38](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L38)
+Defined in: [src/services/context.ts:37](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L37)
 
 Create a context using a given access token generator.
 
@@ -77,7 +77,7 @@ Create a context using a given access token generator.
 
 > **createDefaultClientSecretContext**(): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:49](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L49)
+Defined in: [src/services/context.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L48)
 
 Create a context using the client secret credential using environment variables AZURE_TENANT_ID, AZURE_CLIENT_ID and AZURE_CLIENT_SECRET.
 
@@ -91,7 +91,7 @@ Create a context using the client secret credential using environment variables 
 
 > **getDefaultContextRef**(): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:60](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L60)
+Defined in: [src/services/context.ts:59](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L59)
 
 #### Returns
 
@@ -107,7 +107,7 @@ Use `createDefaultClientSecretContext()` instead.
 
 > **register**(`tenantId`, `clientId`, `clientSecret`): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:67](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L67)
+Defined in: [src/services/context.ts:66](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L66)
 
 #### Parameters
 

@@ -53,7 +53,7 @@ Defined in: [src/tasks/iterateWorkbookRangeRows.ts:54](https://github.com/Future
 #### Example
 
 ```ts
-for await (const { row } of iterateRows(rangeRef)) {
-  console.log(row);
+for await (const { cells } of iterateRows(rangeRef)) {
+  console.log(cells);
 }
 ```

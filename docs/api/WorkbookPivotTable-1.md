@@ -10,7 +10,7 @@ Pointer for a pivot table in a worksheet.
 
 > **WorkbookPivotTableId** = `string` & `object`
 
-Defined in: [src/models/WorkbookPivotTable.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookPivotTable.ts#L14)
+Defined in: [src/models/WorkbookPivotTable.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookPivotTable.ts#L12)
 
 Identifier for a pivot table in a worksheet.
 
@@ -26,7 +26,7 @@ Identifier for a pivot table in a worksheet.
 
 > **WorkbookPivotTableRef** = [`WorkbookWorksheetRef`](WorkbookWorksheet-1.md#workbookworksheetref) & `object`
 
-Defined in: [src/models/WorkbookPivotTable.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookPivotTable.ts#L21)
+Defined in: [src/models/WorkbookPivotTable.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/WorkbookPivotTable.ts#L19)
 
 Reference to a pivot table in a worksheet.
 
