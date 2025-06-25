@@ -1,5 +1,3 @@
-// biome-ignore lint/style/useFilenamingConvention: Appropriate in this context
-
 /**
  * Pointers to a named range in a worksheet.
  * @module WorkbookNamedRange

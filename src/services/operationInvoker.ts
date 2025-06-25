@@ -325,7 +325,6 @@ function handleResponseError(response: AxiosResponse, errorLog: string, attempts
 	throwException(response.status, message);
 }
 
-// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: Simple enough
 export function throwException(responseCode: number, message: string): never {
 	if (isHttpBadRequest(responseCode)) {
 		throw new BadRequestError(message);

@@ -1,30 +1,29 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"files": {
+		"includes": ["**"],
+		"ignoreUnknown": true
+	},
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true,
 		"defaultBranch": "main"
 	},
-	"files": {
-		"include": ["*.ts", "*.js", "*.jsonc"],
-		"maxSize": 2097152 // 2MB to cover generated models
-	},
 	"formatter": {
-		"lineWidth": 320 // We have large monitors these days, 80 characters is crazy
+		"lineWidth": 320, // We have large monitors these days, 80 characters is crazy
+		"useEditorconfig": true
 	},
-	"organizeImports": {
-		"enabled": false // VSCode and Biome organize imports differently, and really, who cares
-	},
-	"linter": {
-		"rules": {
-			"all": true // Maximize consistency
-		},
-		"include": ["*.ts"]
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "off"
+			}
+		}
 	},
 	"overrides": [
 		{
-			"include": ["*.ts"],
+			"includes": ["*.ts"],
 			"linter": {
 				"rules": {
 					"correctness": {
@@ -34,13 +33,13 @@
 						"noDefaultExport": "off" // We are using this to discourage large files in some cases.
 					},
 					"suspicious": {
-						"noConsole": "off" // Logging is to be done through the logger, not directly to console\
+						"noConsole": "warn" // Logging is to be done through the logger, not directly to console
 					}
 				}
 			}
 		},
 		{
-			"include": ["*.test.ts"],
+			"includes": ["./*.ts", "*.test.ts"],
 			"linter": {
 				"rules": {
 					"suspicious": {

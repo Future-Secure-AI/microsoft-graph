@@ -1,4 +1,3 @@
-// biome-ignore lint/style/useFilenamingConvention: Appropriate in this context
 /**
  * HTTP models for handling HTTP requests and responses.
  * @module Http

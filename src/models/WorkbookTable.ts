@@ -1,5 +1,3 @@
-// biome-ignore lint/style/useFilenamingConvention: Appropriate in this context
-
 /**
  * Pointer for a table in a worksheet.
  * @module WorkbookTable

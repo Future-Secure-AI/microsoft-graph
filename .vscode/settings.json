@@ -8,12 +8,5 @@
 	"[jsonc]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"cSpell.words": [
-		"Entra",
-		"FSAI",
-		"msgraph",
-		"Retryable",
-		"sourcedoc",
-		"subaddress"
-	]
+	"cSpell.words": ["Entra", "FSAI", "msgraph", "Retryable", "sourcedoc", "subaddress"]
 }

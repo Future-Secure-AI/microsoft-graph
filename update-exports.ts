@@ -10,12 +10,10 @@ const esmPackageFilePath = join(esmFolderPath, "package.json");
 const rootPackageFilePath = join(process.cwd(), "package.json");
 
 patchRoot();
-// biome-ignore lint/suspicious/noConsoleLog: Appropriate in this context
 console.log("✅ package.json exports updated with");
 
 createCjsPackageJson();
 createEsmPackageJson();
-// biome-ignore lint/suspicious/noConsoleLog: Appropriate in this context
 console.log("✅ Generated package.json files in dist folders");
 
 function patchRoot() {
@@ -31,7 +29,7 @@ function patchRoot() {
 
 	const pkg = JSON.parse(readFileSync(rootPackageFilePath, "utf-8"));
 	pkg.exports = exportsMap;
-	writeFileSync(rootPackageFilePath, JSON.stringify(pkg, null, 2));
+	writeFileSync(rootPackageFilePath, `${JSON.stringify(pkg, null, "\t")}\n`);
 }
 
 function createCjsPackageJson() {
@@ -64,10 +62,7 @@ function exportsWalk(dir: string, exportsMap, currentRelPath = ""): void {
 			const target = {
 				import: esmImport,
 				require: cjsRequire,
-				types: `./dist/esm/${
-					// biome-ignore lint/performance/useTopLevelRegex: <explanation>
-					relPath.replace(/\.js$/, ".d.ts")
-				}`,
+				types: `./dist/esm/${relPath.replace(/\.js$/, ".d.ts")}`,
 			};
 
 			exportsMap[`./${basename(entry, extname(entry))}`] = target; // Workaround for legacy CJS support

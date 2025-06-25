@@ -28,7 +28,6 @@ export function createClientSecretContext(tenantId: AzureTenantId, clientId: Azu
  * @remarks You must manually handle renewal of the access token with this approach.
  */
 export function createAccessTokenContext(accessToken: AccessToken): ContextRef {
-	// biome-ignore lint/suspicious/useAwait: Not applicable here, as we are creating a context that returns a static access token.
 	return createContext(async () => {
 		return accessToken;
 	});

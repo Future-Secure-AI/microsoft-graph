@@ -1,5 +1,3 @@
-// biome-ignore lint/style/useFilenamingConvention: Appropriate in this context
-
 /**
  * Drive pointers.
  * @module Drive

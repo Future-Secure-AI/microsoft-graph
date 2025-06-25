@@ -96,7 +96,7 @@ export function createObjectMapping<T>(headerRow: (ColumnName | Cell)[], rules: 
 
 	const resolved = {} as ResolvedObjectMapping<T>;
 	for (const key in rules) {
-		if (!Object.prototype.hasOwnProperty.call(rules, key)) {
+		if (!Object.hasOwn(rules, key)) {
 			continue;
 		}
 
@@ -169,7 +169,7 @@ export function rowToObject<T>(cells: Cell[], rules: ResolvedObjectMapping<T>) {
 	const record = {} as T;
 
 	for (const key in rules) {
-		if (!Object.prototype.hasOwnProperty.call(rules, key)) {
+		if (!Object.hasOwn(rules, key)) {
 			continue;
 		}
 		const rule = rules[key];
@@ -192,7 +192,7 @@ export function rowToObject<T>(cells: Cell[], rules: ResolvedObjectMapping<T>) {
 export function objectToRow<T>(record: T, mapper: ResolvedObjectMapping<T>): Partial<Cell>[] {
 	const row: Partial<Cell>[] = [];
 	for (const key in mapper) {
-		if (!Object.prototype.hasOwnProperty.call(mapper, key)) {
+		if (!Object.hasOwn(mapper, key)) {
 			continue;
 		}
 		const { columnOffset, encode } = mapper[key];

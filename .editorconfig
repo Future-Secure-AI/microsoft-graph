@@ -2,7 +2,7 @@ root = true
 
 [*]
 
-[*.{ts,tsx,js,jsx}]
+[*.{ts,tsx,js,jsx,json,jsonc}]
 charset = utf-8
 indent_style = tab
 indent_size = 2
