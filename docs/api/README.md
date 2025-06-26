@@ -145,6 +145,7 @@
 | ------ | ------ |
 | [services/sharepointUrl](services/sharepointUrl.md) | - |
 | [tasks/getSiteByUrl](tasks/getSiteByUrl.md) | - |
+| [tasks/tryGetWorkbookWorksheetUsedRangeRef](tasks/tryGetWorkbookWorksheetUsedRangeRef.md) | - |
 
 ## Services
 
@@ -160,6 +161,7 @@
 | [drive](drive.md) | Utilities for working with Microsoft Graph Drive references and operations. |
 | [driveItem](driveItem.md) | Utilities for working with Microsoft Graph Drive Items (files and folders). |
 | [environmentVariable](environmentVariable.md) | Utilities for accessing environment variables with error handling and fallbacks. |
+| [error](error.md) | Utilities for handling errors |
 | [http](http.md) | HTTP request utilities for Microsoft Graph API, with proxy support. |
 | [httpStatus](httpStatus.md) | Utilities for analyzing HTTP status codes for Microsoft Graph API responses. |
 | [Iteration](Iteration.md) | Utilities for iterating over AsyncIterables. |
