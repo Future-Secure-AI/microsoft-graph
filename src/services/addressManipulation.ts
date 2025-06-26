@@ -471,6 +471,14 @@ export function superAddress(address: Address, skipRows = 0, takeRows: number | 
 
 	const { ax, bx, ay, by } = addressToCartesian(address);
 
+	if (takeRows === Number.POSITIVE_INFINITY && skipRows > by - ay) {
+		throw new InvalidArgumentError(`skipRows (${skipRows}) exceeds the number of rows in the address (${by - ay + 1}). Skip less or set a take.`);
+	}
+
+	if (takeCols === Number.POSITIVE_INFINITY && skipCols > bx - ax) {
+		throw new InvalidArgumentError(`skipCols (${skipCols}) exceeds the number of columns in the address (${bx - ax + 1}). Skip less or set a take.`);
+	}
+
 	const [startRow, endRow] = superSlice(ay, by, skipRows, takeRows);
 	const [startCol, endCol] = superSlice(ax, bx, skipCols, takeCols);
 

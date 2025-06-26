@@ -628,6 +628,14 @@ describe("superAddress", () => {
 		expect(superAddress("A1:C5", 1, undefined)).toBe("A2:C5");
 		expect(superAddress("A1:C5", 0, undefined, 1)).toBe("B1:C5");
 	});
+
+	it("should throw a clear error if skipRows exceeds the end of the range and takeRows is not provided", () => {
+		expect(() => superAddress("A1:B2", 10)).toThrowError(/skipRows \(10\) exceeds the number of rows in the address/);
+	});
+
+	it("should throw a clear error if skipCols exceeds the end of the range and takeCols is not provided", () => {
+		expect(() => superAddress("A1:B2", 0, null, 10)).toThrowError(/skipCols \(10\) exceeds the number of columns in the address/);
+	});
 });
 
 describe("cellToRangeAddress", () => {
