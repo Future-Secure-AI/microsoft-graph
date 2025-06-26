@@ -385,12 +385,12 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * Supports negative values for `skipRows` and `skipCols` to count from the end.
  * Supports negative values for `takeRows` and `takeCols` to exclude from the end after skipping.
  *
- * @param address - The original range in A1 notation (e.g., "A1:D10").
- * @param skipRows - Number of rows to skip. If negative, skips that many rows from the end. Default is 0.
- * @param takeRows - Number of rows to take after skipping. If negative, excludes that many rows from the end of the remaining rows. Default is Infinity.
- * @param skipCols - Number of columns to skip. If negative, skips that many columns from the end. Default is 0.
- * @param takeCols - Number of columns to take after skipping. If negative, excludes that many columns from the end of the remaining columns. Default is Infinity.
- * @returns A new A1-style range representing the sliced subrange (e.g., "B2:C5").
+ * @param address Original range in A1 notation (e.g., "A1:D10").
+ * @param skipRows Number of rows to skip. If negative, skips that many rows from the end. Default is 0.
+ * @param takeRows Number of rows to take after skipping. If negative, excludes that many rows from the end of the remaining rows. Default is Infinity.
+ * @param skipCols Number of columns to skip. If negative, skips that many columns from the end. Default is 0.
+ * @param takeCols Number of columns to take after skipping. If negative, excludes that many columns from the end of the remaining columns. Default is Infinity.
+ * @returns New A1-style range representing the sliced sub-range (e.g., "B2:C5").
  *
  * @example
  * subaddress("A1:D10", -1, 1); // Last row: "A10:D10"
@@ -442,12 +442,12 @@ export function subAddress(address: Address, skipRows = 0, takeRows = Number.POS
  * Returns a super-address that extends the given address by skipping/taking rows/columns, possibly outside the original bounds.
  * Negative skip moves the start above/left of the original range (not from the end).
  *
- * @param address - The original range in A1 notation (e.g., "A1:D10").
- * @param skipRows - Number of rows to skip (can be negative to extend above).
- * @param takeRows - Number of rows to take after skipping. If negative, excludes from the end. Default is Infinity.
- * @param skipCols - Number of columns to skip (can be negative to extend left).
- * @param takeCols - Number of columns to take after skipping. If negative, excludes from the end. Default is Infinity.
- * @returns A new A1-style range representing the superrange (may extend outside original bounds).
+ * @param address Original range in A1 notation (e.g., "A1:D10").
+ * @param skipRows Number of rows to skip (can be negative to extend above).
+ * @param takeRows Number of rows to take after skipping. If negative, excludes from the end. Default is Infinity.
+ * @param skipCols Number of columns to skip (can be negative to extend left).
+ * @param takeCols Number of columns to take after skipping. If negative, excludes from the end. Default is Infinity.
+ * @returns New A1-style range representing the super range (may extend outside original bounds).
  *
  * @example
  * superAddress("B2:C3", -1, 4, -1, 4) // "A1:D5"
