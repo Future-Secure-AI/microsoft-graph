@@ -386,10 +386,10 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * Supports negative values for `takeRows` and `takeCols` to exclude from the end after skipping.
  *
  * @param address Original range in A1 notation (e.g., "A1:D10").
- * @param skipRows Number of rows to skip. If negative, skips that many rows from the end. Default is 0.
- * @param takeRows Number of rows to take after skipping. If negative, excludes that many rows from the end of the remaining rows. Default is Infinity.
- * @param skipCols Number of columns to skip. If negative, skips that many columns from the end. Default is 0.
- * @param takeCols Number of columns to take after skipping. If negative, excludes that many columns from the end of the remaining columns. Default is Infinity.
+ * @param skipRows Number of rows to skip. If negative, skips from the end. Default is 0.
+ * @param takeRows Number of rows to take after skipping. If negative, excludes from the end of the remaining rows. Default is Infinity.
+ * @param skipCols Number of columns to skip. If negative, skips from the end. Default is 0.
+ * @param takeCols Number of columns to take after skipping. If negative, excludes from the end of the remaining columns. Default is Infinity.
  * @param strict If true, throws an error if the requested subaddress is out of bounds of the original address. If false, clips to the range available.
  * @returns New A1-style range representing the sliced sub-range (e.g., "B2:C5").
  *
@@ -400,6 +400,13 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
  */
 export function subAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY, strict = true): Address {
+	if (address === undefined || address === null) throw new InvalidArgumentError("address must not be null or undefined");
+	if (skipRows === undefined || skipRows === null) throw new InvalidArgumentError("skipRows must not be null or undefined");
+	if (takeRows === undefined || takeRows === null) throw new InvalidArgumentError("takeRows must not be null or undefined");
+	if (skipCols === undefined || skipCols === null) throw new InvalidArgumentError("skipCols must not be null or undefined");
+	if (takeCols === undefined || takeCols === null) throw new InvalidArgumentError("takeCols must not be null or undefined");
+	if (strict === undefined || strict === null) throw new InvalidArgumentError("strict must not be null or undefined");
+
 	const { ax, bx, ay, by } = addressToCartesian(address);
 
 	const [startRow, endRow] = slice(ay, by, skipRows, takeRows);
@@ -454,6 +461,12 @@ export function subAddress(address: Address, skipRows = 0, takeRows = Number.POS
  * superAddress("B2:C3", -1, 4, -1, 4) // "A1:D5"
  */
 export function superAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
+	if (address === undefined || address === null) throw new InvalidArgumentError("address must not be null or undefined");
+	if (skipRows === undefined || skipRows === null) throw new InvalidArgumentError("skipRows must not be null or undefined");
+	if (takeRows === undefined || takeRows === null) throw new InvalidArgumentError("takeRows must not be null or undefined");
+	if (skipCols === undefined || skipCols === null) throw new InvalidArgumentError("skipCols must not be null or undefined");
+	if (takeCols === undefined || takeCols === null) throw new InvalidArgumentError("takeCols must not be null or undefined");
+
 	const { ax, bx, ay, by } = addressToCartesian(address);
 
 	const [startRow, endRow] = superSlice(ay, by, skipRows, takeRows);
