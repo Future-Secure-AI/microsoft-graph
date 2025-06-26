@@ -390,7 +390,6 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * @param takeRows Number of rows to take after skipping. If negative, excludes from the end of the remaining rows. Default is Infinity.
  * @param skipCols Number of columns to skip. If negative, skips from the end. Default is 0.
  * @param takeCols Number of columns to take after skipping. If negative, excludes from the end of the remaining columns. Default is Infinity.
- * @param strict If true, throws an error if the requested subaddress is out of bounds of the original address. If false, clips to the range available.
  * @returns New A1-style range representing the sliced sub-range (e.g., "B2:C5").
  *
  * @example
@@ -399,20 +398,19 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * subaddress("A1:D10", 0, -1); // All but last row: "A1:D9"
  * subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
  */
-export function subAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY, strict = true): Address {
+export function subAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
 	if (address === undefined || address === null) throw new InvalidArgumentError("address must not be null or undefined");
 	if (skipRows === undefined || skipRows === null) throw new InvalidArgumentError("skipRows must not be null or undefined");
 	if (takeRows === undefined || takeRows === null) throw new InvalidArgumentError("takeRows must not be null or undefined");
 	if (skipCols === undefined || skipCols === null) throw new InvalidArgumentError("skipCols must not be null or undefined");
 	if (takeCols === undefined || takeCols === null) throw new InvalidArgumentError("takeCols must not be null or undefined");
-	if (strict === undefined || strict === null) throw new InvalidArgumentError("strict must not be null or undefined");
 
 	const { ax, bx, ay, by } = addressToCartesian(address);
 
 	const [startRow, endRow] = slice(ay, by, skipRows, takeRows);
 	const [startCol, endCol] = slice(ax, bx, skipCols, takeCols);
 
-	if (startRow < ay || endRow > by || startRow > endRow || startCol < ax || endCol > bx || startCol > endCol) {
+	if (startRow < ay || startRow > endRow || startCol < ax || startCol > endCol) {
 		const requestedAddress = cartesianToAddress({ ax: startCol as ColumnOffset, bx: endCol as ColumnOffset, ay: startRow as RowOffset, by: endRow as RowOffset });
 		throw new InvalidArgumentError(`Requested subaddress ${requestedAddress} is out of bounds of the base address ${address}.`);
 	}
@@ -441,6 +439,9 @@ export function subAddress(address: Address, skipRows = 0, takeRows = Number.POS
 		} else if (take < 0) {
 			e += take;
 		}
+
+		// Clip e to not exceed the original end
+		if (e > end) e = end;
 
 		return [s, e];
 	}
@@ -502,12 +503,11 @@ export function superAddress(address: Address, skipRows = 0, takeRows = Number.P
  * @param takeRows Number of rows to take after skipping. If negative, excludes from the end. Default Infinity.
  * @param skipCols Number of columns to skip. If negative, skips from the end. Default 0.
  * @param takeCols Number of columns to take after skipping. If negative, excludes from the end. Default Infinity.
- * @param strict If true, throws an error if the requested subaddress is out of bounds of the original address. If false, clips to the range available.
  * @returns Extracted sub-range reference.
  * @throws InvalidArgumentError if the requested rows or columns exceed the available range.
  */
-export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY, strict = true): WorkbookRangeRef {
-	const address = subAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols, strict);
+export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
+	const address = subAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
 	return {
 		...rangeRef,
 		address,
