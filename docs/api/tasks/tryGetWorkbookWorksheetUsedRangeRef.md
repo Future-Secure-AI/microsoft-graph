@@ -8,7 +8,7 @@
 
 > **tryGetWorkbookWorksheetUsedRangeRef**(`worksheetRef`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`null` \| [`WorkbookRangeRef`](../WorkbookRange-1.md#workbookrangeref)\>
 
-Defined in: src/tasks/tryGetWorkbookWorksheetUsedRangeRef.ts:6
+Defined in: [src/tasks/tryGetWorkbookWorksheetUsedRangeRef.ts:6](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/tryGetWorkbookWorksheetUsedRangeRef.ts#L6)
 
 #### Parameters
 

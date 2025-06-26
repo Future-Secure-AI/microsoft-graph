@@ -10,7 +10,7 @@ Utilities for handling errors
 
 > **isErrorWithName**(`error`, `name`): `boolean`
 
-Defined in: src/services/error.ts:13
+Defined in: [src/services/error.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/error.ts#L13)
 
 Determines if the error has a specific name.
 
