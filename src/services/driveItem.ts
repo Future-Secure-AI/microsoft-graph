@@ -4,6 +4,8 @@
  * @category Services
  */
 
+import type { DriveItem } from "@microsoft/microsoft-graph-types";
+import path from "node:path";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import ProtocolError from "../errors/ProtocolError.ts";
 import type { DriveRef } from "../models/Drive.ts";
@@ -98,4 +100,14 @@ export function splitDriveItemPath(filePath: DriveItemPath): { folderPath: Drive
 		folderPath,
 		fileName,
 	};
+}
+
+/**
+ * Gets the file extension of a drive item.
+ * @param item Drive item.
+ * @returns File extension ie. "txt", "jpg"
+ */
+export function getDriveItemExtension(item: DriveItem): string {
+	const ext = path.extname(item.name ?? "").toLowerCase();
+	return ext.startsWith(".") ? ext.slice(1) : ext;
 }

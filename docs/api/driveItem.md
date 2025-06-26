@@ -10,7 +10,7 @@ Utilities for working with Microsoft Graph Drive Items (files and folders).
 
 > `const` **binaryWorkbookFileExtension**: `"xlsb"` = `"xlsb"`
 
-Defined in: [src/services/driveItem.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L17)
+Defined in: [src/services/driveItem.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L19)
 
 ***
 
@@ -18,7 +18,7 @@ Defined in: [src/services/driveItem.ts:17](https://github.com/Future-Secure-AI/m
 
 > `const` **rootDriveItemPath**: [`DriveItemPath`](DriveItem-1.md#driveitempath)
 
-Defined in: [src/services/driveItem.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L19)
+Defined in: [src/services/driveItem.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L21)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [src/services/driveItem.ts:19](https://github.com/Future-Secure-AI/m
 
 > `const` **workbookFileExtension**: `"xlsx"` = `"xlsx"`
 
-Defined in: [src/services/driveItem.ts:16](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L16)
+Defined in: [src/services/driveItem.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L18)
 
 ## Functions
 
@@ -34,7 +34,7 @@ Defined in: [src/services/driveItem.ts:16](https://github.com/Future-Secure-AI/m
 
 > **createDriveItemRef**(`driveRef`, `itemId`): [`DriveItemRef`](DriveItem-1.md#driveitemref)
 
-Defined in: [src/services/driveItem.ts:70](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L70)
+Defined in: [src/services/driveItem.ts:72](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L72)
 
 Creates a reference to a drive item.
 
@@ -61,7 +61,7 @@ ProtocolError if the item ID is missing.
 
 > **driveItemPath**(...`segments`): [`DriveItemPath`](DriveItem-1.md#driveitempath)
 
-Defined in: [src/services/driveItem.ts:27](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L27)
+Defined in: [src/services/driveItem.ts:29](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L29)
 
 Creates a drive item path from a given set of segments.
 
@@ -83,11 +83,33 @@ InvalidArgumentError if a segment is invalid or the path exceeds 400 characters.
 
 ***
 
+### getDriveItemExtension()
+
+> **getDriveItemExtension**(`item`): `string`
+
+Defined in: [src/services/driveItem.ts:110](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L110)
+
+Gets the file extension of a drive item.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `item` | `DriveItem` | Drive item. |
+
+#### Returns
+
+`string`
+
+File extension ie. "txt", "jpg"
+
+***
+
 ### splitDriveItemPath()
 
 > **splitDriveItemPath**(`filePath`): `object`
 
-Defined in: [src/services/driveItem.ts:88](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L88)
+Defined in: [src/services/driveItem.ts:90](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L90)
 
 Splits a drive item path into its folder path and file name.
 
