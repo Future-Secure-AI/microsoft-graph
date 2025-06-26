@@ -25,11 +25,16 @@ export function addressToCartesian(address: Address): Cartesian {
 	const bx = columnAddressToOffset(endColumn);
 	const by = rowAddressToOffset(endRow);
 
-	if (ax > bx) {
-		throw new InvalidArgumentError(`Invalid address ${address}. Start column (${startColumn}) is after end column (${endColumn}).`);
-	}
-	if (ay > by) {
-		throw new InvalidArgumentError(`Invalid address ${address}. Start row (${startRow}) is after end row (${endRow}).`);
+	if (ax > bx || ay > by) {
+		let error = `Invalid address '${address}'. `;
+		if (ax > bx) {
+			error += `Start column (${startColumn}) is after end column (${endColumn}). `;
+		}
+
+		if (ay > by) {
+			error += `Start row (${startRow}) is after end row (${endRow}).`;
+		}
+		throw new InvalidArgumentError(error);
 	}
 
 	return { ax, ay, bx, by };
@@ -54,11 +59,16 @@ export function cartesianToAddress({ ax, ay, bx, by }: Cartesian): Address {
 		endColumn,
 	});
 
-	if (ax > bx) {
-		throw new InvalidArgumentError(`Invalid address ${address}. Start column (${startColumn}) is after end column (${endColumn}).`);
-	}
-	if (ay > by) {
-		throw new InvalidArgumentError(`Invalid address ${address}. Start row (${startRow}) is after end row (${endRow}).`);
+	if (ax > bx || ay > by) {
+		let error = `Invalid address '${address}'. `;
+		if (ax > bx) {
+			error += `Start column (${startColumn}) is after end column (${endColumn}). `;
+		}
+
+		if (ay > by) {
+			error += `Start row (${startRow}) is after end row (${endRow}).`;
+		}
+		throw new InvalidArgumentError(error);
 	}
 
 	return address;
