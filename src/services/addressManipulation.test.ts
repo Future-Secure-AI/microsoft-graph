@@ -583,6 +583,17 @@ describe("subAddress", () => {
 		expect(subAddress("A1")).toBe("A1");
 		expect(subAddress("A1", 0, 1, 0, 1)).toBe("A1");
 	});
+
+	it("should clip to available range when out of bounds and strict is false", () => {
+		expect(subAddress("A1:C5", 10, Number.POSITIVE_INFINITY, 0, Number.POSITIVE_INFINITY, false)).toBe("A1:C5");
+		expect(subAddress("A1:C5", 0, Number.POSITIVE_INFINITY, 10, Number.POSITIVE_INFINITY, false)).toBe("A1:C5");
+		expect(subAddress("A1:C5", -10, Number.POSITIVE_INFINITY, 0, Number.POSITIVE_INFINITY, false)).toBe("A1:C5");
+		expect(subAddress("A1:C5", 0, Number.POSITIVE_INFINITY, -10, Number.POSITIVE_INFINITY, false)).toBe("A1:C5");
+	});
+
+	it("should behave as before when within bounds and strict is false", () => {
+		expect(subAddress("A1:C5", 1, 2, 1, 1, false)).toBe("B2:B3");
+	});
 });
 
 describe("superAddress", () => {

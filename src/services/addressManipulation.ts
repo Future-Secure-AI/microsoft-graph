@@ -390,6 +390,7 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * @param takeRows Number of rows to take after skipping. If negative, excludes that many rows from the end of the remaining rows. Default is Infinity.
  * @param skipCols Number of columns to skip. If negative, skips that many columns from the end. Default is 0.
  * @param takeCols Number of columns to take after skipping. If negative, excludes that many columns from the end of the remaining columns. Default is Infinity.
+ * @param strict If true, throws an error if the requested subaddress is out of bounds of the original address. If false, clips to the range available.
  * @returns New A1-style range representing the sliced sub-range (e.g., "B2:C5").
  *
  * @example
@@ -398,7 +399,7 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * subaddress("A1:D10", 0, -1); // All but last row: "A1:D9"
  * subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
  */
-export function subAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
+export function subAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY, strict = true): Address {
 	const { ax, bx, ay, by } = addressToCartesian(address);
 
 	const [startRow, endRow] = slice(ay, by, skipRows, takeRows);
@@ -488,11 +489,12 @@ export function superAddress(address: Address, skipRows = 0, takeRows = Number.P
  * @param takeRows Number of rows to take after skipping. If negative, excludes from the end. Default Infinity.
  * @param skipCols Number of columns to skip. If negative, skips from the end. Default 0.
  * @param takeCols Number of columns to take after skipping. If negative, excludes from the end. Default Infinity.
+ * @param strict If true, throws an error if the requested subaddress is out of bounds of the original address. If false, clips to the range available.
  * @returns Extracted sub-range reference.
  * @throws InvalidArgumentError if the requested rows or columns exceed the available range.
  */
-export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
-	const address = subAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
+export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY, strict = true): WorkbookRangeRef {
+	const address = subAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols, strict);
 	return {
 		...rangeRef,
 		address,
