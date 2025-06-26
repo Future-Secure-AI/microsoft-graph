@@ -398,7 +398,7 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * subaddress("A1:D10", 0, -1); // All but last row: "A1:D9"
  * subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
  */
-export function subAddress(address: Address, skipRows = 0, takeRows: number | undefined = undefined, skipCols = 0, takeCols: number | undefined = undefined): Address {
+export function subAddress(address: Address, skipRows = 0, takeRows: number | null = null, skipCols = 0, takeCols: number | null = null): Address {
 	if (takeRows === undefined || takeRows === null) {
 		takeRows = Number.POSITIVE_INFINITY;
 	}
@@ -461,7 +461,7 @@ export function subAddress(address: Address, skipRows = 0, takeRows: number | un
  * @example
  * superAddress("B2:C3", -1, 4, -1, 4) // "A1:D5"
  */
-export function superAddress(address: Address, skipRows = 0, takeRows: number | undefined = undefined, skipCols = 0, takeCols: number | undefined = undefined): Address {
+export function superAddress(address: Address, skipRows = 0, takeRows: number | null = null, skipCols = 0, takeCols: number | null = null): Address {
 	if (takeRows === undefined || takeRows === null) {
 		takeRows = Number.POSITIVE_INFINITY;
 	}
@@ -507,7 +507,7 @@ export function superAddress(address: Address, skipRows = 0, takeRows: number | 
  * @returns Extracted sub-range reference.
  * @throws InvalidArgumentError if the requested rows or columns exceed the available range.
  */
-export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows: number | undefined = undefined, skipCols = 0, takeCols: number | undefined = undefined): WorkbookRangeRef {
+export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows: number | null = null, skipCols = 0, takeCols: number | null = null): WorkbookRangeRef {
 	const address = subAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
 	return {
 		...rangeRef,
@@ -526,7 +526,7 @@ export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows: num
  * @param takeCols Number of columns to take after skipping. If negative, excludes from the end. Default Infinity.
  * @returns Extended super-range reference.
  */
-export function superRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows: number | undefined = undefined, skipCols = 0, takeCols: number | undefined = undefined): WorkbookRangeRef {
+export function superRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows: number | null = null, skipCols = 0, takeCols: number | null = null): WorkbookRangeRef {
 	const address = superAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
 	return {
 		...rangeRef,

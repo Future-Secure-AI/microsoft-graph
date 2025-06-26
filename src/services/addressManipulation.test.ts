@@ -597,6 +597,11 @@ describe("subAddress", () => {
 });
 
 describe("superAddress", () => {
+	it("should work with noop", () => {
+		expect(superAddress("A1:B4", 0, undefined, 0, undefined)).toBe("A1:B4");
+		expect(superAddress("A1:B4", 0, Number.POSITIVE_INFINITY, 0, Number.POSITIVE_INFINITY)).toBe("A1:B4");
+	});
+
 	it("should extend below and right when take is large", () => {
 		expect(superAddress("A1:B2", 1, 2, 1, 2)).toBe("B2:C3");
 	});

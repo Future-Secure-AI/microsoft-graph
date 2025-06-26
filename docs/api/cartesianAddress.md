@@ -32,7 +32,7 @@ The Cartesian representation of the address, with start and end coordinates.
 
 > **cartesianToAddress**(`cartesian`): [`Address`](Address.md#address)
 
-Defined in: [src/services/cartesianAddress.ts:37](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cartesianAddress.ts#L37)
+Defined in: [src/services/cartesianAddress.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/cartesianAddress.ts#L44)
 
 Converts Cartesian coordinates to a cell range address.
 

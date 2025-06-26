@@ -17,13 +17,20 @@ import { columnAddressToOffset, columnOffsetToAddress, rowAddressToOffset, rowOf
  * @returns {Cartesian} The Cartesian representation of the address, with start and end coordinates.
  */
 export function addressToCartesian(address: Address): Cartesian {
-	const components = decomposeAddress(address);
+	const { startColumn, startRow, endColumn, endRow } = decomposeAddress(address);
 
-	const ax = columnAddressToOffset(components.startColumn);
-	const ay = rowAddressToOffset(components.startRow);
+	const ax = columnAddressToOffset(startColumn);
+	const ay = rowAddressToOffset(startRow);
 
-	const bx = columnAddressToOffset(components.endColumn);
-	const by = rowAddressToOffset(components.endRow);
+	const bx = columnAddressToOffset(endColumn);
+	const by = rowAddressToOffset(endRow);
+
+	if (ax > bx) {
+		throw new InvalidArgumentError(`Invalid address ${address}. Start column (${startColumn}) is after end column (${endColumn}).`);
+	}
+	if (ay > by) {
+		throw new InvalidArgumentError(`Invalid address ${address}. Start row (${startRow}) is after end row (${endRow}).`);
+	}
 
 	return { ax, ay, bx, by };
 }
@@ -40,19 +47,19 @@ export function cartesianToAddress({ ax, ay, bx, by }: Cartesian): Address {
 	const endColumn = columnOffsetToAddress(bx);
 	const endRow = rowOffsetToAddress(by);
 
-	if (ax > bx) {
-		throw new InvalidArgumentError(`Invalid address. End column is before start column. ax=${ax} bx=${bx}.`);
-	}
-	if (ay > by) {
-		throw new InvalidArgumentError(`Invalid address. End row is before start row. ay=${ay} by=${by}.`);
-	}
-
 	const address = composeAddress({
 		startRow,
 		startColumn,
 		endRow,
 		endColumn,
 	});
+
+	if (ax > bx) {
+		throw new InvalidArgumentError(`Invalid address ${address}. Start column (${startColumn}) is after end column (${endColumn}).`);
+	}
+	if (ay > by) {
+		throw new InvalidArgumentError(`Invalid address ${address}. Start row (${startRow}) is after end row (${endRow}).`);
+	}
 
 	return address;
 }

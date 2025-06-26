@@ -501,9 +501,9 @@ Supports negative values for `takeRows` and `takeCols` to exclude from the end a
 | ------ | ------ | ------ | ------ |
 | `address` | [`Address`](Address.md#address) | `undefined` | Original range in A1 notation (e.g., "A1:D10"). |
 | `skipRows` | `number` | `0` | Number of rows to skip. If negative, skips from the end. Default is 0. |
-| `takeRows` | `undefined` \| `number` | `undefined` | Number of rows to take after skipping. If negative, excludes from the end of the remaining rows. Default is Infinity. |
+| `takeRows` | `null` \| `number` | `null` | Number of rows to take after skipping. If negative, excludes from the end of the remaining rows. Default is Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip. If negative, skips from the end. Default is 0. |
-| `takeCols` | `undefined` \| `number` | `undefined` | Number of columns to take after skipping. If negative, excludes from the end of the remaining columns. Default is Infinity. |
+| `takeCols` | `null` \| `number` | `null` | Number of columns to take after skipping. If negative, excludes from the end of the remaining columns. Default is Infinity. |
 
 #### Returns
 
@@ -536,9 +536,9 @@ Extracts a sub-range from a WorkbookRangeRef using skip/take semantics.
 | ------ | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | `undefined` | Range reference to extract the sub-range from. |
 | `skipRows` | `number` | `0` | Number of rows to skip. If negative, skips from the end. Default 0. |
-| `takeRows` | `undefined` \| `number` | `undefined` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
+| `takeRows` | `null` \| `number` | `null` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip. If negative, skips from the end. Default 0. |
-| `takeCols` | `undefined` \| `number` | `undefined` | Number of columns to take after skipping. If negative, excludes from the end. Default Infinity. |
+| `takeCols` | `null` \| `number` | `null` | Number of columns to take after skipping. If negative, excludes from the end. Default Infinity. |
 
 #### Returns
 
@@ -567,9 +567,9 @@ Negative skip moves the start above/left of the original range (not from the end
 | ------ | ------ | ------ | ------ |
 | `address` | [`Address`](Address.md#address) | `undefined` | Original range in A1 notation (e.g., "A1:D10"). |
 | `skipRows` | `number` | `0` | Number of rows to skip (can be negative to extend above). |
-| `takeRows` | `undefined` \| `number` | `undefined` | Number of rows to take after skipping. If negative, excludes from the end. Default is Infinity. |
+| `takeRows` | `null` \| `number` | `null` | Number of rows to take after skipping. If negative, excludes from the end. Default is Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip (can be negative to extend left). |
-| `takeCols` | `undefined` \| `number` | `undefined` | Number of columns to take after skipping. If negative, excludes from the end. Default is Infinity. |
+| `takeCols` | `null` \| `number` | `null` | Number of columns to take after skipping. If negative, excludes from the end. Default is Infinity. |
 
 #### Returns
 
@@ -600,9 +600,9 @@ Negative skip moves the start above/left of the original range (not from the end
 | ------ | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | `undefined` | Range reference to extend. |
 | `skipRows` | `number` | `0` | Number of rows to skip (can be negative to extend above). Default 0. |
-| `takeRows` | `undefined` \| `number` | `undefined` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
+| `takeRows` | `null` \| `number` | `null` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip (can be negative to extend left). Default 0. |
-| `takeCols` | `undefined` \| `number` | `undefined` | Number of columns to take after skipping. If negative, excludes from the end. Default Infinity. |
+| `takeCols` | `null` \| `number` | `null` | Number of columns to take after skipping. If negative, excludes from the end. Default Infinity. |
 
 #### Returns
 
