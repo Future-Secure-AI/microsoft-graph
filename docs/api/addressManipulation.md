@@ -499,17 +499,17 @@ Supports negative values for `takeRows` and `takeCols` to exclude from the end a
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `address` | [`Address`](Address.md#address) | `undefined` | The original range in A1 notation (e.g., "A1:D10"). |
-| `skipRows` | `number` | `0` | Number of rows to skip. If negative, skips that many rows from the end. Default is 0. |
-| `takeRows` | `number` | `Number.POSITIVE_INFINITY` | Number of rows to take after skipping. If negative, excludes that many rows from the end of the remaining rows. Default is Infinity. |
-| `skipCols` | `number` | `0` | Number of columns to skip. If negative, skips that many columns from the end. Default is 0. |
-| `takeCols` | `number` | `Number.POSITIVE_INFINITY` | Number of columns to take after skipping. If negative, excludes that many columns from the end of the remaining columns. Default is Infinity. |
+| `address` | [`Address`](Address.md#address) | `undefined` | Original range in A1 notation (e.g., "A1:D10"). |
+| `skipRows` | `number` | `0` | Number of rows to skip. If negative, skips from the end. Default is 0. |
+| `takeRows` | `undefined` \| `number` | `undefined` | Number of rows to take after skipping. If negative, excludes from the end of the remaining rows. Default is Infinity. |
+| `skipCols` | `number` | `0` | Number of columns to skip. If negative, skips from the end. Default is 0. |
+| `takeCols` | `undefined` \| `number` | `undefined` | Number of columns to take after skipping. If negative, excludes from the end of the remaining columns. Default is Infinity. |
 
 #### Returns
 
 [`Address`](Address.md#address)
 
-A new A1-style range representing the sliced subrange (e.g., "B2:C5").
+New A1-style range representing the sliced sub-range (e.g., "B2:C5").
 
 #### Example
 
@@ -526,7 +526,7 @@ subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
 
 > **subRange**(`rangeRef`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref)
 
-Defined in: [src/services/addressManipulation.ts:494](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L494)
+Defined in: [src/services/addressManipulation.ts:511](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L511)
 
 Extracts a sub-range from a WorkbookRangeRef using skip/take semantics.
 
@@ -536,9 +536,9 @@ Extracts a sub-range from a WorkbookRangeRef using skip/take semantics.
 | ------ | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | `undefined` | Range reference to extract the sub-range from. |
 | `skipRows` | `number` | `0` | Number of rows to skip. If negative, skips from the end. Default 0. |
-| `takeRows` | `number` | `Number.POSITIVE_INFINITY` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
+| `takeRows` | `undefined` \| `number` | `undefined` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip. If negative, skips from the end. Default 0. |
-| `takeCols` | `number` | `Number.POSITIVE_INFINITY` | Number of columns to take after skipping. If negative, excludes from the end. Default Infinity. |
+| `takeCols` | `undefined` \| `number` | `undefined` | Number of columns to take after skipping. If negative, excludes from the end. Default Infinity. |
 
 #### Returns
 
@@ -556,7 +556,7 @@ InvalidArgumentError if the requested rows or columns exceed the available range
 
 > **superAddress**(`address`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`Address`](Address.md#address)
 
-Defined in: [src/services/addressManipulation.ts:455](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L455)
+Defined in: [src/services/addressManipulation.ts:465](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L465)
 
 Returns a super-address that extends the given address by skipping/taking rows/columns, possibly outside the original bounds.
 Negative skip moves the start above/left of the original range (not from the end).
@@ -565,17 +565,17 @@ Negative skip moves the start above/left of the original range (not from the end
 
 | Parameter | Type | Default value | Description |
 | ------ | ------ | ------ | ------ |
-| `address` | [`Address`](Address.md#address) | `undefined` | The original range in A1 notation (e.g., "A1:D10"). |
+| `address` | [`Address`](Address.md#address) | `undefined` | Original range in A1 notation (e.g., "A1:D10"). |
 | `skipRows` | `number` | `0` | Number of rows to skip (can be negative to extend above). |
-| `takeRows` | `number` | `Number.POSITIVE_INFINITY` | Number of rows to take after skipping. If negative, excludes from the end. Default is Infinity. |
+| `takeRows` | `undefined` \| `number` | `undefined` | Number of rows to take after skipping. If negative, excludes from the end. Default is Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip (can be negative to extend left). |
-| `takeCols` | `number` | `Number.POSITIVE_INFINITY` | Number of columns to take after skipping. If negative, excludes from the end. Default is Infinity. |
+| `takeCols` | `undefined` \| `number` | `undefined` | Number of columns to take after skipping. If negative, excludes from the end. Default is Infinity. |
 
 #### Returns
 
 [`Address`](Address.md#address)
 
-A new A1-style range representing the superrange (may extend outside original bounds).
+New A1-style range representing the super range (may extend outside original bounds).
 
 #### Example
 
@@ -589,7 +589,7 @@ superAddress("B2:C3", -1, 4, -1, 4) // "A1:D5"
 
 > **superRange**(`rangeRef`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref)
 
-Defined in: [src/services/addressManipulation.ts:513](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L513)
+Defined in: [src/services/addressManipulation.ts:530](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L530)
 
 Returns a super-range from a WorkbookRangeRef using skip/take semantics, possibly extending outside the original bounds.
 Negative skip moves the start above/left of the original range (not from the end).
@@ -600,9 +600,9 @@ Negative skip moves the start above/left of the original range (not from the end
 | ------ | ------ | ------ | ------ |
 | `rangeRef` | [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref) | `undefined` | Range reference to extend. |
 | `skipRows` | `number` | `0` | Number of rows to skip (can be negative to extend above). Default 0. |
-| `takeRows` | `number` | `Number.POSITIVE_INFINITY` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
+| `takeRows` | `undefined` \| `number` | `undefined` | Number of rows to take after skipping. If negative, excludes from the end. Default Infinity. |
 | `skipCols` | `number` | `0` | Number of columns to skip (can be negative to extend left). Default 0. |
-| `takeCols` | `number` | `Number.POSITIVE_INFINITY` | Number of columns to take after skipping. If negative, excludes from the end. Default Infinity. |
+| `takeCols` | `undefined` \| `number` | `undefined` | Number of columns to take after skipping. If negative, excludes from the end. Default Infinity. |
 
 #### Returns
 

@@ -1,14 +1,12 @@
 {
 	"name": "microsoft-graph",
-	"version": "3.4.0",
+	"version": "3.4.1",
 	"description": "Microsoft GraphAPI SDK for NodeJS",
 	"main": "./dist/cjs/index.js",
 	"module": "./dist/esm/index.js",
 	"types": "./dist/esm/index.d.ts",
 	"scripts": {
-		"check": "biome check",
-		"fix": "biome check --fix",
-		"build": "npm run check && rm -rf ./dist && echo 'Building for ESM...' && tsc -p tsconfig.esm.json && echo 'Building for CJS...' && tsc -p tsconfig.cjs.json && npx tsx update-exports.ts ",
+		"build": "biome check --fix && rm -rf ./dist && echo 'Building for ESM...' && tsc -p tsconfig.esm.json && echo 'Building for CJS...' && tsc -p tsconfig.cjs.json && npx tsx update-exports.ts ",
 		"release": "npm run build && npm run docs && npm publish --access public",
 		"test": "vitest --bail=3",
 		"update": "npm-check-updates -u && npm install",
