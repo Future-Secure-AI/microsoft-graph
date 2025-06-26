@@ -526,7 +526,7 @@ subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
 
 > **subRange**(`rangeRef`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref)
 
-Defined in: [src/services/addressManipulation.ts:511](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L511)
+Defined in: [src/services/addressManipulation.ts:510](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L510)
 
 Extracts a sub-range from a WorkbookRangeRef using skip/take semantics.
 
@@ -556,7 +556,7 @@ InvalidArgumentError if the requested rows or columns exceed the available range
 
 > **superAddress**(`address`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`Address`](Address.md#address)
 
-Defined in: [src/services/addressManipulation.ts:465](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L465)
+Defined in: [src/services/addressManipulation.ts:464](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L464)
 
 Returns a super-address that extends the given address by skipping/taking rows/columns, possibly outside the original bounds.
 Negative skip moves the start above/left of the original range (not from the end).
@@ -589,7 +589,7 @@ superAddress("B2:C3", -1, 4, -1, 4) // "A1:D5"
 
 > **superRange**(`rangeRef`, `skipRows`, `takeRows`, `skipCols`, `takeCols`): [`WorkbookRangeRef`](WorkbookRange-1.md#workbookrangeref)
 
-Defined in: [src/services/addressManipulation.ts:530](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L530)
+Defined in: [src/services/addressManipulation.ts:529](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/addressManipulation.ts#L529)
 
 Returns a super-range from a WorkbookRangeRef using skip/take semantics, possibly extending outside the original bounds.
 Negative skip moves the start above/left of the original range (not from the end).

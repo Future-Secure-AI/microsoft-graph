@@ -412,8 +412,7 @@ export function subAddress(address: Address, skipRows = 0, takeRows: number | un
 	const [startCol, endCol] = slice(ax, bx, skipCols, takeCols);
 
 	if (startRow < ay || startRow > endRow || startCol < ax || startCol > endCol) {
-		const requestedAddress = cartesianToAddress({ ax: startCol as ColumnOffset, bx: endCol as ColumnOffset, ay: startRow as RowOffset, by: endRow as RowOffset });
-		throw new InvalidArgumentError(`Requested subaddress ${requestedAddress} is out of bounds of the base address ${address}.`);
+		throw new InvalidArgumentError(`Requested subaddress is out of bounds of the base address ${address}.`);
 	}
 
 	return cartesianToAddress({
