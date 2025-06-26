@@ -585,8 +585,14 @@ describe("subAddress", () => {
 	});
 
 	it("clip take if excessive", () => {
-		expect(subAddress("A1:C5", 0, 10 )).toBe("A1:C5");
+		expect(subAddress("A1:C5", 0, 10)).toBe("A1:C5");
 		expect(subAddress("A1:C5", 0, Number.POSITIVE_INFINITY, 0, 10)).toBe("A1:C5");
+	});
+
+	it("should take all rows/columns if takeRows/takeCols are undefined", () => {
+		expect(subAddress("A1:C5", 0, undefined, 0, undefined)).toBe("A1:C5");
+		expect(subAddress("A1:C5", 1, undefined)).toBe("A2:C5");
+		expect(subAddress("A1:C5", 0, undefined, 1)).toBe("B1:C5");
 	});
 });
 
@@ -610,6 +616,12 @@ describe("superAddress", () => {
 
 	it("should allow both skip and take to be negative (extend above, shrink below)", () => {
 		expect(superAddress("B2:C3", -1, 2, -1, 2)).toBe("A1:B2");
+	});
+
+	it("should take all rows/columns if takeRows/takeCols are undefined", () => {
+		expect(superAddress("A1:C5", 0, undefined, 0, undefined)).toBe("A1:C5");
+		expect(superAddress("A1:C5", 1, undefined)).toBe("A2:C5");
+		expect(superAddress("A1:C5", 0, undefined, 1)).toBe("B1:C5");
 	});
 });
 

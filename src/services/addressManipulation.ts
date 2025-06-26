@@ -398,12 +398,13 @@ export function cellToRangeAddress(cell: CellAddress, rows: number, cols: number
  * subaddress("A1:D10", 0, -1); // All but last row: "A1:D9"
  * subaddress("A1:D10", 0, Infinity, -2, 1); // Second last column: "C1:C10"
  */
-export function subAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
-	if (address === undefined || address === null) throw new InvalidArgumentError("address must not be null or undefined");
-	if (skipRows === undefined || skipRows === null) throw new InvalidArgumentError("skipRows must not be null or undefined");
-	if (takeRows === undefined || takeRows === null) throw new InvalidArgumentError("takeRows must not be null or undefined");
-	if (skipCols === undefined || skipCols === null) throw new InvalidArgumentError("skipCols must not be null or undefined");
-	if (takeCols === undefined || takeCols === null) throw new InvalidArgumentError("takeCols must not be null or undefined");
+export function subAddress(address: Address, skipRows = 0, takeRows: number | undefined = undefined, skipCols = 0, takeCols: number | undefined = undefined): Address {
+	if (takeRows === undefined || takeRows === null) {
+		takeRows = Number.POSITIVE_INFINITY;
+	}
+	if (takeCols === undefined || takeCols === null) {
+		takeCols = Number.POSITIVE_INFINITY;
+	}
 
 	const { ax, bx, ay, by } = addressToCartesian(address);
 
@@ -461,12 +462,13 @@ export function subAddress(address: Address, skipRows = 0, takeRows = Number.POS
  * @example
  * superAddress("B2:C3", -1, 4, -1, 4) // "A1:D5"
  */
-export function superAddress(address: Address, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): Address {
-	if (address === undefined || address === null) throw new InvalidArgumentError("address must not be null or undefined");
-	if (skipRows === undefined || skipRows === null) throw new InvalidArgumentError("skipRows must not be null or undefined");
-	if (takeRows === undefined || takeRows === null) throw new InvalidArgumentError("takeRows must not be null or undefined");
-	if (skipCols === undefined || skipCols === null) throw new InvalidArgumentError("skipCols must not be null or undefined");
-	if (takeCols === undefined || takeCols === null) throw new InvalidArgumentError("takeCols must not be null or undefined");
+export function superAddress(address: Address, skipRows = 0, takeRows: number | undefined = undefined, skipCols = 0, takeCols: number | undefined = undefined): Address {
+	if (takeRows === undefined || takeRows === null) {
+		takeRows = Number.POSITIVE_INFINITY;
+	}
+	if (takeCols === undefined || takeCols === null) {
+		takeCols = Number.POSITIVE_INFINITY;
+	}
 
 	const { ax, bx, ay, by } = addressToCartesian(address);
 
@@ -506,7 +508,7 @@ export function superAddress(address: Address, skipRows = 0, takeRows = Number.P
  * @returns Extracted sub-range reference.
  * @throws InvalidArgumentError if the requested rows or columns exceed the available range.
  */
-export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
+export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows: number | undefined = undefined, skipCols = 0, takeCols: number | undefined = undefined): WorkbookRangeRef {
 	const address = subAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
 	return {
 		...rangeRef,
@@ -525,7 +527,7 @@ export function subRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Nu
  * @param takeCols Number of columns to take after skipping. If negative, excludes from the end. Default Infinity.
  * @returns Extended super-range reference.
  */
-export function superRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows = Number.POSITIVE_INFINITY, skipCols = 0, takeCols = Number.POSITIVE_INFINITY): WorkbookRangeRef {
+export function superRange(rangeRef: WorkbookRangeRef, skipRows = 0, takeRows: number | undefined = undefined, skipCols = 0, takeCols: number | undefined = undefined): WorkbookRangeRef {
 	const address = superAddress(rangeRef.address, skipRows, takeRows, skipCols, takeCols);
 	return {
 		...rangeRef,
