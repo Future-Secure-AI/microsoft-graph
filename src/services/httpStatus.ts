@@ -265,6 +265,7 @@ export function isRetryable(status: number): boolean {
 		isHttpInsufficientStorage(status) ||
 		isHttpBandwidthLimitExceeded(status) ||
 		isHttpRequestTimeout(status) ||
-		isHttpBadGateway(status)
+		isHttpBadGateway(status) ||
+		status < 1
 	);
 }

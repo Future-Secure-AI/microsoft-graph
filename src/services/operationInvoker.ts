@@ -230,7 +230,20 @@ async function innerFetch<T>(request: AxiosRequestConfig): Promise<T> {
 	let attempts = 0;
 	let errorLog = "";
 	while (true) {
-		response = await executeHttpRequest(request);
+		try {
+			response = await executeHttpRequest(request);
+		} catch (error) {
+			const message = error instanceof Error ? error.message : error?.toString() || "Unknown error";
+			response = {
+				status: -1,
+				statusText: message,
+				headers: {},
+				data: null,
+				config: request,
+				request: null,
+			} as AxiosResponse;
+			errorLog += message;
+		}
 
 		errorLog += requestToString(request);
 		errorLog += responseToString(response);
@@ -243,6 +256,8 @@ async function innerFetch<T>(request: AxiosRequestConfig): Promise<T> {
 		const requestedRetryAfterSeconds = Number.parseInt(response.headers["retry-after"] ?? "0", 10);
 		if (requestedRetryAfterSeconds) {
 			retryAfterMilliseconds = requestedRetryAfterSeconds * 1000;
+		} else {
+			retryAfterMilliseconds += Math.random() * 1000; // Add some randomness to the retry delay to avoid thundering herd problem
 		}
 
 		errorLog += waitToString(retryAfterMilliseconds);
