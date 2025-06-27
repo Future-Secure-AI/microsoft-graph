@@ -1892,6 +1892,16 @@
 			"require": "./dist/cjs/tasks/tryGetDriveItemByPath.js",
 			"types": "./dist/esm/tasks/tryGetDriveItemByPath.d.ts"
 		},
+		"./tryGetWorkbookWorksheetByName": {
+			"import": "./dist/esm/tasks/tryGetWorkbookWorksheetByName.js",
+			"require": "./dist/cjs/tasks/tryGetWorkbookWorksheetByName.js",
+			"types": "./dist/esm/tasks/tryGetWorkbookWorksheetByName.d.ts"
+		},
+		"./dist/cjs/tasks/tryGetWorkbookWorksheetByName": {
+			"import": "./dist/esm/tasks/tryGetWorkbookWorksheetByName.js",
+			"require": "./dist/cjs/tasks/tryGetWorkbookWorksheetByName.js",
+			"types": "./dist/esm/tasks/tryGetWorkbookWorksheetByName.d.ts"
+		},
 		"./tryGetWorkbookWorksheetUsedRangeRef": {
 			"import": "./dist/esm/tasks/tryGetWorkbookWorksheetUsedRangeRef.js",
 			"require": "./dist/cjs/tasks/tryGetWorkbookWorksheetUsedRangeRef.js",

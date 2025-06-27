@@ -205,6 +205,7 @@
 | [tryCloseWorkbookSession](tryCloseWorkbookSession.md) | Try and close a workbook session. |
 | [tryDeleteDriveItem](tryDeleteDriveItem.md) | Attempts to delete a drive item, returning success status. |
 | [tryGetDriveItemByPath](tryGetDriveItemByPath.md) | Attempts to retrieve the metadata for an item in a drive by file path, returning null if the item does not exist. |
+| [tryGetWorkbookWorksheetByName](tryGetWorkbookWorksheetByName.md) | Attempts to retrieve a worksheet by its name, returning null if not found. |
 | [updateWorkbookRangeFirstRow](updateWorkbookRangeFirstRow.md) | Update first row in a given workbook range. |
 | [updateWorkbookRangeRows](updateWorkbookRangeRows.md) | Update rows in a given workbook range. |
 | [writeWorkbookRows](writeWorkbookRows.md) | Write rows to a workbook range. |
