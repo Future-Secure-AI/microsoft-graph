@@ -2,6 +2,7 @@
  * Azure application credential helpers for authentication and token management.
  * @module azureApplicationCredentials
  * @category Services
+ * @hidden
  */
 
 import { ClientSecretCredential, type AccessToken as InnerAccessToken } from "@azure/identity";
@@ -11,13 +12,7 @@ import type { AzureClientId, AzureClientSecret, AzureTenantId, Scope } from "../
 const innerTokenCache: Record<CacheKey, InnerAccessToken> = {};
 
 /**
- * Retrieves the current access token for a given client and scope.
- * If a valid token is cached, it will be returned; otherwise, a new token will be requested.
- * @param tenantId - The tenant ID.
- * @param clientId - The client ID.
- * @param clientSecret - The client secret.
- * @param scope - The scope for which the token is requested.
- * @returns A promise that resolves to the access token.
+ * @deprecated
  */
 export async function getCurrentAccessToken(tenantId: AzureTenantId, clientId: AzureClientId, clientSecret: AzureClientSecret, scope: Scope): Promise<AccessToken> {
 	const cacheKey = createCacheKey(tenantId, clientId, scope);

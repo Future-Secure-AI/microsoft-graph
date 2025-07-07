@@ -100,7 +100,7 @@ The responses for each operation, in the same order.
 
 > **throwException**(`responseCode`, `message`): `never`
 
-Defined in: [src/services/operationInvoker.ts:328](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L328)
+Defined in: [src/services/operationInvoker.ts:343](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L343)
 
 #### Parameters
 
