@@ -18,9 +18,9 @@ Creates a context with a reference to a drive.
 
 | Parameter | Type |
 | ------ | ------ |
-| `tenantId` | [`AzureTenantId`](AzureApplicationCredentials-1.md#azuretenantid) |
-| `clientId` | [`AzureClientId`](AzureApplicationCredentials-1.md#azureclientid) |
-| `clientSecret` | [`AzureClientSecret`](AzureApplicationCredentials-1.md#azureclientsecret) |
+| `tenantId` | [`AzureTenantId`](AzureApplicationCredentials.md#azuretenantid) |
+| `clientId` | [`AzureClientId`](AzureApplicationCredentials.md#azureclientid) |
+| `clientSecret` | [`AzureClientSecret`](AzureApplicationCredentials.md#azureclientsecret) |
 | `siteId` | [`SiteId`](Site-1.md#siteid) |
 | `driveId` | [`DriveId`](Drive-1.md#driveid) |
 

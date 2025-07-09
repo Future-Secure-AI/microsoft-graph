@@ -6,13 +6,11 @@ Context creation and management utilities for Microsoft Graph API authentication
 
 ## Functions
 
-### createAccessTokenContext()
+### ~~createAccessTokenContext()~~
 
 > **createAccessTokenContext**(`accessToken`): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L30)
-
-Create a context using a static access token.
+Defined in: [src/services/context.ts:42](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L42)
 
 #### Parameters
 
@@ -24,32 +22,34 @@ Create a context using a static access token.
 
 [`ContextRef`](Context-1.md#contextref)
 
-#### Remarks
+#### Deprecated
 
-You must manually handle renewal of the access token with this approach.
+Use `createContext(accessTokenGenerator)` instead.
 
 ***
 
-### createClientSecretContext()
+### ~~createClientSecretContext()~~
 
 > **createClientSecretContext**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L18)
-
-Create a context using the client secret credential.
+Defined in: [src/services/context.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L31)
 
 #### Parameters
 
 | Parameter | Type | Default value |
 | ------ | ------ | ------ |
-| `tenantId` | [`AzureTenantId`](AzureApplicationCredentials-1.md#azuretenantid) | `undefined` |
-| `clientId` | [`AzureClientId`](AzureApplicationCredentials-1.md#azureclientid) | `undefined` |
-| `clientSecret` | [`AzureClientSecret`](AzureApplicationCredentials-1.md#azureclientsecret) | `undefined` |
-| `scope` | [`Scope`](AzureApplicationCredentials-1.md#scope) | `defaultScope` |
+| `tenantId` | [`AzureTenantId`](AzureApplicationCredentials.md#azuretenantid) | `undefined` |
+| `clientId` | [`AzureClientId`](AzureApplicationCredentials.md#azureclientid) | `undefined` |
+| `clientSecret` | [`AzureClientSecret`](AzureApplicationCredentials.md#azureclientsecret) | `undefined` |
+| `scope` | [`Scope`](AzureApplicationCredentials.md#scope) | `defaultScope` |
 
 #### Returns
 
 [`ContextRef`](Context-1.md#contextref)
+
+#### Deprecated
+
+Use `createContext(accessTokenGenerator)` instead.
 
 ***
 
@@ -57,7 +57,7 @@ Create a context using the client secret credential.
 
 > **createContext**(`accessTokenGenerator`): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:37](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L37)
+Defined in: [src/services/context.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L18)
 
 Create a context using a given access token generator.
 
@@ -73,17 +73,19 @@ Create a context using a given access token generator.
 
 ***
 
-### createDefaultClientSecretContext()
+### ~~createDefaultClientSecretContext()~~
 
 > **createDefaultClientSecretContext**(): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L48)
-
-Create a context using the client secret credential using environment variables AZURE_TENANT_ID, AZURE_CLIENT_ID and AZURE_CLIENT_SECRET.
+Defined in: [src/services/context.ts:51](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L51)
 
 #### Returns
 
 [`ContextRef`](Context-1.md#contextref)
+
+#### Deprecated
+
+Use `createContext(accessTokenGenerator)` instead.
 
 ***
 
@@ -91,7 +93,7 @@ Create a context using the client secret credential using environment variables 
 
 > **getDefaultContextRef**(): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:59](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L59)
+Defined in: [src/services/context.ts:62](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L62)
 
 #### Returns
 
@@ -99,7 +101,7 @@ Defined in: [src/services/context.ts:59](https://github.com/Future-Secure-AI/mic
 
 #### Deprecated
 
-Use `createDefaultClientSecretContext()` instead.
+Use `createContext(accessTokenGenerator)` instead.
 
 ***
 
@@ -107,15 +109,15 @@ Use `createDefaultClientSecretContext()` instead.
 
 > **register**(`tenantId`, `clientId`, `clientSecret`): [`ContextRef`](Context-1.md#contextref)
 
-Defined in: [src/services/context.ts:66](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L66)
+Defined in: [src/services/context.ts:69](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/context.ts#L69)
 
 #### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `tenantId` | [`AzureTenantId`](AzureApplicationCredentials-1.md#azuretenantid) |
-| `clientId` | [`AzureClientId`](AzureApplicationCredentials-1.md#azureclientid) |
-| `clientSecret` | [`AzureClientSecret`](AzureApplicationCredentials-1.md#azureclientsecret) |
+| `tenantId` | [`AzureTenantId`](AzureApplicationCredentials.md#azuretenantid) |
+| `clientId` | [`AzureClientId`](AzureApplicationCredentials.md#azureclientid) |
+| `clientSecret` | [`AzureClientSecret`](AzureApplicationCredentials.md#azureclientsecret) |
 
 #### Returns
 
@@ -123,4 +125,4 @@ Defined in: [src/services/context.ts:66](https://github.com/Future-Secure-AI/mic
 
 #### Deprecated
 
-Use `createClientSecretContext()` instead.
+Use `createContext(accessTokenGenerator)` instead.

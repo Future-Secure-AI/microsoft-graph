@@ -45,7 +45,7 @@
 | [AccessToken](AccessToken.md) | Token sent to server to authenticate a request. |
 | [AccessTokenGenerator](AccessTokenGenerator.md) | Callback function that generates an access token. |
 | [Address](Address.md) | Address of a set of cells in a spreadsheet. |
-| [AzureApplicationCredentials](AzureApplicationCredentials-1.md) | Credentials used to authenticate an application with Azure. |
+| [AzureApplicationCredentials](AzureApplicationCredentials.md) | Credentials used to authenticate an application with Azure. |
 | [Border](Border.md) | Defining a border that could be on a cell. |
 | [Cartesian](Cartesian.md) | Cartesian coordinates of a set of cells in a spreadsheet. |
 | [Cell](Cell.md) | Cell in a worksheet. |
@@ -153,7 +153,6 @@
 | ------ | ------ |
 | [addressManipulation](addressManipulation.md) | Utilities for manipulating and analyzing spreadsheet-style addresses (A1 notation). |
 | [addressOffset](addressOffset.md) | Utilities for converting between spreadsheet column/row addresses and offsets. |
-| [azureApplicationCredentials](azureApplicationCredentials.md) | Azure application credential helpers for authentication and token management. |
 | [batch](batch.md) | Constants and helpers for batching Microsoft Graph API requests. |
 | [cartesianAddress](cartesianAddress.md) | Utilities for converting between A1 addresses and Cartesian coordinates. |
 | [CellFormat](CellFormat.md) | Cell utilities. |

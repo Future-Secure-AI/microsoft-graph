@@ -1,31 +1,73 @@
-[Microsoft Graph SDK](README.md) / azureApplicationCredentials
+[Microsoft Graph SDK](README.md) / AzureApplicationCredentials
 
-# azureApplicationCredentials
+# AzureApplicationCredentials
 
-Azure application credential helpers for authentication and token management.
+Credentials used to authenticate an application with Azure.
 
-## Functions
+## Type Aliases
 
-### getCurrentAccessToken()
+### AzureClientId
 
-> **getCurrentAccessToken**(`tenantId`, `clientId`, `clientSecret`, `scope`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccessToken`](AccessToken.md#accesstoken)\>
+> **AzureClientId** = `string` & `object`
 
-Defined in: [src/services/azureApplicationCredentials.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/azureApplicationCredentials.ts#L22)
+Defined in: [src/models/AzureApplicationCredentials.ts:10](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/AzureApplicationCredentials.ts#L10)
 
-Retrieves the current access token for a given client and scope.
-If a valid token is cached, it will be returned; otherwise, a new token will be requested.
+Application Client ID to authenticate with Azure.
 
-#### Parameters
+#### Type declaration
 
-| Parameter | Type | Description |
-| ------ | ------ | ------ |
-| `tenantId` | [`AzureTenantId`](AzureApplicationCredentials-1.md#azuretenantid) | The tenant ID. |
-| `clientId` | [`AzureClientId`](AzureApplicationCredentials-1.md#azureclientid) | The client ID. |
-| `clientSecret` | [`AzureClientSecret`](AzureApplicationCredentials-1.md#azureclientsecret) | The client secret. |
-| `scope` | [`Scope`](AzureApplicationCredentials-1.md#scope) | The scope for which the token is requested. |
+##### \_\_brand
 
-#### Returns
+> **\_\_brand**: `"AzureClientId"`
 
-[`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`AccessToken`](AccessToken.md#accesstoken)\>
+***
 
-A promise that resolves to the access token.
+### AzureClientSecret
+
+> **AzureClientSecret** = `string` & `object`
+
+Defined in: [src/models/AzureApplicationCredentials.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/AzureApplicationCredentials.ts#L17)
+
+Application Client secret to authenticate with Azure.
+
+#### Type declaration
+
+##### \_\_brand
+
+> **\_\_brand**: `"AzureClientSecret"`
+
+***
+
+### AzureTenantId
+
+> **AzureTenantId** = `string` & `object`
+
+Defined in: [src/models/AzureApplicationCredentials.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/AzureApplicationCredentials.ts#L24)
+
+ID of tenant in Azure.
+
+#### Type declaration
+
+##### \_\_brand
+
+> **\_\_brand**: `"AzureTenantId"`
+
+***
+
+### Scope
+
+> **Scope** = `string` & `object`
+
+Defined in: [src/models/AzureApplicationCredentials.ts:32](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/AzureApplicationCredentials.ts#L32)
+
+Scope for which the access token is requested.
+
+#### Type declaration
+
+##### \_\_brand
+
+> **\_\_brand**: `"Scope"`
+
+#### Remarks
+
+Typically, this is set to "https://graph.microsoft.com/.default" for Microsoft Graph API.
