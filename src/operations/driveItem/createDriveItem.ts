@@ -2,6 +2,7 @@
  * Creates new drive item in the specified parent drive or folder.
  * @module createDriveItem
  * @category Operations
+ * @hidden
  */
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
@@ -19,6 +20,8 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @returns The newly created drive item.
  * @remarks If the file already exists, it will be replaced.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-put-content
+ * @deprecated Use {@link createDriveItemContent} instead for uploading content.
+ * @hidden
  */
 export default function createDriveItem(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath, contextType: string, content: ArrayBuffer): GraphOperation<DriveItem & DriveItemRef> {
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
