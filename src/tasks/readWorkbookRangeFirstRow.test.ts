@@ -49,7 +49,7 @@ describe("readWorkbookRangeFirstRow", () => {
 	it("reads the first row with values only scope", async () => {
 		const rangeRef = await prepareRange();
 		try {
-			const row = await readWorkbookRangeFirstRow(rangeRef, { values: true, text: false, format: false, alignment: false, borders: false, fill: false, font: false });
+			const row = await readWorkbookRangeFirstRow(rangeRef, { value: true, text: false, format: false, alignment: false, border: false, fill: false, font: false });
 			row.forEach((cell, x) => {
 				expect(cell.value).toEqual(values[0]?.[x]);
 				expect(cell.text).toEqual("");

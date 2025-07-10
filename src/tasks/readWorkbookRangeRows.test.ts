@@ -52,7 +52,7 @@ describe("readWorkbookRangeRows", () => {
 	it("reads all rows with values only scope", async () => {
 		const rangeRef = await prepareRange();
 		try {
-			const rows = await readWorkbookRangeRows(rangeRef, { values: true, text: false, format: false, alignment: false, borders: false, fill: false, font: false });
+			const rows = await readWorkbookRangeRows(rangeRef, { value: true, text: false, format: false, alignment: false, border: false, fill: false, font: false });
 			rows.forEach((row, y) => {
 				row.forEach((cell, x) => {
 					expect(cell.value).toEqual(values[y][x]);
