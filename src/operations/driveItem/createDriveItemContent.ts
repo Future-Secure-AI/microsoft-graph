@@ -14,9 +14,14 @@ import { execute } from "../../services/http.ts";
 import { endpoint } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-/** "Use a byte range size that is a multiple of 320 KiB (327,680 bytes). Failing to use a fragment size that is a multiple of 320 KiB can result in large file transfers failing after the last byte range is uploaded." */
-const CHUNK_SIZE_MULTIPLE = 320 * 1024;
-const defaultChunkSize = CHUNK_SIZE_MULTIPLE * 32;
+/**
+ * The required chunk size multiple for upload sessions.
+ * @remarks Microsoft Graph requires that each upload chunk is a multiple of 320 KiB (327,680 bytes).
+ * @see https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession
+ */
+export const chunkSizeMultiple = 320 * 1024;
+
+const defaultChunkSize = chunkSizeMultiple * 32;
 
 type SessionResponse = {
 	uploadUrl: string;
@@ -57,8 +62,8 @@ export interface CreateDriveItemContentOptions {
 export default async function createDriveItemContent(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath, contentStream: NodeJS.ReadableStream, contentLength: number, options: CreateDriveItemContentOptions = {}): Promise<DriveItem & DriveItemRef> {
 	const { conflictBehavior = "fail", chunkSize = defaultChunkSize, progress = () => {} } = options;
 
-	if (chunkSize % CHUNK_SIZE_MULTIPLE !== 0) {
-		throw new InvalidArgumentError(`Chunk size (${chunkSize.toLocaleString()}) must be a multiple of ${(CHUNK_SIZE_MULTIPLE / 1024).toLocaleString()} KiB *${CHUNK_SIZE_MULTIPLE.toLocaleString()} bytes).`);
+	if (chunkSize % chunkSizeMultiple !== 0) {
+		throw new InvalidArgumentError(`Chunk size (${chunkSize.toLocaleString()}) must be a multiple of ${(chunkSizeMultiple / 1024).toLocaleString()} KiB *${chunkSizeMultiple.toLocaleString()} bytes).`);
 	}
 
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";

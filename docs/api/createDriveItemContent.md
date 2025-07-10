@@ -10,44 +10,7 @@ Creates a new drive item in the specified parent drive or folder using a stream 
 
 Defined in: [src/operations/driveItem/createDriveItemContent.ts:42](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L42)
 
-Creates a new drive item in the specified parent drive or folder using a stream as content.
-
-#### Param
-
-Reference to the parent drive or folder where the drive item will be created.
-
-#### Param
-
-Path (including the filename) for the new drive item within the given parent.
-
-#### Param
-
-A Node.js readable stream containing the file content.
-
-#### Param
-
-The total size in bytes of the content to be uploaded.
-
-#### Param
-
-Optional. Additional options for the upload operation.
-
-#### Param
-
-Optional. Specifies how to handle conflicts if the file already exists. Default is 'fail'.
-
-#### Param
-
-Optional. The size of each chunk to be uploaded in bytes. Default is 10MB.
-
-#### Param
-
-Optional. A callback function that is called periodically with the upload progress as a percentage.
-
-#### See
-
- - https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession
- - https://learn.microsoft.com/en-us/graph/api/resources/uploadsession
+Options for creating a drive item with content upload.
 
 #### Properties
 
@@ -57,46 +20,79 @@ Optional. A callback function that is called periodically with the upload progre
 
 Defined in: [src/operations/driveItem/createDriveItemContent.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L44)
 
+Optional. The size of each upload chunk in bytes. Must be a multiple of 320 KiB (327,680 bytes).
+
 ##### conflictBehavior?
 
 > `optional` **conflictBehavior**: `"replace"` \| `"fail"` \| `"rename"`
 
 Defined in: [src/operations/driveItem/createDriveItemContent.ts:43](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L43)
 
+Optional. Specifies how to handle conflicts if the file already exists. Can be 'fail', 'replace', or 'rename'.
+
 ##### progress()?
 
-> `optional` **progress**: (`pct`) => `void`
+> `optional` **progress**: (`bytes`) => `void`
 
 Defined in: [src/operations/driveItem/createDriveItemContent.ts:45](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L45)
+
+Optional. Callback function called with the number of bytes uploaded after each chunk.
 
 ###### Parameters
 
 | Parameter | Type |
 | ------ | ------ |
-| `pct` | `number` |
+| `bytes` | `number` |
 
 ###### Returns
 
 `void`
 
+## Variables
+
+### chunkSizeMultiple
+
+> `const` **chunkSizeMultiple**: `number`
+
+Defined in: [src/operations/driveItem/createDriveItemContent.ts:22](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L22)
+
+The required chunk size multiple for upload sessions.
+
+#### Remarks
+
+Microsoft Graph requires that each upload chunk is a multiple of 320 KiB (327,680 bytes).
+
+#### See
+
+https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession
+
 ## Functions
 
 ### createDriveItemContent()
 
-> **createDriveItemContent**(`parentRef`, `itemPath`, `contentStream`, `totalSize`, `options`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
+> **createDriveItemContent**(`parentRef`, `itemPath`, `contentStream`, `contentLength`, `options`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
-Defined in: [src/operations/driveItem/createDriveItemContent.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L48)
+Defined in: [src/operations/driveItem/createDriveItemContent.ts:62](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L62)
+
+Creates a new drive item in the specified parent drive or folder using a stream as content.
 
 #### Parameters
 
-| Parameter | Type |
-| ------ | ------ |
-| `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) |
-| `itemPath` | [`DriveItemPath`](DriveItem-1.md#driveitempath) |
-| `contentStream` | [`ReadableStream`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/node/globals.d.ts#L202) |
-| `totalSize` | `number` |
-| `options` | [`CreateDriveItemContentOptions`](#createdriveitemcontentoptions) |
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the parent drive or folder where the drive item will be created. |
+| `itemPath` | [`DriveItemPath`](DriveItem-1.md#driveitempath) | Path (including the filename) for the new drive item within the given parent. |
+| `contentStream` | [`ReadableStream`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/node/globals.d.ts#L202) | A Node.js readable stream containing the file content. |
+| `contentLength` | `number` | The total size in bytes of the content to be uploaded. |
+| `options` | [`CreateDriveItemContentOptions`](#createdriveitemcontentoptions) | Optional. Additional options for the upload operation. |
 
 #### Returns
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
+
+The newly created drive item.
+
+#### See
+
+ - https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession
+ - https://learn.microsoft.com/en-us/graph/api/resources/uploadsession
