@@ -69,6 +69,31 @@ describe("createDriveItemContent (file-based)", () => {
 			await fs.promises.unlink(filePath);
 		}
 	});
+
+	it("uploads a 10MB file with default chunk size", async () => {
+		const driveRef = getDefaultDriveRef();
+
+		const fileSize = 1024 * 1024 * 10; // 10MB
+		const filePath = await createTempFile(fileSize);
+		const fileStream = fs.createReadStream(filePath);
+
+		const itemName = path.basename(filePath);
+		const itemPath = driveItemPath(itemName);
+
+		const item = await createDriveItemContent(driveRef, itemPath, fileStream, fileSize);
+
+		try {
+			expect(item).toHaveProperty("id");
+			expect(item).toHaveProperty("name", itemName);
+
+			const downloadedBuffer = await streamToBuffer(await streamDriveItemContent(item));
+			const originalBuffer = await fs.promises.readFile(filePath);
+			expect(downloadedBuffer.equals(originalBuffer)).toBe(true);
+		} finally {
+			await tryDeleteDriveItem(item);
+			await fs.promises.unlink(filePath);
+		}
+	});
 });
 
 async function createTempFile(size: number): Promise<string> {
