@@ -31,12 +31,23 @@ type ChunkResponse =
  * @param itemPath Path (including the filename) for the new drive item within the given parent.
  * @param contentStream A Node.js readable stream containing the file content.
  * @param totalSize The total size in bytes of the content to be uploaded.
- * @param conflictBehavior Optional. Specifies how to handle conflicts if the file already exists. Default is 'fail'.
+ * @param options Optional. Additional options for the upload operation.
+ * @param options.conflictBehavior Optional. Specifies how to handle conflicts if the file already exists. Default is 'fail'.
+ * @param options.chunkSize Optional. The size of each chunk to be uploaded in bytes. Default is 10MB.
+ * @param options.progress Optional. A callback function that is called periodically with the upload progress as a percentage.
  * @returns The newly created drive item.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession
  * @see https://learn.microsoft.com/en-us/graph/api/resources/uploadsession
  */
-export default async function createDriveItemContent(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath, contentStream: NodeJS.ReadableStream, totalSize: number, conflictBehavior: "fail" | "replace" | "rename" = "fail", chunkSize = defaultChunkSize): Promise<DriveItem & DriveItemRef> {
+export interface CreateDriveItemContentOptions {
+	conflictBehavior?: "fail" | "replace" | "rename";
+	chunkSize?: number;
+	progress?: (pct: number) => void;
+}
+
+export default async function createDriveItemContent(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath, contentStream: NodeJS.ReadableStream, totalSize: number, options: CreateDriveItemContentOptions = {}): Promise<DriveItem & DriveItemRef> {
+	const { conflictBehavior = "fail", chunkSize = defaultChunkSize, progress } = options;
+
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 	const uploadSessionUrl = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}:/${itemPath}:/createUploadSession`, parentRef)}`;
 	const accessToken = await parentRef.context.generateAccessToken();
@@ -93,6 +104,9 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 				responseType: "json",
 			});
 			position += thisChunk.length;
+			if (progress && totalSize > 0) {
+				progress(Math.min(100, (position / totalSize) * 100));
+			}
 			currentChunk = currentChunk.subarray(chunkSize);
 			if (isDriveItem(res)) {
 				driveItem = res;

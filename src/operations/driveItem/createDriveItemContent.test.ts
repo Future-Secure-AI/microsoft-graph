@@ -36,9 +36,8 @@ describe("createDriveItemContent", () => {
 		const itemPath = driveItemPath(fileName);
 		const contentStream = stringToStream(sampleString);
 		const totalSize = Buffer.byteLength(sampleString);
-		const smallChunkSize = 5; // Force multiple chunks
 
-		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream, totalSize, "fail", smallChunkSize);
+		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream, totalSize, { chunkSize: 5 });
 
 		try {
 			expect(createdItem).toHaveProperty("id");
@@ -46,6 +45,29 @@ describe("createDriveItemContent", () => {
 
 			const content = await streamToBuffer(await streamDriveItemContent(createdItem));
 			expect(content.toString()).toEqual(sampleString);
+		} finally {
+			await tryDeleteDriveItem(createdItem);
+		}
+	});
+
+	it("calls progress callback with increasing values", async () => {
+		const driveRef = getDefaultDriveRef();
+		const fileName = generateTempFileName("txt");
+		const itemPath = driveItemPath(fileName);
+		const contentStream = stringToStream(sampleString);
+		const totalSize = Buffer.byteLength(sampleString);
+		const progressCalls: number[] = [];
+
+		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream, totalSize, { chunkSize: 5, progress: (pct: number) => progressCalls.push(pct) });
+
+		try {
+			expect(createdItem).toHaveProperty("id");
+			expect(progressCalls.length).toBeGreaterThan(0);
+			// Should be increasing and last value should be 100 (or very close)
+			for (let i = 1; i < progressCalls.length; ++i) {
+				expect(progressCalls[i]).toBeGreaterThanOrEqual(progressCalls[i - 1]);
+			}
+			expect(progressCalls[progressCalls.length - 1]).toBeGreaterThanOrEqual(99); // allow rounding
 		} finally {
 			await tryDeleteDriveItem(createdItem);
 		}
