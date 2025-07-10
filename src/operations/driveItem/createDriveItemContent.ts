@@ -22,7 +22,7 @@ import { generatePath } from "../../services/templatedPaths.ts";
  */
 export const chunkSizeMultiple = 320 * 1024;
 
-const defaultChunkSize = chunkSizeMultiple * 32;
+const defaultMaxChunkSize = chunkSizeMultiple * 32;
 
 type SessionResponse = {
 	uploadUrl: string;
@@ -42,7 +42,7 @@ type ChunkResponse =
  */
 export interface CreateDriveItemContentOptions {
 	conflictBehavior?: "fail" | "replace" | "rename";
-	chunkSize?: number;
+	maxChunkSize?: number;
 	progress?: (bytes: number) => void;
 }
 
@@ -54,17 +54,17 @@ export interface CreateDriveItemContentOptions {
  * @param contentLength The total size in bytes of the content to be uploaded.
  * @param options Optional. Additional options for the upload operation.
  * @param options.conflictBehavior Optional. Specifies how to handle conflicts if the file already exists. Default is 'fail'.
- * @param options.chunkSize Optional. The size of each chunk to be uploaded in bytes. Default is 10MB.
+ * @param options.maxChunkSize Optional. The size of each chunk to be uploaded in bytes. Default is 10MB.
  * @param options.progress Optional. A callback function that is called with the number of bytes uploaded after each chunk.
  * @returns The newly created drive item.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession
  * @see https://learn.microsoft.com/en-us/graph/api/resources/uploadsession
  */
 export default async function createDriveItemContent(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath, contentStream: NodeJS.ReadableStream, contentLength: number, options: CreateDriveItemContentOptions = {}): Promise<DriveItem & DriveItemRef> {
-	const { conflictBehavior = "fail", chunkSize = defaultChunkSize, progress = () => {} } = options;
+	const { conflictBehavior = "fail", maxChunkSize = defaultMaxChunkSize, progress = () => {} } = options;
 
-	if (chunkSize % chunkSizeMultiple !== 0) {
-		throw new InvalidArgumentError(`Chunk size (${chunkSize.toLocaleString()}) must be a multiple of ${(chunkSizeMultiple / 1024).toLocaleString()} KiB *${chunkSizeMultiple.toLocaleString()} bytes).`);
+	if (maxChunkSize % chunkSizeMultiple !== 0) {
+		throw new InvalidArgumentError(`Chunk size (${maxChunkSize.toLocaleString()}) must be a multiple of ${(chunkSizeMultiple / 1024).toLocaleString()} KiB *${chunkSizeMultiple.toLocaleString()} bytes).`);
 	}
 
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
@@ -95,23 +95,47 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 
 	let contentPosition = 0;
 	let item: DriveItem | null = null;
+	let leftover: Buffer | null = null;
 	while (contentPosition < contentLength) {
-		const chunk = await readChunk(contentPosition, contentLength, chunkSize, reader);
+		const chunkSize = Math.min(maxChunkSize, contentLength - contentPosition);
+		const buffer = Buffer.alloc(chunkSize);
+		let length = 0;
+		while (length < chunkSize) {
+			let c: Buffer | null = null;
+			if (leftover) {
+				c = leftover;
+				leftover = null;
+			} else {
+				const { value, done } = await reader.next();
+				if (done) break;
+				c = Buffer.isBuffer(value) ? value : Buffer.from(value);
+			}
+
+			const toCopy = Math.min(c.length, chunkSize - length);
+			c.copy(buffer, length, 0, toCopy);
+			length += toCopy;
+
+			if (toCopy < c.length) {
+				leftover = c.subarray(toCopy);
+			}
+		}
 		const chunkStart = contentPosition;
-		const chunkEnd = contentPosition + chunk.length - 1;
+		const chunkEnd = contentPosition + length - 1;
+
+		const chunk = buffer.subarray(0, length);
 
 		const response = await execute<ChunkResponse>({
 			url: uploadUrl,
 			method: "PUT",
 			headers: {
-				"Content-Length": `${chunk.length}`,
+				"Content-Length": `${length}`,
 				"Content-Range": `bytes ${chunkStart}-${chunkEnd}/${contentLength}`,
 			},
 			data: chunk,
 			responseType: "json",
 		});
 
-		contentPosition += chunk.length;
+		contentPosition += length;
 
 		progress(contentPosition);
 
@@ -134,19 +158,5 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 
 	function isDriveItem(obj: unknown): obj is DriveItem {
 		return typeof obj === "object" && obj !== null && "id" in obj;
-	}
-
-	async function readChunk(contentPosition: number, contentLength: number, maxLength: number, reader: AsyncIterableIterator<string | Buffer<ArrayBufferLike>>): Promise<Buffer> {
-		const buffer = Buffer.alloc(Math.min(maxLength, contentLength - contentPosition));
-		let length = 0;
-		while (length < maxLength && contentPosition + length < contentLength) {
-			const { value, done } = await reader.next();
-			if (done) break;
-			const chunk = Buffer.isBuffer(value) ? value : Buffer.from(value);
-			const toCopy = Math.min(chunk.length, maxLength - length, contentLength - contentPosition - length);
-			chunk.copy(buffer, length, 0, toCopy);
-			length += toCopy;
-		}
-		return buffer;
 	}
 }

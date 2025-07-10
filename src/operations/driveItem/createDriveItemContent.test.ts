@@ -49,7 +49,7 @@ describe("createDriveItemContent (file-based)", () => {
 		const chunkSize = 320 * 1024;
 		const progressCalls: number[] = [];
 
-		const createdItem = await createDriveItemContent(driveRef, itemPath, fileStream, fileSize, { chunkSize: chunkSize, progress: (pct) => progressCalls.push(pct) });
+		const createdItem = await createDriveItemContent(driveRef, itemPath, fileStream, fileSize, { maxChunkSize: chunkSize, progress: (pct) => progressCalls.push(pct) });
 
 		try {
 			expect(createdItem).toHaveProperty("id");
