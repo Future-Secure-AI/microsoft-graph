@@ -79,7 +79,7 @@
 | [clearWorkbookTableColumnFilters](clearWorkbookTableColumnFilters.md) | Clear all filters from a workbook table. |
 | [closeWorkbookSession](closeWorkbookSession.md) | Close an existing workbook session. |
 | [createBinaryWorkbook](createBinaryWorkbook.md) | Create a new blank binary workbook (XLSB). |
-| [createDriveItem](createDriveItem.md) | Creates new drive item in the specified parent drive or folder. |
+| [createDriveItemContent](createDriveItemContent.md) | Creates a new drive item in the specified parent drive or folder using a stream as content. |
 | [createFolder](createFolder.md) | Create a folder in the root of a drive, or in a folder. If it already exists do nothing. |
 | [createWorkbook](createWorkbook.md) | Create a new blank workbook (XLSX). |
 | [createWorkbookSession](createWorkbookSession.md) | Create a new workbook session. |
@@ -144,6 +144,7 @@
 | Module | Description |
 | ------ | ------ |
 | [services/sharepointUrl](services/sharepointUrl.md) | - |
+| [services/usedAddress](services/usedAddress.md) | - |
 | [tasks/getSiteByUrl](tasks/getSiteByUrl.md) | - |
 | [tasks/tryGetWorkbookWorksheetUsedRangeRef](tasks/tryGetWorkbookWorksheetUsedRangeRef.md) | - |
 

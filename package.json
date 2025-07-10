@@ -1577,6 +1577,16 @@
 			"require": "./dist/cjs/services/temporaryFiles.js",
 			"types": "./dist/esm/services/temporaryFiles.d.ts"
 		},
+		"./usedAddress": {
+			"import": "./dist/esm/services/usedAddress.js",
+			"require": "./dist/cjs/services/usedAddress.js",
+			"types": "./dist/esm/services/usedAddress.d.ts"
+		},
+		"./dist/cjs/services/usedAddress": {
+			"import": "./dist/esm/services/usedAddress.js",
+			"require": "./dist/cjs/services/usedAddress.js",
+			"types": "./dist/esm/services/usedAddress.d.ts"
+		},
 		"./workbookPivotTable": {
 			"import": "./dist/esm/services/workbookPivotTable.js",
 			"require": "./dist/cjs/services/workbookPivotTable.js",

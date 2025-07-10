@@ -10,7 +10,7 @@ Utilities for analyzing HTTP status codes for Microsoft Graph API responses.
 
 > **isHttpBadGateway**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:246](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L246)
+Defined in: [src/services/httpStatus.ts:255](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L255)
 
 Checks if the HTTP status code indicates a bad gateway.
 
@@ -32,7 +32,7 @@ True if the status code is 502, otherwise false.
 
 > **isHttpBadRequest**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:75](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L75)
+Defined in: [src/services/httpStatus.ts:84](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L84)
 
 Checks if the HTTP status code indicates a bad request.
 
@@ -54,7 +54,7 @@ True if the status code is 400, otherwise false.
 
 > **isHttpBandwidthLimitExceeded**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:210](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L210)
+Defined in: [src/services/httpStatus.ts:219](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L219)
 
 Checks if the HTTP status code indicates bandwidth limit exceeded.
 
@@ -76,7 +76,7 @@ True if the status code is 509, otherwise false.
 
 > **isHttpConflict**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:129](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L129)
+Defined in: [src/services/httpStatus.ts:138](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L138)
 
 Checks if the HTTP status code indicates a conflict.
 
@@ -94,11 +94,33 @@ True if the status code is 409, otherwise false.
 
 ***
 
+### isHttpCreated()
+
+> **isHttpCreated**(`status`): `boolean`
+
+Defined in: [src/services/httpStatus.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L30)
+
+Checks if the HTTP status code is created
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `status` | `number` | The HTTP status code. |
+
+#### Returns
+
+`boolean`
+
+True if the status code is 201, otherwise false.
+
+***
+
 ### isHttpForbidden()
 
 > **isHttpForbidden**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:102](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L102)
+Defined in: [src/services/httpStatus.ts:111](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L111)
 
 Checks if the HTTP status code indicates forbidden access.
 
@@ -120,7 +142,7 @@ True if the status code is 403, otherwise false.
 
 > **isHttpGatewayTimeout**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:57](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L57)
+Defined in: [src/services/httpStatus.ts:66](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L66)
 
 Checks if the HTTP status code indicates a gateway has timed out.
 
@@ -142,7 +164,7 @@ True if the status code is 504, otherwise false.
 
 > **isHttpGone**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:138](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L138)
+Defined in: [src/services/httpStatus.ts:147](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L147)
 
 Checks if the HTTP status code indicates gone.
 
@@ -164,7 +186,7 @@ True if the status code is 410, otherwise false.
 
 > **isHttpInsufficientStorage**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:201](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L201)
+Defined in: [src/services/httpStatus.ts:210](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L210)
 
 Checks if the HTTP status code indicates insufficient storage.
 
@@ -186,7 +208,7 @@ True if the status code is 507, otherwise false.
 
 > **isHttpInternalServerError**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:219](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L219)
+Defined in: [src/services/httpStatus.ts:228](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L228)
 
 Checks if the HTTP status code indicates internal server error.
 
@@ -208,7 +230,7 @@ True if the status code is 500, otherwise false.
 
 > **isHttpLengthRequired**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:147](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L147)
+Defined in: [src/services/httpStatus.ts:156](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L156)
 
 Checks if the HTTP status code indicates length required.
 
@@ -230,7 +252,7 @@ True if the status code is 411, otherwise false.
 
 > **isHttpLocked**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:66](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L66)
+Defined in: [src/services/httpStatus.ts:75](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L75)
 
 Checks if the HTTP status code indicates the resource is locked
 
@@ -252,7 +274,7 @@ True if the status code is 423, otherwise false.
 
 > **isHttpMethodNotAllowed**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:111](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L111)
+Defined in: [src/services/httpStatus.ts:120](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L120)
 
 Checks if the HTTP status code indicates method not allowed.
 
@@ -274,7 +296,7 @@ True if the status code is 405, otherwise false.
 
 > **isHttpNotAcceptable**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:120](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L120)
+Defined in: [src/services/httpStatus.ts:129](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L129)
 
 Checks if the HTTP status code indicates not acceptable.
 
@@ -296,7 +318,7 @@ True if the status code is 406, otherwise false.
 
 > **isHttpNotFound**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L30)
+Defined in: [src/services/httpStatus.ts:39](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L39)
 
 Checks if the HTTP status code indicates not found.
 
@@ -318,7 +340,7 @@ True if the status code is 404, otherwise false.
 
 > **isHttpNotImplemented**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:228](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L228)
+Defined in: [src/services/httpStatus.ts:237](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L237)
 
 Checks if the HTTP status code indicates not implemented.
 
@@ -362,7 +384,7 @@ True if the status code is 200, otherwise false.
 
 > **isHttpPaymentRequired**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:93](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L93)
+Defined in: [src/services/httpStatus.ts:102](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L102)
 
 Checks if the HTTP status code indicates payment required.
 
@@ -384,7 +406,7 @@ True if the status code is 402, otherwise false.
 
 > **isHttpPreconditionFailed**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:156](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L156)
+Defined in: [src/services/httpStatus.ts:165](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L165)
 
 Checks if the HTTP status code indicates precondition failed.
 
@@ -406,7 +428,7 @@ True if the status code is 412, otherwise false.
 
 > **isHttpRequestedRangeNotSatisfiable**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:183](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L183)
+Defined in: [src/services/httpStatus.ts:192](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L192)
 
 Checks if the HTTP status code indicates requested range not satisfiable.
 
@@ -428,7 +450,7 @@ True if the status code is 416, otherwise false.
 
 > **isHttpRequestEntityTooLarge**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:165](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L165)
+Defined in: [src/services/httpStatus.ts:174](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L174)
 
 Checks if the HTTP status code indicates request entity too large.
 
@@ -450,7 +472,7 @@ True if the status code is 413, otherwise false.
 
 > **isHttpRequestTimeout**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:237](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L237)
+Defined in: [src/services/httpStatus.ts:246](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L246)
 
 Checks if the HTTP status code indicates a request timeout.
 
@@ -472,7 +494,7 @@ True if the status code is 408, otherwise false.
 
 > **isHttpServiceUnavailable**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L48)
+Defined in: [src/services/httpStatus.ts:57](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L57)
 
 Checks if the HTTP status code indicates the service is unavailable.
 
@@ -516,7 +538,7 @@ True if the status code is in the range 200-299, otherwise false.
 
 > **isHttpTooManyRequests**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:39](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L39)
+Defined in: [src/services/httpStatus.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L48)
 
 Checks if the HTTP status code indicates too many requests (rate limiting).
 
@@ -538,7 +560,7 @@ True if the status code is 429, otherwise false.
 
 > **isHttpUnauthorized**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:84](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L84)
+Defined in: [src/services/httpStatus.ts:93](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L93)
 
 Checks if the HTTP status code indicates unauthorized access.
 
@@ -560,7 +582,7 @@ True if the status code is 401, otherwise false.
 
 > **isHttpUnprocessableEntity**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:192](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L192)
+Defined in: [src/services/httpStatus.ts:201](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L201)
 
 Checks if the HTTP status code indicates unprocessable entity.
 
@@ -582,7 +604,7 @@ True if the status code is 422, otherwise false.
 
 > **isHttpUnsupportedMediaType**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:174](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L174)
+Defined in: [src/services/httpStatus.ts:183](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L183)
 
 Checks if the HTTP status code indicates unsupported media type.
 
@@ -604,7 +626,7 @@ True if the status code is 415, otherwise false.
 
 > **isRetryable**(`status`): `boolean`
 
-Defined in: [src/services/httpStatus.ts:256](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L256)
+Defined in: [src/services/httpStatus.ts:265](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/httpStatus.ts#L265)
 
 Checks if the HTTP status code is considered retryable.
 Retryable status codes typically indicate a temporary condition.

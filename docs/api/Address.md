@@ -8,9 +8,9 @@ Address of a set of cells in a spreadsheet.
 
 ### Address
 
-> **Address** = [`ColumnAddress`](#columnaddress) \| [`RowAddress`](#rowaddress) \| [`ColumnRangeAddress`](#columnrangeaddress) \| [`RowRangeAddress`](#rowrangeaddress) \| [`CellRangeAddress`](#cellrangeaddress) \| [`CellAddress`](#celladdress)
+> **Address** = [`ColumnAddress`](#columnaddress) \| [`ColumnRangeAddress`](#columnrangeaddress) \| [`RowAddress`](#rowaddress) \| [`RowRangeAddress`](#rowrangeaddress) \| [`CellAddress`](#celladdress) \| [`CellRangeAddress`](#cellrangeaddress)
 
-Defined in: [src/models/Address.ts:48](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L48)
+Defined in: [src/models/Address.ts:74](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L74)
 
 Any type of address.
 
@@ -26,11 +26,27 @@ This is a union of all the address types defined above.
 
 ***
 
+### AllUsedAddress
+
+> **AllUsedAddress** = `":"`
+
+Defined in: [src/models/Address.ts:68](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L68)
+
+Address representing the entire used range in a worksheet.
+
+#### Example
+
+```ts
+':'
+```
+
+***
+
 ### CellAddress
 
 > **CellAddress** = `` `${ColumnAddress}${RowAddress}` ``
 
-Defined in: [src/models/Address.ts:35](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L35)
+Defined in: [src/models/Address.ts:49](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L49)
 
 Address of a single cell in a worksheet.
 
@@ -46,7 +62,7 @@ Address of a single cell in a worksheet.
 
 > **CellRangeAddress** = `` `${CellAddress}:${CellAddress}` ``
 
-Defined in: [src/models/Address.ts:41](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L41)
+Defined in: [src/models/Address.ts:55](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L55)
 
 Address of a range of cells in a worksheet.
 
@@ -94,18 +110,18 @@ Address of multiple consecutive columns in a worksheet ().
 
 > **DecomposedAddress** = `object`
 
-Defined in: [src/models/Address.ts:53](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L53)
+Defined in: [src/models/Address.ts:88](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L88)
 
 Address when decomposed into its components.
 
 #### Properties
 
-| Property | Type | Defined in |
-| ------ | ------ | ------ |
-| <a id="endcolumn"></a> `endColumn` | [`ColumnAddress`](#columnaddress) | [src/models/Address.ts:55](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L55) |
-| <a id="endrow"></a> `endRow` | [`RowAddress`](#rowaddress) | [src/models/Address.ts:57](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L57) |
-| <a id="startcolumn"></a> `startColumn` | [`ColumnAddress`](#columnaddress) | [src/models/Address.ts:54](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L54) |
-| <a id="startrow"></a> `startRow` | [`RowAddress`](#rowaddress) | [src/models/Address.ts:56](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L56) |
+| Property | Type | Description | Defined in |
+| ------ | ------ | ------ | ------ |
+| <a id="endcolumn"></a> `endColumn` | [`ColumnAddress`](#columnaddress) | The ending column address. | [src/models/Address.ts:90](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L90) |
+| <a id="endrow"></a> `endRow` | [`RowAddress`](#rowaddress) | The ending row address. | [src/models/Address.ts:92](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L92) |
+| <a id="startcolumn"></a> `startColumn` | [`ColumnAddress`](#columnaddress) | The starting column address. | [src/models/Address.ts:89](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L89) |
+| <a id="startrow"></a> `startRow` | [`RowAddress`](#rowaddress) | The starting row address. | [src/models/Address.ts:91](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L91) |
 
 ***
 
@@ -113,7 +129,7 @@ Address when decomposed into its components.
 
 > **RowAddress** = `` `${number}` ``
 
-Defined in: [src/models/Address.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L23)
+Defined in: [src/models/Address.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L30)
 
 Address of a single row in a worksheet.
 
@@ -129,7 +145,7 @@ Address of a single row in a worksheet.
 
 > **RowRangeAddress** = `` `${RowAddress}:${RowAddress}` ``
 
-Defined in: [src/models/Address.ts:29](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L29)
+Defined in: [src/models/Address.ts:36](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L36)
 
 Address of multiple consecutive rows in a worksheet.
 
@@ -137,4 +153,74 @@ Address of multiple consecutive rows in a worksheet.
 
 ```ts
 '3:5'
+```
+
+***
+
+### UsedAddress
+
+> **UsedAddress** = [`AllUsedAddress`](#allusedaddress) \| [`UsedColumnRangeAddress`](#usedcolumnrangeaddress) \| [`UsedRowRangeAddress`](#usedrowrangeaddress) \| [`UsedCellRangeAddress`](#usedcellrangeaddress)
+
+Defined in: [src/models/Address.ts:79](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L79)
+
+Any type of used range address, including entire, column, row, or cell used ranges.
+
+***
+
+### UsedCellRangeAddress
+
+> **UsedCellRangeAddress** = `` `${CellAddress}:` `` \| `` `:${CellAddress}` ``
+
+Defined in: [src/models/Address.ts:62](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L62)
+
+Address of a used range in a cell, either from the start or to the end.
+
+#### Examples
+
+```ts
+'C3:'
+```
+
+```ts
+':D5'
+```
+
+***
+
+### UsedColumnRangeAddress
+
+> **UsedColumnRangeAddress** = `` `${ColumnAddress}:` `` \| `` `:${ColumnAddress}` ``
+
+Defined in: [src/models/Address.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L24)
+
+Address of a used range in a column, either from the start or to the end.
+
+#### Examples
+
+```ts
+'C:'
+```
+
+```ts
+':D'
+```
+
+***
+
+### UsedRowRangeAddress
+
+> **UsedRowRangeAddress** = `` `${RowAddress}:` `` \| `` `:${RowAddress}` ``
+
+Defined in: [src/models/Address.ts:43](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/Address.ts#L43)
+
+Address of a used range in a row, either from the start or to the end.
+
+#### Examples
+
+```ts
+'3:'
+```
+
+```ts
+':5'
 ```

@@ -22,6 +22,22 @@ Unique identifier of an item in a drive.
 
 ***
 
+### DriveItemName
+
+> **DriveItemName** = `string` & `object`
+
+Defined in: [src/models/DriveItem.ts:33](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/DriveItem.ts#L33)
+
+File/folder name of a drive item. Includes file extension if applicable.
+
+#### Type declaration
+
+##### \_\_brand
+
+> **\_\_brand**: `"DriveItemName"`
+
+***
+
 ### DriveItemPath
 
 > **DriveItemPath** = `string` & `object`

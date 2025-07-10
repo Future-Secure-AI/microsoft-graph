@@ -10,7 +10,7 @@ Invoke operations, potentially as parallel or sequential batches.
 
 > **operation**\<`T`\>(`definition`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`T`\>
 
-Defined in: [src/services/operationInvoker.ts:90](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L90)
+Defined in: [src/services/operationInvoker.ts:38](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L38)
 
 Defines a Graph operation.
 
@@ -40,7 +40,7 @@ GraphOperation instance.
 
 > **parallel**\<`T`\>(...`operations`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`OperationResponse`](GraphOperation.md#operationresponse)\<`T`\>\>
 
-Defined in: [src/services/operationInvoker.ts:109](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L109)
+Defined in: [src/services/operationInvoker.ts:57](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L57)
 
 Execute a batch of GraphAPI operations in parallel.
 
@@ -70,7 +70,7 @@ The responses for each operation, in the same order.
 
 > **sequential**\<`T`\>(...`operations`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`OperationResponse`](GraphOperation.md#operationresponse)\<`T`\>\>
 
-Defined in: [src/services/operationInvoker.ts:124](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L124)
+Defined in: [src/services/operationInvoker.ts:72](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L72)
 
 Execute a batch of GraphAPI operations sequentially.
 
@@ -93,22 +93,3 @@ Each operation is dependent on the previous operation in the batch.
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`OperationResponse`](GraphOperation.md#operationresponse)\<`T`\>\>
 
 The responses for each operation, in the same order.
-
-***
-
-### throwException()
-
-> **throwException**(`responseCode`, `message`): `never`
-
-Defined in: [src/services/operationInvoker.ts:343](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/operationInvoker.ts#L343)
-
-#### Parameters
-
-| Parameter | Type |
-| ------ | ------ |
-| `responseCode` | `number` |
-| `message` | `string` |
-
-#### Returns
-
-`never`

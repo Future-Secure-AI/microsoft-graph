@@ -10,7 +10,7 @@ Stream the content of a drive item as a Node.js readable stream.
 
 > **streamDriveItemContent**(`itemRef`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<[`ReadableStream`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/node/globals.d.ts#L202)\>
 
-Defined in: [src/operations/driveItem/streamDriveItemContent.ts:21](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/streamDriveItemContent.ts#L21)
+Defined in: [src/operations/driveItem/streamDriveItemContent.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/streamDriveItemContent.ts#L20)
 
 Stream the content of a drive item.
 
