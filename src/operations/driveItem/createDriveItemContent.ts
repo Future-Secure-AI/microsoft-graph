@@ -76,16 +76,15 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 		responseType: "json",
 	});
 
-	let position = 0;
-	let driveItem: DriveItem | null = null;
 
-	// Efficient streaming: read and upload chunks directly from the stream
 	const reader = contentStream[Symbol.asyncIterator] ? contentStream[Symbol.asyncIterator]() : null;
 	if (!reader) {
 		throw new InvalidArgumentError("contentStream is not an async iterable");
 	}
 
+	let position = 0;
 	let buffer = Buffer.alloc(0);
+	let item: DriveItem | null = null;
 	while (position < totalSize) {
 		while (buffer.length < chunkSize && position + buffer.length < totalSize) {
 			const { value, done } = await reader.next();
@@ -93,12 +92,13 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 			const chunk = Buffer.isBuffer(value) ? value : Buffer.from(value);
 			buffer = Buffer.concat([buffer, chunk]);
 		}
+		
 		const thisChunk = buffer.subarray(0, chunkSize);
 		const start = position;
 		const end = position + thisChunk.length - 1;
 		const contentRange = `bytes ${start}-${end}/${totalSize}`;
 
-		const res = await execute<ChunkResponse>({
+		const response = await execute<ChunkResponse>({
 			url: uploadUrl,
 			method: "PUT",
 			headers: {
@@ -113,18 +113,18 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 			progress(Math.min(100, (position / totalSize) * 100));
 		}
 		buffer = buffer.subarray(chunkSize);
-		if (isDriveItem(res)) {
-			driveItem = res;
+		if (isDriveItem(response)) {
+			item = response;
 			break;
 		}
 	}
 
-	if (!driveItem) {
+	if (!item) {
 		throw new ProtocolError(`Upload did not complete successfully. Last position: ${position}`);
 	}
-	const itemRef = createDriveItemRef(parentRef, (driveItem as DriveItem).id as DriveItemId);
+	const itemRef = createDriveItemRef(parentRef, (item as DriveItem).id as DriveItemId);
 	return {
-		...(driveItem as DriveItem),
+		...(item as DriveItem),
 		...itemRef,
 	};
 
