@@ -5,6 +5,7 @@
  */
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
+import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import type { DriveRef } from "../../models/Drive.ts";
 import type { DriveItemId, DriveItemPath, DriveItemRef } from "../../models/DriveItem.ts";
@@ -13,7 +14,9 @@ import { execute } from "../../services/http.ts";
 import { endpoint } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
-const defaultChunkSize = 10 * 1024 * 1024;
+/** "Use a byte range size that is a multiple of 320 KiB (327,680 bytes). Failing to use a fragment size that is a multiple of 320 KiB can result in large file transfers failing after the last byte range is uploaded." */
+const CHUNK_SIZE_MULTIPLE = 320 * 1024;
+const defaultChunkSize = CHUNK_SIZE_MULTIPLE * 32;
 
 type SessionResponse = {
 	uploadUrl: string;
@@ -47,6 +50,10 @@ export interface CreateDriveItemContentOptions {
 
 export default async function createDriveItemContent(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath, contentStream: NodeJS.ReadableStream, totalSize: number, options: CreateDriveItemContentOptions = {}): Promise<DriveItem & DriveItemRef> {
 	const { conflictBehavior = "fail", chunkSize = defaultChunkSize, progress } = options;
+
+	if (chunkSize % CHUNK_SIZE_MULTIPLE !== 0) {
+		throw new InvalidArgumentError(`Chunk size (${chunkSize.toLocaleString()}) must be a multiple of ${(chunkSize / 1024).toLocaleString()} KiB.`);
+	}
 
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 	const uploadSessionUrl = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}:/${itemPath}:/createUploadSession`, parentRef)}`;
