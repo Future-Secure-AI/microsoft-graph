@@ -247,16 +247,19 @@ function waitToString(milliseconds: number): string {
 function errorObjectToString(obj: unknown): string {
 	const maxLength = 1024;
 	const ellipses = "...";
+	try {
+		let str = JSON.stringify(obj, null, 2)
+			.split("\n")
+			.map((line) => `    ${line}`)
+			.join("\n");
 
-	let str = JSON.stringify(obj, null, 2)
-		.split("\n")
-		.map((line) => `    ${line}`)
-		.join("\n");
-
-	if (str.length > maxLength) {
-		str = `${str.substring(0, maxLength - ellipses.length)}${ellipses}`;
+		if (str.length > maxLength) {
+			str = `${str.substring(0, maxLength - ellipses.length)}${ellipses}`;
+		}
+		return `${str}\n`;
+	} catch (_) {
+		return "<not displayable>\n";
 	}
-	return `${str}\n`;
 }
 
 function handleResponseError(response: AxiosResponse, errorLog: string, attempts: number, operationIndex: number | null = null): never {
