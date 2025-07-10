@@ -26,3 +26,10 @@ export type DriveItemPath = string & {
 export type DriveItemRef = DriveRef & {
 	itemId: DriveItemId;
 };
+
+/**
+ * File/folder name of a drive item. Includes file extension if applicable.
+ */
+export type DriveItemName = string & {
+	__brand: "DriveItemName";
+};

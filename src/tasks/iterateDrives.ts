@@ -8,7 +8,7 @@ import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import type { DriveRef } from "../models/Drive.ts";
 import type { SiteRef } from "../models/Site.ts";
 import listDrives from "../operations/drive/listDrives.ts";
-import { executeHttpRequest } from "../services/http.ts";
+import { execute } from "../services/http.ts";
 
 /**
  * List drives in a site as an async iterable.
@@ -27,14 +27,13 @@ export default async function* iterateDrives(siteRef: SiteRef, maxPerChunk = 100
 	while (nextLink) {
 		const accessToken = await siteRef.context.generateAccessToken();
 
-		const response = await executeHttpRequest({
+		const result = await execute<{ value: (DriveItem & DriveRef)[]; "@odata.nextLink"?: string }>({
 			url: nextLink.toString(),
 			method: "GET",
 			headers: {
 				authorization: `Bearer ${accessToken}`,
 			},
 		});
-		const result = response.data as { value: (DriveItem & DriveRef)[]; "@odata.nextLink"?: string };
 		drives = result.value;
 		nextLink = result["@odata.nextLink"] ? new URL(result["@odata.nextLink"]) : null;
 

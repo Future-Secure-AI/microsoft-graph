@@ -9,7 +9,7 @@ import type { DriveRef } from "../models/Drive.ts";
 import type { DriveItemId, DriveItemRef } from "../models/DriveItem.ts";
 import listDriveItems from "../operations/driveItem/listDriveItems.ts";
 import { createDriveItemRef } from "../services/driveItem.ts";
-import { executeHttpRequest } from "../services/http.ts";
+import { execute } from "../services/http.ts";
 
 /**
  * List drive items in a drive or a drive item as an async iterable.
@@ -28,7 +28,7 @@ export default async function* iterateDriveItems(parentRef: DriveRef | DriveItem
 	while (nextLink) {
 		const accessToken = await parentRef.context.generateAccessToken();
 
-		const response = await executeHttpRequest({
+		const result = await execute<{ value: (DriveItem & DriveItemRef)[]; "@odata.nextLink"?: string }>({
 			url: nextLink.toString(),
 			method: "GET",
 			headers: {
@@ -36,7 +36,6 @@ export default async function* iterateDriveItems(parentRef: DriveRef | DriveItem
 			},
 		});
 
-		const result = response.data as { value: (DriveItem & DriveItemRef)[]; "@odata.nextLink"?: string };
 		const newItems = result.value.map((item) => (createDriveItemRef(parentRef, item.id as DriveItemId) ? { ...item, ...createDriveItemRef(parentRef, item.id as DriveItemId) } : item));
 		nextLink = result["@odata.nextLink"] ? new URL(result["@odata.nextLink"]) : null;
 

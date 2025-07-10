@@ -6,9 +6,8 @@
  */
 
 import type { DriveItemRef } from "../../models/DriveItem.ts";
-import { executeHttpRequest } from "../../services/http.ts";
-import { isHttpSuccess } from "../../services/httpStatus.ts";
-import { endpoint, throwException } from "../../services/operationInvoker.ts";
+import { execute } from "../../services/http.ts";
+import { endpoint } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
@@ -26,7 +25,7 @@ export default async function getDriveItemContent(itemRef: DriveItemRef): Promis
 	const url = `${endpoint}${generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/content", itemRef)}`;
 	const accessToken = await itemRef.context.generateAccessToken();
 
-	const response = await executeHttpRequest({
+	const response = await execute<Buffer>({
 		url,
 		method: "GET",
 		headers: {
@@ -35,15 +34,7 @@ export default async function getDriveItemContent(itemRef: DriveItemRef): Promis
 		responseType: "arraybuffer",
 	});
 
-	if (!isHttpSuccess(response.status)) {
-		throwException(response.status, "Failed to get content");
-	}
-
-	if (!Buffer.isBuffer(response.data)) {
-		throw new Error(`Unexpected response type: ${typeof response.data}`);
-	}
-
-	const buffer = response.data.buffer.slice(response.data.byteOffset, response.data.byteOffset + response.data.byteLength);
+	const buffer = response.buffer.slice(response.byteOffset, response.byteOffset + response.byteLength);
 
 	if (!(buffer instanceof ArrayBuffer)) {
 		throw new Error("Failed to convert Buffer to ArrayBuffer");

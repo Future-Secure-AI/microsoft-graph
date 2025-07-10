@@ -667,6 +667,16 @@
 			"require": "./dist/cjs/operations/driveItem/createDriveItem.js",
 			"types": "./dist/esm/operations/driveItem/createDriveItem.d.ts"
 		},
+		"./createDriveItemContent": {
+			"import": "./dist/esm/operations/driveItem/createDriveItemContent.js",
+			"require": "./dist/cjs/operations/driveItem/createDriveItemContent.js",
+			"types": "./dist/esm/operations/driveItem/createDriveItemContent.d.ts"
+		},
+		"./dist/cjs/operations/driveItem/createDriveItemContent": {
+			"import": "./dist/esm/operations/driveItem/createDriveItemContent.js",
+			"require": "./dist/cjs/operations/driveItem/createDriveItemContent.js",
+			"types": "./dist/esm/operations/driveItem/createDriveItemContent.d.ts"
+		},
 		"./deleteDriveItem": {
 			"import": "./dist/esm/operations/driveItem/deleteDriveItem.js",
 			"require": "./dist/cjs/operations/driveItem/deleteDriveItem.js",

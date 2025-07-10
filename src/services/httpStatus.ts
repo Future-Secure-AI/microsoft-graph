@@ -23,6 +23,15 @@ export function isHttpOk(status: number): boolean {
 }
 
 /**
+ * Checks if the HTTP status code is created
+ * @param status - The HTTP status code.
+ * @returns True if the status code is 201, otherwise false.
+ */
+export function isHttpCreated(status: number): boolean {
+	return status === 201;
+}
+
+/**
  * Checks if the HTTP status code indicates not found.
  * @param status - The HTTP status code.
  * @returns True if the status code is 404, otherwise false.

@@ -6,7 +6,7 @@
 
 import type { DriveRef } from "../../models/Drive.ts";
 import type { DriveItemPath } from "../../models/DriveItem.ts";
-import { executeHttpRequest } from "../../services/http.ts";
+import { executeRaw } from "../../services/http.ts";
 import { isHttpNotFound, isHttpOk } from "../../services/httpStatus.ts";
 import { endpoint } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
@@ -21,13 +21,12 @@ export default async function existsDriveItem(driveRef: DriveRef, itemPath: Driv
 	const url = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef)}`;
 	const accessToken = await driveRef.context.generateAccessToken();
 
-	const response = await executeHttpRequest({
+	const response = await executeRaw({
 		url,
 		method: "GET",
 		headers: {
 			authorization: `Bearer ${accessToken}`,
 		},
-		validateStatus: () => true,
 	});
 
 	if (isHttpOk(response.status)) {

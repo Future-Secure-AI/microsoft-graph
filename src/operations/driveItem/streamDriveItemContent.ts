@@ -5,9 +5,8 @@
  */
 
 import type { DriveItemRef } from "../../models/DriveItem.ts";
-import { executeHttpRequest } from "../../services/http.ts";
-import { isHttpSuccess } from "../../services/httpStatus.ts";
-import { endpoint, throwException } from "../../services/operationInvoker.ts";
+import { execute } from "../../services/http.ts";
+import { endpoint } from "../../services/operationInvoker.ts";
 import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
@@ -23,7 +22,7 @@ export default async function streamDriveItemContent(itemRef: DriveItemRef): Pro
 	const url = `${endpoint}${generatePath("/sites/{site-id}/drives/{drive-id}/items/{item-id}/content", itemRef)}`;
 	const accessToken = await itemRef.context.generateAccessToken();
 
-	const response = await executeHttpRequest({
+	const response = await execute<NodeJS.ReadableStream>({
 		url,
 		method: "GET",
 		headers: {
@@ -32,13 +31,5 @@ export default async function streamDriveItemContent(itemRef: DriveItemRef): Pro
 		responseType: "stream",
 	});
 
-	if (!isHttpSuccess(response.status)) {
-		throwException(response.status, "Failed to stream content");
-	}
-
-	if (!response || typeof response.data?.pipe !== "function") {
-		throw new Error("Failed to get a streamable response");
-	}
-
-	return response.data;
+	return response;
 }
