@@ -5,7 +5,7 @@
  */
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
-import { basename } from "path";
+import { basename } from "node:path";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import type { DriveRef } from "../../models/Drive.ts";
