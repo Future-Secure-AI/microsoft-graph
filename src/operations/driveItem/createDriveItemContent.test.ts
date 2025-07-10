@@ -1,4 +1,7 @@
-import { Readable } from "node:stream";
+import crypto from "node:crypto";
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
@@ -7,82 +10,88 @@ import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
 import createDriveItemContent from "./createDriveItemContent.ts";
 import streamDriveItemContent from "./streamDriveItemContent.ts";
 
-const sampleString = "Sample streamed content";
-
-describe("createDriveItemContent", () => {
-	it("creates a new drive item using a stream and verifies its content", async () => {
+describe("createDriveItemContent (file-based)", () => {
+	it("uploads a 1KB file with default chunk size", async () => {
 		const driveRef = getDefaultDriveRef();
-		const fileName = generateTempFileName("txt");
-		const itemPath = driveItemPath(fileName);
-		const contentStream = stringToStream(sampleString);
-		const totalSize = Buffer.byteLength(sampleString);
 
-		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream, totalSize);
+		const fileSize = 1024;
+		const filePath = await createTempFile(fileSize);
+		const fileStream = fs.createReadStream(filePath);
+
+		const itemName = path.basename(filePath);
+		const itemPath = driveItemPath(itemName);
+
+		const item = await createDriveItemContent(driveRef, itemPath, fileStream, fileSize);
 
 		try {
-			expect(createdItem).toHaveProperty("id");
-			expect(createdItem).toHaveProperty("name", fileName);
+			expect(item).toHaveProperty("id");
+			expect(item).toHaveProperty("name", itemName);
 
-			const content = await streamToBuffer(await streamDriveItemContent(createdItem));
-			expect(content.toString()).toEqual(sampleString);
+			const downloadedBuffer = await streamToBuffer(await streamDriveItemContent(item));
+			const originalBuffer = await fs.promises.readFile(filePath);
+			expect(downloadedBuffer.equals(originalBuffer)).toBe(true);
 		} finally {
-			await tryDeleteDriveItem(createdItem);
+			await tryDeleteDriveItem(item);
+			await fs.promises.unlink(filePath);
 		}
 	});
 
-	it("uploads content in multiple chunks", async () => {
+	it("uploads a 1MB file with minimal chunk size", async () => {
 		const driveRef = getDefaultDriveRef();
-		const fileName = generateTempFileName("txt");
-		const itemPath = driveItemPath(fileName);
-		const contentStream = stringToStream(sampleString);
-		const totalSize = Buffer.byteLength(sampleString);
 
-		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream, totalSize, { chunkSize: 5 });
+		const fileSize = 1024 * 1024; // 1MB
+		const filePath = await createTempFile(fileSize);
+		const fileStream = fs.createReadStream(filePath);
 
-		try {
-			expect(createdItem).toHaveProperty("id");
-			expect(createdItem).toHaveProperty("name", fileName);
+		const itemName = path.basename(filePath);
+		const itemPath = driveItemPath(itemName);
 
-			const content = await streamToBuffer(await streamDriveItemContent(createdItem));
-			expect(content.toString()).toEqual(sampleString);
-		} finally {
-			await tryDeleteDriveItem(createdItem);
-		}
-	});
-
-	it("calls progress callback with increasing values", async () => {
-		const driveRef = getDefaultDriveRef();
-		const fileName = generateTempFileName("txt");
-		const itemPath = driveItemPath(fileName);
-		const contentStream = stringToStream(sampleString);
-		const totalSize = Buffer.byteLength(sampleString);
+		const chunkSize = 320 * 1024;
 		const progressCalls: number[] = [];
 
-		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream, totalSize, { chunkSize: 5, progress: (pct: number) => progressCalls.push(pct) });
+		const createdItem = await createDriveItemContent(driveRef, itemPath, fileStream, fileSize, { chunkSize: chunkSize, progress: (pct) => progressCalls.push(pct) });
 
 		try {
 			expect(createdItem).toHaveProperty("id");
+			expect(createdItem).toHaveProperty("name", itemName);
+
+			const downloadedBuffer = await streamToBuffer(await streamDriveItemContent(createdItem));
+			const originalBuffer = await fs.promises.readFile(filePath);
+			expect(downloadedBuffer.equals(originalBuffer)).toBe(true);
+
 			expect(progressCalls.length).toBeGreaterThan(0);
-			// Should be increasing and last value should be 100 (or very close)
 			for (let i = 1; i < progressCalls.length; ++i) {
 				expect(progressCalls[i]).toBeGreaterThanOrEqual(progressCalls[i - 1]);
 			}
-			expect(progressCalls[progressCalls.length - 1]).toBeGreaterThanOrEqual(99); // allow rounding
+			expect(progressCalls[progressCalls.length - 1]).toBeGreaterThanOrEqual(99);
 		} finally {
 			await tryDeleteDriveItem(createdItem);
+			await fs.promises.unlink(filePath);
 		}
 	});
 });
 
-function stringToStream(str: string): NodeJS.ReadableStream {
-	return Readable.from([str]);
+async function createTempFile(size: number): Promise<string> {
+	const tmpDir = os.tmpdir();
+	const fileName = path.join(tmpDir, generateTempFileName("bin"));
+	const fd = await fs.promises.open(fileName, "w");
+	const chunkSize = Math.min(1024 * 1024, size); // up to 1MB at a time
+	let written = 0;
+	while (written < size) {
+		const toWrite = Math.min(chunkSize, size - written);
+		const chunk = crypto.randomBytes(toWrite);
+		await fd.write(chunk, 0, toWrite);
+		written += toWrite;
+	}
+	await fd.close();
+	return fileName;
 }
+
 async function streamToBuffer(stream: NodeJS.ReadableStream): Promise<Buffer> {
-	const chunks: Uint8Array[] = [];
-	await new Promise<void>((resolve, reject) => {
-		stream.on("data", (chunk) => chunks.push(chunk));
-		stream.on("end", resolve);
+	const chunks: Buffer[] = [];
+	return new Promise((resolve, reject) => {
+		stream.on("data", (chunk) => chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk)));
+		stream.on("end", () => resolve(Buffer.concat(chunks)));
 		stream.on("error", reject);
 	});
-	return Buffer.concat(chunks);
 }

@@ -52,7 +52,7 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 	const { conflictBehavior = "fail", chunkSize = defaultChunkSize, progress } = options;
 
 	if (chunkSize % CHUNK_SIZE_MULTIPLE !== 0) {
-		throw new InvalidArgumentError(`Chunk size (${chunkSize.toLocaleString()}) must be a multiple of ${(chunkSize / 1024).toLocaleString()} KiB.`);
+		throw new InvalidArgumentError(`Chunk size (${chunkSize.toLocaleString()}) must be a multiple of ${(CHUNK_SIZE_MULTIPLE / 1024).toLocaleString()} KiB *${CHUNK_SIZE_MULTIPLE.toLocaleString()} bytes).`);
 	}
 
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
@@ -78,50 +78,45 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 
 	let position = 0;
 	let driveItem: DriveItem | null = null;
-	let streamEnded = false;
-	const chunks: Buffer[] = [];
 
-	contentStream.on("data", (chunk) => {
-		chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
-	});
-	contentStream.on("end", () => {
-		streamEnded = true;
-	});
-	contentStream.on("error", () => {
-		// error will be handled in readChunk
-	});
+	// Efficient streaming: read and upload chunks directly from the stream
+	const reader = contentStream[Symbol.asyncIterator] ? contentStream[Symbol.asyncIterator]() : null;
+	if (!reader) {
+		throw new InvalidArgumentError("contentStream is not an async iterable");
+	}
 
-	let chunk: Buffer | null = await readChunk();
-	while (chunk !== null) {
-		let currentChunk = chunk;
-		while (currentChunk.length > 0) {
-			const thisChunk = currentChunk.subarray(0, chunkSize);
-			const start = position;
-			const end = position + thisChunk.length - 1;
-			const contentRange = `bytes ${start}-${end}/${totalSize}`;
-
-			const res = await execute<ChunkResponse>({
-				url: uploadUrl,
-				method: "PUT",
-				headers: {
-					"Content-Length": thisChunk.length.toString(),
-					"Content-Range": contentRange,
-				},
-				data: thisChunk,
-				responseType: "json",
-			});
-			position += thisChunk.length;
-			if (progress && totalSize > 0) {
-				progress(Math.min(100, (position / totalSize) * 100));
-			}
-			currentChunk = currentChunk.subarray(chunkSize);
-			if (isDriveItem(res)) {
-				driveItem = res;
-				break;
-			}
+	let buffer = Buffer.alloc(0);
+	while (position < totalSize) {
+		while (buffer.length < chunkSize && position + buffer.length < totalSize) {
+			const { value, done } = await reader.next();
+			if (done) break;
+			const chunk = Buffer.isBuffer(value) ? value : Buffer.from(value);
+			buffer = Buffer.concat([buffer, chunk]);
 		}
-		if (driveItem) break;
-		chunk = await readChunk();
+		const thisChunk = buffer.subarray(0, chunkSize);
+		const start = position;
+		const end = position + thisChunk.length - 1;
+		const contentRange = `bytes ${start}-${end}/${totalSize}`;
+
+		const res = await execute<ChunkResponse>({
+			url: uploadUrl,
+			method: "PUT",
+			headers: {
+				"Content-Length": thisChunk.length.toString(),
+				"Content-Range": contentRange,
+			},
+			data: thisChunk,
+			responseType: "json",
+		});
+		position += thisChunk.length;
+		if (progress && totalSize > 0) {
+			progress(Math.min(100, (position / totalSize) * 100));
+		}
+		buffer = buffer.subarray(chunkSize);
+		if (isDriveItem(res)) {
+			driveItem = res;
+			break;
+		}
 	}
 
 	if (!driveItem) {
@@ -135,25 +130,5 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 
 	function isDriveItem(obj: unknown): obj is DriveItem {
 		return typeof obj === "object" && obj !== null && "id" in obj;
-	}
-
-	function readChunk(): Promise<Buffer | null> {
-		return new Promise((resolve, reject) => {
-			if (chunks.length > 0) {
-				const next = chunks.shift();
-				return resolve(next ?? null);
-			}
-			if (streamEnded) return resolve(null);
-			contentStream.once("data", (chunk) => {
-				resolve(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
-			});
-			contentStream.once("end", () => {
-				streamEnded = true;
-				resolve(null);
-			});
-			contentStream.once("error", (err) => {
-				reject(err);
-			});
-		});
 	}
 }
