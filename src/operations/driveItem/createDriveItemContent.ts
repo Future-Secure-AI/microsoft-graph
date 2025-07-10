@@ -5,6 +5,7 @@
  */
 
 import type { DriveItem } from "@microsoft/microsoft-graph-types";
+import { basename } from "path";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import ProtocolError from "../../errors/ProtocolError.ts";
 import type { DriveRef } from "../../models/Drive.ts";
@@ -54,7 +55,7 @@ export interface CreateDriveItemContentOptions {
  * @param options Optional. Additional options for the upload operation.
  * @param options.conflictBehavior Optional. Specifies how to handle conflicts if the file already exists. Default is 'fail'.
  * @param options.chunkSize Optional. The size of each chunk to be uploaded in bytes. Default is 10MB.
- * @param options.progress Optional. A callback function that is called periodically with the upload progress as a percentage.
+ * @param options.progress Optional. A callback function that is called with the number of bytes uploaded after each chunk.
  * @returns The newly created drive item.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession
  * @see https://learn.microsoft.com/en-us/graph/api/resources/uploadsession
@@ -69,7 +70,7 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
 	const uploadSessionUrl = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}:/${itemPath}:/createUploadSession`, parentRef)}`;
 	const accessToken = await parentRef.context.generateAccessToken();
-	const fileName = itemPath.split("/").pop();
+	const fileName = basename(itemPath);
 
 	const { uploadUrl } = await execute<SessionResponse>({
 		url: uploadSessionUrl,
@@ -92,29 +93,25 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 		throw new InvalidArgumentError("contentStream is not an async iterable");
 	}
 
-	const buffer = Buffer.alloc(chunkSize);
 	let contentPosition = 0;
 	let item: DriveItem | null = null;
 	while (contentPosition < contentLength) {
-		const used = await read(chunkSize, contentPosition, contentLength, reader, buffer);
-		const subBuffer = buffer.subarray(0, used);
-
-		const start = contentPosition;
-		const end = contentPosition + subBuffer.length - 1;
-		const contentRange = `bytes ${start}-${end}/${contentLength}`;
+		const chunk = await readChunk(contentPosition, contentLength, chunkSize, reader);
+		const chunkStart = contentPosition;
+		const chunkEnd = contentPosition + chunk.length - 1;
 
 		const response = await execute<ChunkResponse>({
 			url: uploadUrl,
 			method: "PUT",
 			headers: {
-				"Content-Length": subBuffer.length.toString(),
-				"Content-Range": contentRange,
+				"Content-Length": `${chunk.length}`,
+				"Content-Range": `bytes ${chunkStart}-${chunkEnd}/${contentLength}`,
 			},
-			data: subBuffer,
+			data: chunk,
 			responseType: "json",
 		});
 
-		contentPosition += used;
+		contentPosition += chunk.length;
 
 		progress(contentPosition);
 
@@ -138,16 +135,18 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 	function isDriveItem(obj: unknown): obj is DriveItem {
 		return typeof obj === "object" && obj !== null && "id" in obj;
 	}
-}
-async function read(chunkSize: number, contentPosition: number, contentLength: number, reader: AsyncIterableIterator<string | Buffer<ArrayBufferLike>>, buffer: Buffer<ArrayBuffer>) {
-	let length = 0;
-	while (length < chunkSize && contentPosition + length < contentLength) {
-		const { value, done } = await reader.next();
-		if (done) break;
-		const chunk = Buffer.isBuffer(value) ? value : Buffer.from(value);
-		const toCopy = Math.min(chunk.length, chunkSize - length, contentLength - contentPosition - length);
-		chunk.copy(buffer, length, 0, toCopy);
-		length += toCopy;
+
+	async function readChunk(contentPosition: number, contentLength: number, maxLength: number, reader: AsyncIterableIterator<string | Buffer<ArrayBufferLike>>): Promise<Buffer> {
+		const buffer = Buffer.alloc(Math.min(maxLength, contentLength - contentPosition));
+		let length = 0;
+		while (length < maxLength && contentPosition + length < contentLength) {
+			const { value, done } = await reader.next();
+			if (done) break;
+			const chunk = Buffer.isBuffer(value) ? value : Buffer.from(value);
+			const toCopy = Math.min(chunk.length, maxLength - length, contentLength - contentPosition - length);
+			chunk.copy(buffer, length, 0, toCopy);
+			length += toCopy;
+		}
+		return buffer;
 	}
-	return length;
 }
