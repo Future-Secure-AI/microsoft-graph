@@ -15,8 +15,30 @@ describe("createDriveItemContent", () => {
 		const fileName = generateTempFileName("txt");
 		const itemPath = driveItemPath(fileName);
 		const contentStream = stringToStream(sampleString);
+		const totalSize = Buffer.byteLength(sampleString);
 
-		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream);
+		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream, totalSize);
+
+		try {
+			expect(createdItem).toHaveProperty("id");
+			expect(createdItem).toHaveProperty("name", fileName);
+
+			const content = await streamToBuffer(await streamDriveItemContent(createdItem));
+			expect(content.toString()).toEqual(sampleString);
+		} finally {
+			await tryDeleteDriveItem(createdItem);
+		}
+	});
+
+	it("uploads content in multiple chunks", async () => {
+		const driveRef = getDefaultDriveRef();
+		const fileName = generateTempFileName("txt");
+		const itemPath = driveItemPath(fileName);
+		const contentStream = stringToStream(sampleString);
+		const totalSize = Buffer.byteLength(sampleString);
+		const smallChunkSize = 5; // Force multiple chunks
+
+		const createdItem = await createDriveItemContent(driveRef, itemPath, contentStream, totalSize, "fail", smallChunkSize);
 
 		try {
 			expect(createdItem).toHaveProperty("id");
