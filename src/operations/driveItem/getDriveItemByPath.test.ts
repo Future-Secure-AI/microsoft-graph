@@ -36,4 +36,38 @@ describe("getDriveItemByPath", () => {
 
 		await expect(getDriveItemByPath(getDefaultDriveRef(), nonExistentItemPath)).rejects.toThrow();
 	});
+
+	it("can retrieve item by path using a DriveItemRef as parentRef", async () => {
+		const driveRef = getDefaultDriveRef();
+		const folderName = generateTempFileName();
+		const folder = await createFolder(driveRef, folderName);
+		try {
+			// Use the folder as the parentRef (DriveItemRef)
+			const subFolderName = generateTempFileName();
+			const subFolder = await createFolder(folder, subFolderName);
+			try {
+				const subFolderPath = driveItemPath(subFolderName);
+				const retrievedSubFolder = await getDriveItemByPath(folder, subFolderPath);
+				expect(retrievedSubFolder.id).toBe(subFolder.id);
+				expect(retrievedSubFolder.name).toBe(subFolderName);
+			} finally {
+				await tryDeleteDriveItem(subFolder);
+			}
+		} finally {
+			await tryDeleteDriveItem(folder);
+		}
+	});
+
+	it("can retrieve root by path using a DriveItemRef as parentRef (should return itself)", async () => {
+		const driveRef = getDefaultDriveRef();
+		const folderName = generateTempFileName();
+		const folder = await createFolder(driveRef, folderName);
+		try {
+			const retrieved = await getDriveItemByPath(folder, rootDriveItemPath);
+			expect(retrieved.id).toBe(folder.id);
+			expect(retrieved.name).toBe(folderName);
+		} finally {
+			await tryDeleteDriveItem(folder);
+		}
+	});
 });

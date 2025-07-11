@@ -15,27 +15,34 @@ import { generatePath } from "../../services/templatedPaths.ts";
 
 /**
  * Retrieve the metadata for an item in a drive by file path.
- * @param driveRef Reference to the drive containing the item.
+ * @param parentRef Reference to the drive or drive item containing the item.
  * @param itemPath Path of the item within the drive.
  * @returns The metadata of the specified drive item, including its reference information.
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-get
  */
-export default function getDriveItemByPath(driveRef: DriveRef, itemPath: DriveItemPath): GraphOperation<DriveItem & DriveItemRef> {
+export default function getDriveItemByPath(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath): GraphOperation<DriveItem & DriveItemRef> {
 	if (!itemPath.startsWith("/")) {
 		throw new InvalidArgumentError("itemPath must start with a forward slash (/)");
 	}
 
-	const normalizedPath = itemPath === "/" ? "/sites/{site-id}/drives/{drive-id}/root" : `/sites/{site-id}/drives/{drive-id}/root:${itemPath}`;
+	let normalizedPath: string;
+	if ("id" in parentRef) {
+		// parentRef is a DriveItemRef
+		normalizedPath = itemPath === "/" ? "/sites/{site-id}/drives/{drive-id}/items/{item-id}" : `/sites/{site-id}/drives/{drive-id}/items/{item-id}:${itemPath}`;
+	} else {
+		// parentRef is a DriveRef
+		normalizedPath = itemPath === "/" ? "/sites/{site-id}/drives/{drive-id}/root" : `/sites/{site-id}/drives/{drive-id}/root:${itemPath}`;
+	}
 
 	return operation({
-		context: driveRef.context,
+		context: parentRef.context,
 		method: "GET",
-		path: generatePath(normalizedPath, driveRef),
+		path: generatePath(normalizedPath, parentRef),
 		headers: {},
 		body: null,
 		responseTransform: (response) => {
 			const item = response as DriveItem;
-			const itemRef = createDriveItemRef(driveRef, item.id as DriveItemId);
+			const itemRef = createDriveItemRef(parentRef, item.id as DriveItemId);
 
 			return {
 				...item,
