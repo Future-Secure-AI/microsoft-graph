@@ -8,21 +8,21 @@
  * Application Client ID to authenticate with Azure.
  */
 export type AzureClientId = string & {
-	__brand: "AzureClientId";
+	readonly __brand: unique symbol;
 };
 
 /**
  * Application Client secret to authenticate with Azure.
  */
 export type AzureClientSecret = string & {
-	__brand: "AzureClientSecret";
+	readonly __brand: unique symbol;
 };
 
 /**
  * ID of tenant in Azure.
  */
 export type AzureTenantId = string & {
-	__brand: "AzureTenantId";
+	readonly __brand: unique symbol;
 };
 
 /**
@@ -30,5 +30,5 @@ export type AzureTenantId = string & {
  * @remarks Typically, this is set to "https://graph.microsoft.com/.default" for Microsoft Graph API.
  */
 export type Scope = string & {
-	__brand: "Scope";
+	readonly __brand: unique symbol;
 };

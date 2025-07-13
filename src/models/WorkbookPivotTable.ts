@@ -10,7 +10,7 @@ import type { WorkbookWorksheetRef } from "./WorkbookWorksheet.ts";
  * Identifier for a pivot table in a worksheet.
  */
 export type WorkbookPivotTableId = string & {
-	__brand: "WorkbookPivotTableId";
+	readonly __brand: unique symbol;
 };
 
 /**

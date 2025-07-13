@@ -16,12 +16,12 @@ export type Row = Cell[];
  * @remarks First row is 1.
  */
 export type RowNumber = number & {
-	__brand: "RowNumber";
+	readonly __brand: unique symbol;
 };
 
 /**
  * Zero-based index representing the position of a row in a range.
  */
 export type RowOffset = number & {
-	__brand: "RowOffset";
+	readonly __brand: unique symbol;
 };

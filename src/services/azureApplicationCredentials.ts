@@ -28,7 +28,7 @@ export async function getCurrentAccessToken(tenantId: AzureTenantId, clientId: A
 }
 
 type CacheKey = string & {
-	__brand: "CacheKey";
+	readonly __brand: unique symbol;
 };
 
 function createCacheKey(tenantId: AzureTenantId, clientId: AzureClientId, scope: Scope): CacheKey {

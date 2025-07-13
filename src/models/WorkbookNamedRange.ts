@@ -11,7 +11,7 @@ import type { WorkbookRef } from "./Workbook.ts";
  */
 
 export type WorkbookRangeName = string & {
-	__brand: "WorkbookRangeName";
+	readonly __brand: unique symbol;
 };
 
 /**

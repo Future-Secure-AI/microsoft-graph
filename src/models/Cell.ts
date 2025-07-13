@@ -103,7 +103,7 @@ export type CellText = string;
  * @see {@link Cell} for a more comprehensive representation of a cell, which includes text and formatting.
  */
 export type CellFormat = string & {
-	__brand: "CellFormat";
+	readonly __brand: unique symbol;
 };
 
 /**

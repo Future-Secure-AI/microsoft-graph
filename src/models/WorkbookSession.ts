@@ -8,5 +8,5 @@
  * Identifier for a workbook session.
  */
 export type WorkbookSessionId = string & {
-	__brand: "WorkbookSessionId";
+	readonly __brand: unique symbol;
 };

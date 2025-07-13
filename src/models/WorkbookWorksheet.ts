@@ -10,14 +10,14 @@ import type { WorkbookRef } from "./Workbook.ts";
  * Identifier for a worksheet in a workbook.
  */
 export type WorkbookWorksheetId = string & {
-	__brand: "WorkbookWorksheetId";
+	readonly __brand: unique symbol;
 };
 
 /**
  * Name of a worksheet in a workbook.
  */
 export type WorkbookWorksheetName = string & {
-	__brand: "WorkbookWorksheetName";
+	readonly __brand: unique symbol;
 };
 
 /**

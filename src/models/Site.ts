@@ -10,14 +10,14 @@ import type { Context } from "./Context.ts";
  * Identifier for a site.
  */
 export type SiteId = string & {
-	__brand: "SiteId";
+	readonly __brand: unique symbol;
 };
 
 /**
  * Name of a site.
  */
 export type SiteName = string & {
-	__brand: "SiteName";
+	readonly __brand: unique symbol;
 };
 
 /**

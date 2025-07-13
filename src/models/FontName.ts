@@ -4,5 +4,5 @@
  * @module FontName
  */
 export type FontName = string & {
-	__brand: "FontName";
+	readonly __brand: unique symbol;
 };

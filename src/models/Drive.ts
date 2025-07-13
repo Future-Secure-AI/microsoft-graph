@@ -10,7 +10,7 @@ import type { SiteRef } from "./Site.ts";
  * Identifier for a drive.
  */
 export type DriveId = string & {
-	__brand: "DriveId";
+	readonly __brand: unique symbol;
 };
 
 /**
@@ -24,5 +24,5 @@ export type DriveRef = SiteRef & {
  * Name of a drive.
  */
 export type DriveName = string & {
-	__brand: "DriveName";
+	readonly __brand: unique symbol;
 };

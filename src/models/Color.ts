@@ -4,5 +4,5 @@
  * @module Color
  */
 export type Color = string & {
-	__brand: "Color";
+	readonly __brand: unique symbol;
 };

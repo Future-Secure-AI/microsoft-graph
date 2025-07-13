@@ -19,10 +19,10 @@ export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
 /** HTTP path used in requests */
 export type HttpPath = string & {
-	__brand: "Path";
+	readonly __brand: unique symbol;
 };
 
 /** HTTP proxy used to route requests */
 export type HttpProxy = string & {
-	__brand: "HttpProxy";
+	readonly __brand: unique symbol;
 };

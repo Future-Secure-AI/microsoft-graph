@@ -5,5 +5,5 @@
  * @category Models
  */
 export type AccessToken = string & {
-	__brand: "AccessToken";
+	readonly __brand: unique symbol;
 };

@@ -4,5 +4,5 @@
  * @category Models
  */
 export type HostName = string & {
-	__brand: "Hostname";
+	readonly __brand: unique symbol;
 };

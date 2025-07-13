@@ -10,14 +10,14 @@ import type { DriveRef } from "./Drive.ts";
  * Unique identifier of an item in a drive.
  */
 export type DriveItemId = string & {
-	__brand: "DriveItemId";
+	readonly __brand: unique symbol;
 };
 
 /**
  * Path of an item in a drive.
  */
 export type DriveItemPath = string & {
-	__brand: "DriveItemPath";
+	readonly __brand: unique symbol;
 };
 
 /**
@@ -31,5 +31,5 @@ export type DriveItemRef = DriveRef & {
  * File/folder name of a drive item. Includes file extension if applicable.
  */
 export type DriveItemName = string & {
-	__brand: "DriveItemName";
+	readonly __brand: unique symbol;
 };
