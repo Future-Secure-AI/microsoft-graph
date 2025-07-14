@@ -62,13 +62,15 @@ export interface CreateDriveItemContentOptions {
  */
 export default async function createDriveItemContent(parentRef: DriveRef | DriveItemRef, itemPath: DriveItemPath, contentStream: NodeJS.ReadableStream, contentLength: number, options: CreateDriveItemContentOptions = {}): Promise<DriveItem & DriveItemRef> {
 	const { conflictBehavior = "fail", maxChunkSize = defaultMaxChunkSize, progress = () => {} } = options;
-
+	if (!itemPath.startsWith("/")) {
+		throw new InvalidArgumentError("itemPath must start with a forward slash (/)");
+	}
 	if (maxChunkSize % chunkSizeMultiple !== 0) {
 		throw new InvalidArgumentError(`Chunk size (${maxChunkSize.toLocaleString()}) must be a multiple of ${(chunkSizeMultiple / 1024).toLocaleString()} KiB *${chunkSizeMultiple.toLocaleString()} bytes).`);
 	}
 
 	const pathSegment = (parentRef as DriveItemRef).itemId ? "items/{item-id}" : "root";
-	const uploadSessionUrl = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}:/${itemPath}:/createUploadSession`, parentRef)}`;
+	const uploadSessionUrl = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/${pathSegment}:${itemPath}:/createUploadSession`, parentRef)}`;
 	const accessToken = await parentRef.context.generateAccessToken();
 	const fileName = basename(itemPath);
 

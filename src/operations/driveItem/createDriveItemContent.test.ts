@@ -7,6 +7,7 @@ import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
 import { generateTempFileName } from "../../services/temporaryFiles.ts";
 import tryDeleteDriveItem from "../../tasks/tryDeleteDriveItem.ts";
+import createWorkbook from "../workbook/createWorkbook.ts";
 import createDriveItemContent from "./createDriveItemContent.ts";
 import streamDriveItemContent from "./streamDriveItemContent.ts";
 
@@ -91,6 +92,38 @@ describe("createDriveItemContent (file-based)", () => {
 			expect(downloadedBuffer.equals(originalBuffer)).toBe(true);
 		} finally {
 			await tryDeleteDriveItem(item);
+			await fs.promises.unlink(filePath);
+		}
+	});
+
+	it("can replace file", async () => {
+		const driveRef = getDefaultDriveRef();
+
+		const fileSize = 2048;
+		const filePath = await createTempFile(fileSize);
+
+		const itemPath = driveItemPath(generateTempFileName("xlsx"));
+
+		const originalItem = await createWorkbook(driveRef, itemPath);
+
+		try {
+			// Modify the file content for replacement
+			const newFileSize = 2048;
+			const newFilePath = await createTempFile(newFileSize);
+			const newFileStream = fs.createReadStream(newFilePath);
+
+			// Upload again with conflictBehavior: "replace"
+			const replacedItem = await createDriveItemContent(driveRef, itemPath, newFileStream, newFileSize, { conflictBehavior: "replace" });
+
+			expect(replacedItem.size).not.toEqual(originalItem.size);
+
+			const downloadedBuffer = await streamToBuffer(await streamDriveItemContent(replacedItem));
+			const newOriginalBuffer = await fs.promises.readFile(newFilePath);
+			expect(downloadedBuffer.equals(newOriginalBuffer)).toBe(true);
+
+			await fs.promises.unlink(newFilePath);
+		} finally {
+			await tryDeleteDriveItem(originalItem);
 			await fs.promises.unlink(filePath);
 		}
 	});
