@@ -35,4 +35,18 @@ describe("createFolder", () => {
 			await deleteDriveItem(parentFolder);
 		}
 	});
+
+	it("errors when creating a folder with a duplicate name in the same location", async () => {
+		const driveRef = getDefaultDriveRef();
+		const folderName = generateTempFileName("dupe");
+		const folder = await createFolder(driveRef, folderName);
+
+		try {
+			await expect(async () => {
+				await createFolder(driveRef, folderName);
+			}).rejects.toThrow();
+		} finally {
+			await deleteDriveItem(folder);
+		}
+	});
 });

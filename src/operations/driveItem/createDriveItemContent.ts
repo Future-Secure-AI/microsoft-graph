@@ -8,6 +8,7 @@ import type { DriveItem } from "@microsoft/microsoft-graph-types";
 import { basename } from "node:path";
 import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import ProtocolError from "../../errors/ProtocolError.ts";
+import type { ConflictBehavior } from "../../models/ConflictBehavior.ts";
 import type { DriveRef } from "../../models/Drive.ts";
 import type { DriveItemId, DriveItemPath, DriveItemRef } from "../../models/DriveItem.ts";
 import { createDriveItemRef } from "../../services/driveItem.ts";
@@ -41,7 +42,7 @@ type ChunkResponse =
  * @property progress Optional. Callback function called with the number of bytes uploaded after each chunk.
  */
 export interface CreateDriveItemContentOptions {
-	conflictBehavior?: "fail" | "replace" | "rename";
+	conflictBehavior?: ConflictBehavior;
 	maxChunkSize?: number;
 	progress?: (bytes: number) => void;
 }

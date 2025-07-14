@@ -1,6 +1,6 @@
 {
 	"name": "microsoft-graph",
-	"version": "3.9.7",
+	"version": "3.9.8",
 	"description": "Microsoft GraphAPI SDK for NodeJS",
 	"main": "./dist/cjs/index.js",
 	"module": "./dist/esm/index.js",
@@ -476,6 +476,16 @@
 			"import": "./dist/esm/models/Column.js",
 			"require": "./dist/cjs/models/Column.js",
 			"types": "./dist/esm/models/Column.d.ts"
+		},
+		"./ConflictBehavior": {
+			"import": "./dist/esm/models/ConflictBehavior.js",
+			"require": "./dist/cjs/models/ConflictBehavior.js",
+			"types": "./dist/esm/models/ConflictBehavior.d.ts"
+		},
+		"./dist/cjs/models/ConflictBehavior": {
+			"import": "./dist/esm/models/ConflictBehavior.js",
+			"require": "./dist/cjs/models/ConflictBehavior.js",
+			"types": "./dist/esm/models/ConflictBehavior.d.ts"
 		},
 		"./Context": {
 			"import": "./dist/esm/models/Context.js",
