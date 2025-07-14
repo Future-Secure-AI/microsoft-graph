@@ -45,7 +45,7 @@ HTTP path used in requests
 
 ##### \_\_brand
 
-> **\_\_brand**: `"Path"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -61,4 +61,4 @@ HTTP proxy used to route requests
 
 ##### \_\_brand
 
-> **\_\_brand**: `"HttpProxy"`
+> `readonly` **\_\_brand**: unique `symbol`

@@ -18,7 +18,7 @@ Identifier for a worksheet in a workbook.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"WorkbookWorksheetId"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -34,7 +34,7 @@ Name of a worksheet in a workbook.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"WorkbookWorksheetName"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 

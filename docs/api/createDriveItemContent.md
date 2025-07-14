@@ -8,7 +8,7 @@ Creates a new drive item in the specified parent drive or folder using a stream 
 
 ### CreateDriveItemContentOptions
 
-Defined in: [src/operations/driveItem/createDriveItemContent.ts:43](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L43)
+Defined in: [src/operations/driveItem/createDriveItemContent.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L44)
 
 Options for creating a drive item with content upload.
 
@@ -16,9 +16,9 @@ Options for creating a drive item with content upload.
 
 ##### conflictBehavior?
 
-> `optional` **conflictBehavior**: `"replace"` \| `"fail"` \| `"rename"`
+> `optional` **conflictBehavior**: [`ConflictBehavior`](ConflictBehavior.md#conflictbehavior)
 
-Defined in: [src/operations/driveItem/createDriveItemContent.ts:44](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L44)
+Defined in: [src/operations/driveItem/createDriveItemContent.ts:45](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L45)
 
 Optional. Specifies how to handle conflicts if the file already exists. Can be 'fail', 'replace', or 'rename'.
 
@@ -26,13 +26,13 @@ Optional. Specifies how to handle conflicts if the file already exists. Can be '
 
 > `optional` **maxChunkSize**: `number`
 
-Defined in: [src/operations/driveItem/createDriveItemContent.ts:45](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L45)
+Defined in: [src/operations/driveItem/createDriveItemContent.ts:46](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L46)
 
 ##### progress()?
 
 > `optional` **progress**: (`bytes`) => `void`
 
-Defined in: [src/operations/driveItem/createDriveItemContent.ts:46](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L46)
+Defined in: [src/operations/driveItem/createDriveItemContent.ts:47](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L47)
 
 Optional. Callback function called with the number of bytes uploaded after each chunk.
 
@@ -52,7 +52,7 @@ Optional. Callback function called with the number of bytes uploaded after each 
 
 > `const` **chunkSizeMultiple**: `number`
 
-Defined in: [src/operations/driveItem/createDriveItemContent.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L23)
+Defined in: [src/operations/driveItem/createDriveItemContent.ts:24](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L24)
 
 The required chunk size multiple for upload sessions.
 
@@ -70,7 +70,7 @@ https://learn.microsoft.com/en-us/graph/api/driveitem-createuploadsession
 
 > **createDriveItemContent**(`parentRef`, `itemPath`, `contentStream`, `contentLength`, `options`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
-Defined in: [src/operations/driveItem/createDriveItemContent.ts:63](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L63)
+Defined in: [src/operations/driveItem/createDriveItemContent.ts:64](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/createDriveItemContent.ts#L64)
 
 Creates a new drive item in the specified parent drive or folder using a stream as content.
 

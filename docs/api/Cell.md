@@ -65,7 +65,7 @@ Format to be applied to a cell value to convert it to text to display to the use
 
 ##### \_\_brand
 
-> **\_\_brand**: `"CellFormat"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 #### See
 

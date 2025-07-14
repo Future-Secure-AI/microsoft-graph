@@ -18,7 +18,7 @@ Application Client ID to authenticate with Azure.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"AzureClientId"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -34,7 +34,7 @@ Application Client secret to authenticate with Azure.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"AzureClientSecret"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -50,7 +50,7 @@ ID of tenant in Azure.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"AzureTenantId"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -66,7 +66,7 @@ Scope for which the access token is requested.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"Scope"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 #### Remarks
 

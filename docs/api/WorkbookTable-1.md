@@ -34,7 +34,7 @@ Identifier for a table in a worksheet.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"WorkbookTableId"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 

@@ -34,4 +34,4 @@ Name of a range in a workbook.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"WorkbookRangeName"`
+> `readonly` **\_\_brand**: unique `symbol`

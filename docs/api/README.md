@@ -51,6 +51,7 @@
 | [Cell](Cell.md) | Cell in a worksheet. |
 | [Color](Color.md) | Color has a hexadecimal representation (ie #ffffff"). |
 | [Column](Column.md) | Column pointers. |
+| [ConflictBehavior](ConflictBehavior.md) | Conflict behavior options. |
 | [Context](Context-1.md) | Context of requests. |
 | [Drive](Drive-1.md) | Drive pointers. |
 | [DriveItem](DriveItem-1.md) | Drive item pointers. |

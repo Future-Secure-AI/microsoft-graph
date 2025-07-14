@@ -18,7 +18,7 @@ Identifier for a pivot table in a worksheet.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"WorkbookPivotTableId"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 

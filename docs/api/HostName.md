@@ -16,4 +16,4 @@ Defined in: [src/models/HostName.ts:6](https://github.com/Future-Secure-AI/micro
 
 ##### \_\_brand
 
-> **\_\_brand**: `"Hostname"`
+> `readonly` **\_\_brand**: unique `symbol`

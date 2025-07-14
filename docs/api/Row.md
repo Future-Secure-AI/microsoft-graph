@@ -28,7 +28,7 @@ Row number as it appears in Excel.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"RowNumber"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 #### Remarks
 
@@ -48,4 +48,4 @@ Zero-based index representing the position of a row in a range.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"RowOffset"`
+> `readonly` **\_\_brand**: unique `symbol`

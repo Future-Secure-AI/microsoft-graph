@@ -18,7 +18,7 @@ Identifier for a site.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"SiteId"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -34,7 +34,7 @@ Name of a site.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"SiteName"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 

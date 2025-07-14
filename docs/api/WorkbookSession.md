@@ -18,4 +18,4 @@ Identifier for a workbook session.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"WorkbookSessionId"`
+> `readonly` **\_\_brand**: unique `symbol`

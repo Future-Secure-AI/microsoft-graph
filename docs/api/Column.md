@@ -28,7 +28,7 @@ Name of a column, as configured by the user.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"ColumnName"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -44,4 +44,4 @@ Zero-based index representing the position of a column in a range.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"ColumnOffset"`
+> `readonly` **\_\_brand**: unique `symbol`

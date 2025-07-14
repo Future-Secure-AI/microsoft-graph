@@ -18,7 +18,7 @@ Identifier for a drive.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"DriveId"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -34,7 +34,7 @@ Name of a drive.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"DriveName"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 

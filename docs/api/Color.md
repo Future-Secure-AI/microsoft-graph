@@ -16,4 +16,4 @@ Defined in: [src/models/Color.ts:6](https://github.com/Future-Secure-AI/microsof
 
 ##### \_\_brand
 
-> **\_\_brand**: `"Color"`
+> `readonly` **\_\_brand**: unique `symbol`

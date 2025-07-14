@@ -18,7 +18,7 @@ Unique identifier of an item in a drive.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"DriveItemId"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -34,7 +34,7 @@ File/folder name of a drive item. Includes file extension if applicable.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"DriveItemName"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 
@@ -50,7 +50,7 @@ Path of an item in a drive.
 
 ##### \_\_brand
 
-> **\_\_brand**: `"DriveItemPath"`
+> `readonly` **\_\_brand**: unique `symbol`
 
 ***
 

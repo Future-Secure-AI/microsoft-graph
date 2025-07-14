@@ -20,4 +20,4 @@ Defined in: [src/models/AccessToken.ts:7](https://github.com/Future-Secure-AI/mi
 
 ##### \_\_brand
 
-> **\_\_brand**: `"AccessToken"`
+> `readonly` **\_\_brand**: unique `symbol`
