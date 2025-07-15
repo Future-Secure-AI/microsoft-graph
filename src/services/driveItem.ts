@@ -111,3 +111,24 @@ export function getDriveItemExtension(item: DriveItem): string {
 	const ext = path.extname(item.name ?? "").toLowerCase();
 	return ext.startsWith(".") ? ext.slice(1) : ext;
 }
+
+/**
+ * Gets the parent for a drive item. Typically this is the folder of a file.
+ * @param item Drive item.
+ * @returns Parent drive item.
+ */
+export function getDriveItemParent(item: DriveItem & DriveItemRef): DriveItemRef {
+	const parentId = item.parentReference?.id as DriveItemId | undefined;
+	if (!parentId) {
+		throw new Error("Parent reference not found for the item.");
+	}
+
+	const parentRef: DriveItemRef = {
+		context: item.context,
+		siteId: item.siteId,
+		driveId: item.driveId,
+		itemId: parentId,
+	};
+
+	return parentRef;
+}
