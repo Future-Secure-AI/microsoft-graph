@@ -106,7 +106,7 @@ export async function execute<TResponse>(request: Request): Promise<TResponse> {
 		if (requestedRetryAfterSeconds) {
 			retryAfterMilliseconds = requestedRetryAfterSeconds * 1000;
 		} else {
-			retryAfterMilliseconds += Math.random() * 1000; // Add some randomness to the retry delay to avoid thundering herd problem
+			retryAfterMilliseconds += Math.round(Math.random() * 1000); // Add some randomness to the retry delay to avoid thundering herd problem
 		}
 
 		errorLog += waitToString(retryAfterMilliseconds);
@@ -241,7 +241,7 @@ function responseToString(response: AxiosResponse): string {
 	return message;
 }
 function waitToString(milliseconds: number): string {
-	return ` ⏳ Wait ${milliseconds}ms for retry.\n`;
+	return ` ⏳ Wait ${milliseconds.toLocaleString()}ms for retry.\n`;
 }
 
 function errorObjectToString(obj: unknown): string {
