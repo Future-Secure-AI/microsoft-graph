@@ -4,6 +4,7 @@
  * @category Operations
  */
 
+import InvalidArgumentError from "../../errors/InvalidArgumentError.ts";
 import type { DriveRef } from "../../models/Drive.ts";
 import type { DriveItemPath } from "../../models/DriveItem.ts";
 import { executeRaw } from "../../services/http.ts";
@@ -17,11 +18,14 @@ import { generatePath } from "../../services/templatedPaths.ts";
  * @returns If the drive item exists.
  */
 export default async function existsDriveItem(driveRef: DriveRef, itemPath: DriveItemPath): Promise<boolean> {
-	// Note this method doesn't match the standard pattern since the batching library doesn't support non-JSON return types.
+	if (!itemPath.startsWith("/")) {
+		throw new InvalidArgumentError("itemPath must start with a forward slash (/)");
+	}
+
 	const url = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef)}`;
 	const accessToken = await driveRef.context.generateAccessToken();
 
-	const response = await executeRaw({
+	const response = await executeRaw({ // TODO: This is not supporting retry and needs fixing
 		url,
 		method: "GET",
 		headers: {

@@ -7,7 +7,7 @@ import safeDeleteWorkbook from "../../tasks/safeDeleteWorkbook.ts";
 import existsDriveItem from "./existsDriveItem.ts";
 
 describe("existsDriveItem", () => {
-	it("can detect file exists", { timeout: 20000 }, async () => {
+	it("can detect file exists", async () => {
 		const driveRef = getDefaultDriveRef();
 		const workbookPath = driveItemPath(generateTempFileName("xlsx"));
 		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
@@ -20,7 +20,7 @@ describe("existsDriveItem", () => {
 		}
 	});
 
-	it("can detect file does not exists", { timeout: 20000 }, async () => {
+	it("can detect file does not exists", async () => {
 		const driveRef = getDefaultDriveRef();
 		const workbookPath = driveItemPath(generateTempFileName("xlsx"));
 
