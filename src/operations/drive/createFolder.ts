@@ -25,6 +25,7 @@ export interface CreateDriveItemOptions {
  * @param parentRef Reference to the parent drive or folder where the folder will be created.
  * @param folderName Name of the folder to be created.
  * @returns The newly created folder.
+ * @remarks Parent folder must already exist. Multiple folders cannot be created in a single request
  * @see https://learn.microsoft.com/en-us/graph/api/driveitem-post-children
  */
 export default function createFolder(parentRef: DriveRef | DriveItemRef, folderName: string, options: CreateDriveItemOptions = {}): GraphOperation<DriveItem & DriveItemRef> {
