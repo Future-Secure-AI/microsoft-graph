@@ -14,7 +14,7 @@ export type ColumnAddress = `${Uppercase<string>}`;
  * Address of multiple consecutive columns in a worksheet ().
  * @example 'C:D'
  */
-export type ColumnRangeAddress = `${CellAddress}:${CellAddress}`;
+export type ColumnRangeAddress = `${ColumnAddress}:${ColumnAddress}`;
 
 /**
  * Address of a used range in a column, either from the start or to the end.
@@ -66,6 +66,7 @@ export type UsedCellRangeAddress = `${CellAddress}:` | `:${CellAddress}`;
  * @example ':'
  */
 export type AllUsedAddress = ":";
+
 /**
  * Any type of address.
  * @remarks This is a union of all the address types defined above.
