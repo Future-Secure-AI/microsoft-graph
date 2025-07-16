@@ -16,6 +16,8 @@ Defined in: [src/tasks/readWorkbookRangeRows.ts:23](https://github.com/Future-Se
 
 **`Experimental`**
 
+Read all rows from a given workbook range.
+
 #### Parameters
 
 | Parameter | Type | Default value | Description |

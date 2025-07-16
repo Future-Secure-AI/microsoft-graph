@@ -16,6 +16,8 @@ Defined in: [src/tasks/updateWorkbookRangeRows.ts:54](https://github.com/Future-
 
 **`Experimental`**
 
+Update rows in a given workbook range.
+
 #### Parameters
 
 | Parameter | Type | Default value | Description |

@@ -16,6 +16,8 @@ Defined in: [src/tasks/insertWorkbookRangeRows.ts:38](https://github.com/Future-
 
 **`Experimental`**
 
+Inserts rows into a workbook range.
+
 #### Parameters
 
 | Parameter | Type | Default value | Description |

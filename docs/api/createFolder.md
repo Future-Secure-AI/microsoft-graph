@@ -26,7 +26,7 @@ Defined in: [src/operations/drive/createFolder.ts:20](https://github.com/Future-
 
 > **createFolder**(`parentRef`, `folderName`, `options`): [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
-Defined in: [src/operations/drive/createFolder.ts:30](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/drive/createFolder.ts#L30)
+Defined in: [src/operations/drive/createFolder.ts:31](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/drive/createFolder.ts#L31)
 
 Create a folder in the root of a drive, or in a folder. If it already exists do nothing.
 
@@ -43,6 +43,10 @@ Create a folder in the root of a drive, or in a folder. If it already exists do 
 [`GraphOperation`](GraphOperation.md#graphoperation)\<`DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object`\>
 
 The newly created folder.
+
+#### Remarks
+
+Parent folder must already exist. Multiple folders cannot be created in a single request
 
 #### See
 

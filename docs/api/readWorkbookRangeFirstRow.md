@@ -16,6 +16,8 @@ Defined in: [src/tasks/readWorkbookRangeFirstRow.ts:23](https://github.com/Futur
 
 **`Experimental`**
 
+Read the first row from a given workbook range.
+
 #### Parameters
 
 | Parameter | Type | Default value | Description |

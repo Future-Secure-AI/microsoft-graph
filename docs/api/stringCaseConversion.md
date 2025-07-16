@@ -10,7 +10,7 @@ Utilities for converting string case styles (e.g., kebab-case to camelCase).
 
 > **camelCaseToPascalCase**(`str`): `string`
 
-Defined in: [src/services/stringCaseConversion.ts:23](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/stringCaseConversion.ts#L23)
+Defined in: [src/services/stringCaseConversion.ts:29](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/stringCaseConversion.ts#L29)
 
 Converts a camelCase string to PascalCase.
 
@@ -18,13 +18,13 @@ Converts a camelCase string to PascalCase.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `str` | `string` | The camelCase string. |
+| `str` | `string` | CamelCase string. |
 
 #### Returns
 
 `string`
 
-The PascalCase string.
+PascalCase string.
 
 ***
 
@@ -32,7 +32,7 @@ The PascalCase string.
 
 > **kebabToCamelCase**(`str`): `string`
 
-Defined in: [src/services/stringCaseConversion.ts:12](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/stringCaseConversion.ts#L12)
+Defined in: [src/services/stringCaseConversion.ts:14](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/stringCaseConversion.ts#L14)
 
 Converts a kebab-case string to camelCase.
 
@@ -40,10 +40,10 @@ Converts a kebab-case string to camelCase.
 
 | Parameter | Type | Description |
 | ------ | ------ | ------ |
-| `str` | `string` | The kebab-case string. |
+| `str` | `string` | Kebab-case string. |
 
 #### Returns
 
 `string`
 
-The camelCase string.
+CamelCase string.

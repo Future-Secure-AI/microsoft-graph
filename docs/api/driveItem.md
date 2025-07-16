@@ -105,6 +105,28 @@ File extension ie. "txt", "jpg"
 
 ***
 
+### getDriveItemParent()
+
+> **getDriveItemParent**(`item`): [`DriveItemRef`](DriveItem-1.md#driveitemref)
+
+Defined in: [src/services/driveItem.ts:120](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/services/driveItem.ts#L120)
+
+Gets the parent for a drive item. Typically this is the folder of a file.
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `item` | `DriveItem` & [`SiteRef`](Site-1.md#siteref) & `object` & `object` | Drive item. |
+
+#### Returns
+
+[`DriveItemRef`](DriveItem-1.md#driveitemref)
+
+Parent drive item.
+
+***
+
 ### splitDriveItemPath()
 
 > **splitDriveItemPath**(`filePath`): `object`

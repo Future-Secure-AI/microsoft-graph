@@ -80,7 +80,7 @@ Creates a new drive item in the specified parent drive or folder using a stream 
 | ------ | ------ | ------ |
 | `parentRef` | [`DriveRef`](Drive-1.md#driveref) \| [`DriveItemRef`](DriveItem-1.md#driveitemref) | Reference to the parent drive or folder where the drive item will be created. |
 | `itemPath` | [`DriveItemPath`](DriveItem-1.md#driveitempath) | Path (including the filename) for the new drive item within the given parent. |
-| `contentStream` | [`ReadableStream`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/node/globals.d.ts#L202) | A Node.js readable stream containing the file content. |
+| `contentStream` | [`ReadableStream`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/8eb4e48e9d43edd37c36a9a46bd1a1084807387b/types/node/globals.d.ts#L202) | A Node.js readable stream containing the file content. |
 | `contentLength` | `number` | The total size in bytes of the content to be uploaded. |
 | `options` | [`CreateDriveItemContentOptions`](#createdriveitemcontentoptions) | Optional. Additional options for the upload operation. |
 

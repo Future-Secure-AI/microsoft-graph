@@ -16,6 +16,8 @@ Defined in: [src/tasks/updateWorkbookRangeFirstRow.ts:28](https://github.com/Fut
 
 **`Experimental`**
 
+Update first row in a given workbook range.
+
 #### Parameters
 
 | Parameter | Type | Description |

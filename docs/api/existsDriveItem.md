@@ -10,7 +10,7 @@ Check if a given drive item exists.
 
 > **existsDriveItem**(`driveRef`, `itemPath`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`boolean`\>
 
-Defined in: [src/operations/driveItem/existsDriveItem.ts:19](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/existsDriveItem.ts#L19)
+Defined in: [src/operations/driveItem/existsDriveItem.ts:20](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/operations/driveItem/existsDriveItem.ts#L20)
 
 Check if a given drive item exists.
 

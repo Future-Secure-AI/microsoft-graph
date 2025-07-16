@@ -10,7 +10,7 @@ Conflict behavior options.
 
 > **ConflictBehavior** = `"fail"` \| `"replace"` \| `"rename"`
 
-Defined in: src/models/ConflictBehavior.ts:13
+Defined in: [src/models/ConflictBehavior.ts:13](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/models/ConflictBehavior.ts#L13)
 
 What to do if a file/folder with the same name already exists.
 - "fail": Throw an error if the item already exists.

@@ -178,7 +178,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:150
 | Parameter | Type |
 | ------ | ------ |
 | `err` | [`Error`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error) |
-| `stackTraces` | [`CallSite`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/node/globals.d.ts#L171)[] |
+| `stackTraces` | [`CallSite`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/8eb4e48e9d43edd37c36a9a46bd1a1084807387b/types/node/globals.d.ts#L171)[] |
 
 ###### Returns
 

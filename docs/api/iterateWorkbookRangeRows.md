@@ -38,6 +38,8 @@ Defined in: [src/tasks/iterateWorkbookRangeRows.ts:54](https://github.com/Future
 
 **`Experimental`**
 
+Iterate over the rows in a given worksheet range.
+
 #### Parameters
 
 | Parameter | Type | Default value | Description |
