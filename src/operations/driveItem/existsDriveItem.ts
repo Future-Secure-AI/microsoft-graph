@@ -25,7 +25,8 @@ export default async function existsDriveItem(driveRef: DriveRef, itemPath: Driv
 	const url = `${endpoint}${generatePath(`/sites/{site-id}/drives/{drive-id}/root:${itemPath}`, driveRef)}`;
 	const accessToken = await driveRef.context.generateAccessToken();
 
-	const response = await executeRaw({ // TODO: This is not supporting retry and needs fixing
+	const response = await executeRaw({
+		// TODO: This is not supporting retry and needs fixing
 		url,
 		method: "GET",
 		headers: {
