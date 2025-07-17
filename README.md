@@ -1,4 +1,6 @@
 # Microsoft Graph SDK
+[![NPM](https://nodei.co/npm/microsoft-graph.png?downloads=true)](https://www.npmjs.com/package/microsoft-graph)
+
 ## Overview
 This is an extensible library that allows access to Microsoft's GraphAPI, including (but not only) Sharepoint's API. It currently supports the most common operations, with more being added over time.
 
