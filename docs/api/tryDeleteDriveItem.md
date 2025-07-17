@@ -10,7 +10,7 @@ Attempts to delete a drive item, returning success status.
 
 > **tryDeleteDriveItem**(`driveItemRef`, `options?`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`boolean`\>
 
-Defined in: [src/tasks/tryDeleteDriveItem.ts:17](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/tryDeleteDriveItem.ts#L17)
+Defined in: [src/tasks/tryDeleteDriveItem.ts:18](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/tryDeleteDriveItem.ts#L18)
 
 Attempts to delete a drive item, returning success status.
 
@@ -25,7 +25,7 @@ Attempts to delete a drive item, returning success status.
 
 [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`boolean`\>
 
-Boolean indicating whether the DriveItem was successfully deleted.
+TRUE if successfully deleted, FALSE if the file is missing or locked.
 
 #### Remarks
 

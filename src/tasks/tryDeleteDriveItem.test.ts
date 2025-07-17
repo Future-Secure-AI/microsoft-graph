@@ -18,19 +18,19 @@ describe("tryDeleteDriveItem", () => {
 		expect(result).toBe(true);
 	});
 
-	it("can delete workbook with open session", async () => {
+	it("can not delete workbook with open session", async () => {
 		const driveRef = getDefaultDriveRef();
 		const workbookName = generateTempFileName("xlsx");
 		const workbookPath = driveItemPath(workbookName);
 		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
 
 		const result = await tryDeleteDriveItem(workbook);
-		expect(result).toBe(true);
+		expect(result).toBe(false);
 	});
 
 	it("can return false when doesn't exist", async () => {
 		const driveRef = getDefaultDriveRef();
-		const fakeDriveItem = createDriveItemRef(driveRef, "01LRCMNGPET3QFUL2ZVNHJFKMYBJOJMHBB" as DriveItemId);
+		const fakeDriveItem = createDriveItemRef(driveRef, "01LRCMNGPET3QFUL2ZVNHJFKMYBJOJMHBB" as DriveItemId); // <== This is a fake ID
 		const result = await tryDeleteDriveItem(fakeDriveItem);
 		expect(result).toBe(false);
 	});
