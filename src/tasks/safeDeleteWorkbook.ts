@@ -19,5 +19,5 @@ export default async function safeDeleteWorkbook(workbookRef: WorkbookRef): Prom
 	if (workbookRef.sessionId) {
 		await closeWorkbookSession(workbookRef);
 	}
-	await deleteDriveItem(workbookRef);
+	await deleteDriveItem(workbookRef, { bypassSharedLock: true, bypassCheckedOut: true });
 }
