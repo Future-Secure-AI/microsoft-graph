@@ -148,6 +148,7 @@ export default async function createDriveItemContent(parentRef: DriveRef | Drive
 		}
 	}
 
+	progress(contentPosition);
 	if (!item) {
 		throw new ProtocolError(`Upload did not complete successfully. Last position: ${contentPosition}`);
 	}
