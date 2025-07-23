@@ -4,7 +4,7 @@
  * @category Tasks
  * @experimental
  */
-import { isEqual } from "lodash";
+import lodash from "lodash";
 import InvalidArgumentError from "../errors/InvalidArgumentError.ts";
 import type { BorderSide } from "../models/Border.ts";
 import type { Cell } from "../models/Cell.ts";
@@ -18,6 +18,7 @@ import updateWorkbookRange from "../operations/workbookRange/updateWorkbookRange
 import { superRange } from "../services/addressManipulation.ts";
 import { maxCellsPerRequest } from "../services/batch.ts";
 import { camelCaseToPascalCase } from "../services/stringCaseConversion.ts";
+const isEqual = lodash.isEqual;
 
 /**
  * Update rows in a given workbook range.

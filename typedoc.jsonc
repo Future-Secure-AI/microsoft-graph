@@ -6,7 +6,6 @@
 	"entryPointStrategy": "expand",
 	"entryPoints": ["src/**/*.ts"],
 	"exclude": ["**/*.test.ts", "**/index.ts"],
-	// "mergeReadme": true,
 	"readme": "none",
 	"router": "module",
 	"hideGenerator": true,
