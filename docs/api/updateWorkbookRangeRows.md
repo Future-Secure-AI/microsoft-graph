@@ -12,7 +12,7 @@ Update rows in a given workbook range.
 
 > **updateWorkbookRangeRows**(`originRef`, `cells`, `maxCellsPerOperation`): [`Promise`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)\<`void`\>
 
-Defined in: [src/tasks/updateWorkbookRangeRows.ts:54](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/updateWorkbookRangeRows.ts#L54)
+Defined in: [src/tasks/updateWorkbookRangeRows.ts:55](https://github.com/Future-Secure-AI/microsoft-graph/blob/main/src/tasks/updateWorkbookRangeRows.ts#L55)
 
 **`Experimental`**
 
