@@ -1,4 +1,3 @@
-import { parse } from "csv-parse";
 import { describe, expect, it } from "vitest";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
@@ -22,14 +21,18 @@ describe("streamDriveItemContent", () => {
 
 		try {
 			const stream = await streamDriveItemContent(csvItem);
-			const rows: string[][] = [];
-			await new Promise((resolve, reject) => {
-				stream
-					.pipe(parse())
-					.on("data", (row) => rows.push(row))
-					.on("end", resolve)
-					.on("error", reject);
+			let csvText = "";
+			await new Promise<void>((resolve, reject) => {
+				stream.on("data", (chunk) => {
+					csvText += typeof chunk === "string" ? chunk : new TextDecoder().decode(chunk);
+				});
+				stream.on("end", resolve);
+				stream.on("error", reject);
 			});
+			const rows = csvText
+				.trim()
+				.split("\n")
+				.map((line) => line.split(","));
 			expect(rows.length).toBe(3);
 			expect(rows[0]).toEqual(["col1", "col2"]);
 			expect(rows[1]).toEqual(["Hello", "World"]);
