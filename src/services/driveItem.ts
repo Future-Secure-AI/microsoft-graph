@@ -27,29 +27,41 @@ export const rootDriveItemPath = driveItemPath("/");
  * @throws InvalidArgumentError if a segment is invalid or the path exceeds 400 characters.
  */
 export function driveItemPath(...segments: string[]): DriveItemPath {
-	for (const segment of segments) {
-		if (segment === "") {
-			throw new InvalidArgumentError("Segment cannot be an empty string.");
-		}
+	// Throw if any original segment is an empty string
+	if (segments.some((seg) => seg === "")) {
+		throw new InvalidArgumentError("Segment cannot be an empty string.");
+	}
+	// Special case: if no segments, return root
+	if (segments.length === 0) {
+		return "/" as DriveItemPath;
+	}
 
+	// Remove leading/trailing slashes from all segments except if the segment is exactly "/"
+	const cleanedSegments = segments
+		.map((seg, i) => {
+			if (seg === "/") return i === 0 ? "" : seg; // root as first segment becomes empty, else keep
+			return seg.replace(/^\/+|\/+$/g, "");
+		})
+		.filter((seg, i) => !(i === 0 && seg === "")); // remove empty first segment (root)
+
+	// If any segment is empty after cleaning, throw (except for the special root case handled above)
+	if (cleanedSegments.some((seg) => seg === "")) {
+		throw new InvalidArgumentError("Segment cannot be an empty string.");
+	}
+
+	for (const segment of cleanedSegments) {
 		if (!segmentPattern.test(segment)) {
 			throw new InvalidArgumentError(`Segment '${segment}' does not match required pattern '${segmentPattern}'.`);
 		}
-
 		if (reservedNames.includes(segment.toUpperCase())) {
 			throw new InvalidArgumentError(`Segment '${segment}' is a reserved name.`);
 		}
-
 		if (segment.endsWith(".")) {
 			throw new InvalidArgumentError(`Segment '${segment}' cannot end with a period.`);
 		}
 	}
 
-	let path = `${segments.join("/")}`;
-
-	if (!path.startsWith("/")) {
-		path = `/${path}`;
-	}
+	const path = `/${cleanedSegments.join("/")}`;
 
 	if (path.includes("//")) {
 		throw new InvalidArgumentError("Path cannot contain consecutive slashes.");

@@ -18,6 +18,10 @@ describe("driveItemPath", () => {
 	])("parses %s", (segments, expected) => {
 		expect(driveItemPath(...segments)).toEqual(expected);
 	});
+
+	it("joins a path with root", () => {
+		expect(driveItemPath("/", "foo")).toBe("/foo");
+	});
 });
 
 describe("splitDriveItemPath", () => {
