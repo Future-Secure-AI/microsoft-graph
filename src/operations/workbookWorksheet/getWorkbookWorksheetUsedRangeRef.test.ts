@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import NotFoundError from "../../errors/NotFoundError.ts";
 import type { CellRangeAddress } from "../../models/Address.ts";
 import { getDefaultDriveRef } from "../../services/drive.ts";
 import { driveItemPath } from "../../services/driveItem.ts";
@@ -35,6 +36,20 @@ describe("getWorkbookWorksheetUsedRangeRef", () => {
 
 			const usedRangeRef = await getWorkbookWorksheetUsedRangeRef(worksheetRef);
 			expect(usedRangeRef.address).toBe(address);
+		} finally {
+			await safeDeleteWorkbook(workbook);
+		}
+	});
+
+	it("can throw NotFoundError when worksheet is empty", async () => {
+		const workbookName = generateTempFileName("xlsx");
+		const workbookPath = driveItemPath(workbookName);
+		const driveRef = getDefaultDriveRef();
+		const workbook = await createWorkbookAndStartSession(driveRef, workbookPath);
+		const worksheetRef = createWorkbookWorksheetRef(workbook, defaultWorkbookWorksheetId);
+
+		try {
+			await expect(getWorkbookWorksheetUsedRangeRef(worksheetRef)).rejects.toBeInstanceOf(NotFoundError);
 		} finally {
 			await safeDeleteWorkbook(workbook);
 		}
