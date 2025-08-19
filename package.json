@@ -6,6 +6,7 @@
 	"module": "./dist/esm/index.js",
 	"types": "./dist/esm/index.d.ts",
 	"scripts": {
+		"check": "biome check && tsc --noEmit",
 		"build": "biome check --fix && rm -rf ./dist && echo 'Building for ESM...' && tsc -p tsconfig.esm.json && echo 'Building for CJS...' && tsc -p tsconfig.cjs.json && npx tsx update-exports.ts ",
 		"release": "npm run build && npm run docs && npm publish --access public",
 		"test": "vitest --bail=3",
