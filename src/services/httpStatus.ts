@@ -264,7 +264,6 @@ export function isHttpBadGateway(status: number): boolean {
  */
 export function isRetryable(status: number): boolean {
 	return (
-		isHttpNotFound(status) ||
 		isHttpConflict(status) ||
 		isHttpLocked(status) ||
 		isHttpTooManyRequests(status) ||
